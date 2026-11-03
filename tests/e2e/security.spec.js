@@ -5,8 +5,8 @@ const fs = require("fs");
 const H = require("./helpers");
 const { BASE, EN, wait, tap } = H;
 // true when no element was injected: no <img>, no inline <script>, no foreign <svg>, no on* attribute anywhere
-// the app's own SVGs (map path, geometry figures, full screen icon) are allowed; any other svg / img / inline script would be injected
-const domClean = page => page.evaluate(() => !document.querySelector('img, script:not([src]), svg:not(.map-svg):not(.fig-svg):not([data-act=fullscreen] svg)') &&
+// the app's own SVGs (map path, geometry figures, GitHub mark, full screen icon) are allowed; any other svg / img / inline script would be injected
+const domClean = page => page.evaluate(() => !document.querySelector('img, script:not([src]), svg:not(.map-svg):not(.fig-svg):not(.gh-icon):not([data-act=fullscreen] svg)') &&
   ![...document.querySelectorAll('*')].some(el => [...el.attributes].some(a => /^on/i.test(a.name))));
 
 
@@ -209,4 +209,22 @@ test("local server: only the game files are served (no .git, notes, resources), 
   for (const p of ["/.git/config", "/%2F.git/config", "/.GIT/config", "/x/..%2F.git/config", "/js/%2e%2e/.git/config", "/package.json",
     "/tests/server.js", "/node_modules/.package-lock.json", "/resources/", "/PLAN.md", "/.gitignore", "/js/.hidden.js"]) ok(await status(p) === 404, p + " refused");
   ok(await status("/", { host: "evil.example" }) === 421, "unknown Host header refused (DNS rebinding)");
+});
+
+test("home: « Code source sur GitHub » link opens a new tab without referrer nor access to the game", async ({ browser }) => {
+  const R = H.makeReporter(); const ok = R.ok;
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } }); const page = await ctx.newPage(); R.watch(page, "source");
+  await page.goto(BASE);
+  await H.newPlayer(page, "Lien");
+  const a = page.locator(".source-link a");
+  await a.waitFor();
+  ok(await a.getAttribute("href") === "https://github.com/ke20/revision-quest", "points to the GitHub repository");
+  ok(await a.getAttribute("target") === "_blank" && await a.getAttribute("rel") === "noopener noreferrer", "new tab, noopener noreferrer");
+  ok(await H.hscroll(page) <= 0, "no horizontal scroll");
+  // a broken or foreign address in APP_CONFIG hides the link
+  const scriptUrl = ["javascript", "alert(1)"].join(":"); // built at run time: ESLint forbids script URLs in code
+  await page.evaluate((u) => { APP_CONFIG.sourceUrl = u; App.showHome(); }, scriptUrl);
+  ok(await page.locator(".source-link").count() === 0, "script address refused");
+  R.done();
+  await ctx.close();
 });

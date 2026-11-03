@@ -11,7 +11,8 @@
   window.APP_CONFIG = {
     name: "Révision Quest",
     icon: "🎓",
-    tagline: "Révise tes cours en t'amusant !"
+    tagline: "Révise tes cours en t'amusant !",
+    sourceUrl: "https://github.com/ke20/revision-quest"   // lien « Code source » en bas de l'accueil ("" pour le masquer)
   };
 
   var I18N = {
