@@ -1,0 +1,46 @@
+// Every real pack of js/catalog.js renders: each exercise of each world is drawn by the real renderer and CSS
+// (prompt shown, nothing broken, figure and document present when asked, no horizontal overflow at 390 px).
+// Answers are checked in tests/unit/real-packs.test.js; playing a world to 3 stars is covered by gameplay specs
+// on the test packs. This spec only renders, so it takes seconds instead of a minute per pack.
+"use strict";
+const path = require("path");
+const { test, expect } = require("@playwright/test");
+const H = require("./helpers");
+
+const { catalogUnits, loadCatalog } = require(path.join(H.ROOT, "tools", "validate-pack.js"));
+const PACKS = catalogUnits(loadCatalog()).map((u) => u.path);
+
+test(`real packs (${PACKS.length}): every exercise renders at 390 px`, async ({ browser }) => {
+  const R = H.makeReporter();
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const page = await ctx.newPage(); R.watch(page, "real packs");
+  await page.goto(H.BASE);
+  for (const packId of PACKS) {
+    const res = await page.evaluate((id) => new Promise((resolve) => {
+      Packs.load(id, (err, pack) => {
+        if (err) return resolve({ out: ["load: " + err.code], n: 0 });
+        const out = []; let n = 0;
+        // inside a play screen, like in the game (same width, same CSS)
+        const screen = document.createElement("section"); screen.className = "screen play";
+        const box = document.createElement("div"); box.className = "ex-container"; screen.appendChild(box);
+        document.getElementById("app").appendChild(screen);
+        pack.worlds.forEach((w, wi) => w.exercises.forEach((ex, ei) => {
+          const where = `world ${wi + 1} exercise ${ei + 1} (${ex.type})`;
+          screen.style.setProperty("--c", w.color || "#7C3AED");
+          Exercises.render(ex, box, () => {}, { data: pack });
+          n++;
+          if (box.querySelector(".ex-broken") || !box.querySelector(".ex-prompt")) out.push(where + ": not rendered");
+          if (ex.figure && !box.querySelector(".ex-head svg.fig-svg text")) out.push(where + ": figure missing");
+          if (ex.type === "write" && (ex.docId != null || ex.letterId != null) && !box.querySelector(".letter-card")) out.push(where + ": document missing");
+          if (box.scrollWidth > box.clientWidth + 1) out.push(where + ": wider than the screen (" + box.scrollWidth + " > " + box.clientWidth + ")");
+        }));
+        screen.remove();
+        resolve({ out, n });
+      });
+    }), packId);
+    R.ok(res.n > 0 && res.out.length === 0, `${packId}: ${res.n} exercises render` + (res.out.length ? " — " + res.out.join("; ") : ""));
+  }
+  await expect(page.locator(".screen.play")).toHaveCount(0);
+  await ctx.close();
+  R.done();
+});

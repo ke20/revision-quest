@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- Security: only scripts from this site run (no inline or injected scripts), no network calls,
+       no plugins, no forms, styles and fonts only from this site (Fredoka is self-hosted in fonts/). -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#7C3AED">
+  <title>Révision Quest</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app" class="app">
+    <noscript><p style="padding:24px;color:#fff">Active JavaScript pour jouer.</p></noscript>
+  </div>
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <!-- App name + UI texts, catalogue of packs, pack loader. Content packs (packs/*.js) are loaded
+       on demand by js/packs.js with <script src> (allowed by script-src 'self'). -->
+  <script src="js/i18n.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/packs.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/figures.js"></script>
+  <script src="js/exercises.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

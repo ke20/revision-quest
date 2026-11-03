@@ -1,0 +1,96 @@
+# Révision Quest 🎓
+
+[![CI](https://github.com/ke20/revision-quest/actions/workflows/ci.yml/badge.svg)](https://github.com/ke20/revision-quest/actions/workflows/ci.yml)
+
+Petit jeu web pour réviser ses cours en s'amusant, organisé en **chapitres** (packs de contenu) par matière et par niveau.
+La liste des chapitres se trouve dans le jeu (écran « Choisir un chapitre ») et dans `js/catalog.js`.
+
+## Pourquoi ce projet ?
+
+Au départ, ce projet est né d'une envie simple : aider mes enfants à réviser leurs devoirs dans certaines matières,
+de façon plus ludique qu'avec une fiche papier. Chaque chapitre part d'un vrai cours ou d'une vraie fiche de révision.
+
+L'autre objectif est que **créer un nouveau parcours reste simple** : un chapitre est un seul fichier de données
+(leçons, exercices, figures), décrit dans un guide pas à pas ([`packs/README.md`](packs/README.md)) et vérifié par un
+outil qui explique chaque erreur. Pas besoin de toucher au moteur du jeu pour ajouter une matière ou un niveau.
+
+S'il peut aussi aider d'autres enfants, parents ou enseignants, tant mieux ! 🙂
+
+## Comment on joue
+
+1. On commence par créer son **profil** (prénom ou pseudo et avatar).
+2. On choisit un **chapitre** (matière et niveau), qui donne accès à des **mondes** à découvrir.
+3. Le 1er monde est disponible tout de suite ; les suivants se débloquent au fur et à mesure de la progression,
+   avec une difficulté croissante. Chaque monde commence par une courte **leçon**, suivie d'exercices variés
+   (QCM, tri, paires à relier, phrases à remettre dans l'ordre, texte à trou, mot faux à trouver, réponse rédigée).
+4. Les bonnes réponses rapportent de l'**XP** (plus avec les combos), les erreurs coûtent des **cœurs**.
+   On gagne jusqu'à 3 ⭐ par monde. Le dernier monde est le « boss » du chapitre.
+
+En bonus : des indices, des mots expliqués d'un toucher, des niveaux et des badges secrets à découvrir.
+
+La partie est **sauvegardée automatiquement** sur le poste, dans le navigateur. Pour jouer sur un autre poste ou un
+autre navigateur, on peut **exporter** sa sauvegarde puis l'**importer** de l'autre côté. Aucun serveur ne collecte
+ni ne stocke les informations.
+
+## Joueurs et réglages
+
+- Plusieurs joueurs peuvent jouer sur le même appareil, chacun avec sa progression (« Changer de joueur » sur l'accueil).
+  Un **classement** les compare : général (XP) ou par chapitre (étoiles).
+- **Réglages de confort** (⚙️, par joueur) : pause conseillée après quelques mondes d'affilée, erreurs autorisées
+  sans perdre de cœur, niveau d'animations. À la création du profil, la question « As-tu un TDA/H ? » choisit
+  seulement leurs valeurs de départ ; **la réponse n'est jamais enregistrée**.
+
+## Sécurité et vie privée
+
+- **Aucune donnée ne quitte l'appareil** : pas de serveur, pas de compte, pas de suivi, aucun appel vers un autre site
+  (même la police d'écriture est hébergée avec le jeu).
+- La progression (prénom choisi, avatar, réglages, XP, étoiles, badges) reste dans le navigateur. Le fichier `.save` sert
+  seulement à la déplacer ou à la garder de côté ; il protège contre les fichiers abîmés, pas contre la triche.
+- Toutes les données lues (navigateur, cookie, fichier `.save`) sont vérifiées avant usage, et une politique de
+  sécurité du contenu (CSP) empêche l'exécution de tout script qui ne vient pas du jeu.
+- Un pack de contenu est du code exécuté par le jeu : **chaque nouveau pack doit être relu avant d'être ajouté**
+  (et avant de lancer le validateur dessus : il exécute le fichier).
+- Le jeu refuse de s'ouvrir dans un cadre (iframe) d'un autre site, pour éviter qu'on fasse cliquer un enfant
+  sur un bouton caché (clickjacking).
+
+Vous avez trouvé un problème de sécurité ? Merci de le signaler en privé (voir [SECURITY.md](SECURITY.md))
+plutôt que dans un ticket public.
+
+## Installer le jeu chez soi
+
+Le jeu est un simple dossier de fichiers (HTML, CSS, JavaScript) : pas de serveur à installer, pas de base de données.
+
+1. Récupérer le projet (bouton **Code → Download ZIP** sur GitHub, ou `git clone`).
+2. Le lancer avec [mise](https://mise.jdx.dev) (installe la bonne version de Node.js) :
+
+   ```bash
+   mise install      # une seule fois
+   mise run dev      # puis ouvrir http://127.0.0.1:4173/
+   ```
+
+   Sans mise : installer [Node.js](https://nodejs.org) (version 20 ou plus), puis `npm start`.
+
+**Créer ses propres chapitres** : voir le guide [`packs/README.md`](packs/README.md), puis vérifier le chapitre avec
+`mise run validate`.
+Un outil d'aide à la création de chapitres, directement dans le navigateur, est prévu prochainement.
+
+## Pour les développeurs
+
+HTML, CSS et JavaScript sans build ni dépendance dans le navigateur. Outils : [mise](https://mise.jdx.dev),
+ESLint, `node:test` et Playwright.
+
+```bash
+mise install && mise run install   # Node.js épinglé, dépendances de test et Chromium
+mise run dev                       # sert le jeu sur http://127.0.0.1:4173/
+mise run qa                        # lint, validation des packs, tests unitaires et e2e : à lancer avant de pousser
+```
+
+La CI GitHub Actions lance les mêmes contrôles à chaque push et publie le jeu sur GitHub Pages depuis `main`.
+Structure du code, sauvegarde, tests et mises à jour : voir [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Licence
+
+Le code (`js/`, `css/`, `tools/`, `tests/`, `index.html`) est sous licence [MIT](LICENSE).
+Les textes pédagogiques des packs (`packs/`) reprennent en partie des fiches de cours et des dictées : ils restent la
+propriété de leurs auteurs et sont partagés ici pour un usage éducatif personnel. La police Fredoka est sous licence
+[SIL Open Font License](fonts/OFL.txt).

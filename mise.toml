@@ -1,0 +1,78 @@
+# Révision Quest — tools and tasks (https://mise.jdx.dev).
+#   mise install        installs the pinned Node.js
+#   mise tasks          lists the tasks below
+#   mise run dev        serves the game on http://127.0.0.1:4173/
+#   mise run qa         lint + validate + unit tests + end-to-end tests
+# npm scripts (package.json) stay usable without mise.
+
+[tools]
+node = "22.23.4"
+
+[env]
+PORT = "4173"
+
+[tasks.install]
+description = "Install the test tooling (npm ci + Playwright Chromium; system deps too on CI)"
+run = [
+  "npm ci",
+  "if [ -n \"$CI\" ]; then npx playwright install --with-deps chromium; else npx playwright install chromium; fi",
+]
+
+[tasks.start]
+description = "Serve the game (static server, no build) and print its URL"
+run = "npm start"
+
+[tasks.dev]
+description = "Alias of start: serve the game locally"
+depends = ["start"]
+
+[tasks.lint]
+description = "Lint the JavaScript (ESLint, eslint.config.js)"
+run = "npm run lint"
+
+[tasks."lint:fix"]
+description = "Lint and fix what ESLint can fix automatically"
+run = "npm run lint:fix"
+
+[tasks.validate]
+description = "Check every content pack of the catalogue (tools/validate-pack.js --all)"
+run = "npm run validate"
+
+[tasks."test:unit"]
+description = "Unit tests (node:test): engine, exercises, catalogue, pack validator, docs"
+run = "npm run test:unit"
+
+[tasks."test:e2e"]
+description = "End-to-end tests (Playwright, Chromium desktop + 390 px)"
+run = "npm run test:e2e"
+
+[tasks.test]
+description = "validate + unit tests + end-to-end tests"
+run = [
+  { task = "validate" },
+  { task = "test:unit" },
+  { task = "test:e2e" },
+]
+
+[tasks.qa]
+description = "Everything, fail fast: lint, then validate + unit tests + end-to-end tests"
+run = [
+  { task = "lint" },
+  { task = "test" },
+]
+
+[tasks.report]
+description = "Open the last Playwright HTML report"
+run = "npx playwright show-report"
+
+[tasks.audit]
+description = "Known vulnerabilities in npm dependencies (needs internet; fails from moderate severity)"
+run = "npm run audit"
+
+[tasks.ci]
+description = "Exactly what GitHub Actions runs: install, audit, then qa"
+run = [
+  { task = "install" },
+  { task = "audit" },
+  { task = "qa" },
+]

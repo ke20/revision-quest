@@ -1,0 +1,9 @@
+{
+  "path": "5e/anglais/sample",
+  "title": "Pack de test",
+  "description": "Mini pack pour tester le jeu.",
+  "icon": "🧪",
+  "color": "#7C4DFF",
+  "lang": "en",
+  "worldCount": 3
+}
