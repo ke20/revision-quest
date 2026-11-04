@@ -9,7 +9,8 @@ window.CATALOG = {
     { id: "maths", label: "Maths", icon: "🔢", color: "#2563EB" },
     { id: "histoire", label: "Histoire", icon: "🏰", color: "#B45309" },
     { id: "geographie", label: "Géographie", icon: "🌍", color: "#059669" },
-    { id: "sciences", label: "Sciences", icon: "🔬", color: "#0891B2" }
+    { id: "sciences", label: "Sciences", icon: "🔬", color: "#0891B2" },
+    { id: "physique-chimie", label: "Physique-chimie", icon: "⚗️", color: "#0D9488" }
   ],
 
   levels: [
@@ -48,6 +49,15 @@ window.CATALOG = {
       color: "#B45309",
       lang: "fr",
       worldCount: 8
+    },
+    {
+      path: "4e/physique-chimie/masse-volumique",
+      title: "La masse volumique",
+      description: "Changements d'état, conversions, lecture d'éprouvette, ρ = m ÷ V, trouver m ou V, identifier un matériau, flotter ou couler.",
+      icon: "⚖️",
+      color: "#0D9488",
+      lang: "fr",
+      worldCount: 7
     },
     {
       path: "cm2/maths/droites-et-segments",
