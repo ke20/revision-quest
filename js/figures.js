@@ -164,5 +164,64 @@
     return wrap;
   }
 
-  window.Figures = { layout: layout, build: build, clip: clip, KINDS: KINDS, DIRS: Object.keys(DIRS), MAX_SIZE: MAX_SIZE, MAX_POINTS: MAX_POINTS, MAX_ITEMS: MAX_ITEMS };
+  /* ---------- tables (conversion tables, place-value tables…) ----------
+     A table is plain data too: { rows: [[cell…]…], head: 1, groups: 3, caption, alt }.
+     A cell is a text ("L") or { text, span, hl } (span = number of columns it covers, hl = highlighted).
+     head = number of header rows (default 1); groups = a thick border every N columns (optional). */
+  var MAX_ROWS = 8, MAX_COLS = 12, MAX_CELL = 20;
+
+  /** Pure layout: table → { caption, alt, rows: [[{ text, span, hl, th, col, groupStart }]] }; bad cells are skipped. */
+  function tableLayout(t) {
+    t = t && typeof t === "object" ? t : {};
+    var head = Math.round(num(t.head, 0, MAX_ROWS, 1));
+    var groups = Math.round(num(t.groups, 0, MAX_COLS, 0));
+    var rows = (Array.isArray(t.rows) ? t.rows.slice(0, MAX_ROWS) : []).map(function (row, r) {
+      var col = 0, out = [];
+      (Array.isArray(row) ? row : []).forEach(function (c) {
+        var cell = typeof c === "string" ? { text: c } : c && typeof c === "object" ? c : null;
+        if (!cell) return;
+        var span = Math.round(num(cell.span, 1, MAX_COLS, 1));
+        if (col + span > MAX_COLS) return;
+        out.push({ text: text(cell.text, MAX_CELL), span: span, hl: cell.hl === true, th: r < head, col: col,
+                   groupStart: groups > 0 && col > 0 && col % groups === 0 });
+        col += span;
+      });
+      return out;
+    });
+    return { caption: text(t.caption, 80), alt: text(t.alt, 300), rows: rows };
+  }
+
+  /** <figure class="fig fig-table"><table>…</table><figcaption>…</figcaption></figure> (DOM only, textContent only). */
+  function buildTable(t, doc) {
+    doc = doc || document;
+    var L = tableLayout(t);
+    var wrap = doc.createElement("figure");
+    wrap.className = "fig fig-table";
+    var table = doc.createElement("table");
+    table.className = "conv-table";
+    if (L.alt) table.setAttribute("aria-label", L.alt);
+    var tbody = doc.createElement("tbody");
+    L.rows.forEach(function (row) {
+      var tr = doc.createElement("tr");
+      row.forEach(function (c) {
+        var td = doc.createElement(c.th ? "th" : "td");
+        if (c.span > 1) td.colSpan = c.span;
+        td.className = (c.hl ? "hl" : "") + (c.groupStart ? " group" : "");
+        td.textContent = c.text;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    wrap.appendChild(table);
+    if (L.caption) {
+      var cap = doc.createElement("figcaption");
+      cap.textContent = L.caption;
+      wrap.appendChild(cap);
+    }
+    return wrap;
+  }
+
+  window.Figures = { layout: layout, build: build, clip: clip, tableLayout: tableLayout, buildTable: buildTable, KINDS: KINDS, DIRS: Object.keys(DIRS),
+                     MAX_SIZE: MAX_SIZE, MAX_POINTS: MAX_POINTS, MAX_ITEMS: MAX_ITEMS, MAX_ROWS: MAX_ROWS, MAX_COLS: MAX_COLS, MAX_CELL: MAX_CELL };
 })();

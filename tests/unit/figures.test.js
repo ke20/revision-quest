@@ -4,7 +4,7 @@
 const test = require("node:test");
 const assert = require("node:assert");
 const { load } = require("./helpers/env");
-const { validateFigure } = require("../../tools/validate-pack");
+const { validateFigure, validateTable } = require("../../tools/validate-pack");
 
 const F = load({ scripts: ["js/figures.js"] }).window.Figures;
 const j = (x) => JSON.parse(JSON.stringify(x)); // objects from the vm realm → plain objects
@@ -89,4 +89,48 @@ test("validateFigure: reports bad sizes, points, items and options", () => {
   assert.match(errs({ ...BASE, draw: [{ segment: ["A", "B"], labelAt: "start" }] }), /seulement pour line et ray/);
   assert.match(errs({ ...BASE, draw: [{ segment: ["A", "B"], color: "red" }] }), /champ "color" inconnu/);
   assert.match(errs({ ...BASE, svg: "<svg/>" }), /champ "svg" inconnu/);
+});
+
+/* ---------- tables ---------- */
+
+const TAB = {
+  rows: [[{ text: "m³", span: 3 }, { text: "dm³", span: 3, hl: true }], ["", "", "kL", "hL", "daL", { text: "L", hl: true }]],
+  head: 2, groups: 3, caption: "Volumes", alt: "Tableau des volumes"
+};
+function checkTable(t) {
+  const errors = [], warnings = [];
+  validateTable(t, "ex", (m) => errors.push(m), (m) => warnings.push(m));
+  return { errors, warnings };
+}
+
+test("tableLayout: spans give each cell its column; header rows, highlight and group borders", () => {
+  const L = j(F.tableLayout(TAB));
+  assert.deepStrictEqual(L.rows[0].map((c) => [c.text, c.span, c.col, c.th, c.hl, c.groupStart]),
+    [["m³", 3, 0, true, false, false], ["dm³", 3, 3, true, true, true]]);
+  assert.deepStrictEqual(L.rows[1].map((c) => c.col), [0, 1, 2, 3, 4, 5]);
+  assert.deepStrictEqual(L.rows[1].filter((c) => c.groupStart).map((c) => c.text), ["hL"], "thick border before the dm³ group only");
+  assert.strictEqual(L.rows[1][5].hl, true);
+  assert.strictEqual(L.rows[1][5].th, true, "head: 2 → both rows are headers");
+});
+
+test("tableLayout: bad data never throws (bad cells skipped, too many columns cut, long text cut)", () => {
+  const L = j(F.tableLayout({ rows: [[null, 3, { text: "x".repeat(50) }, { text: "big", span: 99 }]], head: 0 }));
+  assert.deepStrictEqual(L.rows[0].map((c) => [c.text.length, c.span, c.th]), [[F.MAX_CELL, 1, false]], "a cell past column 12 is dropped");
+  const fit = j(F.tableLayout({ rows: [["a", { text: "b", span: 99 }, "c"]] }));
+  assert.deepStrictEqual(fit.rows[0].map((c) => c.text), ["a", "c"], "span clamped to 12, too wide after column 1: only that cell is dropped");
+  assert.deepStrictEqual(j(F.tableLayout(null)).rows, []);
+});
+
+test("validateTable: a correct table passes; reports bad rows, cells and options", () => {
+  assert.deepStrictEqual(checkTable(TAB), { errors: [], warnings: [] });
+  assert.strictEqual(checkTable({ ...TAB, alt: undefined }).warnings.length, 1);
+  const errs = (t) => checkTable(t).errors.join(" | ");
+  assert.match(errs({ ...TAB, rows: [] }), /rows/);
+  assert.match(errs({ ...TAB, rows: [["a", "b"], ["c"]] }), /même nombre de colonnes/);
+  assert.match(errs({ ...TAB, rows: [["a", { text: "b", span: 0 }]] }), /span/);
+  assert.match(errs({ ...TAB, rows: [["**a**"]] }), /texte simple/);
+  assert.match(errs({ ...TAB, rows: [[{ text: "a", color: "red" }]] }), /champ "color" inconnu/);
+  assert.match(errs({ ...TAB, rows: [[{ text: "a", span: 13 }]] }), /12 colonnes|span/);
+  assert.match(errs({ ...TAB, head: 5 }), /head/);
+  assert.match(errs({ ...TAB, html: "<table>" }), /champ "html" inconnu/);
 });

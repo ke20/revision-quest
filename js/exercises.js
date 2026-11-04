@@ -177,6 +177,9 @@
     if (ex.figure && window.Figures) {
       try { head.appendChild(window.Figures.build(ex.figure)); } catch (e) { console.error("Figure failed", e); }
     }
+    if (ex.table && window.Figures) {
+      try { head.appendChild(window.Figures.buildTable(ex.table)); } catch (e) { console.error("Table failed", e); }
+    }
     root.appendChild(head);
     var body = el("div", "ex-body");
     root.appendChild(body);

@@ -31,6 +31,7 @@ test(`real packs (${PACKS.length}): every exercise renders at 390 px`, async ({ 
           n++;
           if (box.querySelector(".ex-broken") || !box.querySelector(".ex-prompt")) out.push(where + ": not rendered");
           if (ex.figure && !box.querySelector(".ex-head svg.fig-svg text")) out.push(where + ": figure missing");
+          if (ex.table && !box.querySelector(".ex-head table.conv-table td, .ex-head table.conv-table th")) out.push(where + ": table missing");
           if (ex.type === "write" && (ex.docId != null || ex.letterId != null) && !box.querySelector(".letter-card")) out.push(where + ": document missing");
           if (box.scrollWidth > box.clientWidth + 1) out.push(where + ": wider than the screen (" + box.scrollWidth + " > " + box.clientWidth + ")");
         }));

@@ -210,6 +210,13 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
 .fig-small { font-size: .5px; fill: var(--ink-soft); }
 .lesson-figs { margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
 .lesson-figs .fig-svg { max-height: 150px; }
+.lesson-figs .fig-table { grid-column: 1 / -1; }
+/* tables (conversion tables…): drawn from pack data by js/figures.js (buildTable) */
+.conv-table { width: 100%; border-collapse: collapse; table-layout: fixed; background: #fff; border: 2px solid var(--ink); font-size: .85rem; font-weight: 700; }
+.conv-table th, .conv-table td { border: 1px solid #C9BFDB; padding: 6px 1px; text-align: center; height: 2em; overflow-wrap: anywhere; }
+.conv-table th { background: #F5F1FB; }
+.conv-table .group { border-left: 3px solid var(--ink); }
+.conv-table .hl { background: color-mix(in srgb, var(--c) 22%, #fff); color: var(--ink); }
 .lesson-examples { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
 .ex-label { font-weight: 700; color: var(--ink-soft); font-size: .9rem; text-transform: uppercase; letter-spacing: .5px; }
 .example { background: color-mix(in srgb, var(--c) 12%, #fff); border-left: 5px solid var(--c); padding: 10px 12px; border-radius: 12px; font-size: 1.05rem; }

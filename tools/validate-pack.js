@@ -141,6 +141,45 @@ function validateFigure(f, where, err, warn) {
   if (!isStr(f.alt)) warn(F + " : ajoute alt (description de la figure pour les lecteurs d'écran)");
 }
 
+/* ---------- tables (js/figures.js buildTable draws them; same limits) ---------- */
+
+const TABLE_KEYS = new Set(["rows", "head", "groups", "caption", "alt"]);
+const CELL_KEYS = new Set(["text", "span", "hl"]);
+const MAX_ROWS = 8, MAX_COLS = 12, MAX_CELL = 20;
+
+function validateTable(t, where, err, warn) {
+  const T = where + " table";
+  if (!t || typeof t !== "object" || isArr(t)) return err(T + " : objet attendu ({ rows: [[…]], … })");
+  Object.keys(t).forEach((k) => { if (!TABLE_KEYS.has(k)) err(T + ` : champ "${k}" inconnu (${[...TABLE_KEYS].join(", ")})`); });
+  if (!isArr(t.rows) || !t.rows.length) return err(T + " : rows doit être un tableau de lignes non vide");
+  if (t.rows.length > MAX_ROWS) err(T + ` : ${MAX_ROWS} lignes maximum`);
+  if (t.head != null && (!Number.isInteger(t.head) || t.head < 0 || t.head > t.rows.length)) err(T + " : head = nombre de lignes d'en-tête (0 à rows.length)");
+  if (t.groups != null && (!Number.isInteger(t.groups) || t.groups < 1 || t.groups > MAX_COLS)) err(T + ` : groups = un trait épais toutes les N colonnes (1 à ${MAX_COLS})`);
+  const widths = t.rows.map((row, r) => {
+    const R = `${T} ligne ${r + 1}`;
+    if (!isArr(row) || !row.length) { err(R + " : tableau de cellules non vide attendu"); return 0; }
+    return row.reduce((w, c, ci) => {
+      const C = `${R} cellule ${ci + 1}`;
+      const cell = typeof c === "string" ? { text: c } : c;
+      if (!cell || typeof cell !== "object" || isArr(cell)) { err(C + ' : texte ou { text, span, hl } attendu'); return w + 1; }
+      Object.keys(cell).forEach((k) => { if (!CELL_KEYS.has(k)) err(C + ` : champ "${k}" inconnu (text, span, hl)`); });
+      if (typeof cell.text !== "string") err(C + " : text doit être un texte (peut être vide)");
+      else {
+        if (cell.text.length > MAX_CELL) err(C + ` : texte trop long (${MAX_CELL} caractères max)`);
+        if (/\[\[|\*\*/.test(cell.text)) err(C + " : texte simple seulement (pas de ** ni de [[...]]) ; hl: true pour surligner");
+      }
+      if (cell.span != null && (!Number.isInteger(cell.span) || cell.span < 1 || cell.span > MAX_COLS)) err(C + ` : span = nombre de colonnes (1 à ${MAX_COLS})`);
+      if (cell.hl != null && typeof cell.hl !== "boolean") err(C + " : hl doit être true ou false");
+      return w + (Number.isInteger(cell.span) ? cell.span : 1);
+    }, 0);
+  });
+  if (widths.some((w) => w > MAX_COLS)) err(T + ` : ${MAX_COLS} colonnes maximum`);
+  if (new Set(widths).size > 1) err(T + ` : toutes les lignes doivent couvrir le même nombre de colonnes (${widths.join(", ")})`);
+  if (t.caption != null && (typeof t.caption !== "string" || t.caption.length > 80)) err(T + " : caption doit être un texte court (80 caractères max)");
+  if (t.alt != null && typeof t.alt !== "string") err(T + " : alt doit être un texte");
+  if (!isStr(t.alt)) warn(T + " : ajoute alt (description du tableau pour les lecteurs d'écran)");
+}
+
 /* ---------- pack validation ---------- */
 
 function validatePack(file, catalog, opts = {}) {
@@ -211,6 +250,13 @@ function validatePack(file, catalog, opts = {}) {
           w.lesson.figures.forEach((f, fi) => validateFigure(f, `${W} leçon figures[${fi}]`, err, warn));
         }
       }
+      if (w.lesson.tables != null) {
+        if (!isArr(w.lesson.tables)) err(W + " : lesson.tables doit être un tableau");
+        else {
+          if (w.lesson.tables.length > 3) err(W + " : 3 tableaux maximum dans une leçon");
+          w.lesson.tables.forEach((tb, ti) => validateTable(tb, `${W} leçon tables[${ti}]`, err, warn));
+        }
+      }
     }
     if (!isArr(w.exercises) || !w.exercises.length) return err(W + " : exercises doit être un tableau non vide");
     w.exercises.forEach((e, ei) => {
@@ -234,6 +280,7 @@ function validateExercise(e, where, ctx) {
   if (isStr(e.explanation) && plain(e.explanation).length > 300) warn(t + " : explication longue (" + plain(e.explanation).length + " caractères)");
   strings([e.prompt, e.explanation, e.hint]).forEach((s) => checkMarkup(s, t, err));
   if (e.figure != null) validateFigure(e.figure, t, err, warn);
+  if (e.table != null) validateTable(e.table, t, err, warn);
 
   switch (e.type) {
     case "mcq":
@@ -433,4 +480,4 @@ function main(argv) {
 }
 
 if (require.main === module) process.exitCode = main(process.argv.slice(2));
-module.exports = { validatePack, validateCatalog, validateFigure, catalogUnits, loadCatalog, loadPack, main };
+module.exports = { validatePack, validateCatalog, validateFigure, validateTable, catalogUnits, loadCatalog, loadPack, main };

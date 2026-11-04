@@ -184,15 +184,96 @@ window.registerPack({
       "lesson": {
         "title": "Changer d'unité",
         "points": [
-          "Volumes : 1 L = 10 dL = 100 cL = **1 000 mL**.",
-          "Volumes en cubes : 1 m³ = 1 000 dm³ et 1 dm³ = **1 000 cm³** (3 colonnes par unité dans le tableau).",
-          "Le pont entre les deux : **1 L = 1 dm³** et **1 mL = 1 cm³**.",
-          "Masses : 1 kg = **1 000 g** et 1 t = 1 000 kg."
+          "Volumes : 1 L = 10 dL = 100 cL = **1 000 mL**. Masses : 1 kg = **1 000 g** et 1 t = 1 000 kg.",
+          "Volumes en cubes : **3 colonnes** par unité (1 m³ = 1 000 dm³ et 1 dm³ = 1 000 cm³).",
+          "Dans le tableau, le L est sous la dernière colonne des dm³ : **1 L = 1 dm³** et **1 mL = 1 cm³**.",
+          "💡 **Astuce** : apprends ces tableaux **par cœur** et redessine-les au brouillon à chaque conversion. Place le chiffre des unités dans la colonne de départ, complète avec des 0, puis lis le résultat dans la colonne d'arrivée."
         ],
         "examples": [
-          "2,5 L = 2 500 mL",
+          "2,5 L = 2 500 mL",
           "0,3 dm³ = 300 cm³",
-          "1 m³ = 1 000 L"
+          "1 m³ = 1 000 L"
+        ],
+        "tables": [
+          {
+            "rows": [
+              [
+                {
+                  "text": "m³",
+                  "span": 3
+                },
+                {
+                  "text": "dm³",
+                  "span": 3,
+                  "hl": true
+                },
+                {
+                  "text": "cm³",
+                  "span": 3,
+                  "hl": true
+                }
+              ],
+              [
+                "",
+                "",
+                "kL",
+                "hL",
+                "daL",
+                {
+                  "text": "L",
+                  "hl": true
+                },
+                "dL",
+                "cL",
+                {
+                  "text": "mL",
+                  "hl": true
+                }
+              ],
+              [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            ],
+            "head": 2,
+            "groups": 3,
+            "caption": "Volumes : 1 dm³ = 1 L et 1 cm³ = 1 mL",
+            "alt": "Tableau de conversion des volumes. En haut, m³, dm³ et cm³ couvrent chacun 3 colonnes. Dessous : vide, vide, kL, puis hL, daL, L, puis dL, cL, mL. Le L est dans la dernière colonne des dm³ et le mL dans la dernière colonne des cm³."
+          },
+          {
+            "rows": [
+              [
+                "kg",
+                "hg",
+                "dag",
+                {
+                  "text": "g",
+                  "hl": true
+                },
+                "dg",
+                "cg",
+                "mg"
+              ],
+              [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            ],
+            "caption": "Masses : 1 kg = 1 000 g",
+            "alt": "Tableau de conversion des masses : kg, hg, dag, g, dg, cg, mg."
+          }
         ]
       },
       "exercises": [
@@ -222,11 +303,11 @@ window.registerPack({
             },
             {
               "left": "1 m³",
-              "right": "1 000 L"
+              "right": "1 000 L"
             },
             {
               "left": "1 kg",
-              "right": "1 000 g"
+              "right": "1 000 g"
             },
             {
               "left": "1 cL",
@@ -247,7 +328,35 @@ window.registerPack({
             "3000 g",
             "3000g"
           ],
-          "explanation": "1 kg = 1 000 g, donc 3 kg = **3 000 g**."
+          "explanation": "1 kg = 1 000 g, donc 3 kg = **3 000 g**.",
+          "table": {
+            "rows": [
+              [
+                "kg",
+                "hg",
+                "dag",
+                {
+                  "text": "g",
+                  "hl": true
+                },
+                "dg",
+                "cg",
+                "mg"
+              ],
+              [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            ],
+            "caption": "Masses : 1 kg = 1 000 g",
+            "alt": "Tableau de conversion des masses : kg, hg, dag, g, dg, cg, mg."
+          },
+          "hint": "Place le nombre dans le tableau : le chiffre des unités dans la colonne de l'unité de départ."
         },
         {
           "type": "fill",
@@ -261,8 +370,35 @@ window.registerPack({
             "0.045 kg",
             "0.045kg"
           ],
-          "explanation": "On divise par 1 000 : 45 g = **0,045 kg**.",
-          "hint": "Pour passer des g aux kg, on divise par 1 000."
+          "explanation": "On divise par 1 000 : 45 g = **0,045 kg**.",
+          "hint": "Pour passer des g aux kg, on divise par 1 000.",
+          "table": {
+            "rows": [
+              [
+                "kg",
+                "hg",
+                "dag",
+                {
+                  "text": "g",
+                  "hl": true
+                },
+                "dg",
+                "cg",
+                "mg"
+              ],
+              [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            ],
+            "caption": "Masses : 1 kg = 1 000 g",
+            "alt": "Tableau de conversion des masses : kg, hg, dag, g, dg, cg, mg."
+          }
         },
         {
           "type": "fill",
@@ -276,7 +412,60 @@ window.registerPack({
             "1800 mL",
             "1800mL"
           ],
-          "explanation": "1 L = 1 000 mL, donc 1,8 L = **1 800 mL**."
+          "explanation": "1 L = 1 000 mL, donc 1,8 L = **1 800 mL**.",
+          "table": {
+            "rows": [
+              [
+                {
+                  "text": "m³",
+                  "span": 3
+                },
+                {
+                  "text": "dm³",
+                  "span": 3,
+                  "hl": true
+                },
+                {
+                  "text": "cm³",
+                  "span": 3,
+                  "hl": true
+                }
+              ],
+              [
+                "",
+                "",
+                "kL",
+                "hL",
+                "daL",
+                {
+                  "text": "L",
+                  "hl": true
+                },
+                "dL",
+                "cL",
+                {
+                  "text": "mL",
+                  "hl": true
+                }
+              ],
+              [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            ],
+            "head": 2,
+            "groups": 3,
+            "caption": "Volumes : 1 dm³ = 1 L et 1 cm³ = 1 mL",
+            "alt": "Tableau de conversion des volumes. En haut, m³, dm³ et cm³ couvrent chacun 3 colonnes. Dessous : vide, vide, kL, puis hL, daL, L, puis dL, cL, mL. Le L est dans la dernière colonne des dm³ et le mL dans la dernière colonne des cm³."
+          },
+          "hint": "Place le nombre dans le tableau : le chiffre des unités dans la colonne de l'unité de départ."
         },
         {
           "type": "fill",
@@ -290,7 +479,59 @@ window.registerPack({
             "4cm³"
           ],
           "explanation": "0,4 cL = 4 mL et 1 mL = 1 cm³, donc **4 cm³**.",
-          "hint": "Passe d'abord par les mL."
+          "hint": "Passe d'abord par les mL.",
+          "table": {
+            "rows": [
+              [
+                {
+                  "text": "m³",
+                  "span": 3
+                },
+                {
+                  "text": "dm³",
+                  "span": 3,
+                  "hl": true
+                },
+                {
+                  "text": "cm³",
+                  "span": 3,
+                  "hl": true
+                }
+              ],
+              [
+                "",
+                "",
+                "kL",
+                "hL",
+                "daL",
+                {
+                  "text": "L",
+                  "hl": true
+                },
+                "dL",
+                "cL",
+                {
+                  "text": "mL",
+                  "hl": true
+                }
+              ],
+              [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            ],
+            "head": 2,
+            "groups": 3,
+            "caption": "Volumes : 1 dm³ = 1 L et 1 cm³ = 1 mL",
+            "alt": "Tableau de conversion des volumes. En haut, m³, dm³ et cm³ couvrent chacun 3 colonnes. Dessous : vide, vide, kL, puis hL, daL, L, puis dL, cL, mL. Le L est dans la dernière colonne des dm³ et le mL dans la dernière colonne des cm³."
+          }
         },
         {
           "type": "fill",
@@ -308,7 +549,60 @@ window.registerPack({
             "63000cm3",
             "63000cm³"
           ],
-          "explanation": "1 dm³ = 1 000 cm³, donc 63 dm³ = **63 000 cm³**."
+          "explanation": "1 dm³ = 1 000 cm³, donc 63 dm³ = **63 000 cm³**.",
+          "table": {
+            "rows": [
+              [
+                {
+                  "text": "m³",
+                  "span": 3
+                },
+                {
+                  "text": "dm³",
+                  "span": 3,
+                  "hl": true
+                },
+                {
+                  "text": "cm³",
+                  "span": 3,
+                  "hl": true
+                }
+              ],
+              [
+                "",
+                "",
+                "kL",
+                "hL",
+                "daL",
+                {
+                  "text": "L",
+                  "hl": true
+                },
+                "dL",
+                "cL",
+                {
+                  "text": "mL",
+                  "hl": true
+                }
+              ],
+              [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            ],
+            "head": 2,
+            "groups": 3,
+            "caption": "Volumes : 1 dm³ = 1 L et 1 cm³ = 1 mL",
+            "alt": "Tableau de conversion des volumes. En haut, m³, dm³ et cm³ couvrent chacun 3 colonnes. Dessous : vide, vide, kL, puis hL, daL, L, puis dL, cL, mL. Le L est dans la dernière colonne des dm³ et le mL dans la dernière colonne des cm³."
+          },
+          "hint": "Place le nombre dans le tableau : le chiffre des unités dans la colonne de l'unité de départ."
         },
         {
           "type": "fill",
@@ -322,7 +616,60 @@ window.registerPack({
             "2.5 L",
             "2.5L"
           ],
-          "explanation": "1 L = 10 dL, donc 25 dL = **2,5 L**."
+          "explanation": "1 L = 10 dL, donc 25 dL = **2,5 L**.",
+          "table": {
+            "rows": [
+              [
+                {
+                  "text": "m³",
+                  "span": 3
+                },
+                {
+                  "text": "dm³",
+                  "span": 3,
+                  "hl": true
+                },
+                {
+                  "text": "cm³",
+                  "span": 3,
+                  "hl": true
+                }
+              ],
+              [
+                "",
+                "",
+                "kL",
+                "hL",
+                "daL",
+                {
+                  "text": "L",
+                  "hl": true
+                },
+                "dL",
+                "cL",
+                {
+                  "text": "mL",
+                  "hl": true
+                }
+              ],
+              [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            ],
+            "head": 2,
+            "groups": 3,
+            "caption": "Volumes : 1 dm³ = 1 L et 1 cm³ = 1 mL",
+            "alt": "Tableau de conversion des volumes. En haut, m³, dm³ et cm³ couvrent chacun 3 colonnes. Dessous : vide, vide, kL, puis hL, daL, L, puis dL, cL, mL. Le L est dans la dernière colonne des dm³ et le mL dans la dernière colonne des cm³."
+          },
+          "hint": "Place le nombre dans le tableau : le chiffre des unités dans la colonne de l'unité de départ."
         },
         {
           "type": "spot",
@@ -335,8 +682,61 @@ window.registerPack({
             "cm³"
           ],
           "wrongIndex": 3,
-          "correction": "100 000",
-          "explanation": "1 dm³ = 1 000 cm³, donc 100 dm³ = **100 000 cm³** : on multiplie par 1 000, pas par 10."
+          "correction": "100 000",
+          "explanation": "1 dm³ = 1 000 cm³, donc 100 dm³ = **100 000 cm³** : on multiplie par 1 000, pas par 10.",
+          "table": {
+            "rows": [
+              [
+                {
+                  "text": "m³",
+                  "span": 3
+                },
+                {
+                  "text": "dm³",
+                  "span": 3,
+                  "hl": true
+                },
+                {
+                  "text": "cm³",
+                  "span": 3,
+                  "hl": true
+                }
+              ],
+              [
+                "",
+                "",
+                "kL",
+                "hL",
+                "daL",
+                {
+                  "text": "L",
+                  "hl": true
+                },
+                "dL",
+                "cL",
+                {
+                  "text": "mL",
+                  "hl": true
+                }
+              ],
+              [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            ],
+            "head": 2,
+            "groups": 3,
+            "caption": "Volumes : 1 dm³ = 1 L et 1 cm³ = 1 mL",
+            "alt": "Tableau de conversion des volumes. En haut, m³, dm³ et cm³ couvrent chacun 3 colonnes. Dessous : vide, vide, kL, puis hL, daL, L, puis dL, cL, mL. Le L est dans la dernière colonne des dm³ et le mL dans la dernière colonne des cm³."
+          },
+          "hint": "Place le nombre dans le tableau : le chiffre des unités dans la colonne de l'unité de départ."
         },
         {
           "type": "mcq",
@@ -348,7 +748,60 @@ window.registerPack({
             "0,35 L"
           ],
           "answer": 3,
-          "explanation": "350 cm³ = 350 mL = **0,35 L** (on divise par 1 000)."
+          "explanation": "350 cm³ = 350 mL = **0,35 L** (on divise par 1 000).",
+          "table": {
+            "rows": [
+              [
+                {
+                  "text": "m³",
+                  "span": 3
+                },
+                {
+                  "text": "dm³",
+                  "span": 3,
+                  "hl": true
+                },
+                {
+                  "text": "cm³",
+                  "span": 3,
+                  "hl": true
+                }
+              ],
+              [
+                "",
+                "",
+                "kL",
+                "hL",
+                "daL",
+                {
+                  "text": "L",
+                  "hl": true
+                },
+                "dL",
+                "cL",
+                {
+                  "text": "mL",
+                  "hl": true
+                }
+              ],
+              [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            ],
+            "head": 2,
+            "groups": 3,
+            "caption": "Volumes : 1 dm³ = 1 L et 1 cm³ = 1 mL",
+            "alt": "Tableau de conversion des volumes. En haut, m³, dm³ et cm³ couvrent chacun 3 colonnes. Dessous : vide, vide, kL, puis hL, daL, L, puis dL, cL, mL. Le L est dans la dernière colonne des dm³ et le mL dans la dernière colonne des cm³."
+          },
+          "hint": "Place le nombre dans le tableau : le chiffre des unités dans la colonne de l'unité de départ."
         }
       ]
     },
@@ -1654,11 +2107,11 @@ window.registerPack({
           "La **masse volumique** ρ (« rhô ») est la masse d'un matériau (solide, liquide ou gaz) par unité de volume.",
           "On la calcule ainsi : **ρ = m ÷ V**.",
           "Unité officielle : **kg/m³**. On utilise aussi kg/L, g/mL ou g/cm³.",
-          "Pour l'eau : ρ = **1 g/mL = 1 g/cm³ = 1 kg/L = 1 000 kg/m³**."
+          "Pour l'eau : ρ = **1 g/mL = 1 g/cm³ = 1 kg/L = 1 000 kg/m³**."
         ],
         "examples": [
-          "Le sang : 1 060 g/L, donc 1 L de sang a une masse de 1 060 g.",
-          "2,7 g/cm³ = 2 700 kg/m³ (on multiplie par 1 000) ; et des g/mL aux kg/L, le nombre ne change pas."
+          "Le sang : 1 060 g/L, donc 1 L de sang a une masse de 1 060 g.",
+          "2,7 g/cm³ = 2 700 kg/m³ (on multiplie par 1 000) ; et des g/mL aux kg/L, le nombre ne change pas."
         ]
       },
       "exercises": [
@@ -1764,15 +2217,15 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Le lait a une masse volumique de 1 030 g/L. Que signifie cette donnée ?",
+          "prompt": "Le lait a une masse volumique de 1 030 g/L. Que signifie cette donnée ?",
           "options": [
-            "1 030 L de lait ont une masse de 1 g",
-            "1 L de lait occupe 1 030 mL",
-            "1 L de lait a une masse de 1 030 g",
-            "1 g de lait occupe 1 030 L"
+            "1 030 L de lait ont une masse de 1 g",
+            "1 L de lait occupe 1 030 mL",
+            "1 L de lait a une masse de 1 030 g",
+            "1 g de lait occupe 1 030 L"
           ],
           "answer": 2,
-          "explanation": "1 030 g/L : **1 030 g pour 1 L**."
+          "explanation": "1 030 g/L : **1 030 g pour 1 L**."
         },
         {
           "type": "match",
@@ -1788,14 +2241,14 @@ window.registerPack({
             },
             {
               "left": "2,7 g/cm³",
-              "right": "2 700 kg/m³"
+              "right": "2 700 kg/m³"
             },
             {
               "left": "13,6 g/mL",
               "right": "13,6 kg/L"
             }
           ],
-          "explanation": "De g/cm³ à kg/m³ : **× 1 000**. Entre g/mL et kg/L, le nombre **ne change pas**."
+          "explanation": "De g/cm³ à kg/m³ : **× 1 000**. Entre g/mL et kg/L, le nombre **ne change pas**."
         },
         {
           "type": "fill",
@@ -1806,7 +2259,7 @@ window.registerPack({
             "8 g/mL",
             "8g/mL"
           ],
-          "explanation": "Attention aux unités : 3 kg = 3 000 g, puis ρ = 3 000 ÷ 375 = **8 g/mL**.",
+          "explanation": "Attention aux unités : 3 kg = 3 000 g, puis ρ = 3 000 ÷ 375 = **8 g/mL**.",
           "hint": "Convertis d'abord la masse en grammes."
         },
         {
@@ -1849,7 +2302,7 @@ window.registerPack({
         ],
         "examples": [
           "Huile à 0,9 g/mL : 200 mL ont une masse de 0,9 × 200 = 180 g.",
-          "Sable à 1 500 g/L = 1,5 kg/L : 30 kg occupent 30 ÷ 1,5 = 20 L."
+          "Sable à 1 500 g/L = 1,5 kg/L : 30 kg occupent 30 ÷ 1,5 = 20 L."
         ]
       },
       "exercises": [
@@ -1917,14 +2370,14 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Un sac contient 30 kg de sable. La masse volumique du sable est 1 500 g/L. Quel est le volume du sable ?",
+          "prompt": "Un sac contient 30 kg de sable. La masse volumique du sable est 1 500 g/L. Quel est le volume du sable ?",
           "sentence": "V = ___ L",
           "answers": [
             "20",
             "20 L",
             "20L"
           ],
-          "explanation": "Unités d'accord : 1 500 g/L = 1,5 kg/L. V = 30 ÷ 1,5 = **20 L**.",
+          "explanation": "Unités d'accord : 1 500 g/L = 1,5 kg/L. V = 30 ÷ 1,5 = **20 L**.",
           "hint": "Les kg et les g/L ne vont pas ensemble : convertis la masse volumique en kg/L."
         },
         {
@@ -1933,7 +2386,7 @@ window.registerPack({
           "options": [
             "400 mL",
             "40 mL",
-            "4 000 mL",
+            "4 000 mL",
             "249,64 mL"
           ],
           "answer": 0,
@@ -1964,7 +2417,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Un bloc a une masse de 0,9 kg et une masse volumique de 3 000 kg/m³. Calcule son volume en m³.",
+          "prompt": "Un bloc a une masse de 0,9 kg et une masse volumique de 3 000 kg/m³. Calcule son volume en m³.",
           "sentence": "V = ___ m³",
           "answers": [
             "0,0003",
@@ -1978,7 +2431,7 @@ window.registerPack({
             "0.0003m3",
             "0.0003m³"
           ],
-          "explanation": "V = m ÷ ρ = 0,9 ÷ 3 000 = **0,0003 m³** (soit 300 cm³). Attention : on ne divise pas 3 000 par 0,9 !"
+          "explanation": "V = m ÷ ρ = 0,9 ÷ 3 000 = **0,0003 m³** (soit 300 cm³). Attention : on ne divise pas 3 000 par 0,9 !"
         },
         {
           "type": "fill",
@@ -2163,15 +2616,15 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Lors d'une marée noire, 1 tonne de pétrole occupe environ 1 210 L. Le pétrole flotte-t-il sur l'eau (1 kg/L) ?",
+          "prompt": "Lors d'une marée noire, 1 tonne de pétrole occupe environ 1 210 L. Le pétrole flotte-t-il sur l'eau (1 kg/L) ?",
           "options": [
             "Oui : environ 0,83 kg/L, moins que 1 kg/L",
             "Non : environ 1,21 kg/L, plus que 1 kg/L",
-            "Non : 1 000 kg, c'est trop lourd pour flotter",
+            "Non : 1 000 kg, c'est trop lourd pour flotter",
             "Oui : environ 1,21 kg/L, plus que 1 kg/L"
           ],
           "answer": 0,
-          "explanation": "1 t = 1 000 kg ; ρ = 1 000 ÷ 1 210 ≈ **0,83 kg/L** < 1 kg/L : le pétrole **flotte**, d'où les nappes à la surface.",
+          "explanation": "1 t = 1 000 kg ; ρ = 1 000 ÷ 1 210 ≈ **0,83 kg/L** < 1 kg/L : le pétrole **flotte**, d'où les nappes à la surface.",
           "hint": "Convertis la tonne en kg, puis divise par le volume."
         }
       ]
@@ -2228,11 +2681,11 @@ window.registerPack({
             "1000cm3",
             "1000cm³"
           ],
-          "explanation": "V = 10 × 10 × 10 = **1 000 cm³**."
+          "explanation": "V = 10 × 10 × 10 = **1 000 cm³**."
         },
         {
           "type": "fill",
-          "prompt": "Ce cube d'ébène de 1 000 cm³ a une masse de 1 200 g. Calcule sa masse volumique.",
+          "prompt": "Ce cube d'ébène de 1 000 cm³ a une masse de 1 200 g. Calcule sa masse volumique.",
           "sentence": "ρ = ___ g/cm³",
           "answers": [
             "1,2",
@@ -2246,7 +2699,7 @@ window.registerPack({
             "1.2g/cm3",
             "1.2g/cm³"
           ],
-          "explanation": "ρ = 1 200 ÷ 1 000 = **1,2 g/cm³**."
+          "explanation": "ρ = 1 200 ÷ 1 000 = **1,2 g/cm³**."
         },
         {
           "type": "sort",
@@ -2293,7 +2746,7 @@ window.registerPack({
             "37.5 kg",
             "37.5kg"
           ],
-          "explanation": "m = ρ × V = 750 × 50 = 37 500 g = **37,5 kg**.",
+          "explanation": "m = ρ × V = 750 × 50 = 37 500 g = **37,5 kg**.",
           "hint": "Calcule en g, puis convertis en kg."
         },
         {
@@ -2340,8 +2793,8 @@ window.registerPack({
             "900kg/m3",
             "900kg/m³"
           ],
-          "explanation": "400 cm³ = 0,0004 m³ ; ρ = 0,36 ÷ 0,0004 = **900 kg/m³** (ou 0,9 g/cm³ × 1 000).",
-          "hint": "Calcule en g/cm³, puis multiplie par 1 000."
+          "explanation": "400 cm³ = 0,0004 m³ ; ρ = 0,36 ÷ 0,0004 = **900 kg/m³** (ou 0,9 g/cm³ × 1 000).",
+          "hint": "Calcule en g/cm³, puis multiplie par 1 000."
         },
         {
           "type": "write",

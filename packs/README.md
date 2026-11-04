@@ -103,7 +103,7 @@ Le contenu (consignes, leçons) est écrit par l'auteur dans la langue voulue ; 
 boutons et petites aides autour des exercices (textes dans `js/i18n.js`).
 Les écrans généraux (accueil, catalogue, badges, classement) sont toujours en français.
 
-## 4. Les 7 types d'exercices (+ figures)
+## 4. Les 7 types d'exercices (+ figures et tableaux)
 
 ### `mcq` — QCM
 
@@ -226,6 +226,30 @@ figure: {
 Le validateur vérifie les noms, les coordonnées (dans la figure), les points cités et les champs inconnus.
 Pour des points alignés ou des droites perpendiculaires, calculer les coordonnées (les vérifier à l'œil ne suffit pas).
 Une figure haute pousse les réponses vers le bas : sur téléphone, garder `h` raisonnable (≤ 10).
+
+### Les tableaux (conversions, numération…)
+
+Une leçon peut montrer jusqu'à 3 tableaux (`lesson.tables: [...]`) et tout exercice peut en afficher un sous sa
+consigne (`table: {...}`). Comme les figures, c'est une **description en données** dessinée par le jeu
+(`js/figures.js`, `buildTable`) : aucun HTML ne vient du pack.
+
+```js
+table: {
+  rows: [                                          // 8 lignes max ; chaque ligne couvre le même nombre de colonnes (12 max)
+    [{ text: "m³", span: 3 }, { text: "dm³", span: 3, hl: true }, { text: "cm³", span: 3, hl: true }],
+    ["", "", "kL", "hL", "daL", { text: "L", hl: true }, "dL", "cL", { text: "mL", hl: true }],
+    ["", "", "", "", "", "", "", "", ""]           // ligne vide : là où l'élève place les chiffres
+  ],
+  head: 2,                         // nombre de lignes d'en-tête (1 par défaut)
+  groups: 3,                       // optionnel : trait épais toutes les 3 colonnes (unités cubes)
+  caption: "1 dm³ = 1 L et 1 cm³ = 1 mL",          // optionnel : légende sous le tableau
+  alt: "Tableau de conversion des volumes…"        // description pour les lecteurs d'écran (conseillée)
+}
+```
+
+Une cellule = un texte (`"kL"`) ou `{ text, span, hl }` : `span` = nombre de colonnes couvertes, `hl` = surlignée de
+la couleur du monde. Texte simple (20 caractères max, sans `**` ni `[[...]]`).
+Un tableau qui donne la réponse (« 1 L = ? ») ne va pas sur l'exercice : le garder pour la leçon.
 
 ## 5. Ajouter le pack au catalogue (`js/catalog.js`)
 

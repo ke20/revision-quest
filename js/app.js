@@ -1034,6 +1034,7 @@
     var examples = (L.examples || []).map(function (p) { return '<div class="example">💬 ' + R(p) + "</div>"; }).join("");
     var hasTr = /\[\[[^\]]+\|/.test(JSON.stringify(w));
     var figures = window.Figures && Array.isArray(L.figures) ? L.figures.slice(0, 6) : [];
+    var tables = window.Figures && Array.isArray(L.tables) ? L.tables.slice(0, 3) : [];
     var node = h('<section class="screen lesson" style="--c:' + safeColor(w.color) + '">' +
       '<header class="screen-head"><button class="btn-icon" data-act="back" aria-label="Retour">←</button><h2>' + T("lesson") + '</h2><span class="head-right"></span></header>' +
       '<div class="card lesson-card pop">' +
@@ -1041,7 +1042,7 @@
         '<div class="lesson-sub">' + E(w.subtitle || "") + (w.subtitleFr ? " <small>· " + E(w.subtitleFr) + "</small>" : "") + "</div></div></div>" +
         (L.title ? '<h3 class="lesson-title">' + R(L.title) + "</h3>" : "") +
         (points ? '<ul class="lesson-points">' + points + "</ul>" : "") +
-        (figures.length ? '<div class="lesson-figs"></div>' : "") +
+        (figures.length || tables.length ? '<div class="lesson-figs"></div>' : "") +
         (examples ? '<div class="lesson-examples"><div class="ex-label">' + T("examples") + "</div>" + examples + "</div>" : "") +
         (hasTr ? '<p class="lesson-tip">' + T("lessonTip") + "</p>" : "") +
       "</div>" +
@@ -1052,6 +1053,9 @@
     var figBox = node.querySelector(".lesson-figs");
     figures.forEach(function (f) {
       try { figBox.appendChild(window.Figures.build(f)); } catch (e) { console.error("Figure failed", e); }
+    });
+    tables.forEach(function (t) {
+      try { figBox.appendChild(window.Figures.buildTable(t)); } catch (e) { console.error("Table failed", e); }
     });
     on(node, "back", showMap);
     on(node, "go", function () { Sound.unlock(); Sound.tap(); startWorld(w); });
