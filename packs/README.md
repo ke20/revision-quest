@@ -74,7 +74,8 @@ Règles :
 ```
 
 Le monde suivant se débloque quand le précédent a assez d'étoiles (sur 5) : 3 par défaut, 2, 4 ou 5 selon le
-réglage « difficulté » du joueur. Un monde déjà joué reste ouvert.
+réglage « difficulté » du joueur. Un monde déjà joué reste ouvert, sauf si le joueur a choisi « À rejouer » dans ses
+réglages.
 Le **dernier** monde est le « boss » du chapitre (badge « Chapitre terminé »).
 
 ## 2. Les textes : `**gras**` et `[[mot|explication]]`

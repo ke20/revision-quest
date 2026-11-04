@@ -146,6 +146,8 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
 
 /* ---------- map ---------- */
 .map-path { position: relative; margin: 0 auto; }
+.map-foot { display: flex; justify-content: center; margin: 18px 0 8px; }
+#confirm-input { margin: 6px 0 4px; }
 .map-svg { position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible; }
 .map-line-bg { fill: none; stroke: rgba(255, 255, 255, .25); stroke-width: 18; stroke-linecap: round; }
 .map-line { fill: none; stroke: #fff; stroke-width: 5; stroke-dasharray: 2 14; stroke-linecap: round; opacity: .9; }

@@ -10,7 +10,7 @@ async function openSettings(page) {
   await expect(page.locator(".modal-backdrop")).toHaveCount(0);
   await H.settle(page);
   await tap(page, "[data-act=settings]");
-  await expect(page.locator(".modal .setting-block")).toHaveCount(4);
+  await expect(page.locator(".modal .setting-block")).toHaveCount(5);
   await H.settle(page); // the dialog pops in (scale): a forced click during it lands next to the button
 }
 /** Values shown as selected in the "Réglages" dialog. */
@@ -81,7 +81,7 @@ test("creation answer picks the settings, changes persist, the answer is stored 
   for (const [where, txt] of Object.entries({ localStorage: stored.ls, cookie: cookieJson, save: stored.inner })) {
     ok(!/tda|adhd|comfort|answer|"oui"|"yes"/i.test(txt), "no trace of the TDA/H answer in " + where);
   }
-  ok(stored.keys === "animations,difficulty,freeMistakes,pauseEvery", "only the 4 settings are exported");
+  ok(stored.keys === "animations,difficulty,freeMistakes,pauseEvery,playedWorlds", "only the 5 settings are exported");
   // Non (preselected, no click) → defaults
   // under load a click can land while the home screen is redrawn after « Terminé »: retry until the player list shows
   await expect(async () => {
@@ -292,5 +292,56 @@ test("difficulty: the next world needs 2 / 3 / 4 / 5 stars; result screen and lo
   await setSetting(page, "difficulty", "easy");
   await H.gotoPack(page, SAMPLE);
   ok(!(await page.locator(".map-node >> nth=1").evaluate((n) => n.classList.contains("locked"))), "world 2 open in easy mode");
+  R.done();
+});
+
+test("played worlds « À rejouer » (confirmed) and « Recommencer ce chapitre » (typed confirmation)", async ({ page }) => {
+  const R = H.makeReporter(); const ok = R.ok;
+  R.watch(page, "replay-reset");
+  await H.withTestPacks(page);
+  await page.goto("./");
+  await H.newPlayer(page, "Rejoue", 0, { comfort: "no" });
+  // world 1 with 1★, world 2 played: under the old rule (1★ was enough) both were reached
+  await page.evaluate((id) => {
+    Engine.state.packs[id] = { worlds: { 1: { stars: 1, accuracy: 0.4, completed: true }, 2: { stars: 5, accuracy: 1, completed: true } }, lastPlayed: Date.now() };
+    Engine.setSound(false);
+  }, SAMPLE);
+  await H.gotoPack(page, SAMPLE);
+  const locked = () => page.$$eval(".map-node", (n) => n.map((x) => x.classList.contains("locked")));
+  ok(JSON.stringify(await locked()) === "[false,false,false]", "« Restent ouverts » (default): played world 2 open, world 3 follows world 2");
+  // « À rejouer »: asks first; « Annuler » keeps « Restent ouverts »
+  await tap(page, "[data-act=back]"); await tap(page, "[data-act=back]");
+  await openSettings(page);
+  await tap(page, '.modal [data-set="playedWorlds"][data-val="replay"]');
+  await expect(page.locator(".modal h3", { hasText: "Mondes à rejouer ?" })).toBeVisible();
+  await H.settle(page);
+  await tap(page, ".modal-backdrop:last-child [data-act=no]");
+  await expect(page.locator('.modal [data-set="playedWorlds"][data-val="open"]')).toHaveAttribute("aria-pressed", "true");
+  await tap(page, '.modal [data-set="playedWorlds"][data-val="replay"]');
+  await H.settle(page);
+  await tap(page, ".modal-backdrop:last-child [data-act=yes]");
+  await expect(page.locator('.modal [data-set="playedWorlds"][data-val="replay"]')).toHaveAttribute("aria-pressed", "true");
+  await H.settle(page);
+  await tap(page, ".modal [data-act=close]");
+  await H.gotoPack(page, SAMPLE);
+  ok(JSON.stringify(await locked()) === "[false,true,true]", "« À rejouer »: world 2 locked (1★ < 3★), and world 3 behind it even though world 2 has 5★");
+  ok(await page.locator(".map-node.current >> nth=0").evaluate((n) => n.getAttribute("data-i")) === "0", "« Tu es ici » on world 1");
+  // reset the chapter: the button stays disabled until « Je confirme » is typed
+  await page.locator("[data-act=reset-pack]").scrollIntoViewIfNeeded();
+  await tap(page, "[data-act=reset-pack]");
+  await expect(page.locator("#confirm-input")).toBeVisible();
+  const yes = page.locator(".modal [data-act=yes]");
+  await expect(yes).toBeDisabled();
+  await page.fill("#confirm-input", "je confirm");
+  await expect(yes).toBeDisabled();
+  await page.fill("#confirm-input", "  je   CONFIRME ");
+  await expect(yes).toBeEnabled();
+  const xp = await page.evaluate(() => Engine.state.xp);
+  await yes.click();
+  await expect(page.locator(".toast", { hasText: "remis à zéro" })).toBeVisible();
+  ok(await page.evaluate((id) => Engine.totalStars(id), SAMPLE) === 0, "chapter stars erased");
+  ok(await page.evaluate(() => Engine.state.xp) === xp, "XP kept");
+  ok(JSON.stringify(await locked()) === "[false,true,true]", "back to world 1 only");
+  ok(await page.locator("[data-act=reset-pack]").count() === 0, "no reset button on a fresh chapter");
   R.done();
 });

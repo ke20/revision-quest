@@ -38,8 +38,11 @@ ni ne stocke les informations.
 - Plusieurs joueurs peuvent jouer sur le même appareil, chacun avec sa progression (« Changer de joueur » sur l'accueil).
   Un **classement** les compare : général (XP) ou par chapitre (étoiles).
 - **Réglages** (⚙️, par joueur) : pause conseillée après quelques mondes d'affilée, erreurs autorisées sans perdre
-  de cœur, niveau d'animations, difficulté (étoiles demandées pour passer au monde suivant). À la création du profil,
-  la question « As-tu un TDA/H ? » choisit seulement les valeurs de départ ; **la réponse n'est jamais enregistrée**.
+  de cœur, niveau d'animations, difficulté (étoiles demandées pour passer au monde suivant), mondes déjà joués sans assez
+  d'étoiles (restent ouverts ou sont à rejouer). À la création du profil, la question « As-tu un TDA/H ? » choisit
+  seulement les valeurs de départ ; **la réponse n'est jamais enregistrée**.
+- **Recommencer un chapitre** : bouton sous la carte des mondes, après avoir écrit « Je confirme ». Seules les étoiles
+  de ce chapitre sont effacées (l'XP, les badges et les autres chapitres sont gardés).
 
 ## Sécurité et vie privée
 

@@ -779,8 +779,30 @@
     { key: "freeMistakes", label: "🛡️ Erreurs sans perdre de cœur", values: [[0, "0"], [1, "1"], [2, "2"], [3, "3"]] },
     { key: "animations", label: "✨ Animations", values: [["none", "Aucune"], ["normal", "Normales"], ["boost", "Renforcées"]] },
     { key: "difficulty", label: "🎯 Étoiles pour passer au monde suivant",
-      values: [["easy", "Facile 2⭐"], ["normal", "Normal 3⭐"], ["medium", "Modéré 4⭐"], ["hard", "Difficile 5⭐"]] }
+      values: [["easy", "Facile 2⭐"], ["normal", "Normal 3⭐"], ["medium", "Modéré 4⭐"], ["hard", "Difficile 5⭐"]] },
+    { key: "playedWorlds", label: "🔁 Mondes déjà joués sans assez d'étoiles",
+      values: [["open", "Restent ouverts"], ["replay", "À rejouer"]] }
   ];
+  var TEXT_SETTINGS = ["animations", "difficulty", "playedWorlds"];
+
+  /** Confirmation that needs a typed phrase (for what cannot be undone). title / text must be trusted or escaped. */
+  var CONFIRM_PHRASE = "Je confirme";
+  function typedConfirmBox(title, text, okLabel, onOk) {
+    modal('<h3>' + title + '</h3><p>' + text + '</p>' +
+      '<label class="field-label" for="confirm-input">Écris « ' + CONFIRM_PHRASE + ' » pour continuer</label>' +
+      '<input id="confirm-input" class="text-input" type="text" maxlength="40" autocomplete="off" />' +
+      '<div class="modal-actions"><button class="btn btn-ghost" data-act="no">Annuler</button>' +
+      '<button class="btn btn-danger" data-act="yes" disabled>' + okLabel + "</button></div>",
+      function (m, close) {
+        var input = m.querySelector("#confirm-input"), yes = m.querySelector('[data-act="yes"]');
+        var typed = function () { return input.value.replace(/\s+/g, " ").trim().toLowerCase() === CONFIRM_PHRASE.toLowerCase(); };
+        input.oninput = function () { yes.disabled = !typed(); };
+        input.onkeydown = function (e) { if (e.key === "Enter" && typed()) yes.click(); };
+        m.querySelector('[data-act="no"]').onclick = close;
+        yes.onclick = function () { if (!typed()) return; close(); onOk(); };
+        input.focus();
+      });
+  }
 
   function showSettings() {
     var cur = Engine.settings();
@@ -804,15 +826,23 @@
         each(m, "[data-set]", function (b) {
           b.onclick = function () {
             var key = b.getAttribute("data-set"), raw = b.getAttribute("data-val"), ch = {};
-            ch[key] = key === "animations" || key === "difficulty" ? raw : +raw;
-            Engine.setSettings(ch);
-            var now = Engine.settings()[key];
-            each(m, '[data-set="' + key + '"]', function (x) {
-              var v = x.getAttribute("data-val"), on = String(now) === v;
-              x.classList.toggle("on", on); x.setAttribute("aria-pressed", on ? "true" : "false");
-            });
-            applyComfort();
-            Sound.tap();
+            ch[key] = TEXT_SETTINGS.indexOf(key) !== -1 ? raw : +raw;
+            var apply = function () {
+              Engine.setSettings(ch);
+              var now = Engine.settings()[key];
+              each(m, '[data-set="' + key + '"]', function (x) {
+                var v = x.getAttribute("data-val"), on = String(now) === v;
+                x.classList.toggle("on", on); x.setAttribute("aria-pressed", on ? "true" : "false");
+              });
+              applyComfort();
+              Sound.tap();
+            };
+            if (key === "playedWorlds" && raw === "replay" && Engine.settings().playedWorlds !== "replay") {
+              confirmBox("Mondes à rejouer ?", "Les mondes qui n'ont pas assez d'étoiles pour la difficulté choisie devront être rejoués " +
+                "avant d'ouvrir les suivants. Les étoiles et l'XP déjà gagnées sont gardées.", "Oui, à rejouer", apply);
+              return;
+            }
+            apply();
           };
         });
         var fs = m.querySelector('[data-act="fullscreen"]');
@@ -882,8 +912,17 @@
       '<header class="screen-head"><button class="btn-icon" data-act="back" aria-label="Chapitres">←</button>' +
       "<h2>" + T("mapTitle") + '</h2><span class="head-right">⭐ ' + Engine.totalStars(PACK.id) + "/" + DATA.worlds.length * Engine.MAX_STARS + "</span></header>" +
       '<p class="map-pack"><span>' + E(PACK.icon) + "</span> " + E(PACK.title) + "</p>" +
-      '<div class="map-path"><svg class="map-svg" aria-hidden="true"></svg>' + nodes + "</div></section>");
+      '<div class="map-path"><svg class="map-svg" aria-hidden="true"></svg>' + nodes + "</div>" +
+      (Engine.packSummary(PACK.id, DATA.worlds.length).worldsDone > 0
+        ? '<div class="map-foot"><button class="btn btn-white btn-small" data-act="reset-pack">↺ Recommencer ce chapitre</button></div>' : "") +
+      "</section>");
     on(node, "back", function () { Sound.tap(); back(); });
+    on(node, "reset-pack", function () {
+      Sound.tap();
+      typedConfirmBox("Recommencer « " + E(PACK.title) + " »\u00A0?",
+        "Toutes les étoiles de ce chapitre seront effacées et il faudra repartir du monde 1. L'XP, les badges et les autres chapitres sont gardés.",
+        "Recommencer", function () { Engine.resetPack(PACK.id); showMap(); toast("Chapitre remis à zéro ✨"); });
+    });
     each(node, ".map-node", function (n) {
       n.querySelector(".node-btn").onclick = function () {
         var w = DATA.worlds[+n.getAttribute("data-i")];

@@ -57,10 +57,11 @@
     pauseEvery: [0, 2, 3, 4],                  // pause suggested after N worlds finished in a row (0 = never)
     freeMistakes: [0, 1, 2, 3],                // wrong answers per world that do not cost a heart (shields)
     animations: ["none", "normal", "boost"],
-    difficulty: ["easy", "normal", "medium", "hard"] // stars needed on a world to open the next one, see STARS_TO_UNLOCK
+    difficulty: ["easy", "normal", "medium", "hard"], // stars needed on a world to open the next one, see STARS_TO_UNLOCK
+    playedWorlds: ["open", "replay"]  // a world already played stays open, or must be earned again with the current difficulty
   };
-  var COMFORT_NO = { pauseEvery: 4, freeMistakes: 1, animations: "normal", difficulty: "normal" };   // defaults (and fallback)
-  var COMFORT_YES = { pauseEvery: 2, freeMistakes: 2, animations: "boost", difficulty: "normal" };
+  var COMFORT_NO = { pauseEvery: 4, freeMistakes: 1, animations: "normal", difficulty: "normal", playedWorlds: "open" };   // defaults (and fallback)
+  var COMFORT_YES = { pauseEvery: 2, freeMistakes: 2, animations: "boost", difficulty: "normal", playedWorlds: "open" };
 
   /* Stars of a world (0 to MAX_STARS) come from its best accuracy: a 2nd try counts half (see answer()).
      They are always recomputed from the accuracy when a save is read, so a change of thresholds needs no migration. */
@@ -255,8 +256,8 @@
       profile = [id, name, avatar, xp, packs, badgeIdx, translations(always []), days(≤14), sound, bestCombo, createdAt, lastPack,
                  settings, settingsAt]
       packs = [[packId, lastPlayedSeconds, [[worldId, stars, accuracy%], ...]], ...]
-      settings = 4 characters: pauseEvery digit, freeMistakes digit, animations code (n / o / b), difficulty code
-                 (e / n / m / h), e.g. "41on"; the 3-character codes of older saves get the default difficulty */
+      settings = 5 characters: pauseEvery digit, freeMistakes digit, animations code (n / o / b), difficulty code
+                 (e / n / m / h), playedWorlds code (o / r), e.g. "41ono"; shorter codes of older saves get the defaults */
   function compactProfile(p, packIds) {
     var s = p.state;
     var packs = (packIds || Object.keys(s.packs)).map(function (id) {
@@ -268,17 +269,19 @@
   }
   var ANIM_CODES = ["n", "o", "b"]; // same order as COMFORT.animations
   var DIFFICULTY_CODES = ["e", "n", "m", "h"]; // same order as COMFORT.difficulty
+  var PLAYED_CODES = ["o", "r"]; // same order as COMFORT.playedWorlds
   function encodeSettings(st) {
     st = normalizeSettings(st);
     return String(st.pauseEvery) + String(st.freeMistakes) + ANIM_CODES[COMFORT.animations.indexOf(st.animations)] +
-      DIFFICULTY_CODES[COMFORT.difficulty.indexOf(st.difficulty)];
+      DIFFICULTY_CODES[COMFORT.difficulty.indexOf(st.difficulty)] + PLAYED_CODES[COMFORT.playedWorlds.indexOf(st.playedWorlds)];
   }
   function decodeSettings(code) {
-    if (typeof code !== "string" || (code.length !== 3 && code.length !== 4)) return null; // → defaults
+    if (typeof code !== "string" || code.length < 3 || code.length > 5) return null; // → defaults
     return normalizeSettings({
       pauseEvery: parseInt(code[0], 10), freeMistakes: parseInt(code[1], 10),
       animations: COMFORT.animations[ANIM_CODES.indexOf(code[2])],
-      difficulty: COMFORT.difficulty[DIFFICULTY_CODES.indexOf(code.charAt(3))]
+      difficulty: COMFORT.difficulty[DIFFICULTY_CODES.indexOf(code.charAt(3))],
+      playedWorlds: COMFORT.playedWorlds[PLAYED_CODES.indexOf(code.charAt(4))]
     });
   }
   function profileActivity(p) {
@@ -621,13 +624,15 @@
   }
   /** Stars needed on a world to open the next one (difficulty setting of the current player). */
   function starsToUnlock() { return STARS_TO_UNLOCK[settings().difficulty] || STARS_TO_UNLOCK.normal; }
-  /** First world always open; a world already played stays open (even after a harder difficulty is chosen);
-      any other world opens once the previous one has enough stars. */
+  /** First world always open; any other world opens once the previous one has enough stars for the current difficulty.
+      With playedWorlds "open", a world already played also stays open (even after a harder difficulty is chosen).
+      With "replay", the whole chain counts: a world is open only when every world before it has enough stars. */
   function isUnlocked(id) {
     var i = worldIndex(id);
     if (i <= 0) return i === 0;
-    if (worldProgress(id).completed) return true;
-    return worldProgress(worlds()[i - 1].id).stars >= starsToUnlock();
+    var open = settings().playedWorlds === "open", prev = worlds()[i - 1].id;
+    if (open && worldProgress(id).completed) return true;
+    return worldProgress(prev).stars >= starsToUnlock() && (open || isUnlocked(prev));
   }
   function worldHasDocument(w) {
     return !!(w && Array.isArray(w.exercises) && w.exercises.some(function (e) { return e && (e.docId != null || e.letterId != null); }));
@@ -914,6 +919,17 @@
       if (current()) current().epoch = Date.now(); // a stale tab must not bring the old progress back
       session = null;
       save();
+    },
+
+    /** Erase the stars of one pack (chapter or group) for the current player; XP, badges and other packs are kept.
+        Returns true when there was something to erase. */
+    resetPack: function (id) {
+      if (!PACK_ID.test(String(id)) || !own(state.packs, id)) return false;
+      delete state.packs[id];
+      if (session && session.packId === id) session = null;
+      if (current()) current().epoch = Date.now(); // a stale tab must not bring the erased stars back
+      save();
+      return true;
     },
 
     currentProfile: function () { return current(); },
