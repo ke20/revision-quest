@@ -43,7 +43,7 @@ async function failMatch(page) { // 2 wrong pairs = exercise failed, then finish
 }
 async function failMcq(page) {
   const ex = await H.curEx(page, 0);
-  await page.locator(".option").nth((ex.answer + 1) % ex.options.length).click();
+  await page.locator(`.option[data-i="${(ex.answer + 1) % ex.options.length}"]`).click();
   await tap(page, "[data-act=check]");
   await expect(page.locator(".checkbar.ko")).toBeVisible();
 }

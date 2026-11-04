@@ -44,3 +44,25 @@ test(`real packs (${PACKS.length}): every exercise renders at 390 px`, async ({ 
   await ctx.close();
   R.done();
 });
+
+test("mcq options are shown in a random order (the right answer is not always at the same letter)", async ({ page }) => {
+  await page.goto(H.BASE);
+  const res = await page.evaluate(() => {
+    const box = document.createElement("div"); document.getElementById("app").appendChild(box);
+    const ex = { type: "mcq", prompt: "Q ?", options: ["bonne", "b", "c", "d"], answer: 0, explanation: "" };
+    const seen = new Set(); let wellBuilt = true;
+    for (let k = 0; k < 40; k++) {
+      Exercises.render(ex, box, () => {}, {});
+      const opts = [...box.querySelectorAll(".option")];
+      const pos = opts.findIndex((b) => b.getAttribute("data-i") === "0");
+      seen.add(pos);
+      const keys = opts.map((b) => b.querySelector(".opt-key").textContent).join("");
+      const texts = opts.map((b) => ex.options[+b.getAttribute("data-i")]);
+      if (keys !== "ABCD" || opts[pos].textContent.indexOf("bonne") < 0 || new Set(texts).size !== 4) wellBuilt = false;
+    }
+    box.remove();
+    return { positions: seen.size, wellBuilt };
+  });
+  expect(res.wellBuilt).toBe(true);
+  expect(res.positions).toBeGreaterThan(1);
+});

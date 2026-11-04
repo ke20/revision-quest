@@ -31,7 +31,7 @@ function setup() {
   async function answerCurrent(page) {
     const ex = await curEx(page);
     if (ex.type === 'match') await solveMatch(page, ex.pairs.length);
-    else { await page.locator('.option').nth(ex.answer).click(); await tap(page, '[data-act=check]'); }
+    else { await page.locator('.option[data-i="' + ex.answer + '"]').click(); await tap(page, '[data-act=check]'); }
     await wait(page, 150);
   }
   async function next(page) { await tap(page, '[data-act=check]'); await wait(page, 350); }

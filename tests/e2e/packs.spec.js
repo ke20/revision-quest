@@ -132,7 +132,7 @@ for (const [vw, vh, tag] of [[390, 844, "m"], [1280, 800, "d"]]) {
     await tap(page, '[data-act=go]'); await wait(page, 350);
     let play = await page.evaluate(() => document.querySelector('.screen.play').innerText);
     ok(/Vérifier/.test(play) && /Indice/.test(play) && !ENGLISH_CHROME.test(play), tag + ' mcq chrome French only (Vérifier, Indice)');
-    await page.locator('.option').nth(1).click(); await tap(page, '[data-act=check]'); await wait(page, 300);
+    await page.locator('.option[data-i="1"]').click(); await tap(page, '[data-act=check]'); await wait(page, 300);
     play = await page.evaluate(() => document.querySelector('.screen.play').innerText);
     ok(/Bonne réponse/.test(play) && /Continuer/.test(play) && /Oups/.test(play) && !ENGLISH_CHROME.test(play), tag + ' feedback French only');
     await H.shot();

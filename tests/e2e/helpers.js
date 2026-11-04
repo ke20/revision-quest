@@ -154,7 +154,7 @@ async function solve(page, ex) {
         await page.locator(`.match-col >> nth=1 >> .match-item[data-i="${i}"]`).click();
       }
       return;
-    case "mcq": await page.locator(".option").nth(ex.answer).click(); break;
+    case "mcq": await page.locator(`.option[data-i="${ex.answer}"]`).click(); break;
     case "sort":
       for (let i = 0; i < ex.items.length; i++) {
         const ci = ex.categories.findIndex(c => c.id === ex.items[i].cat);

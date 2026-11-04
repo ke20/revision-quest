@@ -211,10 +211,14 @@
   function renderMcq(ex, container, done, opts) {
     var f = frame(ex, container, opts);
     var list = el("div", "options");
+    // Options are shown in a new random order each time, so the right answer is never always at the same letter.
+    // buttons[] stays indexed like ex.options (data-i = index in the pack); only the display order changes.
     var selected = -1, buttons = [];
-    ex.options.forEach(function (opt, i) {
-      var b = el("button", "option", '<span class="opt-key">' + String.fromCharCode(65 + i) + "</span><span>" + rich(opt) + "</span>");
+    shuffle(ex.options.map(function (o, i) { return i; })).forEach(function (i, pos) {
+      var opt = ex.options[i];
+      var b = el("button", "option", '<span class="opt-key">' + String.fromCharCode(65 + pos) + "</span><span>" + rich(opt) + "</span>");
       b.type = "button";
+      b.setAttribute("data-i", String(i));
       b.addEventListener("click", function () {
         if (f.root.classList.contains("answered")) return;
         selected = i;
@@ -222,7 +226,7 @@
         b.classList.add("selected");
         opts.onReady(true);
       });
-      buttons.push(b);
+      buttons[i] = b;
       list.appendChild(b);
     });
     f.body.appendChild(list);

@@ -113,7 +113,8 @@ Les écrans généraux (accueil, catalogue, badges, classement) sont toujours en
   explanation: "La Révolution commence en **1789**.", hint: "À la fin du XVIIIe siècle." }
 ```
 
-2 à 4 options, toutes différentes, une seule bonne. Les options s'affichent dans l'ordre écrit.
+2 à 4 options, toutes différentes, une seule bonne. Le jeu les **mélange à chaque affichage** : la bonne réponse change de
+lettre d'une partie à l'autre. Ne pas écrire d'option qui dépend de la position (« A et B », « la réponse C »).
 
 ### `sort` — trier dans des boîtes
 
