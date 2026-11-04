@@ -24,7 +24,7 @@
     { id: "translator", icon: "🔎", name: "Curieux", desc: "Consulte 10 traductions ou définitions" },
     { id: "bookworm", icon: "📚", name: "Grand lecteur", desc: "Termine l'avant-dernier monde d'un chapitre, ou un monde avec un document à lire" },
     { id: "boss", icon: "🏆", name: "Chapitre terminé", desc: "Termine le dernier monde d'un chapitre" },
-    { id: "stars", icon: "🌟", name: "Collectionneur", desc: "3 étoiles sur tous les mondes d'un chapitre" },
+    { id: "stars", icon: "🌟", name: "Collectionneur", desc: "5 étoiles sur tous les mondes d'un chapitre" },
     { id: "streak3", icon: "📅", name: "Série de 3 jours", desc: "Joue 3 jours de suite" },
     { id: "explorer", icon: "🧭", name: "Explorateur", desc: "Joue dans 2 chapitres différents" }
   ];
@@ -56,10 +56,22 @@
   var COMFORT = {
     pauseEvery: [0, 2, 3, 4],                  // pause suggested after N worlds finished in a row (0 = never)
     freeMistakes: [0, 1, 2, 3],                // wrong answers per world that do not cost a heart (shields)
-    animations: ["none", "normal", "boost"]
+    animations: ["none", "normal", "boost"],
+    difficulty: ["easy", "normal", "medium", "hard"] // stars needed on a world to open the next one, see STARS_TO_UNLOCK
   };
-  var COMFORT_NO = { pauseEvery: 4, freeMistakes: 1, animations: "normal" };   // defaults (and fallback)
-  var COMFORT_YES = { pauseEvery: 2, freeMistakes: 2, animations: "boost" };
+  var COMFORT_NO = { pauseEvery: 4, freeMistakes: 1, animations: "normal", difficulty: "normal" };   // defaults (and fallback)
+  var COMFORT_YES = { pauseEvery: 2, freeMistakes: 2, animations: "boost", difficulty: "normal" };
+
+  /* Stars of a world (0 to MAX_STARS) come from its best accuracy: a 2nd try counts half (see answer()).
+     They are always recomputed from the accuracy when a save is read, so a change of thresholds needs no migration. */
+  var MAX_STARS = 5;
+  var STAR_STEPS = [0.5, 0.65, 0.8, 0.95]; // accuracy for 2, 3, 4 and 5 stars (1 star = world finished)
+  var STARS_TO_UNLOCK = { easy: 2, normal: 3, medium: 4, hard: 5 };
+  function starsFor(accuracy) {
+    var n = 1;
+    STAR_STEPS.forEach(function (min) { if (accuracy + 1e-9 >= min) n++; });
+    return n;
+  }
 
   function appName() { return (window.APP_CONFIG && window.APP_CONFIG.name) || "Révision Quest"; }
   function own(o, k) { return !!o && Object.prototype.hasOwnProperty.call(o, k); }
@@ -141,12 +153,9 @@
       if (!WORLD_ID.test(k)) return;
       var w = src[k];
       if (!isObj(w)) return;
-      var acc = +w.accuracy, stars = clampInt(w.stars, 0, 3);
-      out[k] = {
-        stars: stars,
-        accuracy: isFinite(acc) ? Math.max(0, Math.min(1, acc)) : 0,
-        completed: !!w.completed || stars > 0
-      };
+      var acc = +w.accuracy, completed = !!w.completed || clampInt(w.stars, 0, MAX_STARS) > 0;
+      acc = isFinite(acc) ? Math.max(0, Math.min(1, acc)) : 0;
+      out[k] = { stars: completed ? starsFor(acc) : 0, accuracy: acc, completed: completed };
     });
     return out;
   }
@@ -246,7 +255,8 @@
       profile = [id, name, avatar, xp, packs, badgeIdx, translations(always []), days(≤14), sound, bestCombo, createdAt, lastPack,
                  settings, settingsAt]
       packs = [[packId, lastPlayedSeconds, [[worldId, stars, accuracy%], ...]], ...]
-      settings = 3 characters: pauseEvery digit, freeMistakes digit, first letter of animations (n / o / b), e.g. "41o" */
+      settings = 4 characters: pauseEvery digit, freeMistakes digit, animations code (n / o / b), difficulty code
+                 (e / n / m / h), e.g. "41on"; the 3-character codes of older saves get the default difficulty */
   function compactProfile(p, packIds) {
     var s = p.state;
     var packs = (packIds || Object.keys(s.packs)).map(function (id) {
@@ -257,13 +267,19 @@
       s.sound ? 1 : 0, s.bestCombo, p.createdAt, s.lastPack || "", encodeSettings(p.settings), p.settingsAt || 0];
   }
   var ANIM_CODES = ["n", "o", "b"]; // same order as COMFORT.animations
+  var DIFFICULTY_CODES = ["e", "n", "m", "h"]; // same order as COMFORT.difficulty
   function encodeSettings(st) {
     st = normalizeSettings(st);
-    return String(st.pauseEvery) + String(st.freeMistakes) + ANIM_CODES[COMFORT.animations.indexOf(st.animations)];
+    return String(st.pauseEvery) + String(st.freeMistakes) + ANIM_CODES[COMFORT.animations.indexOf(st.animations)] +
+      DIFFICULTY_CODES[COMFORT.difficulty.indexOf(st.difficulty)];
   }
   function decodeSettings(code) {
-    if (typeof code !== "string" || code.length !== 3) return null; // → defaults
-    return normalizeSettings({ pauseEvery: parseInt(code[0], 10), freeMistakes: parseInt(code[1], 10), animations: COMFORT.animations[ANIM_CODES.indexOf(code[2])] });
+    if (typeof code !== "string" || (code.length !== 3 && code.length !== 4)) return null; // → defaults
+    return normalizeSettings({
+      pauseEvery: parseInt(code[0], 10), freeMistakes: parseInt(code[1], 10),
+      animations: COMFORT.animations[ANIM_CODES.indexOf(code[2])],
+      difficulty: COMFORT.difficulty[DIFFICULTY_CODES.indexOf(code.charAt(3))]
+    });
   }
   function profileActivity(p) {
     var t = 0;
@@ -603,10 +619,15 @@
     var ps = packState(state, packId(), false), k = String(id);
     return ps && own(ps.worlds, k) ? ps.worlds[k] : { stars: 0, accuracy: 0, completed: false };
   }
+  /** Stars needed on a world to open the next one (difficulty setting of the current player). */
+  function starsToUnlock() { return STARS_TO_UNLOCK[settings().difficulty] || STARS_TO_UNLOCK.normal; }
+  /** First world always open; a world already played stays open (even after a harder difficulty is chosen);
+      any other world opens once the previous one has enough stars. */
   function isUnlocked(id) {
     var i = worldIndex(id);
     if (i <= 0) return i === 0;
-    return worldProgress(worlds()[i - 1].id).stars >= 1;
+    if (worldProgress(id).completed) return true;
+    return worldProgress(worlds()[i - 1].id).stars >= starsToUnlock();
   }
   function worldHasDocument(w) {
     return !!(w && Array.isArray(w.exercises) && w.exercises.some(function (e) { return e && (e.docId != null || e.letterId != null); }));
@@ -669,14 +690,19 @@
     badgeById: badgeById,
     worldProgress: worldProgress,
     isUnlocked: isUnlocked,
+    MAX_STARS: MAX_STARS,
+    starsFor: starsFor,
+    starsToUnlock: starsToUnlock,
+    STARS_TO_UNLOCK: STARS_TO_UNLOCK,
 
-    /** Id of the world the player should play next (first unlocked world without 1★, else last unlocked). */
+    /** Id of the world the player should play next (first unlocked world without enough stars to open the next one,
+        else last unlocked). */
     currentWorldId: function () {
-      var w = worlds(), last = null;
+      var w = worlds(), last = null, need = starsToUnlock();
       for (var i = 0; i < w.length; i++) {
         if (!isUnlocked(w[i].id)) break;
         last = w[i].id;
-        if (worldProgress(w[i].id).stars < 1) return w[i].id;
+        if (worldProgress(w[i].id).stars < need) return w[i].id;
       }
       return last;
     },
@@ -689,7 +715,7 @@
       if (ps) Object.keys(ps.worlds).forEach(function (k) { stars += ps.worlds[k].stars; if (ps.worlds[k].stars > 0) done++; });
       var n = Math.max(0, worldCount || 0);
       return {
-        stars: n ? Math.min(stars, n * 3) : stars, maxStars: n * 3,
+        stars: n ? Math.min(stars, n * MAX_STARS) : stars, maxStars: n * MAX_STARS,
         worldsDone: n ? Math.min(done, n) : done,
         progress: n ? Math.min(1, done / n) : 0,
         lastPlayed: ps ? ps.lastPlayed : 0
@@ -795,7 +821,7 @@
       var s = session, nb = [];
       var counted = s.total - (s.skipped || 0);
       var accuracy = counted > 0 ? s.score / counted : 1;
-      var stars = accuracy >= 0.9 ? 3 : accuracy >= 0.7 ? 2 : 1;
+      var stars = starsFor(accuracy);
       var prev = worldProgress(s.worldId);
       var w = worlds(), i = worldIndex(s.worldId);
       var wasUnlockedNext = w[i + 1] ? isUnlocked(w[i + 1].id) : true;
@@ -811,7 +837,7 @@
       // or any world whose exercises show a document to read (docId / letterId).
       if ((w.length >= 2 && i === w.length - 2) || worldHasDocument(w[i])) award("bookworm", nb);
       if (w.length && i === w.length - 1) award("boss", nb);
-      if (w.length && w.every(function (x) { return worldProgress(x.id).stars >= 3; })) award("stars", nb);
+      if (w.length && w.every(function (x) { return worldProgress(x.id).stars >= MAX_STARS; })) award("stars", nb);
       if (streak() >= 3) award("streak3", nb);
       save();
       worldsInARow++;
@@ -826,6 +852,8 @@
         maxCombo: s.maxCombo,
         newBadges: s.newBadges.concat(nb),
         unlockedWorld: nextWorld && !wasUnlockedNext && isUnlocked(nextWorld.id) ? nextWorld : null,
+        starsToUnlock: starsToUnlock(),
+        nextLocked: !!nextWorld && !isUnlocked(nextWorld.id),
         worldsInARow: worldsInARow,
         pauseSuggested: pe > 0 && worldsInARow >= pe
       };
@@ -863,7 +891,7 @@
     COMFORT: COMFORT,
     /** Initial settings for the creation question: yes === true → ADHD-friendly values. The answer itself is not kept. */
     comfortDefaults: comfortDefaults,
-    /** Comfort settings of the current player: { pauseEvery, freeMistakes, animations }. */
+    /** Comfort settings of the current player: { pauseEvery, freeMistakes, animations, difficulty }. */
     settings: settings,
     /** Change some comfort settings of the current player (unknown keys / values are ignored). */
     setSettings: function (changes) {
@@ -893,7 +921,7 @@
     profileSummary: function (p) { return summary(p); },
     /** Pure helpers, exposed for the unit tests (tests/unit/engine.test.js). */
     _internals: {
-      safeJsonParse: safeJsonParse, cleanName: cleanName, hash: hash, normalizeProfile: normalizeProfile, normalizeState: normalizeState,
+      safeJsonParse: safeJsonParse, cleanName: cleanName, hash: hash, normalizeProfile: normalizeProfile, normalizeState: normalizeState, normalizeWorlds: normalizeWorlds,
       parseDb: parseDb, mergeDb: mergeDb, buildCookie: buildCookie, uncompact: uncompact, suffixName: suffixName,
       normalizeSettings: normalizeSettings, encodeSettings: encodeSettings, decodeSettings: decodeSettings, compactProfile: compactProfile,
       COOKIE_MAX_BYTES: COOKIE_MAX_BYTES
@@ -932,11 +960,11 @@
       save();
     },
 
-    /** All players, best first. Global: XP, then total stars. Per pack (id): stars in that pack (≤ worldCount × 3), then XP. */
+    /** All players, best first. Global: XP, then total stars. Per pack (id): stars in that pack (≤ worldCount × MAX_STARS), then XP. */
     leaderboard: function (id, worldCount) {
       return db.profiles.map(function (p) {
         var r = summary(p, id);
-        if (id && worldCount > 0) r.packStars = Math.min(r.packStars, worldCount * 3);
+        if (id && worldCount > 0) r.packStars = Math.min(r.packStars, worldCount * MAX_STARS);
         return r;
       }).sort(function (a, b) {
         if (id) return b.packStars - a.packStars || b.xp - a.xp || a.name.localeCompare(b.name);

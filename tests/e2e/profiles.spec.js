@@ -157,7 +157,7 @@ test("players, match rule, leaderboard, export/import, cookie fallback", async (
   await hscroll(page, 'leaderboard');
   await tap(page, `[data-lb="${EN}"]`); await wait(page, 250);
   const prow = await page.$$eval('.lb-row .lb-stats b', r => r.map(x => x.textContent));
-  ok(prow[0] === '⭐ 3/24' && prow[1] === '⭐ 0/24', 'per-chapter leaderboard shows chapter stars ' + JSON.stringify(prow));
+  ok(prow[0] === '⭐ 5/40' && prow[1] === '⭐ 0/40', 'per-chapter leaderboard shows chapter stars ' + JSON.stringify(prow));
   await hscroll(page, 'leaderboard per chapter');
   await tap(page, '[data-act=back]'); await wait(page, 200);
 
@@ -166,7 +166,7 @@ test("players, match rule, leaderboard, export/import, cookie fallback", async (
   await hscroll(page, 'profiles');
   await page.locator('.profile-pick', { hasText: 'Léa' }).click(); await wait(page, 300);
   ok((await page.evaluate(() => Engine.state.xp)) === leaXp2 && (await page.textContent('.who-name')) === 'Léa', 'Léa progress kept after switch');
-  ok((await enStars(page, 1)) === 3, 'Léa keeps 3 stars on world 1 of the English pack');
+  ok((await enStars(page, 1)) === 5, 'Léa keeps 5 stars on world 1 of the English pack');
 
   // 9. export (v3)
   await tap(page, '[data-act=save]'); await wait(page, 300);
@@ -178,7 +178,7 @@ test("players, match rule, leaderboard, export/import, cookie fallback", async (
   ok(fname === 'Léa-revision-quest.save', 'export filename ' + fname);
   ok(content.startsWith('RQSAVE.') && !content.includes('Léa'), 'export content encoded (RQSAVE)');
   const inner = JSON.parse(Buffer.from(content.split('.')[1], 'base64').toString('utf8'));
-  ok(inner.version === 3 && inner.app === 'revision-quest' && inner.profile.state.packs[EN].worlds['1'].stars === 3, 'export is version 3 with per-pack progress');
+  ok(inner.version === 3 && inner.app === 'revision-quest' && inner.profile.state.packs[EN].worlds['1'].stars === 5, 'export is version 3 with per-pack progress');
   await tap(page, '[data-act=close]'); await wait(page, 300);
 
   // 10. cookie fallback: clear localStorage only
@@ -186,7 +186,7 @@ test("players, match rule, leaderboard, export/import, cookie fallback", async (
   await page.reload(); await wait(page, 400);
   ok((await page.textContent('.who-name')) === 'Léa' && (await page.evaluate(() => Engine.state.xp)) === leaXp2, 'cookie fallback restored Léa');
   ok((await page.evaluate(() => Engine.profiles().length)) === 2, 'cookie fallback restored both players');
-  ok((await enStars(page, 1)) === 3 && (await page.evaluate(() => Engine.lastPack())) === EN, 'cookie fallback restored per-pack stars + last pack');
+  ok((await enStars(page, 1)) === 5 && (await page.evaluate(() => Engine.lastPack())) === EN, 'cookie fallback restored per-pack stars + last pack');
   ok((await page.evaluate(() => !!localStorage.getItem('revisionQuest.v3'))), 'localStorage re-written after cookie restore');
 
   // 11. clear everything, then import
@@ -209,7 +209,7 @@ test("players, match rule, leaderboard, export/import, cookie fallback", async (
   await tap(page, '[data-act=save]'); await wait(page, 300);
   await page.setInputFiles('.file-input', savePath); await wait(page, 500);
   ok((await page.textContent('.who-name')) === 'Léa' && (await page.evaluate(() => Engine.state.xp)) === leaXp2, 'import restored Léa XP');
-  ok((await enStars(page, 1)) === 3 && (await page.evaluate(() => Engine.hasBadge('perfect'))), 'import restored stars & badges');
+  ok((await enStars(page, 1)) === 5 && (await page.evaluate(() => Engine.hasBadge('perfect'))), 'import restored stars & badges');
   await tap(page, '[data-act=save]'); await wait(page, 300);
   await page.setInputFiles('.file-input', savePath); await wait(page, 500);
   ok((await page.textContent('.modal')).includes('existe déjà'), 'conflict dialog shown');

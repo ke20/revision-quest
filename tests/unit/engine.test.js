@@ -59,18 +59,22 @@ test("hearts: 3 per world, −1 per wrong answer, game over at 0", () => {
   assert.strictEqual(last.gameOver, true);
 });
 
-test("stars and accuracy: 1★ when finished, 2★ from 70 %, 3★ from 90 %; a 2nd try counts half", () => {
+test("stars and accuracy: 1★ when finished, then 2★ from 50 %, 3★ from 65 %, 4★ from 80 %, 5★ from 95 %; a 2nd try counts half", () => {
   const ok = { correct: true, attempts: 1 }, half = { correct: true, attempts: 2 }, ko = { correct: false };
   const cases = [
-    [[ok, ok, ok, ok, ok, ok, ok, ok, ok, ok], 3, 1],
-    [[ok, ok, ok, ok, ok, ok, ok, ok, ok, ko], 3, 0.9],
-    [[ok, ok, ok, ok, ok, ok, ok, ko, ko, half], 2, 0.75],
-    [[ok, ok, ok, ok, ok, ok, ok, ko, ko, ok], 2, 0.8],
-    [[ok, ok, ok, ok, ok, ok, half, ko, ko, half], 2, 0.7],
-    [[ok, ok, ok, ok, ok, ko, ko, half, half, half], 1, 0.65]
+    [[ok, ok, ok, ok, ok, ok, ok, ok, ok, ok], 5, 1],
+    [[ok, ok, ok, ok, ok, ok, ok, ok, ok, half], 5, 0.95],
+    [[ok, ok, ok, ok, ok, ok, ok, ok, ok, ko], 4, 0.9],
+    [[ok, ok, ok, ok, ok, ok, ok, ko, ko, ok], 4, 0.8],
+    [[ok, ok, ok, ok, ok, ok, ok, ko, ko, half], 3, 0.75],
+    [[ok, ok, ok, ok, ok, ko, ko, half, half, half], 3, 0.65],
+    [[ok, ok, ok, ok, ok, ko, ko, ko, half, ko], 2, 0.55],
+    [[ok, ok, ok, ok, ko, ko, ko, ko, half, ko], 1, 0.45],
+    [[ok, ok, ok, ok, ok, ko], 4, 5 / 6],
+    [[ko, ko, ko, ok, ok, ok], 2, 0.5]
   ];
   for (const [results, stars, acc] of cases) {
-    const { E } = setup({ pack: makePack(1, 10) });
+    const { E } = setup({ pack: makePack(1, results.length) });
     const sum = playWorld(E, 1, results);
     assert.strictEqual(sum.stars, stars, JSON.stringify(results));
     assert.ok(Math.abs(sum.accuracy - acc) < 1e-9, sum.accuracy + " vs " + acc);
@@ -81,7 +85,7 @@ test("best stars / accuracy are kept when replaying worse", () => {
   const { E } = setup({ pack: makePack(1, 10) });
   playWorld(E, 1);
   playWorld(E, 1, [{ correct: true }, ...Array(9).fill({ correct: true, attempts: 2 })]);
-  assert.deepStrictEqual(j(E.worldProgress(1)), { stars: 3, accuracy: 1, completed: true });
+  assert.deepStrictEqual(j(E.worldProgress(1)), { stars: 5, accuracy: 1, completed: true });
 });
 
 test("skipped (broken) exercises give nothing and are left out of the accuracy", () => {
@@ -94,17 +98,58 @@ test("skipped (broken) exercises give nothing and are left out of the accuracy",
   E.answer({ correct: true, attempts: 1 }); E.answer({ correct: true, attempts: 1 });
   const sum = E.finishWorld();
   assert.strictEqual(sum.accuracy, 1);
-  assert.strictEqual(sum.stars, 3);
+  assert.strictEqual(sum.stars, 5);
 });
 
-test("unlock rule: world 1 open, next world opens with ≥ 1★ on the previous one", () => {
+test("unlock rule: world 1 open, next world opens with enough stars on the previous one (normal = 3★ by default)", () => {
   const { E } = setup();
+  assert.strictEqual(E.settings().difficulty, "normal");
+  assert.strictEqual(E.starsToUnlock(), 3);
   assert.deepStrictEqual([1, 2, 3, 4].map(E.isUnlocked), [true, false, false, false]);
   assert.strictEqual(E.currentWorldId(), 1);
   const sum = playWorld(E, 1);
   assert.strictEqual(sum.unlockedWorld.id, 2);
+  assert.strictEqual(sum.nextLocked, false);
   assert.deepStrictEqual([1, 2, 3, 4].map(E.isUnlocked), [true, true, false, false]);
   assert.strictEqual(E.currentWorldId(), 2);
+});
+
+test("unlock rule: stars needed per difficulty (easy 2, normal 3, medium 4, hard 5)", () => {
+  const ok = { correct: true, attempts: 1 }, ko = { correct: false };
+  const rightFor = { 1: 8, 2: 10, 3: 13, 4: 16, 5: 20 }; // out of 20: 40 %, 50 %, 65 %, 80 %, 100 %
+  for (const [difficulty, need] of [["easy", 2], ["normal", 3], ["medium", 4], ["hard", 5]]) {
+    for (const stars of [1, 2, 3, 4, 5]) {
+      const { E } = setup({ pack: makePack(2, 20) });
+      E.setSettings({ difficulty });
+      const sum = playWorld(E, 1, Array.from({ length: 20 }, (_, i) => (i < rightFor[stars] ? ok : ko)));
+      const tag = difficulty + " " + stars + "★";
+      assert.strictEqual(sum.stars, stars, tag);
+      assert.strictEqual(E.isUnlocked(2), stars >= need, tag);
+      assert.strictEqual(sum.nextLocked, stars < need, tag);
+      assert.strictEqual(sum.starsToUnlock, need, tag);
+      assert.strictEqual(!!sum.unlockedWorld, stars >= need, tag);
+      assert.strictEqual(E.currentWorldId(), stars >= need ? 2 : 1, tag + ": replay the world until it has enough stars");
+    }
+  }
+});
+
+test("unlock rule: a world already played stays open after a harder difficulty is chosen", () => {
+  const { E } = setup({ pack: makePack(3, 2) });
+  const half = [{ correct: true, attempts: 1 }, { correct: false }]; // 50 % → 2★
+  E.setSettings({ difficulty: "easy" });
+  playWorld(E, 1, half);
+  assert.strictEqual(E.isUnlocked(2), true);
+  playWorld(E, 2, half);
+  E.setSettings({ difficulty: "hard" });
+  assert.deepStrictEqual([1, 2, 3].map(E.isUnlocked), [true, true, false], "world 2 played: kept; world 3 needs 5★ on world 2");
+  assert.strictEqual(E.currentWorldId(), 1);
+});
+
+test("stars are recomputed from the best accuracy when a save is read (old 3-star saves need no migration)", () => {
+  const { E } = setup({ player: false });
+  const w = j(E._internals.normalizeWorlds({ 1: { stars: 3, accuracy: 1, completed: true }, 2: { stars: 3, accuracy: 0.9, completed: true },
+    3: { stars: 2, accuracy: 0.7, completed: true }, 4: { stars: 1, accuracy: 0.2, completed: true }, 5: { stars: 0, accuracy: 0, completed: false } }));
+  assert.deepStrictEqual([1, 2, 3, 4, 5].map((k) => w[k].stars), [5, 4, 3, 1, 0]);
 });
 
 test("hint costs 3 XP, never below 0", () => {
@@ -223,12 +268,13 @@ test("progress is stored per pack; packSummary clamps to worldCount", () => {
   playWorld(E, 1);
   E.setPack("5e/anglais/other", makePack(2, 1));
   assert.strictEqual(E.worldProgress(1).stars, 0);
-  assert.strictEqual(E.totalStars(), 3);
-  assert.strictEqual(E.totalStars(PACK), 3);
-  assert.deepStrictEqual(j(E.packSummary(PACK, 4)).stars, 3);
+  assert.strictEqual(E.totalStars(), 5);
+  assert.strictEqual(E.totalStars(PACK), 5);
+  assert.deepStrictEqual(j(E.packSummary(PACK, 4)).stars, 5);
+  assert.strictEqual(E.packSummary(PACK, 4).maxStars, 20);
   assert.strictEqual(E.packSummary(PACK, 4).progress, 0.25);
-  E.state.packs[PACK].worlds = { 1: { stars: 3 }, 2: { stars: 3 }, 9: { stars: 3 } };
-  assert.strictEqual(E.packSummary(PACK, 2).stars, 6);
+  E.state.packs[PACK].worlds = { 1: { stars: 5 }, 2: { stars: 5 }, 9: { stars: 5 } };
+  assert.strictEqual(E.packSummary(PACK, 2).stars, 10);
   assert.strictEqual(E.packSummary(PACK, 2).worldsDone, 2);
 });
 
@@ -248,11 +294,11 @@ test("names: trimmed, control / bidi characters removed, 20 chars max, unique (c
 test("leaderboard: global by XP then stars; per chapter by chapter stars (clamped) then XP", () => {
   const { E } = setup({ name: "A" });
   E.state.xp = 50; E.state.packs[PACK] = { worlds: { 1: { stars: 3 } }, lastPlayed: 1 }; E.setSound(false);
-  E.createProfile("B", "🐼"); E.state.xp = 50; E.state.packs[PACK] = { worlds: { 1: { stars: 3 }, 2: { stars: 3 }, 3: { stars: 3 } }, lastPlayed: 1 }; E.setSound(false);
+  E.createProfile("B", "🐼"); E.state.xp = 50; E.state.packs[PACK] = { worlds: { 1: { stars: 5 }, 2: { stars: 5 }, 3: { stars: 5 } }, lastPlayed: 1 }; E.setSound(false);
   E.createProfile("C", "🐯"); E.state.xp = 80; E.setSound(false);
   assert.deepStrictEqual(j(E.leaderboard()).map((r) => r.name), ["C", "B", "A"]);
   const per = j(E.leaderboard(PACK, 2));
-  assert.deepStrictEqual(per.map((r) => [r.name, r.packStars]), [["B", 6], ["A", 3], ["C", 0]]);
+  assert.deepStrictEqual(per.map((r) => [r.name, r.packStars]), [["B", 10], ["A", 3], ["C", 0]]);
 });
 
 test("reset clears the progress of the current player only (and bumps its epoch)", () => {
@@ -298,7 +344,7 @@ test("normalizeProfile: avatar whitelist, id format, clamping, pack paths, world
   assert.ok(Object.keys(p.state.packs).every((k) => /^[a-z0-9-]{1,30}\/[a-z0-9-]{1,30}\/[a-z0-9-]{1,60}$/.test(k)));
   const ok = p.state.packs["4e/anglais/ok"];
   assert.deepStrictEqual(Object.keys(ok.worlds).sort(), ["1", "constructor", "w-2"].filter((k) => k !== "constructor").concat(Object.keys(ok.worlds).includes("constructor") ? ["constructor"] : []).sort());
-  assert.deepStrictEqual(ok.worlds["1"], { stars: 3, accuracy: 1, completed: true });
+  assert.deepStrictEqual(ok.worlds["1"], { stars: 5, accuracy: 1, completed: true });
   assert.deepStrictEqual(ok.worlds["w-2"], { stars: 0, accuracy: 0, completed: false });
   assert.ok(ok.lastPlayed <= 4102444800000);
   if (p.state.packs["4e/anglais/many"]) assert.ok(Object.keys(p.state.packs["4e/anglais/many"].worlds).length <= 100);
@@ -336,8 +382,8 @@ test("merge: max xp / stars / accuracy, unions of badges, days, translations, ne
   const m = j(I.mergeDb(mine, other));
   const a = m.profiles.find((p) => p.id === "pmerge0001").state;
   assert.strictEqual(a.xp, 77);
-  assert.deepStrictEqual(a.packs["4e/anglais/x"].worlds["1"], { stars: 3, accuracy: 0.8, completed: true });
-  assert.strictEqual(a.packs["4e/anglais/x"].worlds["3"].stars, 1);
+  assert.deepStrictEqual(a.packs["4e/anglais/x"].worlds["1"], { stars: 4, accuracy: 0.8, completed: true });
+  assert.strictEqual(a.packs["4e/anglais/x"].worlds["3"].stars, 2, "50 % → 2★");
   assert.deepStrictEqual(a.badges, ["first_step", "combo5"]);
   assert.deepStrictEqual(a.days, ["2026-11-01", "2026-11-02"]);
   assert.deepStrictEqual(a.translations.sort(), ["a1", "b2"]);
@@ -413,7 +459,7 @@ test("cookie backup: round-trip, SameSite=Strict, no translations, ≤ 6 KB and 
   assert.strictEqual(R.currentProfile().name, "Joueur11");
   assert.ok(R.profiles().length >= 1 && R.profiles().length < 12, "least recent players dropped: " + R.profiles().length);
   assert.strictEqual(R.translationsCount(), 0);
-  assert.strictEqual(R.totalStars(), 120);
+  assert.strictEqual(R.totalStars(), 200, "4 packs × 10 worlds × 5★ (97 %)");
 });
 
 test("cookie backup: small saves round-trip exactly (minus translations)", () => {
@@ -470,8 +516,8 @@ test(".save: export → import round-trip; checksum, format, version and size ar
 
 /* ---------- comfort settings (pause, free mistakes, animations) ---------- */
 
-const NO = { pauseEvery: 4, freeMistakes: 1, animations: "normal" };
-const YES = { pauseEvery: 2, freeMistakes: 2, animations: "boost" };
+const NO = { pauseEvery: 4, freeMistakes: 1, animations: "normal", difficulty: "normal" };
+const YES = { pauseEvery: 2, freeMistakes: 2, animations: "boost", difficulty: "normal" };
 
 test("comfort: the creation answer picks the initial settings (yes → 2 / 2 / boost, no → 4 / 1 / normal) and is never stored", () => {
   const ls = storage(), jar = cookieJar();
@@ -489,7 +535,7 @@ test("comfort: the creation answer picks the initial settings (yes → 2 / 2 / b
   const raw = ls.getItem("revisionQuest.v3");
   const p = JSON.parse(raw).profiles[0];
   assert.deepStrictEqual(Object.keys(p).sort(), ["avatar", "createdAt", "epoch", "id", "name", "settings", "settingsAt", "state"]);
-  assert.deepStrictEqual(Object.keys(p.settings).sort(), ["animations", "freeMistakes", "pauseEvery"]);
+  assert.deepStrictEqual(Object.keys(p.settings).sort(), ["animations", "difficulty", "freeMistakes", "pauseEvery"]);
   const all = raw + jar.get() + E.exportProfile(p.id).content;
   assert.doesNotMatch(all, /tda|adhd|comfort|answer|oui/i, "no trace of the answer in localStorage, cookie or .save");
 });
@@ -500,14 +546,14 @@ test("comfort: setSettings whitelists values, bumps settingsAt, saves; missing s
   const E = env.window.Engine;
   E.createProfile("Léa", "🦊");
   const t0 = E.currentProfile().settingsAt;
-  E.setSettings({ pauseEvery: 0, freeMistakes: 3, animations: "none" });
-  assert.deepStrictEqual(j(E.settings()), { pauseEvery: 0, freeMistakes: 3, animations: "none" });
+  E.setSettings({ pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "normal" });
+  assert.deepStrictEqual(j(E.settings()), { pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "normal" });
   assert.ok(E.currentProfile().settingsAt > t0);
-  E.setSettings({ pauseEvery: "2", freeMistakes: 99, animations: "<b>", evil: 1, __proto__: { x: 1 } });
-  assert.deepStrictEqual(j(E.settings()), { pauseEvery: 0, freeMistakes: 3, animations: "none" }, "invalid values ignored");
-  assert.deepStrictEqual(JSON.parse(ls.getItem("revisionQuest.v3")).profiles[0].settings, { pauseEvery: 0, freeMistakes: 3, animations: "none" });
+  E.setSettings({ pauseEvery: "2", freeMistakes: 99, animations: "<b>", difficulty: "HARD", evil: 1, __proto__: { x: 1 } });
+  assert.deepStrictEqual(j(E.settings()), { pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "normal" }, "invalid values ignored");
+  assert.deepStrictEqual(JSON.parse(ls.getItem("revisionQuest.v3")).profiles[0].settings, { pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "normal" });
   const E2 = load({ localStorage: ls }).window.Engine;
-  assert.deepStrictEqual(j(E2.settings()), { pauseEvery: 0, freeMistakes: 3, animations: "none" }, "persisted");
+  assert.deepStrictEqual(j(E2.settings()), { pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "normal" }, "persisted");
   const bare = j(E._internals.normalizeProfile({ name: "Bare", state: {} }));
   assert.deepStrictEqual(bare.settings, NO);
   assert.strictEqual(bare.settingsAt, 0);
@@ -529,19 +575,21 @@ test("comfort: hostile settings from storage / cookie / .save fall back to the d
     assert.strictEqual(p.settingsAt, 0);
   }
   assert.strictEqual(j(I.normalizeProfile({ name: "X", settingsAt: 1e99 })).settingsAt, 4102444800000);
-  assert.deepStrictEqual(j(I.normalizeSettings({ pauseEvery: 3, freeMistakes: 0, animations: "boost", extra: "x" })), { pauseEvery: 3, freeMistakes: 0, animations: "boost" });
+  assert.deepStrictEqual(j(I.normalizeSettings({ pauseEvery: 3, freeMistakes: 0, animations: "boost", difficulty: "hard", extra: "x" })), { pauseEvery: 3, freeMistakes: 0, animations: "boost", difficulty: "hard" });
   // localStorage
   const db = I.parseDb(JSON.stringify({ version: 3, profiles: [{ id: "pabcd12345", name: "Ls", settings: { pauseEvery: "4; rm", freeMistakes: 1e9, animations: "<img>" }, settingsAt: -5 }] }));
   assert.deepStrictEqual(j(db.profiles[0].settings), NO);
   assert.strictEqual(db.profiles[0].settingsAt, 0);
   // cookie codes
-  assert.strictEqual(I.encodeSettings(YES), "22b");
-  assert.strictEqual(I.encodeSettings(NO), "41o");
-  assert.deepStrictEqual(j(I.decodeSettings("30n")), { pauseEvery: 3, freeMistakes: 0, animations: "none" });
-  for (const bad of ["", "9", "99z", "41o!", "1x?", 410, null, ["4", "1", "o"], { 0: "4" }, "_ _"]) {
+  assert.strictEqual(I.encodeSettings(YES), "22bn");
+  assert.strictEqual(I.encodeSettings(NO), "41on");
+  assert.strictEqual(I.encodeSettings({ ...NO, difficulty: "easy" }), "41oe");
+  assert.deepStrictEqual(j(I.decodeSettings("30nh")), { pauseEvery: 3, freeMistakes: 0, animations: "none", difficulty: "hard" });
+  assert.deepStrictEqual(j(I.decodeSettings("30n")), { pauseEvery: 3, freeMistakes: 0, animations: "none", difficulty: "normal" }, "old 3-character code: default difficulty");
+  for (const bad of ["", "9", "99z", "41o!", "41on!", "1x?", 410, null, ["4", "1", "o"], { 0: "4" }, "_ _"]) {
     assert.deepStrictEqual(j(I.decodeSettings(bad) || I.normalizeSettings(null)), NO, JSON.stringify(bad));
   }
-  assert.deepStrictEqual(j(I.decodeSettings("9zb")), { pauseEvery: 4, freeMistakes: 1, animations: "boost" }, "each field checked on its own");
+  assert.deepStrictEqual(j(I.decodeSettings("9zbm")), { pauseEvery: 4, freeMistakes: 1, animations: "boost", difficulty: "medium" }, "each field checked on its own");
   const fromCookie = I.uncompact({ v: 3, c: "pcook00001", p: [["pcook00001", "C", "🦊", 0, [], [], [], [], 1, 0, 1, "", "<s>", "x"]] });
   assert.deepStrictEqual(j(fromCookie.profiles[0].settings), NO);
   assert.strictEqual(fromCookie.profiles[0].settingsAt, 0);
@@ -552,7 +600,7 @@ test("comfort: settings go through the cookie backup and the .save file; hostile
   const E = load({ cookies: jar }).window.Engine;
   E.createProfile("Mia", "🐸", true);
   E.setSettings({ pauseEvery: 3 });
-  const want = { pauseEvery: 3, freeMistakes: 2, animations: "boost" };
+  const want = { pauseEvery: 3, freeMistakes: 2, animations: "boost", difficulty: "normal" };
   const at = E.currentProfile().settingsAt;
   const R = load({ cookies: jar }).window.Engine; // empty localStorage → cookie
   assert.deepStrictEqual(j(R.settings()), want);
@@ -574,7 +622,7 @@ test("comfort: multi-tab merge keeps the most recently changed settings (setting
   const { E } = setup({ player: false });
   const I = E._internals;
   const P = (settings, settingsAt, extra) => I.normalizeProfile(Object.assign({ id: "pmerge0001", name: "Ana", settings, settingsAt, state: { xp: 1 } }, extra));
-  const A = { pauseEvery: 0, freeMistakes: 3, animations: "none" };
+  const A = { pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "hard" };
   const m1 = j(I.mergeDb({ currentId: null, deleted: {}, profiles: [P(A, 100)] }, { currentId: null, deleted: {}, profiles: [P(YES, 200)] }));
   assert.deepStrictEqual(m1.profiles[0].settings, YES);
   assert.strictEqual(m1.profiles[0].settingsAt, 200);

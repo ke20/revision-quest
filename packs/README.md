@@ -73,7 +73,8 @@ Règles :
 }
 ```
 
-Le monde suivant se débloque quand le précédent a au moins 1 étoile.
+Le monde suivant se débloque quand le précédent a assez d'étoiles (sur 5) : 3 par défaut, 2, 4 ou 5 selon le
+réglage « difficulté » du joueur. Un monde déjà joué reste ouvert.
 Le **dernier** monde est le « boss » du chapitre (badge « Chapitre terminé »).
 
 ## 2. Les textes : `**gras**` et `[[mot|explication]]`
@@ -234,7 +235,7 @@ Une figure haute pousse les réponses vers le bas : sur téléphone, garder `h` 
   icon: "🏰",
   color: "#B45309",
   lang: "fr",                       // même valeur que dans le pack
-  worldCount: 6                     // nombre de mondes (étoiles max = worldCount × 3)
+  worldCount: 6                     // nombre de mondes (étoiles max = worldCount × 5)
 }
 ```
 

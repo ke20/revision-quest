@@ -170,7 +170,7 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
 .node-label { margin-top: 10px; background: #fff; border-radius: 14px; padding: 4px 10px 2px; text-align: center; box-shadow: var(--shadow-sm); max-width: 150px; }
 .node-label b { display: block; font-size: .88rem; line-height: 1.15; }
 .map-node.locked .node-label { background: rgba(255, 255, 255, .7); color: #6b5b7b; }
-.node-stars { font-size: 1rem; letter-spacing: 1px; }
+.node-stars { font-size: .85rem; letter-spacing: 0; white-space: nowrap; }
 .star { color: #DDD3EA; }
 .star.on { color: #FFB800; text-shadow: 0 1px 0 #C98500; }
 .here {
@@ -413,9 +413,10 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
 .result-title { margin: 6px 0 0; font-size: 1.9rem; }
 .result-sub { margin: 2px 0 8px; color: var(--ink-soft); }
 .result-msg { color: var(--ink-soft); margin: 8px 0; }
-.big-stars { font-size: 64px; line-height: 1; margin: 10px 0 4px; display: flex; justify-content: center; gap: 6px; }
+.big-stars { font-size: 48px; line-height: 1; margin: 10px 0 4px; display: flex; justify-content: center; gap: 4px; }
 .bstar { color: #E8E0F0; display: inline-block; transform: scale(0); animation: starIn .5s cubic-bezier(.2, 1.6, .4, 1) forwards; }
-.bstar:nth-child(2) { transform-origin: center; font-size: 1.2em; margin-top: -10px; }
+.bstar:nth-child(3) { transform-origin: center; font-size: 1.2em; margin-top: -10px; }
+.bstar:nth-child(2), .bstar:nth-child(4) { margin-top: -4px; }
 .bstar.on { color: #FFB800; text-shadow: 0 4px 0 #D08A00, 0 0 22px rgba(255, 200, 0, .6); }
 .result-stats { display: flex; justify-content: center; gap: 10px; margin: 14px 0; flex-wrap: wrap; }
 .rstat { background: #FAF6FF; border-radius: 16px; padding: 10px 14px; min-width: 92px; display: flex; flex-direction: column; }
@@ -487,7 +488,7 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
   .map-node { width: 130px; }
   .node-btn { width: 74px; height: 74px; }
   .home-row .btn { padding: 12px 10px; font-size: .98rem; }
-  .big-stars { font-size: 52px; }
+  .big-stars { font-size: 40px; }
 }
 
 @media (min-width: 721px) {

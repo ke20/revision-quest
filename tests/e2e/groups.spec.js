@@ -46,7 +46,7 @@ for (const width of [390, 1280]) {
     const cards = await page.$$eval(".pack-card", (c) => c.map((x) => x.getAttribute("data-pack")));
     ok(cards.includes(CH) && !cards.some((c) => c.startsWith(CH + "/")), "one catalogue card for the grouped chapter: " + cards.join());
     const card = page.locator(`.pack-card[data-pack="${CH}"]`);
-    ok(/2 groupes/.test(await card.innerText()) && /⭐ 0\/12/.test(await card.innerText()), "card shows 2 groupes and ⭐ 0/12 (2 groups × 2 worlds × 3)");
+    ok(/2 groupes/.test(await card.innerText()) && /⭐ 0\/20/.test(await card.innerText()), "card shows 2 groupes and ⭐ 0/20 (2 groups × 2 worlds × 5)");
 
     // group choice
     await tap(page, `.pack-card[data-pack="${CH}"]`);
@@ -73,13 +73,13 @@ for (const width of [390, 1280]) {
     // ← from the map goes back to the group choice, with the stars of g2
     await tap(page, ".screen.map [data-act=back]");
     await expect(page.locator(".screen.groups")).toBeVisible();
-    ok(/⭐ 3\/6/.test(await page.locator(`.pack-card[data-pack="${CH}/g2"]`).innerText()), "group 2 card: ⭐ 3/6");
-    ok(/⭐ 0\/6/.test(await page.locator(`.pack-card[data-pack="${CH}/g1"]`).innerText()), "group 1 card untouched: ⭐ 0/6");
+    ok(/⭐ 5\/10/.test(await page.locator(`.pack-card[data-pack="${CH}/g2"]`).innerText()), "group 2 card: ⭐ 5/10");
+    ok(/⭐ 0\/10/.test(await page.locator(`.pack-card[data-pack="${CH}/g1"]`).innerText()), "group 1 card untouched: ⭐ 0/10");
 
     // browser back from the group choice → catalogue, stars added up on the chapter card
     await page.goBack(); await wait(page, 200);
     await expect(page.locator(".screen.catalog")).toBeVisible();
-    ok(/⭐ 3\/12/.test(await page.locator(`.pack-card[data-pack="${CH}"]`).innerText()), "chapter card adds up the groups: ⭐ 3/12");
+    ok(/⭐ 5\/20/.test(await page.locator(`.pack-card[data-pack="${CH}"]`).innerText()), "chapter card adds up the groups: ⭐ 5/20");
 
     // home "Continuer" opens the last group directly; its map ← returns to the group choice
     await page.evaluate(() => App.showHome());

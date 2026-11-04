@@ -10,7 +10,8 @@ async function openSettings(page) {
   await expect(page.locator(".modal-backdrop")).toHaveCount(0);
   await H.settle(page);
   await tap(page, "[data-act=settings]");
-  await expect(page.locator(".modal .setting-block")).toHaveCount(3);
+  await expect(page.locator(".modal .setting-block")).toHaveCount(4);
+  await H.settle(page); // the dialog pops in (scale): a forced click during it lands next to the button
 }
 /** Values shown as selected in the "Réglages" dialog. */
 async function shownSettings(page) {
@@ -80,9 +81,13 @@ test("creation answer picks the settings, changes persist, the answer is stored 
   for (const [where, txt] of Object.entries({ localStorage: stored.ls, cookie: cookieJson, save: stored.inner })) {
     ok(!/tda|adhd|comfort|answer|"oui"|"yes"/i.test(txt), "no trace of the TDA/H answer in " + where);
   }
-  ok(stored.keys === "animations,freeMistakes,pauseEvery", "only the 3 settings are exported");
+  ok(stored.keys === "animations,difficulty,freeMistakes,pauseEvery", "only the 4 settings are exported");
   // Non (preselected, no click) → defaults
-  await tap(page, "[data-act=switch]");
+  // under load a click can land while the home screen is redrawn after « Terminé »: retry until the player list shows
+  await expect(async () => {
+    if (await page.locator(".screen.profiles").count() === 0) await page.click("[data-act=switch]", { force: true, timeout: 2000 });
+    await expect(page.locator(".screen.profiles")).toBeVisible({ timeout: 2000 });
+  }).toPass({ timeout: 20000 });
   await H.newPlayer(page, "Ben", 1);
   ok(JSON.stringify(await shownSettings(page)) === JSON.stringify({ pause: "4 mondes", mistakes: "1", anim: "Normales" }), "Non → 4 mondes / 1 / Normales");
   // changes persist after a reload
@@ -225,7 +230,7 @@ test("full screen button: on home and in Réglages, toggles full screen; hidden 
   await expect(page.locator(".fs-btn.on")).toBeVisible();
   await tap(page, ".fs-btn");
   await expect.poll(() => page.evaluate(() => !!document.fullscreenElement)).toBe(false);
-  ok(await page.locator(".fs-btn.on").count() === 0, "home button back to « enter »");
+  await expect(page.locator(".fs-btn.on"), "home button back to « enter »").toHaveCount(0); // updated on fullscreenchange
   await H.settle(page);
   await tap(page, "[data-act=settings]");
   const toggle = page.locator(".modal [data-act=fullscreen]");
@@ -253,4 +258,39 @@ test("full screen button: on home and in Réglages, toggles full screen; hidden 
   await expect(p2.locator(".modal")).toBeVisible();
   ok(await p2.locator(".modal [data-act=fullscreen]").count() === 0, "no full screen row in Réglages when unsupported");
   await ctx2.close();
+});
+
+test("difficulty: the next world needs 2 / 3 / 4 / 5 stars; result screen and locked world say how many", async ({ page }) => {
+  const R = H.makeReporter(); const ok = R.ok;
+  R.watch(page, "difficulty");
+  await H.withTestPacks(page);
+  await page.goto("./");
+  await H.newPlayer(page, "Etoile", 0, { comfort: "no" });
+  ok(await page.evaluate(() => Engine.settings().difficulty) === "normal", "default difficulty: normal (3 stars)");
+  await setSetting(page, "difficulty", "hard");
+  await H.gotoPack(page, SAMPLE);
+  await H.startWorld(page, 0);
+  await failMatch(page); // 1st of 3 exercises failed, the 2 others right → 67 % → 3 stars
+  await tap(page, "[data-act=check]");
+  for (let i = 1; i < 3; i++) {
+    await H.solve(page, await H.curEx(page, 0));
+    await wait(page, 600); await H.closeModals(page);
+    await tap(page, "[data-act=check]"); await wait(page, 250); await H.closeModals(page);
+  }
+  await expect(page.locator(".screen.complete")).toBeVisible();
+  ok(await page.locator(".bstar").count() === 5 && await page.locator(".bstar.on").count() === 3, "result: 3 stars out of 5");
+  ok(/You need 5 ⭐/.test(await page.locator(".result-msg").first().innerText()), "result says 5 stars are needed");
+  ok(await page.locator(".unlocked").count() === 0, "no world unlocked");
+  ok(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth) <= 0, "5 big stars fit the screen");
+  await tap(page, "[data-act=next]");
+  await H.mapSettled(page);
+  ok(await page.locator(".map-node >> nth=1").evaluate((n) => n.classList.contains("locked")), "world 2 locked in hard mode");
+  await page.locator(".map-node >> nth=1 >> .node-btn").click({ force: true });
+  await expect(page.locator(".toast", { hasText: "5 ⭐" })).toBeVisible();
+  // easier difficulty: 3 stars are enough for easy (2) → world 2 opens
+  await tap(page, "[data-act=back]"); await tap(page, "[data-act=back]");
+  await setSetting(page, "difficulty", "easy");
+  await H.gotoPack(page, SAMPLE);
+  ok(!(await page.locator(".map-node >> nth=1").evaluate((n) => n.classList.contains("locked"))), "world 2 open in easy mode");
+  R.done();
 });

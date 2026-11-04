@@ -30,7 +30,7 @@ test("fresh start, lazy pack loading, per-pack progress, test pack, explorer, ch
     ok(realPacks.includes(EN) && !realPacks.some(p => /sample|test-/.test(p)), 'the production catalogue lists the real packs only (no test pack): ' + realPacks.join());
     ok(!(await page.evaluate(() => [...document.scripts].some(s => /packs\//.test(s.src)))), 'no pack script loaded before choosing one (lazy)');
     const card = await textOf(page, `.pack-card[data-pack="${EN}"]`);
-    ok(/Anglais/.test(card) && /4e/.test(card) && /Dear Agony Aunt/.test(card) && /0\/24/.test(card), 'pack card: subject, level, title, stars 0/24');
+    ok(/Anglais/.test(card) && /4e/.test(card) && /Dear Agony Aunt/.test(card) && /0\/40/.test(card), 'pack card: subject, level, title, stars 0/40');
     await tap(page, `.pack-card[data-pack="${EN}"]`); await page.waitForSelector('.screen.map');
     ok(await page.evaluate(() => [...document.scripts].filter(s => /packs\/4e\/anglais\/giving-advice\.js$/.test(s.src)).length === 1), 'pack loaded with a single <script src="packs/...">');
     ok((await textOf(page, '.screen-head h2')).includes('World map'), 'English pack: bilingual chrome on map');
@@ -54,7 +54,7 @@ test("fresh start, lazy pack loading, per-pack progress, test pack, explorer, ch
     await H.playWorld(page, 0);
     ok(await page.locator('.screen.complete').count() === 1, 'sample world 1 completed');
     const st = await page.evaluate(() => JSON.parse(JSON.stringify(Engine.state)));
-    ok(st.packs['5e/anglais/sample'] && st.packs['5e/anglais/sample'].worlds['1'].stars === 3 && st.packs['5e/anglais/sample'].lastPlayed > 0, 'progress stored in state.packs.sample.worlds[1]');
+    ok(st.packs['5e/anglais/sample'] && st.packs['5e/anglais/sample'].worlds['1'].stars === 5 && st.packs['5e/anglais/sample'].lastPlayed > 0, 'progress stored in state.packs.sample.worlds[1]');
     ok(!st.packs[EN] || Object.keys(st.packs[EN].worlds).length === 0, 'English pack progress untouched');
     ok(st.lastPack === '5e/anglais/sample', 'lastPack = sample');
     ok(!st.badges.includes('explorer'), 'no explorer badge after a single chapter');
@@ -62,7 +62,7 @@ test("fresh start, lazy pack loading, per-pack progress, test pack, explorer, ch
     await tap(page, '[data-act=back]'); await wait(page, 300);
     const sCard = await textOf(page, `.pack-card[data-pack="${SAMPLE}"]`);
     const width = await page.$eval(`.pack-card[data-pack="${SAMPLE}"] .pack-bar-fill`, e => e.style.width);
-    ok(/3\/9/.test(sCard) && width === '33%', 'catalogue card shows stars 3/9 and progress 33% (' + width + ')');
+    ok(/5\/15/.test(sCard) && width === '33%', 'catalogue card shows stars 5/15 and progress 33% (' + width + ')');
     await tap(page, '[data-act=back]'); await wait(page, 300);
     ok((await textOf(page, '[data-act=continue]')).includes('Pack de test'), 'home: "Continuer : Pack de test"');
     await H.shot();
@@ -82,7 +82,7 @@ test("fresh start, lazy pack loading, per-pack progress, test pack, explorer, ch
     await tap(page, '[data-act=back]'); await wait(page, 200); await tap(page, '[data-act=back]'); await wait(page, 200);
     await tap(page, '[data-act=ranking]'); await wait(page, 300);
     await tap(page, `[data-lb="${SAMPLE}"]`); await wait(page, 250);
-    ok((await textOf(page, '.lb-row .lb-stats b')) === '⭐ 3/9', 'leaderboard filtered on the sample chapter');
+    ok((await textOf(page, '.lb-row .lb-stats b')) === '⭐ 5/15', 'leaderboard filtered on the sample chapter');
     await H.shot();
     await noHs(page, 'leaderboard filter');
     await ctx.close();

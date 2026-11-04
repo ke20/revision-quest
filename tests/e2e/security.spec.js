@@ -35,7 +35,7 @@ test("malicious saves, cookies, storage, CSP and pack loading rules are neutrali
   ok(p && !/‮/.test(p.name), 'save: bidi char stripped');
   ok(p && p.state.xp === 1000000, 'save: xp clamped');
   const w = p && p.state.packs[EN] && p.state.packs[EN].worlds;
-  ok(w && Object.keys(w).join() === '1' && w[1].stars === 3 && w[1].accuracy === 1, 'save: world ids filtered, values clamped');
+  ok(w && Object.keys(w).join() === '1' && w[1].stars === 5 && w[1].accuracy === 1, 'save: world ids filtered, values clamped');
   ok(p && Object.keys(p.state.packs).join() === EN, 'save: pack kept under its path id');
   ok(p && p.state.translations.join() === 'abc123', 'save: translations filtered');
   ok(p && p.state.badges.join() === 'boss', 'save: badges filtered');
@@ -119,7 +119,7 @@ test("malicious saves, cookies, storage, CSP and pack loading rules are neutrali
   await ctx.addCookies([{ name: 'aaa_save', value: '1', url: H.BASE }, { name: 'aaa_save_0', value: evilCookie, url: H.BASE }]);
   await page.evaluate(() => localStorage.clear()); await page.goto(BASE); await wait(page, 600);
   const ck = await page.evaluate((EN) => { const p = Engine.profiles()[0]; return p && { id: p.id, av: p.avatar, xp: p.state.xp, packs: Object.keys(p.state.packs), w: p.state.packs[EN] && p.state.packs[EN].worlds, lp: p.state.lastPack, b: p.state.badges }; }, EN);
-  ok(ck && /^p[a-z0-9]{4,24}$/.test(ck.id) && ck.av === '🦊' && ck.xp === 1000000 && ck.packs.join() === EN && Object.keys(ck.w).join() === '1' && ck.w[1].stars === 3 && ck.w[1].accuracy === 1 && ck.lp === null && ck.b.join() === 'first_step',
+  ok(ck && /^p[a-z0-9]{4,24}$/.test(ck.id) && ck.av === '🦊' && ck.xp === 1000000 && ck.packs.join() === EN && Object.keys(ck.w).join() === '1' && ck.w[1].stars === 5 && ck.w[1].accuracy === 1 && ck.lp === null && ck.b.join() === 'first_step',
     'hostile cookie validated field by field ' + JSON.stringify(ck));
   await page.evaluate(() => App.showHome()); await wait(page, 200);
   ok(await domClean(page), 'hostile cookie name escaped');

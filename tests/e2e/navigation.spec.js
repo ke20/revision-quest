@@ -35,11 +35,11 @@ test("loading screen, back button, leaderboard clamp, copy names", async ({ brow
     await tap(page, '[data-act=quit]'); await tap(page, '[data-act=yes]'); await wait(page, 300);
     ok(await page.locator('.screen.map').count() === 1, 'quit still works');
     // 8a. per-pack leaderboard clamp
-    await page.evaluate((SAMPLE) => { const w = {}; for (let i = 1; i <= 10; i++) w[i] = { stars: 3, accuracy: 1, completed: true }; Engine.state.packs[SAMPLE] = { worlds: w, lastPlayed: Date.now() }; Engine.setSound(false); }, SAMPLE);
+    await page.evaluate((SAMPLE) => { const w = {}; for (let i = 1; i <= 10; i++) w[i] = { stars: 5, accuracy: 1, completed: true }; Engine.state.packs[SAMPLE] = { worlds: w, lastPlayed: Date.now() }; Engine.setSound(false); }, SAMPLE);
     await page.evaluate(() => App.showHome()); await wait(page, 200);
     await tap(page, '[data-act=ranking]'); await wait(page, 200);
     await tap(page, `[data-lb="${SAMPLE}"]`); await wait(page, 200);
-    ok((await page.textContent('.lb-row .lb-stats b')) === '⭐ 9/9', 'per-pack leaderboard clamped to worldCount × 3');
+    ok((await page.textContent('.lb-row .lb-stats b')) === '⭐ 15/15', 'per-pack leaderboard clamped to worldCount × 5');
     // 8b. imported copy names stay ≤ 20 chars and unique
     const file = H.saveFile('RQSAVE', { app: 'revision-quest', version: 3, profile: { name: 'ABCDEFGHIJKLMNOPQRST', avatar: '🦊', state: {} } });
     const names = await page.evaluate(f => { const out = []; for (let i = 0; i < 3; i++) { const r = Engine.parseImport(f); out.push(Engine.importProfile(r.profile, 'copy').name); } return out; }, file);

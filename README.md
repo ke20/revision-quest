@@ -24,7 +24,8 @@ S'il peut aussi aider d'autres enfants, parents ou enseignants, tant mieux ! �
    avec une difficulté croissante. Chaque monde commence par une courte **leçon**, suivie d'exercices variés
    (QCM, tri, paires à relier, phrases à remettre dans l'ordre, texte à trou, mot faux à trouver, réponse rédigée).
 4. Les bonnes réponses rapportent de l'**XP** (plus avec les combos), les erreurs coûtent des **cœurs**.
-   On gagne jusqu'à 3 ⭐ par monde. Le dernier monde est le « boss » du chapitre.
+   On gagne jusqu'à 5 ⭐ par monde selon la réussite ; il en faut 3 pour ouvrir le monde suivant (2, 4 ou 5 selon
+   la difficulté choisie). Le dernier monde est le « boss » du chapitre.
 
 En bonus : des indices, des mots expliqués d'un toucher, des niveaux et des badges secrets à découvrir.
 
@@ -36,9 +37,9 @@ ni ne stocke les informations.
 
 - Plusieurs joueurs peuvent jouer sur le même appareil, chacun avec sa progression (« Changer de joueur » sur l'accueil).
   Un **classement** les compare : général (XP) ou par chapitre (étoiles).
-- **Réglages de confort** (⚙️, par joueur) : pause conseillée après quelques mondes d'affilée, erreurs autorisées
-  sans perdre de cœur, niveau d'animations. À la création du profil, la question « As-tu un TDA/H ? » choisit
-  seulement leurs valeurs de départ ; **la réponse n'est jamais enregistrée**.
+- **Réglages** (⚙️, par joueur) : pause conseillée après quelques mondes d'affilée, erreurs autorisées sans perdre
+  de cœur, niveau d'animations, difficulté (étoiles demandées pour passer au monde suivant). À la création du profil,
+  la question « As-tu un TDA/H ? » choisit seulement les valeurs de départ ; **la réponse n'est jamais enregistrée**.
 
 ## Sécurité et vie privée
 

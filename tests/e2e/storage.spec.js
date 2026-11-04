@@ -14,7 +14,7 @@ test("cookie backup capped at ~6 KB, ≤ 2 chunks, leftovers cleared", async ({ 
       for (let i = 0; i < 11; i++) {
         Engine.createProfile('Joueur' + i, '🦊');
         for (let j = 0; j < 500; j++) Engine.viewTranslation('w' + i + '_' + j + '|t');
-        for (let q = 0; q < 4; q++) { const w = {}; for (let k = 1; k <= 10; k++) w[k] = { stars: 3, accuracy: 0.97, completed: true }; Engine.state.packs['pack-' + q] = { worlds: w, lastPlayed: Date.now() - (11 - i) * 1000 }; }
+        for (let q = 0; q < 4; q++) { const w = {}; for (let k = 1; k <= 10; k++) w[k] = { stars: 5, accuracy: 0.97, completed: true }; Engine.state.packs['pack-' + q] = { worlds: w, lastPlayed: Date.now() - (11 - i) * 1000 }; }
         Engine.setSound(true);
       }
     });
@@ -41,7 +41,7 @@ test("cookie stress: 10 heavy players", async ({ browser }) => {
       Engine.createProfile('Joueur stress ' + i, Engine.AVATARS[i]);
       for (let k = 0; k < 150; k++) Engine.viewTranslation('word' + k + i + '|trad' + k);
       Engine.state.xp = 100 * i;
-      for (let q = 0; q < 6; q++) { const w = {}; for (let k = 1; k <= 10; k++) w[k] = { stars: 3, accuracy: 0.97, completed: true }; Engine.state.packs['4e/anglais/pack-numero-' + q + '-un-peu-long'] = { worlds: w, lastPlayed: Date.now() }; }
+      for (let q = 0; q < 6; q++) { const w = {}; for (let k = 1; k <= 10; k++) w[k] = { stars: 5, accuracy: 0.97, completed: true }; Engine.state.packs['4e/anglais/pack-numero-' + q + '-un-peu-long'] = { worlds: w, lastPlayed: Date.now() }; }
       Engine.setSound(true); // triggers save
     }
   });
@@ -50,7 +50,7 @@ test("cookie stress: 10 heavy players", async ({ browser }) => {
   const r = await p.evaluate(() => ({ n: Engine.profiles().length, tr: Engine.translationsCount(), xp: Engine.state.xp, name: Engine.currentProfile().name, packs: Object.keys(Engine.state.packs).length, stars: Engine.totalStars() }));
   ok(errs.length === 0, 'no page error');
   ok(n <= 2, 'cookie written in at most 2 chunks (' + n + ')');
-  ok(r.n >= 1 && r.name === 'Joueur stress 9' && r.xp === 900 && r.packs === 6 && r.stars === 180, 'cookie restore keeps the current heavy player (6 packs, 180 stars) ' + JSON.stringify(r));
+  ok(r.n >= 1 && r.name === 'Joueur stress 9' && r.xp === 900 && r.packs === 6 && r.stars === 300, 'cookie restore keeps the current heavy player (6 packs, 300 stars) ' + JSON.stringify(r));
   ok(r.tr === 0, 'no translations in the cookie');
   await ctx.close();
   R.done();

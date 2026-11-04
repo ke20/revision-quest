@@ -67,7 +67,7 @@ test("broken / unknown exercises are skipped neutrally", async ({ browser }) => 
     await H.solve(page, await H.curEx(page, 0)); await wait(page, 700); await H.closeModals(page);
     await tap(page, '[data-act=check]'); await wait(page, 500); await H.closeModals(page);
     const acc = await page.evaluate(() => Engine.state.packs['5e/anglais/sample'].worlds['1']);
-    ok(acc && acc.stars === 3 && acc.accuracy === 1, 'skipped exercises are left out of the accuracy (1/1 counted → 3★)');
+    ok(acc && acc.stars === 5 && acc.accuracy === 1, 'skipped exercises are left out of the accuracy (1/1 counted → 5★)');
     await ctx.close();
   R.done();
 });

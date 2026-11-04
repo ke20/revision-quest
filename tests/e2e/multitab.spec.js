@@ -26,7 +26,7 @@ test("two tabs never overwrite each other", async ({ browser }) => {
       const d = JSON.parse(localStorage.getItem(k));
       const ana = d.profiles.find(p => p.id === anaId);
       ana.state.xp = 77; ana.state.badges = ['first_step']; ana.state.days = ['2026-11-01'];
-      ana.state.packs = { '5e/anglais/sample': { worlds: { 1: { stars: 2, accuracy: 0.8, completed: true } }, lastPlayed: 1762000000000 } }; ana.state.lastPack = '5e/anglais/sample';
+      ana.state.packs = { '5e/anglais/sample': { worlds: { 1: { stars: 4, accuracy: 0.8, completed: true } }, lastPlayed: 1762000000000 } }; ana.state.lastPack = '5e/anglais/sample';
       d.profiles.push({ id: 'pzedzed01', name: 'Zed', avatar: '🐼', createdAt: 1, state: { xp: 5 } });
       localStorage.setItem(k, JSON.stringify(d));
     }, [KEY, anaId]);
@@ -34,9 +34,9 @@ test("two tabs never overwrite each other", async ({ browser }) => {
     let d = await raw(B);
     const ana = d.profiles.find(p => p.id === anaId);
     ok(d.profiles.map(p => p.name).sort().join() === 'Ana,Ben,Zed', 'stale tab save never deletes players created elsewhere');
-    ok(ana.state.xp === 77 && ana.state.packs['5e/anglais/sample'].worlds['1'].stars === 2 && ana.state.badges.join() === 'first_step' && ana.state.lastPack === '5e/anglais/sample', 'stale tab save merges the other tab progress (xp, stars, badges, lastPack)');
+    ok(ana.state.xp === 77 && ana.state.packs['5e/anglais/sample'].worlds['1'].stars === 4 && ana.state.badges.join() === 'first_step' && ana.state.lastPack === '5e/anglais/sample', 'stale tab save merges the other tab progress (xp, stars, badges, lastPack)');
     // merge rules: max xp / stars, union badges + days, newest lastPack
-    await A.evaluate(() => { Engine.state.xp = 50; Engine.state.packs['5e/anglais/sample'] = { worlds: { 1: { stars: 3, accuracy: 0.6, completed: true }, 2: { stars: 1, accuracy: 0.5, completed: true } }, lastPlayed: 1 }; Engine.state.badges.push('combo5'); Engine.state.days.push('2026-11-02'); Engine.state.lastPack = '5e/anglais/sample'; });
+    await A.evaluate(() => { Engine.state.xp = 50; Engine.state.packs['5e/anglais/sample'] = { worlds: { 1: { stars: 3, accuracy: 0.65, completed: true }, 2: { stars: 2, accuracy: 0.5, completed: true } }, lastPlayed: 1 }; Engine.state.badges.push('combo5'); Engine.state.days.push('2026-11-02'); Engine.state.lastPack = '5e/anglais/sample'; });
     await B.evaluate(([k, anaId]) => { // B writes directly again so that A's next save must merge
       const d = JSON.parse(localStorage.getItem(k)); const a = d.profiles.find(p => p.id === anaId);
       a.state.packs['4e/anglais/giving-advice'] = { worlds: {}, lastPlayed: 1762999999999 }; a.state.lastPack = '4e/anglais/giving-advice';
@@ -45,7 +45,7 @@ test("two tabs never overwrite each other", async ({ browser }) => {
     await A.evaluate(() => Engine.setSound(false));
     d = await raw(A);
     const a2 = d.profiles.find(p => p.id === anaId).state;
-    ok(a2.xp === 77 && a2.packs['5e/anglais/sample'].worlds['1'].stars === 3 && a2.packs['5e/anglais/sample'].worlds['1'].accuracy === 0.8 && a2.packs['5e/anglais/sample'].worlds['2'].stars === 1, 'merge: max xp, max stars/accuracy per world, worlds union');
+    ok(a2.xp === 77 && a2.packs['5e/anglais/sample'].worlds['1'].stars === 4 && a2.packs['5e/anglais/sample'].worlds['1'].accuracy === 0.8 && a2.packs['5e/anglais/sample'].worlds['2'].stars === 2, 'merge: max xp, max stars/accuracy per world, worlds union');
     ok(a2.badges.join() === 'first_step,combo5' && a2.days.join() === '2026-11-01,2026-11-02', 'merge: badges and days union');
     ok(a2.lastPack === EN, 'merge: lastPack of the most recently played pack');
     // deletion in A propagates and is not undone by B

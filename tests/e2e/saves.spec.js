@@ -15,11 +15,11 @@ test("export/import round-trip is lossless, cookie restore gives back the player
     await page.evaluate(EN => { // a player with progress in two packs, badges, days, translations
       const s = Engine.state;
       s.xp = 512; s.badges.push('first_step', 'combo5', 'perfect', 'translator'); s.translations.push('1a2b3c', 'zz9'); s.days.push('2026-10-30', '2026-10-31'); s.bestCombo = 7;
-      s.packs[EN] = { worlds: { 1: { stars: 3, accuracy: 1, completed: true }, 2: { stars: 2, accuracy: 0.8, completed: true } }, lastPlayed: 1761900000000 };
+      s.packs[EN] = { worlds: { 1: { stars: 5, accuracy: 1, completed: true }, 2: { stars: 4, accuracy: 0.8, completed: true } }, lastPlayed: 1761900000000 };
       s.lastPack = EN;
     }, EN);
     // give her progress in a second pack, then export (v3)
-    await page.evaluate(() => { Engine.state.packs['5e/anglais/sample'] = { worlds: { 1: { stars: 2, accuracy: 0.75, completed: true } }, lastPlayed: 1762000000000 }; Engine.setSound(true); });
+    await page.evaluate(() => { Engine.state.packs['5e/anglais/sample'] = { worlds: { 1: { stars: 3, accuracy: 0.75, completed: true } }, lastPlayed: 1762000000000 }; Engine.setSound(true); });
     const before = await page.evaluate(() => JSON.stringify(Engine.currentProfile()));
     await tap(page, '[data-act=save]'); await wait(page, 300);
     const [dl] = await Promise.all([page.waitForEvent('download'), tap(page, '[data-act=export]')]);

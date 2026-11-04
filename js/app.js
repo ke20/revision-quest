@@ -245,7 +245,13 @@
 
   function starsHtml(n, total) {
     var s = "";
-    for (var i = 0; i < (total || 3); i++) s += '<span class="star ' + (i < n ? "on" : "") + '">★</span>';
+    for (var i = 0; i < (total || Engine.MAX_STARS); i++) s += '<span class="star ' + (i < n ? "on" : "") + '">★</span>';
+    return s;
+  }
+
+  function bigStarsHtml(n) {
+    var s = "";
+    for (var i = 0; i < Engine.MAX_STARS; i++) s += '<span class="bstar ' + (i < n ? "on" : "") + '" style="animation-delay:' + (0.3 + i * 0.25) + 's">★</span>';
     return s;
   }
 
@@ -658,7 +664,7 @@
         '<span class="lb-avatar">' + E(p.avatar) + "</span>" +
         '<span class="lb-main"><b>' + E(p.name) + (p.current ? ' <em class="lb-you">toi</em>' : "") + "</b><small>" + E(p.rankIcon) + " " + E(p.rank) + "</small></span>" +
         (packId
-          ? '<span class="lb-stats"><b>⭐ ' + p.packStars + "/" + entry.worldCount * 3 + '</b><small>' + p.xp + " XP</small></span>"
+          ? '<span class="lb-stats"><b>⭐ ' + p.packStars + "/" + entry.worldCount * Engine.MAX_STARS + '</b><small>' + p.xp + " XP</small></span>"
           : '<span class="lb-stats"><b>' + p.xp + ' XP</b><small>⭐ ' + p.stars + " · 🏅 " + p.badges + "</small></span>") +
       "</div>";
     }).join("");
@@ -771,7 +777,9 @@
   var SETTING_ROWS = [
     { key: "pauseEvery", label: "⏸️ Pause conseillée après…", values: [[0, "Jamais"], [2, "2 mondes"], [3, "3 mondes"], [4, "4 mondes"]] },
     { key: "freeMistakes", label: "🛡️ Erreurs sans perdre de cœur", values: [[0, "0"], [1, "1"], [2, "2"], [3, "3"]] },
-    { key: "animations", label: "✨ Animations", values: [["none", "Aucune"], ["normal", "Normales"], ["boost", "Renforcées"]] }
+    { key: "animations", label: "✨ Animations", values: [["none", "Aucune"], ["normal", "Normales"], ["boost", "Renforcées"]] },
+    { key: "difficulty", label: "🎯 Étoiles pour passer au monde suivant",
+      values: [["easy", "Facile 2⭐"], ["normal", "Normal 3⭐"], ["medium", "Modéré 4⭐"], ["hard", "Difficile 5⭐"]] }
   ];
 
   function showSettings() {
@@ -796,7 +804,7 @@
         each(m, "[data-set]", function (b) {
           b.onclick = function () {
             var key = b.getAttribute("data-set"), raw = b.getAttribute("data-val"), ch = {};
-            ch[key] = key === "animations" ? raw : +raw;
+            ch[key] = key === "animations" || key === "difficulty" ? raw : +raw;
             Engine.setSettings(ch);
             var now = Engine.settings()[key];
             each(m, '[data-set="' + key + '"]', function (x) {
@@ -872,7 +880,7 @@
     }).join("");
     var node = h('<section class="screen map">' +
       '<header class="screen-head"><button class="btn-icon" data-act="back" aria-label="Chapitres">←</button>' +
-      "<h2>" + T("mapTitle") + '</h2><span class="head-right">⭐ ' + Engine.totalStars(PACK.id) + "/" + DATA.worlds.length * 3 + "</span></header>" +
+      "<h2>" + T("mapTitle") + '</h2><span class="head-right">⭐ ' + Engine.totalStars(PACK.id) + "/" + DATA.worlds.length * Engine.MAX_STARS + "</span></header>" +
       '<p class="map-pack"><span>' + E(PACK.icon) + "</span> " + E(PACK.title) + "</p>" +
       '<div class="map-path"><svg class="map-svg" aria-hidden="true"></svg>' + nodes + "</div></section>");
     on(node, "back", function () { Sound.tap(); back(); });
@@ -883,7 +891,7 @@
         if (!Engine.isUnlocked(w.id)) {
           Sound.wrong();
           n.classList.remove("shake"); void n.offsetWidth; n.classList.add("shake");
-          toast(T("locked"));
+          toast(T("locked", Engine.starsToUnlock()));
           return;
         }
         Sound.tap();
@@ -1130,12 +1138,12 @@
     var acc = Math.round(sum.accuracy * 100);
     var badges = sum.newBadges.length ? '<div class="new-badges"><div class="ex-label">' + T("newBadges") + "</div>" +
       sum.newBadges.map(function (b) { return '<div class="nb pop"><span>' + E(b.icon) + "</span>" + E(b.name) + "</div>"; }).join("") + "</div>" : "";
-    var msg = sum.stars === 3 ? T("msg3") : sum.stars === 2 ? T("msg2") : T("msg1");
+    var msg = sum.stars >= Engine.MAX_STARS ? T("msg3") : sum.nextLocked ? T("msgNeed", sum.starsToUnlock) : sum.stars >= 4 ? T("msg2") : T("msg1");
     var node = h('<section class="screen complete" style="--c:' + safeColor(w.color) + '">' +
       '<div class="card result-card">' +
         '<div class="result-icon bounce">' + E(w.icon || "🏆") + "</div>" +
         '<h2 class="result-title">' + T("complete") + '</h2><p class="result-sub">' + E(w.title) + " · <small>" + T("completeSub") + "</small></p>" +
-        '<div class="big-stars">' + [0, 1, 2].map(function (i) { return '<span class="bstar ' + (i < sum.stars ? "on" : "") + '" style="animation-delay:' + (0.3 + i * 0.35) + 's">★</span>'; }).join("") + "</div>" +
+        '<div class="big-stars">' + bigStarsHtml(sum.stars) + "</div>" +
         '<p class="result-msg">' + msg + "</p>" +
         '<div class="result-stats">' +
           '<div class="rstat"><b>+' + Math.max(0, sum.xpEarned) + "</b><small>" + T("xpEarned") + "</small></div>" +
