@@ -621,6 +621,11 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
 }
 .filter-chip:active { transform: translateY(2px); }
 .filter-chip.on { background: #fff; color: var(--purple); box-shadow: 0 3px 0 #D9C8EC; }
+.grade-pill { background: #fff; color: var(--purple); font-weight: 800; border-radius: 999px; padding: 6px 14px; box-shadow: 0 3px 0 #D9C8EC; }
+.seg.seg-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); grid-auto-flow: row; }
+.setting-block .seg.seg-grade { grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); grid-auto-flow: row; }
+.seg.seg-grade .seg-btn { font-size: .85rem; padding: 8px 2px; min-width: 0; overflow-wrap: anywhere; }
+.seg.seg-grade .seg-btn:last-child { grid-column: span 2; }
 .lb-filters .filter-chip { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .pack-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
 .pack-card {

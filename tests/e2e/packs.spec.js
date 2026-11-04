@@ -104,16 +104,16 @@ for (const [vw, vh, tag] of [[390, 844, "m"], [1280, 800, "d"]]) {
     const all = await page.$$eval('.pack-card', c => c.map(x => x.getAttribute('data-pack')));
     ok(all.length === 3, tag + ' catalogue lists 3 packs (with routed test pack)');
     const levelChips = await page.$$eval('[data-level]', c => c.map(x => x.textContent));
-    ok(levelChips.join() === 'Tous,CM2,5e,4e', tag + ' level chips only for used levels, ordered CM2→4e: ' + levelChips.join());
+    ok(levelChips.join() === 'Toutes,CM2,5e,4e', tag + ' class chips only for used levels, ordered CM2→4e (no class set for this player): ' + levelChips.join());
     await H.shot();
     await noHs(page, 'catalogue (3 packs)');
     // filters
     await tap(page, '[data-level="4e"]'); await wait(page, 200);
     ok((await page.$$eval('.pack-card', c => c.map(x => x.getAttribute('data-pack')))).join() === EN, tag + ' filter level 4e → English only');
-    await tap(page, '[data-subject="histoire"]'); await wait(page, 200);
-    ok(await page.locator('.pack-card').count() === 0 && (await textOf(page, '.pack-list')).includes('Aucun chapitre'), tag + ' 4e + Histoire → empty message');
+    ok((await page.$$eval('[data-subject]', c => c.map(x => x.getAttribute('data-subject')))).join() === ',anglais', tag + ' 4e: only the subjects of 4e are offered');
     await H.shot();
     await tap(page, '[data-level=""]'); await wait(page, 200);
+    await tap(page, '[data-subject="histoire"]'); await wait(page, 200);
     ok((await page.$$eval('.pack-card', c => c.map(x => x.getAttribute('data-pack')))).join() === 'cm2/histoire/test-revolution', tag + ' filter Histoire → test pack only');
     ok(await page.locator('[data-subject="histoire"].on').count() === 1, tag + ' active chip highlighted');
     await H.shot();
@@ -222,3 +222,49 @@ for (const [vw, vh, tag] of [[390, 844, "m"], [1280, 800, "d"]]) {
       R.done();
   });
 }
+
+test("class of the player: chosen at creation, pre-filters the catalogue, « Voir toutes les classes », changed in Réglages", async ({ browser }) => {
+  const R = H.makeReporter(); const ok = R.ok;
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const page = await ctx.newPage(); R.watch(page, 'grade');
+  await H.withTestPacks(page, { history: true });
+  await page.goto(BASE); await wait(page, 300);
+  await tap(page, '[data-act=new]');
+  ok(await page.locator('[data-grade]').count() === 13 && await page.locator('[data-grade=""].on').count() === 1, 'creation: 12 classes + « Plus tard » (selected by default)');
+  await tap(page, '[data-act=back]');
+  await H.newPlayer(page, 'Léo', 0, { grade: 'cm2' });
+  ok(await page.evaluate(() => Engine.settings().grade) === 'cm2', 'class saved with the player');
+  await tap(page, '[data-act=catalog]'); await wait(page, 300);
+  const packs = () => page.$$eval('.pack-card', c => c.map(x => x.getAttribute('data-pack')));
+  ok((await packs()).join() === 'cm2/histoire/test-revolution', 'only the chapters of CM2');
+  ok(await page.locator('[data-level]').count() === 0 && (await textOf(page, '.grade-pill')).includes('CM2'), 'no class chips, « 🎒 CM2 » shown instead');
+  ok((await page.$$eval('[data-subject]', c => c.map(x => x.getAttribute('data-subject')))).join() === ',histoire', 'only the subjects of CM2');
+  await noHs(page, 'catalogue with a class');
+  await tap(page, '[data-act=all-grades]'); await wait(page, 200);
+  ok((await packs()).length === 3 && await page.locator('[data-level]').count() === 4, '« Voir toutes les classes » → every chapter and the class chips');
+  await tap(page, '[data-act=my-grade]'); await wait(page, 200);
+  ok((await packs()).join() === 'cm2/histoire/test-revolution', '« Seulement ma classe » → back to CM2');
+  // change the class in Réglages
+  await tap(page, '[data-act=back]'); await wait(page, 200);
+  await H.settle(page);
+  await tap(page, '[data-act=settings]'); await wait(page, 300);
+  ok(await page.locator('.modal [data-set-grade="cm2"].on').count() === 1, 'Réglages: current class selected');
+  await tap(page, '.modal [data-set-grade="4e"]');
+  ok(await page.evaluate(() => Engine.settings().grade) === '4e', 'class changed');
+  await H.settle(page);
+  await tap(page, '.modal [data-act=close]'); await wait(page, 300);
+  await tap(page, '[data-act=catalog]'); await wait(page, 300);
+  ok((await packs()).join() === EN && (await textOf(page, '.grade-pill')).includes('4e'), 'catalogue follows the new class');
+  // a class without any chapter: friendly message, way out
+  await page.evaluate(() => Engine.setSettings({ grade: 'cp' }));
+  await tap(page, '[data-act=back]'); await wait(page, 200);
+  await tap(page, '[data-act=catalog]'); await wait(page, 300);
+  ok((await textOf(page, '.pack-list')).includes('Pas encore de chapitre pour la classe CP'), 'no chapter for CP → message');
+  // « Aucune » → everything, as before
+  await page.evaluate(() => Engine.setSettings({ grade: '' }));
+  await tap(page, '[data-act=back]'); await wait(page, 200);
+  await tap(page, '[data-act=catalog]'); await wait(page, 300);
+  ok((await packs()).length === 3 && await page.locator('.grade-pill').count() === 0, 'no class → every chapter');
+  await ctx.close();
+  R.done();
+});

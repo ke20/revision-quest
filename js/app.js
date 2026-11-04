@@ -386,6 +386,23 @@
   /* ================= Catalogue ================= */
 
   var catFilter = { level: "", subject: "" };
+  var catAllGrades = false; // "Voir toutes les classes" (until « Seulement ma classe » or another player)
+  function resetCatalogFilters() { catFilter = { level: "", subject: "" }; catAllGrades = false; }
+
+  /** Class of the current player (a level of the catalogue), or null when not set / unknown. */
+  function myGrade() {
+    var g = window.Engine && Engine.currentProfile() ? Engine.settings().grade : "";
+    return g ? Packs.level(g) : null;
+  }
+  /** Buttons to pick a class: every level of the catalogue, plus "none" (label noneLabel). attr: data attribute. */
+  function gradeButtons(attr, current, noneLabel) {
+    var btn = function (id, label) {
+      var on = current === id;
+      return '<button type="button" class="seg-btn' + (on ? " on" : "") + '" ' + attr + '="' + E(id) + '" aria-pressed="' + on + '">' + E(label) + "</button>";
+    };
+    return '<div class="seg seg-grade" role="group" aria-label="Classe">' +
+      Packs.levels().map(function (l) { return btn(l.id, l.label); }).join("") + btn("", noneLabel) + "</div>";
+  }
 
   function chip(kind, value, label, active) {
     return '<button class="filter-chip' + (active ? " on" : "") + '" data-' + kind + '="' + E(value) + '" aria-pressed="' + (active ? "true" : "false") + '">' + label + "</button>";
@@ -454,12 +471,15 @@
     leavePack();
     setNav(showHome, showCatalog);
     var all = Packs.list();
+    var grade = myGrade(), onlyMine = !!grade && !catAllGrades;
     var usedLevels = Packs.levels().filter(function (l) { return all.some(function (p) { return p.level === l.id; }); });
-    var usedSubjects = Packs.subjects().filter(function (s) { return all.some(function (p) { return p.subject === s.id; }); });
     if (catFilter.level && !usedLevels.some(function (l) { return l.id === catFilter.level; })) catFilter.level = "";
+    var level = onlyMine ? grade.id : catFilter.level;
+    var ofLevel = all.filter(function (p) { return !level || p.level === level; });
+    var usedSubjects = Packs.subjects().filter(function (s) { return ofLevel.some(function (p) { return p.subject === s.id; }); });
     if (catFilter.subject && !usedSubjects.some(function (s) { return s.id === catFilter.subject; })) catFilter.subject = "";
-    var list = all.filter(function (p) {
-      return (!catFilter.level || p.level === catFilter.level) && (!catFilter.subject || p.subject === catFilter.subject);
+    var list = ofLevel.filter(function (p) {
+      return !catFilter.subject || p.subject === catFilter.subject;
     }).sort(function (a, b) {
       var la = Packs.level(a.level).order, lb = Packs.level(b.level).order;
       return la - lb || a.title.localeCompare(b.title);
@@ -474,19 +494,27 @@
       '<header class="screen-head"><button class="btn-icon" data-act="back" aria-label="Retour">←</button><h2>📚 Chapitres</h2>' +
       '<span class="head-right">' + list.length + " / " + all.length + "</span></header>" +
       '<div class="filters">' +
-        '<div class="filter-row" role="group" aria-label="Niveau"><span class="filter-label">Niveau</span>' +
-          chip("level", "", "Tous", !catFilter.level) +
-          usedLevels.map(function (l) { return chip("level", l.id, E(l.label), catFilter.level === l.id); }).join("") + "</div>" +
+        (onlyMine
+          ? '<div class="filter-row grade-row"><span class="filter-label">Classe</span><span class="grade-pill">🎒 ' + E(grade.label) + "</span>" +
+            '<button class="filter-chip" data-act="all-grades">Voir toutes les classes</button></div>'
+          : '<div class="filter-row" role="group" aria-label="Classe"><span class="filter-label">Classe</span>' +
+            chip("level", "", "Toutes", !catFilter.level) +
+            usedLevels.map(function (l) { return chip("level", l.id, E(l.label), catFilter.level === l.id); }).join("") +
+            (grade ? '<button class="filter-chip" data-act="my-grade">🎒 Seulement ma classe</button>' : "") + "</div>") +
         '<div class="filter-row" role="group" aria-label="Matière"><span class="filter-label">Matière</span>' +
           chip("subject", "", "Toutes", !catFilter.subject) +
           usedSubjects.map(function (s) { return chip("subject", s.id, E(s.icon) + " " + E(s.label), catFilter.subject === s.id); }).join("") + "</div>" +
       "</div>" +
-      '<div class="pack-list">' + (cards || '<div class="card empty-card"><p>Aucun chapitre pour ce choix. Essaie un autre filtre !</p></div>') + "</div>" +
+      '<div class="pack-list">' + (cards || (onlyMine
+        ? '<div class="card empty-card"><p>Pas encore de chapitre pour la classe ' + E(grade.label) + '. Touche « Voir toutes les classes » pour réviser autre chose.</p></div>'
+        : '<div class="card empty-card"><p>Aucun chapitre pour ce choix. Essaie un autre filtre !</p></div>')) + "</div>" +
       "</section>");
     on(node, "back", function () { Sound.tap(); showHome(); });
     each(node, "[data-level]", function (b) {
       b.onclick = function () { Sound.tap(); catFilter.level = b.getAttribute("data-level"); showCatalog(); };
     });
+    on(node, "all-grades", function () { Sound.tap(); catAllGrades = true; catFilter.level = ""; showCatalog(); });
+    on(node, "my-grade", function () { Sound.tap(); catAllGrades = false; showCatalog(); });
     each(node, "[data-subject]", function (b) {
       b.onclick = function () { Sound.tap(); catFilter.subject = b.getAttribute("data-subject"); showCatalog(); };
     });
@@ -572,6 +600,7 @@
       b.onclick = function () {
         Sound.unlock(); Sound.tap();
         Engine.selectProfile(b.getAttribute("data-id"));
+        resetCatalogFilters();
         var p = Engine.currentProfile();
         showHome();
         if (p) toast("<span>" + E(p.avatar) + " Salut <b>" + E(p.name) + "</b> !</span>");
@@ -607,6 +636,9 @@
         '<div class="avatar-grid">' + avatars.map(function (a) {
           return '<button type="button" class="avatar-btn' + (a === chosen ? " selected" : "") + '" data-av="' + E(a) + '" aria-label="Avatar ' + E(a) + '">' + E(a) + "</button>";
         }).join("") + "</div>" +
+        '<div class="field-label">Ta classe <small>(facultatif)</small></div>' +
+        gradeButtons("data-grade", "", "Plus tard") +
+        '<p class="field-help">Pour ne voir que les chapitres de ta classe. Tu pourras la changer dans ⚙️ Réglages.</p>' +
         '<div class="field-label" id="np-comfort">As-tu un TDA/H ? <small>(du mal à rester concentré)</small></div>' +
         '<div class="seg" role="group" aria-labelledby="np-comfort">' +
           '<button type="button" class="seg-btn" data-comfort="yes" aria-pressed="false">Oui</button>' +
@@ -625,6 +657,14 @@
         each(node, ".avatar-btn", function (x) { x.classList.toggle("selected", x === b); });
       };
     });
+    var grade = "";
+    each(node, "[data-grade]", function (b) {
+      b.onclick = function () {
+        Sound.tap();
+        grade = b.getAttribute("data-grade");
+        each(node, "[data-grade]", function (x) { var on = x === b; x.classList.toggle("on", on); x.setAttribute("aria-pressed", on ? "true" : "false"); });
+      };
+    });
     var comfortYes = false; // only lives while this screen is open; never stored
     each(node, "[data-comfort]", function (b) {
       b.onclick = function () {
@@ -634,7 +674,7 @@
       };
     });
     function create() {
-      var res = Engine.createProfile(input.value, chosen, comfortYes);
+      var res = Engine.createProfile(input.value, chosen, comfortYes, grade);
       if (!res.ok) {
         err.textContent = res.error;
         input.classList.remove("shake"); void input.offsetWidth; input.classList.add("shake");
@@ -642,6 +682,7 @@
         return;
       }
       Sound.levelUp();
+      resetCatalogFilters();
       showHome();
       toast("<span>" + E(res.profile.avatar) + " Bienvenue <b>" + E(res.profile.name) + "</b> !</span>");
     }
@@ -783,7 +824,7 @@
     { key: "playedWorlds", label: "🔁 Mondes déjà joués sans assez d'étoiles",
       values: [["open", "Restent ouverts"], ["replay", "À rejouer"]] }
   ];
-  var TEXT_SETTINGS = ["animations", "difficulty", "playedWorlds"];
+  var TEXT_SETTINGS = ["animations", "difficulty", "playedWorlds", "grade"];
 
   /** Confirmation that needs a typed phrase (for what cannot be undone). title / text must be trusted or escaped. */
   var CONFIRM_PHRASE = "Je confirme";
@@ -806,7 +847,9 @@
 
   function showSettings() {
     var cur = Engine.settings();
-    var comfort = SETTING_ROWS.map(function (r) {
+    var gradeRow = '<div class="setting-block"><div class="setting-label">🎒 Ma classe <small>(pour trier les chapitres)</small></div>' +
+      gradeButtons("data-set-grade", myGrade() ? cur.grade : "", "Aucune") + "</div>";
+    var comfort = gradeRow + SETTING_ROWS.map(function (r) {
       return '<div class="setting-block"><div class="setting-label" id="set-' + r.key + '">' + r.label + "</div>" +
         '<div class="seg" role="group" aria-labelledby="set-' + r.key + '">' + r.values.map(function (v) {
           var on = cur[r.key] === v[0];
@@ -843,6 +886,17 @@
               return;
             }
             apply();
+          };
+        });
+        each(m, "[data-set-grade]", function (b) {
+          b.onclick = function () {
+            Engine.setSettings({ grade: b.getAttribute("data-set-grade") });
+            catAllGrades = false; catFilter.level = "";
+            each(m, "[data-set-grade]", function (x) {
+              var on = x.getAttribute("data-set-grade") === Engine.settings().grade;
+              x.classList.toggle("on", on); x.setAttribute("aria-pressed", on ? "true" : "false");
+            });
+            Sound.tap();
           };
         });
         var fs = m.querySelector('[data-act="fullscreen"]');

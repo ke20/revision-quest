@@ -568,8 +568,8 @@ test(".save: export → import round-trip; checksum, format, version and size ar
 
 /* ---------- comfort settings (pause, free mistakes, animations) ---------- */
 
-const NO = { pauseEvery: 4, freeMistakes: 1, animations: "normal", difficulty: "normal", playedWorlds: "open" };
-const YES = { pauseEvery: 2, freeMistakes: 2, animations: "boost", difficulty: "normal", playedWorlds: "open" };
+const NO = { pauseEvery: 4, freeMistakes: 1, animations: "normal", difficulty: "normal", playedWorlds: "open", grade: "" };
+const YES = { pauseEvery: 2, freeMistakes: 2, animations: "boost", difficulty: "normal", playedWorlds: "open", grade: "" };
 
 test("comfort: the creation answer picks the initial settings (yes → 2 / 2 / boost, no → 4 / 1 / normal) and is never stored", () => {
   const ls = storage(), jar = cookieJar();
@@ -587,7 +587,7 @@ test("comfort: the creation answer picks the initial settings (yes → 2 / 2 / b
   const raw = ls.getItem("revisionQuest.v3");
   const p = JSON.parse(raw).profiles[0];
   assert.deepStrictEqual(Object.keys(p).sort(), ["avatar", "createdAt", "epoch", "id", "name", "settings", "settingsAt", "state"]);
-  assert.deepStrictEqual(Object.keys(p.settings).sort(), ["animations", "difficulty", "freeMistakes", "pauseEvery", "playedWorlds"]);
+  assert.deepStrictEqual(Object.keys(p.settings).sort(), ["animations", "difficulty", "freeMistakes", "grade", "pauseEvery", "playedWorlds"]);
   const all = raw + jar.get() + E.exportProfile(p.id).content;
   assert.doesNotMatch(all, /tda|adhd|comfort|answer|oui/i, "no trace of the answer in localStorage, cookie or .save");
 });
@@ -598,14 +598,14 @@ test("comfort: setSettings whitelists values, bumps settingsAt, saves; missing s
   const E = env.window.Engine;
   E.createProfile("Léa", "🦊");
   const t0 = E.currentProfile().settingsAt;
-  E.setSettings({ pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "normal", playedWorlds: "open" });
-  assert.deepStrictEqual(j(E.settings()), { pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "normal", playedWorlds: "open" });
+  E.setSettings({ pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "normal", playedWorlds: "open", grade: "" });
+  assert.deepStrictEqual(j(E.settings()), { pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "normal", playedWorlds: "open", grade: "" });
   assert.ok(E.currentProfile().settingsAt > t0);
   E.setSettings({ pauseEvery: "2", freeMistakes: 99, animations: "<b>", difficulty: "HARD", evil: 1, __proto__: { x: 1 } });
-  assert.deepStrictEqual(j(E.settings()), { pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "normal", playedWorlds: "open" }, "invalid values ignored");
-  assert.deepStrictEqual(JSON.parse(ls.getItem("revisionQuest.v3")).profiles[0].settings, { pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "normal", playedWorlds: "open" });
+  assert.deepStrictEqual(j(E.settings()), { pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "normal", playedWorlds: "open", grade: "" }, "invalid values ignored");
+  assert.deepStrictEqual(JSON.parse(ls.getItem("revisionQuest.v3")).profiles[0].settings, { pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "normal", playedWorlds: "open", grade: "" });
   const E2 = load({ localStorage: ls }).window.Engine;
-  assert.deepStrictEqual(j(E2.settings()), { pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "normal", playedWorlds: "open" }, "persisted");
+  assert.deepStrictEqual(j(E2.settings()), { pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "normal", playedWorlds: "open", grade: "" }, "persisted");
   const bare = j(E._internals.normalizeProfile({ name: "Bare", state: {} }));
   assert.deepStrictEqual(bare.settings, NO);
   assert.strictEqual(bare.settingsAt, 0);
@@ -627,7 +627,8 @@ test("comfort: hostile settings from storage / cookie / .save fall back to the d
     assert.strictEqual(p.settingsAt, 0);
   }
   assert.strictEqual(j(I.normalizeProfile({ name: "X", settingsAt: 1e99 })).settingsAt, 4102444800000);
-  assert.deepStrictEqual(j(I.normalizeSettings({ pauseEvery: 3, freeMistakes: 0, animations: "boost", difficulty: "hard", playedWorlds: "replay", extra: "x" })), { pauseEvery: 3, freeMistakes: 0, animations: "boost", difficulty: "hard", playedWorlds: "replay" });
+  assert.deepStrictEqual(j(I.normalizeSettings({ pauseEvery: 3, freeMistakes: 0, animations: "boost", difficulty: "hard", playedWorlds: "replay", grade: "cm2", extra: "x" })), { pauseEvery: 3, freeMistakes: 0, animations: "boost", difficulty: "hard", playedWorlds: "replay", grade: "cm2" });
+  for (const g of ["CM2", "<b>", "a".repeat(21), 5, null, ["cm2"], "cm 2", "../x"]) assert.strictEqual(I.normalizeSettings({ grade: g }).grade, "", JSON.stringify(g));
   // localStorage
   const db = I.parseDb(JSON.stringify({ version: 3, profiles: [{ id: "pabcd12345", name: "Ls", settings: { pauseEvery: "4; rm", freeMistakes: 1e9, animations: "<img>" }, settingsAt: -5 }] }));
   assert.deepStrictEqual(j(db.profiles[0].settings), NO);
@@ -636,13 +637,16 @@ test("comfort: hostile settings from storage / cookie / .save fall back to the d
   assert.strictEqual(I.encodeSettings(YES), "22bno");
   assert.strictEqual(I.encodeSettings(NO), "41ono");
   assert.strictEqual(I.encodeSettings({ ...NO, difficulty: "easy", playedWorlds: "replay" }), "41oer");
-  assert.deepStrictEqual(j(I.decodeSettings("30nhr")), { pauseEvery: 3, freeMistakes: 0, animations: "none", difficulty: "hard", playedWorlds: "replay" });
-  assert.deepStrictEqual(j(I.decodeSettings("30nh")), { pauseEvery: 3, freeMistakes: 0, animations: "none", difficulty: "hard", playedWorlds: "open" }, "4-character code: default playedWorlds");
-  assert.deepStrictEqual(j(I.decodeSettings("30n")), { pauseEvery: 3, freeMistakes: 0, animations: "none", difficulty: "normal", playedWorlds: "open" }, "old 3-character code: defaults");
-  for (const bad of ["", "9", "99z", "41o!", "41on!", "41ono!", "1x?", 410, null, ["4", "1", "o"], { 0: "4" }, "_ _"]) {
+  assert.deepStrictEqual(j(I.decodeSettings("30nhr")), { pauseEvery: 3, freeMistakes: 0, animations: "none", difficulty: "hard", playedWorlds: "replay", grade: "" });
+  assert.strictEqual(I.encodeSettings({ ...NO, grade: "cm2" }), "41onocm2");
+  assert.deepStrictEqual(j(I.decodeSettings("41onocm2")), { ...NO, grade: "cm2" });
+  assert.strictEqual(I.decodeSettings("41ono<b>").grade, "", "hostile grade in the cookie dropped");
+  assert.deepStrictEqual(j(I.decodeSettings("30nh")), { pauseEvery: 3, freeMistakes: 0, animations: "none", difficulty: "hard", playedWorlds: "open", grade: "" }, "4-character code: default playedWorlds");
+  assert.deepStrictEqual(j(I.decodeSettings("30n")), { pauseEvery: 3, freeMistakes: 0, animations: "none", difficulty: "normal", playedWorlds: "open", grade: "" }, "old 3-character code: defaults");
+  for (const bad of ["", "9", "99z", "41o!", "41on!", "41ono!", "41ono" + "x".repeat(21), "1x?", 410, null, ["4", "1", "o"], { 0: "4" }, "_ _"]) {
     assert.deepStrictEqual(j(I.decodeSettings(bad) || I.normalizeSettings(null)), NO, JSON.stringify(bad));
   }
-  assert.deepStrictEqual(j(I.decodeSettings("9zbmr")), { pauseEvery: 4, freeMistakes: 1, animations: "boost", difficulty: "medium", playedWorlds: "replay" }, "each field checked on its own");
+  assert.deepStrictEqual(j(I.decodeSettings("9zbmr")), { pauseEvery: 4, freeMistakes: 1, animations: "boost", difficulty: "medium", playedWorlds: "replay", grade: "" }, "each field checked on its own");
   const fromCookie = I.uncompact({ v: 3, c: "pcook00001", p: [["pcook00001", "C", "🦊", 0, [], [], [], [], 1, 0, 1, "", "<s>", "x"]] });
   assert.deepStrictEqual(j(fromCookie.profiles[0].settings), NO);
   assert.strictEqual(fromCookie.profiles[0].settingsAt, 0);
@@ -651,9 +655,9 @@ test("comfort: hostile settings from storage / cookie / .save fall back to the d
 test("comfort: settings go through the cookie backup and the .save file; hostile .save settings are cleaned", () => {
   const jar = cookieJar();
   const E = load({ cookies: jar }).window.Engine;
-  E.createProfile("Mia", "🐸", true);
+  E.createProfile("Mia", "🐸", true, "4e");
   E.setSettings({ pauseEvery: 3 });
-  const want = { pauseEvery: 3, freeMistakes: 2, animations: "boost", difficulty: "normal", playedWorlds: "open" };
+  const want = { pauseEvery: 3, freeMistakes: 2, animations: "boost", difficulty: "normal", playedWorlds: "open", grade: "4e" };
   const at = E.currentProfile().settingsAt;
   const R = load({ cookies: jar }).window.Engine; // empty localStorage → cookie
   assert.deepStrictEqual(j(R.settings()), want);
@@ -675,7 +679,7 @@ test("comfort: multi-tab merge keeps the most recently changed settings (setting
   const { E } = setup({ player: false });
   const I = E._internals;
   const P = (settings, settingsAt, extra) => I.normalizeProfile(Object.assign({ id: "pmerge0001", name: "Ana", settings, settingsAt, state: { xp: 1 } }, extra));
-  const A = { pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "hard", playedWorlds: "replay" };
+  const A = { pauseEvery: 0, freeMistakes: 3, animations: "none", difficulty: "hard", playedWorlds: "replay", grade: "cm2" };
   const m1 = j(I.mergeDb({ currentId: null, deleted: {}, profiles: [P(A, 100)] }, { currentId: null, deleted: {}, profiles: [P(YES, 200)] }));
   assert.deepStrictEqual(m1.profiles[0].settings, YES);
   assert.strictEqual(m1.profiles[0].settingsAt, 200);
@@ -793,4 +797,22 @@ test("pause: 5 minutes per player, kept in localStorage (survives a reload), hos
   }
   const fresh = E2.startPause();
   assert.ok(fresh > Date.now() && fresh <= Date.now() + E.PAUSE_MS, "a new pause replaces a bad value");
+});
+
+test("grade: chosen at creation (optional), changed with setSettings, checked by format, kept per player", () => {
+  const { E } = setup({ player: false });
+  E.createProfile("Léo", "🦊", false, "cm2");
+  assert.strictEqual(E.settings().grade, "cm2");
+  E.createProfile("Zoé", "🐼");
+  assert.strictEqual(E.settings().grade, "", "not set: empty");
+  E.createProfile("Max", "🐯", false, "<script>");
+  assert.strictEqual(E.settings().grade, "", "invalid grade at creation ignored");
+  E.setSettings({ grade: "4e" });
+  assert.strictEqual(E.settings().grade, "4e");
+  E.setSettings({ grade: "../x" });
+  assert.strictEqual(E.settings().grade, "4e", "invalid value ignored");
+  E.setSettings({ grade: "" });
+  assert.strictEqual(E.settings().grade, "", "can be cleared");
+  E.selectProfile(E.profiles().find((p) => p.name === "Léo").id);
+  assert.strictEqual(E.settings().grade, "cm2", "per player");
 });

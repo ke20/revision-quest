@@ -18,8 +18,9 @@ S'il peut aussi aider d'autres enfants, parents ou enseignants, tant mieux ! �
 
 ## Comment on joue
 
-1. On commence par créer son **profil** (prénom ou pseudo et avatar).
-2. On choisit un **chapitre** (matière et niveau), qui donne accès à des **mondes** à découvrir.
+1. On commence par créer son **profil** (prénom ou pseudo, avatar et, si on veut, sa classe).
+2. On choisit un **chapitre** (matière et niveau), qui donne accès à des **mondes** à découvrir. Avec une classe
+   choisie, seuls ses chapitres sont proposés (« Voir toutes les classes » montre les autres).
 3. Le 1er monde est disponible tout de suite ; les suivants se débloquent au fur et à mesure de la progression,
    avec une difficulté croissante. Chaque monde commence par une courte **leçon**, suivie d'exercices variés
    (QCM, tri, paires à relier, phrases à remettre dans l'ordre, texte à trou, mot faux à trouver, réponse rédigée).
@@ -37,7 +38,7 @@ ni ne stocke les informations.
 
 - Plusieurs joueurs peuvent jouer sur le même appareil, chacun avec sa progression (« Changer de joueur » sur l'accueil).
   Un **classement** les compare : général (XP) ou par chapitre (étoiles).
-- **Réglages** (⚙️, par joueur) : pause conseillée après quelques mondes d'affilée, erreurs autorisées sans perdre
+- **Réglages** (⚙️, par joueur) : classe, pause conseillée après quelques mondes d'affilée, erreurs autorisées sans perdre
   de cœur, niveau d'animations, difficulté (étoiles demandées pour passer au monde suivant), mondes déjà joués sans assez
   d'étoiles (restent ouverts ou sont à rejouer). À la création du profil, la question « As-tu un TDA/H ? » choisit
   seulement les valeurs de départ ; **la réponse n'est jamais enregistrée**.

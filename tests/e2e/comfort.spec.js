@@ -10,7 +10,7 @@ async function openSettings(page) {
   await expect(page.locator(".modal-backdrop")).toHaveCount(0);
   await H.settle(page);
   await tap(page, "[data-act=settings]");
-  await expect(page.locator(".modal .setting-block")).toHaveCount(5);
+  await expect(page.locator(".modal .setting-block")).toHaveCount(6);
   await H.settle(page); // the dialog pops in (scale): a forced click during it lands next to the button
 }
 /** Values shown as selected in the "Réglages" dialog. */
@@ -81,7 +81,7 @@ test("creation answer picks the settings, changes persist, the answer is stored 
   for (const [where, txt] of Object.entries({ localStorage: stored.ls, cookie: cookieJson, save: stored.inner })) {
     ok(!/tda|adhd|comfort|answer|"oui"|"yes"/i.test(txt), "no trace of the TDA/H answer in " + where);
   }
-  ok(stored.keys === "animations,difficulty,freeMistakes,pauseEvery,playedWorlds", "only the 5 settings are exported");
+  ok(stored.keys === "animations,difficulty,freeMistakes,grade,pauseEvery,playedWorlds", "only the settings are exported (no TDA/H answer)");
   // Non (preselected, no click) → defaults
   // under load a click can land while the home screen is redrawn after « Terminé »: retry until the player list shows
   await expect(async () => {

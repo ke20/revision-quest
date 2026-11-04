@@ -79,11 +79,13 @@ async function withTestPacks(page, { sample = true, history = false, entry = (e)
   }
 }
 
-/** Create a player from the players screen. "Non" is preselected for the comfort question: { comfort: "yes" } answers "Oui". */
-async function newPlayer(page, name, av, { comfort = null } = {}) {
+/** Create a player from the players screen. "Non" is preselected for the comfort question: { comfort: "yes" } answers "Oui".
+    { grade: "cm2" } picks the class (none by default). */
+async function newPlayer(page, name, av, { comfort = null, grade = null } = {}) {
   await tap(page, "[data-act=new]");
   await page.fill("#np-name", name);
   if (av != null) await page.click(`.avatar-btn >> nth=${av}`);
+  if (grade) await page.click(`[data-grade="${grade}"]`);
   if (comfort) await page.click(`[data-comfort="${comfort}"]`);
   await tap(page, "[data-act=create]");
   await expect(page.locator(".screen.home")).toBeVisible();

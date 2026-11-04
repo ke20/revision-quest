@@ -60,8 +60,12 @@
     difficulty: ["easy", "normal", "medium", "hard"], // stars needed on a world to open the next one, see STARS_TO_UNLOCK
     playedWorlds: ["open", "replay"]  // a world already played stays open, or must be earned again with the current difficulty
   };
-  var COMFORT_NO = { pauseEvery: 4, freeMistakes: 1, animations: "normal", difficulty: "normal", playedWorlds: "open" };   // defaults (and fallback)
-  var COMFORT_YES = { pauseEvery: 2, freeMistakes: 2, animations: "boost", difficulty: "normal", playedWorlds: "open" };
+  var COMFORT_NO = { pauseEvery: 4, freeMistakes: 1, animations: "normal", difficulty: "normal", playedWorlds: "open", grade: "" };   // defaults (and fallback)
+  var COMFORT_YES = { pauseEvery: 2, freeMistakes: 2, animations: "boost", difficulty: "normal", playedWorlds: "open", grade: "" };
+  /* grade: the player's class (a level id of js/catalog.js, e.g. "cm2"), used to pre-filter the chapters; "" = not set.
+     Free text checked by its format only: the engine does not know the catalogue, the app ignores an unknown id. */
+  var GRADE = /^[a-z0-9-]{1,20}$/;
+  function validGrade(g) { return g === "" || (typeof g === "string" && GRADE.test(g)); }
 
   /* Stars of a world (0 to MAX_STARS) come from its best accuracy: a 2nd try counts half (see answer()).
      They are always recomputed from the accuracy when a save is read, so a change of thresholds needs no migration. */
@@ -143,6 +147,8 @@
       var v = isObj(s) && own(s, k) ? s[k] : undefined;
       out[k] = COMFORT[k].indexOf(v) !== -1 ? v : COMFORT_NO[k];
     });
+    var g = isObj(s) && own(s, "grade") ? s.grade : "";
+    out.grade = validGrade(g) ? g : "";
     return out;
   }
   function comfortDefaults(yes) { return normalizeSettings(yes === true ? COMFORT_YES : COMFORT_NO); }
@@ -257,7 +263,8 @@
                  settings, settingsAt]
       packs = [[packId, lastPlayedSeconds, [[worldId, stars, accuracy%], ...]], ...]
       settings = 5 characters: pauseEvery digit, freeMistakes digit, animations code (n / o / b), difficulty code
-                 (e / n / m / h), playedWorlds code (o / r), e.g. "41ono"; shorter codes of older saves get the defaults */
+                 (e / n / m / h), playedWorlds code (o / r), then the grade if any, e.g. "41onocm2";
+                 shorter codes of older saves get the defaults */
   function compactProfile(p, packIds) {
     var s = p.state;
     var packs = (packIds || Object.keys(s.packs)).map(function (id) {
@@ -273,15 +280,17 @@
   function encodeSettings(st) {
     st = normalizeSettings(st);
     return String(st.pauseEvery) + String(st.freeMistakes) + ANIM_CODES[COMFORT.animations.indexOf(st.animations)] +
-      DIFFICULTY_CODES[COMFORT.difficulty.indexOf(st.difficulty)] + PLAYED_CODES[COMFORT.playedWorlds.indexOf(st.playedWorlds)];
+      DIFFICULTY_CODES[COMFORT.difficulty.indexOf(st.difficulty)] + PLAYED_CODES[COMFORT.playedWorlds.indexOf(st.playedWorlds)] +
+      st.grade;
   }
   function decodeSettings(code) {
-    if (typeof code !== "string" || code.length < 3 || code.length > 5) return null; // → defaults
+    if (typeof code !== "string" || code.length < 3 || code.length > 25) return null; // → defaults
     return normalizeSettings({
       pauseEvery: parseInt(code[0], 10), freeMistakes: parseInt(code[1], 10),
       animations: COMFORT.animations[ANIM_CODES.indexOf(code[2])],
       difficulty: COMFORT.difficulty[DIFFICULTY_CODES.indexOf(code.charAt(3))],
-      playedWorlds: COMFORT.playedWorlds[PLAYED_CODES.indexOf(code.charAt(4))]
+      playedWorlds: COMFORT.playedWorlds[PLAYED_CODES.indexOf(code.charAt(4))],
+      grade: code.slice(5)
     });
   }
   function profileActivity(p) {
@@ -906,6 +915,7 @@
       Object.keys(COMFORT).forEach(function (k) {
         if (own(changes, k) && COMFORT[k].indexOf(changes[k]) !== -1) next[k] = changes[k];
       });
+      if (own(changes, "grade") && validGrade(changes.grade)) next.grade = changes.grade;
       p.settings = next;
       p.settingsAt = Math.max(Date.now(), (p.settingsAt || 0) + 1);
       save();
@@ -955,11 +965,14 @@
     },
 
     /** comfortYes: answer to the creation question (true = yes). Only used to pick the initial settings, never stored. */
-    createProfile: function (name, avatar, comfortYes) {
+    /** grade (optional): the player's class, a level id of the catalogue ("" or missing = not set). */
+    createProfile: function (name, avatar, comfortYes, grade) {
       var err = this.validateName(name);
       if (err) return { ok: false, error: err };
       if (db.profiles.length >= MAX_PROFILES) return { ok: false, error: "Trop de joueurs sur cet appareil (50 maximum)." };
-      var p = normalizeProfile({ name: name, avatar: avatar || AVATARS[0], settings: comfortDefaults(comfortYes), settingsAt: Date.now(), state: defaultState() });
+      var st = comfortDefaults(comfortYes);
+      if (validGrade(grade)) st.grade = grade;
+      var p = normalizeProfile({ name: name, avatar: avatar || AVATARS[0], settings: st, settingsAt: Date.now(), state: defaultState() });
       db.profiles.push(p);
       selectProfile(p.id);
       return { ok: true, profile: p };
