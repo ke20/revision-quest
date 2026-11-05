@@ -63,7 +63,7 @@ jobs:
       - name: Copy the game files
         run: |
           mkdir -p _site
-          cp -R index.html js css fonts packs _site/
+          cp -R index.html voix.html js css fonts packs _site/
           touch _site/.nojekyll
 
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
