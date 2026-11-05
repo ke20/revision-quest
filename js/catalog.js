@@ -90,6 +90,33 @@ window.CATALOG = {
         { id: "g2", label: "Groupe 2", difficulty: 2, worldCount: 7 },
         { id: "g3", label: "Groupe 3 (+ bonus)", difficulty: 3, worldCount: 8 }
       ]
+    },
+    {
+      path: "cm2/francais/homophones-grammaticaux",
+      title: "Les homophones grammaticaux",
+      description: "a/à, et/est, son/sont, on/ont/on n', ce/se, c'est/s'est, leur/leurs, la/là/l'a, quand/quant/qu'en, peu/peut, près/prêt, plus tôt/plutôt… et les tests pour ne plus les confondre.",
+      icon: "🔀",
+      color: "#7C3AED",
+      lang: "fr",
+      worldCount: 8
+    },
+    {
+      path: "cm2/francais/accord-sujet-verbe",
+      title: "L'accord du verbe avec son sujet",
+      description: "Trouver le sujet, le nom noyau du groupe nominal, les sujets composés de plusieurs noms et plusieurs verbes pour un même sujet.",
+      icon: "🐝",
+      color: "#7C3AED",
+      lang: "fr",
+      worldCount: 5
+    },
+    {
+      path: "cm2/francais/mots-invariables",
+      title: "Les mots invariables",
+      description: "50 mots qui ne changent jamais (ailleurs, beaucoup, longtemps, parce que, vraiment…), appris liste par liste.",
+      icon: "🧱",
+      color: "#7C3AED",
+      lang: "fr",
+      worldCount: 6
     }
   ]
 };
