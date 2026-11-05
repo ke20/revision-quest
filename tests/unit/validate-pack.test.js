@@ -134,3 +134,21 @@ test("a group pack: path <cours>/<groupe>, found through the groups of its catal
     assert.ok(validatePack(tmp, wrongCount, { rel: "packs/4e/anglais/unit/valid.js" }).errors.some((e) => /worldCount 4 ≠ 1 mondes dans le pack \(groupe\)/.test(e)));
   } finally { fs.unlinkSync(tmp); }
 });
+
+test("fill listen: plain text read aloud, 300 characters max, a hint advised", () => {
+  const src = fs.readFileSync(path.join(FIX, "valid.js"), "utf8");
+  const check = (listen, hint) => {
+    const tmp = path.join(require("os").tmpdir(), "rq-listen-" + process.pid + ".js");
+    const extra = JSON.stringify({ listen, hint }).slice(1, -1);
+    fs.writeFileSync(tmp, src.replace('"sentence": "Le ___ dort.",', '"sentence": "Le ___ dort.", ' + extra + ","));
+    try { return validatePack(tmp, catalog(), { rel: REL }); } finally { fs.unlinkSync(tmp); }
+  };
+  const ok = check("Le chat dort.", "Un animal.");
+  assert.deepStrictEqual(ok.errors, []);
+  assert.ok(!ok.warnings.some((w) => /listen|hint conseillé/.test(w)), ok.warnings.join(" | "));
+  assert.ok(check("Le **chat** dort.", "x").errors.some((e) => /listen est lu à voix haute/.test(e)));
+  assert.ok(check("Le [[chat|cat]] dort.", "x").errors.some((e) => /listen est lu à voix haute/.test(e)));
+  assert.ok(check("a".repeat(301), "x").errors.some((e) => /listen trop long \(301 caractères/.test(e)));
+  assert.ok(check("  ", "x").errors.some((e) => /listen doit être un texte non vide/.test(e)));
+  assert.ok(check("Le chat dort.").warnings.some((w) => /hint conseillé/.test(w)));
+});

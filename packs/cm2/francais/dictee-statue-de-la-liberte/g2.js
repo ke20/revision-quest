@@ -3,7 +3,8 @@
    Source : cahier de dictées CM2, « Dictée 8 — La statue de la Liberté » (série 1 « Les merveilles du monde ») :
    mots à apprendre, dictées flash, dictée bilan et critères de réussite du groupe 2.
    Orthographe de la dictée : orthographe rectifiée (ile, deux-cent-vingt-cinq) ; les formes traditionnelles
-   (île, deux cent vingt-cinq) sont aussi acceptées dans les réponses à taper. */
+   (île, deux cent vingt-cinq) sont aussi acceptées dans les réponses à taper.
+   Les exercices « Écoute et écris » (champ listen) sont lus par la voix de l'appareil. */
 window.registerPack({
   path: "cm2/francais/dictee-statue-de-la-liberte/g2",
   lang: "fr",
@@ -95,25 +96,30 @@ window.registerPack({
         ]
       },
       exercises: [
-        { type: "fill", prompt: "Complète avec le bon mot.",
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "La statue de la Liberté se trouve à New York.",
           sentence: "La statue de la ___ se trouve à New York.", answers: ["Liberté"],
           explanation: "La statue de la **Liberté** : un accent aigu à la fin, et une majuscule car c'est son nom.",
           hint: "Le mot commence par L." },
         { type: "mcq", prompt: "Quelle est la bonne orthographe ?",
           options: ["la tête", "la tète", "la tete", "la têtte"], answer: 0,
           explanation: "**Tête** prend un accent circonflexe sur le premier e." },
-        { type: "fill", prompt: "Complète avec le mot qui veut dire « à peu près ».",
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "Elle mesure environ 93 mètres.",
           sentence: "Elle mesure ___ 93 mètres.", answers: ["environ"],
-          explanation: "**Environ** est invariable : il s'écrit toujours sans s." },
+          explanation: "**Environ** est invariable : il s'écrit toujours sans s.",
+          hint: "Un mot qui veut dire « à peu près »." },
         { type: "spot", prompt: "Touche le mot mal écrit.",
           tokens: ["Le", "peuple", "francais", "a", "offert", "la", "statue", "."], wrongIndex: 2, correction: "français",
           explanation: "**Français** prend une cédille : ç." },
         { type: "mcq", prompt: "Quelle est la bonne orthographe ?",
           options: ["déclaration", "déclarassion", "déclaraction", "declaration"], answer: 0,
           explanation: "**Déclaration** : un accent sur le é, et la fin **-tion**." },
-        { type: "fill", prompt: "Complète avec le contraire d'« extérieur ».",
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "Quarante personnes peuvent tenir à l'intérieur de sa tête.",
           sentence: "Quarante personnes peuvent tenir à l'___ de sa tête.", answers: ["intérieur"],
-          explanation: "**Intérieur** : un accent aigu sur le é, et **-eur** à la fin." }
+          explanation: "**Intérieur** : un accent aigu sur le é, et **-eur** à la fin.",
+          hint: "Le contraire d'« extérieur »." }
       ]
     },
 

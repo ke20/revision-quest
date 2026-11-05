@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* Tiny zero-dependency static server for Révision Quest (tests and local development).
-   Serves only the game files (index.html, js/, css/, fonts/, packs/). Port: env PORT (default 4173).
+   Serves only the game files (index.html, voix.html, js/, css/, fonts/, packs/). Port: env PORT (default 4173).
    Host: env HOST (default 127.0.0.1; with HOST=0.0.0.0 the Host header check is off, use on a trusted network only).
    Usage: node tests/server.js   (or: npm start) */
 "use strict";
@@ -19,7 +19,7 @@ const TYPES = {
 };
 // Only the files of the game are served (closed list, checked on the final path, case-insensitive because macOS
 // file systems are): never .git, node_modules, resources/, .env, notes, reports…
-const ALLOWED = /^(index\.html|(js|css|fonts|packs)\/.+)$/i;
+const ALLOWED = /^(index\.html|voix\.html|(js|css|fonts|packs)\/.+)$/i;
 // DNS rebinding: a web page visited while the server runs must not be able to read it through its own domain name
 const HOSTS = new Set(["127.0.0.1:" + PORT, "localhost:" + PORT, "[::1]:" + PORT]);
 

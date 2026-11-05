@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- Same policy as index.html: only scripts from this site, no network calls. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#7C3AED">
+  <title>Tester les voix</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔊</text></svg>">
+  <style>
+    :root { --bg: #F5F3FF; --card: #fff; --text: #1F1235; --muted: #5B4B7A; --accent: #7C3AED; --line: #E4DCF7; --ok: #047857; --warn: #B45309; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #160F24; --card: #221836; --text: #F3EEFF; --muted: #B9A9D9; --accent: #A78BFA; --line: #3A2C58; --ok: #34D399; --warn: #FBBF24; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    main { max-width: 680px; margin: 0 auto; padding: 20px 16px 40px; }
+    h1 { font-size: 1.5rem; margin: 0 0 4px; }
+    p { margin: 6px 0; }
+    .muted { color: var(--muted); font-size: .92rem; }
+    a { color: var(--accent); }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; margin: 14px 0; }
+    label { font-weight: 600; display: block; margin-bottom: 6px; }
+    input[type=text] { width: 100%; font: inherit; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--text); }
+    .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+    button { font: inherit; font-weight: 600; border: 2px solid var(--accent); color: var(--accent); background: transparent; border-radius: 999px; padding: 7px 14px; min-height: 40px; cursor: pointer; }
+    button.primary { background: var(--accent); color: #fff; }
+    button[aria-pressed=true] { background: var(--accent); color: #fff; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    li { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 10px 0; border-top: 1px solid var(--line); }
+    li:first-child { border-top: 0; }
+    .name { flex: 1 1 180px; min-width: 0; overflow-wrap: anywhere; }
+    .tag { font-size: .78rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+    .q3 { color: var(--ok); } .q2 { color: var(--accent); } .q1 { color: var(--muted); } .q0 { color: var(--warn); }
+    .chosen { outline: 2px solid var(--ok); outline-offset: 4px; border-radius: 8px; }
+    .pick { color: var(--ok); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <main>
+    <p><a href="./">← Retour au jeu</a></p>
+    <h1>🔊 Tester les voix</h1>
+    <p class="muted">Les exercices « Écoute et écris » utilisent une voix installée sur cet appareil. Rien n'est envoyé sur Internet.</p>
+
+    <div class="card">
+      <div class="row" role="group" aria-label="Langue">
+        <button type="button" data-lang="fr" aria-pressed="true">Français</button>
+        <button type="button" data-lang="en" aria-pressed="false">Anglais</button>
+      </div>
+      <p id="chosen" class="muted" aria-live="polite"></p>
+      <label for="text">Phrase à lire</label>
+      <input id="text" type="text" value="Il y a beaucoup de monde au marché aujourd'hui.">
+      <div class="row">
+        <button type="button" class="primary" data-play="game">🔊 Voix du jeu</button>
+        <button type="button" data-play="game-slow">🐢 Plus lentement</button>
+        <button type="button" data-stop>⏹ Stop</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <p><strong>Toutes les voix de l'appareil</strong> <span id="count" class="muted"></span></p>
+      <ul id="list"></ul>
+    </div>
+
+    <div class="card">
+      <p><strong>Une voix plus naturelle ?</strong> Installer une voix « Premium » ou « Améliorée » (gratuit), puis redémarrer le navigateur :</p>
+      <p class="muted">Mac : Réglages Système › Accessibilité › Contenu énoncé › Voix du système › Gérer les voix › Français.<br>
+        iPhone / iPad : Réglages › Accessibilité › Contenu énoncé › Voix › Français.<br>
+        Android : Paramètres › Accessibilité › Synthèse vocale › Moteur Google › Installer les données vocales › Français.</p>
+    </div>
+  </main>
+  <script src="js/i18n.js"></script>
+  <script src="js/exercises.js"></script>
+  <script src="js/voix.js"></script>
+</body>
+</html>

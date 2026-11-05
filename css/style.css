@@ -273,6 +273,11 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
 .ex-help { margin: -6px 0 12px; color: var(--ink-soft); font-size: .92rem; }
 .btn-hint { align-self: flex-start; border: 2px dashed #F5C542; background: #FFFBEA; color: #8A5A00; border-radius: 999px; padding: 5px 14px; font-weight: 600; cursor: pointer; font-size: .95rem; }
 .btn-hint:hover { background: #FFF3C4; }
+.listen-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0 4px; }
+.btn-listen { border: 2px solid currentColor; background: #fff; color: #4C1D95; border-radius: 999px; padding: 8px 16px; font-weight: 700; font-size: 1rem; cursor: pointer; min-height: 44px; }
+.btn-listen:hover:not(:disabled) { background: #F3E8FF; }
+.btn-listen:disabled { opacity: .5; cursor: default; }
+.listen-none { margin: 0; flex-basis: 100%; color: #8A5A00; }
 .hint-box { background: #FFFBEA; border: 2px solid #F5C542; color: #6B4600; border-radius: 14px; padding: 10px 12px; }
 
 .options { display: flex; flex-direction: column; gap: 10px; }

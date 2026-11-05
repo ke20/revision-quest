@@ -3,7 +3,8 @@
    Source : cahier de dictées CM2, « Dictée 8 — La statue de la Liberté » (série 1 « Les merveilles du monde ») :
    mots à apprendre, dictées flash, dictée bilan et critères de réussite du groupe 1.
    Orthographe de la dictée : orthographe rectifiée (ile, deux-cent-vingt-cinq) ; les formes traditionnelles
-   (île, deux cent vingt-cinq) sont aussi acceptées dans les réponses à taper. */
+   (île, deux cent vingt-cinq) sont aussi acceptées dans les réponses à taper.
+   Les exercices « Écoute et écris » (champ listen) sont lus par la voix de l'appareil. */
 window.registerPack({
   path: "cm2/francais/dictee-statue-de-la-liberte/g1",
   lang: "fr",
@@ -88,25 +89,30 @@ window.registerPack({
         ]
       },
       exercises: [
-        { type: "fill", prompt: "Complète avec le bon mot.",
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "La statue de la Liberté se trouve à New York.",
           sentence: "La statue de la ___ se trouve à New York.", answers: ["Liberté"],
           explanation: "La statue de la **Liberté** : un accent aigu à la fin, et une majuscule car c'est son nom.",
           hint: "Le mot commence par L." },
         { type: "mcq", prompt: "Quelle est la bonne orthographe ?",
           options: ["la tête", "la tète", "la tete", "la têtte"], answer: 0,
           explanation: "**Tête** prend un accent circonflexe sur le premier e." },
-        { type: "fill", prompt: "Complète avec le mot qui veut dire « à peu près ».",
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "Elle mesure environ 93 mètres.",
           sentence: "Elle mesure ___ 93 mètres.", answers: ["environ"],
-          explanation: "**Environ** est invariable : il s'écrit toujours sans s." },
+          explanation: "**Environ** est invariable : il s'écrit toujours sans s.",
+          hint: "Un mot qui veut dire « à peu près »." },
         { type: "spot", prompt: "Touche le mot mal écrit.",
           tokens: ["Le", "peuple", "francais", "a", "offert", "la", "statue", "."], wrongIndex: 2, correction: "français",
           explanation: "**Français** prend une cédille : ç." },
         { type: "mcq", prompt: "Quelle est la bonne orthographe ?",
           options: ["déclaration", "déclarassion", "déclaraction", "declaration"], answer: 0,
           explanation: "**Déclaration** : un accent sur le é, et la fin **-tion**." },
-        { type: "fill", prompt: "Complète avec le contraire d'« extérieur ».",
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "Quarante personnes peuvent tenir à l'intérieur de sa tête.",
           sentence: "Quarante personnes peuvent tenir à l'___ de sa tête.", answers: ["intérieur"],
-          explanation: "**Intérieur** : un accent aigu sur le é, et **-eur** à la fin." }
+          explanation: "**Intérieur** : un accent aigu sur le é, et **-eur** à la fin.",
+          hint: "Le contraire d'« extérieur »." }
       ]
     },
 
@@ -135,9 +141,11 @@ window.registerPack({
           words: ["Le", "peuple", "français", "a", "offert", "la", "statue", "aux", "États-Unis", "."],
           translation: "Le peuple français a offert la statue aux États-Unis.",
           explanation: "Le **peuple français** fait l'action : il **a offert** la statue." },
-        { type: "fill", prompt: "Complète avec le verbe offrir.",
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "Le peuple français a offert la statue aux États-Unis.",
           sentence: "Le peuple français a ___ la statue aux États-Unis.", answers: ["offert"],
-          explanation: "Offrir → il a **offert** (avec un t à la fin)." },
+          explanation: "Offrir → il a **offert** (avec un t à la fin).",
+          hint: "Le verbe offrir." },
         { type: "mcq", prompt: "En quelle année la statue a-t-elle été offerte ?",
           options: ["1886", "1789", "1914", "1986"], answer: 0,
           explanation: "La statue a été offerte en **1886**." },
@@ -148,9 +156,11 @@ window.registerPack({
         { type: "spot", prompt: "Touche le mot mal écrit.",
           tokens: ["Le", "poids", "de", "la", "statue", "dépasse", "deux-cents", "tones", "!"], wrongIndex: 7, correction: "tonnes",
           explanation: "**Tonnes** s'écrit avec deux n." },
-        { type: "fill", prompt: "Complète avec le bon mot.",
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "La statue est située sur une petite ile, à New York.",
           sentence: "La statue est située sur une petite ___, à New York.", answers: ["ile", "île"],
-          explanation: "Une **ile** (on peut aussi écrire île) : une terre entourée d'eau." }
+          explanation: "Une **ile** (on peut aussi écrire île) : une terre entourée d'eau.",
+          hint: "Une terre entourée d'eau." }
       ]
     },
 
@@ -223,27 +233,37 @@ window.registerPack({
         ]
       },
       exercises: [
-        { type: "fill", prompt: "Complète avec le mot qui veut dire « 100 ans ».",
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "En 1886, pour le centenaire de la Déclaration d'indépendance américaine.",
           sentence: "En 1886, pour le ___ de la Déclaration d'indépendance américaine…", answers: ["centenaire"],
-          explanation: "**Centenaire** : on fête les 100 ans." },
-        { type: "fill", prompt: "Complète avec le bon mot.",
+          explanation: "**Centenaire** : on fête les 100 ans.",
+          hint: "Un mot qui veut dire « 100 ans »." },
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "Le peuple français a offert la statue de la Liberté aux États-Unis.",
           sentence: "Le peuple ___ a offert la statue de la Liberté aux États-Unis.", answers: ["français"],
-          explanation: "**Français** avec une cédille, et une minuscule car c'est un adjectif." },
-        { type: "fill", prompt: "Complète avec le bon mot.",
+          explanation: "**Français** avec une cédille, et une minuscule car c'est un adjectif.",
+          hint: "L'adjectif qui vient de « France »." },
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "Elle se trouve sur une petite ile à l'entrée du port de New York.",
           sentence: "Elle se trouve sur une petite ile à l'entrée du ___ de New York.", answers: ["port"],
-          explanation: "Le **port** : un t muet à la fin (pense à « portuaire »)." },
+          explanation: "Le **port** : un t muet à la fin (pense à « portuaire »).",
+          hint: "L'endroit où arrivent les bateaux." },
         { type: "spot", prompt: "Touche le mot mal écrit.",
           tokens: ["Elle", "mesure", "environs", "93", "mètres", "avec", "son", "socle", "."], wrongIndex: 2, correction: "environ",
           explanation: "**Environ** ne prend jamais de s." },
-        { type: "fill", prompt: "Complète avec le bon mot.",
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "Elle mesure environ 93 mètres de haut avec son socle.",
           sentence: "Elle mesure environ 93 mètres de haut avec son ___.", answers: ["socle"],
-          explanation: "Le **socle** : le bloc sous la statue." },
+          explanation: "Le **socle** : le bloc sous la statue.",
+          hint: "Le bloc sur lequel la statue est posée." },
         { type: "spot", prompt: "Touche le mot mal écrit.",
           tokens: ["Quarante", "personnes", "peuvent", "tenir", "à", "l'intérieur", "de", "sa", "tète", "!"], wrongIndex: 8, correction: "tête",
           explanation: "**Tête** prend un accent circonflexe." },
-        { type: "fill", prompt: "Complète avec le bon mot.",
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "En 1886, pour le centenaire de la Déclaration d'indépendance américaine.",
           sentence: "En 1886, pour le centenaire de la ___ d'indépendance américaine…", answers: ["Déclaration"],
-          explanation: "**Déclaration** : accent sur le é et fin en -tion." },
+          explanation: "**Déclaration** : accent sur le é et fin en -tion.",
+          hint: "Un texte officiel : la … d'indépendance." },
         { type: "mcq", prompt: "Quelle phrase est bien écrite ?",
           options: ["Le peuple français a offert la statue.", "Le peuple francais a offert la statue.", "Le peuple français a offer la statue.", "Le peupe français a offert la statue."], answer: 0,
           explanation: "**Peuple**, **français** (ç) et **offert** (t à la fin)." }

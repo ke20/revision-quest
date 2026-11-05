@@ -318,6 +318,11 @@
       GH_ICON + "<span>Code source sur GitHub</span></a></p>";
   }
 
+  /** « Tester les voix » link (voix.html): hear the device voices and see the one the listening exercises use. */
+  function voicesLinkHtml() {
+    return '<p class="source-link voices-link"><a href="voix.html"><span>🔊 Tester les voix</span></a></p>';
+  }
+
   function showHome() {
     var me = Engine.currentProfile();
     if (!me) return showProfiles();
@@ -370,7 +375,7 @@
         (fsSupported() ? '<button class="btn btn-ghost btn-small fs-btn' + (fsActive() ? " on" : "") + '" data-act="fullscreen" aria-pressed="' + fsActive() + '">' +
           FS_ICON + '<span class="fs-in">Plein écran</span><span class="fs-out">Quitter le plein écran</span></button>' : "") +
         (Engine.storageAvailable() ? "" : '<p class="note">⚠️ Ce navigateur ne peut pas enregistrer ta progression. Pense à exporter ta partie !</p>') +
-        sourceLinkHtml() +
+        voicesLinkHtml() + sourceLinkHtml() +
       "</section>");
     on(node, "continue", function () { Sound.unlock(); Sound.tap(); openPack(last.id); });
     on(node, "catalog", function () { Sound.unlock(); Sound.tap(); showCatalog(); });
@@ -1147,9 +1152,9 @@
     function onResult(res) {
       phase = "done";
       var r = Engine.answer(res);
-      if (r.skipped) { // broken exercise: neutral, no XP, no heart lost
+      if (r.skipped) { // broken exercise or listening without a voice: neutral, no XP, no heart lost
         updateTop(ui, false);
-        setBar(ui, "", '<div class="fb-title"><span class="fb-ico">⏭️</span> ' + T("skipped") + "</div>", T("next"));
+        setBar(ui, "", '<div class="fb-title"><span class="fb-ico">⏭️</span> ' + T(res.noVoice ? "skippedNoVoice" : "skipped") + "</div>", T("next"));
         ui.btn.style.display = "";
         ui.btn.disabled = false;
         return;

@@ -161,8 +161,24 @@ Peut servir aussi pour une frise chronologique (une étiquette = un événement)
   explanation: "…", hint: "Même année que le début de la Révolution." }
 ```
 
-Exactement **un** `___`. `answers` = toutes les réponses acceptées (casse, espaces et apostrophes ’/' ignorés).
-Deux essais.
+Exactement **un** `___`. `answers` = toutes les réponses acceptées (casse, espaces et apostrophes ’/' ignorés ;
+les **accents comptent**). Deux essais.
+
+**Écouter et écrire (`listen`)** : un `fill` peut faire lire un texte par la voix de l'appareil (dictée de mots,
+compréhension orale). Deux boutons s'affichent sous la consigne : « 🔊 Écouter » et « 🐢 Plus lentement ».
+
+```js
+{ type: "fill", prompt: "Écoute et écris le mot.",
+  listen: "dehors",                         // texte lu à voix haute (texte simple, 300 caractères max)
+  sentence: "Il joue ___.", answers: ["dehors"],
+  hint: "Le contraire de « dedans ».",      // conseillé : aide si la voix est mal comprise
+  explanation: "**dehors** : un **s** muet à la fin." }
+```
+
+- La langue de la voix est celle du pack (`lang`). Seules les voix **installées sur l'appareil** sont utilisées :
+  le texte ne part jamais sur Internet.
+- Sans voix sur l'appareil, l'élève voit un message et un bouton « Passer » : l'exercice est neutre (ni XP, ni cœur).
+- `listen` : ni `**` ni `[[...]]` (le texte est lu tel quel). Le mot entendu ne doit pas être écrit dans la phrase.
 
 ### `spot` — trouver l'erreur
 

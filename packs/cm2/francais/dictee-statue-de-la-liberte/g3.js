@@ -3,7 +3,8 @@
    Source : cahier de dictées CM2, « Dictée 8 — La statue de la Liberté » (série 1 « Les merveilles du monde ») :
    mots à apprendre, dictées flash, dictée bilan et critères de réussite du groupe 3.
    Orthographe de la dictée : orthographe rectifiée (ile, deux-cent-vingt-cinq) ; les formes traditionnelles
-   (île, deux cent vingt-cinq) sont aussi acceptées dans les réponses à taper. */
+   (île, deux cent vingt-cinq) sont aussi acceptées dans les réponses à taper.
+   Les exercices « Écoute et écris » (champ listen) sont lus par la voix de l'appareil. */
 window.registerPack({
   path: "cm2/francais/dictee-statue-de-la-liberte/g3",
   lang: "fr",
@@ -51,15 +52,19 @@ window.registerPack({
         { type: "spot", prompt: "Touche le mot mal écrit.",
           tokens: ["Le", "peuple", "francais", "a", "offert", "la", "statue", "."], wrongIndex: 2, correction: "français",
           explanation: "**Français** prend une cédille : ç." },
-        { type: "fill", prompt: "Complète avec le mot qui veut dire « à peu près ».",
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "Elle mesure environ 93 mètres.",
           sentence: "Elle mesure ___ 93 mètres.", answers: ["environ"],
-          explanation: "**Environ** est invariable : jamais de s." },
+          explanation: "**Environ** est invariable : jamais de s.",
+          hint: "Un mot qui veut dire « à peu près »." },
         { type: "mcq", prompt: "Quelle est la bonne orthographe ?",
           options: ["déclaration", "déclarassion", "déclaraction", "declaration"], answer: 0,
           explanation: "**Déclaration** : accent sur le é et fin en -tion." },
-        { type: "fill", prompt: "Complète avec le contraire d'« extérieur ».",
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "Quarante personnes peuvent tenir à l'intérieur de sa tête.",
           sentence: "Quarante personnes peuvent tenir à l'___ de sa tête.", answers: ["intérieur"],
-          explanation: "**Intérieur** : accent aigu et fin en -eur." }
+          explanation: "**Intérieur** : accent aigu et fin en -eur.",
+          hint: "Le contraire d'« extérieur »." }
       ]
     },
 
@@ -388,7 +393,8 @@ window.registerPack({
         ]
       },
       exercises: [
-        { type: "fill", prompt: "Complète avec le bon mot.",
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "La statue de la Liberté est l'œuvre du sculpteur français Bartholdi.",
           sentence: "La statue de la Liberté est l'___ du sculpteur français Bartholdi.", answers: ["œuvre", "oeuvre"],
           explanation: "**Œuvre** s'écrit avec œ.",
           hint: "Un mot qui veut dire « travail d'artiste »." },
@@ -402,9 +408,11 @@ window.registerPack({
         { type: "spot", prompt: "Touche le mot faux.",
           tokens: ["Elle", "a", "été", "démontée", "est", "transportée", "par", "bateau", "."], wrongIndex: 4, correction: "et",
           explanation: "On peut dire « et puis transportée » : c'est **et**." },
-        { type: "fill", prompt: "Complète avec le verbe remonter.",
+        { type: "fill", prompt: "Écoute et écris le mot qui manque.",
+          listen: "Elle a été transportée par bateau et enfin remontée aux États-Unis.",
           sentence: "Elle a été transportée par bateau et enfin ___ aux États-Unis.", answers: ["remontée"],
-          explanation: "Elle = féminin : **remontée**." },
+          explanation: "Elle = féminin : **remontée**.",
+          hint: "Le verbe remonter, accordé avec « elle »." },
         { type: "spot", prompt: "Touche le mot mal accordé.",
           tokens: ["Le", "socle", "et", "le", "piédestal", "ont", "été", "construit", "sur", "place", "."], wrongIndex: 7, correction: "construits",
           explanation: "Le socle et le piédestal = masculin pluriel : **construits**." },

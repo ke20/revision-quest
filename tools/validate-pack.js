@@ -334,6 +334,15 @@ function validateExercise(e, where, ctx) {
       if (!isArr(e.answers) || !e.answers.length || e.answers.some((a) => !isStr(a))) err(t + " : answers doit contenir au moins une réponse");
       noTr(e.answers, t + " answers", err);
       checkMarkup(e.sentence, t + " sentence", err);
+      if (e.listen != null) {
+        // text read aloud by the device voice: plain text, short (some voices stop after ~15 s)
+        if (!isStr(e.listen)) err(t + " : listen doit être un texte non vide");
+        else {
+          if (/\[\[|\*\*/.test(e.listen)) err(t + " : listen est lu à voix haute, ni [[...]] ni ** (texte simple)");
+          if (e.listen.length > 300) err(t + " : listen trop long (" + e.listen.length + " caractères, 300 max)");
+        }
+        if (!isStr(e.hint)) warn(t + " : hint conseillé (un indice de sens aide si la voix est mal comprise)");
+      }
       break;
     case "spot":
       if (!isArr(e.tokens) || e.tokens.length < 2) { err(t + " : tokens doit contenir au moins 2 mots"); break; }

@@ -1,7 +1,8 @@
 /* Pack « Les mots invariables » — français CM2 (path: cm2/francais/mots-invariables).
    Format : voir packs/README.md.
    Source : fiche de leçon « O12 — Les mots invariables » (50 mots en 5 listes apprises l'une après l'autre).
-   Un monde par liste, dans l'ordre de la fiche, puis un monde « boss » sur les 50 mots. */
+   Un monde par liste, dans l'ordre de la fiche, puis un monde « boss » sur les 50 mots.
+   Les exercices « Écoute et écris » (champ listen) sont lus par la voix de l'appareil. */
 window.registerPack({
   "path": "cm2/francais/mots-invariables",
   "lang": "fr",
@@ -129,6 +130,39 @@ window.registerPack({
             }
           ],
           "explanation": "**Aujourd'hui**, **autrefois**, **bientôt**, **aussitôt** disent quand ; **ailleurs** et **autour** disent où ; **beaucoup** et **assez** disent combien."
+        },
+        {
+          "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "Il y a beaucoup de monde au marché.",
+          "sentence": "Il y a ___ de monde au marché.",
+          "answers": [
+            "beaucoup"
+          ],
+          "hint": "Une grande quantité.",
+          "explanation": "**beaucoup** : **eau** au milieu et un **p** muet à la fin."
+        },
+        {
+          "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "Aujourd'hui, nous allons au musée.",
+          "sentence": "___, nous allons au musée.",
+          "answers": [
+            "aujourd'hui"
+          ],
+          "hint": "Le jour où nous sommes.",
+          "explanation": "**aujourd'hui** : une **apostrophe** entre **d** et **hui**."
+        },
+        {
+          "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "Il a vu l'éclair et il s'est aussitôt caché.",
+          "sentence": "Il a vu l'éclair et il s'est ___ caché.",
+          "answers": [
+            "aussitôt"
+          ],
+          "hint": "Tout de suite.",
+          "explanation": "**aussitôt** : deux **s** et un accent circonflexe sur le dernier **o**."
         },
         {
           "type": "fill",
@@ -311,6 +345,39 @@ window.registerPack({
           ],
           "answer": 3,
           "explanation": "**comme** prend **deux m** et un **e** à la fin."
+        },
+        {
+          "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "J'attends le bus depuis une heure.",
+          "sentence": "J'attends le bus ___ une heure.",
+          "answers": [
+            "depuis"
+          ],
+          "hint": "Le début d'une durée qui continue encore.",
+          "explanation": "**depuis** : pas de **s** ni de **t** à la fin."
+        },
+        {
+          "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "D'abord, lave-toi les mains.",
+          "sentence": "___, lave-toi les mains.",
+          "answers": [
+            "D'abord"
+          ],
+          "hint": "En premier.",
+          "explanation": "**d'abord** : une **apostrophe** et un **d** muet à la fin."
+        },
+        {
+          "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "Il court comme le vent.",
+          "sentence": "Il court ___ le vent.",
+          "answers": [
+            "comme"
+          ],
+          "hint": "De la même façon que.",
+          "explanation": "**comme** : deux **m**."
         },
         {
           "type": "sort",
@@ -534,6 +601,39 @@ window.registerPack({
         },
         {
           "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "Mon chat a dormi longtemps sur le canapé.",
+          "sentence": "Mon chat a dormi ___ sur le canapé.",
+          "answers": [
+            "longtemps"
+          ],
+          "hint": "Pendant une longue durée.",
+          "explanation": "**longtemps** : **long** + **temps**, avec **ps** muets à la fin."
+        },
+        {
+          "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "Viens maintenant, le repas est prêt.",
+          "sentence": "Viens ___, le repas est prêt.",
+          "answers": [
+            "maintenant"
+          ],
+          "hint": "Tout de suite, à ce moment.",
+          "explanation": "**maintenant** : **ain** au début et **ant** à la fin."
+        },
+        {
+          "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "Hier, il a neigé toute la journée.",
+          "sentence": "___, il a neigé toute la journée.",
+          "answers": [
+            "Hier"
+          ],
+          "hint": "Le jour avant aujourd'hui.",
+          "explanation": "**hier** : un **h** muet au début."
+        },
+        {
+          "type": "fill",
           "prompt": "Complète avec un mot de la liste 3 qui veut dire « à cet endroit, loin d'ici ».",
           "sentence": "Regarde ___, tout au fond du jardin !",
           "answers": [
@@ -684,6 +784,39 @@ window.registerPack({
           ],
           "answer": 0,
           "explanation": "**quand** exprime le temps et finit par un **d**. **Quant** s'écrit seulement devant **à** ou **aux**."
+        },
+        {
+          "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "Il viendra peut-être à la fête.",
+          "sentence": "Il viendra ___ à la fête.",
+          "answers": [
+            "peut-être"
+          ],
+          "hint": "Ce n'est pas sûr.",
+          "explanation": "**peut-être** : un **trait d'union** et un accent circonflexe sur le **e**."
+        },
+        {
+          "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "Pourquoi ris-tu si fort ?",
+          "sentence": "___ ris-tu si fort ?",
+          "answers": [
+            "Pourquoi"
+          ],
+          "hint": "Le mot pour demander la raison.",
+          "explanation": "**pourquoi** s'écrit en un seul mot."
+        },
+        {
+          "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "Il a plu pendant toute la nuit.",
+          "sentence": "Il a plu ___ toute la nuit.",
+          "answers": [
+            "pendant"
+          ],
+          "hint": "Durant.",
+          "explanation": "**pendant** : **en** au milieu et **ant** à la fin."
         },
         {
           "type": "sort",
@@ -874,6 +1007,39 @@ window.registerPack({
         },
         {
           "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "Je vais quelquefois à la piscine le samedi.",
+          "sentence": "Je vais ___ à la piscine le samedi.",
+          "answers": [
+            "quelquefois"
+          ],
+          "hint": "De temps en temps.",
+          "explanation": "**quelquefois** : en un seul mot, sans **s** au milieu."
+        },
+        {
+          "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "Mon frère est toujours en retard.",
+          "sentence": "Mon frère est ___ en retard.",
+          "answers": [
+            "toujours"
+          ],
+          "hint": "Tout le temps.",
+          "explanation": "**toujours** : un **s** muet à la fin."
+        },
+        {
+          "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "Ce film est vraiment drôle.",
+          "sentence": "Ce film est ___ drôle.",
+          "answers": [
+            "vraiment"
+          ],
+          "hint": "Pour de vrai.",
+          "explanation": "**vraiment** : **vrai** + **ment**, avec un **e** muet au milieu."
+        },
+        {
+          "type": "fill",
           "prompt": "Complète avec un mot de la liste 5 qui veut dire « de bonne heure ».",
           "sentence": "Le matin, je me lève ___ pour ne pas rater le bus.",
           "answers": [
@@ -1057,6 +1223,39 @@ window.registerPack({
             }
           ],
           "explanation": "Chaque mot invariable a souvent un contraire qui aide à s'en souvenir."
+        },
+        {
+          "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "Je reste à la maison parce que j'ai froid.",
+          "sentence": "Je reste à la maison ___ j'ai froid.",
+          "answers": [
+            "parce que"
+          ],
+          "hint": "Le mot qui donne la raison.",
+          "explanation": "**parce que** s'écrit en **deux mots**."
+        },
+        {
+          "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "Regarde le bateau là-bas, au bout du port.",
+          "sentence": "Regarde le bateau ___, au bout du port.",
+          "answers": [
+            "là-bas"
+          ],
+          "hint": "À cet endroit, loin d'ici.",
+          "explanation": "**là-bas** : un accent grave sur le **à** et un **trait d'union**."
+        },
+        {
+          "type": "fill",
+          "prompt": "Écoute et écris le mot qui manque.",
+          "listen": "J'ai presque fini mon dessin.",
+          "sentence": "J'ai ___ fini mon dessin.",
+          "answers": [
+            "presque"
+          ],
+          "hint": "Pas tout à fait.",
+          "explanation": "**presque** : **qu** et un **e** à la fin."
         },
         {
           "type": "fill",

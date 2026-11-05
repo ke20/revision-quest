@@ -111,3 +111,44 @@ test("writeCheck: requirements met (case-insensitive regex), minRequirements, mi
   r = j(X.writeCheck({}, ""));
   assert.deepStrictEqual([r.met, r.count, r.needed, r.ok], [[], 0, 0, true], "no requirements, no minimum");
 });
+
+/* ---------- speech: choice of the device voice (field `listen`) ---------- */
+
+test("pickVoice: only local voices of the pack language, exact region first, then default, then any", () => {
+  const v = (name, lang, localService = true, def = false) => ({ name, lang, localService, default: def });
+  const online = v("Google français", "fr-FR", false);
+  const ca = v("Amélie", "fr-CA");
+  const fr = v("Thomas", "fr_FR");
+  const en = v("Daniel", "en-GB");
+  const us = v("Samantha", "en-US", true, true);
+  assert.strictEqual(X.pickVoice([online, ca, fr, en], "fr").name, "Thomas", "fr-FR (also written fr_FR) wins");
+  assert.strictEqual(X.pickVoice([online, ca, en], "fr").name, "Amélie", "another French region if no fr-FR");
+  assert.strictEqual(X.pickVoice([online, en], "fr"), null, "an online voice is never used (the text would leave the device)");
+  assert.strictEqual(X.pickVoice([us, en, fr], "en").name, "Daniel", "English pack: en-GB first");
+  assert.strictEqual(X.pickVoice([v("Alex", "en-US"), us], "en").name, "Samantha", "then the default voice");
+  assert.strictEqual(X.pickVoice([v("Frank", "fr")], "fr").name, "Frank", "a bare language tag matches");
+  assert.strictEqual(X.pickVoice([v("Fritz", "fy-NL")], "fr"), null, "fy is not fr");
+  assert.strictEqual(X.pickVoice([], "fr"), null);
+  assert.strictEqual(X.pickVoice(null, "fr"), null);
+});
+
+test("pickVoice: premium, then enhanced voices first; Apple novelty voices (Eddy, Grandma…) only as a last resort", () => {
+  const v = (name, lang, voiceURI = "", def = false) => ({ name, lang, voiceURI, localService: true, default: def });
+  const eddy = v("Eddy (Français (France))", "fr-FR", "com.apple.eloquence.fr-FR.Eddy", true);
+  const grandma = v("Grandma (Français (France))", "fr-FR", "com.apple.eloquence.fr-FR.Grandma");
+  const thomas = v("Thomas", "fr-FR", "com.apple.voice.compact.fr-FR.Thomas");
+  const thomasPlus = v("Thomas (Améliorée)", "fr-FR", "com.apple.voice.enhanced.fr-FR.Thomas");
+  const audrey = v("Audrey (Premium)", "fr-FR", "com.apple.voice.premium.fr-FR.Audrey");
+  const amelie = v("Amélie (Premium)", "fr-CA", "com.apple.voice.premium.fr-CA.Amelie");
+  assert.strictEqual(X.pickVoice([eddy, grandma, thomas], "fr").name, "Thomas", "a normal voice beats the default novelty voice");
+  assert.strictEqual(X.pickVoice([eddy, thomas, thomasPlus], "fr").name, "Thomas (Améliorée)", "enhanced beats compact");
+  assert.strictEqual(X.pickVoice([eddy, thomasPlus, audrey], "fr").name, "Audrey (Premium)", "premium first");
+  assert.strictEqual(X.pickVoice([thomasPlus, amelie], "fr").name, "Amélie (Premium)", "quality before the region");
+  assert.strictEqual(X.pickVoice([amelie, audrey], "fr").name, "Audrey (Premium)", "same quality: fr-FR first");
+  assert.strictEqual(X.pickVoice([grandma, eddy], "fr").name, "Eddy (Français (France))", "only novelty voices: still a voice (default)");
+  // the real Chrome list on a Mac without extra voices: voiceURI = name, Amélie (fr-CA) is the default
+  const chrome = ["Amélie|fr-CA", "Eddy (français (France))|fr-FR", "Flo (français (France))|fr-FR", "Jacques|fr-FR", "Thomas|fr-FR"]
+    .map((x, i) => { const [name, lang] = x.split("|"); return { name, lang, voiceURI: name, localService: true, default: i === 0 }; });
+  assert.strictEqual(X.pickVoice(chrome, "fr").name, "Thomas", "Thomas rather than Jacques, Amélie (fr-CA) or Eddy");
+  assert.strictEqual(X.pickVoice(chrome, "fr", ["Thomas|Thomas"]).name, "Jacques", "a silent voice is excluded by its key");
+});

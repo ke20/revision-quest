@@ -83,7 +83,12 @@
       xpKept: "XP kept<br>(XP gardée)",
       tryAgain: "↻ Try again <small>(Réessayer)</small>",
       worldMap: "🗺️ World map",
-      skipped: "This exercise can't be shown. Skipped (no XP). <small>(exercice ignoré)</small>"
+      skipped: "This exercise can't be shown. Skipped (no XP). <small>(exercice ignoré)</small>",
+      listen: "🔊 Listen <small>(écouter)</small>",
+      listenSlow: "🐢 Slower <small>(plus lentement)</small>",
+      noVoice: "No voice on this device to read the word. <small>(pas de voix sur cet appareil)</small>",
+      skipNoVoice: "Skip <small>(passer)</small>",
+      skippedNoVoice: "Listening exercise skipped (no XP). <small>(exercice d'écoute passé)</small>"
     },
     fr: {
       check: "Vérifier",
@@ -152,7 +157,12 @@
       xpKept: "XP gardée",
       tryAgain: "↻ Réessayer",
       worldMap: "🗺️ Carte des mondes",
-      skipped: "Cet exercice ne peut pas s'afficher. On le passe (pas d'XP)."
+      skipped: "Cet exercice ne peut pas s'afficher. On le passe (pas d'XP).",
+      listen: "🔊 Écouter",
+      listenSlow: "🐢 Plus lentement",
+      noVoice: "Pas de voix sur cet appareil pour lire le mot.",
+      skipNoVoice: "Passer",
+      skippedNoVoice: "Exercice d'écoute passé (pas d'XP)."
     }
   };
 

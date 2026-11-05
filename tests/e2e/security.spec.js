@@ -216,7 +216,7 @@ test("home: « Code source sur GitHub » link opens a new tab without referrer n
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } }); const page = await ctx.newPage(); R.watch(page, "source");
   await page.goto(BASE);
   await H.newPlayer(page, "Lien");
-  const a = page.locator(".source-link a");
+  const a = page.locator(".source-link:not(.voices-link) a");
   await a.waitFor();
   ok(await a.getAttribute("href") === "https://github.com/ke20/revision-quest", "points to the GitHub repository");
   ok(await a.getAttribute("target") === "_blank" && await a.getAttribute("rel") === "noopener noreferrer", "new tab, noopener noreferrer");
@@ -224,7 +224,7 @@ test("home: « Code source sur GitHub » link opens a new tab without referrer n
   // a broken or foreign address in APP_CONFIG hides the link
   const scriptUrl = ["javascript", "alert(1)"].join(":"); // built at run time: ESLint forbids script URLs in code
   await page.evaluate((u) => { APP_CONFIG.sourceUrl = u; App.showHome(); }, scriptUrl);
-  ok(await page.locator(".source-link").count() === 0, "script address refused");
+  ok(await page.locator(".source-link:not(.voices-link)").count() === 0, "script address refused");
   R.done();
   await ctx.close();
 });
