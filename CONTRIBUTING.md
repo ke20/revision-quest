@@ -41,6 +41,7 @@ revision-quest/
 │       └── <cours>/        chapitre « par groupes »
 │           └── <groupe>.js un fichier par groupe
 ├── tools/validate-pack.js  vérifie un chapitre ou tout le catalogue (--all), avec js/pack-rules.js
+├── tools/pack-add.js      ajoute ou met à jour un chapitre dans js/catalog.js (depuis son meta)
 ├── tests/
 │   ├── unit/               tests node:test
 │   ├── e2e/                tests Playwright
@@ -98,6 +99,7 @@ npm run qa            # = npm run lint && npm test
 | `mise run lint` | `npm run lint` | ESLint sur tout le JavaScript (`eslint.config.js`) |
 | `mise run lint:fix` | `npm run lint:fix` | corrige automatiquement ce qu'ESLint sait corriger |
 | `mise run validate` | `npm run validate` | vérifie tous les packs du catalogue (`tools/validate-pack.js --all`) |
+| `mise run pack:add <fichier>` | `npm run pack:add -- <fichier>` | vérifie un chapitre et écrit son entrée dans `js/catalog.js` (`tools/pack-add.js`) |
 | `mise run test:unit` | `npm run test:unit` | tests unitaires `node:test` : moteur, exercices (texte enrichi, correction), catalogue, validateur (packs cassés dans `tests/fixtures/unit/`), doc |
 | `mise run test:e2e` | `npm run test:e2e` | tests Playwright (`tests/e2e/*.spec.js`), Chromium 1280 px + un projet 390 px |
 | `mise run test` | `npm test` | validate, unitaires, e2e, dans cet ordre |

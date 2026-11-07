@@ -4,6 +4,12 @@
 window.registerPack({
   "path": "4e/anglais/giving-advice",
   "lang": "en",
+  "meta": {
+    "title": "Dear Agony Aunt",
+    "description": "Donner des conseils et exprimer de l'empathie en anglais (should, If I were you…).",
+    "icon": "💌",
+    "color": "#EC4899"
+  },
   "letters": [
     {
       "id": 1,

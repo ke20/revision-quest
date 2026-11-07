@@ -8,6 +8,12 @@
 window.registerPack({
   "path": "cm2/francais/comprehension-lecture",
   "lang": "fr",
+  "meta": {
+    "title": "Lire et comprendre",
+    "description": "Des textes de plus en plus longs (fables, contes, Jules Verne, problèmes, consignes) et une enquête avec Nina, Malo et Gros Bec.",
+    "icon": "📖",
+    "color": "#7C3AED"
+  },
   "documents": [
     {
       "id": "m1-1",

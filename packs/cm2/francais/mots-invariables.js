@@ -6,6 +6,12 @@
 window.registerPack({
   "path": "cm2/francais/mots-invariables",
   "lang": "fr",
+  "meta": {
+    "title": "Les mots invariables",
+    "description": "50 mots qui ne changent jamais (ailleurs, beaucoup, longtemps, parce que, vraiment…), appris liste par liste.",
+    "icon": "🧱",
+    "color": "#7C3AED"
+  },
   "worlds": [
     {
       "id": "liste-1",

@@ -5,6 +5,12 @@
 window.registerPack({
   "path": "cm2/francais/accord-sujet-verbe",
   "lang": "fr",
+  "meta": {
+    "title": "L'accord du verbe avec son sujet",
+    "description": "Trouver le sujet, le nom noyau du groupe nominal, les sujets composés de plusieurs noms et plusieurs verbes pour un même sujet.",
+    "icon": "🐝",
+    "color": "#7C3AED"
+  },
   "worlds": [
     {
       "id": "sujet-simple",

@@ -1,7 +1,8 @@
 /* Révision Quest — catalogue des matières, niveaux et packs de contenu.
    Un pack est identifié par son chemin "<niveau>/<matiere>/<cours>" = le fichier packs/<niveau>/<matiere>/<cours>.js,
    chargé seulement quand on le choisit. Niveau et matière viennent des deux premiers segments du chemin.
-   Pour ajouter un pack : voir packs/README.md, puis `node tools/validate-pack.js --all`. */
+   Pour ajouter ou mettre à jour un pack : `mise run pack:add packs/<niveau>/<matiere>/<cours>.js` (écrit son entrée
+   depuis le bloc meta du pack ; voir packs/README.md). Les chapitres « par groupes » s'écrivent encore à la main. */
 window.CATALOG = {
   subjects: [
     { id: "anglais", label: "Anglais", icon: "🇬🇧", color: "#EC4899" },

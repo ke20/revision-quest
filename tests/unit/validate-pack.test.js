@@ -14,7 +14,7 @@ const REL = "packs/4e/anglais/unit-valid.js"; // where the fixture pack would li
 const catalog = (over = {}) => ({
   subjects: [{ id: "anglais", label: "Anglais" }],
   levels: [{ id: "4e", label: "4e", order: 8 }],
-  packs: [Object.assign({ path: "4e/anglais/unit-valid", title: "Test", lang: "fr", worldCount: 1 }, over)]
+  packs: [Object.assign({ path: "4e/anglais/unit-valid", title: "Test", description: "Pack de test des contrôles.", icon: "🧪", lang: "fr", worldCount: 1 }, over)]
 });
 const run = (name, opts = {}) => validatePack(path.join(FIX, name + ".js"), opts.catalog || catalog(), { rel: opts.rel || REL });
 

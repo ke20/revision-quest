@@ -24,7 +24,7 @@ const fileOf = (p) => "packs/" + p + ".js";
 function catalogUnits(catalog) {
   return (isArr(catalog.packs) ? catalog.packs : []).flatMap((p) => {
     if (!p || typeof p.path !== "string") return [];
-    if (!isArr(p.groups)) return [{ path: p.path, lang: p.lang, worldCount: p.worldCount }];
+    if (!isArr(p.groups)) return [{ path: p.path, lang: p.lang, worldCount: p.worldCount, title: p.title, description: p.description, icon: p.icon, color: p.color }];
     return p.groups.filter((g) => g && typeof g.id === "string").map((g) => ({ path: p.path + "/" + g.id, lang: p.lang, worldCount: g.worldCount, group: true }));
   });
 }
@@ -39,9 +39,9 @@ function runFile(file, sandboxWindow) {
   vm.runInNewContext(code, { window: sandboxWindow }, { filename: file, timeout: 2000 });
 }
 
-function loadCatalog() {
+function loadCatalog(file = CATALOG_FILE) {
   const win = {};
-  runFile(CATALOG_FILE, win);
+  runFile(file, win);
   if (!win.CATALOG || typeof win.CATALOG !== "object") throw new Error("js/catalog.js ne définit pas window.CATALOG");
   return win.CATALOG;
 }
@@ -66,14 +66,29 @@ function validatePack(file, catalog, opts = {}) {
   if (Rules.checkPath(pack.path, err) && rel !== fileOf(pack.path)) err(`path "${pack.path}" : le fichier doit être ${fileOf(pack.path)} (et non ${rel})`);
   Rules.checkLang(pack.lang, err);
 
+  // course information: required on a chapter, not used on a group (its chapter entry is written by hand)
+  const isGroup = /^[^/]+\/[^/]+\/[^/]+\/[^/]+$/.test(String(pack.path));
+  let metaOk = false;
+  if (isGroup) { if (pack.meta != null) warn("meta ignoré sur un groupe : les infos du chapitre restent dans js/catalog.js"); }
+  else {
+    metaOk = Rules.validateMeta(pack.meta, err);
+    if (pack.meta && pack.meta.basedOn != null) err(`meta.basedOn : copie privée du cours "${pack.meta.basedOn}", elle ne peut pas entrer dans le catalogue officiel`);
+  }
+
   // catalogue entry
   const entries = catalogUnits(catalog).filter((p) => p.path === pack.path);
-  if (!entries.length) err(`pack "${pack.path}" absent de js/catalog.js (ajoute { path: "${pack.path}", ... } dans CATALOG.packs, ou le groupe dans groups: [...])`);
+  const fix = ` (lance : mise run pack:add ${rel})`;
+  if (!entries.length) err(`pack "${pack.path}" absent de js/catalog.js` + (isGroup ? " (ajoute le groupe dans groups: [...] de son chapitre)" : fix));
   else {
     if (entries.length > 1) err(`pack "${pack.path}" présent ${entries.length} fois dans le catalogue`);
     const e = entries[0];
     if (e.lang && e.lang !== pack.lang) err(`catalogue : lang "${e.lang}" ≠ lang du pack "${pack.lang}"`);
     if (isArr(pack.worlds) && e.worldCount !== pack.worlds.length) err(`catalogue : worldCount ${e.worldCount} ≠ ${pack.worlds.length} mondes dans le pack${e.group ? " (groupe)" : ""}`);
+    if (metaOk && !e.group) {
+      ["title", "description", "icon", "color"].forEach((k) => {
+        if (e[k] !== pack.meta[k]) err(`catalogue : ${k} ${JSON.stringify(e[k])} ≠ meta.${k} ${JSON.stringify(pack.meta[k])}` + fix);
+      });
+    }
   }
 
   const stats = Rules.validateContent(pack, err, warn);
@@ -82,7 +97,9 @@ function validatePack(file, catalog, opts = {}) {
 
 /* ---------- catalogue validation ---------- */
 
-function validateCatalog(catalog) {
+/** opts.exists(rel) → true when the repo file exists (default: on disk; tools/pack-add.js checks a catalogue before writing). */
+function validateCatalog(catalog, opts = {}) {
+  const exists = opts.exists || ((rel) => fs.existsSync(path.join(ROOT, rel)));
   const errors = [];
   const subj = new Set(), lv = new Set(), ids = new Set();
   (catalog.subjects || []).forEach((s, i) => {
@@ -110,7 +127,7 @@ function validateCatalog(catalog) {
     if (p.lang !== "fr" && p.lang !== "en") errors.push(P + " : lang doit être fr ou en");
     if (p.color != null && !COLOR_RE.test(p.color)) errors.push(P + " : color invalide");
     if (p.groups == null) {
-      if (!fs.existsSync(path.join(ROOT, fileOf(p.path)))) errors.push(P + ` : fichier ${fileOf(p.path)} introuvable`);
+      if (!exists(fileOf(p.path))) errors.push(P + ` : fichier ${fileOf(p.path)} introuvable`);
       if (!Number.isInteger(p.worldCount) || p.worldCount < 1) errors.push(P + " : worldCount (nombre de mondes) manquant");
       return;
     }
@@ -118,7 +135,7 @@ function validateCatalog(catalog) {
     if (!isArr(p.groups) || !p.groups.length) { errors.push(P + " : groups doit être un tableau non vide"); return; }
     if (p.groups.length > 20) errors.push(P + " : 20 groupes maximum");
     if (p.worldCount != null) errors.push(P + " : pas de worldCount sur un chapitre par groupes (il est dans chaque groupe)");
-    if (fs.existsSync(path.join(ROOT, fileOf(p.path)))) errors.push(P + ` : ${fileOf(p.path)} ne sert à rien (chapitre par groupes : un fichier par groupe dans packs/${p.path}/)`);
+    if (exists(fileOf(p.path))) errors.push(P + ` : ${fileOf(p.path)} ne sert à rien (chapitre par groupes : un fichier par groupe dans packs/${p.path}/)`);
     const gids = new Set();
     p.groups.forEach((g, j) => {
       const G = `${P} groups[${j}]`;
@@ -129,7 +146,7 @@ function validateCatalog(catalog) {
       if (!isStr(g.label)) errors.push(G + " : label manquant (ex. « Groupe 1 »)");
       if (g.difficulty != null && !(Number.isInteger(g.difficulty) && g.difficulty >= 1 && g.difficulty <= 5)) errors.push(G + " : difficulty doit être un entier de 1 à 5");
       if (!Number.isInteger(g.worldCount) || g.worldCount < 1) errors.push(G + " : worldCount (nombre de mondes) manquant");
-      if (ID_RE.test(String(g.id)) && !fs.existsSync(path.join(ROOT, fileOf(p.path + "/" + g.id)))) errors.push(G + ` : fichier ${fileOf(p.path + "/" + g.id)} introuvable`);
+      if (ID_RE.test(String(g.id)) && !exists(fileOf(p.path + "/" + g.id))) errors.push(G + ` : fichier ${fileOf(p.path + "/" + g.id)} introuvable`);
     });
   });
   return errors;

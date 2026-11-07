@@ -2,6 +2,12 @@
 window.registerPack({
   "path": "cm2/histoire/test-revolution",
   "lang": "fr",
+  "meta": {
+    "title": "Révolution (test)",
+    "description": "Pack de test en français.",
+    "icon": "🏰",
+    "color": "#B45309"
+  },
   "documents": [
     {
       "id": "d1",

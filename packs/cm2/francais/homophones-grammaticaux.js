@@ -5,6 +5,12 @@
 window.registerPack({
   "path": "cm2/francais/homophones-grammaticaux",
   "lang": "fr",
+  "meta": {
+    "title": "Les homophones grammaticaux",
+    "description": "a/à, et/est, son/sont, on/ont/on n', ce/se, c'est/s'est, leur/leurs, la/là/l'a, quand/quant/qu'en, peu/peut, près/prêt, plus tôt/plutôt… et les tests pour ne plus les confondre.",
+    "icon": "🔀",
+    "color": "#7C3AED"
+  },
   "worlds": [
     {
       "id": "a-ou-et",

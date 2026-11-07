@@ -6,6 +6,12 @@
 window.registerPack({
   "path": "4e/physique-chimie/masse-volumique",
   "lang": "fr",
+  "meta": {
+    "title": "La masse volumique",
+    "description": "Changements d'état, conversions, lecture d'éprouvette, ρ = m ÷ V, trouver m ou V, identifier un matériau, flotter ou couler.",
+    "icon": "⚖️",
+    "color": "#0D9488"
+  },
   "documents": [
     {
       "id": "transport",
@@ -859,12 +865,12 @@ window.registerPack({
               ],
               "L1": [
                 2.5,
-                5.0,
+                5,
                 "hidden"
               ],
               "L2": [
                 4.5,
-                5.0,
+                5,
                 "hidden"
               ],
               "T1": [
@@ -873,7 +879,7 @@ window.registerPack({
                 "hidden"
               ],
               "U1": [
-                4.0,
+                4,
                 8.2,
                 "hidden"
               ],
@@ -898,7 +904,7 @@ window.registerPack({
                 "hidden"
               ],
               "U3": [
-                4.0,
+                4,
                 6.6,
                 "hidden"
               ],
@@ -919,12 +925,12 @@ window.registerPack({
               ],
               "T5": [
                 4.5,
-                5.0,
+                5,
                 "hidden"
               ],
               "U5": [
-                4.0,
-                5.0,
+                4,
+                5,
                 "hidden"
               ],
               "T6": [
@@ -948,7 +954,7 @@ window.registerPack({
                 "hidden"
               ],
               "U7": [
-                4.0,
+                4,
                 3.4,
                 "hidden"
               ],
@@ -973,18 +979,18 @@ window.registerPack({
                 "hidden"
               ],
               "U9": [
-                4.0,
+                4,
                 1.8,
                 "hidden"
               ],
               "T10": [
                 4.5,
-                1.0,
+                1,
                 "hidden"
               ],
               "U10": [
                 3.6,
-                1.0,
+                1,
                 "hidden"
               ],
               "V10": [
@@ -1181,7 +1187,7 @@ window.registerPack({
                 "hidden"
               ],
               "U1": [
-                4.0,
+                4,
                 8.2,
                 "hidden"
               ],
@@ -1206,7 +1212,7 @@ window.registerPack({
                 "hidden"
               ],
               "U3": [
-                4.0,
+                4,
                 6.6,
                 "hidden"
               ],
@@ -1227,12 +1233,12 @@ window.registerPack({
               ],
               "T5": [
                 4.5,
-                5.0,
+                5,
                 "hidden"
               ],
               "U5": [
-                4.0,
-                5.0,
+                4,
+                5,
                 "hidden"
               ],
               "T6": [
@@ -1256,7 +1262,7 @@ window.registerPack({
                 "hidden"
               ],
               "U7": [
-                4.0,
+                4,
                 3.4,
                 "hidden"
               ],
@@ -1281,18 +1287,18 @@ window.registerPack({
                 "hidden"
               ],
               "U9": [
-                4.0,
+                4,
                 1.8,
                 "hidden"
               ],
               "T10": [
                 4.5,
-                1.0,
+                1,
                 "hidden"
               ],
               "U10": [
                 3.6,
-                1.0,
+                1,
                 "hidden"
               ],
               "V10": [
@@ -1489,7 +1495,7 @@ window.registerPack({
                 "hidden"
               ],
               "U1": [
-                4.0,
+                4,
                 8.2,
                 "hidden"
               ],
@@ -1499,7 +1505,7 @@ window.registerPack({
                 "hidden"
               ],
               "U2": [
-                4.0,
+                4,
                 7.4,
                 "hidden"
               ],
@@ -1509,7 +1515,7 @@ window.registerPack({
                 "hidden"
               ],
               "U3": [
-                4.0,
+                4,
                 6.6,
                 "hidden"
               ],
@@ -1519,18 +1525,18 @@ window.registerPack({
                 "hidden"
               ],
               "U4": [
-                4.0,
+                4,
                 5.8,
                 "hidden"
               ],
               "T5": [
                 4.5,
-                5.0,
+                5,
                 "hidden"
               ],
               "U5": [
                 3.6,
-                5.0,
+                5,
                 "hidden"
               ],
               "V5": [
@@ -1544,7 +1550,7 @@ window.registerPack({
                 "hidden"
               ],
               "U6": [
-                4.0,
+                4,
                 4.2,
                 "hidden"
               ],
@@ -1554,7 +1560,7 @@ window.registerPack({
                 "hidden"
               ],
               "U7": [
-                4.0,
+                4,
                 3.4,
                 "hidden"
               ],
@@ -1564,7 +1570,7 @@ window.registerPack({
                 "hidden"
               ],
               "U8": [
-                4.0,
+                4,
                 2.6,
                 "hidden"
               ],
@@ -1574,18 +1580,18 @@ window.registerPack({
                 "hidden"
               ],
               "U9": [
-                4.0,
+                4,
                 1.8,
                 "hidden"
               ],
               "T10": [
                 4.5,
-                1.0,
+                1,
                 "hidden"
               ],
               "U10": [
                 3.6,
-                1.0,
+                1,
                 "hidden"
               ],
               "V10": [
@@ -1771,7 +1777,7 @@ window.registerPack({
                 "hidden"
               ],
               "U1": [
-                4.0,
+                4,
                 8.2,
                 "hidden"
               ],
@@ -1796,7 +1802,7 @@ window.registerPack({
                 "hidden"
               ],
               "U3": [
-                4.0,
+                4,
                 6.6,
                 "hidden"
               ],
@@ -1817,12 +1823,12 @@ window.registerPack({
               ],
               "T5": [
                 4.5,
-                5.0,
+                5,
                 "hidden"
               ],
               "U5": [
-                4.0,
-                5.0,
+                4,
+                5,
                 "hidden"
               ],
               "T6": [
@@ -1846,7 +1852,7 @@ window.registerPack({
                 "hidden"
               ],
               "U7": [
-                4.0,
+                4,
                 3.4,
                 "hidden"
               ],
@@ -1871,18 +1877,18 @@ window.registerPack({
                 "hidden"
               ],
               "U9": [
-                4.0,
+                4,
                 1.8,
                 "hidden"
               ],
               "T10": [
                 4.5,
-                1.0,
+                1,
                 "hidden"
               ],
               "U10": [
                 3.6,
-                1.0,
+                1,
                 "hidden"
               ],
               "V10": [

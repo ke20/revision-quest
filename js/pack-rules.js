@@ -184,6 +184,44 @@
     if (lang !== "fr" && lang !== "en") err(`lang doit être "fr" ou "en" (reçu : ${json(lang)})`);
   }
 
+  /* ---------- course information (meta): what the catalogue shows ----------
+     Level and subject are not repeated here: they are the first two parts of the path. */
+
+  const META_KEYS = ["title", "description", "icon", "color", "license", "author", "basedOn"];
+  const LICENSES = ["CC-BY-SA-4.0"];
+  const META_LIMITS = { title: 80, description: 240, icon: 16, author: 40 }; // same limits as the game (js/packs.js)
+
+  /** pack.meta. Returns true when it is usable to build a catalogue entry. */
+  function validateMeta(meta, err) {
+    if (meta == null) { err("meta manquant : infos du cours pour le catalogue ({ \"title\", \"description\", \"icon\", \"color\" })"); return false; }
+    if (typeof meta !== "object" || isArr(meta)) { err("meta doit être un objet"); return false; }
+    let failed = 0;
+    const e = (m) => { failed++; err(m); };
+    unknownKeys(meta, META_KEYS).forEach((k) => e(`meta : champ "${k}" inconnu (${META_KEYS.join(", ")})`));
+    ["title", "description", "icon"].forEach((k) => {
+      if (!isStr(meta[k])) e(`meta.${k} manquant`);
+      else if (meta[k].length > META_LIMITS[k]) e(`meta.${k} trop long (${meta[k].length} caractères, ${META_LIMITS[k]} max)`);
+    });
+    ["title", "description", "icon", "author"].forEach((k) => {
+      if (typeof meta[k] === "string" && /\[\[|\*\*/.test(meta[k])) e(`meta.${k} : texte simple seulement (pas de ** ni de [[...]])`);
+    });
+    if (meta.color != null && (typeof meta.color !== "string" || !COLOR_RE.test(meta.color))) e(`meta.color ${json(meta.color)} invalide (format #RRGGBB)`);
+    if (meta.license != null && !LICENSES.includes(meta.license)) e(`meta.license ${json(meta.license)} inconnue (${LICENSES.join(", ")})`);
+    if (meta.author != null && (!isStr(meta.author) || meta.author.length > META_LIMITS.author)) e(`meta.author : pseudonyme de 1 à ${META_LIMITS.author} caractères`);
+    if (meta.basedOn != null && !PATH_RE.test(String(meta.basedOn))) e(`meta.basedOn ${json(meta.basedOn)} invalide (chemin "<niveau>/<matiere>/<cours>" du cours d'origine)`);
+    return failed === 0;
+  }
+
+  /** Catalogue entry built from a pack (meta, lang, worlds): { path, title, description, icon, color?, lang, worldCount }. */
+  function catalogEntry(pack) {
+    const m = pack.meta || {};
+    const entry = { path: pack.path, title: m.title, description: m.description, icon: m.icon };
+    if (m.color != null) entry.color = m.color;
+    entry.lang = pack.lang;
+    entry.worldCount = isArr(pack.worlds) ? pack.worlds.length : 0;
+    return entry;
+  }
+
   /* ---------- pack content: documents, worlds, lessons, exercises ---------- */
 
   /** Checks everything inside a pack except its identity (path, lang) and its catalogue entry.
@@ -393,7 +431,7 @@
     MAX_ROWS, MAX_COLS, MAX_CELL, MAX_PACK_SIZE,
     parseStrict, formatStrict,
     isStr, plain, checkMarkup,
-    checkPath, checkLang,
+    checkPath, checkLang, validateMeta, catalogEntry, LICENSES,
     validateContent, validateLesson, validateExercise,
     validateFigure, validateTable
   };

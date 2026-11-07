@@ -13,6 +13,7 @@
     "lint:fix": "eslint . --fix",
     "audit": "npm audit --audit-level=moderate",
     "validate": "node tools/validate-pack.js --all",
+    "pack:add": "node tools/pack-add.js",
     "test:unit": "node --test tests/unit/*.test.js",
     "test:e2e": "playwright test",
     "test": "npm run validate && npm run test:unit && npm run test:e2e",

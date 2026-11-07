@@ -2,6 +2,11 @@
 window.registerPack({
   "path": "4e/anglais/unit-valid",
   "lang": "fr",
+  "meta": {
+    "title": "Test",
+    "description": "Pack de test des contrôles.",
+    "icon": "🧪"
+  },
   "documents": [
     {
       "id": "d1",

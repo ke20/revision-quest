@@ -5,6 +5,12 @@
 window.registerPack({
   "path": "cm2/histoire/louis-ix-francois-ier-henri-iv",
   "lang": "fr",
+  "meta": {
+    "title": "Trois rois de France",
+    "description": "Louis IX, François Ier et Henri IV : du Moyen Âge aux Temps modernes.",
+    "icon": "👑",
+    "color": "#B45309"
+  },
   "documents": [
     {
       "id": "synthese",

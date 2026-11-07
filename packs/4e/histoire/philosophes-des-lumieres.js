@@ -7,6 +7,12 @@
 window.registerPack({
   "path": "4e/histoire/philosophes-des-lumieres",
   "lang": "fr",
+  "meta": {
+    "title": "Les philosophes des Lumières",
+    "description": "Monarchie absolue, société d'ordres, Voltaire, Montesquieu, Diderot, Rousseau, la diffusion des idées et la marche vers 1789.",
+    "icon": "💡",
+    "color": "#B45309"
+  },
   "documents": [
     {
       "id": "montesquieu",

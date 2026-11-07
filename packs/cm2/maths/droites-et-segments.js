@@ -4,6 +4,12 @@
 window.registerPack({
   "path": "cm2/maths/droites-et-segments",
   "lang": "fr",
+  "meta": {
+    "title": "Droites et segments",
+    "description": "Géométrie : points, segments, droites, milieu, points alignés, droites sécantes, perpendiculaires et parallèles, programme de construction.",
+    "icon": "📐",
+    "color": "#2563EB"
+  },
   "worlds": [
     {
       "id": 1,

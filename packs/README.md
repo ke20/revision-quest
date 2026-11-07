@@ -25,8 +25,10 @@ Chaque pack est **un seul fichier** `packs/<niveau>/<matiere>/<cours>.js`, charg
 
 Étapes :
 
-1. Écrire `packs/<niveau>/<matiere>/<cours>.js` (format ci-dessous).
-2. L'ajouter au catalogue `js/catalog.js`.
+1. Écrire `packs/<niveau>/<matiere>/<cours>.js` (format ci-dessous), avec ses infos de catalogue dans `meta`.
+2. L'ajouter au catalogue : `mise run pack:add packs/<niveau>/<matiere>/<cours>.js` (ou
+   `npm run pack:add -- packs/…`). La commande vérifie tout le pack, puis écrit son entrée dans `js/catalog.js`.
+   Elle sert aussi après chaque modification du pack (titre, nombre de mondes…).
 3. Vérifier : `mise run validate` (ou `node tools/validate-pack.js packs/<niveau>/<matiere>/<cours>.js`).
 4. Tester dans le navigateur : `mise run dev` (ou `npm start`) → « Choisir un chapitre ».
 
@@ -37,6 +39,12 @@ Chaque pack est **un seul fichier** `packs/<niveau>/<matiere>/<cours>.js`, charg
 window.registerPack({
   "path": "cm2/histoire/revolution-francaise",
   "lang": "fr",
+  "meta": {
+    "title": "La Révolution française",
+    "description": "Les dates, les acteurs et les grandes idées de 1789.",
+    "icon": "🏰",
+    "color": "#B45309"
+  },
   "documents": [
     { "id": "serment", "title": "Le serment du Jeu de paume", "from": "", "text": "Les **députés** jurent…" }
   ],
@@ -46,6 +54,11 @@ window.registerPack({
 
 - `path` = chemin du fichier sans `packs/` ni `.js`.
 - `lang` = langue de l'interface des exercices (voir § 3).
+- `meta` = ce que montre le catalogue (voir § 5) : `title` (80 caractères max), `description` (240 max), `icon`
+  (un emoji), `color` facultative (sinon la couleur de la matière). Texte simple, sans `**` ni `[[...]]`.
+  Niveau et matière n'y sont pas : ce sont les deux premiers morceaux de `path`.
+  Champs facultatifs pour les cours de la communauté : `license` (`"CC-BY-SA-4.0"`), `author` (pseudonyme, 40
+  caractères max). `basedOn` marque une copie privée d'un cours officiel : un tel pack n'entre pas au catalogue.
 - `documents` (facultatif) = textes à lire (lettres, sources, extraits…).
 - `worlds` = 4 à 8 mondes, du plus facile au plus difficile (voir « Un monde » plus bas).
 
@@ -294,6 +307,19 @@ Un tableau qui donne la réponse (« 1 L = ? ») ne va pas sur l'exercice : le g
 
 ## 5. Ajouter le pack au catalogue (`js/catalog.js`)
 
+```bash
+mise run pack:add packs/cm2/histoire/revolution-francaise.js
+```
+
+La commande lit le pack sans l'exécuter (format strict), le vérifie en entier, puis écrit son entrée dans
+`js/catalog.js` : à la même place s'il y est déjà, sinon à la fin. Les commentaires du catalogue sont gardés. Si le
+fichier est ailleurs (par exemple dans Téléchargements), il est copié dans `packs/<path>.js` ; s'il y en a déjà un
+différent, il faut ajouter `--replace`. En cas de refus, rien n'est écrit. Le niveau et la matière doivent déjà
+exister dans `CATALOG.levels` et `CATALOG.subjects`.
+
+L'entrée écrite reprend `meta`, `lang` et le nombre de mondes. Le validateur signale toute différence entre `meta`
+et le catalogue :
+
 ```js
 {
   path: "cm2/histoire/revolution-francaise",   // <niveau>/<matiere>/<cours> : le fichier est packs/<path>.js
@@ -306,13 +332,14 @@ Un tableau qui donne la réponse (« 1 L = ? ») ne va pas sur l'exercice : le g
 }
 ```
 
-Une nouvelle matière se déclare dans `CATALOG.subjects` (`{ id, label, icon, color }`).
+Une nouvelle matière se déclare à la main dans `CATALOG.subjects` (`{ id, label, icon, color }`), avant `pack:add`.
 
 ### Chapitre « par groupes » (même cours, plusieurs niveaux de difficulté)
 
 Pour un cours décliné en groupes (par exemple une dictée avec un groupe 1, 2 et 3), on écrit **un fichier par groupe**
 dans un dossier du nom du cours, et **une seule entrée** de catalogue avec `groups` (pas de `worldCount` ni de fichier
-pour le chapitre lui-même) :
+pour le chapitre lui-même). Cette entrée s'écrit **à la main** (`pack:add` ne gère pas encore les groupes) et les
+fichiers de groupe n'ont pas de `meta` :
 
 ```js
 {

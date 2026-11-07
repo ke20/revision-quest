@@ -2,6 +2,12 @@
 window.registerPack({
   "path": "5e/anglais/sample",
   "lang": "en",
+  "meta": {
+    "title": "Pack de test",
+    "description": "Mini pack pour tester le jeu.",
+    "icon": "🧪",
+    "color": "#7C4DFF"
+  },
   "letters": [
     {
       "id": 1,

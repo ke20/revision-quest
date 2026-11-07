@@ -38,6 +38,10 @@ run = "npm run lint:fix"
 description = "Check every content pack of the catalogue (tools/validate-pack.js --all)"
 run = "npm run validate"
 
+[tasks."pack:add"]
+description = "Add or update a chapter in js/catalog.js from its file: mise run pack:add packs/<niveau>/<matiere>/<cours>.js"
+run = "node tools/pack-add.js"
+
 [tasks."test:unit"]
 description = "Unit tests (node:test): engine, exercises, catalogue, pack validator, docs"
 run = "npm run test:unit"
