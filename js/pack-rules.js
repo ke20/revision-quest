@@ -162,6 +162,34 @@
     if (!isStr(t.alt)) warn(T + " : ajoute alt (description du tableau pour les lecteurs d'écran)");
   }
 
+  /* ---------- strict file format ----------
+     A pack file is: optional /* … *\/ comments, then window.registerPack( + one JSON object + );
+     It is read as text and parsed with JSON.parse, so checking it never runs any of its code. */
+
+  var MAX_PACK_SIZE = 1000000; // characters
+  // a comment body never contains "*/": no code can hide between two comments
+  var STRICT_RE = /^(?:\s*\/\*(?:[^*]|\*(?!\/))*\*\/)*\s*window\.registerPack\(([\s\S]*)\);\s*$/;
+
+  /** Pack file text → pack object. Throws an Error with a French message when the file is not in the strict format. */
+  function parseStrict(text) {
+    if (typeof text !== "string") throw new Error("fichier illisible");
+    if (text.length > MAX_PACK_SIZE) throw new Error("fichier trop gros (" + text.length + " caractères, " + MAX_PACK_SIZE + " max)");
+    var m = (text.charCodeAt(0) === 0xFEFF ? text.slice(1) : text).match(STRICT_RE);
+    if (!m) throw new Error("format strict attendu : un commentaire /* … */ facultatif, puis window.registerPack( + un objet JSON + ); et rien d'autre");
+    var pack;
+    try { pack = JSON.parse(m[1]); } catch (e) {
+      throw new Error("format strict : le contenu de window.registerPack(...) doit être du JSON pur, clés entre guillemets, sans virgule finale ni commentaire (" + e.message + ")", { cause: e });
+    }
+    if (!pack || typeof pack !== "object" || isArr(pack)) throw new Error("format strict : window.registerPack doit recevoir un objet { … }");
+    return pack;
+  }
+
+  /** Pack object → file text in the strict format (header: optional comment text, without the comment marks). */
+  function formatStrict(pack, header) {
+    var head = header ? "/* " + String(header).replace(/\*\//g, "* /") + " */\n" : "";
+    return head + "window.registerPack(" + JSON.stringify(pack, null, 2) + ");\n";
+  }
+
   /* ---------- pack identity ---------- */
 
   /** The pack path (its id). Returns true when well formed. */
@@ -381,7 +409,8 @@
 
   var api = {
     ID_RE: ID_RE, WORLD_ID_RE: WORLD_ID_RE, PATH_RE: PATH_RE, PACK_PATH_RE: PACK_PATH_RE, COLOR_RE: COLOR_RE, TYPES: TYPES,
-    MAX_ROWS: MAX_ROWS, MAX_COLS: MAX_COLS, MAX_CELL: MAX_CELL,
+    MAX_ROWS: MAX_ROWS, MAX_COLS: MAX_COLS, MAX_CELL: MAX_CELL, MAX_PACK_SIZE: MAX_PACK_SIZE,
+    parseStrict: parseStrict, formatStrict: formatStrict,
     isStr: isStr, plain: plain, checkMarkup: checkMarkup,
     checkPath: checkPath, checkLang: checkLang,
     validateContent: validateContent, validateLesson: validateLesson, validateExercise: validateExercise,

@@ -26,7 +26,7 @@ async function withGroups(page) {
   });
   for (const g of ENTRY.groups) {
     await page.route(`**/packs/${CH}/${g.id}.js`, (route) => route.fulfill({
-      status: 200, contentType: "text/javascript", body: BODY.replace('path: "cm2/histoire/test-revolution"', `path: "${CH}/${g.id}"`)
+      status: 200, contentType: "text/javascript", body: H.editPack(BODY, (pack) => { pack.path = CH + "/" + g.id; })
     }));
   }
 }

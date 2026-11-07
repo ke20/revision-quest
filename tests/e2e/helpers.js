@@ -2,6 +2,7 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
+const Rules = require("../../js/pack-rules.js");
 const { expect } = require("@playwright/test");
 
 const BASE = process.env.RQ_BASE_URL || "http://127.0.0.1:4173/";
@@ -53,6 +54,18 @@ async function shot() {}
 function cookie(name, value) { return { name, value, url: BASE }; }
 
 function fixture(rel) { return fs.readFileSync(path.join(FIXTURES, rel), "utf8"); }
+
+/** Edit a pack file as data: strict format → object → edit(pack) → strict format again. */
+function editPack(src, edit) {
+  const pack = Rules.parseStrict(src);
+  edit(pack);
+  return Rules.formatStrict(pack);
+}
+/** First exercise of a pack that matches test(ex). */
+function findExercise(pack, test) {
+  for (const w of pack.worlds) for (const e of w.exercises) if (test(e)) return e;
+  throw new Error("exercise not found in the test pack");
+}
 
 /* Test packs live in tests/fixtures/packs (never in packs/ nor js/catalog.js): the production app only knows real packs.
    withTestPacks() serves them by routing and injects their catalogue entries into js/catalog.js. */
@@ -200,4 +213,4 @@ function saveFile(prefix, obj) {
   return prefix + "." + Buffer.from(inner, "utf8").toString("base64") + "." + hash(inner);
 }
 
-module.exports = { BASE, EN, SAMPLE, HISTORY, ROOT, makeReporter, wait, tap, settle, hscroll, shot, cookie, fixture, withTestPacks, newPlayer, closeModals, gotoPack, mapSettled, openLesson, startWorld, curEx, solve, playWorld, hash, saveFile };
+module.exports = { BASE, EN, SAMPLE, HISTORY, ROOT, makeReporter, wait, tap, settle, hscroll, shot, cookie, fixture, editPack, findExercise, withTestPacks, newPlayer, closeModals, gotoPack, mapSettled, openLesson, startWorld, curEx, solve, playWorld, hash, saveFile };

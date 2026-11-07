@@ -7,8 +7,8 @@ Présentation du jeu et installation : voir le [README](README.md). Pour écrire
 ## Avant d'ouvrir une pull request
 
 - Lancer `mise run qa` (lint, validation des packs, tests unitaires et e2e) : la CI refait les mêmes contrôles.
-- Un chapitre est du code exécuté par le jeu : il est **relu avant d'être fusionné**, et ne doit contenir qu'un appel
-  `window.registerPack({...})` avec des données.
+- Un chapitre est chargé par le jeu comme du JavaScript : il suit le **format strict** (`window.registerPack(` + JSON pur
+  + `);`, vérifié sans exécution par le validateur) et il est **relu avant d'être fusionné**.
 - Une faille de sécurité se signale en privé, pas dans un ticket : voir [SECURITY.md](SECURITY.md).
 
 Le nom de l'app est défini à un seul endroit : `APP_CONFIG.name` dans `js/i18n.js` (+ `<title>` dans `index.html`).

@@ -5,8 +5,10 @@
 const { test, expect } = require("@playwright/test");
 const H = require("./helpers");
 
-const DOCS = '{ id: "short", title: "Une phrase", text: "Nina range sa **lampe** dans son sac." },\n' +
-  '    { id: "long", title: "Le secret", screen: true, text: "Malo trouve une boîte.\\nGros Bec crie : Mobilis !\\nNina ouvre la boîte." },\n    ';
+const DOCS = [
+  { id: "short", title: "Une phrase", text: "Nina range sa **lampe** dans son sac." },
+  { id: "long", title: "Le secret", screen: true, text: "Malo trouve une boîte.\nGros Bec crie : Mobilis !\nNina ouvre la boîte." }
+];
 const EXS = [
   { type: "mcq", prompt: "Que range Nina ?", docId: "short", options: ["une lampe", "un livre", "une pomme"], answer: 0, explanation: "Une **lampe**." },
   { type: "mcq", prompt: "Qui parle ou agit ?", docId: "long", options: ["Malo", "Gros Bec", "le facteur", "la maîtresse"], answer: [0, 1], explanation: "Malo et Gros Bec." },
@@ -14,8 +16,10 @@ const EXS = [
 ];
 
 async function open(page) {
-  await H.withTestPacks(page, { body: (p, src) => src.replace("letters: [", "letters: [\n    " + DOCS)
-    .replace("exercises: [", "exercises: [\n" + EXS.map((e) => JSON.stringify(e)).join(",\n") + ",") });
+  await H.withTestPacks(page, { body: (p, src) => H.editPack(src, (pack) => {
+    pack.letters.unshift(...DOCS);
+    pack.worlds[0].exercises.unshift(...EXS);
+  }) });
   await page.goto(H.BASE);
   await H.newPlayer(page, "Lecteur");
   await H.gotoPack(page, H.SAMPLE);

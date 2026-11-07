@@ -52,7 +52,10 @@ for (const [w, h, tag] of [[390, 844, "rm"], [1280, 800, "rd"]]) {
 test("broken / unknown exercises are skipped neutrally", async ({ browser }) => {
   const R = H.makeReporter(); const ok = R.ok;
     const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } }); const page = await ctx.newPage(); R.watch(page, 'broken', { allow: /^Exercise render failed/ }); // deliberate broken exercise
-    await H.withTestPacks(page, { body: (p, src) => src.replace('{ type: "match", prompt: "Match the words', '{ type: "boom", prompt: "Match the words').replace('{ type: "mcq", prompt: "What does **to fit in** mean?", options: ["s\'intégrer", "s\'habiller", "se battre", "se cacher"], answer: 0', '{ type: "mcq", prompt: "What does **to fit in** mean?", options: null, answer: 0') });
+    await H.withTestPacks(page, { body: (p, src) => H.editPack(src, (pack) => {
+      H.findExercise(pack, (e) => e.type === "match" && e.prompt.startsWith("Match the words")).type = "boom";
+      H.findExercise(pack, (e) => e.type === "mcq" && e.prompt === "What does **to fit in** mean?").options = null;
+    }) });
     await page.goto(BASE);
     await H.newPlayer(page, 'Broke');
     await H.gotoPack(page, SAMPLE);

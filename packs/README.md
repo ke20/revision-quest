@@ -17,11 +17,11 @@ Chaque pack est **un seul fichier** `packs/<niveau>/<matiere>/<cours>.js`, charg
 - ⚠️ Renommer ou déplacer un fichier change son identifiant : la progression déjà enregistrée sous l'ancien nom n'est
   plus reprise. Choisir le nom une fois pour toutes.
 
-> ⚠️ **Sécurité** : un pack est un fichier **JavaScript exécuté par le jeu**. Chaque nouveau pack (ou modification)
-> doit être **relu par une personne de confiance (revue de code) avant d'être fusionné** : il ne doit contenir qu'un
-> seul appel `window.registerPack({...})` avec des données, rien d'autre.
-> Relire aussi **avant** de lancer le validateur sur un pack proposé par quelqu'un d'autre : `tools/validate-pack.js`
-> exécute le fichier avec Node, et le module `vm` n'isole rien (un pack piégé aurait les droits de ton compte).
+> ⚠️ **Sécurité** : le jeu charge un pack comme un fichier **JavaScript**. C'est pourquoi un pack suit un
+> **format strict** : un commentaire `/* … */` facultatif, puis `window.registerPack(` + **un objet JSON pur** + `);`,
+> et rien d'autre. Le validateur lit le fichier **comme du texte** (`JSON.parse`) sans jamais l'exécuter : un fichier
+> qui contient autre chose que des données est refusé. Chaque nouveau pack (ou modification) reste **relu par une
+> personne de confiance (revue de code) avant d'être fusionné**.
 
 Étapes :
 
@@ -35,22 +35,30 @@ Chaque pack est **un seul fichier** `packs/<niveau>/<matiere>/<cours>.js`, charg
 ```js
 /* Pack « La Révolution française » — histoire CM2. Format : voir packs/README.md */
 window.registerPack({
-  path: "cm2/histoire/revolution-francaise",   // = chemin du fichier sans packs/ ni .js
-  lang: "fr",                       // langue de l'interface des exercices (voir § 3)
-  documents: [                      // optionnel : textes à lire (lettres, sources, extraits…)
-    { id: "serment", title: "Le serment du Jeu de paume", from: "", text: "Les **députés** jurent…" }
+  "path": "cm2/histoire/revolution-francaise",
+  "lang": "fr",
+  "documents": [
+    { "id": "serment", "title": "Le serment du Jeu de paume", "from": "", "text": "Les **députés** jurent…" }
   ],
-  worlds: [ /* 4 à 8 mondes, du plus facile au plus difficile */ ]
+  "worlds": []
 });
 ```
+
+- `path` = chemin du fichier sans `packs/` ni `.js`.
+- `lang` = langue de l'interface des exercices (voir § 3).
+- `documents` (facultatif) = textes à lire (lettres, sources, extraits…).
+- `worlds` = 4 à 8 mondes, du plus facile au plus difficile (voir « Un monde » plus bas).
 
 Règles :
 
 - `path` : identique au catalogue et à l'emplacement du fichier (`^[a-z0-9-]{1,30}/[a-z0-9-]{1,30}/[a-z0-9-]{1,60}$`).
 - `lang` : doit être la même valeur que dans le catalogue ; en cas de différence, c'est le catalogue qui gagne
   (et le validateur signale l'erreur).
-- Le fichier appelle `window.registerPack(...)` **une seule fois** et ne contient rien d'autre
-  (pas de `fetch`, pas de code qui s'exécute à côté : la sécurité du site l'interdit de toute façon).
+- **Format strict** : le fichier appelle `window.registerPack(...)` **une seule fois**, avec du **JSON pur** :
+  clés entre guillemets doubles (`"path"`, pas `path`), textes entre guillemets doubles, pas de virgule après le
+  dernier élément, pas de commentaire `//` ni de calcul. Seul un commentaire `/* … */` en tête est permis (source du
+  cours, notes). Les exemples des sections suivantes sont écrits en abrégé (sans guillemets autour des clés) pour
+  être lisibles : dans le fichier, mettre les guillemets.
 - `documents` : `{ id, title, from, text }`. `title` sert d'en-tête (« 📬 Le serment du Jeu de paume ») ;
   sans `title`, l'en-tête est fabriqué avec `from`. Les noms `letters` / `letterId` (lettres) sont aussi acceptés.
 - **Texte à lire** : tout exercice (pas seulement `write`) peut afficher un document avec `docId`. Plusieurs
@@ -351,5 +359,5 @@ node tools/validate-pack.js packs/cm2/francais/dictee-statue-de-la-liberte/g1.js
 - [ ] Contenu exact et vérifié avec le cours de l'élève (dates, orthographe, accents).
 - [ ] Pas de données personnelles, pas de lien externe, pas d'image distante.
 - [ ] `node tools/validate-pack.js --all` → « Tout est bon ✅ ».
-- [ ] Revue de code faite : le fichier ne contient que `window.registerPack({...})` avec des données.
+- [ ] Revue de code faite : le fichier ne contient que `window.registerPack({...})` avec du JSON pur (format strict).
 - [ ] Testé en vrai sur téléphone (390 px) : tout se lit sans défiler sur le côté.

@@ -34,7 +34,7 @@ async function fakeSpeech(page, voices) {
 
 async function openListen(page, voices) {
   await fakeSpeech(page, voices);
-  await H.withTestPacks(page, { body: (p, src) => src.replace("exercises: [", "exercises: [\n" + JSON.stringify(LISTEN) + ",") });
+  await H.withTestPacks(page, { body: (p, src) => H.editPack(src, (pack) => { pack.worlds[0].exercises.unshift(LISTEN); }) });
   await page.goto(H.BASE);
   await H.newPlayer(page, "Oreille");
   await H.gotoPack(page, H.SAMPLE);

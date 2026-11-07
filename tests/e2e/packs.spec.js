@@ -161,7 +161,7 @@ for (const [vw, vh, tag] of [[390, 844, "m"], [1280, 800, "d"]]) {
     ok((await textOf(page, '.modal')).includes('Quitter ce monde ?'), tag + ' quit dialog French');
     await tap(page, '[data-act=yes]'); await wait(page, 200);
     // pack file says lang "fr" but the catalogue says "en": the catalogue wins
-    await H.withTestPacks(page, { history: true, body: (p, src) => p === SAMPLE ? src.replace('lang: "en"', 'lang: "fr"') : src });
+    await H.withTestPacks(page, { history: true, body: (p, src) => p === SAMPLE ? H.editPack(src, (pack) => { pack.lang = "fr"; }) : src });
     await tap(page, '[data-act=back]'); await wait(page, 200);
     await tap(page, `.pack-card[data-pack="${SAMPLE}"]`); await page.waitForSelector('.screen.map');
     ok(await page.evaluate(() => I18N.lang()) === 'en' && (await textOf(page, '.screen-head h2')).includes('World map'), tag + ' catalogue lang wins over the pack file lang');

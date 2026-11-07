@@ -67,8 +67,9 @@ ni ne stocke les informations.
   de sa source et du fichier compilé. Son empreinte SHA-256 est vérifiée par les tests : toute modification est détectée.
 - Toutes les données lues (navigateur, cookie, fichier `.save`, lien partagé) sont vérifiées avant usage, et une politique de
   sécurité du contenu (CSP) empêche l'exécution de tout script qui ne vient pas du jeu.
-- Un pack de contenu est du code exécuté par le jeu : **chaque nouveau pack doit être relu avant d'être ajouté**
-  (et avant de lancer le validateur dessus : il exécute le fichier).
+- Un pack de contenu est chargé par le jeu comme du JavaScript. Il suit donc un **format strict** (`window.registerPack(`
+  + JSON pur + `);`) que le validateur vérifie en lisant le texte, sans l'exécuter. **Chaque nouveau pack est relu
+  avant d'être ajouté.**
 - Le jeu refuse de s'ouvrir dans un cadre (iframe) d'un autre site, pour éviter qu'on fasse cliquer un enfant
   sur un bouton caché (clickjacking).
 

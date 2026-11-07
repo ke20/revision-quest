@@ -50,7 +50,7 @@ const BROKEN = {
   "unknown-exercise-type": /type "boom" inconnu/,
   "broken-markup": /\[\[mot\|traduction\]\] mal formée/,
   "bad-color": /color "red" invalide/,
-  "registers-twice": /exactement une fois/
+  "registers-twice": /format strict/
 };
 for (const [name, re] of Object.entries(BROKEN)) {
   test(`broken pack is reported: ${name}`, () => {
@@ -205,3 +205,31 @@ test("js/pack-rules.js: the same rules run in the browser (window.PackRules) and
   assert.match(errs.join(" | "), /path "CM1\/maths" invalide/);
 });
 
+test("strict format: read as text, JSON only, never run", () => {
+  const { parseStrict, formatStrict, MAX_PACK_SIZE } = require("../../js/pack-rules.js");
+  const body = '{ "path": "cm1/maths/x", "lang": "fr", "worlds": [] }';
+  assert.deepStrictEqual(parseStrict("window.registerPack(" + body + ");"), { path: "cm1/maths/x", lang: "fr", worlds: [] });
+  assert.ok(parseStrict("\uFEFF/* Source : cahier */\n/* deux */\nwindow.registerPack(" + body + ");\n\n"), "BOM, comments, final blank lines");
+  const fails = (text, re) => assert.throws(() => parseStrict(text), re, JSON.stringify(text.slice(0, 80)));
+  fails("window.registerPack({ path: \"x\" });", /JSON pur/);
+  fails('window.registerPack({ "a": 1, });', /JSON pur/);
+  fails("window.registerPack(" + body + "); alert(1);", /format strict/);
+  fails("alert(1); window.registerPack(" + body + ");", /format strict attendu/);
+  fails("/* a */ alert(1); /* b */ window.registerPack(" + body + ");", /format strict attendu/, "no code hidden between two comments");
+  fails("// note\nwindow.registerPack(" + body + ");", /format strict attendu/);
+  fails("window.registerPack(" + body + ", alert(1));", /JSON pur/);
+  fails("window.registerPack([1]);", /un objet/);
+  fails("window.registerPack(" + body + ");" + " ".repeat(MAX_PACK_SIZE), /trop gros/);
+  fails("window.GAME_DATA = {};", /format strict attendu/);
+  const text = formatStrict({ path: "cm1/maths/x", t: "*/ alert(1) /*" }, "Créé avec l'éditeur */ alert(2) /*");
+  assert.deepStrictEqual(parseStrict(text), { path: "cm1/maths/x", t: "*/ alert(1) /*" });
+  assert.ok(!/\*\/ alert\(2\)/.test(text), "a header cannot close its comment");
+});
+
+test("strict format: every pack and fixture pack file of the repo", () => {
+  const { parseStrict } = require("../../js/pack-rules.js");
+  const list = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((d) => d.isDirectory() ? list(path.join(dir, d.name)) : d.name.endsWith(".js") ? [path.join(dir, d.name)] : []);
+  const files = list(path.join(ROOT, "packs")).concat(list(path.join(ROOT, "tests", "fixtures", "packs")), list(FIX).filter((f) => !f.endsWith("registers-twice.js")));
+  assert.ok(files.length > 20);
+  for (const f of files) assert.doesNotThrow(() => parseStrict(fs.readFileSync(f, "utf8")), path.relative(ROOT, f));
+});

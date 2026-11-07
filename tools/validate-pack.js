@@ -30,9 +30,9 @@ function catalogUnits(catalog) {
 }
 
 /* ---------- loading ----------
-   The file only gets a fake window.registerPack, but node's vm module is NOT a security boundary: a malicious pack
-   can reach `process` and run anything with your rights. Read a pack (code review) BEFORE validating it,
-   as before merging it; CI runs this on pull requests without any secret. */
+   A pack is read as text in the strict format (js/pack-rules.js parseStrict): its code never runs here.
+   js/catalog.js is still run, in node's vm module, which is NOT a security boundary: review any change
+   to js/catalog.js before running this tool on it. */
 
 function runFile(file, sandboxWindow) {
   const code = fs.readFileSync(file, "utf8");
@@ -46,13 +46,9 @@ function loadCatalog() {
   return win.CATALOG;
 }
 
+/** Reads a pack file without running it (strict format). Throws with a French message. */
 function loadPack(file) {
-  const calls = [];
-  const win = { registerPack: (d) => calls.push(d) };
-  runFile(file, win);
-  if (win.GAME_DATA) throw new Error("ancien format window.GAME_DATA : utilise window.registerPack({ id, lang, ... })");
-  if (calls.length !== 1) throw new Error("le fichier doit appeler window.registerPack(...) exactement une fois (" + calls.length + " appel(s))");
-  return calls[0];
+  return Rules.parseStrict(fs.readFileSync(file, "utf8"));
 }
 
 /* ---------- pack validation: identity, file location and catalogue entry here, content in js/pack-rules.js ---------- */
