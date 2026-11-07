@@ -27,6 +27,7 @@ revision-quest/
 │   ├── engine.js           joueurs, XP, cœurs, étoiles, badges, sauvegarde
 │   ├── exercises.js        affichage et correction des exercices
 │   ├── figures.js          figures de géométrie en SVG
+│   ├── pack-rules.js       règles d'un chapitre (validateur, navigateur et Node)
 │   └── app.js              écrans, navigation, animations, sons
 ├── packs/
 │   ├── README.md           guide pour écrire un chapitre
@@ -34,7 +35,7 @@ revision-quest/
 │       ├── <cours>.js      un chapitre (son chemin = son identifiant)
 │       └── <cours>/        chapitre « par groupes »
 │           └── <groupe>.js un fichier par groupe
-├── tools/validate-pack.js  vérifie un chapitre ou tout le catalogue (--all)
+├── tools/validate-pack.js  vérifie un chapitre ou tout le catalogue (--all), avec js/pack-rules.js
 ├── tests/
 │   ├── unit/               tests node:test
 │   ├── e2e/                tests Playwright

@@ -43,6 +43,12 @@ module.exports = [
     rules: { "no-implicit-globals": "error" }
   },
 
+  // Pack rules: also loaded by Node with require() (tools/validate-pack.js), so it may test `module`.
+  {
+    files: ["js/pack-rules.js"],
+    languageOptions: { globals: { module: "readonly" } }
+  },
+
   // Content packs (and the test packs of tests/fixtures): one window.registerPack({...}) call, plain data.
   {
     files: ["packs/**/*.js", "tests/fixtures/**/*.js"],

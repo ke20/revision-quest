@@ -174,3 +174,34 @@ test("mcq with several answers and docId on any exercise (reading comprehension)
   assert.ok(check('"answer": 0, "letterId": "d1"').errors.some((e) => /letterId seulement sur write/.test(e)));
   assert.ok(check('"answer": 0', '"screen": "oui"').errors.some((e) => /screen doit être/.test(e)));
 });
+
+test("js/pack-rules.js: the same rules run in the browser (window.PackRules) and in Node", () => {
+  const { load } = require("./helpers/env");
+  const Browser = load({ scripts: ["js/pack-rules.js"] }).window.PackRules;
+  const NodeRules = require("../../js/pack-rules.js");
+  assert.ok(Browser && typeof Browser.validateContent === "function", "window.PackRules is defined by a classic <script>");
+  const check = (Rules, pack) => {
+    const errors = [], warnings = [];
+    const stats = Rules.validateContent(JSON.parse(JSON.stringify(pack)), (m) => errors.push(m), (m) => warnings.push(m));
+    return JSON.parse(JSON.stringify({ errors, warnings, stats }));
+  };
+  const cat = loadCatalog();
+  const packs = catalogUnits(cat).slice(0, 3).map((u) => require("../../tools/validate-pack.js").loadPack(path.join(ROOT, "packs", u.path + ".js")));
+  const broken = { documents: [{ id: 1, text: "**x" }, { id: 1, text: "y" }], worlds: [{ id: "A B", title: "", exercises: [
+    { type: "mcq", prompt: "p", explanation: "e", options: ["a", "A"], answer: 3 },
+    { type: "sort", prompt: "p", explanation: "e", categories: [{ id: "c", label: "C" }, { id: "c", label: "D" }], items: [{ text: "t", cat: "z" }, { text: "u", cat: "c" }] },
+    { type: "write", prompt: "p", explanation: "e", requirements: [{ id: "r", label: "R", pattern: "(" }], modelAnswer: "x" },
+    { type: "nope" }
+  ] }] };
+  for (const pack of packs.concat([broken])) assert.deepStrictEqual(check(Browser, pack), check(NodeRules, pack));
+  const r = check(NodeRules, broken);
+  for (const re of [/id 1 en double/, /\*\* \(gras\) non fermé/, /id "A B" invalide/, /title manquant/, /answer 3 hors limites/, /options en double/,
+    /catégorie "c" en double/, /cat "z" n'existe pas/, /regex invalide/, /type "nope" inconnu/]) {
+    assert.ok(r.errors.some((e) => re.test(e)), re + " — " + r.errors.join(" | "));
+  }
+  const errs = [];
+  assert.strictEqual(NodeRules.checkPath("cm1/maths/les-fractions", (m) => errs.push(m)), true);
+  assert.strictEqual(NodeRules.checkPath("CM1/maths", (m) => errs.push(m)), false);
+  assert.match(errs.join(" | "), /path "CM1\/maths" invalide/);
+});
+
