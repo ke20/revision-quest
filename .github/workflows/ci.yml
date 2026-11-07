@@ -24,11 +24,23 @@ jobs:
       CI: "true"
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0 # the base commit of a pull request, to list the pack files it adds or changes
+          persist-credentials: false
 
       # Installs the tools pinned in mise.toml (Node.js), with cache
       - uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac # v2.4.4
         with:
           cache: true
+
+      # Course proposed from a fork: each pack file added or changed is checked (strict format, never executed)
+      # and gets its catalogue entry in this run only, as the maintainer will do with `mise run pack:add` before
+      # merging. Report in the pull request summary. Pull requests from this repository stay strict: no help here.
+      - name: Proposed courses (pull request from a fork)
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: tools/ci-proposed-packs.sh "$BASE_SHA"
 
       - name: Cache npm downloads
         uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0

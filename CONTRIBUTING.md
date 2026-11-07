@@ -42,6 +42,7 @@ revision-quest/
 │           └── <groupe>.js un fichier par groupe
 ├── tools/validate-pack.js  vérifie un chapitre ou tout le catalogue (--all), avec js/pack-rules.js
 ├── tools/pack-add.js      ajoute ou met à jour un chapitre dans js/catalog.js (depuis son meta)
+├── tools/ci-proposed-packs.sh  CI : contrôle les cours proposés depuis un fork
 ├── tests/
 │   ├── unit/               tests node:test
 │   ├── e2e/                tests Playwright
@@ -118,6 +119,13 @@ npm run qa            # = npm run lint && npm test
   `jdx/mise-action` installe Node.js depuis `mise.toml`, puis `mise run ci` (npm ci, Chromium avec ses dépendances
   système, puis `qa` : lint, validation des packs, tests unitaires, tests e2e avec 2 essais en cas d'échec). Le rapport Playwright est
   publié comme artefact (7 jours) si quelque chose échoue. Permissions en lecture seule.
+- **Cours proposé depuis un fork** : la pull request d'un contributeur extérieur ajoute seulement son fichier dans
+  `packs/`, sans toucher `js/catalog.js`. Avant `mise run ci`, `tools/ci-proposed-packs.sh` passe chaque fichier de
+  chapitre ajouté ou modifié dans `tools/pack-add.js` : format strict (le fichier n'est jamais exécuté), contrôle
+  complet, puis entrée du catalogue **dans cette exécution seulement** (rien n'est repoussé). Les tests portent donc
+  sur l'état après fusion, et le compte rendu en français s'affiche dans le résumé de la pull request. Avant de
+  fusionner, le responsable lance `mise run pack:add <fichier>` et commite `js/catalog.js`. Les pull requests
+  ouvertes depuis le dépôt lui-même n'ont pas cette aide : `pack:add` doit y avoir été lancé.
 - **Publication** (même workflow) : sur un push de `main`, une fois tous les tests verts, les jobs `pages-build` et
   `pages-deploy` publient les fichiers du jeu sur GitHub Pages. Seul `pages-deploy` a le droit d'écrire
   (`pages: write`, `id-token: write`) ; les pull requests ne publient jamais rien.
