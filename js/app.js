@@ -74,6 +74,46 @@
     var a = animSetting();
     document.body.classList.toggle("anim-none", a === "none");
     document.body.classList.toggle("anim-boost", a === "boost");
+    applyChristmas();
+  }
+
+  /* ---------- Christmas theme: 1 December – 6 January (setting "christmas": auto / off), preview with ?theme=noel ----------
+     Decoration only (background, far-away village, light snow, confetti colours); exercises stay plain. */
+  var XMAS_PREVIEW = /[?&]theme=noel(&|$)/.test(location.search || "");
+  function christmasOn() {
+    if (XMAS_PREVIEW) return true;
+    if (window.Engine && Engine.currentProfile() && Engine.settings().christmas === "off") return false;
+    var d = new Date(), m = d.getMonth();
+    return m === 11 || (m === 0 && d.getDate() <= 6);
+  }
+  function applyChristmas() {
+    var on = christmasOn(), body = document.body;
+    body.classList.toggle("theme-noel", on);
+    var scene = document.querySelector(".xmas-scene");
+    if (on && !scene) {
+      scene = document.createElement("div");
+      scene.className = "xmas-scene";
+      scene.setAttribute("aria-hidden", "true");
+      var snow = document.createElement("div");
+      snow.className = "xmas-snow";
+      snow.setAttribute("aria-hidden", "true");
+      for (var i = 0; i < 28; i++) { // a few flakes, each with its own place, size, speed and delay
+        var f = document.createElement("span");
+        f.textContent = i % 3 ? "•" : "❄";
+        f.style.left = ((i * 37) % 100) + "%";
+        f.style.fontSize = (8 + (i * 7) % 12) + "px";
+        f.style.animationDuration = (9 + (i * 5) % 9) + "s";
+        f.style.animationDelay = (-((i * 13) % 17)) + "s";
+        f.style.opacity = String(0.45 + ((i * 3) % 5) / 10);
+        snow.appendChild(f);
+      }
+      body.insertBefore(snow, body.firstChild);
+      body.insertBefore(scene, body.firstChild);
+    } else if (!on && scene) {
+      scene.remove();
+      var sn = document.querySelector(".xmas-snow");
+      if (sn) sn.remove();
+    }
   }
   function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
 
@@ -81,6 +121,7 @@
   var Confetti = (function () {
     var canvas, c2d, parts = [], raf = null, launched = 0;
     var COLORS = ["#FF5C8A", "#FFB72B", "#7C4DFF", "#2BD9A0", "#29B6F6", "#FF7A45", "#FFFFFF"];
+    var XMAS_COLORS = ["#D62828", "#F4D35E", "#1B7F3B", "#FFFFFF", "#FFFFFF", "#E9C46A", "#2A9D8F"]; // red, gold, green, snow
     function setup() {
       if (canvas) return;
       canvas = document.createElement("canvas");
@@ -113,7 +154,7 @@
           vy: -(8 + Math.random() * 10),
           w: 6 + Math.random() * 7, h: 4 + Math.random() * 6,
           r: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.4,
-          color: COLORS[Math.floor(Math.random() * COLORS.length)],
+          color: (document.body.classList.contains("theme-noel") ? XMAS_COLORS : COLORS)[Math.floor(Math.random() * COLORS.length)],
           life: 0, shape: Math.random() < 0.3 ? "circle" : "rect"
         });
       }
@@ -341,7 +382,7 @@
     var node = h(
       '<section class="screen home">' +
         '<div class="home-hero">' +
-          '<div class="logo bounce-slow">' + E(APP_ICON) + '</div>' +
+          '<div class="logo bounce-slow">' + E(christmasOn() ? "🎄" : APP_ICON) + '</div>' +
           '<h1 class="title">' + titleHtml() + '</h1>' +
           '<p class="tagline">' + E((window.APP_CONFIG && APP_CONFIG.tagline) || "") + '</p>' +
         "</div>" +
@@ -1059,9 +1100,10 @@
     { key: "difficulty", label: "🎯 Étoiles pour passer au monde suivant",
       values: [["easy", "Facile 2⭐"], ["normal", "Normal 3⭐"], ["medium", "Modéré 4⭐"], ["hard", "Difficile 5⭐"]] },
     { key: "playedWorlds", label: "🔁 Mondes déjà joués sans assez d'étoiles",
-      values: [["open", "Restent ouverts"], ["replay", "À rejouer"]] }
+      values: [["open", "Restent ouverts"], ["replay", "À rejouer"]] },
+    { key: "christmas", label: "🎄 Thème de Noël (1er décembre – 6 janvier)", values: [["auto", "Automatique"], ["off", "Désactivé"]] }
   ];
-  var TEXT_SETTINGS = ["animations", "difficulty", "playedWorlds", "grade"];
+  var TEXT_SETTINGS = ["animations", "difficulty", "playedWorlds", "christmas", "grade"];
 
   /** Confirmation that needs a typed phrase (for what cannot be undone). title / text must be trusted or escaped. */
   var CONFIRM_PHRASE = "Je confirme";

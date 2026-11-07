@@ -20,7 +20,7 @@ test("main screens have no horizontal scroll", async ({ page }) => {
   await H.newPlayer(page, "Mise en page", 1);
   await check("home");
   await tap(page, "[data-act=settings]");
-  await expect(page.locator(".modal .setting-block")).toHaveCount(6);
+  await expect(page.locator(".modal .setting-block")).toHaveCount(7);
   await check("settings");
   await tap(page, ".modal [data-act=close]");
   await tap(page, "[data-act=catalog]");

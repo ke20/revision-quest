@@ -59,10 +59,11 @@
     freeMistakes: [0, 1, 2, 3],                // wrong answers per world that do not cost a heart (shields)
     animations: ["none", "normal", "boost"],
     difficulty: ["easy", "normal", "medium", "hard"], // stars needed on a world to open the next one, see STARS_TO_UNLOCK
-    playedWorlds: ["open", "replay"]  // a world already played stays open, or must be earned again with the current difficulty
+    playedWorlds: ["open", "replay"], // a world already played stays open, or must be earned again with the current difficulty
+    christmas: ["auto", "off"]        // Christmas theme from 1 December to 6 January, or never
   };
-  var COMFORT_NO = { pauseEvery: 4, freeMistakes: 1, animations: "normal", difficulty: "normal", playedWorlds: "open", grade: "" };   // defaults (and fallback)
-  var COMFORT_YES = { pauseEvery: 2, freeMistakes: 2, animations: "boost", difficulty: "normal", playedWorlds: "open", grade: "" };
+  var COMFORT_NO = { pauseEvery: 4, freeMistakes: 1, animations: "normal", difficulty: "normal", playedWorlds: "open", christmas: "auto", grade: "" };   // defaults (and fallback)
+  var COMFORT_YES = { pauseEvery: 2, freeMistakes: 2, animations: "boost", difficulty: "normal", playedWorlds: "open", christmas: "auto", grade: "" };
   /* grade: the player's class (a level id of js/catalog.js, e.g. "cm2"), used to pre-filter the chapters; "" = not set.
      Free text checked by its format only: the engine does not know the catalogue, the app ignores an unknown id. */
   var GRADE = /^[a-z0-9-]{1,20}$/;
@@ -299,7 +300,7 @@
                  settings, settingsAt]
       packs = [[packId, lastPlayedSeconds, [[worldId, stars, accuracy%], ...]], ...]
       settings = 5 characters: pauseEvery digit, freeMistakes digit, animations code (n / o / b), difficulty code
-                 (e / n / m / h), playedWorlds code (o / r), then the grade if any, e.g. "41onocm2";
+                 (e / n / m / h), playedWorlds code (o / r; O / R = Christmas theme off), then the grade if any, e.g. "41onocm2";
                  shorter codes of older saves get the defaults */
   function compactProfile(p, packIds) {
     var s = p.state;
@@ -316,7 +317,8 @@
   function encodeSettings(st) {
     st = normalizeSettings(st);
     return String(st.pauseEvery) + String(st.freeMistakes) + ANIM_CODES[COMFORT.animations.indexOf(st.animations)] +
-      DIFFICULTY_CODES[COMFORT.difficulty.indexOf(st.difficulty)] + PLAYED_CODES[COMFORT.playedWorlds.indexOf(st.playedWorlds)] +
+      DIFFICULTY_CODES[COMFORT.difficulty.indexOf(st.difficulty)] +
+      (st.christmas === "off" ? PLAYED_CODES[COMFORT.playedWorlds.indexOf(st.playedWorlds)].toUpperCase() : PLAYED_CODES[COMFORT.playedWorlds.indexOf(st.playedWorlds)]) +
       st.grade;
   }
   function decodeSettings(code) {
@@ -325,7 +327,8 @@
       pauseEvery: parseInt(code[0], 10), freeMistakes: parseInt(code[1], 10),
       animations: COMFORT.animations[ANIM_CODES.indexOf(code[2])],
       difficulty: COMFORT.difficulty[DIFFICULTY_CODES.indexOf(code.charAt(3))],
-      playedWorlds: COMFORT.playedWorlds[PLAYED_CODES.indexOf(code.charAt(4))],
+      playedWorlds: COMFORT.playedWorlds[PLAYED_CODES.indexOf(code.charAt(4).toLowerCase())],
+      christmas: /[A-Z]/.test(code.charAt(4)) ? "off" : "auto", // upper case = Christmas theme off (older codes: auto)
       grade: code.slice(5)
     });
   }
