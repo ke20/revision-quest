@@ -30,15 +30,16 @@ module.exports = [
   js.configs.recommended,
   { rules: common },
 
-  // The game: classic <script> files in the browser, ES5 style (no build step), each one wrapped in an IIFE.
+  // The game: classic <script> files in the browser (no build step, no ES modules), each one wrapped in an IIFE.
+  // ES2017 (const/let, arrow functions, template literals, Set/Map, async/await): Safari 11 / iOS 11, Chrome 58, Firefox 52.
+  // Older files are still ES5 style; both are fine.
   {
     files: ["js/**/*.js"],
     languageOptions: {
-      ecmaVersion: 5,
+      ecmaVersion: 2017,
       sourceType: "script",
-      // ES5 syntax, but a modern browser at runtime: Uint8Array (base64 helpers) and Promise (share code) in js/engine.js;
       // qrcodegen is defined by js/vendor/qrcodegen.js
-      globals: { ...globals.browser, ...appGlobals, Uint8Array: "readonly", Promise: "readonly", qrcodegen: "readonly" }
+      globals: { ...globals.browser, ...appGlobals, qrcodegen: "readonly" }
     },
     rules: { "no-implicit-globals": "error" }
   },

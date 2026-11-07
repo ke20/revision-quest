@@ -11,6 +11,11 @@ Présentation du jeu et installation : voir le [README](README.md). Pour écrire
   + `);`, vérifié sans exécution par le validateur) et il est **relu avant d'être fusionné**.
 - Une faille de sécurité se signale en privé, pas dans un ticket : voir [SECURITY.md](SECURITY.md).
 
+Le code du jeu (`js/`) est écrit en **JavaScript ES2017**, sans étape de build : des scripts `<script>` classiques
+(pas de modules ES), chacun dans une fonction auto-appelée. ES2017 tourne sur Safari 11 (iOS 11), Chrome 58 et
+Firefox 52. Le lint refuse la syntaxe plus récente (`...` dans un objet, `?.`, `??`). Les anciens fichiers écrits
+en ES5 restent valides.
+
 Le nom de l'app est défini à un seul endroit : `APP_CONFIG.name` dans `js/i18n.js` (+ `<title>` dans `index.html`).
 
 ## Structure du code
