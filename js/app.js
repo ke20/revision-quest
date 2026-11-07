@@ -74,46 +74,72 @@
     var a = animSetting();
     document.body.classList.toggle("anim-none", a === "none");
     document.body.classList.toggle("anim-boost", a === "boost");
-    applyChristmas();
+    applySeason();
   }
 
-  /* ---------- Christmas theme: 1 December – 6 January (setting "christmas": auto / off), preview with ?theme=noel ----------
-     Decoration only (background, far-away village, light snow, confetti colours); exercises stay plain. */
-  var XMAS_PREVIEW = /[?&]theme=noel(&|$)/.test(location.search || "");
-  function christmasOn() {
-    if (XMAS_PREVIEW) return true;
-    if (window.Engine && Engine.currentProfile() && Engine.settings().christmas === "off") return false;
-    var d = new Date(), m = d.getMonth();
-    return m === 11 || (m === 0 && d.getDate() <= 6);
+  /* ---------- seasonal themes (setting "seasonal": auto / off), preview with ?theme=<id> ----------
+     Decoration only (background, far-away landscape, a few falling flakes or leaves, confetti colours); exercises stay plain.
+     from / to: [month, day], both included; a period may run over the new year. */
+  var SEASONS = [
+    { id: "halloween", from: [10, 20], to: [11, 2], icon: "🎃", fall: ["🍂", "🍁", "•"], bats: true,
+      confetti: ["#F97316", "#7C3AED", "#84CC16", "#1F1235", "#FDBA74", "#A855F7", "#F97316"] },
+    { id: "noel", from: [12, 1], to: [1, 6], icon: "🎄", fall: ["❄", "•", "•"],
+      confetti: ["#D62828", "#F4D35E", "#1B7F3B", "#FFFFFF", "#FFFFFF", "#E9C46A", "#2A9D8F"] }
+  ];
+  var SEASON_PREVIEW = (function () { var m = /[?&]theme=([a-z]+)(&|$)/.exec(location.search || ""); return m ? m[1] : null; })();
+  function inPeriod(t, d) {
+    var md = (d.getMonth() + 1) * 100 + d.getDate(), a = t.from[0] * 100 + t.from[1], b = t.to[0] * 100 + t.to[1];
+    return a <= b ? md >= a && md <= b : md >= a || md <= b;
   }
-  function applyChristmas() {
-    var on = christmasOn(), body = document.body;
-    body.classList.toggle("theme-noel", on);
-    var scene = document.querySelector(".xmas-scene");
-    if (on && !scene) {
-      scene = document.createElement("div");
-      scene.className = "xmas-scene";
-      scene.setAttribute("aria-hidden", "true");
-      var snow = document.createElement("div");
-      snow.className = "xmas-snow";
-      snow.setAttribute("aria-hidden", "true");
-      for (var i = 0; i < 28; i++) { // a few flakes, each with its own place, size, speed and delay
-        var f = document.createElement("span");
-        f.textContent = i % 3 ? "•" : "❄";
-        f.style.left = ((i * 37) % 100) + "%";
-        f.style.fontSize = (8 + (i * 7) % 12) + "px";
-        f.style.animationDuration = (9 + (i * 5) % 9) + "s";
-        f.style.animationDelay = (-((i * 13) % 17)) + "s";
-        f.style.opacity = String(0.45 + ((i * 3) % 5) / 10);
-        snow.appendChild(f);
-      }
-      body.insertBefore(snow, body.firstChild);
-      body.insertBefore(scene, body.firstChild);
-    } else if (!on && scene) {
+  /** The seasonal theme shown now, or null. */
+  function season() {
+    var preview = SEASONS.filter(function (t) { return t.id === SEASON_PREVIEW; })[0];
+    if (preview) return preview;
+    if (window.Engine && Engine.currentProfile() && Engine.settings().seasonal === "off") return null;
+    var now = new Date();
+    return SEASONS.filter(function (t) { return inPeriod(t, now); })[0] || null;
+  }
+  function applySeason() {
+    var t = season(), body = document.body;
+    SEASONS.forEach(function (x) { body.classList.toggle("theme-" + x.id, !!t && t.id === x.id); });
+    var scene = document.querySelector(".season-scene");
+    if (scene && (!t || scene.getAttribute("data-theme") !== t.id)) {
       scene.remove();
-      var sn = document.querySelector(".xmas-snow");
-      if (sn) sn.remove();
+      var old = document.querySelector(".season-fall");
+      if (old) old.remove();
+      scene = null;
     }
+    if (!t || scene) return;
+    scene = document.createElement("div");
+    scene.className = "season-scene";
+    scene.setAttribute("data-theme", t.id);
+    scene.setAttribute("aria-hidden", "true");
+    var fall = document.createElement("div");
+    fall.className = "season-fall";
+    fall.setAttribute("aria-hidden", "true");
+    for (var i = 0; i < 28; i++) { // a few flakes or leaves, each with its own place, size, speed and delay
+      var f = document.createElement("span");
+      f.textContent = t.fall[i % t.fall.length];
+      f.style.left = ((i * 37) % 100) + "%";
+      f.style.fontSize = (8 + (i * 7) % 12) + "px";
+      f.style.animationDuration = (9 + (i * 5) % 9) + "s";
+      f.style.animationDelay = (-((i * 13) % 17)) + "s";
+      f.style.opacity = String(0.45 + ((i * 3) % 5) / 10);
+      fall.appendChild(f);
+    }
+    if (t.bats) {
+      for (var b = 0; b < 3; b++) { // bats crossing the sky slowly, high up
+        var bat = document.createElement("span");
+        bat.className = "bat";
+        bat.textContent = "🦇";
+        bat.style.top = (8 + b * 9) + "%";
+        bat.style.animationDuration = (22 + b * 7) + "s";
+        bat.style.animationDelay = (-b * 9) + "s";
+        fall.appendChild(bat);
+      }
+    }
+    body.insertBefore(fall, body.firstChild);
+    body.insertBefore(scene, body.firstChild);
   }
   function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
 
@@ -121,7 +147,6 @@
   var Confetti = (function () {
     var canvas, c2d, parts = [], raf = null, launched = 0;
     var COLORS = ["#FF5C8A", "#FFB72B", "#7C4DFF", "#2BD9A0", "#29B6F6", "#FF7A45", "#FFFFFF"];
-    var XMAS_COLORS = ["#D62828", "#F4D35E", "#1B7F3B", "#FFFFFF", "#FFFFFF", "#E9C46A", "#2A9D8F"]; // red, gold, green, snow
     function setup() {
       if (canvas) return;
       canvas = document.createElement("canvas");
@@ -154,7 +179,7 @@
           vy: -(8 + Math.random() * 10),
           w: 6 + Math.random() * 7, h: 4 + Math.random() * 6,
           r: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.4,
-          color: (document.body.classList.contains("theme-noel") ? XMAS_COLORS : COLORS)[Math.floor(Math.random() * COLORS.length)],
+          color: (season() ? season().confetti : COLORS)[Math.floor(Math.random() * COLORS.length)],
           life: 0, shape: Math.random() < 0.3 ? "circle" : "rect"
         });
       }
@@ -382,7 +407,7 @@
     var node = h(
       '<section class="screen home">' +
         '<div class="home-hero">' +
-          '<div class="logo bounce-slow">' + E(christmasOn() ? "🎄" : APP_ICON) + '</div>' +
+          '<div class="logo bounce-slow">' + E(season() ? season().icon : APP_ICON) + '</div>' +
           '<h1 class="title">' + titleHtml() + '</h1>' +
           '<p class="tagline">' + E((window.APP_CONFIG && APP_CONFIG.tagline) || "") + '</p>' +
         "</div>" +
@@ -1101,9 +1126,9 @@
       values: [["easy", "Facile 2⭐"], ["normal", "Normal 3⭐"], ["medium", "Modéré 4⭐"], ["hard", "Difficile 5⭐"]] },
     { key: "playedWorlds", label: "🔁 Mondes déjà joués sans assez d'étoiles",
       values: [["open", "Restent ouverts"], ["replay", "À rejouer"]] },
-    { key: "christmas", label: "🎄 Thème de Noël (1er décembre – 6 janvier)", values: [["auto", "Automatique"], ["off", "Désactivé"]] }
+    { key: "seasonal", label: "🎃🎄 Thèmes de saison (Halloween, Noël)", values: [["auto", "Automatiques"], ["off", "Désactivés"]] }
   ];
-  var TEXT_SETTINGS = ["animations", "difficulty", "playedWorlds", "christmas", "grade"];
+  var TEXT_SETTINGS = ["animations", "difficulty", "playedWorlds", "seasonal", "grade"];
 
   /** Confirmation that needs a typed phrase (for what cannot be undone). title / text must be trusted or escaped. */
   var CONFIRM_PHRASE = "Je confirme";

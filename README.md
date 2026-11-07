@@ -42,9 +42,11 @@ ni ne stocke les informations.
   de cœur, niveau d'animations, difficulté (étoiles demandées pour passer au monde suivant), mondes déjà joués sans assez
   d'étoiles (restent ouverts ou sont à rejouer). À la création du profil, la question « As-tu un TDA/H ? » choisit
   seulement les valeurs de départ ; **la réponse n'est jamais enregistrée**.
-- **Thème de Noël** : du 1er décembre au 6 janvier, fond de nuit d'hiver avec un village enneigé au loin et un peu de
-  neige (jamais pendant un exercice, ni avec « Animations : Aucune »). Réglage par joueur « 🎄 Thème de Noël » pour le
-  couper. Aperçu à tout moment avec `?theme=noel` à la fin de l'adresse.
+- **Thèmes de saison** : **Halloween** du 20 octobre au 2 novembre (crépuscule, citrouilles souriantes, feuilles qui
+  tombent) et **Noël** du 1er décembre au 6 janvier (nuit d'hiver, village enneigé, un peu de neige). Décor seulement,
+  jamais pendant un exercice, et sans rien qui tombe avec « Animations : Aucune ». Un réglage par joueur
+  « 🎃🎄 Thèmes de saison » les coupe tous. Aperçu à tout moment avec `?theme=halloween` ou `?theme=noel` à la fin de
+  l'adresse.
 - **Recommencer un chapitre** : bouton sous la carte des mondes, après avoir écrit « Je confirme ». Seules les étoiles
   de ce chapitre sont effacées (l'XP, les badges et les autres chapitres sont gardés).
 
