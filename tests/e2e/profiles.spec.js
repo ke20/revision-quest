@@ -155,7 +155,7 @@ test("players, match rule, leaderboard, export/import, cookie fallback", async (
   const rows = await page.$$eval('.lb-row', r => r.map(x => ({ name: x.querySelector('.lb-main b').textContent, me: x.classList.contains('me'), pos: x.querySelector('.lb-pos').textContent })));
   ok(rows.length === 2 && rows[0].name.startsWith('Léa') && rows[0].pos === '🥇' && rows[1].name.startsWith('Tom') && rows[1].me, 'leaderboard order + highlight: ' + JSON.stringify(rows));
   await hscroll(page, 'leaderboard');
-  await tap(page, `[data-lb="${EN}"]`); await wait(page, 250);
+  await tap(page, '[data-lb=anglais]'); await wait(page, 150); await page.selectOption('.lb-chapter', EN); await wait(page, 250);
   const prow = await page.$$eval('.lb-row .lb-stats b', r => r.map(x => x.textContent));
   ok(prow[0] === '⭐ 5/40' && prow[1] === '⭐ 0/40', 'per-chapter leaderboard shows chapter stars ' + JSON.stringify(prow));
   await hscroll(page, 'leaderboard per chapter');

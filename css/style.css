@@ -739,3 +739,6 @@ body.reading-open { overflow: hidden; }
 .share-link { width: 100%; font: inherit; font-size: .85rem; padding: 10px; border-radius: 10px; border: 2px solid var(--line); }
 .scan-box { position: relative; width: 100%; aspect-ratio: 1; border-radius: 16px; overflow: hidden; background: #000; }
 .scan-video { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* leaderboard: chapter menu inside a subject */
+.lb-chapter-row { display: flex; align-items: center; gap: 10px; margin: 4px 0 6px; color: #fff; font-weight: 700; font-size: .95rem; }
+.lb-chapter { flex: 1; min-width: 0; max-width: 520px; font: inherit; font-weight: 600; color: var(--ink); background: #fff; border: 0; border-radius: 14px; padding: 9px 12px; box-shadow: 0 3px 0 #D9C8EC; text-overflow: ellipsis; }

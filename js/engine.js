@@ -1025,14 +1025,22 @@
       save();
     },
 
-    /** All players, best first. Global: XP, then total stars. Per pack (id): stars in that pack (≤ worldCount × MAX_STARS), then XP. */
+    /** All players, best first. Global (no argument): XP, then total stars.
+        Per chapter (id, worldCount) or per subject ([{ id, worldCount }, …], its chapters and groups): stars in them
+        (each one clamped to worldCount × MAX_STARS), then XP. */
     leaderboard: function (id, worldCount) {
+      var list = Array.isArray(id) ? id : id ? [{ id: id, worldCount: worldCount }] : null;
       return db.profiles.map(function (p) {
-        var r = summary(p, id);
-        if (id && worldCount > 0) r.packStars = Math.min(r.packStars, worldCount * MAX_STARS);
+        var r = summary(p);
+        if (list) {
+          r.packStars = list.reduce(function (t, u) {
+            var n = starsOf(p.state, u.id);
+            return t + (u.worldCount > 0 ? Math.min(n, u.worldCount * MAX_STARS) : n);
+          }, 0);
+        }
         return r;
       }).sort(function (a, b) {
-        if (id) return b.packStars - a.packStars || b.xp - a.xp || a.name.localeCompare(b.name);
+        if (list) return b.packStars - a.packStars || b.xp - a.xp || a.name.localeCompare(b.name);
         return b.xp - a.xp || b.stars - a.stars || a.name.localeCompare(b.name);
       });
     },

@@ -81,7 +81,7 @@ test("fresh start, lazy pack loading, per-pack progress, test pack, explorer, ch
     // per-chapter leaderboard filter
     await tap(page, '[data-act=back]'); await wait(page, 200); await tap(page, '[data-act=back]'); await wait(page, 200);
     await tap(page, '[data-act=ranking]'); await wait(page, 300);
-    await tap(page, `[data-lb="${SAMPLE}"]`); await wait(page, 250);
+    await tap(page, '[data-lb=anglais]'); await wait(page, 150); await page.selectOption('.lb-chapter', SAMPLE); await wait(page, 250);
     ok((await textOf(page, '.lb-row .lb-stats b')) === '⭐ 5/15', 'leaderboard filtered on the sample chapter');
     await H.shot();
     await noHs(page, 'leaderboard filter');

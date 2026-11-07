@@ -702,36 +702,54 @@
     try { input.focus({ preventScroll: true }); } catch (e) { /* ignore */ }
   }
 
-  function showLeaderboard(back, packId) {
-    var entry = packId ? Packs.get(packId) : null;
-    if (!entry) packId = "";
-    setNav(back || showHome, function () { showLeaderboard(back, packId); });
-    var rows = Engine.leaderboard(packId || undefined, entry ? entry.worldCount : 0);
+  /** Ranking: general (XP), per subject (stars of all its chapters), or per chapter (chosen in the subject's menu). */
+  function showLeaderboard(back, subjectId, unitId) {
+    var units = Packs.units(); // a group is ranked on its own (its stars are saved under its own id)
+    var unit = unitId ? Packs.get(unitId) : null;
+    if (unit && !unit.groups) subjectId = unit.subject; else unit = null;
+    var subject = subjectId ? Packs.subject(subjectId) : null;
+    var inSubject = subject ? units.filter(function (u) { return u.subject === subject.id; }) : [];
+    if (!inSubject.length) { subject = null; unit = null; }
+    setNav(back || showHome, function () { showLeaderboard(back, subject && subject.id, unit && unit.id); });
+    var ranked = unit ? [unit] : subject ? inSubject : null;
+    var rows = ranked ? Engine.leaderboard(ranked.map(function (u) { return { id: u.id, worldCount: u.worldCount }; })) : Engine.leaderboard();
+    var maxStars = ranked ? ranked.reduce(function (t, u) { return t + u.worldCount * Engine.MAX_STARS; }, 0) : 0;
     var medals = ["🥇", "🥈", "🥉"];
     var body = rows.map(function (p, i) {
       return '<div class="lb-row' + (p.current ? " me" : "") + (i < 3 ? " top" + (i + 1) : "") + '">' +
         '<span class="lb-pos">' + (medals[i] || (i + 1)) + "</span>" +
         '<span class="lb-avatar">' + E(p.avatar) + "</span>" +
         '<span class="lb-main"><b>' + E(p.name) + (p.current ? ' <em class="lb-you">toi</em>' : "") + "</b><small>" + E(p.rankIcon) + " " + E(p.rank) + "</small></span>" +
-        (packId
-          ? '<span class="lb-stats"><b>⭐ ' + p.packStars + "/" + entry.worldCount * Engine.MAX_STARS + '</b><small>' + p.xp + " XP</small></span>"
+        (ranked
+          ? '<span class="lb-stats"><b>⭐ ' + p.packStars + "/" + maxStars + '</b><small>' + p.xp + " XP</small></span>"
           : '<span class="lb-stats"><b>' + p.xp + ' XP</b><small>⭐ ' + p.stars + " · 🏅 " + p.badges + "</small></span>") +
       "</div>";
     }).join("");
-    var packs = Packs.units(); // a group is ranked on its own (its stars are saved under its own id)
-    var filters = packs.length ? '<div class="filter-row lb-filters" role="group" aria-label="Classement">' +
-      chip("lb", "", "🌍 Général", !packId) +
-      packs.map(function (p) { return chip("lb", p.id, E(p.icon) + " " + E(p.title), packId === p.id); }).join("") + "</div>" : "";
+    // one chip per subject that has chapters, in the catalogue order
+    var subjects = Packs.subjects().filter(function (s) { return units.some(function (u) { return u.subject === s.id; }); });
+    var filters = subjects.length ? '<div class="filter-row lb-filters" role="group" aria-label="Classement">' +
+      chip("lb", "", "🌍 Général", !subject) +
+      subjects.map(function (s) { return chip("lb", s.id, E(s.icon) + " " + E(s.label), !!subject && subject.id === s.id); }).join("") + "</div>" : "";
+    var menu = subject ? '<label class="lb-chapter-row"><span>Chapitre</span><select class="lb-chapter" aria-label="Chapitre">' +
+      '<option value="">Tous les chapitres de ' + E(subject.label) + "</option>" +
+      inSubject.map(function (u) {
+        return '<option value="' + E(u.id) + '"' + (unit && unit.id === u.id ? " selected" : "") + ">" + E(u.icon) + " " + E(u.title) + "</option>";
+      }).join("") + "</select></label>" : "";
+    var help = unit ? "Le plus d'étoiles dans ce chapitre gagne. En cas d'égalité : le plus d'XP."
+      : subject ? "Le plus d'étoiles en " + E(subject.label) + " gagne (tous ses chapitres). En cas d'égalité : le plus d'XP."
+      : "Le plus d'XP gagne. En cas d'égalité : le plus d'étoiles.";
     var node = h('<section class="screen leaderboard">' +
       '<header class="screen-head"><button class="btn-icon" data-act="back" aria-label="Retour">←</button><h2>🏆 Classement</h2><span class="head-right">' + rows.length + " joueur" + (rows.length > 1 ? "s" : "") + "</span></header>" +
-      filters +
-      '<p class="screen-help">' + (packId ? "Le plus d'étoiles dans ce chapitre gagne. En cas d'égalité : le plus d'XP." : "Le plus d'XP gagne. En cas d'égalité : le plus d'étoiles.") + "</p>" +
+      filters + menu +
+      '<p class="screen-help">' + help + "</p>" +
       '<div class="lb-list">' + (body || '<div class="card">Aucun joueur pour l\'instant.</div>') + "</div>" +
       "</section>");
     on(node, "back", function () { (back || showHome)(); });
     each(node, "[data-lb]", function (b) {
       b.onclick = function () { Sound.tap(); showLeaderboard(back, b.getAttribute("data-lb")); };
     });
+    var sel = node.querySelector(".lb-chapter");
+    if (sel) sel.onchange = function () { Sound.tap(); showLeaderboard(back, subject.id, sel.value); };
     show(node);
   }
 

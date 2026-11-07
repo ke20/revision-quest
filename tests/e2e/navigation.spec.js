@@ -38,7 +38,7 @@ test("loading screen, back button, leaderboard clamp, copy names", async ({ brow
     await page.evaluate((SAMPLE) => { const w = {}; for (let i = 1; i <= 10; i++) w[i] = { stars: 5, accuracy: 1, completed: true }; Engine.state.packs[SAMPLE] = { worlds: w, lastPlayed: Date.now() }; Engine.setSound(false); }, SAMPLE);
     await page.evaluate(() => App.showHome()); await wait(page, 200);
     await tap(page, '[data-act=ranking]'); await wait(page, 200);
-    await tap(page, `[data-lb="${SAMPLE}"]`); await wait(page, 200);
+    await tap(page, '[data-lb=anglais]'); await wait(page, 150); await page.selectOption('.lb-chapter', SAMPLE); await wait(page, 200);
     ok((await page.textContent('.lb-row .lb-stats b')) === '⭐ 15/15', 'per-pack leaderboard clamped to worldCount × 5');
     // 8b. imported copy names stay ≤ 20 chars and unique
     const file = H.saveFile('RQSAVE', { app: 'revision-quest', version: 3, profile: { name: 'ABCDEFGHIJKLMNOPQRST', avatar: '🦊', state: {} } });

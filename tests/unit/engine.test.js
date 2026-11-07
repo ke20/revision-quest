@@ -351,6 +351,10 @@ test("leaderboard: global by XP then stars; per chapter by chapter stars (clampe
   assert.deepStrictEqual(j(E.leaderboard()).map((r) => r.name), ["C", "B", "A"]);
   const per = j(E.leaderboard(PACK, 2));
   assert.deepStrictEqual(per.map((r) => [r.name, r.packStars]), [["B", 10], ["A", 3], ["C", 0]]);
+  // per subject: stars of all its chapters (each clamped), then XP
+  E.state.packs["4e/anglais/autre"] = { worlds: { 1: { stars: 5 }, 2: { stars: 5 } }, lastPlayed: 1 }; E.setSound(false); // C
+  const subj = j(E.leaderboard([{ id: PACK, worldCount: 2 }, { id: "4e/anglais/autre", worldCount: 1 }]));
+  assert.deepStrictEqual(subj.map((r) => [r.name, r.packStars]), [["B", 10], ["C", 5], ["A", 3]]);
 });
 
 test("reset clears the progress of the current player only (and bumps its epoch)", () => {
