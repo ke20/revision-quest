@@ -6,9 +6,8 @@ blob-report/
 *.save
 .env*
 
-# Locales notes
-PLAN.md
-TODO.md
+# Local notes and plans (specs/TODO.md, specs/PLAN.md, specs/<projet>/*.md)
+specs/
 
 # Resources for courses and exercices
 resources/
