@@ -117,6 +117,15 @@ window.CATALOG = {
       color: "#7C3AED",
       lang: "fr",
       worldCount: 6
+    },
+    {
+      path: "cm2/francais/comprehension-lecture",
+      title: "Lire et comprendre",
+      description: "Des textes de plus en plus longs (fables, contes, Jules Verne, problèmes, consignes) et une enquête avec Nina, Malo et Gros Bec.",
+      icon: "📖",
+      color: "#7C3AED",
+      lang: "fr",
+      worldCount: 8
     }
   ]
 };

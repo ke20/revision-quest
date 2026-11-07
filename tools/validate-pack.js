@@ -220,6 +220,8 @@ function validatePack(file, catalog, opts = {}) {
     docIds.add(d.id);
     if (!isStr(d.text)) err(w + " : text manquant");
     if (!isStr(d.title) && !isStr(d.from)) warn(w + " : ajoute un title (ou from) pour l'en-tête du document");
+    if (d.screen != null && typeof d.screen !== "boolean") err(w + " : screen doit être true ou false");
+    if (isStr(d.text) && !d.screen && plain(d.text).length > 450) warn(w + " : texte long au-dessus de la question : mets screen: true (écran de lecture)");
     checkMarkup(d.text, w + ".text", err);
   });
 
@@ -279,13 +281,27 @@ function validateExercise(e, where, ctx) {
   if (isStr(e.prompt) && plain(e.prompt).length > 160) warn(t + " : consigne longue (" + plain(e.prompt).length + " caractères) — fais simple");
   if (isStr(e.explanation) && plain(e.explanation).length > 300) warn(t + " : explication longue (" + plain(e.explanation).length + " caractères)");
   strings([e.prompt, e.explanation, e.hint]).forEach((s) => checkMarkup(s, t, err));
+  // text to read: any exercise can show a pack document (docId; letterId is the old name, write only)
+  if (e.docId != null && e.letterId != null) err(t + " : utilise docId OU letterId, pas les deux");
+  if (e.letterId != null && e.type !== "write") err(t + " : letterId seulement sur write (utilise docId)");
+  const docRef = e.docId != null ? e.docId : e.letterId;
+  if (docRef != null && !docIds.has(docRef)) err(t + ` : document ${docRef} introuvable dans documents/letters`);
   if (e.figure != null) validateFigure(e.figure, t, err, warn);
   if (e.table != null) validateTable(e.table, t, err, warn);
 
   switch (e.type) {
     case "mcq":
       if (!isArr(e.options) || e.options.length < 2) { err(t + " : options doit contenir au moins 2 choix"); break; }
-      if (!Number.isInteger(e.answer) || e.answer < 0 || e.answer >= e.options.length) err(t + ` : answer ${e.answer} hors limites (0 à ${e.options.length - 1})`);
+      if (isArr(e.answer)) { // several answers: tick boxes
+        if (!e.answer.length) err(t + " : answer [] vide (au moins une bonne réponse)");
+        if (e.answer.some((a) => !Number.isInteger(a) || a < 0 || a >= e.options.length)) err(t + ` : answer ${JSON.stringify(e.answer)} hors limites (0 à ${e.options.length - 1})`);
+        if (new Set(e.answer).size !== e.answer.length) err(t + " : answer contient un indice en double");
+        if (e.answer.length >= e.options.length) err(t + " : il faut au moins une mauvaise réponse parmi les options");
+        if (e.showCount != null && typeof e.showCount !== "boolean") err(t + " : showCount doit être true ou false");
+      } else {
+        if (e.showCount != null) err(t + " : showCount seulement avec plusieurs réponses (answer: [..])");
+        if (!Number.isInteger(e.answer) || e.answer < 0 || e.answer >= e.options.length) err(t + ` : answer ${e.answer} hors limites (0 à ${e.options.length - 1})`);
+      }
       if (new Set(e.options.map((o) => plain(o).trim().toLowerCase())).size !== e.options.length) err(t + " : options en double");
       if (e.options.some((o) => !isStr(o))) err(t + " : option vide");
       noTr(e.options, t + " options", err);
@@ -351,9 +367,6 @@ function validateExercise(e, where, ctx) {
       noTr(e.tokens, t + " tokens", err);
       break;
     case "write": {
-      const id = e.docId != null ? e.docId : e.letterId;
-      if (e.docId != null && e.letterId != null) err(t + " : utilise docId OU letterId, pas les deux");
-      if (id != null && !docIds.has(id)) err(t + ` : document ${id} introuvable dans documents/letters`);
       if (!isArr(e.requirements) || !e.requirements.length) { err(t + " : requirements manquant"); break; }
       const reqIds = new Set();
       let met = 0;

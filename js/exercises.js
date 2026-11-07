@@ -325,7 +325,17 @@
     container.innerHTML = "";
     var root = el("div", "ex ex-" + ex.type);
     var head = el("div", "ex-head");
+    // A text to read (docId), for every type but write (which shows it in its body): a short text sits above the
+    // question; a long one (doc.screen) was read on its own screen first, so here only a button opens it again.
+    var doc = ex.type !== "write" ? findDocument(opts.data, ex) : null;
+    if (doc && !doc.screen) head.appendChild(docCard(doc, "read-card read-inline"));
     head.appendChild(el("h2", "ex-prompt", rich(ex.prompt)));
+    if (doc && doc.screen) {
+      var back = el("button", "btn-reread", T("backToText"));
+      back.type = "button";
+      back.addEventListener("click", function () { openText(doc); });
+      head.appendChild(back);
+    }
     if (ex.figure && window.Figures) {
       try { head.appendChild(window.Figures.build(ex.figure)); } catch (e) { console.error("Figure failed", e); }
     }
@@ -353,8 +363,8 @@
 
   function lockAll(root) {
     root.classList.add("answered");
-    // the listen buttons stay usable: hearing the word again while reading the correction helps
-    var b = root.querySelectorAll("button:not(.btn-hint):not(.btn-listen), input, textarea");
+    // the listen and re-read buttons stay usable: hearing the word or reading the text again helps with the correction
+    var b = root.querySelectorAll("button:not(.btn-hint):not(.btn-listen):not(.btn-reread), input, textarea");
     for (var i = 0; i < b.length; i++) b[i].disabled = true;
   }
 
@@ -365,6 +375,7 @@
   /* ---------- MCQ ---------- */
 
   function renderMcq(ex, container, done, opts) {
+    if (Array.isArray(ex.answer)) return renderMcqMulti(ex, container, done, opts);
     var f = frame(ex, container, opts);
     var list = el("div", "options");
     // Options are shown in a new random order each time, so the right answer is never always at the same letter.
@@ -396,6 +407,50 @@
         if (!ok) buttons[selected].classList.add("wrong", "shake");
         else buttons[selected].classList.add("pop");
         done({ correct: ok, attempts: 1, answerText: plain(ex.options[ex.answer]) });
+      }
+    };
+  }
+
+  /** answer = [indexes]: tick boxes; right only when exactly the right boxes are ticked (no half point).
+      showCount false: "several answers possible" instead of "choose N answers" (and N may be 1). */
+  function mcqMultiAccepted(ex, picked) {
+    var want = ex.answer.slice().sort(), got = picked.slice().sort();
+    return want.length === got.length && want.every(function (v, i) { return v === got[i]; });
+  }
+
+  function renderMcqMulti(ex, container, done, opts) {
+    var f = frame(ex, container, opts);
+    f.body.appendChild(el("p", "ex-help multi-help", ex.showCount === false ? T("pickSome") : T("pickN", ex.answer.length)));
+    var list = el("div", "options options-multi");
+    var picked = {}, buttons = [];
+    shuffle(ex.options.map(function (o, i) { return i; })).forEach(function (i) {
+      var b = el("button", "option", '<span class="opt-key opt-box" aria-hidden="true"></span><span>' + rich(ex.options[i]) + "</span>");
+      b.type = "button";
+      b.setAttribute("data-i", String(i));
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () {
+        if (f.root.classList.contains("answered")) return;
+        picked[i] = !picked[i];
+        b.classList.toggle("selected", picked[i]);
+        b.setAttribute("aria-pressed", picked[i] ? "true" : "false");
+        opts.onReady(chosen().length > 0);
+      });
+      buttons[i] = b;
+      list.appendChild(b);
+    });
+    function chosen() { return Object.keys(picked).filter(function (k) { return picked[k]; }).map(Number); }
+    f.body.appendChild(list);
+    opts.onReady(false);
+    return {
+      check: function () {
+        var got = chosen();
+        if (!got.length) return;
+        var ok = mcqMultiAccepted(ex, got);
+        lockAll(f.root);
+        ex.answer.forEach(function (i) { buttons[i].classList.add("correct"); if (!picked[i]) buttons[i].classList.add("missed"); });
+        got.forEach(function (i) { if (ex.answer.indexOf(i) === -1) buttons[i].classList.add("wrong", "shake"); });
+        if (ok) list.classList.add("pop");
+        done({ correct: ok, attempts: 1, answerText: ex.answer.map(function (i) { return plain(ex.options[i]); }).join(" · ") });
       }
     };
   }
@@ -781,16 +836,7 @@
   function renderWrite(ex, container, done, opts) {
     var f = frame(ex, container, opts);
     var doc = findDocument(opts.data, ex);
-    if (doc) {
-      var card = el("div", "letter-card");
-      var text = String(doc.text == null ? "" : doc.text);
-      var hasFrom = !doc.from || /from,?\s/i.test(plain(text));
-      var tag = doc.title ? escapeHtml(doc.title) : doc.from ? T("docFrom", escapeHtml(doc.from)) : T("docDefault");
-      card.innerHTML = '<div class="letter-stamp">' + (doc.from ? "✉️" : "📄") + '</div><div class="letter-tag">📬 ' + tag + "</div>" +
-        '<div class="letter-text">' + rich(text).replace(/\n/g, "<br>") + "</div>" +
-        (hasFrom ? "" : '<div class="letter-from">— ' + escapeHtml(doc.from) + "</div>");
-      f.body.appendChild(card);
-    }
+    if (doc) f.body.appendChild(docCard(doc, "letter-card"));
 
     var ta = el("textarea", "write-area");
     ta.rows = 8;
@@ -869,6 +915,75 @@
     return null;
   }
 
+  /** Card showing a pack document: a letter (from) or a text to read (title). */
+  function docCard(doc, cls) {
+    var card = el("div", cls);
+    var text = String(doc.text == null ? "" : doc.text);
+    var hasFrom = !doc.from || /from,?\s/i.test(plain(text));
+    var tag = doc.title ? escapeHtml(doc.title) : doc.from ? T("docFrom", escapeHtml(doc.from)) : T("docDefault");
+    var stamp = doc.from ? "✉️" : "📖";
+    card.innerHTML = '<div class="letter-stamp">' + stamp + '</div><div class="letter-tag">' + (doc.from ? "📬 " : "") + tag + "</div>" +
+      '<div class="letter-text">' + (/read-card/.test(cls) ? // a text to read: one paragraph per line, spaced
+        text.split(/\n+/).map(function (para) { return "<p>" + rich(para) + "</p>"; }).join("") :
+        rich(text).replace(/\n/g, "<br>")) + "</div>" +
+      (hasFrom ? "" : '<div class="letter-from">— ' + escapeHtml(doc.from) + "</div>");
+    return card;
+  }
+
+  /* ---------- long texts: reading screen, then "back to the text" over the question ---------- */
+
+  var textLayer = null;
+
+  function closeText() {
+    if (!textLayer) return;
+    var layer = textLayer;
+    textLayer = null;
+    document.removeEventListener("keydown", layer._onKey);
+    layer.remove();
+    document.body.classList.remove("reading-open");
+    if (layer._back) try { layer._back.focus({ preventScroll: true }); } catch (e) { /* */ }
+  }
+
+  /** The text over the question, full screen: the question and the answer in progress stay as they are below. */
+  function openText(doc) {
+    closeText();
+    var opener = document.activeElement;
+    var layer = el("div", "read-layer");
+    layer.setAttribute("role", "dialog");
+    layer.setAttribute("aria-modal", "true");
+    layer.setAttribute("aria-label", plain(doc.title || T("docDefault")));
+    var inner = el("div", "read-layer-inner");
+    inner.appendChild(docCard(doc, "read-card"));
+    var close = el("button", "btn btn-primary btn-big read-close", T("backToQuestion"));
+    close.type = "button";
+    close.addEventListener("click", closeText);
+    inner.appendChild(close);
+    layer.appendChild(inner);
+    layer._back = opener;
+    layer._onKey = function (e) { if (e.key === "Escape") closeText(); };
+    document.addEventListener("keydown", layer._onKey);
+    document.body.appendChild(layer);
+    document.body.classList.add("reading-open");
+    textLayer = layer;
+    layer.scrollTop = 0;
+    try { close.focus({ preventScroll: true }); } catch (e) { /* */ }
+  }
+
+  /** Reading screen shown before the first question on a long text: the child reads first, then answers. */
+  function readingScreen(doc, container, onContinue) {
+    closeText();
+    container.innerHTML = "";
+    var root = el("div", "ex ex-reading");
+    root.appendChild(el("p", "ex-help read-intro", T("readFirst")));
+    root.appendChild(docCard(doc, "read-card"));
+    var go = el("button", "btn btn-primary btn-big read-go", T("readGo"));
+    go.type = "button";
+    go.addEventListener("click", function () { onContinue(); });
+    root.appendChild(go);
+    container.appendChild(root);
+    return root;
+  }
+
   function insertAtCursor(ta, text) {
     var start = ta.selectionStart != null ? ta.selectionStart : ta.value.length;
     var end = ta.selectionEnd != null ? ta.selectionEnd : ta.value.length;
@@ -904,6 +1019,7 @@
     opts.onRetry = opts.onRetry || noop;
     opts.data = opts.data || null;
     Speech.stop(); // a word still being read must not run over the next exercise
+    closeText();
     var fn = RENDERERS[exercise && exercise.type];
     var answered = false;
     var once = function (res) {
@@ -935,6 +1051,10 @@
     normalize: normalize,
     fillAccepted: fillAccepted,
     orderAccepted: orderAccepted,
+    mcqMultiAccepted: mcqMultiAccepted,
+    findDocument: findDocument,
+    readingScreen: readingScreen,
+    closeText: closeText,
     writeCheck: writeCheck,
     pickVoice: pickVoice,
     voiceQuality: voiceQuality,

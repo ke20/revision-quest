@@ -147,6 +147,8 @@ const curEx = (page, wi) => page.evaluate(wi => Engine.packData().worlds[wi].exe
 
 /** Answer the current exercise correctly (generic for every type). */
 async function solve(page, ex) {
+  // a long text is read on its own screen before its first question
+  if (await page.locator(".read-go").count()) await tap(page, ".read-go");
   switch (ex.type) {
     case "match":
       for (let i = 0; i < ex.pairs.length; i++) {
@@ -154,7 +156,7 @@ async function solve(page, ex) {
         await page.locator(`.match-col >> nth=1 >> .match-item[data-i="${i}"]`).click();
       }
       return;
-    case "mcq": await page.locator(`.option[data-i="${ex.answer}"]`).click(); break;
+    case "mcq": for (const a of [].concat(ex.answer)) await page.locator(`.option[data-i="${a}"]`).click(); break;
     case "sort":
       for (let i = 0; i < ex.items.length; i++) {
         const ci = ex.categories.findIndex(c => c.id === ex.items[i].cat);

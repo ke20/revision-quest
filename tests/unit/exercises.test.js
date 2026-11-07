@@ -152,3 +152,19 @@ test("pickVoice: premium, then enhanced voices first; Apple novelty voices (Eddy
   assert.strictEqual(X.pickVoice(chrome, "fr").name, "Thomas", "Thomas rather than Jacques, Amélie (fr-CA) or Eddy");
   assert.strictEqual(X.pickVoice(chrome, "fr", ["Thomas|Thomas"]).name, "Jacques", "a silent voice is excluded by its key");
 });
+
+test("mcqMultiAccepted: right only with exactly the right boxes, in any order", () => {
+  const ex = { answer: [0, 2] };
+  assert.strictEqual(X.mcqMultiAccepted(ex, [2, 0]), true);
+  assert.strictEqual(X.mcqMultiAccepted(ex, [0]), false, "one missing");
+  assert.strictEqual(X.mcqMultiAccepted(ex, [0, 1, 2]), false, "one too many");
+  assert.strictEqual(X.mcqMultiAccepted({ answer: [3] }, [3]), true);
+});
+
+test("findDocument: docId on any exercise, letterId and letters still read", () => {
+  const data = { documents: [{ id: "t1", text: "x" }] };
+  assert.strictEqual(X.findDocument(data, { type: "mcq", docId: "t1" }).id, "t1");
+  assert.strictEqual(X.findDocument(data, { type: "mcq", docId: "t2" }), null);
+  assert.strictEqual(X.findDocument({ letters: [{ id: 3, text: "y" }] }, { letterId: 3 }).id, 3);
+  assert.strictEqual(X.findDocument(null, { docId: "t1" }), null);
+});

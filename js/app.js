@@ -154,6 +154,7 @@
 
   function show(node) {
     window.Exercises && Exercises.closeBubble();
+    window.Exercises && Exercises.closeText && Exercises.closeText();
     app.innerHTML = "";
     app.appendChild(node);
     applyComfort();
@@ -1148,6 +1149,20 @@
     ui.btn.disabled = true;
     ui.btn.style.display = "";
     ui.container.classList.remove("slide-in"); void ui.container.offsetWidth; ui.container.classList.add("slide-in");
+
+    // A long text (document with screen: true) is read on its own screen before its first question;
+    // the questions after it on the same text only offer "back to the text".
+    var doc = ex && ex.type !== "write" ? Exercises.findDocument(DATA, ex) : null;
+    ui.bar.hidden = false;
+    if (doc && doc.screen && ui.readDoc !== doc.id) {
+      ui.bar.hidden = true; // nothing to check yet, and the bar would cover the "answer the questions" button
+      Exercises.readingScreen(doc, ui.container, function () {
+        ui.readDoc = doc.id;
+        playExercise(w, ui);
+      });
+      try { window.scrollTo(0, 0); } catch (e) { /* */ }
+      return;
+    }
 
     function onResult(res) {
       phase = "done";

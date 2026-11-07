@@ -53,6 +53,12 @@ Règles :
   (pas de `fetch`, pas de code qui s'exécute à côté : la sécurité du site l'interdit de toute façon).
 - `documents` : `{ id, title, from, text }`. `title` sert d'en-tête (« 📬 Le serment du Jeu de paume ») ;
   sans `title`, l'en-tête est fabriqué avec `from`. Les noms `letters` / `letterId` (lettres) sont aussi acceptés.
+- **Texte à lire** : tout exercice (pas seulement `write`) peut afficher un document avec `docId`. Plusieurs
+  questions peuvent porter sur le même texte.
+  - Texte court (1 à 3 phrases) : il s'affiche au-dessus de la question.
+  - Texte long : ajouter `screen: true` au document. Avant la première question sur ce texte, l'enfant le lit
+    seul à l'écran, puis touche « Répondre aux questions ». Chaque question propose ensuite « 📖 Retour au texte »
+    (le texte s'ouvre en plein écran, la réponse en cours est gardée). Les questions d'un même texte se suivent.
 
 ### Un monde
 
@@ -115,6 +121,17 @@ Les écrans généraux (accueil, catalogue, badges, classement) sont toujours en
 
 2 à 4 options, toutes différentes, une seule bonne. Le jeu les **mélange à chaque affichage** : la bonne réponse change de
 lettre d'une partie à l'autre. Ne pas écrire d'option qui dépend de la position (« A et B », « la réponse C »).
+
+**Plusieurs bonnes réponses** : `answer` devient une liste d'index, l'enfant coche des cases. C'est juste seulement
+si toutes les bonnes cases sont cochées et aucune autre (pas de demi-point). Il faut au moins une mauvaise option.
+
+```js
+{ type: "mcq", prompt: "Qu'emporte Nina ?", options: ["une lampe", "une corde", "un parapluie", "un sandwich"],
+  answer: [0, 3], showCount: false, explanation: "…" }
+```
+
+Par défaut la consigne annonce le nombre (« Choisis 2 réponses. ») ; `showCount: false` affiche « Plusieurs
+réponses possibles » (plus difficile ; une seule bonne réponse est alors permise : `answer: [2]`).
 
 ### `sort` — trier dans des boîtes
 

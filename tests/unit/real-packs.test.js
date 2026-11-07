@@ -16,7 +16,11 @@ function problems(ex) {
   const out = [];
   switch (ex.type) {
     case "mcq":
-      if (!(ex.answer >= 0 && ex.answer < ex.options.length)) out.push("answer out of range");
+      if (Array.isArray(ex.answer)) { // several answers: the right boxes are accepted, one box less is not
+        if (ex.answer.some((a) => !(a >= 0 && a < ex.options.length))) out.push("answer out of range");
+        if (!X.mcqMultiAccepted(ex, ex.answer.slice().reverse())) out.push("right boxes refused");
+        if (ex.answer.length > 1 && X.mcqMultiAccepted(ex, ex.answer.slice(1))) out.push("a missing box is accepted");
+      } else if (!(ex.answer >= 0 && ex.answer < ex.options.length)) out.push("answer out of range");
       break;
     case "fill":
       ex.answers.forEach((a) => { if (!X.fillAccepted(ex, a)) out.push(`answer "${a}" refused`); });

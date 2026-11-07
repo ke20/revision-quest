@@ -152,3 +152,25 @@ test("fill listen: plain text read aloud, 300 characters max, a hint advised", (
   assert.ok(check("  ", "x").errors.some((e) => /listen doit être un texte non vide/.test(e)));
   assert.ok(check("Le chat dort.").warnings.some((w) => /hint conseillé/.test(w)));
 });
+
+test("mcq with several answers and docId on any exercise (reading comprehension)", () => {
+  const src = fs.readFileSync(path.join(FIX, "valid.js"), "utf8");
+  const check = (mcq, doc) => {
+    const tmp = path.join(require("os").tmpdir(), "rq-multi-" + process.pid + ".js");
+    let out = src.replace('"answer": 0,\n          "explanation": "C\'est a."', mcq + ',\n          "explanation": "C\'est a."');
+    if (doc) out = out.replace('"title": "Un document",', '"title": "Un document", ' + doc + ",");
+    fs.writeFileSync(tmp, out);
+    try { return validatePack(tmp, catalog(), { rel: REL }); } finally { fs.unlinkSync(tmp); }
+  };
+  assert.deepStrictEqual(check('"answer": [0, 2]').errors, []);
+  assert.deepStrictEqual(check('"answer": [1], "showCount": false, "docId": "d1"', '"screen": true').errors, []);
+  assert.ok(check('"answer": []').errors.some((e) => /answer \[\] vide/.test(e)));
+  assert.ok(check('"answer": [0, 3]').errors.some((e) => /hors limites/.test(e)));
+  assert.ok(check('"answer": [1, 1]').errors.some((e) => /en double/.test(e)));
+  assert.ok(check('"answer": [0, 1, 2]').errors.some((e) => /au moins une mauvaise/.test(e)));
+  assert.ok(check('"answer": 0, "showCount": false').errors.some((e) => /showCount seulement/.test(e)));
+  assert.ok(check('"answer": [0], "showCount": "non"').errors.some((e) => /showCount doit être/.test(e)));
+  assert.ok(check('"answer": 0, "docId": "nope"').errors.some((e) => /document nope introuvable/.test(e)));
+  assert.ok(check('"answer": 0, "letterId": "d1"').errors.some((e) => /letterId seulement sur write/.test(e)));
+  assert.ok(check('"answer": 0', '"screen": "oui"').errors.some((e) => /screen doit être/.test(e)));
+});
