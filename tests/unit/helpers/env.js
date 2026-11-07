@@ -50,7 +50,7 @@ function load(opts = {}) {
     console, Math, Date, JSON, TextEncoder, TextDecoder, Uint8Array, Object, Array, String, Number, RegExp, Error, isFinite,
     btoa: (s) => Buffer.from(s, "binary").toString("base64"),
     atob: (s) => Buffer.from(s, "base64").toString("binary"),
-    setTimeout, clearTimeout,
+    setTimeout, clearTimeout, CompressionStream, DecompressionStream,
     localStorage: ls,
     location: { pathname: opts.pathname || "/", protocol: opts.protocol || "http:", search: opts.search || "" },
     addEventListener: (type, fn) => { (listeners[type] = listeners[type] || []).push(fn); },

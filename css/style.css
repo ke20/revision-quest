@@ -730,3 +730,12 @@ body.reading-open { overflow: hidden; }
 .multi-help { font-weight: 600; }
 .checkbar[hidden] { display: none; }
 .read-card .letter-text p { margin: 0 0 .7em; } .read-card .letter-text p:last-child { margin-bottom: 0; }
+
+/* sharing a game: QR code, link, camera */
+.share-who { font-size: 1.1rem; margin: 0 0 8px; }
+.share-body { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.share-body .save-actions { width: 100%; }
+.share-qr { width: min(280px, 72vw); height: auto; display: block; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, .12); background: #fff; }
+.share-link { width: 100%; font: inherit; font-size: .85rem; padding: 10px; border-radius: 10px; border: 2px solid var(--line); }
+.scan-box { position: relative; width: 100%; aspect-ratio: 1; border-radius: 16px; overflow: hidden; background: #000; }
+.scan-video { width: 100%; height: 100%; object-fit: cover; display: block; }

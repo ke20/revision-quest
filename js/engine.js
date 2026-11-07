@@ -43,6 +43,7 @@
   var SAVE_VERSION = 3;
   var FILE_PREFIX = "RQSAVE";
   var APP_ID = "revision-quest";
+  var SHARE_MAX_BYTES = 200000; // a shared code never expands beyond this (a real one is about 2 KB)
   var AVATARS = ["🦊", "🐼", "🐯", "🦄", "🐸", "🐙", "🦖", "🐨", "🐱", "🐶", "🚀", "⚽"];
 
   var PACK_ID = /^[a-z0-9-]{1,30}\/[a-z0-9-]{1,30}\/[a-z0-9-]{1,60}(\/[a-z0-9-]{1,30})?$/; // a pack is identified by its path: <niveau>/<matiere>/<cours>[/<groupe>]
@@ -117,6 +118,41 @@
   }
   function toUrl64(b) { return b.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, ""); }
   function fromUrl64(b) { b = b.replace(/-/g, "+").replace(/_/g, "/"); while (b.length % 4) b += "="; return b; }
+
+  function bytesToUrl64(bytes) {
+    var bin = "";
+    for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    return toUrl64(btoa(bin));
+  }
+  function url64ToBytes(s) {
+    var bin = atob(fromUrl64(s)), bytes = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return bytes;
+  }
+  /** Runs bytes through a CompressionStream / DecompressionStream; rejects beyond max bytes (no "zip bomb"). */
+  function pipeBytes(stream, bytes, max) {
+    var writer = stream.writable.getWriter();
+    writer.write(bytes).catch(function () {});
+    writer.close().catch(function () {});
+    var reader = stream.readable.getReader(), parts = [], total = 0;
+    function next() {
+      return reader.read().then(function (r) {
+        if (r.done) {
+          var out = new Uint8Array(total), at = 0;
+          parts.forEach(function (p) { out.set(p, at); at += p.length; });
+          return out;
+        }
+        total += r.value.length;
+        if (total > max) { reader.cancel().catch(function () {}); throw new Error("too big"); }
+        parts.push(r.value);
+        return next();
+      });
+    }
+    return next();
+  }
+  var canZip = (function () {
+    try { return typeof CompressionStream === "function" && typeof DecompressionStream === "function" && !!new CompressionStream("deflate-raw"); } catch (e) { return false; }
+  })();
 
   function newId() { return "p" + Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
 
@@ -1032,9 +1068,47 @@
       if (obj.version !== SAVE_VERSION) return bad;
       var p = normalizeProfile(obj.profile);
       if (!p) return bad;
-      var existing = null;
-      db.profiles.forEach(function (q) { if (q.name.toLowerCase() === p.name.toLowerCase()) existing = q; });
-      return { ok: true, profile: p, conflict: existing };
+      return { ok: true, profile: p, conflict: sameName(p.name) };
+    },
+
+    /** Short code of a player for a link or a QR code: "z.<deflate-raw, base64url>.<hash>" (or "j." when the
+        browser cannot compress). Only the progress (compact form, as in the cookie backup), no translations.
+        Returns a Promise of the code, or of null if there is no such player. */
+    shareCode: function (id) {
+      var p = findProfile(id || db.currentId);
+      if (!p) return Promise.resolve(null);
+      var inner = JSON.stringify({ v: SAVE_VERSION, p: [compactProfile(p)] });
+      var tail = "." + hash(inner);
+      if (!canZip) return Promise.resolve("j." + toUrl64(b64encode(inner)) + tail);
+      return pipeBytes(new CompressionStream("deflate-raw"), new TextEncoder().encode(inner), SHARE_MAX_BYTES)
+        .then(function (z) { return "z." + bytesToUrl64(z) + tail; })
+        .catch(function () { return "j." + toUrl64(b64encode(inner)) + tail; });
+    },
+
+    /** Read a code from a link or a QR code. Promise of { ok, profile, conflict } or { ok:false, error }.
+        Same checks as a .save file: format, hash, then every value normalised (nothing in it is ever executed). */
+    parseShareCode: function (code) {
+      var bad = { ok: false, error: "Ce lien ou ce QR code n'est pas une partie " + appName() + "." };
+      var broken = { ok: false, error: "Ce lien est incomplet ou abîmé : demande à le renvoyer." };
+      code = String(code || "").trim();
+      var m = /^([zj])\.([A-Za-z0-9_-]{1,20000})\.([a-z0-9]{1,8})$/.exec(code);
+      if (!m) return Promise.resolve(/^[zj]\./.test(code) ? broken : bad);
+      var read;
+      try {
+        read = m[1] === "j" ? Promise.resolve(new TextEncoder().encode(b64decode(fromUrl64(m[2])))) :
+          !canZip ? Promise.reject(new Error("no zip")) :
+          pipeBytes(new DecompressionStream("deflate-raw"), url64ToBytes(m[2]), SHARE_MAX_BYTES);
+      } catch (e) { return Promise.resolve(broken); }
+      return read.then(function (bytes) {
+        var inner = new TextDecoder().decode(bytes);
+        if (hash(inner) !== m[3]) return broken;
+        var c = uncompact(safeJsonParse(inner));
+        var p = c && c.profiles.length === 1 ? c.profiles[0] : null;
+        if (!p) return bad;
+        return { ok: true, profile: p, conflict: sameName(p.name) };
+      }, function (e) {
+        return e && e.message === "no zip" ? { ok: false, error: "Ce navigateur est trop ancien pour lire ce lien. Utilise un fichier .save." } : broken;
+      });
     },
 
     /** Add an imported player. mode: "replace" (overwrite same name) or "copy" (new name). */
@@ -1065,6 +1139,13 @@
       return p;
     }
   };
+
+  /** The player of this device with the same name (case ignored), or null. */
+  function sameName(name) {
+    var existing = null;
+    db.profiles.forEach(function (q) { if (q.name.toLowerCase() === String(name).toLowerCase()) existing = q; });
+    return existing;
+  }
 
   function nameTaken(name, exceptId) {
     name = cleanName(name).toLowerCase();

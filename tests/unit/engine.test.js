@@ -816,3 +816,39 @@ test("grade: chosen at creation (optional), changed with setSettings, checked by
   E.selectProfile(E.profiles().find((p) => p.name === "Léo").id);
   assert.strictEqual(E.settings().grade, "cm2", "per player");
 });
+
+/* ---------- share code (link / QR code) ---------- */
+
+test("share code: compressed, round trip of the progress, broken or foreign codes refused", async () => {
+  const { E } = setup();
+  playWorld(E, 1);
+  const code = await E.shareCode();
+  assert.match(code, /^z\.[A-Za-z0-9_-]+\.[a-z0-9]+$/, "URL-safe characters only");
+  const plain = JSON.stringify({ v: 3, p: [E._internals.compactProfile(E.currentProfile())] });
+  assert.ok(code.length < Buffer.from(plain).toString("base64url").length, "compressed (shorter than plain base64)");
+
+  const E2 = load().window.Engine;
+  const r = await E2.parseShareCode(code);
+  assert.ok(r.ok, JSON.stringify(r));
+  assert.strictEqual(r.conflict, null);
+  const p = E2.importProfile(r.profile, "copy");
+  assert.strictEqual(p.name, "Léa");
+  assert.deepStrictEqual(j(p.state.packs[PACK].worlds), j(E.state.packs[PACK].worlds));
+  assert.strictEqual(p.state.xp, E.state.xp);
+  assert.strictEqual((await E2.parseShareCode(code)).conflict.name, "Léa", "same name: replace or keep both");
+
+  const [kind, data, h] = code.split(".");
+  assert.match((await E2.parseShareCode(kind + "." + data.slice(0, -6) + "." + h)).error, /incomplet ou abîmé/, "cut by a messaging app");
+  assert.match((await E2.parseShareCode(kind + "." + data + ".zzz")).error, /incomplet ou abîmé/, "changed");
+  assert.match((await E2.parseShareCode("hello")).error, /n'est pas une partie/);
+  assert.match((await E2.parseShareCode("z." + "A".repeat(20001) + ".a")).error, /incomplet ou abîmé/, "too long");
+  // uncompressed form ("j."), as written by a browser without CompressionStream
+  const jcode = "j." + Buffer.from(plain).toString("base64url") + "." + E._internals.hash(plain);
+  assert.ok((await E2.parseShareCode(jcode)).ok);
+  // a "zip bomb" (tiny code, huge content) is stopped
+  const bomb = require("zlib").deflateRawSync(Buffer.alloc(5e6, 32)).toString("base64url");
+  assert.match((await E2.parseShareCode("z." + bomb + ".a")).error, /incomplet ou abîmé/);
+  // valid hash but not a progress
+  const other = JSON.stringify({ v: 3, p: [] });
+  assert.match((await E2.parseShareCode("j." + Buffer.from(other).toString("base64url") + "." + E._internals.hash(other))).error, /n'est pas une partie/);
+});

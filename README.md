@@ -51,7 +51,14 @@ ni ne stocke les informations.
   (même la police d'écriture est hébergée avec le jeu).
 - La progression (prénom choisi, avatar, réglages, XP, étoiles, badges) reste dans le navigateur. Le fichier `.save` sert
   seulement à la déplacer ou à la garder de côté ; il protège contre les fichiers abîmés, pas contre la triche.
-- Toutes les données lues (navigateur, cookie, fichier `.save`) sont vérifiées avant usage, et une politique de
+- **Partager ma partie** (dans « Ma sauvegarde ») affiche un QR code et propose d'envoyer un lien. La progression est
+  placée après le `#` du lien : cette partie n'est jamais envoyée au serveur qui héberge le jeu. Mais le lien contient le
+  prénom et la progression : il reste lisible dans la messagerie qui l'a transporté. À l'ouverture, le jeu demande
+  toujours une confirmation avant d'importer, puis efface le lien de la barre d'adresse et de l'historique.
+  « Flasher un QR code » utilise la caméra seulement pendant le scan, et le détecteur du navigateur (sans bibliothèque).
+- Le QR code est dessiné par la bibliothèque de Nayuki (licence MIT), copiée dans `js/vendor/` après relecture complète
+  de sa source et du fichier compilé. Son empreinte SHA-256 est vérifiée par les tests : toute modification est détectée.
+- Toutes les données lues (navigateur, cookie, fichier `.save`, lien partagé) sont vérifiées avant usage, et une politique de
   sécurité du contenu (CSP) empêche l'exécution de tout script qui ne vient pas du jeu.
 - Un pack de contenu est du code exécuté par le jeu : **chaque nouveau pack doit être relu avant d'être ajouté**
   (et avant de lancer le validateur dessus : il exécute le fichier).

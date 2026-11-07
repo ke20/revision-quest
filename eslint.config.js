@@ -25,7 +25,7 @@ const common = {
 };
 
 module.exports = [
-  { ignores: ["node_modules/**", "test-results/**", "playwright-report/**"] },
+  { ignores: ["node_modules/**", "test-results/**", "playwright-report/**", "js/vendor/**"] }, // vendored: checked by its SHA-256, never edited
 
   js.configs.recommended,
   { rules: common },
@@ -36,8 +36,9 @@ module.exports = [
     languageOptions: {
       ecmaVersion: 5,
       sourceType: "script",
-      // ES5 syntax, but a modern browser at runtime: Uint8Array is used by the base64 helpers of js/engine.js
-      globals: { ...globals.browser, ...appGlobals, Uint8Array: "readonly" }
+      // ES5 syntax, but a modern browser at runtime: Uint8Array (base64 helpers) and Promise (share code) in js/engine.js;
+      // qrcodegen is defined by js/vendor/qrcodegen.js
+      globals: { ...globals.browser, ...appGlobals, Uint8Array: "readonly", Promise: "readonly", qrcodegen: "readonly" }
     },
     rules: { "no-implicit-globals": "error" }
   },
