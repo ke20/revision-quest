@@ -1,4 +1,5 @@
-// Seasonal themes (js/app.js SEASONS): Halloween 20 October – 2 November, Christmas 1 December – 6 January.
+// Seasonal themes (js/app.js SEASONS): Halloween 20 October – 2 November, Christmas 1 December – 6 January, and the four
+// seasons the rest of the year (spring 20 March, summer 21 June, autumn 22 September, winter 21 December).
 // One setting "seasonal" (auto / off) for all; preview with ?theme=<id>. Decoration only: background, far-away
 // landscape (css/<id>-village.svg), a few falling flakes or leaves; nothing during an exercise.
 "use strict";
@@ -7,16 +8,18 @@ const H = require("./helpers");
 const { BASE, wait, tap } = H;
 
 const theme = (page) => page.evaluate(() => {
-  const t = ["halloween", "noel"].filter((id) => document.body.classList.contains("theme-" + id));
+  const t = ["halloween", "noel", "printemps", "ete", "automne", "hiver"].filter((id) => document.body.classList.contains("theme-" + id));
   const scene = document.querySelector(".season-scene");
   return t.join() + "|" + (scene ? scene.getAttribute("data-theme") : "");
 });
 
 for (const [day, want, logo] of [
-  ["2026-10-19T12:00:00", "|", "🎓"], ["2026-10-20T08:00:00", "halloween|halloween", "🎃"], ["2026-10-31T20:00:00", "halloween|halloween", "🎃"],
-  ["2026-11-02T20:00:00", "halloween|halloween", "🎃"], ["2026-11-03T08:00:00", "|", "🎓"], ["2026-11-30T12:00:00", "|", "🎓"],
+  ["2026-03-19T12:00:00", "hiver|hiver", "⛄"], ["2026-03-20T08:00:00", "printemps|printemps", "🌷"], ["2026-06-20T20:00:00", "printemps|printemps", "🌷"],
+  ["2026-06-21T08:00:00", "ete|ete", "🏖️"], ["2026-09-21T20:00:00", "ete|ete", "🏖️"], ["2026-09-22T08:00:00", "automne|automne", "🍁"],
+  ["2026-10-19T12:00:00", "automne|automne", "🍁"], ["2026-10-20T08:00:00", "halloween|halloween", "🎃"], ["2026-10-31T20:00:00", "halloween|halloween", "🎃"],
+  ["2026-11-02T20:00:00", "halloween|halloween", "🎃"], ["2026-11-03T08:00:00", "automne|automne", "🍁"], ["2026-11-30T12:00:00", "automne|automne", "🍁"],
   ["2026-12-01T08:00:00", "noel|noel", "🎄"], ["2026-12-25T12:00:00", "noel|noel", "🎄"], ["2027-01-06T20:00:00", "noel|noel", "🎄"],
-  ["2027-01-07T08:00:00", "|", "🎓"]]) {
+  ["2027-01-07T08:00:00", "hiver|hiver", "⛄"]]) {
   test(`seasonal theme on ${day.slice(0, 10)}: ${want.split("|")[0] || "none"}`, async ({ page }) => {
     await page.clock.setFixedTime(new Date(day));
     await page.goto(BASE); await wait(page, 200);
@@ -25,6 +28,18 @@ for (const [day, want, logo] of [
     expect(await page.locator(".screen.home .logo").innerText()).toBe(logo);
   });
 }
+
+test("seasons: « C'est le printemps ! » once per season and player, never for a festival or a preview", async ({ page }) => {
+  await page.clock.setFixedTime(new Date("2026-04-02T10:00:00"));
+  await page.goto(BASE); await wait(page, 200);
+  await H.newPlayer(page, "Léo", 1);
+  await expect(page.locator(".toast", { hasText: "C'est le printemps" })).toHaveCount(1);
+  await page.reload(); await wait(page, 1200);
+  await expect(page.locator(".toast", { hasText: "C'est le printemps" })).toHaveCount(0);
+  await page.clock.setFixedTime(new Date("2026-10-25T10:00:00")); // Halloween: no message
+  await page.reload(); await wait(page, 1200);
+  await expect(page.locator(".toast", { hasText: "C'est" })).toHaveCount(0);
+});
 
 test("seasonal themes: one setting turns them off; ?theme= previews; landscape served; nothing during an exercise", async ({ page }) => {
   const R = H.makeReporter(); const ok = R.ok;
@@ -37,7 +52,7 @@ test("seasonal themes: one setting turns them off; ?theme= previews; landscape s
     const svg = await page.request.get(BASE + "css/" + id + "-village.svg");
     ok(svg.ok() && /^image\/svg\+xml/.test(svg.headers()["content-type"] || ""), id + " landscape served by the game");
   }
-  ok((await page.locator(".season-fall span").count()) > 0 && await page.locator(".season-fall").isVisible(), "falling flakes on the home screen");
+  ok((await page.locator(".season-fall .faller").count()) > 0 && await page.locator(".season-fall").isVisible(), "falling flakes on the home screen");
   ok(await H.hscroll(page) <= 0, "no horizontal scroll");
 
   // during an exercise: no landscape, nothing falling
@@ -59,7 +74,13 @@ test("seasonal themes: one setting turns them off; ?theme= previews; landscape s
   // preview links: on whatever the date and the setting
   await page.goto(BASE + "?theme=halloween"); await wait(page, 300);
   ok((await theme(page)) === "halloween|halloween", "?theme=halloween");
-  ok((await page.locator(".season-fall .bat").count()) === 3, "a few bats at Halloween");
+  ok((await page.locator(".season-fall .flyer-bat .wing").count()) === 6, "3 bats flapping their wings at Halloween");
+  for (const id of ["printemps", "ete", "automne", "hiver"]) {
+    await page.goto(BASE + "?theme=" + id); await wait(page, 200);
+    ok((await theme(page)) === id + "|" + id, "?theme=" + id);
+    const svg = await page.request.get(BASE + "css/" + id + "-village.svg");
+    ok(svg.ok(), id + " landscape served");
+  }
   await page.goto(BASE + "?theme=noel"); await wait(page, 300);
   ok((await theme(page)) === "noel|noel", "?theme=noel");
   R.done();

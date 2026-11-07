@@ -42,11 +42,13 @@ ni ne stocke les informations.
   de cœur, niveau d'animations, difficulté (étoiles demandées pour passer au monde suivant), mondes déjà joués sans assez
   d'étoiles (restent ouverts ou sont à rejouer). À la création du profil, la question « As-tu un TDA/H ? » choisit
   seulement les valeurs de départ ; **la réponse n'est jamais enregistrée**.
-- **Thèmes de saison** : **Halloween** du 20 octobre au 2 novembre (crépuscule, citrouilles souriantes, feuilles qui
-  tombent) et **Noël** du 1er décembre au 6 janvier (nuit d'hiver, village enneigé, un peu de neige). Décor seulement,
-  jamais pendant un exercice, et sans rien qui tombe avec « Animations : Aucune ». Un réglage par joueur
-  « 🎃🎄 Thèmes de saison » les coupe tous. Aperçu à tout moment avec `?theme=halloween` ou `?theme=noel` à la fin de
-  l'adresse.
+- **Thèmes de saison** : le décor suit l'année. **Printemps** (à partir du 20 mars : prairie fleurie, pétales,
+  papillons), **été** (21 juin : bord de mer, mouettes), **automne** (22 septembre : forêt rousse, feuilles qui tombent),
+  **hiver** (21 décembre : montagnes, chalet, neige), avec deux fêtes par-dessus : **Halloween** du 20 octobre au
+  2 novembre (citrouilles souriantes, chauves-souris) et **Noël** du 1er décembre au 6 janvier (village enneigé).
+  Un message « C'est le printemps ! » s'affiche une fois par saison. Décor seulement : jamais pendant un exercice, et
+  rien qui bouge avec « Animations : Aucune ». Un réglage par joueur « 🎃🎄 Thèmes de saison » les coupe tous (retour au
+  thème violet habituel). Aperçu avec `?theme=printemps`, `ete`, `automne`, `hiver`, `halloween` ou `noel`.
 - **Recommencer un chapitre** : bouton sous la carte des mondes, après avoir écrit « Je confirme ». Seules les étoiles
   de ce chapitre sont effacées (l'XP, les badges et les autres chapitres sont gardés).
 

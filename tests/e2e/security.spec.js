@@ -6,7 +6,7 @@ const H = require("./helpers");
 const { BASE, EN, wait, tap } = H;
 // true when no element was injected: no <img>, no inline <script>, no foreign <svg>, no on* attribute anywhere
 // the app's own SVGs (map path, geometry figures, GitHub mark, full screen icon) are allowed; any other svg / img / inline script would be injected
-const domClean = page => page.evaluate(() => !document.querySelector('img, script:not([src]), svg:not(.map-svg):not(.fig-svg):not(.gh-icon):not([data-act=fullscreen] svg)') &&
+const domClean = page => page.evaluate(() => !document.querySelector('img, script:not([src]), svg:not(.map-svg):not(.fig-svg):not(.gh-icon):not([data-act=fullscreen] svg):not(.season-fall svg)') &&
   ![...document.querySelectorAll('*')].some(el => [...el.attributes].some(a => /^on/i.test(a.name))));
 
 
