@@ -11,10 +11,13 @@ Présentation du jeu et installation : voir le [README](README.md). Pour écrire
   + `);`, vérifié sans exécution par le validateur) et il est **relu avant d'être fusionné**.
 - Une faille de sécurité se signale en privé, pas dans un ticket : voir [SECURITY.md](SECURITY.md).
 
-Le code du jeu (`js/`) est écrit en **JavaScript ES2017**, sans étape de build : des scripts `<script>` classiques
-(pas de modules ES), chacun dans une fonction auto-appelée. ES2017 tourne sur Safari 11 (iOS 11), Chrome 58 et
-Firefox 52. Le lint refuse la syntaxe plus récente (`...` dans un objet, `?.`, `??`). Les anciens fichiers écrits
-en ES5 restent valides.
+Le code du jeu (`js/`) est écrit en **JavaScript ES2017**, sans étape de build. Le moteur, les exercices, le
+catalogue et les règles des packs sont des scripts `<script>` classiques, chacun dans une fonction auto-appelée (ils
+sont aussi chargés par Node pour les tests). Les écrans (`js/app/`) sont des **modules ES** natifs du navigateur
+(`import` / `export`, point d'entrée `js/app/main.js`), un fichier par écran ; ce qu'ils partagent et modifient vit
+dans `js/app/state.js`. Navigateurs : Safari 11 (iOS 11), Chrome 61, Firefox 60 ; un navigateur trop ancien pour les
+modules affiche un message (`js/nomodule.js`). Le lint refuse la syntaxe plus récente qu'ES2017 (`...` dans un
+objet, `?.`, `??`, `import()` dynamique). Les anciens fichiers écrits en ES5 restent valides.
 
 **Types** : TypeScript vérifie le JavaScript sans rien compiler (`mise run typecheck`, `tsconfig.json`). Les types
 s'écrivent en commentaires JSDoc (`/** @param {Pack} pack */`) ; les types partagés sont dans `types/*.d.ts`
@@ -38,7 +41,9 @@ revision-quest/
 │   ├── exercises.js        affichage et correction des exercices
 │   ├── figures.js          figures de géométrie en SVG
 │   ├── pack-rules.js       règles d'un chapitre (validateur, navigateur et Node)
-│   └── app.js              écrans, navigation, animations, sons
+│   ├── nomodule.js         message pour un navigateur trop ancien
+│   └── app/                écrans (modules ES) : main.js (démarrage), nav.js (adresses, retour),
+│                           home, catalog, map, play, ghost, profiles, save, settings, badges, ui, sound…
 ├── packs/
 │   ├── README.md           guide pour écrire un chapitre
 │   └── <niveau>/<matiere>/

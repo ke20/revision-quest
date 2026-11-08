@@ -124,7 +124,7 @@ async function gotoPack(page, packId) {
   await expect(page.locator(".screen.map")).toBeVisible();
 }
 /** Wait until the world map stops moving. 250 ms after it is shown, the map smooth-scrolls to the current world
-    when that one is low on the screen (js/app.js showMap): a click during that scroll lands on the wrong spot. */
+    when that one is low on the screen (js/app/map.js showMap): a click during that scroll lands on the wrong spot. */
 async function mapSettled(page) {
   await expect(page.locator(".screen.map")).toBeVisible();
   await page.waitForFunction(() => new Promise((resolve) => {

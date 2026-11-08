@@ -205,7 +205,7 @@ test("clickjacking: the game refuses to start inside a frame", async ({ browser 
 test("local server: only the game files are served (no .git, notes, resources), DNS rebinding refused", async ({ request }) => {
   const R = H.makeReporter(); const ok = R.ok;
   const status = async (p, headers) => (await request.get(BASE.replace(/\/$/, "") + p, { headers, maxRedirects: 0 })).status();
-  for (const p of ["/", "/index.html", "/js/app.js", "/css/style.css", "/packs/4e/anglais/giving-advice.js"]) ok(await status(p) === 200, p + " served");
+  for (const p of ["/", "/index.html", "/js/app/main.js", "/css/style.css", "/packs/4e/anglais/giving-advice.js"]) ok(await status(p) === 200, p + " served");
   for (const p of ["/.git/config", "/%2F.git/config", "/.GIT/config", "/x/..%2F.git/config", "/js/%2e%2e/.git/config", "/package.json",
     "/tests/server.js", "/node_modules/.package-lock.json", "/resources/", "/PLAN.md", "/specs/TODO.md", "/.gitignore", "/js/.hidden.js"]) ok(await status(p) === 404, p + " refused");
   ok(await status("/", { host: "evil.example" }) === 421, "unknown Host header refused (DNS rebinding)");

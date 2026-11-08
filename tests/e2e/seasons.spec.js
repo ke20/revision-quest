@@ -1,4 +1,4 @@
-// Seasonal themes (js/app.js SEASONS): Halloween 20 October – 2 November, Christmas 1 December – 6 January, and the four
+// Seasonal themes (js/app/comfort.js SEASONS): Halloween 20 October – 2 November, Christmas 1 December – 6 January, and the four
 // seasons the rest of the year (spring 20 March, summer 21 June, autumn 22 September, winter 21 December).
 // One setting "seasonal" (auto / off) for all; preview with ?theme=<id>. Decoration only: background, far-away
 // landscape (css/<id>-village.svg), a few falling flakes or leaves; nothing during an exercise.

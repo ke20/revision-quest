@@ -31,7 +31,8 @@ module.exports = [
   { rules: common },
 
   // The game: classic <script> files in the browser (no build step, no ES modules), each one wrapped in an IIFE.
-  // ES2017 (const/let, arrow functions, template literals, Set/Map, async/await): Safari 11 / iOS 11, Chrome 58, Firefox 52.
+  // ES2017 (const/let, arrow functions, template literals, Set/Map, async/await): Safari 11 / iOS 11, Chrome 58, Firefox 52
+  // (Chrome 61 / Firefox 60 for the ES modules of js/app/).
   // Older files are still ES5 style; both are fine.
   {
     files: ["js/**/*.js"],
@@ -42,6 +43,13 @@ module.exports = [
       globals: { ...globals.browser, ...appGlobals, qrcodegen: "readonly" }
     },
     rules: { "no-implicit-globals": "error" }
+  },
+
+  // The screens (js/app/*.js): ES modules (import / export), loaded by <script type="module" src="js/app/main.js">.
+  {
+    files: ["js/app/**/*.js"],
+    languageOptions: { sourceType: "module" },
+    rules: { "no-implicit-globals": "off" } // a module has no implicit global
   },
 
   // Pack rules: also loaded by Node with require() (tools/validate-pack.js), so it may test `module`.
