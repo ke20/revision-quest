@@ -134,7 +134,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**hablar**|parler]] avec **tú**. (Tu parles très bien espagnol.)",
+          "prompt": "Conjugue [[**hablar**|parler]] avec **tú**.",
           "sentence": "Tú ___ español muy bien.",
           "answers": [
             "hablas"
@@ -143,7 +143,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**cantar**|chanter]] avec **nosotros**. (Nous chantons l'hymne chaque matin.)",
+          "prompt": "Conjugue [[**cantar**|chanter]] avec **nosotros**.",
           "sentence": "Nosotros ___ el himno cada mañana.",
           "answers": [
             "cantamos"
@@ -152,7 +152,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**llevar**|porter]] avec **ellos**. (Ils portent un uniforme.)",
+          "prompt": "Conjugue [[**llevar**|porter]] avec **ellos**.",
           "sentence": "Ellos ___ un uniforme.",
           "answers": [
             "llevan"
@@ -161,7 +161,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"Vosotros ___ mucho.\"|Vous parlez beaucoup.]] Verbe : [[hablar|parler]].",
+          "prompt": "\"Vosotros ___ mucho.\" Verbe : [[hablar|parler]].",
           "options": [
             "hablan",
             "hablamos",
@@ -348,7 +348,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"Ella ___ en casa.\"|Elle mange à la maison.]] Verbe : [[comer|manger]].",
+          "prompt": "\"Ella ___ en casa.\" Verbe : [[comer|manger]].",
           "options": [
             "coma",
             "come",
@@ -360,7 +360,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**aprender**|apprendre]] avec **los alumnos**, c'est-à-dire ellos. (Les élèves apprennent l'histoire.)",
+          "prompt": "Conjugue [[**aprender**|apprendre]] avec **los alumnos**, c'est-à-dire ellos.",
           "sentence": "Los alumnos ___ la historia.",
           "answers": [
             "aprenden"
@@ -369,7 +369,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**beber**|boire]] avec **yo**. (Je bois de l'eau.)",
+          "prompt": "Conjugue [[**beber**|boire]] avec **yo**.",
           "sentence": "Yo ___ agua.",
           "answers": [
             "bebo"
@@ -378,7 +378,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**leer**|lire]] avec **nosotros**. (Nous lisons un livre.)",
+          "prompt": "Conjugue [[**leer**|lire]] avec **nosotros**.",
           "sentence": "Nosotros ___ un libro.",
           "answers": [
             "leemos"
@@ -387,7 +387,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"Vosotros ___ mucho.\"|Vous mangez beaucoup.]] Verbe : [[comer|manger]].",
+          "prompt": "\"Vosotros ___ mucho.\" Verbe : [[comer|manger]].",
           "options": [
             "comemos",
             "comen",
@@ -574,7 +574,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**vivir**|vivre, habiter]] avec **yo**. (J'habite en France.)",
+          "prompt": "Conjugue [[**vivir**|vivre, habiter]] avec **yo**.",
           "sentence": "Yo ___ en Francia.",
           "answers": [
             "vivo"
@@ -583,7 +583,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**escribir**|écrire]] avec **nosotros**. (Nous écrivons une lettre.)",
+          "prompt": "Conjugue [[**escribir**|écrire]] avec **nosotros**.",
           "sentence": "Nosotros ___ una carta.",
           "answers": [
             "escribimos"
@@ -592,7 +592,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"Vosotros ___ en Madrid.\"|Vous habitez à Madrid.]] Verbe : [[vivir|habiter]].",
+          "prompt": "\"Vosotros ___ en Madrid.\" Verbe : [[vivir|habiter]].",
           "options": [
             "viven",
             "vivís",
@@ -604,7 +604,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**abrir**|ouvrir]] avec **ella**. (Elle ouvre la porte.)",
+          "prompt": "Conjugue [[**abrir**|ouvrir]] avec **ella**.",
           "sentence": "Ella ___ la puerta.",
           "answers": [
             "abre"
@@ -853,7 +853,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"Yo ___ francés.\"|Je suis français.]] C'est une nationalité.",
+          "prompt": "\"Yo ___ francés.\" C'est une nationalité.",
           "options": [
             "estoy",
             "están",
@@ -865,7 +865,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"Los alumnos ___ en el patio.\"|Les élèves sont dans la cour.]] C'est un lieu.",
+          "prompt": "\"Los alumnos ___ en el patio.\" C'est un lieu.",
           "options": [
             "es",
             "están",
@@ -918,7 +918,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète avec **ser**. (Tu es très sympathique.)",
+          "prompt": "Complète avec **ser**.",
           "sentence": "Tú ___ muy simpático.",
           "answers": [
             "eres"
@@ -927,7 +927,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète avec **estar**. (Nous sommes en classe.)",
+          "prompt": "Complète avec **estar**.",
           "sentence": "Nosotros ___ en clase.",
           "answers": [
             "estamos"
@@ -1074,7 +1074,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"Yo ___ catorce años.\"|J'ai quatorze ans.]] Verbe : [[tener|avoir]].",
+          "prompt": "\"Yo ___ catorce años.\" Verbe : [[tener|avoir]].",
           "options": [
             "teno",
             "tiene",
@@ -1098,7 +1098,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète avec **tener**. (Nous avons un examen demain.)",
+          "prompt": "Complète avec **tener**.",
           "sentence": "Nosotros ___ un examen mañana.",
           "answers": [
             "tenemos"
@@ -1268,7 +1268,7 @@ window.registerPack({
       "exercises": [
         {
           "type": "mcq",
-          "prompt": "[[\"Yo ___ los deberes.\"|Je fais mes devoirs.]] Verbe : [[hacer|faire]].",
+          "prompt": "\"Yo ___ los deberes.\" Verbe : [[hacer|faire]].",
           "options": [
             "haco",
             "hace",
@@ -1280,7 +1280,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**hacer**|faire]] avec **ellos**. (Ils font le salut.)",
+          "prompt": "Conjugue [[**hacer**|faire]] avec **ellos**.",
           "sentence": "Ellos ___ el saludo.",
           "answers": [
             "hacen"
@@ -1289,7 +1289,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"Nosotros ___ nuestras ideas.\"|Nous défendons nos idées.]] Verbe : [[defender|défendre]].",
+          "prompt": "\"Nosotros ___ nuestras ideas.\" Verbe : [[defender|défendre]].",
           "options": [
             "defiendemos",
             "defendimos",
@@ -1301,7 +1301,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**defender**|défendre]] avec **yo**. (Je défends mes amis.)",
+          "prompt": "Conjugue [[**defender**|défendre]] avec **yo**.",
           "sentence": "Yo ___ a mis amigos.",
           "answers": [
             "defiendo"
@@ -1310,7 +1310,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"Ellos no ___ salir.\"|Ils ne peuvent pas sortir.]] Verbe : [[poder|pouvoir]].",
+          "prompt": "\"Ellos no ___ salir.\" Verbe : [[poder|pouvoir]].",
           "options": [
             "poden",
             "puedemos",
@@ -1322,7 +1322,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**poder**|pouvoir]] avec **nosotros**. (Nous pouvons parler.)",
+          "prompt": "Conjugue [[**poder**|pouvoir]] avec **nosotros**.",
           "sentence": "Nosotros ___ hablar.",
           "answers": [
             "podemos"
@@ -1464,7 +1464,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**llevar**|porter]] avec **yo**. (Je porte un uniforme bleu.)",
+          "prompt": "Conjugue [[**llevar**|porter]] avec **yo**.",
           "sentence": "Yo ___ un uniforme azul.",
           "answers": [
             "llevo"
@@ -1473,7 +1473,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**aprender**|apprendre]] avec **tú**. (Tu apprends l'anglais.)",
+          "prompt": "Conjugue [[**aprender**|apprendre]] avec **tú**.",
           "sentence": "Tú ___ inglés.",
           "answers": [
             "aprendes"
@@ -1482,7 +1482,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**escribir**|écrire]] avec **ellas**. (Elles écrivent au tableau.)",
+          "prompt": "Conjugue [[**escribir**|écrire]] avec **ellas**.",
           "sentence": "Ellas ___ en la pizarra.",
           "answers": [
             "escriben"
@@ -1491,7 +1491,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"Nosotros ___ en Cuba.\"|Nous habitons à Cuba.]] Verbe : [[vivir|habiter]].",
+          "prompt": "\"Nosotros ___ en Cuba.\" Verbe : [[vivir|habiter]].",
           "options": [
             "vivimos",
             "vivemos",
@@ -1503,7 +1503,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"Mi profesor ___ muy simpático.\"|Mon professeur est très sympathique.]] Verbe : [[ser|être]].",
+          "prompt": "\"Mi profesor ___ muy simpático.\" Verbe : [[ser|être]].",
           "options": [
             "es",
             "eres",
@@ -1622,7 +1622,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**tener**|avoir]] avec **tú**. (Tu as raison.)",
+          "prompt": "Conjugue [[**tener**|avoir]] avec **tú**.",
           "sentence": "Tú ___ razón.",
           "answers": [
             "tienes"
@@ -1631,7 +1631,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**estar**|être]] avec **ellos**. (Ils sont à La Havane.)",
+          "prompt": "Conjugue [[**estar**|être]] avec **ellos**.",
           "sentence": "Ellos ___ en La Habana.",
           "answers": [
             "están"
@@ -1640,7 +1640,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**ser**|être]] avec **nosotros**. (Nous sommes élèves de quatrième.)",
+          "prompt": "Conjugue [[**ser**|être]] avec **nosotros**.",
           "sentence": "Nosotros ___ alumnos de cuarto.",
           "answers": [
             "somos"
@@ -1649,7 +1649,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**comer**|manger]] avec **vosotros**. (Vous mangez à la cantine.)",
+          "prompt": "Conjugue [[**comer**|manger]] avec **vosotros**.",
           "sentence": "Vosotros ___ en el comedor.",
           "answers": [
             "coméis"
@@ -1658,7 +1658,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conjugue [[**vivir**|habiter]] avec **vosotros**. (Vous habitez près du collège.)",
+          "prompt": "Conjugue [[**vivir**|habiter]] avec **vosotros**.",
           "sentence": "Vosotros ___ cerca del colegio.",
           "answers": [
             "vivís"
@@ -1667,7 +1667,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"Los alumnos ___ el saludo revolucionario.\"|Les élèves font le salut révolutionnaire.]] Verbe : [[hacer|faire]].",
+          "prompt": "\"Los alumnos ___ el saludo revolucionario.\" Verbe : [[hacer|faire]].",
           "options": [
             "hago",
             "hacen",

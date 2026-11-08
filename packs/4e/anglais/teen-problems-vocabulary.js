@@ -157,7 +157,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète : I'd est la forme courte de… (Si j'étais toi, je parlerais à un professeur.)",
+          "prompt": "Complète : I'd est la forme courte de…",
           "sentence": "If I were you, I'd talk to a teacher. = If I were you, I ___ talk to a teacher.",
           "answers": [
             "would"
@@ -166,7 +166,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Choisis la bonne forme : [[\"You should ___ to your parents.\"|Tu devrais parler à tes parents.]]",
+          "prompt": "Choisis la bonne forme : \"You should ___ to your parents.\"",
           "options": [
             "talking",
             "talks",
@@ -178,7 +178,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Choisis la bonne forme : [[\"How about ___ to a teacher?\"|Et si tu parlais à un professeur ?]]",
+          "prompt": "Choisis la bonne forme : \"How about ___ to a teacher?\"",
           "options": [
             "talked",
             "to talk",
@@ -190,7 +190,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Choisis la bonne forme : [[\"Why don't you ___ to your friend?\"|Pourquoi tu ne parles pas à ton ami ?]]",
+          "prompt": "Choisis la bonne forme : \"Why don't you ___ to your friend?\"",
           "options": [
             "talking",
             "talked",
@@ -221,7 +221,7 @@ window.registerPack({
         },
         {
           "type": "spot",
-          "prompt": "Touche le mot faux. (Tu devrais parler à tes parents.)",
+          "prompt": "Touche le mot faux.",
           "tokens": [
             "You",
             "should",
@@ -306,7 +306,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"I am completely **addicted to** my smartphone.\"|Je suis complètement … mon smartphone.]] Que veut dire **addicted to** ?",
+          "prompt": "\"I am completely **addicted to** my smartphone.\" Que veut dire **addicted to** ?",
           "options": [
             "habitué à",
             "fâché contre",
@@ -342,7 +342,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"I would like to **meet up** with them.\"|J'aimerais bien … avec eux.]] Que veut faire Lily ?",
+          "prompt": "\"I would like to **meet up** with them.\" Que veut faire Lily ?",
           "options": [
             "envoyer une photo",
             "bloquer son ami",
@@ -354,7 +354,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète : le contraire de **online**. (Être … rend Abby anxieuse.)",
+          "prompt": "Complète : le contraire de **online**.",
           "sentence": "Being ___ makes Abby anxious.",
           "answers": [
             "offline",
@@ -365,7 +365,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"I am too tired to **focus** in class.\"|Je suis trop fatiguée pour … en classe.]] Que veut dire **focus** ?",
+          "prompt": "\"I am too tired to **focus** in class.\" Que veut dire **focus** ?",
           "options": [
             "s'endormir",
             "s'amuser",
@@ -377,7 +377,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète avec le mot qui veut dire « fatiguée ». (Maintenant, je suis trop fatiguée pour me concentrer en classe.)",
+          "prompt": "Complète avec le mot qui veut dire « fatiguée ».",
           "sentence": "Now, I am too ___ to focus in class.",
           "answers": [
             "tired"
@@ -386,7 +386,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"My parents want to **confiscate** my phone.\"|Mes parents veulent … mon téléphone.]] Que veulent faire ses parents ?",
+          "prompt": "\"My parents want to **confiscate** my phone.\" Que veulent faire ses parents ?",
           "options": [
             "lui acheter un téléphone",
             "réparer son téléphone",
@@ -431,7 +431,7 @@ window.registerPack({
       "exercises": [
         {
           "type": "mcq",
-          "prompt": "[[\"I think my friend is being **bullied**.\"|Je pense que mon amie se fait ….]] Que veut dire **bullied** ?",
+          "prompt": "\"I think my friend is being **bullied**.\" Que veut dire **bullied** ?",
           "options": [
             "oublié(e)",
             "puni(e)",
@@ -466,7 +466,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"A few girls keep **calling her names**.\"|Quelques filles n'arrêtent pas de ….]] Que font ces filles ?",
+          "prompt": "\"A few girls keep **calling her names**.\" Que font ces filles ?",
           "options": [
             "elles l'appellent par son prénom",
             "elles la cherchent",
@@ -502,7 +502,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"My family **cannot afford** these things.\"|Ma famille … ces choses.]] Que veut dire Susan ?",
+          "prompt": "\"My family **cannot afford** these things.\" Que veut dire Susan ?",
           "options": [
             "sa famille n'aime pas ça",
             "sa famille ne veut pas",
@@ -514,7 +514,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète : « se moquer de » = make fun ___. (Des élèves de l'école se moquent de moi.)",
+          "prompt": "Complète : « se moquer de » = make fun ___.",
           "sentence": "Some kids at school make fun ___ me.",
           "answers": [
             "of"
@@ -523,7 +523,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"I feel so **insecure** about my appearance.\"|Je me sens tellement … à cause de mon apparence.]] Que veut dire **insecure** ?",
+          "prompt": "\"I feel so **insecure** about my appearance.\" Que veut dire **insecure** ?",
           "options": [
             "timide",
             "jalouse",
@@ -632,7 +632,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"My **grades** are dropping.\"|Mes … baissent.]] Quel mot veut dire la même chose que **grades** ?",
+          "prompt": "\"My **grades** are dropping.\" Quel mot veut dire la même chose que **grades** ?",
           "options": [
             "marks",
             "lessons",
@@ -644,7 +644,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"I don't want to **disappoint** my family.\"|Je ne veux pas … ma famille.]] Que veut dire **disappoint** ?",
+          "prompt": "\"I don't want to **disappoint** my family.\" Que veut dire **disappoint** ?",
           "options": [
             "désobéir",
             "déranger",
@@ -657,7 +657,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"Every time I think about the exam, **my stomach hurts**.\"|Chaque fois que je pense à l'examen, ….]] Que ressent Sam ?",
+          "prompt": "\"Every time I think about the exam, **my stomach hurts**.\" Que ressent Sam ?",
           "options": [
             "il a faim",
             "il a mal à la tête",
@@ -669,7 +669,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète : « abandonner » = give ___. (Je veux arrêter et abandonner.)",
+          "prompt": "Complète : « abandonner » = give ___.",
           "sentence": "I want to quit and give ___.",
           "answers": [
             "up"
@@ -710,7 +710,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète : « demander de l'aide » = ask ___ help. (Mes professeurs disent que je dois demander de l'aide.)",
+          "prompt": "Complète : « demander de l'aide » = ask ___ help.",
           "sentence": "My teachers say I must ask ___ help.",
           "answers": [
             "for"
@@ -719,7 +719,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"My parents **expect** me to get perfect marks.\"|Mes parents … que j'aie des notes parfaites.]] Que veut dire **expect** ?",
+          "prompt": "\"My parents **expect** me to get perfect marks.\" Que veut dire **expect** ?",
           "options": [
             "interdire",
             "expliquer",
@@ -1007,7 +1007,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète avec le petit mot. (Hier soir, j'ai veillé jusqu'à 3 heures du matin à jouer.)",
+          "prompt": "Complète avec le petit mot.",
           "sentence": "Last night, I stayed ___ until 3:00 AM gaming.",
           "answers": [
             "up"
@@ -1016,7 +1016,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète avec le petit mot. (On riait toutes, alors j'ai participé aussi.)",
+          "prompt": "Complète avec le petit mot.",
           "sentence": "We were all laughing so I joined ___ too.",
           "answers": [
             "in"
@@ -1025,7 +1025,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète avec le petit mot. (Je suis complètement accro à mon smartphone.)",
+          "prompt": "Complète avec le petit mot.",
           "sentence": "I am completely addicted ___ my smartphone.",
           "answers": [
             "to"
@@ -1046,7 +1046,7 @@ window.registerPack({
         },
         {
           "type": "spot",
-          "prompt": "Touche le mot faux. (Des élèves de l'école se moquent de moi.)",
+          "prompt": "Touche le mot faux.",
           "tokens": [
             "Some",
             "kids",
@@ -1064,7 +1064,7 @@ window.registerPack({
         },
         {
           "type": "spot",
-          "prompt": "Touche le mot faux. (Dès que je me réveille, je regarde les réseaux sociaux.)",
+          "prompt": "Touche le mot faux.",
           "tokens": [
             "As",
             "soon",
@@ -1297,7 +1297,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Faux ami : [[\"Every time I get a bad **mark**, I feel sad.\"|Chaque fois que j'ai une mauvaise …, je suis triste.]] Que veut dire **mark** ?",
+          "prompt": "Faux ami : \"Every time I get a bad **mark**, I feel sad.\" Que veut dire **mark** ?",
           "options": [
             "une marque",
             "un match",
@@ -1309,7 +1309,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Faux ami : [[\"I have difficulties understanding **subjects** like maths.\"|J'ai du mal à comprendre des … comme les maths.]] Que veut dire **subjects** ?",
+          "prompt": "Faux ami : \"I have difficulties understanding **subjects** like maths.\" Que veut dire **subjects** ?",
           "options": [
             "des leçons",
             "des exercices",
@@ -1321,7 +1321,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Faux ami : [[\"I have **severe** difficulties.\"|J'ai des difficultés ….]] Que veut dire **severe** ?",
+          "prompt": "Faux ami : \"I have **severe** difficulties.\" Que veut dire **severe** ?",
           "options": [
             "petites",
             "grosses, graves",
@@ -1364,7 +1364,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conseil pour Lily : complète avec le verbe **meet up** à la bonne forme. (Et si vous vous retrouviez dans un lieu public ?)",
+          "prompt": "Conseil pour Lily : complète avec le verbe **meet up** à la bonne forme.",
           "sentence": "How about ___ up in a public place?",
           "answers": [
             "meeting"
@@ -1374,7 +1374,7 @@ window.registerPack({
         },
         {
           "type": "spot",
-          "prompt": "Touche le mot faux. (Lily n'est pas sûre que ce soit sans danger de retrouver son ami en ligne.)",
+          "prompt": "Touche le mot faux.",
           "tokens": [
             "Lily",
             "is",

@@ -583,7 +583,7 @@ window.registerPack({
       "exercises": [
         {
           "type": "mcq",
-          "prompt": "Choisis la bonne forme : [[You should ___ to a teacher.|Tu devrais parler à un professeur.]]",
+          "prompt": "Choisis la bonne forme : You should ___ to a teacher.",
           "options": [
             "to talk",
             "talking",
@@ -595,7 +595,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Choisis la bonne forme : [[You shouldn't ___ this person alone.|Tu ne devrais pas rencontrer cette personne seul(e).]]",
+          "prompt": "Choisis la bonne forme : You shouldn't ___ this person alone.",
           "options": [
             "meet",
             "to meet",
@@ -606,7 +606,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Choisis la bonne forme : [[How about ___ a break?|Et si tu faisais une pause ?]]",
+          "prompt": "Choisis la bonne forme : How about ___ a break?",
           "options": [
             "taking",
             "take",
@@ -618,7 +618,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Choisis la bonne forme : [[If I were you, I would ___ sorry to your friend.|Si j'étais toi, je dirais pardon à ton ami(e).]]",
+          "prompt": "Choisis la bonne forme : If I were you, I would ___ sorry to your friend.",
           "options": [
             "to say",
             "say",
@@ -630,7 +630,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Écris le verbe (ask = demander) à la bonne forme. (Tu devrais demander de l'aide.)",
+          "prompt": "Écris le verbe (ask = demander) à la bonne forme.",
           "sentence": "You should ___ for help.",
           "answers": [
             "ask"
@@ -640,7 +640,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Écris le verbe (go = aller) à la bonne forme. (Et si tu allais te coucher plus tôt ?)",
+          "prompt": "Écris le verbe (go = aller) à la bonne forme.",
           "sentence": "How about ___ to bed earlier?",
           "answers": [
             "going"
@@ -650,7 +650,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Choisis le bon mot : [[If I ___ you, I would talk to her.|Si j'étais toi, je lui parlerais.]]",
+          "prompt": "Choisis le bon mot : If I ___ you, I would talk to her.",
           "options": [
             "was",
             "am",
@@ -663,7 +663,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Écris le verbe (turn) à la bonne forme. (Pourquoi tu n'éteins pas ton téléphone la nuit ?)",
+          "prompt": "Écris le verbe (turn) à la bonne forme.",
           "sentence": "Why don't you ___ off your phone at night?",
           "answers": [
             "turn"
@@ -672,7 +672,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Choisis la bonne orthographe : [[How about ___ new friends?|Et si tu te faisais de nouveaux amis ?]]",
+          "prompt": "Choisis la bonne orthographe : How about ___ new friends?",
           "options": [
             "makeing",
             "make",
@@ -696,7 +696,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Écris le verbe (stop = arrêter) à la bonne forme. (Si j'étais toi, j'arrêterais de me moquer d'elle.)",
+          "prompt": "Écris le verbe (stop = arrêter) à la bonne forme.",
           "sentence": "If I were you, I'd ___ laughing at her.",
           "answers": [
             "stop"
@@ -706,7 +706,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Écris le verbe (get = obtenir) à la bonne forme. (Et si tu te faisais aider par un professeur ?)",
+          "prompt": "Écris le verbe (get = obtenir) à la bonne forme.",
           "sentence": "How about ___ help from a teacher?",
           "answers": [
             "getting"

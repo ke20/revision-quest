@@ -456,7 +456,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Conjugue **llevar** : [[\"Tú ___ un uniforme.\"|Tu portes un uniforme.]]",
+          "prompt": "Conjugue **llevar** : \"Tú ___ un uniforme.\"",
           "options": [
             "lleves",
             "llevo",
@@ -468,7 +468,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Conjugue **defender** : [[\"Nosotros ___ el comunismo.\"|Nous défendons le communisme.]]",
+          "prompt": "Conjugue **defender** : \"Nosotros ___ el comunismo.\"",
           "options": [
             "defendimos",
             "defendemos",
@@ -480,7 +480,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Conjugue **hacer** : [[\"Ella ___ el saludo.\"|Elle fait le salut.]]",
+          "prompt": "Conjugue **hacer** : \"Ella ___ el saludo.\"",
           "options": [
             "hago",
             "haga",
@@ -595,7 +595,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"Los alumnos tienen que ___ el himno.\"|Les élèves doivent chanter l'hymne.]]",
+          "prompt": "\"Los alumnos tienen que ___ el himno.\"",
           "options": [
             "canten",
             "cantar",
@@ -607,7 +607,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète avec le petit mot qui manque. (Tu dois défendre le communisme.)",
+          "prompt": "Complète avec le petit mot qui manque.",
           "sentence": "Tienes ___ defender el comunismo.",
           "answers": [
             "que"
@@ -616,7 +616,7 @@ window.registerPack({
         },
         {
           "type": "spot",
-          "prompt": "Touche le mot faux. (Les élèves doivent porter un uniforme.)",
+          "prompt": "Touche le mot faux.",
           "tokens": [
             "Los",
             "alumnos",
@@ -764,7 +764,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète avec la bonne forme de **tanto**. (Ils n'ont pas autant de liberté qu'en France.)",
+          "prompt": "Complète avec la bonne forme de **tanto**.",
           "sentence": "No tienen ___ libertad como en Francia.",
           "answers": [
             "tanta"
@@ -773,7 +773,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète avec la bonne forme de **tanto**. (Dans ma classe, il n'y a pas autant d'élèves qu'à Cuba.)",
+          "prompt": "Complète avec la bonne forme de **tanto**.",
           "sentence": "En mi clase no hay ___ alumnos como en Cuba.",
           "answers": [
             "tantos"
@@ -782,7 +782,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète avec le mot qui manque. (Ils n'ont pas autant de liberté que dans d'autres pays.)",
+          "prompt": "Complète avec le mot qui manque.",
           "sentence": "No tienen tanta libertad ___ en otros países.",
           "answers": [
             "como"
@@ -800,7 +800,7 @@ window.registerPack({
         },
         {
           "type": "spot",
-          "prompt": "Touche le mot faux. (Ils n'ont pas autant de liberté que dans d'autres pays.)",
+          "prompt": "Touche le mot faux.",
           "tokens": [
             "No",
             "tienen",
@@ -818,7 +818,7 @@ window.registerPack({
         },
         {
           "type": "spot",
-          "prompt": "Touche le mot faux. (Ils n'ont pas autant de liberté que dans d'autres pays.)",
+          "prompt": "Touche le mot faux.",
           "tokens": [
             "No",
             "tienen",
@@ -1255,7 +1255,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "[[\"En Francia, los alumnos no ___ llevar un uniforme.\"|En France, les élèves ne sont pas obligés de porter un uniforme.]]",
+          "prompt": "\"En Francia, los alumnos no ___ llevar un uniforme.\"",
           "options": [
             "tenemos que",
             "tienen que",
