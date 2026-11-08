@@ -95,6 +95,11 @@
     { id: "hiver", season: "⛄ C'est l'hiver !", periods: [[[12, 21], [3, 19]]], icon: "⛄", fall: "snow",
       confetti: ["#FFFFFF", "#BAE6FD", "#E0F2FE", "#94A3B8", "#FFFFFF", "#7DD3FC", "#CBD5E1"] }
   ];
+  /* Ghost mode (?fantome in the URL, for whoever writes or checks a pack): every world of every chapter is open,
+     and "C'est parti" opens a free walk through the exercises with their answers shown. Nothing is saved (no XP,
+     no stars, no hearts) and nothing in the interface leads to it, so it cannot be found while playing. */
+  var GHOST = /[?&]fantome(=[^&]*)?(&|$)/.test(location.search || "");
+
   var SEASON_PREVIEW = (function () { var m = /[?&]theme=([a-z]+)(&|$)/.exec(location.search || ""); return m ? m[1] : null; })();
   function inPeriod(t, d) {
     var md = (d.getMonth() + 1) * 100 + d.getDate();
@@ -1312,7 +1317,7 @@
     setNav(back, showMap);
     var cur = Engine.currentWorldId();
     var nodes = DATA.worlds.map(function (w, i) {
-      var p = Engine.worldProgress(w.id), unlocked = Engine.isUnlocked(w.id);
+      var p = Engine.worldProgress(w.id), unlocked = GHOST || Engine.isUnlocked(w.id);
       return '<div class="map-node ' + (unlocked ? "" : "locked ") + (p.stars ? "done " : "") + (w.id === cur ? "current" : "") +
         '" style="--c:' + safeColor(w.color) + '" data-i="' + i + '">' +
         (w.id === cur ? '<div class="here">' + T("here") + "</div>" : "") +
@@ -1342,7 +1347,7 @@
       n.querySelector(".node-btn").onclick = function () {
         var w = DATA.worlds[+n.getAttribute("data-i")];
         if (!w) return;
-        if (!Engine.isUnlocked(w.id)) {
+        if (!GHOST && !Engine.isUnlocked(w.id)) {
           Sound.wrong();
           n.classList.remove("shake"); void n.offsetWidth; n.classList.add("shake");
           toast(T("locked", Engine.starsToUnlock()));
@@ -1419,7 +1424,7 @@
       try { figBox.appendChild(window.Figures.buildTable(t)); } catch (e) { console.error("Table failed", e); }
     });
     on(node, "back", showMap);
-    on(node, "go", function () { Sound.unlock(); Sound.tap(); startWorld(w); });
+    on(node, "go", function () { Sound.unlock(); Sound.tap(); if (GHOST) showGhost(w, 0); else startWorld(w); });
     show(node);
   }
 
@@ -1598,6 +1603,83 @@
       if (sess.over) return showGameOver(w);
       if (sess.index >= sess.total) return showComplete(w);
       playExercise(w, ui);
+    };
+  }
+
+  /* ================= Ghost mode: free walk through a world's exercises, answers shown ================= */
+
+  /** The expected answer of an exercise, as trusted HTML built from escaped pack data. */
+  function ghostAnswer(ex) {
+    var li = function (x) { return "<li>" + x + "</li>"; };
+    var list = function (items) { return "<ul>" + items.map(li).join("") + "</ul>"; };
+    switch (ex.type) {
+      case "mcq": {
+        var good = Array.isArray(ex.answer) ? ex.answer : [ex.answer];
+        return list(good.map(function (i) { return E((ex.options || [])[i]); }));
+      }
+      case "fill": return list((ex.answers || []).map(E));
+      case "match": return list((ex.pairs || []).map(function (p) { return E(p.left) + " → " + E(p.right); }));
+      case "sort": return list((ex.categories || []).map(function (c) {
+        return "<b>" + E(c.label) + "</b> : " + (ex.items || []).filter(function (i) { return i.cat === c.id; }).map(function (i) { return E(i.text); }).join(" · ");
+      }));
+      case "order": return "<p>" + E((ex.words || []).join(" ")) + "</p>" +
+        ((ex.alternatives || []).length ? list(ex.alternatives.map(function (a) { return E(a.join(" ")); })) : "");
+      case "spot": return "<p>" + E((ex.tokens || [])[ex.wrongIndex]) + " → <b>" + E(ex.correction) + "</b></p>";
+      case "write": return "<p>" + R(ex.modelAnswer || "") + "</p>" +
+        list((ex.requirements || []).map(function (r) { return E(r.label); })) + "<p>" + E((ex.minRequirements || 0) + " critère(s) requis, " + (ex.minWords || 0) + " mots minimum") + "</p>";
+      default: return "<p>?</p>";
+    }
+  }
+
+  function showGhost(w, index) {
+    var list = w.exercises || [];
+    if (!list.length) { toast(T("noExercises")); return; }
+    var i = Math.max(0, Math.min(index, list.length - 1)), ex = list[i];
+    setNav(showMap, function () { showGhost(w, i); });
+    var options = list.map(function (x, k) {
+      return '<option value="' + k + '"' + (k === i ? " selected" : "") + ">" + (k + 1) + ". " + E(x.type) + " — " + E(Exercises.plain(x.prompt || "").slice(0, 50)) + "</option>";
+    }).join("");
+    var node = h('<section class="screen play ghost" style="--c:' + safeColor(w.color) + '">' +
+      '<header class="play-top"><button class="btn-icon" data-act="back" aria-label="Carte">✕</button>' +
+      '<span class="ghost-tag">👻 ' + (i + 1) + " / " + list.length + "</span>" +
+      '<button class="btn-icon" data-act="prev" aria-label="Exercice précédent"' + (i ? "" : " disabled") + ">◀</button>" +
+      '<button class="btn-icon" data-act="next" aria-label="Exercice suivant"' + (i < list.length - 1 ? "" : " disabled") + ">▶</button></header>" +
+      '<div class="play-stats"><select class="ghost-jump" aria-label="Aller à l\'exercice">' + options + "</select></div>" +
+      '<main class="ex-container"></main>' +
+      '<div class="card ghost-answer"><div class="ex-label">Réponse attendue</div>' + ghostAnswer(ex) +
+        (ex.explanation ? '<div class="fb-expl">' + R(ex.explanation) + "</div>" : "") + "</div>" +
+      '<footer class="checkbar"><div class="checkbar-inner"><div class="feedback"></div><button class="btn btn-check" data-act="check" disabled>' + T("check") + "</button></div></footer>" +
+      "</section>");
+    show(node);
+    var bar = node.querySelector(".checkbar"), feedback = node.querySelector(".feedback"), btn = node.querySelector('[data-act="check"]');
+    var go = function (k) { Sound.tap(); showGhost(w, k); };
+    on(node, "back", function () { Sound.tap(); showMap(); });
+    on(node, "prev", function () { go(i - 1); });
+    on(node, "next", function () { go(i + 1); });
+    node.querySelector(".ghost-jump").onchange = function () { go(+this.value); };
+    var done = false;
+    var controller = Exercises.render(ex, node.querySelector(".ex-container"), function (res) { // nothing is recorded
+      done = true;
+      bar.className = "checkbar " + (res.correct ? "ok" : "ko");
+      feedback.innerHTML = '<div class="fb-title"><span class="fb-ico">' + (res.correct ? "✅" : "❌") + "</span> " + (res.correct ? "Juste" : "Faux") + "</div>" +
+        (res.message ? '<div class="fb-note">' + res.message + "</div>" : "");
+      btn.innerHTML = i < list.length - 1 ? T("next") : "Carte";
+      btn.disabled = false;
+    }, {
+      data: DATA,
+      onReady: function (enabled, label, auto) {
+        if (done) return;
+        btn.style.display = auto ? "none" : "";
+        btn.disabled = !enabled;
+        if (label) btn.innerHTML = label;
+      },
+      onRetry: function (msg) { bar.className = "checkbar retry"; feedback.innerHTML = '<div class="fb-title"><span class="fb-ico">🤔</span> ' + msg + "</div>"; },
+      onTick: function () {},
+      onHint: function () {}
+    }) || {};
+    btn.onclick = function () {
+      if (!done) { if (controller.check) controller.check(); return; }
+      if (i < list.length - 1) go(i + 1); else showMap();
     };
   }
 

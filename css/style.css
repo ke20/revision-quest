@@ -418,6 +418,12 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
 .tr-bubble.below::after { top: auto; bottom: 100%; border-top-color: transparent; border-bottom-color: var(--ink); }
 .tr-flag { margin-right: 2px; }
 /* French translation next to an English / Spanish sentence (language packs): small, plain, discreet */
+/* ghost mode (?fantome): free walk through the exercises */
+.ghost .play-top { justify-content: space-between; }
+.ghost-tag { font-weight: 700; color: var(--ink-soft); }
+.ghost-jump { width: 100%; max-width: 100%; padding: 6px 8px; border-radius: 10px; border: 2px solid var(--line); font: inherit; font-size: .9rem; background: #fff; }
+.ghost-answer { margin: 16px 0 180px; border: 2px dashed var(--c); }
+.ghost-answer ul { margin: 6px 0; padding-left: 20px; }
 .tr-fr { font-size: .8em; font-weight: 400; color: var(--ink-soft); }
 /* "- " lines in a text (several examples): a small bullet list */
 .rich-list { margin: 6px 0 0; padding: 0; list-style: none; }
