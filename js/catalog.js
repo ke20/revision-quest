@@ -137,6 +137,24 @@ window.CATALOG = {
       color: "#6366F1",
       lang: "en",
       worldCount: 8
+    },
+    {
+      path: "4e/espagnol/present-indicatif",
+      title: "El presente de indicativo",
+      description: "Conjuguer au présent : les verbes en -AR, -ER, -IR, ser et estar (être), tener et haber (avoir), et quelques irréguliers.",
+      icon: "🇪🇸",
+      color: "#DC2626",
+      lang: "es",
+      worldCount: 8
+    },
+    {
+      path: "4e/espagnol/escuela-en-cuba",
+      title: "La escuela en Cuba",
+      description: "Le vocabulaire de l'école à Cuba, tener que (devoir), tanto… como (autant… que), et un commentaire à comprendre, réciter et rédiger.",
+      icon: "🇨🇺",
+      color: "#1D4ED8",
+      lang: "es",
+      worldCount: 8
     }
   ]
 };
