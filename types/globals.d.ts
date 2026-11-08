@@ -13,9 +13,9 @@ interface Window {
   /** js/app/main.js (used by the end-to-end tests) */
   App: unknown;
   Exercises: any;
-  Packs: any;
-  I18N: any;
-  Figures: any;
+  Packs: PacksApi;
+  I18N: I18nApi;
+  Figures: FiguresApi;
   qrcodegen: any;
   webkitAudioContext?: typeof AudioContext;
   /** js/engine.js */
@@ -25,12 +25,12 @@ interface Window {
 }
 
 // Classic scripts loaded before the screens (index.html): their objects, used as globals by js/app/*.js.
-// Typed loosely for now (any); js/engine.js and js/pack-rules.js are checked on their own.
+// Engine and Exercises are still typed loosely (any); the others are declared in types/scripts.d.ts.
 declare var Engine: any;
 declare var Exercises: any;
-declare var Packs: any;
-declare var I18N: any;
-declare var Figures: any;
+declare var Packs: PacksApi;
+declare var I18N: I18nApi;
+declare var Figures: FiguresApi;
 declare var qrcodegen: any;
 
 declare var APP_CONFIG: AppConfig | undefined;

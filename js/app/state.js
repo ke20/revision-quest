@@ -5,9 +5,9 @@
 export const S = {
   /** The #app element: every screen is drawn inside it. @type {HTMLElement|null} */
   app: null,
-  /** Registered data of the pack being played (window.registerPack). @type {Pack|null} */
+  /** Registered data of the pack being played (window.registerPack). @type {LoadedPack|null} */
   data: null,
-  /** Catalogue entry of the pack being played (js/packs.js adds level, subject, file…). @type {any} */
+  /** Catalogue entry of the pack being played. @type {CatalogPack|null} */
   pack: null,
   /** Bumped by every navigation: a pack that is still loading is ignored when the player went elsewhere. */
   loadToken: 0,

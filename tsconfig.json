@@ -15,6 +15,6 @@
     "moduleResolution": "Bundler",
     "types": []
   },
-  "files": ["types/globals.d.ts", "types/pack.d.ts", "types/engine.d.ts", "js/pack-rules.js", "js/engine.js"],
+  "files": ["types/globals.d.ts", "types/pack.d.ts", "types/engine.d.ts", "types/scripts.d.ts", "js/pack-rules.js", "js/engine.js"],
   "include": ["js/app/*.js"]
 }
