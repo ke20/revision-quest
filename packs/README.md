@@ -88,7 +88,7 @@ Règles :
   id: 1,                                  // nombre (ou texte en minuscules/tirets), unique dans le pack
   title: "Les grandes dates",             // court
   subtitle: "Retiens les dates clés",
-  subtitleFr: "",                         // aide en français (utile surtout pour les packs "en")
+  subtitleFr: "",                         // aide en français (utile surtout pour les packs "en" et "es")
   icon: "📅",                             // un emoji
   color: "#B45309",                       // couleur du monde (#RRGGBB)
   lesson: {                               // carte leçon affichée avant les exercices
@@ -125,6 +125,7 @@ Champs communs à tous les exercices : `type`, `prompt` (consigne), `explanation
 |---|---|---|
 | `"fr"` | 100 % français : « Vérifier », « Continuer », « Touche les mots ci-dessous », « Bonne réponse »… | toutes les matières sauf les langues |
 | `"en"` | anglais simple + petite aide en français : « Check (Vérifier) », « Tap the words below (touche les mots) »… | packs d'anglais |
+| `"es"` | espagnol simple + petite aide en français : « Comprobar (Vérifier) », « Toca las palabras de abajo (touche les mots) »… | packs d'espagnol |
 
 Le contenu (consignes, leçons) est écrit par l'auteur dans la langue voulue ; `lang` ne change que les
 boutons et petites aides autour des exercices (textes dans `js/i18n.js`).
@@ -213,7 +214,7 @@ compréhension orale). Deux boutons s'affichent sous la consigne : « 🔊 Écou
   explanation: "**dehors** : un **s** muet à la fin." }
 ```
 
-- La langue de la voix est celle du pack (`lang`). Seules les voix **installées sur l'appareil** sont utilisées :
+- La langue de la voix est celle du pack (`lang` : voix française, anglaise ou espagnole). Seules les voix **installées sur l'appareil** sont utilisées :
   le texte ne part jamais sur Internet.
 - Sans voix sur l'appareil, l'élève voit un message et un bouton « Passer » : l'exercice est neutre (ni XP, ni cœur).
 - `listen` : ni `**` ni `[[...]]` (le texte est lu tel quel). Le mot entendu ne doit pas être écrit dans la phrase.

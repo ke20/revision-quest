@@ -6,6 +6,7 @@
 window.CATALOG = {
   subjects: [
     { id: "anglais", label: "Anglais", icon: "🇬🇧", color: "#EC4899" },
+    { id: "espagnol", label: "Espagnol", icon: "🇪🇸", color: "#DC2626" },
     { id: "francais", label: "Français", icon: "📖", color: "#7C3AED" },
     { id: "maths", label: "Maths", icon: "🔢", color: "#2563EB" },
     { id: "histoire", label: "Histoire", icon: "🏰", color: "#B45309" },

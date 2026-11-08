@@ -124,7 +124,7 @@ function validateCatalog(catalog, opts = {}) {
     if (!lv.has(m[1])) errors.push(P + ` : niveau "${m[1]}" inconnu (CATALOG.levels)`);
     if (!subj.has(m[2])) errors.push(P + ` : matière "${m[2]}" inconnue (CATALOG.subjects)`);
     if (!isStr(p.title)) errors.push(P + " : title manquant");
-    if (p.lang !== "fr" && p.lang !== "en") errors.push(P + " : lang doit être fr ou en");
+    if (p.lang !== "fr" && p.lang !== "en" && p.lang !== "es") errors.push(P + " : lang doit être fr, en ou es");
     if (p.color != null && !COLOR_RE.test(p.color)) errors.push(P + " : color invalide");
     if (p.groups == null) {
       if (!exists(fileOf(p.path))) errors.push(P + ` : fichier ${fileOf(p.path)} introuvable`);

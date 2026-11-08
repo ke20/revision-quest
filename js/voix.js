@@ -21,7 +21,7 @@
   var S = X.speech;
   var synth = (function () { try { return window.speechSynthesis || null; } catch (e) { return null; } })();
   var QUALITY = ["Gadget", "Normale", "Améliorée", "Premium"];
-  var SAMPLES = { fr: "Il y a beaucoup de monde au marché aujourd'hui.", en: "If I were you, I would talk to your parents." };
+  var SAMPLES = { fr: "Il y a beaucoup de monde au marché aujourd'hui.", en: "If I were you, I would talk to your parents.", es: "Cada mañana, los alumnos cantan el himno." };
   var lang = "fr";
 
   var $ = function (sel) { return document.querySelector(sel); };
@@ -96,6 +96,7 @@
         b.setAttribute("aria-pressed", b === t ? "true" : "false");
       });
       textBox.value = SAMPLES[lang];
+      Array.prototype.forEach.call(document.querySelectorAll(".lang-name"), function (s) { s.textContent = t.textContent; });
       render();
     } else if (t.hasAttribute("data-play")) {
       say(null, t.getAttribute("data-play") === "game-slow" ? 0.7 : 1);

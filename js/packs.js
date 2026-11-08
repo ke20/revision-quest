@@ -63,7 +63,7 @@
     var chapter = {
       id: p.path, level: seg[0], subject: seg[1], // the path is the pack id
       title: str(p.title, 80) || p.path, description: str(p.description, 240), icon: str(p.icon, 16) || "📘",
-      color: color(p.color, find(subjects, seg[1]).color), lang: p.lang === "en" ? "en" : "fr",
+      color: color(p.color, find(subjects, seg[1]).color), lang: p.lang === "en" || p.lang === "es" ? p.lang : "fr",
       worldCount: count(p.worldCount), file: "packs/" + p.path + ".js"
     };
     if (!groups) { packs.push(chapter); units.push(chapter); return; }

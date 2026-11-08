@@ -35,7 +35,7 @@ test("a valid fixture pack passes (all 7 exercise types)", () => {
 
 const BROKEN = {
   "bad-path": /path "Anglais 4e" invalide|path .*invalide/,
-  "bad-lang": /lang doit être "fr" ou "en"/,
+  "bad-lang": /lang doit être "fr", "en" ou "es"/,
   "mcq-answer-out-of-range": /answer 5 hors limites/,
   "mcq-duplicate-options": /options en double/,
   "mcq-translation-in-options": /options : \[\[\.\.\.\]\] interdit/,
@@ -92,7 +92,7 @@ test("catalogue: path segments must be a known level and subject, no duplicates,
   has(/\(\.\.\/js\/app\) : path invalide/);
   has(/path en double/);
   has(/title manquant/);
-  has(/lang doit être fr ou en/);
+  has(/lang doit être fr, en ou es/);
   has(/color invalide/);
   has(/worldCount/);
   has(/fichier packs\/4e\/maths\/a\.js introuvable/);

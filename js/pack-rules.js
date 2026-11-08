@@ -181,7 +181,7 @@
   }
 
   function checkLang(lang, err) {
-    if (lang !== "fr" && lang !== "en") err(`lang doit être "fr" ou "en" (reçu : ${json(lang)})`);
+    if (lang !== "fr" && lang !== "en" && lang !== "es") err(`lang doit être "fr", "en" ou "es" (reçu : ${json(lang)})`);
   }
 
   /* ---------- course information (meta): what the catalogue shows ----------
