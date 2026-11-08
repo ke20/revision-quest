@@ -111,6 +111,11 @@ Le **dernier** monde est le « boss » du chapitre (badge « Chapitre terminé �
 - `[[mot|explication]]` → mot souligné en pointillés ; quand on le touche, une bulle affiche l'explication
   (traduction pour l'anglais 🇫🇷, définition pour les autres matières 💡). Compte pour le badge « Curieux ».
 - `\n` → retour à la ligne (dans les documents).
+- Lignes qui commencent par `- ` (après un `\n`) → liste à puces : pour aérer plusieurs exemples dans un point de
+  leçon ou une explication (`"Pour montrer qu'on comprend :\n- [[I understand how you feel|je comprends ce que tu ressens]]\n- …"`).
+- Packs de langue (`en`, `es`) : la traduction d'une phrase anglaise ou espagnole se met de préférence en
+  `[[phrase|traduction]]` (l'élève réfléchit, puis touche s'il a besoin). Une traduction qui reste entre parenthèses
+  `(…)` s'affiche en petit et en gris.
 - Pas de HTML : tout est affiché comme du texte (`<b>` s'affiche tel quel).
 - **Interdit** dans les champs comparés à la réponse de l'élève : `[[...]]` dans `options` (QCM), `answers` (fill),
   `tokens` (spot), `words` / `distractors` / `alternatives` (order), `pairs` (match), `pattern` (write).

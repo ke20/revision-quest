@@ -17,14 +17,46 @@
       .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
   }
 
-  /** Escape, then **bold** and [[word|translation]]. */
+  /* Language packs (en / es): a French translation "(…)" written after a sentence is shown smaller and not bold,
+     so the language being learnt stands out. [[word|translation]] is skipped (its bubble text may hold "(e)"),
+     and so are short groups like "(e)" or "(s)" on their own. */
+  var FR_GLOSS = /\[\[[^\]]*\]\]|\(((?:[^()]|\([^()]*\)){3,})\)/g; // one level of nesting: "(Mon ami(e) est là.)"
+  function isLanguagePack() {
+    var l = window.I18N && window.I18N.lang ? window.I18N.lang() : "fr";
+    return l === "en" || l === "es";
+  }
+
+  /** Escape, then **bold** and [[word|translation]] (and, in language packs, the French "(…)" glosses). */
   function rich(text) {
     var s = escapeHtml(text);
+    if (isLanguagePack()) {
+      s = s.replace(FR_GLOSS, function (m, inner) {
+        return inner && /[A-Za-zÀ-ÿ]/.test(inner) ? '<span class="tr-fr">(' + inner + ")</span>" : m;
+      });
+    }
     s = s.replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, function (_, word, tr) {
       return '<span class="tr" tabindex="0" role="button" data-tr="' + tr + '">' + word + "</span>";
     });
     s = s.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-    return s.replace(/\n/g, "<br>");
+    return lines(s);
+  }
+
+  /** Line breaks → <br>; consecutive lines starting with "- " → a bullet list (to air out several examples). */
+  function lines(s) {
+    var out = "", inList = false;
+    s.split("\n").forEach(function (line, i) {
+      var m = /^\s*- (.*)$/.exec(line);
+      if (m) {
+        out += (inList ? "" : '<ul class="rich-list">') + "<li>" + m[1] + "</li>";
+        inList = true;
+        return;
+      }
+      if (inList) out += "</ul>";
+      else if (i > 0) out += "<br>";
+      inList = false;
+      out += line;
+    });
+    return out + (inList ? "</ul>" : "");
   }
 
   /** Plain text version (strip markup) — used for comparisons. */

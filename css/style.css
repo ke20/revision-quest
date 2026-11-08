@@ -417,6 +417,12 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
 .tr-bubble::after { content: ""; position: absolute; top: 100%; left: var(--arrow-x, 50%); transform: translateX(-50%); border: 7px solid transparent; border-top-color: var(--ink); }
 .tr-bubble.below::after { top: auto; bottom: 100%; border-top-color: transparent; border-bottom-color: var(--ink); }
 .tr-flag { margin-right: 2px; }
+/* French translation next to an English / Spanish sentence (language packs): small, plain, discreet */
+.tr-fr { font-size: .8em; font-weight: 400; color: var(--ink-soft); }
+/* "- " lines in a text (several examples): a small bullet list */
+.rich-list { margin: 6px 0 0; padding: 0; list-style: none; }
+.rich-list li, .lesson-points .rich-list li { background: none; border-radius: 0; padding: 3px 0 3px 18px; position: relative; font-size: inherit; }
+.rich-list li::before, .lesson-points .rich-list li::before { content: "•"; position: absolute; left: 4px; top: 3px; color: var(--c); }
 
 /* ---------- result screens ---------- */
 .complete, .gameover, .error { display: flex; flex-direction: column; gap: 14px; padding-top: 8px; }

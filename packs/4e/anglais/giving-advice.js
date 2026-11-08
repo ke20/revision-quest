@@ -51,16 +51,16 @@ window.registerPack({
       "icon": "🔤",
       "color": "#FF5C8A",
       "lesson": {
-        "title": "The words of the letters",
+        "title": "[[The words of the letters|Les mots des lettres]]",
         "points": [
           "Les 6 lettres parlent de problèmes d'ados : **amis en ligne**, **harcèlement**, **stress**, **vêtements**, **téléphone**, **école**.",
           "Touche les mots soulignés en pointillés pour voir la **traduction** 👀.",
           "Certains verbes vont avec un petit mot : [[give up|abandonner]], [[meet up|se retrouver]], [[stay up|veiller tard]], [[join in|participer]], [[fit in|s'intégrer]]."
         ],
         "examples": [
-          "My friend is [[bullied|harcelé(e)]] at school.",
-          "My family [[cannot afford|n'a pas les moyens d'acheter]] expensive clothes.",
-          "I feel [[stuck|bloqué]] and [[hopeless|désespéré]]."
+          "[[My friend is **bullied** at school.|Mon ami(e) est harcelé(e) à l'école.]]",
+          "[[My family **cannot afford** expensive clothes.|Ma famille n'a pas les moyens d'acheter des vêtements chers.]]",
+          "[[I feel **stuck** and **hopeless**.|Je me sens bloqué(e) et désespéré(e).]]"
         ]
       },
       "exercises": [
@@ -199,7 +199,7 @@ window.registerPack({
               "right": "s'intégrer"
             }
           ],
-          "explanation": "✅ **expensive** = cher, **unbranded** = sans marque, **to make fun of** = se moquer de, **insecure** = complexé(e), **to fit in** = s'intégrer."
+          "explanation": "✅ Les mots de Susan :\n- **expensive** = cher\n- **unbranded** = sans marque\n- **to make fun of** = se moquer de\n- **insecure** = complexé(e)\n- **to fit in** = s'intégrer"
         },
         {
           "type": "match",
@@ -265,7 +265,7 @@ window.registerPack({
             "stay up"
           ],
           "answer": 0,
-          "explanation": "✅ **give up** = abandonner. (wake up = se réveiller, meet up = se retrouver, stay up = veiller tard)",
+          "explanation": "✅ **give up** = abandonner. Les autres :\n- [[wake up|se réveiller]]\n- [[meet up|se retrouver]]\n- [[stay up|veiller tard]]",
           "hint": "Pense à Mark, qui veut tout arrêter."
         },
         {
@@ -302,17 +302,17 @@ window.registerPack({
       "icon": "💗",
       "color": "#FF8A3D",
       "lesson": {
-        "title": "Two parts in a good answer",
+        "title": "[[Two parts in a good answer|Deux parties dans une bonne réponse]]",
         "points": [
-          "💗 **Empathie** ([[empathy|empathie]]) = montrer que tu **comprends** ce que la personne ressent.",
-          "💡 **Conseil** ([[advice|conseil]]) = dire à la personne **quoi faire**.",
-          "Phrases d'empathie 💗 : **I understand why you feel upset.** / **I understand how you feel.** / **That sounds like a really difficult situation.**",
-          "Phrases de conseil 💡 : **You should...** / **If I were you, I would...** / **Why don't you...?** / **How about ...ing?**"
+          "💗 **Empathie** (en anglais : **empathy**) = montrer que tu **comprends** ce que la personne ressent.",
+          "💡 **Conseil** (en anglais : **advice**) = dire à la personne **quoi faire**.",
+          "Phrases d'empathie 💗 :\n- [[**I understand why you feel upset.**|Je comprends pourquoi tu es contrarié(e).]]\n- [[**I understand how you feel.**|Je comprends ce que tu ressens.]]\n- [[**That sounds like a really difficult situation.**|Ça a l'air d'être une situation vraiment difficile.]]",
+          "Phrases de conseil 💡 :\n- [[**You should...**|Tu devrais…]]\n- [[**If I were you, I would...**|Si j'étais toi, je…]]\n- [[**Why don't you...?**|Pourquoi tu ne… pas ?]]\n- [[**How about ...ing?**|Et si tu… ?]]"
         ],
         "examples": [
-          "💗 I understand how you feel. (Je comprends ce que tu ressens.)",
-          "💗 That sounds like a really [[difficult|difficile]] situation. (Ça a l'air d'être une situation vraiment difficile.)",
-          "💡 You should talk to a teacher. (Tu devrais parler à un prof.)"
+          "💗 [[I understand how you feel.|Je comprends ce que tu ressens.]]",
+          "💗 [[That sounds like a really difficult situation.|Ça a l'air d'être une situation vraiment difficile.]]",
+          "💡 [[You should talk to a teacher.|Tu devrais parler à un prof.]]"
         ]
       },
       "exercises": [
@@ -347,7 +347,7 @@ window.registerPack({
               "cat": "advice"
             }
           ],
-          "explanation": "✅ 💗 Empathie : on montre qu'on comprend (I understand..., That sounds like...). 💡 Conseil : on dit quoi faire (You should..., You shouldn't...)."
+          "explanation": "✅ 💗 Empathie : on montre qu'on comprend.\n- [[I understand…|je comprends…]]\n- [[That sounds like…|ça a l'air…]]\n💡 Conseil : on dit quoi faire.\n- [[You should…|tu devrais…]]\n- [[You shouldn't…|tu ne devrais pas…]]"
         },
         {
           "type": "mcq",
@@ -357,7 +357,7 @@ window.registerPack({
             "💗 Empathy"
           ],
           "answer": 1,
-          "explanation": "✅ **Empathie** 💗. On ne dit pas quoi faire : on montre qu'on comprend."
+          "explanation": "✅ **Empathie** 💗 : [[I understand how you feel.|Je comprends ce que tu ressens.]] On ne dit pas quoi faire : on montre qu'on comprend."
         },
         {
           "type": "mcq",
@@ -409,7 +409,7 @@ window.registerPack({
               "cat": "empathy"
             }
           ],
-          "explanation": "✅ 💡 Conseil : should, If I were you, Why don't you, How about. 💗 Empathie : I understand..., That sounds like..."
+          "explanation": "✅ 💡 Conseil :\n- [[should|devrais]]\n- [[If I were you|si j'étais toi]]\n- [[Why don't you|pourquoi tu ne… pas]]\n- [[How about|et si tu…]]\n💗 Empathie :\n- [[I understand…|je comprends…]]\n- [[That sounds like…|ça a l'air…]]"
         },
         {
           "type": "mcq",
@@ -445,7 +445,7 @@ window.registerPack({
             "Je n'aime pas cette situation."
           ],
           "answer": 2,
-          "explanation": "✅ Ça a l'air d'être une situation vraiment difficile. Ici, **sounds like** = ça a l'air de (rien à voir avec la musique 🎵)."
+          "explanation": "✅ [[That sounds like a really difficult situation.|Ça a l'air d'être une situation vraiment difficile.]] Ici, **sounds like** = ça a l'air de (rien à voir avec la musique 🎵)."
         },
         {
           "type": "sort",
@@ -490,7 +490,7 @@ window.registerPack({
               "cat": "empathy"
             }
           ],
-          "explanation": "✅ 😟 Le problème, c'est ce que dit la personne (I feel stressed). Dans ta réponse, tu mets de l'empathie 💗 et des conseils 💡."
+          "explanation": "✅ 😟 Le problème, c'est ce que dit la personne ([[I feel stressed|je suis stressé]]). Dans ta réponse, tu mets de l'empathie 💗 et des conseils 💡."
         },
         {
           "type": "mcq",
@@ -502,7 +502,7 @@ window.registerPack({
             "Why don't you work with a friend?"
           ],
           "answer": 0,
-          "explanation": "✅ **I understand why you feel upset** : c'est de l'empathie 💗. On comprend, mais on ne dit pas quoi faire."
+          "explanation": "✅ [[**I understand why you feel upset**|Je comprends pourquoi tu es contrarié(e)]] : c'est de l'empathie 💗. On comprend, mais on ne dit pas quoi faire."
         },
         {
           "type": "sort",
@@ -543,7 +543,7 @@ window.registerPack({
               "cat": "empathy"
             }
           ],
-          "explanation": "✅ 💡 Conseil : You shouldn't..., Why don't you...?, How about...? 💗 Empathie : I understand..., That sounds like..."
+          "explanation": "✅ 💡 Conseil :\n- [[You shouldn't…|tu ne devrais pas…]]\n- [[Why don't you…?|pourquoi tu ne… pas ?]]\n- [[How about…?|et si tu… ?]]\n💗 Empathie :\n- [[I understand…|je comprends…]]\n- [[That sounds like…|ça a l'air…]]"
         },
         {
           "type": "mcq",
@@ -555,7 +555,7 @@ window.registerPack({
             "Only empathy, no advice"
           ],
           "answer": 1,
-          "explanation": "✅ D'abord l'empathie 💗, puis les conseils 💡. Exemple : « I understand how you feel. You should talk to a teacher. »"
+          "explanation": "✅ D'abord l'empathie 💗, puis les conseils 💡. Exemple : [[« I understand how you feel. You should talk to a teacher. »|Je comprends ce que tu ressens. Tu devrais parler à un professeur.]]"
         }
       ]
     },
@@ -569,21 +569,21 @@ window.registerPack({
       "lesson": {
         "title": "Verbe tout simple ou verbe + ing ?",
         "points": [
-          "Le **verbe de base (BV)**, c'est le verbe tout simple : **sans to**, sans -s, sans -ing. Exemples : talk, ask, go.",
+          "Le **verbe de base (BV)**, c'est le verbe tout simple : **sans to**, sans -s, sans -ing. Exemples :\n- [[talk|parler]]\n- [[ask|demander]]\n- [[go|aller]]",
           "Après **You should / shouldn't**, **I would / I'd** et **Why don't you** → le verbe tout simple. Jamais *to* !",
-          "Après **How about** → le verbe + **ing** : talking, asking. Attention : make → making, stop → stopping.",
+          "Après **How about** → le verbe + **ing** : talking, asking. Attention :\n- [[make|faire]] → making\n- [[stop|arrêter]] → stopping",
           "Piège : on dit **If I were you** (pas *was*) et **I would** (pas *I will*)."
         ],
         "examples": [
-          "You should **talk** to a teacher. ✅ (pas \"to talk\")",
-          "Why don't you **ask** for help? ✅",
-          "How about **taking** a break? ✅ (pas \"take\")"
+          "[[You should **talk** to a teacher.|Tu devrais parler à un professeur.]] ✅ (pas \"to talk\")",
+          "[[Why don't you **ask** for help?|Pourquoi tu ne demandes pas de l'aide ?]] ✅",
+          "[[How about **taking** a break?|Et si tu faisais une pause ?]] ✅ (pas \"take\")"
         ]
       },
       "exercises": [
         {
           "type": "mcq",
-          "prompt": "Choisis la bonne forme : You should ___ to a teacher.",
+          "prompt": "Choisis la bonne forme : [[You should ___ to a teacher.|Tu devrais parler à un professeur.]]",
           "options": [
             "to talk",
             "talking",
@@ -595,7 +595,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Choisis la bonne forme : You shouldn't ___ this person alone.",
+          "prompt": "Choisis la bonne forme : [[You shouldn't ___ this person alone.|Tu ne devrais pas rencontrer cette personne seul(e).]]",
           "options": [
             "meet",
             "to meet",
@@ -606,7 +606,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Choisis la bonne forme : How about ___ a break?",
+          "prompt": "Choisis la bonne forme : [[How about ___ a break?|Et si tu faisais une pause ?]]",
           "options": [
             "taking",
             "take",
@@ -618,7 +618,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Choisis la bonne forme : If I were you, I would ___ sorry to your friend.",
+          "prompt": "Choisis la bonne forme : [[If I were you, I would ___ sorry to your friend.|Si j'étais toi, je dirais pardon à ton ami(e).]]",
           "options": [
             "to say",
             "say",
@@ -630,7 +630,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Écris le verbe (ask) à la bonne forme.",
+          "prompt": "Écris le verbe (ask = demander) à la bonne forme. (Tu devrais demander de l'aide.)",
           "sentence": "You should ___ for help.",
           "answers": [
             "ask"
@@ -640,7 +640,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Écris le verbe (go) à la bonne forme.",
+          "prompt": "Écris le verbe (go = aller) à la bonne forme. (Et si tu allais te coucher plus tôt ?)",
           "sentence": "How about ___ to bed earlier?",
           "answers": [
             "going"
@@ -650,7 +650,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Choisis le bon mot : If I ___ you, I would talk to her.",
+          "prompt": "Choisis le bon mot : [[If I ___ you, I would talk to her.|Si j'étais toi, je lui parlerais.]]",
           "options": [
             "was",
             "am",
@@ -658,21 +658,21 @@ window.registerPack({
             "were"
           ],
           "answer": 3,
-          "explanation": "✅ **If I were you** (Si j'étais toi). On dit toujours **were**, jamais *was*.",
+          "explanation": "✅ [[**If I were you**|Si j'étais toi]]. On dit toujours **were**, jamais *was*.",
           "hint": "C'est une expression toute faite."
         },
         {
           "type": "fill",
-          "prompt": "Écris le verbe (turn) à la bonne forme.",
+          "prompt": "Écris le verbe (turn) à la bonne forme. (Pourquoi tu n'éteins pas ton téléphone la nuit ?)",
           "sentence": "Why don't you ___ off your phone at night?",
           "answers": [
             "turn"
           ],
-          "explanation": "✅ **Why don't you turn** off your phone? Après **Why don't you**, le verbe tout simple. ([[turn off|éteindre]])"
+          "explanation": "✅ [[**Why don't you turn** off your phone?|Pourquoi tu n'éteins pas ton téléphone ?]] Après **Why don't you**, le verbe tout simple. **turn off** = éteindre."
         },
         {
           "type": "mcq",
-          "prompt": "Choisis la bonne orthographe : How about ___ new friends?",
+          "prompt": "Choisis la bonne orthographe : [[How about ___ new friends?|Et si tu te faisais de nouveaux amis ?]]",
           "options": [
             "makeing",
             "make",
@@ -696,7 +696,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Écris le verbe (stop) à la bonne forme.",
+          "prompt": "Écris le verbe (stop = arrêter) à la bonne forme. (Si j'étais toi, j'arrêterais de me moquer d'elle.)",
           "sentence": "If I were you, I'd ___ laughing at her.",
           "answers": [
             "stop"
@@ -706,7 +706,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Écris le verbe (get) à la bonne forme.",
+          "prompt": "Écris le verbe (get = obtenir) à la bonne forme. (Et si tu te faisais aider par un professeur ?)",
           "sentence": "How about ___ help from a teacher?",
           "answers": [
             "getting"
@@ -724,17 +724,17 @@ window.registerPack({
       "icon": "🧱",
       "color": "#2EC27E",
       "lesson": {
-        "title": "Build your sentences",
+        "title": "[[Build your sentences|Construis tes phrases]]",
         "points": [
-          "Conseil : **You + should + verbe** → You should talk to a teacher.",
+          "Conseil : **You + should + verbe** → [[You should talk to a teacher.|Tu devrais parler à un professeur.]]",
           "Les questions **Why don't you...?** et **How about...?** finissent par un **?**",
           "**If I were you, I would...** → la virgule vient juste après **you**.",
           "Attention : il y a parfois des **mots pièges** en trop (to, was, will...). Ne les utilise pas !"
         ],
         "examples": [
-          "Why don't you ask for help?",
-          "How about taking a break?",
-          "If I were you, I'd talk to your parents."
+          "[[Why don't you ask for help?|Pourquoi tu ne demandes pas de l'aide ?]]",
+          "[[How about taking a break?|Et si tu faisais une pause ?]]",
+          "[[If I were you, I'd talk to your parents.|Si j'étais toi, je parlerais à tes parents.]]"
         ]
       },
       "exercises": [
@@ -779,7 +779,7 @@ window.registerPack({
             "help",
             "?"
           ],
-          "explanation": "✅ **Why don't you ask for help?** Après **Why don't you**, le verbe tout simple. N'oublie pas le **?**",
+          "explanation": "✅ [[**Why don't you ask for help?**|Pourquoi tu ne demandes pas de l'aide ?]] Après **Why don't you**, le verbe tout simple. N'oublie pas le **?**",
           "translation": "Pourquoi ne demandes-tu pas de l'aide ?"
         },
         {
@@ -793,7 +793,7 @@ window.registerPack({
             "break",
             "?"
           ],
-          "explanation": "✅ **How about taking a break?** Après **How about**, le verbe + **ing**.",
+          "explanation": "✅ [[**How about taking a break?**|Et si tu faisais une pause ?]] Après **How about**, le verbe + **ing**.",
           "translation": "Et si tu faisais une pause ?"
         },
         {
@@ -1005,17 +1005,17 @@ window.registerPack({
       "icon": "⌨️",
       "color": "#00B8D9",
       "lesson": {
-        "title": "Know the structures by heart",
+        "title": "[[Know the structures by heart|Connais les structures par cœur]]",
         "points": [
-          "Conseil : **You should** (tu devrais) / **You shouldn't** (tu ne devrais pas) + le verbe tout simple.",
-          "**If I were you, I would** (= **I'd**) + verbe. **Why don't you** + verbe ? **How about** + verbe + **ing** ?",
-          "Empathie 💗 : **I understand why you feel upset.** / **I understand how you feel.** / **That sounds like a really difficult situation.**",
+          "Conseil + le verbe tout simple :\n- [[**You should**|tu devrais]]\n- [[**You shouldn't**|tu ne devrais pas]]",
+          "Les autres conseils :\n- [[**If I were you, I would**|si j'étais toi, je…]] (= **I'd**) + verbe\n- [[**Why don't you**|pourquoi tu ne… pas]] + verbe ?\n- [[**How about**|et si tu…]] + verbe + **ing** ?",
+          "Empathie 💗 :\n- [[**I understand why you feel upset.**|Je comprends pourquoi tu es contrarié(e).]]\n- [[**I understand how you feel.**|Je comprends ce que tu ressens.]]\n- [[**That sounds like a really difficult situation.**|Ça a l'air d'être une situation vraiment difficile.]]",
           "N'oublie pas l'apostrophe : **shouldn't**, **don't**, **I'd**."
         ],
         "examples": [
-          "You **shouldn't** meet this person alone.",
-          "**Why** don't you ask your teacher?",
-          "That sounds **like** a really difficult situation."
+          "[[You **shouldn't** meet this person alone.|Tu ne devrais pas rencontrer cette personne seul(e).]]",
+          "[[**Why** don't you ask your teacher?|Pourquoi tu ne demandes pas à ton professeur ?]]",
+          "[[That sounds **like** a really difficult situation.|Ça a l'air d'être une situation vraiment difficile.]]"
         ]
       },
       "exercises": [
@@ -1026,7 +1026,7 @@ window.registerPack({
           "answers": [
             "should"
           ],
-          "explanation": "✅ **You should** talk to your parents. **should** = tu devrais.",
+          "explanation": "✅ [[**You should** talk to your parents.|Tu devrais parler à tes parents.]] **should** = tu devrais.",
           "hint": "s _ _ _ _ _"
         },
         {
@@ -1037,7 +1037,7 @@ window.registerPack({
             "shouldn't",
             "should not"
           ],
-          "explanation": "✅ **You shouldn't** (ou should not) meet this person alone. **shouldn't** = tu ne devrais pas.",
+          "explanation": "✅ [[**You shouldn't** meet this person alone.|Tu ne devrais pas rencontrer cette personne seul(e).]] (ou **should not**). **shouldn't** = tu ne devrais pas.",
           "hint": "should + n't"
         },
         {
@@ -1075,7 +1075,7 @@ window.registerPack({
           "answers": [
             "were"
           ],
-          "explanation": "✅ **If I were you**. On dit toujours **were**, jamais *was*.",
+          "explanation": "✅ [[**If I were you**|si j'étais toi]]. On dit toujours **were**, jamais *was*.",
           "hint": "Pas « was » !"
         },
         {
@@ -1094,7 +1094,7 @@ window.registerPack({
           "answers": [
             "why"
           ],
-          "explanation": "✅ **I understand why you feel upset.** **why** = pourquoi.",
+          "explanation": "✅ [[**I understand why you feel upset.**|Je comprends pourquoi tu es contrarié(e).]] **why** = pourquoi.",
           "hint": "pourquoi = ?"
         },
         {
@@ -1105,7 +1105,7 @@ window.registerPack({
             "I'd",
             "I would"
           ],
-          "explanation": "✅ **I'd** ou **I would** apologise. Avec **If I were you**, on met **I would** (pas *I will*).",
+          "explanation": "✅ [[**I'd** ou **I would** apologise|je m'excuserais]]. Avec **If I were you**, on met **I would** (pas *I will*).",
           "hint": "I + would"
         },
         {
@@ -1115,7 +1115,7 @@ window.registerPack({
           "answers": [
             "switching"
           ],
-          "explanation": "✅ **How about switching**. Après **How about**, le verbe + **ing**. ([[switch off|éteindre]])"
+          "explanation": "✅ [[**How about switching** off your phone?|Et si tu éteignais ton téléphone ?]] Après **How about**, le verbe + **ing**. **switch off** = éteindre."
         },
         {
           "type": "fill",
@@ -1133,7 +1133,7 @@ window.registerPack({
           "answers": [
             "give"
           ],
-          "explanation": "✅ **I wouldn't give** up. Après **wouldn't**, le verbe tout simple. ([[give up|abandonner]])",
+          "explanation": "✅ [[**I wouldn't give** up.|Je n'abandonnerais pas.]] Après **wouldn't**, le verbe tout simple. **give up** = abandonner.",
           "hint": "Après wouldn't : le verbe tout simple."
         }
       ]
@@ -1146,17 +1146,17 @@ window.registerPack({
       "icon": "🔍",
       "color": "#3D7BFF",
       "lesson": {
-        "title": "Classic traps",
+        "title": "[[Classic traps|Les pièges classiques]]",
         "points": [
-          "❌ You should **to** talk → ✅ You should talk. Pas de *to* après should.",
-          "❌ How about **take** → ✅ How about **taking**. Après How about : verbe + **ing**.",
-          "❌ If I **was** you → ✅ If I **were** you. ❌ I **will** → ✅ I **would**.",
-          "❌ Why don't you **talking** → ✅ Why don't you **talk**. ❌ you **feels** → ✅ you **feel** (pas de -s avec you)."
+          "❌ You should **to** talk → ✅ [[You should talk|tu devrais parler]]. Pas de *to* après should.",
+          "❌ How about **take** → ✅ [[How about **taking**|et si tu prenais…]]. Après How about : verbe + **ing**.",
+          "Deux pièges :\n- ❌ If I **was** you → ✅ [[If I **were** you|si j'étais toi]]\n- ❌ I **will** → ✅ I **would**",
+          "Deux autres pièges :\n- ❌ Why don't you **talking** → ✅ [[Why don't you **talk**|pourquoi tu ne parles pas]]\n- ❌ you **feels** → ✅ you **feel** (pas de -s avec you)"
         ],
         "examples": [
-          "You shouldn't **stay** up late. ✅",
-          "If I **were** you, I **would** tell a teacher. ✅",
-          "Why **don't** you ask for help? ✅"
+          "[[You shouldn't **stay** up late.|Tu ne devrais pas veiller tard.]] ✅",
+          "[[If I **were** you, I **would** tell a teacher.|Si j'étais toi, je le dirais à un professeur.]] ✅",
+          "[[Why **don't** you ask for help?|Pourquoi tu ne demandes pas de l'aide ?]] ✅"
         ]
       },
       "exercises": [
@@ -1174,7 +1174,7 @@ window.registerPack({
           ],
           "wrongIndex": 2,
           "correction": "(enlève « to »)",
-          "explanation": "✅ **You should talk to her.** Après **should**, pas de *to* : le verbe tout seul."
+          "explanation": "✅ [[**You should talk to her.**|Tu devrais lui parler.]] Après **should**, pas de *to* : le verbe tout seul."
         },
         {
           "type": "spot",
@@ -1189,7 +1189,7 @@ window.registerPack({
           ],
           "wrongIndex": 2,
           "correction": "taking",
-          "explanation": "✅ **How about taking** a break? Après **How about**, le verbe + **ing**."
+          "explanation": "✅ [[**How about taking** a break?|Et si tu faisais une pause ?]] Après **How about**, le verbe + **ing**."
         },
         {
           "type": "spot",
@@ -1210,7 +1210,7 @@ window.registerPack({
           ],
           "wrongIndex": 2,
           "correction": "were",
-          "explanation": "✅ **If I were you**. On dit toujours **were**, jamais *was*."
+          "explanation": "✅ [[**If I were you**|si j'étais toi]]. On dit toujours **were**, jamais *was*."
         },
         {
           "type": "spot",
@@ -1227,7 +1227,7 @@ window.registerPack({
           ],
           "wrongIndex": 3,
           "correction": "(enlève « to »)",
-          "explanation": "✅ **Why don't you ask** for help? Après **Why don't you**, pas de *to*."
+          "explanation": "✅ [[**Why don't you ask** for help?|Pourquoi tu ne demandes pas de l'aide ?]] Après **Why don't you**, pas de *to*."
         },
         {
           "type": "spot",
@@ -1242,7 +1242,7 @@ window.registerPack({
           ],
           "wrongIndex": 4,
           "correction": "feel",
-          "explanation": "✅ **I understand how you feel.** Avec **you**, pas de -s au verbe."
+          "explanation": "✅ [[**I understand how you feel.**|Je comprends ce que tu ressens.]] Avec **you**, pas de -s au verbe."
         },
         {
           "type": "spot",
@@ -1258,7 +1258,7 @@ window.registerPack({
           ],
           "wrongIndex": 2,
           "correction": "stay",
-          "explanation": "✅ **You shouldn't stay** up so late. Après **shouldn't**, le verbe tout simple, sans -s."
+          "explanation": "✅ [[**You shouldn't stay** up so late.|Tu ne devrais pas veiller si tard.]] Après **shouldn't**, le verbe tout simple, sans -s."
         },
         {
           "type": "spot",
@@ -1278,7 +1278,7 @@ window.registerPack({
           ],
           "wrongIndex": 6,
           "correction": "would",
-          "explanation": "✅ **I would tell** your parents. Avec **If I were you**, on dit **would**, pas *will*."
+          "explanation": "✅ [[**I would tell** your parents.|Je le dirais à tes parents.]] Avec **If I were you**, on dit **would**, pas *will*."
         },
         {
           "type": "spot",
@@ -1295,7 +1295,7 @@ window.registerPack({
           ],
           "wrongIndex": 3,
           "correction": "talk",
-          "explanation": "✅ **Why don't you talk** to your friend? Après **Why don't you**, le verbe tout simple, sans -ing."
+          "explanation": "✅ [[**Why don't you talk** to your friend?|Pourquoi tu ne parles pas à ton ami(e) ?]] Après **Why don't you**, le verbe tout simple, sans -ing."
         },
         {
           "type": "spot",
@@ -1312,7 +1312,7 @@ window.registerPack({
           ],
           "wrongIndex": 1,
           "correction": "sounds",
-          "explanation": "✅ **That sounds** like... Avec **that** (= ça), on ajoute un **-s** au verbe, comme avec he / she / it."
+          "explanation": "✅ [[**That sounds** like…|Ça a l'air…]] Avec **that** (= ça), on ajoute un **-s** au verbe, comme avec he / she / it."
         },
         {
           "type": "spot",
@@ -1329,7 +1329,7 @@ window.registerPack({
           ],
           "wrongIndex": 2,
           "correction": "ask",
-          "explanation": "✅ **You should ask** your teacher for help. Après **should**, le verbe tout simple, sans -ing."
+          "explanation": "✅ [[**You should ask** your teacher for help.|Tu devrais demander de l'aide à ton professeur.]] Après **should**, le verbe tout simple, sans -ing."
         },
         {
           "type": "spot",
@@ -1348,7 +1348,7 @@ window.registerPack({
           ],
           "wrongIndex": 6,
           "correction": "talk",
-          "explanation": "✅ **I'd talk** to her. **I'd** = I would, donc le verbe tout simple, sans -ed."
+          "explanation": "✅ [[**I'd talk** to her.|Je lui parlerais.]] **I'd** = I would, donc le verbe tout simple, sans -ed."
         },
         {
           "type": "spot",
@@ -1364,7 +1364,7 @@ window.registerPack({
           ],
           "wrongIndex": 1,
           "correction": "don't",
-          "explanation": "✅ **Why don't you** join a club? Avec **you**, on dit **don't**, jamais *doesn't*."
+          "explanation": "✅ [[**Why don't you** join a club?|Pourquoi tu ne t'inscris pas à un club ?]] Avec **you**, on dit **don't**, jamais *doesn't*."
         }
       ]
     },
@@ -1376,15 +1376,15 @@ window.registerPack({
       "icon": "📬",
       "color": "#8B5CF6",
       "lesson": {
-        "title": "Be a good Agony Aunt",
+        "title": "[[Be a good Agony Aunt|Sois une bonne « Agony Aunt »]]",
         "points": [
           "Lis bien la lettre : qui écrit ? quel est le problème ? comment se sent la personne ?",
           "La bonne réponse doit être **sans faute** ET **gentille et utile** (et sans danger).",
           "Commence par l'**empathie** 💗, puis donne des **conseils** 💡."
         ],
         "examples": [
-          "To Lily: I understand how you feel. You shouldn't meet this person alone.",
-          "To Abby: That sounds like a really difficult situation. Why don't you leave your phone in the kitchen at night?"
+          "[[To Lily: I understand how you feel. You shouldn't meet this person alone.|À Lily : je comprends ce que tu ressens. Tu ne devrais pas rencontrer cette personne seule.]]",
+          "[[To Abby: That sounds like a really difficult situation. Why don't you leave your phone in the kitchen at night?|À Abby : ça a l'air d'être une situation vraiment difficile. Pourquoi tu ne laisses pas ton téléphone dans la cuisine la nuit ?]]"
         ]
       },
       "exercises": [
@@ -1421,7 +1421,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Lettre de Lily : \"Someone I met online wants to meet up. I'm not sure if it's safe.\" Choisis le **meilleur conseil**.",
+          "prompt": "Lettre de Lily : [[\"Someone I met online wants to meet up. I'm not sure if it's safe.\"|Quelqu'un que j'ai rencontré en ligne veut qu'on se voie. Je ne sais pas si c'est sans danger.]] Choisis le **meilleur conseil**.",
           "options": [
             "You should meet this person alone at night.",
             "You shouldn't meet this person alone. Tell your parents first.",
@@ -1429,12 +1429,12 @@ window.registerPack({
             "How about give them your address?"
           ],
           "answer": 1,
-          "explanation": "✅ **You shouldn't meet this person alone. Tell your parents first.** C'est sans faute et sans danger. Les autres réponses sont dangereuses ou ont une faute.",
+          "explanation": "✅ [[**You shouldn't meet this person alone. Tell your parents first.**|Tu ne devrais pas rencontrer cette personne seule. Parles-en d'abord à tes parents.]] C'est sans faute et sans danger. Les autres réponses sont dangereuses ou ont une faute.",
           "hint": "Est-ce sans danger ? Est-ce sans faute ?"
         },
         {
           "type": "mcq",
-          "prompt": "Lettre de Sarah : \"I laughed and joined in. Now my friend is upset.\" Choisis le **meilleur conseil**.",
+          "prompt": "Lettre de Sarah : [[\"I laughed and joined in. Now my friend is upset.\"|J'ai ri et je m'y suis mise aussi. Maintenant, mon amie est bouleversée.]] Choisis le **meilleur conseil**.",
           "options": [
             "If I was you, I would say sorry to your friend.",
             "If I were you, I would laugh with the other girls.",
@@ -1442,11 +1442,11 @@ window.registerPack({
             "If I were you, I will say sorry to your friend."
           ],
           "answer": 2,
-          "explanation": "✅ **If I were you, I would say sorry to your friend and tell a teacher.** C'est sans faute et ça aide son amie. Les autres ont une faute (*was*, *will*) ou sont méchantes."
+          "explanation": "✅ [[**If I were you, I would say sorry to your friend and tell a teacher.**|Si j'étais toi, je dirais pardon à ton amie et je préviendrais un professeur.]] C'est sans faute et ça aide son amie. Les autres ont une faute (*was*, *will*) ou sont méchantes."
         },
         {
           "type": "mcq",
-          "prompt": "Lettre de Sam : \"I study five hours every night. My stomach hurts and I can't sleep.\" Choisis le **meilleur conseil**.",
+          "prompt": "Lettre de Sam : [[\"I study five hours every night. My stomach hurts and I can't sleep.\"|J'étudie cinq heures tous les soirs. J'ai mal au ventre et je n'arrive pas à dormir.]] Choisis le **meilleur conseil**.",
           "options": [
             "How about taking short breaks and sleeping more?",
             "You should study ten hours every night.",
@@ -1454,11 +1454,11 @@ window.registerPack({
             "Why don't you to stop sleeping?"
           ],
           "answer": 0,
-          "explanation": "✅ **How about taking short breaks and sleeping more?** C'est sans faute (How about + verbe + **ing**) et ça aide Sam à se détendre."
+          "explanation": "✅ [[**How about taking short breaks and sleeping more?**|Et si tu faisais de courtes pauses et dormais plus ?]] C'est sans faute (How about + verbe + **ing**) et ça aide Sam à se détendre."
         },
         {
           "type": "mcq",
-          "prompt": "Lettre de Susan : \"Kids make fun of my unbranded clothes. I feel insecure.\" Quelle phrase montre de l'**empathie** 💗 ?",
+          "prompt": "Lettre de Susan : [[\"Kids make fun of my unbranded clothes. I feel insecure.\"|Des élèves se moquent de mes vêtements sans marque. Je suis complexée.]] Quelle phrase montre de l'**empathie** 💗 ?",
           "options": [
             "You should buy expensive clothes.",
             "I understand how you feels.",
@@ -1466,11 +1466,11 @@ window.registerPack({
             "I understand why you feel upset."
           ],
           "answer": 3,
-          "explanation": "✅ **I understand why you feel upset.** Attention : *you feels* est faux, et *funny* (drôle) n'est pas gentil."
+          "explanation": "✅ [[**I understand why you feel upset.**|Je comprends pourquoi tu es contrariée.]] Attention : *you feels* est faux, et *funny* (drôle) n'est pas gentil."
         },
         {
           "type": "mcq",
-          "prompt": "Lettre de Susan : \"How can I fit in without changing who I am?\" Choisis le **meilleur conseil**.",
+          "prompt": "Lettre de Susan : [[\"How can I fit in without changing who I am?\"|Comment je peux m'intégrer sans changer qui je suis ?]] Choisis le **meilleur conseil**.",
           "options": [
             "You should change who you are.",
             "Why don't you join a club to make friends who like you as you are?",
@@ -1478,11 +1478,11 @@ window.registerPack({
             "How about steal some trendy shoes?"
           ],
           "answer": 1,
-          "explanation": "✅ **Why don't you join a club to make friends who like you as you are?** C'est sans faute, et Susan reste elle-même. Voler (*steal*), c'est non !"
+          "explanation": "✅ [[**Why don't you join a club to make friends who like you as you are?**|Pourquoi tu ne t'inscris pas à un club pour te faire des amis qui t'aiment comme tu es ?]] C'est sans faute, et Susan reste elle-même. Voler (*steal*), c'est non !"
         },
         {
           "type": "mcq",
-          "prompt": "Lettre d'Abby : \"I stayed up until 3 AM gaming. I'm too tired in class.\" Choisis le **meilleur conseil**.",
+          "prompt": "Lettre d'Abby : [[\"I stayed up until 3 AM gaming. I'm too tired in class.\"|J'ai veillé jusqu'à 3 h du matin à jouer. Je suis trop fatiguée en classe.]] Choisis le **meilleur conseil**.",
           "options": [
             "You should play video games until 4 AM.",
             "Why don't you to play less?",
@@ -1490,11 +1490,11 @@ window.registerPack({
             "Why don't you leave your phone in the kitchen at night?"
           ],
           "answer": 3,
-          "explanation": "✅ **Why don't you leave your phone in the kitchen at night?** C'est sans faute, et sans téléphone la nuit, Abby dort plus."
+          "explanation": "✅ [[**Why don't you leave your phone in the kitchen at night?**|Pourquoi tu ne laisses pas ton téléphone dans la cuisine la nuit ?]] C'est sans faute, et sans téléphone la nuit, Abby dort plus."
         },
         {
           "type": "mcq",
-          "prompt": "Lettre de Mark : \"I feel completely stuck and hopeless. I want to give up.\" Quelle phrase montre de l'**empathie** 💗 ?",
+          "prompt": "Lettre de Mark : [[\"I feel completely stuck and hopeless. I want to give up.\"|Je me sens complètement bloqué et désespéré. J'ai envie d'abandonner.]] Quelle phrase montre de l'**empathie** 💗 ?",
           "options": [
             "You are lazy, work harder!",
             "That sound like a really difficult situation.",
@@ -1502,7 +1502,7 @@ window.registerPack({
             "How about asking for help?"
           ],
           "answer": 2,
-          "explanation": "✅ **That sounds like a really difficult situation.** Attention : *That sound* oublie le -s, et *How about asking...* est un conseil, pas de l'empathie."
+          "explanation": "✅ [[**That sounds like a really difficult situation.**|Ça a l'air d'être une situation vraiment difficile.]] Attention : *That sound* oublie le -s, et *How about asking...* est un conseil, pas de l'empathie."
         },
         {
           "type": "match",
@@ -1549,7 +1549,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Lettre d'Abby : \"My parents want to confiscate my phone, but being offline makes me anxious.\" Choisis la meilleure réponse.",
+          "prompt": "Lettre d'Abby : [[\"My parents want to confiscate my phone, but being offline makes me anxious.\"|Mes parents veulent confisquer mon téléphone, mais être déconnectée me rend anxieuse.]] Choisis la meilleure réponse.",
           "options": [
             "That sounds like a really difficult situation. How about do a sport?",
             "That sounds like a really difficult situation. How about doing a sport instead of gaming?",
@@ -1569,16 +1569,16 @@ window.registerPack({
       "icon": "👑",
       "color": "#E5383B",
       "lesson": {
-        "title": "Your turn, Agony Aunt!",
+        "title": "[[Your turn, Agony Aunt!|À toi, Agony Aunt !]]",
         "points": [
-          "Commence par **Dear + prénom,** puis une phrase d'**empathie** 💗.",
-          "Donne plusieurs **conseils** 💡 avec des débuts **différents** : You should..., If I were you, I'd..., Why don't you...?, How about ...ing?",
-          "Termine gentiment : **Good luck!** / **You can do it!** / **Take care,** puis signe.",
+          "Commence par [[**Dear + prénom,**|Cher / Chère + prénom,]] puis une phrase d'**empathie** 💗.",
+          "Donne plusieurs **conseils** 💡 avec des débuts **différents** :\n- [[You should…|tu devrais…]]\n- [[If I were you, I'd…|si j'étais toi, je…]]\n- [[Why don't you…?|pourquoi tu ne… pas ?]]\n- [[How about …ing?|et si tu… ?]]",
+          "Termine gentiment, puis signe :\n- [[**Good luck!**|Bonne chance !]]\n- [[**You can do it!**|Tu peux y arriver !]]\n- [[**Take care,**|Prends soin de toi,]]",
           "Tu peux toucher les **phrases d'aide** pour commencer. Vérifie : pas de *to* après should, **were** (pas was), verbe + **ing** après How about."
         ],
         "examples": [
-          "Dear Abby, I understand how you feel. You should switch off your phone at 10 pm.",
-          "If I were you, I'd leave it in the kitchen. Why don't you read a book? How about doing a sport? Good luck!"
+          "[[Dear Abby, I understand how you feel. You should switch off your phone at 10 pm.|Chère Abby, je comprends ce que tu ressens. Tu devrais éteindre ton téléphone à 22 h.]]",
+          "[[If I were you, I'd leave it in the kitchen. Why don't you read a book? How about doing a sport? Good luck!|Si j'étais toi, je le laisserais dans la cuisine. Pourquoi tu ne lis pas un livre ? Et si tu faisais du sport ? Bonne chance !]]"
         ]
       },
       "exercises": [

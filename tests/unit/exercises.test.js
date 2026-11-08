@@ -168,3 +168,28 @@ test("findDocument: docId on any exercise, letterId and letters still read", () 
   assert.strictEqual(X.findDocument({ letters: [{ id: 3, text: "y" }] }, { letterId: 3 }).id, 3);
   assert.strictEqual(X.findDocument(null, { docId: "t1" }), null);
 });
+
+test("rich: in a language pack (en / es), a French \"(…)\" gloss is wrapped small; never in a fr pack, never inside [[…]]", () => {
+  const env = load({ scripts: ["js/i18n.js", "js/exercises.js"] }).window;
+  const Y = env.Exercises;
+  assert.strictEqual(Y.rich("You should talk. (Tu devrais parler.)"), "You should talk. (Tu devrais parler.)", "fr pack: unchanged");
+  env.I18N.setLang("es");
+  assert.strictEqual(Y.rich("Yo **hablo** español. (Je parle espagnol.)"),
+    'Yo <strong>hablo</strong> español. <span class="tr-fr">(Je parle espagnol.)</span>');
+  assert.strictEqual(Y.rich("**Why don't you ask? (Pourquoi tu ne demandes pas ?)**"),
+    '<strong>Why don&#39;t you ask? <span class="tr-fr">(Pourquoi tu ne demandes pas ?)</span></strong>', "inside bold: still wrapped (CSS makes it plain)");
+  assert.strictEqual(Y.rich("[[upset|bouleversé(e) (triste)]]"),
+    '<span class="tr" tabindex="0" role="button" data-tr="bouleversé(e) (triste)">upset</span>', "bubble text untouched");
+  assert.strictEqual(Y.rich("bouleversé(e) (−3)"), "bouleversé(e) (−3)", "short or letter-less groups untouched");
+  assert.strictEqual(Y.rich("My friend is bullied. (Mon ami(e) est harcelé(e).)"),
+    'My friend is bullied. <span class="tr-fr">(Mon ami(e) est harcelé(e).)</span>', "a gloss holding (e) is wrapped whole");
+  env.I18N.setLang("en");
+  assert.match(Y.rich("Hi! (Salut !)"), /<span class="tr-fr">\(Salut !\)<\/span>/);
+});
+
+test("rich: lines starting with \"- \" become a bullet list; other line breaks stay <br>", () => {
+  assert.strictEqual(X.rich("Intro :\n- **a**\n- b"), 'Intro :<ul class="rich-list"><li><strong>a</strong></li><li>b</li></ul>');
+  assert.strictEqual(X.rich("a\nb"), "a<br>b");
+  assert.strictEqual(X.rich("- a\n- b\nfin"), '<ul class="rich-list"><li>a</li><li>b</li></ul>fin');
+  assert.strictEqual(X.rich("a -b\nc - d"), "a -b<br>c - d", "a dash inside a line is not a bullet");
+});

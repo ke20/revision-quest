@@ -64,17 +64,17 @@ window.registerPack({
       "icon": "💬",
       "color": "#14B8A6",
       "lesson": {
-        "title": "Give advice, express empathy",
+        "title": "[[Give advice, express empathy|Donner un conseil, montrer de l'empathie]]",
         "points": [
-          "**You should** + BV = tu devrais ; **You shouldn't** = **You should not** + BV = tu ne devrais pas. (BV = base verbale : le verbe sans **to**, comme **talk**.)",
-          "**If I were you, I would** + BV = si j'étais toi, je… ; **I would** = **I'd**.",
-          "**Why don't you** + BV ? = pourquoi tu ne… pas ? ; **How about** + BV-**ing** ? = et si tu… ?",
-          "Pour montrer qu'on comprend : **I understand how you feel**, **I understand why you feel upset**, **That sounds like a really difficult situation**."
+          "Donner un conseil (BV = base verbale : le verbe sans **to**, comme **talk**) :\n- [[**You should** + BV|tu devrais]]\n- [[**You shouldn't** = **You should not** + BV|tu ne devrais pas]]",
+          "[[**If I were you, I would** + BV|si j'étais toi, je…]] ; **I would** = **I'd**.",
+          "Poser une question pour conseiller :\n- [[**Why don't you** + BV ?|pourquoi tu ne… pas ?]]\n- [[**How about** + BV-ing ?|et si tu… ?]]",
+          "Pour montrer qu'on comprend :\n- [[**I understand how you feel**|je comprends ce que tu ressens]]\n- [[**I understand why you feel upset**|je comprends pourquoi tu es bouleversé·e]]\n- [[**That sounds like a really difficult situation**|ça a l'air d'être une situation vraiment difficile]]"
         ],
         "examples": [
-          "You **should** talk to your parents.",
-          "**How about** talk**ing** to a teacher?",
-          "**If I were you, I'd** talk to a teacher."
+          "[[You **should** talk to your parents.|Tu devrais parler à tes parents.]]",
+          "[[**How about** talk**ing** to a teacher?|Et si tu parlais à un professeur ?]]",
+          "[[**If I were you, I'd** talk to a teacher.|Si j'étais toi, je parlerais à un professeur.]]"
         ]
       },
       "exercises": [
@@ -153,11 +153,11 @@ window.registerPack({
           "answers": [
             "not"
           ],
-          "explanation": "✅ **shouldn't** = **should not** = ne devrait pas."
+          "explanation": "✅ [[**shouldn't** = **should not**|ne devrait pas]]."
         },
         {
           "type": "fill",
-          "prompt": "Complète : I'd est la forme courte de…",
+          "prompt": "Complète : I'd est la forme courte de… (Si j'étais toi, je parlerais à un professeur.)",
           "sentence": "If I were you, I'd talk to a teacher. = If I were you, I ___ talk to a teacher.",
           "answers": [
             "would"
@@ -166,7 +166,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Choisis la bonne forme : \"You should ___ to your parents.\"",
+          "prompt": "Choisis la bonne forme : [[\"You should ___ to your parents.\"|Tu devrais parler à tes parents.]]",
           "options": [
             "talking",
             "talks",
@@ -178,7 +178,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Choisis la bonne forme : \"How about ___ to a teacher?\"",
+          "prompt": "Choisis la bonne forme : [[\"How about ___ to a teacher?\"|Et si tu parlais à un professeur ?]]",
           "options": [
             "talked",
             "to talk",
@@ -190,7 +190,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Choisis la bonne forme : \"Why don't you ___ to your friend?\"",
+          "prompt": "Choisis la bonne forme : [[\"Why don't you ___ to your friend?\"|Pourquoi tu ne parles pas à ton ami ?]]",
           "options": [
             "talking",
             "talked",
@@ -221,7 +221,7 @@ window.registerPack({
         },
         {
           "type": "spot",
-          "prompt": "Touche le mot faux.",
+          "prompt": "Touche le mot faux. (Tu devrais parler à tes parents.)",
           "tokens": [
             "You",
             "should",
@@ -233,7 +233,7 @@ window.registerPack({
           ],
           "wrongIndex": 2,
           "correction": "talk",
-          "explanation": "✅ Après **should**, jamais de **-s** : You should **talk**."
+          "explanation": "✅ Après **should**, jamais de **-s** : [[You should **talk**.|Tu devrais parler.]]"
         },
         {
           "type": "order",
@@ -268,16 +268,16 @@ window.registerPack({
       "icon": "📱",
       "color": "#3B82F6",
       "lesson": {
-        "title": "Life online",
+        "title": "[[Life online|La vie en ligne]]",
         "points": [
-          "**online** = en ligne ≠ **offline** = hors ligne ; **social media** = les réseaux sociaux ; **to be addicted to** = être accro à.",
-          "**to meet up** = se retrouver en vrai ; **safe** = sans danger.",
-          "**to stay up** = veiller tard ; **to wake up** = se réveiller ; **tired** = fatigué(e) ; **to focus** = se concentrer.",
-          "**as soon as** = dès que ; **to confiscate** = confisquer."
+          "Internet :\n- [[**online**|en ligne]] ≠ [[**offline**|hors ligne]]\n- [[**social media**|les réseaux sociaux]]\n- [[**to be addicted to**|être accro à]]",
+          "Les amis d'Internet :\n- [[**to meet up**|se retrouver en vrai]]\n- [[**safe**|sans danger]]",
+          "Le sommeil :\n- [[**to stay up**|veiller tard]]\n- [[**to wake up**|se réveiller]]\n- [[**tired**|fatigué·e]]\n- [[**to focus**|se concentrer]]",
+          "Et aussi :\n- [[**as soon as**|dès que]]\n- [[**to confiscate**|confisquer]]"
         ],
         "examples": [
-          "I am [[addicted to|accro à]] my smartphone.",
-          "I'm not sure if it's [[safe|sans danger]] to [[meet up|se retrouver]]."
+          "[[I am **addicted to** my smartphone.|Je suis accro à mon smartphone.]]",
+          "[[I'm not sure if it's **safe** to **meet up**.|Je ne suis pas sûre que ce soit sans danger de se retrouver.]]"
         ]
       },
       "exercises": [
@@ -302,11 +302,11 @@ window.registerPack({
               "right": "les réseaux sociaux"
             }
           ],
-          "explanation": "✅ **online** ≠ **offline**. **social media** est toujours au pluriel en français : les réseaux sociaux."
+          "explanation": "✅ [[**online**|en ligne]] ≠ [[**offline**|hors ligne]]. **social media** est toujours au pluriel en français : les réseaux sociaux."
         },
         {
           "type": "mcq",
-          "prompt": "\"I am completely **addicted to** my smartphone.\" Que veut dire **addicted to** ?",
+          "prompt": "[[\"I am completely **addicted to** my smartphone.\"|Je suis complètement … mon smartphone.]] Que veut dire **addicted to** ?",
           "options": [
             "habitué à",
             "fâché contre",
@@ -338,11 +338,11 @@ window.registerPack({
               "right": "se concentrer"
             }
           ],
-          "explanation": "✅ Trois verbes avec **up** : **wake up**, **stay up**, **meet up**. **focus** = se concentrer."
+          "explanation": "✅ Trois verbes avec **up** :\n- [[**wake up**|se réveiller]]\n- [[**stay up**|veiller tard]]\n- [[**meet up**|se retrouver]]\nEt [[**focus**|se concentrer]]."
         },
         {
           "type": "mcq",
-          "prompt": "\"I would like to **meet up** with them.\" Que veut faire Lily ?",
+          "prompt": "[[\"I would like to **meet up** with them.\"|J'aimerais bien … avec eux.]] Que veut faire Lily ?",
           "options": [
             "envoyer une photo",
             "bloquer son ami",
@@ -354,7 +354,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète : le contraire de **online**.",
+          "prompt": "Complète : le contraire de **online**. (Être … rend Abby anxieuse.)",
           "sentence": "Being ___ makes Abby anxious.",
           "answers": [
             "offline",
@@ -365,7 +365,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "\"I am too tired to **focus** in class.\" Que veut dire **focus** ?",
+          "prompt": "[[\"I am too tired to **focus** in class.\"|Je suis trop fatiguée pour … en classe.]] Que veut dire **focus** ?",
           "options": [
             "s'endormir",
             "s'amuser",
@@ -377,7 +377,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète avec le mot qui veut dire « fatiguée ».",
+          "prompt": "Complète avec le mot qui veut dire « fatiguée ». (Maintenant, je suis trop fatiguée pour me concentrer en classe.)",
           "sentence": "Now, I am too ___ to focus in class.",
           "answers": [
             "tired"
@@ -386,7 +386,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "\"My parents want to **confiscate** my phone.\" Que veulent faire ses parents ?",
+          "prompt": "[[\"My parents want to **confiscate** my phone.\"|Mes parents veulent … mon téléphone.]] Que veulent faire ses parents ?",
           "options": [
             "lui acheter un téléphone",
             "réparer son téléphone",
@@ -416,22 +416,22 @@ window.registerPack({
       "icon": "🤝",
       "color": "#F97316",
       "lesson": {
-        "title": "At school with the others",
+        "title": "[[At school with the others|À l'école avec les autres]]",
         "points": [
-          "**to be bullied** = être harcelé(e) ; **to call someone names** = insulter quelqu'un.",
-          "**to make fun of** = se moquer de ; **a joke** = une blague ; **to join in** = participer ; **upset** = bouleversé(e).",
-          "**clothes** = vêtements ; **expensive** = cher ; **trendy** = à la mode ; **unbranded** = sans marque ; **cannot afford** = ne pas avoir les moyens d'acheter.",
-          "**insecure** = pas sûr(e) de soi ; **insecure about** = complexé(e) par ; **appearance** = l'apparence ; **to fit in** = s'intégrer."
+          "Le harcèlement :\n- [[**to be bullied**|être harcelé·e]]\n- [[**to call someone names**|insulter quelqu'un]]\n- [[**to make fun of**|se moquer de]]",
+          "Entre amis :\n- [[**a joke**|une blague]]\n- [[**to join in**|participer]]\n- [[**upset**|bouleversé·e]]",
+          "Les vêtements :\n- [[**clothes**|vêtements]]\n- [[**expensive**|cher]] ; [[**trendy**|à la mode]] ; [[**unbranded**|sans marque]]\n- [[**cannot afford**|ne pas avoir les moyens d'acheter]]",
+          "Se sentir à sa place :\n- [[**insecure**|pas sûr·e de soi]] ; [[**insecure about**|complexé·e par]]\n- [[**appearance**|l'apparence]]\n- [[**to fit in**|s'intégrer]]"
         ],
         "examples": [
-          "Some kids [[make fun of|se moquent de]] me.",
-          "My family [[cannot afford|n'a pas les moyens d'acheter]] these things."
+          "[[Some kids **make fun of** me.|Des élèves se moquent de moi.]]",
+          "[[My family **cannot afford** these things.|Ma famille n'a pas les moyens d'acheter ces choses.]]"
         ]
       },
       "exercises": [
         {
           "type": "mcq",
-          "prompt": "\"I think my friend is being **bullied**.\" Que veut dire **bullied** ?",
+          "prompt": "[[\"I think my friend is being **bullied**.\"|Je pense que mon amie se fait ….]] Que veut dire **bullied** ?",
           "options": [
             "oublié(e)",
             "puni(e)",
@@ -462,11 +462,11 @@ window.registerPack({
               "right": "bouleversé(e)"
             }
           ],
-          "explanation": "✅ **to call someone names** = insulter quelqu'un ; **upset** = bouleversé(e), très triste."
+          "explanation": "✅ [[**to call someone names**|insulter quelqu'un]] ; [[**upset**|bouleversé·e, très triste]]."
         },
         {
           "type": "mcq",
-          "prompt": "\"A few girls keep **calling her names**.\" Que font ces filles ?",
+          "prompt": "[[\"A few girls keep **calling her names**.\"|Quelques filles n'arrêtent pas de ….]] Que font ces filles ?",
           "options": [
             "elles l'appellent par son prénom",
             "elles la cherchent",
@@ -498,11 +498,11 @@ window.registerPack({
               "right": "apparence"
             }
           ],
-          "explanation": "✅ **un-** devant un mot = sans / pas : **unbranded** = sans marque (**brand** = marque)."
+          "explanation": "✅ **un-** devant un mot = sans / pas : [[**unbranded**|sans marque]] ([[**brand**|marque]])."
         },
         {
           "type": "mcq",
-          "prompt": "\"My family **cannot afford** these things.\" Que veut dire Susan ?",
+          "prompt": "[[\"My family **cannot afford** these things.\"|Ma famille … ces choses.]] Que veut dire Susan ?",
           "options": [
             "sa famille n'aime pas ça",
             "sa famille ne veut pas",
@@ -514,7 +514,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète : « se moquer de » = make fun ___.",
+          "prompt": "Complète : « se moquer de » = make fun ___. (Des élèves de l'école se moquent de moi.)",
           "sentence": "Some kids at school make fun ___ me.",
           "answers": [
             "of"
@@ -523,7 +523,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "\"I feel so **insecure** about my appearance.\" Que veut dire **insecure** ?",
+          "prompt": "[[\"I feel so **insecure** about my appearance.\"|Je me sens tellement … à cause de mon apparence.]] Que veut dire **insecure** ?",
           "options": [
             "timide",
             "jalouse",
@@ -594,16 +594,16 @@ window.registerPack({
       "icon": "📚",
       "color": "#10B981",
       "lesson": {
-        "title": "Words about school",
+        "title": "[[Words about school|Les mots de l'école]]",
         "points": [
-          "**a mark** = **a grade** = une note (**a bad mark** = une mauvaise note) ; **final exams** = examens de fin d'année ; **a subject** = une matière. Faux amis : **mark** n'est pas une marque, **subject** n'est pas un sujet.",
-          "**pressure** = la pression ; **to expect** = attendre de quelqu'un ; **to disappoint** = décevoir ; **enough** = assez.",
-          "**to quit** = arrêter ; **to give up** = abandonner ; **to ask for help** = demander de l'aide ; **regularly** = régulièrement.",
-          "**my stomach hurts** = j'ai mal au ventre ; **stuck** = bloqué(e) ; **hopeless** = désespéré(e)."
+          "Les notes et les matières :\n- [[**a mark**|une note]] = [[**a grade**|une note]] ; [[**a bad mark**|une mauvaise note]]\n- [[**final exams**|les examens de fin d'année]]\n- [[**a subject**|une matière]]\n- Faux amis : **mark** n'est pas une marque, **subject** n'est pas un sujet.",
+          "La pression :\n- [[**pressure**|la pression]]\n- [[**to expect**|attendre de quelqu'un]]\n- [[**to disappoint**|décevoir]]\n- [[**enough**|assez]]",
+          "Abandonner ou s'accrocher :\n- [[**to quit**|arrêter]] ; [[**to give up**|abandonner]]\n- [[**to ask for help**|demander de l'aide]]\n- [[**regularly**|régulièrement]]",
+          "Ce qu'on ressent :\n- [[**my stomach hurts**|j'ai mal au ventre]]\n- [[**stuck**|bloqué·e]]\n- [[**hopeless**|désespéré·e]]"
         ],
         "examples": [
-          "My parents [[expect|attendent]] me to get perfect [[marks|notes]].",
-          "I want to [[quit|arrêter]] and [[give up|abandonner]]."
+          "[[My parents **expect** me to get perfect **marks**.|Mes parents attendent de moi des notes parfaites.]]",
+          "[[I want to **quit** and **give up**.|Je veux arrêter et abandonner.]]"
         ]
       },
       "exercises": [
@@ -628,11 +628,11 @@ window.registerPack({
               "right": "la pression"
             }
           ],
-          "explanation": "✅ Faux amis : **a mark** = une note (pas une marque), **a subject** = une matière (pas un sujet)."
+          "explanation": "✅ Faux amis :\n- **a mark** = une note (pas une marque)\n- **a subject** = une matière (pas un sujet)"
         },
         {
           "type": "mcq",
-          "prompt": "\"My **grades** are dropping.\" Quel mot veut dire la même chose que **grades** ?",
+          "prompt": "[[\"My **grades** are dropping.\"|Mes … baissent.]] Quel mot veut dire la même chose que **grades** ?",
           "options": [
             "marks",
             "lessons",
@@ -644,7 +644,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "\"I don't want to **disappoint** my family.\" Que veut dire **disappoint** ?",
+          "prompt": "[[\"I don't want to **disappoint** my family.\"|Je ne veux pas … ma famille.]] Que veut dire **disappoint** ?",
           "options": [
             "désobéir",
             "déranger",
@@ -657,7 +657,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "\"Every time I think about the exam, **my stomach hurts**.\" Que ressent Sam ?",
+          "prompt": "[[\"Every time I think about the exam, **my stomach hurts**.\"|Chaque fois que je pense à l'examen, ….]] Que ressent Sam ?",
           "options": [
             "il a faim",
             "il a mal à la tête",
@@ -665,11 +665,11 @@ window.registerPack({
             "il a mal au ventre"
           ],
           "answer": 3,
-          "explanation": "✅ **stomach** = ventre ; **it hurts** = ça fait mal."
+          "explanation": "✅ [[**stomach**|ventre]] ; [[**it hurts**|ça fait mal]]."
         },
         {
           "type": "fill",
-          "prompt": "Complète : « abandonner » = give ___.",
+          "prompt": "Complète : « abandonner » = give ___. (Je veux arrêter et abandonner.)",
           "sentence": "I want to quit and give ___.",
           "answers": [
             "up"
@@ -697,7 +697,7 @@ window.registerPack({
               "right": "arrêter"
             }
           ],
-          "explanation": "✅ **hopeless** = sans espoir (**hope** = espoir, **-less** = sans)."
+          "explanation": "✅ [[**hopeless**|sans espoir]] : [[**hope**|espoir]] + **-less** (sans)."
         },
         {
           "type": "fill",
@@ -710,7 +710,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète : « demander de l'aide » = ask ___ help.",
+          "prompt": "Complète : « demander de l'aide » = ask ___ help. (Mes professeurs disent que je dois demander de l'aide.)",
           "sentence": "My teachers say I must ask ___ help.",
           "answers": [
             "for"
@@ -719,7 +719,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "\"My parents **expect** me to get perfect marks.\" Que veut dire **expect** ?",
+          "prompt": "[[\"My parents **expect** me to get perfect marks.\"|Mes parents … que j'aie des notes parfaites.]] Que veut dire **expect** ?",
           "options": [
             "interdire",
             "expliquer",
@@ -739,15 +739,15 @@ window.registerPack({
       "icon": "😟",
       "color": "#8B5CF6",
       "lesson": {
-        "title": "Words for feelings",
+        "title": "[[Words for feelings|Les mots des sentiments]]",
         "points": [
-          "On dit **I feel** + adjectif : I feel **stressed**, **upset**, **sad**.",
-          "**anxious** = anxieux ; **furious** = furieux ; **insecure** = pas sûr de soi ; **hopeless** = désespéré ; **stuck** = bloqué.",
-          "Contraires utiles : **online** ≠ **offline**, **expensive** ≠ **cheap**, **safe** ≠ **dangerous**."
+          "On dit [[**I feel**|je me sens]] + adjectif :\n- [[**stressed**|stressé·e]]\n- [[**upset**|bouleversé·e]]\n- [[**sad**|triste]]",
+          "D'autres sentiments :\n- [[**anxious**|anxieux]] ; [[**furious**|furieux]]\n- [[**insecure**|pas sûr de soi]]\n- [[**hopeless**|désespéré]] ; [[**stuck**|bloqué]]",
+          "Contraires utiles :\n- [[**online**|en ligne]] ≠ [[**offline**|hors ligne]]\n- [[**expensive**|cher]] ≠ [[**cheap**|pas cher]]\n- [[**safe**|sans danger]] ≠ [[**dangerous**|dangereux]]"
         ],
         "examples": [
-          "I feel [[stuck|bloqué]] and [[hopeless|désespéré]].",
-          "The thought of being offline makes me [[anxious|anxieuse]]."
+          "[[I feel **stuck** and **hopeless**.|Je me sens bloqué et désespéré.]]",
+          "[[The thought of being offline makes me **anxious**.|L'idée d'être hors ligne me rend anxieuse.]]"
         ]
       },
       "exercises": [
@@ -772,7 +772,7 @@ window.registerPack({
               "right": "désespéré"
             }
           ],
-          "explanation": "✅ **anxious** et **furious** ressemblent au français. **upset** et **hopeless** sont à apprendre par cœur."
+          "explanation": "✅ **anxious** et **furious** ressemblent au français. [[**upset**|bouleversé·e]] et [[**hopeless**|désespéré·e]] sont à apprendre par cœur."
         },
         {
           "type": "mcq",
@@ -831,7 +831,7 @@ window.registerPack({
               "right": "good mark"
             }
           ],
-          "explanation": "✅ **cheap** = pas cher ; **dangerous** = dangereux."
+          "explanation": "✅ [[**cheap**|pas cher]] ; [[**dangerous**|dangereux]]."
         },
         {
           "type": "sort",
@@ -907,7 +907,7 @@ window.registerPack({
           ],
           "wrongIndex": 10,
           "correction": "unbranded",
-          "explanation": "✅ On se moque des vêtements de Susan parce qu'ils sont **unbranded** (sans marque), pas **trendy** (à la mode)."
+          "explanation": "✅ On se moque des vêtements de Susan parce qu'ils sont [[**unbranded**|sans marque]], pas [[**trendy**|à la mode]]."
         },
         {
           "type": "fill",
@@ -916,7 +916,7 @@ window.registerPack({
           "answers": [
             "stuck"
           ],
-          "explanation": "✅ **stuck** = bloqué, coincé. Il vient du verbe **to stick** (coller)."
+          "explanation": "✅ **stuck** = bloqué, coincé. Il vient du verbe [[**to stick**|coller]]."
         }
       ]
     },
@@ -928,16 +928,16 @@ window.registerPack({
       "icon": "🧩",
       "color": "#EC4899",
       "lesson": {
-        "title": "Verb + little word",
+        "title": "[[Verb + little word|Verbe + petit mot]]",
         "points": [
-          "Le petit mot change le sens du verbe : **give** = donner, mais **give up** = abandonner.",
-          "Avec **up** : **meet up**, **wake up**, **stay up**, **give up**.",
-          "Avec **in** : **join in** (participer), **fit in** (s'intégrer).",
-          "Avec **of / for** : **make fun of** (se moquer de), **ask for help** (demander de l'aide), **addicted to** (accro à)."
+          "Le petit mot change le sens du verbe : [[**give**|donner]], mais [[**give up**|abandonner]].",
+          "Avec **up** :\n- [[**meet up**|se retrouver]]\n- [[**wake up**|se réveiller]]\n- [[**stay up**|veiller tard]]\n- [[**give up**|abandonner]]",
+          "Avec **in** :\n- [[**join in**|participer]]\n- [[**fit in**|s'intégrer]]",
+          "Avec **of**, **for**, **to** :\n- [[**make fun of**|se moquer de]]\n- [[**ask for help**|demander de l'aide]]\n- [[**addicted to**|accro à]]"
         ],
         "examples": [
-          "I [[stayed up|ai veillé]] until 3:00 AM.",
-          "How can I [[fit in|m'intégrer]]?"
+          "[[I **stayed up** until 3:00 AM.|J'ai veillé jusqu'à 3 heures du matin.]]",
+          "[[How can I **fit in**?|Comment puis-je m'intégrer ?]]"
         ]
       },
       "exercises": [
@@ -980,7 +980,7 @@ window.registerPack({
               "cat": "in"
             }
           ],
-          "explanation": "✅ **up** : meet, wake, give, stay. **in** : join, fit."
+          "explanation": "✅ Avec **up** : meet, wake, give, stay. Avec **in** : join, fit."
         },
         {
           "type": "match",
@@ -1003,11 +1003,11 @@ window.registerPack({
               "right": "veiller tard"
             }
           ],
-          "explanation": "✅ Le petit mot change tout : **stay** = rester, **stay up** = veiller tard."
+          "explanation": "✅ Le petit mot change tout : [[**stay**|rester]], mais [[**stay up**|veiller tard]]."
         },
         {
           "type": "fill",
-          "prompt": "Complète avec le petit mot.",
+          "prompt": "Complète avec le petit mot. (Hier soir, j'ai veillé jusqu'à 3 heures du matin à jouer.)",
           "sentence": "Last night, I stayed ___ until 3:00 AM gaming.",
           "answers": [
             "up"
@@ -1016,7 +1016,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète avec le petit mot.",
+          "prompt": "Complète avec le petit mot. (On riait toutes, alors j'ai participé aussi.)",
           "sentence": "We were all laughing so I joined ___ too.",
           "answers": [
             "in"
@@ -1025,7 +1025,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Complète avec le petit mot.",
+          "prompt": "Complète avec le petit mot. (Je suis complètement accro à mon smartphone.)",
           "sentence": "I am completely addicted ___ my smartphone.",
           "answers": [
             "to"
@@ -1042,11 +1042,11 @@ window.registerPack({
             "I want to give back."
           ],
           "answer": 1,
-          "explanation": "✅ **give up** = abandonner. **wake up** = se réveiller."
+          "explanation": "✅ [[**give up**|abandonner]]. [[**wake up**|se réveiller]]."
         },
         {
           "type": "spot",
-          "prompt": "Touche le mot faux.",
+          "prompt": "Touche le mot faux. (Des élèves de l'école se moquent de moi.)",
           "tokens": [
             "Some",
             "kids",
@@ -1060,11 +1060,11 @@ window.registerPack({
           ],
           "wrongIndex": 6,
           "correction": "of",
-          "explanation": "✅ On dit **make fun of** someone : se moquer de quelqu'un."
+          "explanation": "✅ On dit [[**make fun of** someone|se moquer de quelqu'un]]."
         },
         {
           "type": "spot",
-          "prompt": "Touche le mot faux.",
+          "prompt": "Touche le mot faux. (Dès que je me réveille, je regarde les réseaux sociaux.)",
           "tokens": [
             "As",
             "soon",
@@ -1113,14 +1113,14 @@ window.registerPack({
       "icon": "💌",
       "color": "#0EA5E9",
       "lesson": {
-        "title": "Read like an Agony Aunt",
+        "title": "[[Read like an Agony Aunt|Lis comme une Agony Aunt]]",
         "points": [
           "Lis chaque lettre en entier, puis réponds aux questions.",
-          "Touche les mots en pointillés si tu as oublié leur sens 👀. Mot de liaison à connaître : **However** = cependant.",
+          "Touche les mots en pointillés si tu as oublié leur sens 👀. Mot de liaison à connaître : [[**However**|cependant]].",
           "Cherche d'abord **le problème** : en ligne, harcèlement, stress, vêtements, téléphone ou école."
         ],
         "examples": [
-          "What should I do? = Que dois-je faire ?"
+          "[[What should I do?|Que dois-je faire ?]]"
         ]
       },
       "exercises": [
@@ -1134,7 +1134,7 @@ window.registerPack({
             "elle ne sait pas si c'est sans danger de voir un ami d'Internet"
           ],
           "answer": 3,
-          "explanation": "✅ \"I'm not sure if it's **safe**.\" Lily hésite à rencontrer son ami en vrai.",
+          "explanation": "✅ [[\"I'm not sure if it's **safe**.\"|Je ne suis pas sûre que ce soit sans danger.]] Lily hésite à rencontrer son ami en vrai.",
           "docId": "lily"
         },
         {
@@ -1157,7 +1157,7 @@ window.registerPack({
             "elle a raté une blague"
           ],
           "answer": 2,
-          "explanation": "✅ \"we were all laughing so I **joined in** too\" : Sarah a participé, et elle le regrette.",
+          "explanation": "✅ [[\"we were all laughing so I **joined in** too\"|on riait toutes, alors j'ai participé aussi]] : Sarah a participé, et elle le regrette.",
           "docId": "sarah"
         },
         {
@@ -1180,7 +1180,7 @@ window.registerPack({
             "des notes parfaites"
           ],
           "answer": 3,
-          "explanation": "✅ \"my parents **expect** me to get perfect **marks**\".",
+          "explanation": "✅ [[\"my parents **expect** me to get perfect **marks**\"|mes parents attendent de moi des notes parfaites]].",
           "docId": "sam"
         },
         {
@@ -1193,7 +1193,7 @@ window.registerPack({
             "elle ne parle à personne"
           ],
           "answer": 0,
-          "explanation": "✅ \"I have to wear **unbranded** clothes. Because of this, some kids **make fun of** me.\"",
+          "explanation": "✅ [[\"I have to wear **unbranded** clothes. Because of this, some kids **make fun of** me.\"|Je dois porter des vêtements sans marque. À cause de ça, des élèves se moquent de moi.]]",
           "docId": "susan"
         },
         {
@@ -1216,7 +1216,7 @@ window.registerPack({
             "elle s'est réveillée à 3 h"
           ],
           "answer": 0,
-          "explanation": "✅ \"I **stayed up** until 3:00 AM gaming.\"",
+          "explanation": "✅ [[\"I **stayed up** until 3:00 AM gaming.\"|J'ai veillé jusqu'à 3 heures du matin à jouer.]]",
           "docId": "abby"
         },
         {
@@ -1240,7 +1240,7 @@ window.registerPack({
             "il doit abandonner les maths"
           ],
           "answer": 0,
-          "explanation": "✅ \"I must **ask for help** and also work **regularly**\".",
+          "explanation": "✅ [[\"I must **ask for help** and also work **regularly**\"|je dois demander de l'aide et aussi travailler régulièrement]].",
           "docId": "mark"
         }
       ]
@@ -1253,14 +1253,14 @@ window.registerPack({
       "icon": "🏆",
       "color": "#EAB308",
       "lesson": {
-        "title": "The final challenge",
+        "title": "[[The final challenge|Le défi final]]",
         "points": [
           "Ce monde mélange **tout** le vocabulaire des six lettres.",
-          "Faux amis : **a mark** = une note (une marque = **a brand**), **a subject** = une matière (pas un sujet), **severe** = grave, gros (pas sévère).",
+          "Faux amis :\n- [[**a mark**|une note]] (une marque = [[**a brand**|une marque]])\n- [[**a subject**|une matière]] (pas un sujet)\n- [[**severe**|grave, gros]] (pas sévère)",
           "Pour finir, écris ta propre lettre à l'Agony Aunt."
         ],
         "examples": [
-          "I feel [[insecure about|complexé(e) par]] my [[appearance|apparence]]."
+          "[[I feel **insecure about** my **appearance**.|Je suis complexé·e par mon apparence.]]"
         ]
       },
       "exercises": [
@@ -1297,7 +1297,7 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Faux ami : \"Every time I get a bad **mark**, I feel sad.\" Que veut dire **mark** ?",
+          "prompt": "Faux ami : [[\"Every time I get a bad **mark**, I feel sad.\"|Chaque fois que j'ai une mauvaise …, je suis triste.]] Que veut dire **mark** ?",
           "options": [
             "une marque",
             "un match",
@@ -1305,11 +1305,11 @@ window.registerPack({
             "une note"
           ],
           "answer": 3,
-          "explanation": "✅ **a mark** = une note. Une marque (de vêtements) se dit **a brand** : **unbranded** = sans marque."
+          "explanation": "✅ **a mark** = une note. Une marque (de vêtements) se dit **a brand** : [[**unbranded**|sans marque]]."
         },
         {
           "type": "mcq",
-          "prompt": "Faux ami : \"I have difficulties understanding **subjects** like maths.\" Que veut dire **subjects** ?",
+          "prompt": "Faux ami : [[\"I have difficulties understanding **subjects** like maths.\"|J'ai du mal à comprendre des … comme les maths.]] Que veut dire **subjects** ?",
           "options": [
             "des leçons",
             "des exercices",
@@ -1317,11 +1317,11 @@ window.registerPack({
             "des sujets"
           ],
           "answer": 2,
-          "explanation": "✅ **a subject** = une matière (maths, science…). Le sujet d'une rédaction se dit **a topic**."
+          "explanation": "✅ **a subject** = une matière (maths, science…). Le sujet d'une rédaction se dit [[**a topic**|un sujet]]."
         },
         {
           "type": "mcq",
-          "prompt": "Faux ami : \"I have **severe** difficulties.\" Que veut dire **severe** ?",
+          "prompt": "Faux ami : [[\"I have **severe** difficulties.\"|J'ai des difficultés ….]] Que veut dire **severe** ?",
           "options": [
             "petites",
             "grosses, graves",
@@ -1329,7 +1329,7 @@ window.registerPack({
             "nouvelles"
           ],
           "answer": 1,
-          "explanation": "✅ **severe** = grave, important. Un professeur sévère se dit **a strict teacher**."
+          "explanation": "✅ **severe** = grave, important. Un professeur sévère se dit [[**a strict teacher**|un professeur sévère]]."
         },
         {
           "type": "fill",
@@ -1364,17 +1364,17 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Conseil pour Lily : complète avec le verbe **meet up** à la bonne forme.",
+          "prompt": "Conseil pour Lily : complète avec le verbe **meet up** à la bonne forme. (Et si vous vous retrouviez dans un lieu public ?)",
           "sentence": "How about ___ up in a public place?",
           "answers": [
             "meeting"
           ],
-          "explanation": "✅ Après **How about**, le verbe prend **-ing** : How about **meeting up** in a public place?",
+          "explanation": "✅ Après **How about**, le verbe prend **-ing** : [[How about **meeting up** in a public place?|Et si vous vous retrouviez dans un lieu public ?]]",
           "hint": "How about + verbe en -ing"
         },
         {
           "type": "spot",
-          "prompt": "Touche le mot faux.",
+          "prompt": "Touche le mot faux. (Lily n'est pas sûre que ce soit sans danger de retrouver son ami en ligne.)",
           "tokens": [
             "Lily",
             "is",
@@ -1417,7 +1417,7 @@ window.registerPack({
           ],
           "wrongIndex": 6,
           "correction": "bad",
-          "explanation": "✅ Mark est désespéré parce qu'il a de **bad marks** (mauvaises notes)."
+          "explanation": "✅ Mark est désespéré parce qu'il a de [[**bad marks**|mauvaises notes]]."
         },
         {
           "type": "sort",
