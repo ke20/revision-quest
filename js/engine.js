@@ -1,6 +1,7 @@
 /* Révision Quest — players, XP, levels, hearts, stars, badges, save / export / import.
    Progress is stored per content pack: state.packs[packId].worlds[worldId].
    Exposes window.Engine. */
+// @ts-check
 (function () {
   "use strict";
 
@@ -84,6 +85,7 @@
   function own(o, k) { return !!o && Object.prototype.hasOwnProperty.call(o, k); }
   function isObj(o) { return !!o && typeof o === "object" && !Array.isArray(o); }
 
+  /** @returns {PlayerState} */
   function defaultState() {
     return {
       xp: 0,
@@ -178,7 +180,9 @@
   /* ---------- validation of anything read from storage, cookie or .save ---------- */
 
   /** Whitelist: any value that is not allowed falls back to the default ("no" answer). */
+  /** @returns {PlayerSettings} */
   function normalizeSettings(s) {
+    /** @type {any} filled key by key from COMFORT */
     var out = {};
     Object.keys(COMFORT).forEach(function (k) {
       var v = isObj(s) && own(s, k) ? s[k] : undefined;
@@ -206,9 +210,11 @@
 
   /** Make any (possibly old, hand-made or hostile) state object safe to use.
       Anything that is not in the current format is ignored. */
+  /** @returns {PlayerState} */
   function normalizeState(s) {
     var d = defaultState();
     if (!isObj(s)) return d;
+    /** @type {any} filled field by field below */
     var out = {};
     out.xp = typeof s.xp === "number" ? clampInt(s.xp, 0, 1000000) : 0;
     out.packs = {};
@@ -234,6 +240,7 @@
     return out;
   }
 
+  /** A saved or imported player made safe (whitelists, clamped numbers), or null. @returns {Profile|null} */
   function normalizeProfile(p) {
     if (!isObj(p)) return null;
     var name = cleanName(p.name).slice(0, 20);
@@ -505,6 +512,7 @@
 
   var storageOk = true;
   var lastRaw = null; // the v3 value this tab last read or wrote (another tab changed it if it differs)
+  /** @returns {SaveDb} */
   function emptyDb() { return { profiles: [], currentId: null, deleted: {} }; }
   function lsGet(k) { try { return window.localStorage.getItem(k); } catch (e) { storageOk = false; return null; } }
   function lsSet(k, v) { try { window.localStorage.setItem(k, v); return true; } catch (e) { return false; } }
@@ -588,7 +596,9 @@
 
   /* ---------- current pack ---------- */
 
+  /** @type {{ id: string, data: Pack } | null} */
   var pack = null;     // { id, data } of the pack being played
+  /** @type {WorldSession | null} */
   var session = null;  // current world session
   var PAUSE_KEY = "revisionQuest.pause"; // { profileId: end time } (only running pauses)
   var PAUSE_MS = 5 * 60 * 1000;          // "Je reprends" stays disabled this long
@@ -728,7 +738,7 @@
     STORAGE_KEY: STORAGE_KEY,
     PACK_ID: PACK_ID,
 
-    /** Select the pack being played (data = registered pack). */
+    /** Select the pack being played (data = registered pack). @param {string|null} id @param {Pack|null} data */
     setPack: function (id, data) { pack = id && data ? { id: id, data: data } : null; session = null; },
     currentPackId: packId,
     packData: function () { return pack ? pack.data : null; },
@@ -792,7 +802,7 @@
     },
     translationsCount: function () { return state.translations.length; },
 
-    /** Start a world session in the current pack. */
+    /** Start a world session in the current pack. @param {number|string} worldId @returns {WorldSession} */
     startWorld: function (worldId) {
       var w = worlds()[worldIndex(worldId)];
       session = {
@@ -817,7 +827,8 @@
 
     /** Resume a world session saved by the page before a reload (js/app.js, sessionStorage). Only for the current
         pack and a world of the same size; every number is clamped, so a hand-edited value gives no advantage
-        (at most full hearts, which a new start gives anyway). Returns the session or null. */
+        (at most full hearts, which a new start gives anyway). Returns the session or null.
+        @param {any} saved data read back from sessionStorage, not trusted @returns {WorldSession|null} */
     resumeWorld: function (saved) {
       if (!isObj(saved) || !pack || saved.packId !== packId()) return null;
       var w = worlds()[worldIndex(saved.worldId)];
@@ -1156,6 +1167,7 @@
     importProfile: function (profile, mode) {
       var p = normalizeProfile(profile);
       if (!p) return null;
+      /** @type {Profile | null} */
       var existing = null;
       db.profiles.forEach(function (q) { if (q.name.toLowerCase() === p.name.toLowerCase()) existing = q; });
       if (existing && mode === "replace") {

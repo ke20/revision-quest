@@ -97,12 +97,12 @@ Un outil d'aide à la création de chapitres, directement dans le navigateur, es
 ## Pour les développeurs
 
 HTML, CSS et JavaScript sans build ni dépendance dans le navigateur. Outils : [mise](https://mise.jdx.dev),
-ESLint, `node:test` et Playwright.
+ESLint, TypeScript (types en JSDoc, vérifiés sans build), `node:test` et Playwright.
 
 ```bash
 mise install && mise run install   # Node.js épinglé, dépendances de test et Chromium
 mise run dev                       # sert le jeu sur http://127.0.0.1:4173/
-mise run qa                        # lint, validation des packs, tests unitaires et e2e : à lancer avant de pousser
+mise run qa                        # lint, types, validation des packs, tests unitaires et e2e : à lancer avant de pousser
 ```
 
 La CI GitHub Actions lance les mêmes contrôles à chaque push et publie le jeu sur GitHub Pages depuis `main`.

@@ -2,6 +2,7 @@
    (tools/validate-pack.js). Pure functions on plain data: no file, no catalogue, no DOM.
    Every check reports through err(message) (blocking) or warn(message) (advice). Messages are in French.
    Loaded as a classic <script> (window.PackRules) or with require() (module.exports). ES2017. */
+// @ts-check
 (function (root) {
   "use strict";
 
@@ -151,7 +152,9 @@
   // a comment body never contains "*/": no code can hide between two comments
   const STRICT_RE = /^(?:\s*\/\*(?:[^*]|\*(?!\/))*\*\/)*\s*window\.registerPack\(([\s\S]*)\);\s*$/;
 
-  /** Pack file text → pack object. Throws an Error with a French message when the file is not in the strict format. */
+  /** Pack file text → pack object. Throws an Error with a French message when the file is not in the strict format.
+      The object is not checked yet (run checkPath, checkLang, validateMeta, validateContent).
+      @param {string} text @returns {Pack} */
   function parseStrict(text) {
     if (typeof text !== "string") throw new Error("fichier illisible");
     if (text.length > MAX_PACK_SIZE) throw new Error(`fichier trop gros (${text.length} caractères, ${MAX_PACK_SIZE} max)`);
@@ -166,6 +169,7 @@
   }
 
   /** Pack object → file text in the strict format (header: optional comment text, without the comment marks). */
+  /** @param {Pack} pack @param {string} [header] @returns {string} */
   function formatStrict(pack, header) {
     const head = header ? "/* " + String(header).replace(/\*\//g, "* /") + " */\n" : "";
     return head + "window.registerPack(" + JSON.stringify(pack, null, 2) + ");\n";
@@ -212,9 +216,11 @@
     return failed === 0;
   }
 
-  /** Catalogue entry built from a pack (meta, lang, worlds): { path, title, description, icon, color?, lang, worldCount }. */
+  /** Catalogue entry built from a pack (meta, lang, worlds): { path, title, description, icon, color?, lang, worldCount }.
+      @param {Pack} pack @returns {CatalogEntry} */
   function catalogEntry(pack) {
-    const m = pack.meta || {};
+    const m = pack.meta || /** @type {PackMeta} */ ({});
+    /** @type {any} keys in this order: it is the order written in js/catalog.js */
     const entry = { path: pack.path, title: m.title, description: m.description, icon: m.icon };
     if (m.color != null) entry.color = m.color;
     entry.lang = pack.lang;
@@ -225,7 +231,8 @@
   /* ---------- pack content: documents, worlds, lessons, exercises ---------- */
 
   /** Checks everything inside a pack except its identity (path, lang) and its catalogue entry.
-      Returns { worlds, exercises, types } or null when there is no world to count. */
+      Returns { worlds, exercises, types } or null when there is no world to count.
+      @param {any} pack data not checked yet @param {PackReport} err @param {PackReport} warn */
   function validateContent(pack, err, warn) {
     // documents (or legacy letters)
     if (pack.documents && pack.letters) err("utilise documents OU letters, pas les deux");

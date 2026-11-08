@@ -1,0 +1,17 @@
+{
+  // Type checking of the game's JavaScript (no build: nothing is emitted, the browser runs the same files).
+  //   npm run typecheck   (mise run typecheck), also part of npm run qa
+  // Types are written as JSDoc comments in the files; shared types live in types/*.d.ts.
+  // Files are added one by one as they get typed.
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "target": "ES2017",
+    "lib": ["ES2017", "ES2022.Error", "DOM"],
+    "strict": false,
+    "skipLibCheck": true,
+    "types": []
+  },
+  "files": ["types/globals.d.ts", "types/pack.d.ts", "types/engine.d.ts", "js/pack-rules.js", "js/engine.js"]
+}

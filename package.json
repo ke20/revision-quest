@@ -2,7 +2,7 @@
   "name": "revision-quest",
   "version": "1.0.0",
   "private": true,
-  "description": "Révision Quest — jeu web de révision par chapitres (HTML/CSS/JS vanilla, sans build).",
+  "description": "Révision Quest — jeu web de révision par chapitres (HTML/CSS/JS vanilla, sans build ; types vérifiés par TypeScript en JSDoc).",
   "license": "MIT",
   "engines": {
     "node": ">=20"
@@ -11,19 +11,21 @@
     "start": "node tests/server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "typecheck": "tsc -p tsconfig.json",
     "audit": "npm audit --audit-level=moderate",
     "validate": "node tools/validate-pack.js --all",
     "pack:add": "node tools/pack-add.js",
     "test:unit": "node --test tests/unit/*.test.js",
     "test:e2e": "playwright test",
     "test": "npm run validate && npm run test:unit && npm run test:e2e",
-    "qa": "npm run lint && npm test"
+    "qa": "npm run lint && npm run typecheck && npm test"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@playwright/test": "1.64.1",
     "eslint": "10.14.0",
-    "globals": "17.14.0"
+    "globals": "17.14.0",
+    "typescript": "6.0.3"
   },
   "overrides": {
     "minimatch": "11.0.4"

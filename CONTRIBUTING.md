@@ -6,7 +6,7 @@ Présentation du jeu et installation : voir le [README](README.md). Pour écrire
 
 ## Avant d'ouvrir une pull request
 
-- Lancer `mise run qa` (lint, validation des packs, tests unitaires et e2e) : la CI refait les mêmes contrôles.
+- Lancer `mise run qa` (lint, types, validation des packs, tests unitaires et e2e) : la CI refait les mêmes contrôles.
 - Un chapitre est chargé par le jeu comme du JavaScript : il suit le **format strict** (`window.registerPack(` + JSON pur
   + `);`, vérifié sans exécution par le validateur) et il est **relu avant d'être fusionné**.
 - Une faille de sécurité se signale en privé, pas dans un ticket : voir [SECURITY.md](SECURITY.md).
@@ -15,6 +15,11 @@ Le code du jeu (`js/`) est écrit en **JavaScript ES2017**, sans étape de build
 (pas de modules ES), chacun dans une fonction auto-appelée. ES2017 tourne sur Safari 11 (iOS 11), Chrome 58 et
 Firefox 52. Le lint refuse la syntaxe plus récente (`...` dans un objet, `?.`, `??`). Les anciens fichiers écrits
 en ES5 restent valides.
+
+**Types** : TypeScript vérifie le JavaScript sans rien compiler (`mise run typecheck`, `tsconfig.json`). Les types
+s'écrivent en commentaires JSDoc (`/** @param {Pack} pack */`) ; les types partagés sont dans `types/*.d.ts`
+(format d'un pack : `types/pack.d.ts`, données du moteur : `types/engine.d.ts`). Un fichier vérifié commence par
+`// @ts-check` et figure dans `files` de `tsconfig.json` : pour l'instant `js/engine.js` et `js/pack-rules.js`.
 
 Le nom de l'app est défini à un seul endroit : `APP_CONFIG.name` dans `js/i18n.js` (+ `<title>` dans `index.html`).
 
@@ -51,6 +56,8 @@ revision-quest/
 ├── mise.toml               Node.js épinglé + tâches
 ├── package.json            scripts npm, dépendances de dev
 ├── eslint.config.js        règles de lint
+├── tsconfig.json           vérification des types (TypeScript, JSDoc, rien n'est compilé)
+├── types/                  types partagés (format des packs, données du moteur)
 ├── renovate.json           mises à jour automatiques
 └── .github/workflows/ci.yml  tests + publication GitHub Pages
 ```
@@ -84,7 +91,7 @@ Avec mise (recommandé) : installation une fois, puis tous les contrôles :
 ```bash
 mise install          # Node.js épinglé dans mise.toml
 mise run install      # npm ci + navigateur Chromium de Playwright
-mise run qa           # lint, puis validate + tests unitaires + tests de bout en bout (s'arrête au premier échec)
+mise run qa           # lint, types, puis validate + tests unitaires + tests de bout en bout (s'arrête au premier échec)
 ```
 
 Sans mise (Node.js ≥ 20) :
@@ -92,19 +99,20 @@ Sans mise (Node.js ≥ 20) :
 ```bash
 npm ci
 npx playwright install chromium
-npm run qa            # = npm run lint && npm test
+npm run qa            # = npm run lint && npm run typecheck && npm test
 ```
 
 | Tâche mise | Équivalent npm | Rôle |
 |---|---|---|
 | `mise run lint` | `npm run lint` | ESLint sur tout le JavaScript (`eslint.config.js`) |
 | `mise run lint:fix` | `npm run lint:fix` | corrige automatiquement ce qu'ESLint sait corriger |
+| `mise run typecheck` | `npm run typecheck` | vérifie les types JSDoc avec TypeScript (`tsconfig.json`), sans rien compiler |
 | `mise run validate` | `npm run validate` | vérifie tous les packs du catalogue (`tools/validate-pack.js --all`) |
 | `mise run pack:add <fichier>` | `npm run pack:add -- <fichier>` | vérifie un chapitre et écrit son entrée dans `js/catalog.js` (`tools/pack-add.js`) |
 | `mise run test:unit` | `npm run test:unit` | tests unitaires `node:test` : moteur, exercices (texte enrichi, correction), catalogue, validateur (packs cassés dans `tests/fixtures/unit/`), doc |
 | `mise run test:e2e` | `npm run test:e2e` | tests Playwright (`tests/e2e/*.spec.js`), Chromium 1280 px + un projet 390 px |
 | `mise run test` | `npm test` | validate, unitaires, e2e, dans cet ordre |
-| `mise run qa` | `npm run qa` | lint puis `test` : à lancer avant de pousser |
+| `mise run qa` | `npm run qa` | lint, types, puis `test` : à lancer avant de pousser |
 | `mise run report` | `npx playwright show-report` | ouvre le rapport HTML du dernier passage (`playwright-report/`) |
 | `mise run ci` | — | exactement ce que fait la CI : `install` puis `qa` |
 

@@ -2,7 +2,7 @@
 #   mise install        installs the pinned Node.js
 #   mise tasks          lists the tasks below
 #   mise run dev        serves the game on http://127.0.0.1:4173/
-#   mise run qa         lint + validate + unit tests + end-to-end tests
+#   mise run qa         lint + type check + validate + unit tests + end-to-end tests
 # npm scripts (package.json) stay usable without mise.
 
 [tools]
@@ -34,6 +34,10 @@ run = "npm run lint"
 description = "Lint and fix what ESLint can fix automatically"
 run = "npm run lint:fix"
 
+[tasks.typecheck]
+description = "Type-check the game's JavaScript with TypeScript (JSDoc types, nothing emitted: tsconfig.json)"
+run = "npm run typecheck"
+
 [tasks.validate]
 description = "Check every content pack of the catalogue (tools/validate-pack.js --all)"
 run = "npm run validate"
@@ -59,9 +63,10 @@ run = [
 ]
 
 [tasks.qa]
-description = "Everything, fail fast: lint, then validate + unit tests + end-to-end tests"
+description = "Everything, fail fast: lint, type check, then validate + unit tests + end-to-end tests"
 run = [
   { task = "lint" },
+  { task = "typecheck" },
   { task = "test" },
 ]
 
