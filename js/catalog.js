@@ -127,6 +127,15 @@ window.CATALOG = {
       color: "#7C3AED",
       lang: "fr",
       worldCount: 8
+    },
+    {
+      path: "4e/anglais/teen-problems-vocabulary",
+      title: "Agony Aunts · Vocabulary",
+      description: "Les phrases pour conseiller et le vocabulaire des six lettres : la vie en ligne, le harcèlement, l'école, les sentiments et les verbes à particule.",
+      icon: "📖",
+      color: "#6366F1",
+      lang: "en",
+      worldCount: 8
     }
   ]
 };
