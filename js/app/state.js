@@ -1,12 +1,13 @@
+// @ts-check
 /* Révision Quest — state shared by the screens (js/app/*.js). A module cannot assign a variable it imports,
    so what several modules change lives in S. */
 
 export const S = {
-  /** The #app element: every screen is drawn inside it. */
+  /** The #app element: every screen is drawn inside it. @type {HTMLElement|null} */
   app: null,
-  /** Registered data of the pack being played (window.registerPack). */
+  /** Registered data of the pack being played (window.registerPack). @type {Pack|null} */
   data: null,
-  /** Catalogue entry of the pack being played. */
+  /** Catalogue entry of the pack being played (js/packs.js adds level, subject, file…). @type {any} */
   pack: null,
   /** Bumped by every navigation: a pack that is still loading is ignored when the player went elsewhere. */
   loadToken: 0,

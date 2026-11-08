@@ -1,3 +1,4 @@
+// @ts-check
 /* Révision Quest — Interface helpers: building and showing a screen, toasts, dialogs, stars / hearts / shields. */
 import { S } from "./state.js";
 import { applyComfort } from "./comfort.js";
@@ -10,10 +11,11 @@ import { E } from "./util.js";
 
 export let openModals = [];
 
+/** The element built from a piece of trusted HTML (its first node). @param {string} html @returns {HTMLElement} */
 export function h(html) {
   var d = document.createElement("div");
   d.innerHTML = html.trim();
-  return d.firstChild;
+  return /** @type {HTMLElement} */ (d.firstChild);
 }
 
 export function show(node) {

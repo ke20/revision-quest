@@ -1,3 +1,4 @@
+// @ts-check
 /* Révision Quest — World map of the current pack, and the lesson of a world. */
 import { S } from "./state.js";
 import { GHOST } from "./state.js";

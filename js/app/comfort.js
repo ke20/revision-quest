@@ -1,3 +1,4 @@
+// @ts-check
 /* Révision Quest — Comfort settings of the player (animations, reduced motion) and seasonal themes. */
 import { toast } from "./ui.js";
 

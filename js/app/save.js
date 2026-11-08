@@ -1,3 +1,4 @@
+// @ts-check
 /* Révision Quest — Save, export / import, share by link or QR code, QR scanner. */
 import { showHome } from "./home.js";
 import { Sound } from "./sound.js";
@@ -186,7 +187,7 @@ export function copyText(text, box) {
   function fallback() { // show the link, selected, to copy by hand
     var old = box.querySelector(".share-link");
     if (old) old.remove();
-    var input = h('<input class="share-link" type="text" readonly aria-label="Lien de la partie" />');
+    var input = /** @type {HTMLInputElement} */ (h('<input class="share-link" type="text" readonly aria-label="Lien de la partie" />'));
     input.value = text;
     box.appendChild(input);
     input.focus(); input.select();

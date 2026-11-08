@@ -1,3 +1,4 @@
+// @ts-check
 /* Révision Quest — Confetti (homemade canvas). */
 import { motionOn, season } from "./comfort.js";
 

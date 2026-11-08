@@ -1,3 +1,4 @@
+// @ts-check
 /* Révision Quest — Playing a world: exercises one after the other, result screens, pause, game over. */
 import { S } from "./state.js";
 import { boostOn, scrollBehavior } from "./comfort.js";

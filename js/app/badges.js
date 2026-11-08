@@ -1,3 +1,4 @@
+// @ts-check
 /* Révision Quest — Badges screen. */
 import { showHome } from "./home.js";
 import { route, setNav } from "./nav.js";

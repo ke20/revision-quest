@@ -1,3 +1,4 @@
+// @ts-check
 /* Révision Quest — Home screen (and the fullscreen button, source and voices links). */
 import { showBadges } from "./badges.js";
 import { openPack, showCatalog } from "./catalog.js";

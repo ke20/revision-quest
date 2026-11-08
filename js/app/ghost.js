@@ -1,3 +1,4 @@
+// @ts-check
 /* Révision Quest — Ghost mode (?fantome): free walk through a world's exercises, answers shown. */
 import { S } from "./state.js";
 import { showMap } from "./map.js";
@@ -52,12 +53,14 @@ export function showGhost(w, index) {
     '<footer class="checkbar"><div class="checkbar-inner"><div class="feedback"></div><button class="btn btn-check" data-act="check" disabled>' + T("check") + "</button></div></footer>" +
     "</section>");
   show(node);
-  var bar = node.querySelector(".checkbar"), feedback = node.querySelector(".feedback"), btn = node.querySelector('[data-act="check"]');
+  var bar = node.querySelector(".checkbar"), feedback = node.querySelector(".feedback");
+  var btn = /** @type {HTMLButtonElement} */ (node.querySelector('[data-act="check"]'));
   var go = function (k) { Sound.tap(); showGhost(w, k); };
   on(node, "back", function () { Sound.tap(); showMap(); });
   on(node, "prev", function () { go(i - 1); });
   on(node, "next", function () { go(i + 1); });
-  node.querySelector(".ghost-jump").onchange = function () { go(+this.value); };
+  var jump = /** @type {HTMLSelectElement} */ (node.querySelector(".ghost-jump"));
+  jump.onchange = function () { go(+jump.value); };
   var done = false;
   var controller = Exercises.render(ex, node.querySelector(".ex-container"), function (res) { // nothing is recorded
     done = true;

@@ -1,3 +1,4 @@
+// @ts-check
 /* Révision Quest — Entry point: boot, fatal error screens, window.App (used by the tests). */
 import { S } from "./state.js";
 import { openPack, showCatalog } from "./catalog.js";

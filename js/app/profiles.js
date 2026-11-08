@@ -1,3 +1,4 @@
+// @ts-check
 /* Révision Quest — Players (choice, creation) and leaderboard. */
 import { chip, gradeButtons, resetCatalogFilters } from "./catalog.js";
 import { showHome } from "./home.js";
@@ -92,7 +93,7 @@ export function showNewPlayer() {
     "</div>" +
     '<button class="btn btn-primary btn-big" data-act="create">C\'est parti ! 🚀</button>' +
     "</section>");
-  var input = node.querySelector("#np-name"), err = node.querySelector(".field-error");
+  var input = /** @type {HTMLInputElement} */ (node.querySelector("#np-name")), err = node.querySelector(".field-error");
   on(node, "back", showProfiles);
   each(node, ".avatar-btn", function (b) {
     b.onclick = function () {
@@ -184,7 +185,7 @@ export function showLeaderboard(back, subjectId, unitId) {
   each(node, "[data-lb]", function (b) {
     b.onclick = function () { Sound.tap(); showLeaderboard(back, b.getAttribute("data-lb")); };
   });
-  var sel = node.querySelector(".lb-chapter");
+  var sel = /** @type {HTMLSelectElement|null} */ (node.querySelector(".lb-chapter"));
   if (sel) sel.onchange = function () { Sound.tap(); showLeaderboard(back, subject.id, sel.value); };
   show(node);
 }

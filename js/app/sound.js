@@ -1,3 +1,4 @@
+// @ts-check
 /* Révision Quest — Sound effects (WebAudio, generated tones: no audio file). */
 
 /* ================= Sounds (WebAudio) ================= */

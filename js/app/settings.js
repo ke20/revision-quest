@@ -1,3 +1,4 @@
+// @ts-check
 /* Révision Quest — Settings dialog (comfort settings, grade, reset). */
 import { S } from "./state.js";
 import { gradeButtons, myGrade } from "./catalog.js";

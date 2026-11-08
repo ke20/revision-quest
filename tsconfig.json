@@ -11,7 +11,10 @@
     "lib": ["ES2017", "ES2022.Error", "DOM"],
     "strict": false,
     "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "types": []
   },
-  "files": ["types/globals.d.ts", "types/pack.d.ts", "types/engine.d.ts", "js/pack-rules.js", "js/engine.js"]
+  "files": ["types/globals.d.ts", "types/pack.d.ts", "types/engine.d.ts", "js/pack-rules.js", "js/engine.js"],
+  "include": ["js/app/*.js"]
 }

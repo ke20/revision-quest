@@ -1,3 +1,4 @@
+// @ts-check
 /* Révision Quest — Catalogue of chapters, group choice, loading a pack. */
 import { S } from "./state.js";
 import { showHome } from "./home.js";

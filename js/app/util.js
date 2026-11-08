@@ -1,3 +1,4 @@
+// @ts-check
 /* Révision Quest — Small shared helpers: escaping, rich text, interface texts, colours, app name. */
 
 export let E = function (t) {

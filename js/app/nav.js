@@ -1,3 +1,4 @@
+// @ts-check
 /* Révision Quest — Routing (the address follows the screen) and the in-app history (back button). */
 import { S } from "./state.js";
 import { GHOST } from "./state.js";
