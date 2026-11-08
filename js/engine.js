@@ -815,6 +815,36 @@
     },
     get session() { return session; },
 
+    /** Resume a world session saved by the page before a reload (js/app.js, sessionStorage). Only for the current
+        pack and a world of the same size; every number is clamped, so a hand-edited value gives no advantage
+        (at most full hearts, which a new start gives anyway). Returns the session or null. */
+    resumeWorld: function (saved) {
+      if (!isObj(saved) || !pack || saved.packId !== packId()) return null;
+      var w = worlds()[worldIndex(saved.worldId)];
+      if (!w || saved.total !== w.exercises.length) return null;
+      var num = function (v, lo, hi) { v = Number(v); return isFinite(v) ? Math.max(lo, Math.min(hi, v)) : lo; };
+      var int = function (v, lo, hi) { return Math.floor(num(v, lo, hi)); };
+      var maxShields = int(saved.maxShields, 0, 3);
+      session = {
+        packId: packId(),
+        worldId: w.id,
+        total: w.exercises.length,
+        index: int(saved.index, 0, w.exercises.length),
+        hearts: int(saved.hearts, 0, MAX_HEARTS),
+        shields: int(saved.shields, 0, maxShields),
+        maxShields: maxShields,
+        combo: int(saved.combo, 0, 1000),
+        maxCombo: int(saved.maxCombo, 0, 1000),
+        score: num(saved.score, 0, w.exercises.length),
+        xpEarned: int(saved.xpEarned, -100000, 100000),
+        newBadges: [],
+        skipped: int(saved.skipped, 0, w.exercises.length),
+        over: false
+      };
+      session.over = session.hearts === 0;
+      return session;
+    },
+
     /** Spend XP for a hint. Returns the XP actually spent. */
     useHint: function () {
       var spent = Math.min(HINT_COST, state.xp);

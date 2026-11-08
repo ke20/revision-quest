@@ -289,6 +289,59 @@
     window.scrollTo(0, 0);
   }
 
+  /* ---------- routing: the address follows the screen, so a reload comes back to it ----------
+     #/catalogue, #/badges, #/classement, #/joueurs, #/groupes/<chapitre>, #/chapitre/<pack>,
+     #/chapitre/<pack>/monde/<n> (lesson), …/monde/<n>/jeu (world being played), …/monde/<n>/exercice/<k> (ghost mode).
+     The address is replaced, never pushed: the back button keeps working as below. A world being played is kept per
+     tab (sessionStorage) and resumed at the same exercise, with the same hearts. */
+  var RUN_KEY = "revisionQuest.run";
+  function route(path) {
+    try {
+      var url = String(location.href).split("#")[0] + (path ? "#/" + path : "");
+      if (url !== String(location.href)) history.replaceState(history.state, "", url);
+    } catch (e) { /* ignore */ }
+  }
+  function worldPath(w) { return "chapitre/" + PACK.id + "/monde/" + (DATA.worlds.indexOf(w) + 1); }
+  function parseRoute() {
+    var p = String(location.hash || "").replace(/^#\/?/, ""), m;
+    if (!p || /^partie=/.test(p)) return null;
+    if (p === "catalogue" || p === "badges" || p === "classement" || p === "joueurs") return { screen: p };
+    if ((m = /^groupes\/([a-z0-9/-]+)$/.exec(p))) return { screen: "groupes", id: m[1] };
+    m = /^chapitre\/([a-z0-9/-]+?)(?:\/monde\/(\d+)(?:\/(jeu|exercice\/(\d+)))?)?$/.exec(p);
+    if (m) return { screen: "chapitre", id: m[1], world: m[2] ? +m[2] - 1 : null, play: m[3] === "jeu", ex: m[4] ? +m[4] - 1 : null };
+    return null;
+  }
+  function goRoute(r) {
+    if (r.screen === "catalogue") return showCatalog();
+    if (r.screen === "badges") return showBadges();
+    if (r.screen === "classement") return showLeaderboard(showHome);
+    if (r.screen === "joueurs") return showProfiles();
+    if (r.screen === "groupes") return showGroups(r.id);
+    openPack(r.id, function () {
+      var w = r.world != null ? DATA.worlds[r.world] : null;
+      if (!w) return showMap();
+      if (!GHOST && !Engine.isUnlocked(w.id)) { showMap(); toast(T("locked", Engine.starsToUnlock())); return; }
+      if (GHOST && r.ex != null) return showGhost(w, r.ex);
+      var saved = r.play && !GHOST ? takeRun(w) : null;
+      if (saved) return startWorld(w, saved);
+      showLesson(w);
+    });
+  }
+  function saveRun() {
+    try {
+      var me = Engine.currentProfile(), s = Engine.session;
+      if (me && s) sessionStorage.setItem(RUN_KEY, JSON.stringify({ profile: me.id, session: s }));
+    } catch (e) { /* ignore: the world simply restarts after a reload */ }
+  }
+  function clearRun() { try { sessionStorage.removeItem(RUN_KEY); } catch (e) { /* ignore */ } }
+  /** The saved session of this world for the current player, or null. */
+  function takeRun(w) {
+    var r, me = Engine.currentProfile();
+    try { r = JSON.parse(sessionStorage.getItem(RUN_KEY) || "null"); } catch (e) { r = null; }
+    if (!r || !me || r.profile !== me.id || !r.session || r.session.packId !== PACK.id || String(r.session.worldId) !== String(w.id)) return null;
+    return r.session;
+  }
+
   /* ---------- in-app history: the browser / Android back button stays inside the app ----------
      Each screen declares its "back" action (same as its ← button) and how to redraw itself.
      A single history entry is pushed as a trap; popstate runs the back action (or closes the open modal). */
@@ -401,7 +454,7 @@
 
   /** Leave the pack: global screens are always in French. */
   function leavePack() {
-    if (Engine.session) Engine.quitWorld();
+    if (Engine.session) { Engine.quitWorld(); clearRun(); }
     if (window.I18N) I18N.setLang("fr");
   }
 
@@ -460,6 +513,7 @@
     if (!me) return showProfiles();
     if (pauseGuard()) return;
     leavePack();
+    route("");
     setNav(null, showHome);
     var li = Engine.levelInfo();
     var streak = Engine.streak();
@@ -581,6 +635,7 @@
     var ch = Packs.get(id);
     if (!ch || !ch.groups) return showCatalog();
     if (!Engine.currentProfile()) return showProfiles();
+    route("groupes/" + id);
     if (pauseGuard()) return;
     leavePack();
     setNav(showCatalog, function () { showGroups(id); });
@@ -605,6 +660,7 @@
   function showCatalog() {
     if (!Engine.currentProfile()) return showProfiles();
     if (pauseGuard()) return;
+    route("catalogue");
     leavePack();
     setNav(showHome, showCatalog);
     var all = Packs.list();
@@ -662,7 +718,7 @@
   }
 
   /** Load a pack (lazily) then show its world map. A load token ignores a late answer if the player went elsewhere. */
-  function openPack(id) {
+  function openPack(id, then) {
     var entry = Packs.get(id);
     if (!entry) return showPackError(id, { message: "Ce chapitre n'existe pas (ou plus)." });
     if (entry.groups) return showGroups(id); // a chapter "par groupes": choose the group first
@@ -684,7 +740,7 @@
       DATA = data;
       Engine.setPack(id, data);
       if (window.I18N) I18N.setLang(data.lang);
-      showMap();
+      if (then) then(); else showMap();
     });
   }
 
@@ -705,6 +761,7 @@
 
   function showProfiles() {
     leavePack();
+    route(Engine.currentProfile() ? "joueurs" : ""); // no player yet: the start screen, not a page to come back to
     var me = Engine.currentProfile();
     setNav(me ? showHome : null, showProfiles);
     var list = Engine.profiles().map(Engine.profileSummary);
@@ -832,6 +889,7 @@
 
   /** Ranking: general (XP), per subject (stars of all its chapters), or per chapter (chosen in the subject's menu). */
   function showLeaderboard(back, subjectId, unitId) {
+    route("classement");
     var units = Packs.units(); // a group is ranked on its own (its stars are saved under its own id)
     var unit = unitId ? Packs.get(unitId) : null;
     if (unit && !unit.groups) subjectId = unit.subject; else unit = null;
@@ -1297,6 +1355,7 @@
   }
 
   function showBadges() {
+    route("badges");
     setNav(showHome, showBadges);
     var items = Engine.BADGES.map(badgeCard).join("");
     var node = h('<section class="screen badges">' +
@@ -1314,6 +1373,7 @@
     if (pauseGuard()) return;
     if (!DATA || !PACK) return showCatalog();
     var back = backFromPack(PACK);
+    route("chapitre/" + PACK.id);
     setNav(back, showMap);
     var cur = Engine.currentWorldId();
     var nodes = DATA.worlds.map(function (w, i) {
@@ -1394,6 +1454,7 @@
   /* ================= Lesson ================= */
 
   function showLesson(w) {
+    route(worldPath(w));
     setNav(showMap, function () { showLesson(w); });
     var L = w.lesson || {};
     var points = (L.points || []).map(function (p) { return "<li>" + R(p) + "</li>"; }).join("");
@@ -1430,10 +1491,13 @@
 
   /* ================= Play ================= */
 
-  function startWorld(w) {
+  /** Play a world from its first exercise, or resume a session saved before a reload (resume). */
+  function startWorld(w, resume) {
     if (pauseGuard()) return;
     if (!w.exercises || !w.exercises.length) { toast(T("noExercises")); return; }
-    Engine.startWorld(w.id);
+    if (!(resume && Engine.resumeWorld(resume))) Engine.startWorld(w.id);
+    route(worldPath(w) + "/jeu");
+    saveRun();
     var node = h('<section class="screen play" style="--c:' + safeColor(w.color) + '">' +
       '<header class="play-top">' +
         '<button class="btn-icon quit" data-act="quit" aria-label="Quitter">✕</button>' +
@@ -1458,12 +1522,15 @@
     };
     function askQuit() {
       confirmBox(T("quitTitle"), T("quitText"), T("quit"), function () {
-        Engine.quitWorld(); showMap();
+        Engine.quitWorld(); clearRun(); showMap();
       }, true, T("cancel"));
     }
     setNav(askQuit, null); // back button during an exercise = the usual quit confirmation
     on(node, "quit", askQuit);
     updateTop(ui, false);
+    var s = Engine.session; // a resumed session can stop right at the end
+    if (s.over) return showGameOver(w);
+    if (s.index >= s.total) return showComplete(w);
     playExercise(w, ui);
   }
 
@@ -1527,6 +1594,7 @@
     function onResult(res) {
       phase = "done";
       var r = Engine.answer(res);
+      saveRun();
       if (r.skipped) { // broken exercise or listening without a voice: neutral, no XP, no heart lost
         updateTop(ui, false);
         setBar(ui, "", '<div class="fb-title"><span class="fb-ico">⏭️</span> ' + T(res.noVoice ? "skippedNoVoice" : "skipped") + "</div>", T("next"));
@@ -1587,6 +1655,7 @@
       onTick: function (ok) { if (ok) Sound.tap(); else Sound.wrong(); },
       onHint: function () {
         var spent = Engine.useHint();
+        saveRun();
         updateTop(ui, false);
         if (spent) floatXp(ui, "−" + spent);
       }
@@ -1635,6 +1704,7 @@
     var list = w.exercises || [];
     if (!list.length) { toast(T("noExercises")); return; }
     var i = Math.max(0, Math.min(index, list.length - 1)), ex = list[i];
+    route(worldPath(w) + "/exercice/" + (i + 1));
     setNav(showMap, function () { showGhost(w, i); });
     var options = list.map(function (x, k) {
       return '<option value="' + k + '"' + (k === i ? " selected" : "") + ">" + (k + 1) + ". " + E(x.type) + " — " + E(Exercises.plain(x.prompt || "").slice(0, 50)) + "</option>";
@@ -1687,6 +1757,8 @@
 
   function showComplete(w) {
     var sum = Engine.finishWorld();
+    clearRun();
+    route(worldPath(w));
     setNav(showMap, null);
     var li = Engine.levelInfo();
     var acc = Math.round(sum.accuracy * 100);
@@ -1768,6 +1840,8 @@
     var s = Engine.session;
     var xp = s ? s.xpEarned : 0;
     Engine.quitWorld();
+    clearRun();
+    route(worldPath(w));
     setNav(showMap, null);
     Sound.lose();
     var node = h('<section class="screen gameover">' +
@@ -1826,7 +1900,8 @@
     });
     document.addEventListener("pointerdown", function once() { Sound.unlock(); document.removeEventListener("pointerdown", once); });
     var shared = takeSharedCode();
-    showHome();
+    var start = parseRoute();
+    if (start && Engine.currentProfile() && !pauseGuard()) goRoute(start); else showHome();
     if (shared) importShared(shared);
     // a link opened while the game is already open in this tab
     window.addEventListener("hashchange", function () { var c = takeSharedCode(); if (c) importShared(c); });
