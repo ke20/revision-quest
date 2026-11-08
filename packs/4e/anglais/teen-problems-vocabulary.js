@@ -66,8 +66,8 @@ window.registerPack({
       "lesson": {
         "title": "[[Give advice, express empathy|Donner un conseil, montrer de l'empathie]]",
         "points": [
-          "Donner un conseil (BV = base verbale : le verbe sans **to**, comme **talk**) :\n- [[**You should** + BV|tu devrais]]\n- [[**You shouldn't** = **You should not** + BV|tu ne devrais pas]]",
-          "[[**If I were you, I would** + BV|si j'étais toi, je…]] ; **I would** = **I'd**.",
+          "Donner un conseil (BV = base verbale : le verbe sans **to**, comme **talk**) :\n- [[**You should** + BV|tu devrais]]\n- [[**You shouldn't** + BV|tu ne devrais pas]] (forme courte de **You should not**)",
+          "[[**If I were you, I would** + BV|si j'étais toi, je…]]\n- **I'd** est la forme courte de **I would**.",
           "Poser une question pour conseiller :\n- [[**Why don't you** + BV ?|pourquoi tu ne… pas ?]]\n- [[**How about** + BV-ing ?|et si tu… ?]]",
           "Pour montrer qu'on comprend :\n- [[**I understand how you feel**|je comprends ce que tu ressens]]\n- [[**I understand why you feel upset**|je comprends pourquoi tu es bouleversé·e]]\n- [[**That sounds like a really difficult situation**|ça a l'air d'être une situation vraiment difficile]]"
         ],
@@ -153,7 +153,7 @@ window.registerPack({
           "answers": [
             "not"
           ],
-          "explanation": "✅ [[**shouldn't** = **should not**|ne devrait pas]]."
+          "explanation": "✅ **shouldn't** est la forme courte de [[**should not**|ne devrait pas]]."
         },
         {
           "type": "fill",
@@ -162,7 +162,7 @@ window.registerPack({
           "answers": [
             "would"
           ],
-          "explanation": "✅ **I'd** = **I would**."
+          "explanation": "✅ **I'd** est la forme courte de **I would**."
         },
         {
           "type": "mcq",
@@ -420,8 +420,8 @@ window.registerPack({
         "points": [
           "Le harcèlement :\n- [[**to be bullied**|être harcelé·e]]\n- [[**to call someone names**|insulter quelqu'un]]\n- [[**to make fun of**|se moquer de]]",
           "Entre amis :\n- [[**a joke**|une blague]]\n- [[**to join in**|participer]]\n- [[**upset**|bouleversé·e]]",
-          "Les vêtements :\n- [[**clothes**|vêtements]]\n- [[**expensive**|cher]] ; [[**trendy**|à la mode]] ; [[**unbranded**|sans marque]]\n- [[**cannot afford**|ne pas avoir les moyens d'acheter]]",
-          "Se sentir à sa place :\n- [[**insecure**|pas sûr·e de soi]] ; [[**insecure about**|complexé·e par]]\n- [[**appearance**|l'apparence]]\n- [[**to fit in**|s'intégrer]]"
+          "Les vêtements :\n- [[**clothes**|vêtements]]\n- [[**expensive**|cher]]\n- [[**trendy**|à la mode]]\n- [[**unbranded**|sans marque]]\n- [[**cannot afford**|ne pas avoir les moyens d'acheter]]",
+          "Se sentir à sa place :\n- [[**insecure**|pas sûr·e de soi]]\n- [[**insecure about**|complexé·e par]]\n- [[**appearance**|l'apparence]]\n- [[**to fit in**|s'intégrer]]"
         ],
         "examples": [
           "[[Some kids **make fun of** me.|Des élèves se moquent de moi.]]",
@@ -596,9 +596,9 @@ window.registerPack({
       "lesson": {
         "title": "[[Words about school|Les mots de l'école]]",
         "points": [
-          "Les notes et les matières :\n- [[**a mark**|une note]] = [[**a grade**|une note]] ; [[**a bad mark**|une mauvaise note]]\n- [[**final exams**|les examens de fin d'année]]\n- [[**a subject**|une matière]]\n- Faux amis : **mark** n'est pas une marque, **subject** n'est pas un sujet.",
+          "Les notes et les matières :\n- [[**a mark**|une note]] ou [[**a grade**|une note]] : deux mots pour la même chose\n- [[**a bad mark**|une mauvaise note]]\n- [[**final exams**|les examens de fin d'année]]\n- [[**a subject**|une matière]]\n- Faux amis : **mark** n'est pas une marque, **subject** n'est pas un sujet.",
           "La pression :\n- [[**pressure**|la pression]]\n- [[**to expect**|attendre de quelqu'un]]\n- [[**to disappoint**|décevoir]]\n- [[**enough**|assez]]",
-          "Abandonner ou s'accrocher :\n- [[**to quit**|arrêter]] ; [[**to give up**|abandonner]]\n- [[**to ask for help**|demander de l'aide]]\n- [[**regularly**|régulièrement]]",
+          "Abandonner ou s'accrocher :\n- [[**to quit**|arrêter]]\n- [[**to give up**|abandonner]]\n- [[**to ask for help**|demander de l'aide]]\n- [[**regularly**|régulièrement]]",
           "Ce qu'on ressent :\n- [[**my stomach hurts**|j'ai mal au ventre]]\n- [[**stuck**|bloqué·e]]\n- [[**hopeless**|désespéré·e]]"
         ],
         "examples": [
@@ -640,7 +640,7 @@ window.registerPack({
             "exams"
           ],
           "answer": 0,
-          "explanation": "✅ **grades** = **marks** = les notes. Abby a de moins bonnes notes."
+          "explanation": "✅ **grades** et **marks** veulent dire la même chose : les notes. Abby a de moins bonnes notes."
         },
         {
           "type": "mcq",
@@ -742,7 +742,7 @@ window.registerPack({
         "title": "[[Words for feelings|Les mots des sentiments]]",
         "points": [
           "On dit [[**I feel**|je me sens]] + adjectif :\n- [[**stressed**|stressé·e]]\n- [[**upset**|bouleversé·e]]\n- [[**sad**|triste]]",
-          "D'autres sentiments :\n- [[**anxious**|anxieux]] ; [[**furious**|furieux]]\n- [[**insecure**|pas sûr de soi]]\n- [[**hopeless**|désespéré]] ; [[**stuck**|bloqué]]",
+          "D'autres sentiments :\n- [[**anxious**|anxieux]]\n- [[**furious**|furieux]]\n- [[**insecure**|pas sûr de soi]]\n- [[**hopeless**|désespéré]]\n- [[**stuck**|bloqué]]",
           "Contraires utiles :\n- [[**online**|en ligne]] ≠ [[**offline**|hors ligne]]\n- [[**expensive**|cher]] ≠ [[**cheap**|pas cher]]\n- [[**safe**|sans danger]] ≠ [[**dangerous**|dangereux]]"
         ],
         "examples": [
