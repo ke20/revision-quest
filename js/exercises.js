@@ -240,22 +240,32 @@
   /* Browser quirks handled here (Chrome and Safari):
      - a voice object kept from an old getVoices() list is silently ignored (the default voice speaks instead):
        the voice is looked up again in the current list just before speaking;
-     - speak() right after cancel() is sometimes dropped: a short delay when something was still being read;
+     - speak() right after cancel() is sometimes dropped, or read with the default voice (Firefox on macOS): cancel()
+       only when something is being read, then a short delay before speaking;
      - an utterance with no reference left can be garbage-collected mid-sentence: the current one is kept;
-     - the queue can stay paused after a while: resume() before speaking;
+     - the queue can stay paused after a while: resume() before speaking, only if it is paused;
      - some listed voices never make a sound in a given browser: no "start" within 4 s (or an error) → that voice
-       is set aside until the page is reloaded and the next best one is used. */
+       is set aside until the page is reloaded and the next best one is used;
+     - but a voice that has already spoken in this page is never set aside: browsers sometimes drop the events
+       of a later utterance (start missing, spurious error after a cancel), and setting the good voice aside then
+       left a worse voice for the rest of the session. Such a voice is simply tried once more. */
   var Speech = {
     current: null,
     muted: [], // voices found silent since the page was opened (not saved: a slow first load must not ban a voice)
+    worked: [], // voices heard at least once since the page was opened: never muted
     synth: function () { try { return window.speechSynthesis || null; } catch (e) { return null; } },
     voices: function () { var s = Speech.synth(); try { return s ? s.getVoices() || [] : []; } catch (e) { return []; } },
     stop: function () {
       var s = Speech.synth();
       Speech.current = null;
-      if (s) { try { s.cancel(); } catch (e) { /* ignore */ } }
+      // only when something is being read: Firefox on macOS can lose the chosen voice after a cancel() with nothing
+      // to cancel (the next utterance is then read by the system default voice)
+      if (s) { try { if (s.speaking || s.pending) s.cancel(); } catch (e) { /* ignore */ } }
     },
-    mute: function (v) { var k = voiceKey(v); if (Speech.muted.indexOf(k) === -1) Speech.muted.push(k); },
+    mute: function (v) {
+      var k = voiceKey(v);
+      if (Speech.worked.indexOf(k) === -1 && Speech.muted.indexOf(k) === -1) Speech.muted.push(k);
+    },
     /** The voice the game uses for a language (fresh object from the current list), or null. */
     pick: function (lang) { return pickVoice(Speech.voices(), lang, Speech.muted); },
     /** cb(voice | null) once the device voices are known (some browsers fill the list a moment after loading). */
@@ -298,11 +308,21 @@
         if (started || given || Speech.current !== u) return;
         given = true;
         Speech.stop();
+        if (!opts.voice && Speech.worked.indexOf(voiceKey(voice)) !== -1) {
+          // a voice already heard: a lost event, not a silent voice → one more try with the same voice
+          if (!opts.retried) Speech.say(text, Object.assign({}, opts, { retried: true }));
+          return;
+        }
         if (!opts.voice) Speech.mute(voice);
         if (opts.onSilent) opts.onSilent(voice);
         if (!opts.voice && Speech.pick(opts.lang)) Speech.say(text, opts); // next best voice
       };
-      u.onstart = function () { started = true; };
+      var heard = function () {
+        started = true;
+        if (Speech.worked.indexOf(voiceKey(voice)) === -1) Speech.worked.push(voiceKey(voice));
+      };
+      u.onstart = heard;
+      u.onboundary = heard;
       u.onerror = function (e) {
         var why = e && e.error;
         if (why === "interrupted" || why === "canceled") return;
@@ -310,11 +330,12 @@
       };
       var go = function () {
         if (Speech.current !== u) return;
-        try { s.resume(); } catch (e) { /* ignore */ }
+        // resume() only when the queue is really paused: on Firefox a resume() can also reset the voice
+        try { if (s.paused) s.resume(); } catch (e) { /* ignore */ }
         s.speak(u);
         setTimeout(giveUp, 4000);
       };
-      if (busy) setTimeout(go, 80); else go();
+      if (busy) setTimeout(go, 250); else go(); // leave the engine time to stop before choosing the voice again
     }
   };
 

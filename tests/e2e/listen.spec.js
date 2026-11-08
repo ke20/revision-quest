@@ -14,11 +14,14 @@ async function fakeSpeech(page, voices) {
     const listeners = {};
     const synth = {
       getVoices: () => list.map((v) => ({ ...v })), // a fresh list of new objects each time, like Chrome
-      // a voice whose name contains "Muette" fails like a voice the browser lists but cannot play
+      // a voice whose name contains "Muette" fails like a voice the browser lists but cannot play;
+      // "Capricieuse" speaks the first time, then its events get lost (error), like a browser glitch
       speak: (u) => {
         window.__spoken.push({ text: u.text, rate: u.rate, voice: u.voice && u.voice.name, lang: u.lang });
+        const name = (u.voice && u.voice.name) || "";
+        const glitch = /Capricieuse/.test(name) && window.__spoken.filter((s) => s.voice === name).length > 1;
         setTimeout(() => {
-          if (/Muette/.test(u.voice && u.voice.name)) { if (u.onerror) u.onerror({ error: "synthesis-failed" }); }
+          if (/Muette/.test(name) || glitch) { if (u.onerror) u.onerror({ error: "synthesis-failed" }); }
           else if (u.onstart) u.onstart();
         }, 10);
       },
@@ -124,6 +127,26 @@ test("listen: a voice that the browser lists but cannot play is replaced by the 
   await play.click();
   await expect.poll(() => page.evaluate(() => window.__spoken.length)).toBe(3);
   ok((await page.evaluate(() => window.__spoken[2].voice)) === "Daniel", "the silent voice is not tried again");
+  R.done();
+});
+
+test("listen: a voice that has already spoken is never set aside after a lost event (no switch to a worse voice)", async ({ page }) => {
+  const R = H.makeReporter(); const ok = R.ok;
+  R.watch(page, "glitch");
+  await openListen(page, [
+    { name: "Capricieuse (Premium)", lang: "en-GB", voiceURI: "premium.Capricieuse", localService: true, default: false },
+    { name: "Daniel", lang: "en-GB", voiceURI: "compact.Daniel", localService: true, default: true }
+  ]);
+  const play = page.locator(".btn-listen").first();
+  await expect(play).toBeEnabled();
+  await play.click(); // heard
+  await expect.poll(() => page.evaluate(() => window.__spoken.length)).toBe(1);
+  await play.click(); // event lost → tried once more with the same voice, never Daniel
+  await expect.poll(() => page.evaluate(() => window.__spoken.length)).toBe(3);
+  await play.click();
+  await expect.poll(() => page.evaluate(() => window.__spoken.length)).toBe(5);
+  const voices = await page.evaluate(() => window.__spoken.map((s) => s.voice));
+  ok(voices.every((v) => v === "Capricieuse (Premium)"), "always the voice that worked: " + voices);
   R.done();
 });
 
