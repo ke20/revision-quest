@@ -23,7 +23,7 @@ objet, `?.`, `??`, `import()` dynamique). Les anciens fichiers écrits en ES5 re
 s'écrivent en commentaires JSDoc (`/** @param {Pack} pack */`) ; les types partagés sont dans `types/*.d.ts`
 (format d'un pack : `types/pack.d.ts`, données du moteur : `types/engine.d.ts`). Un fichier vérifié commence par
 `// @ts-check` et figure dans `tsconfig.json` (`files` ou `include`) : `js/engine.js`, `js/exercises.js`,
-`js/pack-rules.js` et tous les écrans `js/app/*.js`. Les objets publics des scripts classiques sont décrits dans
+`js/pack-rules.js`, `js/figures.js`, `js/packs.js`, `js/i18n.js`, `js/voix.js` et tous les écrans `js/app/*.js`. Les objets publics des scripts classiques sont décrits dans
 `types/engine.d.ts` (`EngineApi`) et `types/scripts.d.ts` (`Exercises`, `Packs`, `I18N`, `Figures`) ; `engine.js` et
 `exercises.js` sont vérifiés contre leur interface (`@type {EngineApi}`, `@type {ExercisesApi}`) : changer une
 fonction publique sans mettre son type à jour fait échouer `mise run typecheck`.

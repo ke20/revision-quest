@@ -46,4 +46,8 @@ interface HTMLElement {
 }
 interface Window {
   BarcodeDetector?: any;
+  /** js/catalog.js (raw, checked by js/packs.js) */
+  CATALOG?: any;
+  /** js/packs.js: entry point called by every pack file */
+  registerPack?: (data: any) => boolean;
 }

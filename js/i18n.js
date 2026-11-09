@@ -6,6 +6,7 @@
      fr = français uniquement (toutes les autres matières).
    Les valeurs sont du HTML statique de confiance ; les données dynamiques passées aux fonctions
    doivent être échappées par l'appelant. */
+// @ts-check
 (function () {
   "use strict";
 
@@ -16,6 +17,7 @@
     sourceUrl: "https://github.com/ke20/revision-quest"   // lien « Code source » en bas de l'accueil ("" pour le masquer)
   };
 
+  /** @type {Record<UiLang, Record<string, unknown>>} */
   var I18N = {
     en: {
       check: "Check <small>(Vérifier)</small>",
@@ -34,7 +36,7 @@
       hint: "💡 Hint <small>(−3 XP)</small>",
       sortHelp: "Tap a card, then tap a box <small>(ou glisse-dépose)</small>",
       sortEmpty: "All cards placed ✓ (tout est placé)",
-      sortRetry: function (n) { return n + " card" + (n > 1 ? "s are" : " is") + " in the wrong box. Try again! <small>(Réessaie)</small>"; },
+      sortRetry: /** @param {number} n */ function (n) { return n + " card" + (n > 1 ? "s are" : " is") + " in the wrong box. Try again! <small>(Réessaie)</small>"; },
       sortAnswer: "See the right boxes above.",
       matchHelp: "Tap a word on the left, then its partner on the right <small>(associe les paires)</small>",
       orderEmpty: "Tap the words below 👇 (touche les mots)",
@@ -48,24 +50,24 @@
       words: "words",
       needed: "needed",
       modelAnswer: "✨ Model answer <small>(exemple de réponse)</small>",
-      docFrom: function (from) { return "Letter from " + from; },
+      docFrom: /** @param {string} from */ function (from) { return "Letter from " + from; },
       docDefault: "Document",
       readFirst: "Read the text carefully, then answer the questions. <small>(lis bien le texte)</small>",
       readGo: "Answer the questions <small>(répondre)</small>",
       backToText: "📖 Back to the text <small>(relire)</small>",
       backToQuestion: "↩ Back to the question <small>(revenir)</small>",
-      pickN: function (n) { return "Choose " + n + " answer" + (n > 1 ? "s" : "") + " <small>(choisis " + n + " réponse" + (n > 1 ? "s" : "") + ")</small>"; },
+      pickN: /** @param {number} n */ function (n) { return "Choose " + n + " answer" + (n > 1 ? "s" : "") + " <small>(choisis " + n + " réponse" + (n > 1 ? "s" : "") + ")</small>"; },
       pickSome: "Several answers possible <small>(plusieurs réponses possibles)</small>",
       trIcon: "🇫🇷",
       unknownType: "Unknown exercise type:",
       broken: "Oops, this exercise is broken. Skipping it.",
       mapTitle: "World map <small>(carte)</small>",
       here: "You are here! <small>(tu es ici)</small>",
-      locked: function (n) { return "🔒 Get " + n + " ⭐ on the previous world first! <small>(il faut " + n + " ⭐ au monde d'avant)</small>"; },
+      locked: /** @param {number} n */ function (n) { return "🔒 Get " + n + " ⭐ on the previous world first! <small>(il faut " + n + " ⭐ au monde d'avant)</small>"; },
       lesson: "Lesson <small>(leçon)</small>",
       examples: "Examples <small>(exemples)</small>",
       lessonTip: '👆 Tap the <span class="tr-demo">dotted words</span> to see the French translation.<br><small>Touche les mots soulignés pour voir la traduction.</small>',
-      exercises: function (n) { return n + " exercise" + (n > 1 ? "s" : ""); },
+      exercises: /** @param {number} n */ function (n) { return n + " exercise" + (n > 1 ? "s" : ""); },
       go: "Let's go! <small>(C'est parti)</small>",
       noExercises: "This world has no exercises yet.",
       quitTitle: "Quit this world?",
@@ -76,7 +78,7 @@
       completeSub: "Monde terminé",
       msg3: "Amazing! You're a star! 🌟",
       msg2: "Great work! Can you get 5 stars?",
-      msgNeed: function (n) { return "You need " + n + " ⭐ to open the next world. Try again! <small>(rejoue pour avoir " + n + " ⭐)</small>"; },
+      msgNeed: /** @param {number} n */ function (n) { return "You need " + n + " ⭐ to open the next world. Try again! <small>(rejoue pour avoir " + n + " ⭐)</small>"; },
       msg1: "World complete! Try again for more stars.",
       xpEarned: "XP earned",
       accuracy: "accuracy <br>(réussite)",
@@ -114,7 +116,7 @@
       hint: "💡 Pista <small>(−3 XP)</small>",
       sortHelp: "Toca una tarjeta y luego una caja <small>(ou glisse-dépose)</small>",
       sortEmpty: "Todo colocado ✓ (tout est placé)",
-      sortRetry: function (n) { return n + (n > 1 ? " tarjetas están mal colocadas" : " tarjeta está mal colocada") + ". ¡Inténtalo otra vez! <small>(Réessaie)</small>"; },
+      sortRetry: /** @param {number} n */ function (n) { return n + (n > 1 ? " tarjetas están mal colocadas" : " tarjeta está mal colocada") + ". ¡Inténtalo otra vez! <small>(Réessaie)</small>"; },
       sortAnswer: "Mira las cajas correctas arriba. <small>(regarde les bonnes boîtes)</small>",
       matchHelp: "Toca un elemento a la izquierda y luego su pareja a la derecha <small>(associe les paires)</small>",
       orderEmpty: "Toca las palabras de abajo 👇 (touche les mots)",
@@ -128,24 +130,24 @@
       words: "palabras",
       needed: "necesarias",
       modelAnswer: "✨ Ejemplo de respuesta <small>(exemple de réponse)</small>",
-      docFrom: function (from) { return "Documento — " + from; },
+      docFrom: /** @param {string} from */ function (from) { return "Documento — " + from; },
       docDefault: "Documento",
       readFirst: "Lee bien el texto y luego contesta. <small>(lis bien le texte)</small>",
       readGo: "Contestar las preguntas <small>(répondre)</small>",
       backToText: "📖 Volver al texto <small>(relire)</small>",
       backToQuestion: "↩ Volver a la pregunta <small>(revenir)</small>",
-      pickN: function (n) { return "Elige " + n + " respuesta" + (n > 1 ? "s" : "") + " <small>(choisis " + n + " réponse" + (n > 1 ? "s" : "") + ")</small>"; },
+      pickN: /** @param {number} n */ function (n) { return "Elige " + n + " respuesta" + (n > 1 ? "s" : "") + " <small>(choisis " + n + " réponse" + (n > 1 ? "s" : "") + ")</small>"; },
       pickSome: "Varias respuestas posibles <small>(plusieurs réponses possibles)</small>",
       trIcon: "🇫🇷",
       unknownType: "Tipo de ejercicio desconocido:",
       broken: "Uy, este ejercicio no funciona. Pasamos al siguiente.",
       mapTitle: "Mapa de los mundos <small>(carte)</small>",
       here: "¡Estás aquí! <small>(tu es ici)</small>",
-      locked: function (n) { return "🔒 ¡Consigue primero " + n + " ⭐ en el mundo anterior! <small>(il faut " + n + " ⭐ au monde d'avant)</small>"; },
+      locked: /** @param {number} n */ function (n) { return "🔒 ¡Consigue primero " + n + " ⭐ en el mundo anterior! <small>(il faut " + n + " ⭐ au monde d'avant)</small>"; },
       lesson: "Lección <small>(leçon)</small>",
       examples: "Ejemplos <small>(exemples)</small>",
       lessonTip: '👆 Toca las <span class="tr-demo">palabras subrayadas</span> para ver la traducción.<br><small>Touche les mots soulignés pour voir la traduction.</small>',
-      exercises: function (n) { return n + " ejercicio" + (n > 1 ? "s" : ""); },
+      exercises: /** @param {number} n */ function (n) { return n + " ejercicio" + (n > 1 ? "s" : ""); },
       go: "¡Vamos! <small>(C'est parti)</small>",
       noExercises: "Este mundo todavía no tiene ejercicios.",
       quitTitle: "¿Salir de este mundo?",
@@ -156,7 +158,7 @@
       completeSub: "Monde terminé",
       msg3: "¡Increíble! ¡Eres una estrella! 🌟",
       msg2: "¡Buen trabajo! ¿Puedes conseguir 5 estrellas?",
-      msgNeed: function (n) { return "Necesitas " + n + " ⭐ para abrir el mundo siguiente. ¡Inténtalo otra vez! <small>(rejoue pour avoir " + n + " ⭐)</small>"; },
+      msgNeed: /** @param {number} n */ function (n) { return "Necesitas " + n + " ⭐ para abrir el mundo siguiente. ¡Inténtalo otra vez! <small>(rejoue pour avoir " + n + " ⭐)</small>"; },
       msg1: "¡Mundo terminado! Vuelve a jugar para ganar más estrellas.",
       xpEarned: "XP ganada",
       accuracy: "aciertos <br>(réussite)",
@@ -194,7 +196,7 @@
       hint: "💡 Indice <small>(−3 XP)</small>",
       sortHelp: "Touche une carte, puis une boîte <small>(ou glisse-dépose)</small>",
       sortEmpty: "Tout est placé ✓",
-      sortRetry: function (n) { return n + " carte" + (n > 1 ? "s sont mal placées" : " est mal placée") + ". Réessaie !"; },
+      sortRetry: /** @param {number} n */ function (n) { return n + " carte" + (n > 1 ? "s sont mal placées" : " est mal placée") + ". Réessaie !"; },
       sortAnswer: "Regarde les bonnes boîtes ci-dessus.",
       matchHelp: "Touche un élément à gauche, puis son partenaire à droite",
       orderEmpty: "Touche les mots ci-dessous 👇",
@@ -208,24 +210,24 @@
       words: "mots",
       needed: "requis",
       modelAnswer: "✨ Exemple de réponse",
-      docFrom: function (from) { return "Document — " + from; },
+      docFrom: /** @param {string} from */ function (from) { return "Document — " + from; },
       docDefault: "Document",
       readFirst: "Lis bien le texte en entier, puis réponds aux questions.",
       readGo: "Répondre aux questions",
       backToText: "📖 Retour au texte",
       backToQuestion: "↩ Revenir à la question",
-      pickN: function (n) { return n > 1 ? "Choisis " + n + " réponses." : "Choisis 1 réponse."; },
+      pickN: /** @param {number} n */ function (n) { return n > 1 ? "Choisis " + n + " réponses." : "Choisis 1 réponse."; },
       pickSome: "Plusieurs réponses possibles : coche toutes les bonnes.",
       trIcon: "💡",
       unknownType: "Type d'exercice inconnu :",
       broken: "Oups, cet exercice est cassé. On passe au suivant.",
       mapTitle: "Carte des mondes",
       here: "Tu es ici !",
-      locked: function (n) { return "🔒 Il faut d'abord " + n + " ⭐ au monde d'avant !"; },
+      locked: /** @param {number} n */ function (n) { return "🔒 Il faut d'abord " + n + " ⭐ au monde d'avant !"; },
       lesson: "Leçon",
       examples: "Exemples",
       lessonTip: '👆 Touche les <span class="tr-demo">mots soulignés</span> pour voir une explication.',
-      exercises: function (n) { return n + " exercice" + (n > 1 ? "s" : ""); },
+      exercises: /** @param {number} n */ function (n) { return n + " exercice" + (n > 1 ? "s" : ""); },
       go: "C'est parti !",
       noExercises: "Ce monde n'a pas encore d'exercices.",
       quitTitle: "Quitter ce monde ?",
@@ -236,7 +238,7 @@
       completeSub: "Bien joué",
       msg3: "Incroyable ! Tu es une star ! 🌟",
       msg2: "Beau travail ! Tu peux avoir 5 étoiles ?",
-      msgNeed: function (n) { return "Il te faut " + n + " ⭐ pour ouvrir le monde suivant. Rejoue, tu vas y arriver !"; },
+      msgNeed: /** @param {number} n */ function (n) { return "Il te faut " + n + " ⭐ pour ouvrir le monde suivant. Rejoue, tu vas y arriver !"; },
       msg1: "Monde terminé ! Rejoue pour gagner plus d'étoiles.",
       xpEarned: "XP gagnée",
       accuracy: "réussite",
@@ -261,6 +263,7 @@
 
   /* Pause ideas (pause screen, always in French): get away from the screen and do something physical or creative.
      Chosen by the school level of the pack just played (first segment of its path), grouped in bands. */
+  /** @type {Record<string, string[]>} */
   var PAUSE_BANDS = {
     "cp-ce2": ["Dessine ton animal préféré 🐶", "Fais 10 sauts de grenouille 🐸", "Construis une tour en Lego 🧱",
       "Marche comme un ours pendant 1 minute 🐻", "Colorie un dessin 🖍️", "Danse sur ta chanson préférée 💃",
@@ -275,21 +278,25 @@
       "Fais 1 minute de corde à sauter ou de jumping jacks 🦘", "Dessine ou gribouille ce qui te passe par la tête ✏️", "Étire-toi : dos, jambes, épaules 🧘",
       "Range ton bureau en musique 🎵", "Fais 3 tours de ton jardin ou de ton immeuble 🏃"]
   };
+  /** @type {Record<string, string>} */
   var LEVEL_BAND = {
     cp: "cp-ce2", ce1: "cp-ce2", ce2: "cp-ce2",
     cm1: "cm1-6e", cm2: "cm1-6e", "6e": "cm1-6e",
     "5e": "college", "4e": "college", "3e": "college",
     "2nde": "lycee", "1re": "lycee", terminale: "lycee"
   };
-  /** Ideas for a level id (unknown level → CM1–6e list). */
+  /** Ideas for a level id (unknown level → CM1–6e list).
+      @param {string} level */
   function pauseIdeas(level) {
     var band = Object.prototype.hasOwnProperty.call(LEVEL_BAND, level) ? LEVEL_BAND[level] : "cm1-6e";
     return PAUSE_BANDS[band].slice();
   }
 
+  /** @type {UiLang} */
   var lang = "fr";
 
   /** Text for the current exercise language. Extra arguments are passed to function entries. */
+  /** @param {string} key */
   function t(key) {
     var dict = I18N[lang] || I18N.fr;
     var v = Object.prototype.hasOwnProperty.call(dict, key) ? dict[key] : I18N.fr[key];

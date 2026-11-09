@@ -20,11 +20,11 @@ interface I18nApi {
 
 interface FiguresApi {
   /** Computed drawing of a figure (coordinates, shapes, labels). */
-  layout(fig: Figure): any;
+  layout(fig: Figure): FigLayout;
   /** <figure class="fig"><svg…></figure>, built with the DOM only (no innerHTML). */
   build(fig: Figure, doc?: Document): HTMLElement;
-  clip(P: number[], Q: number[], w: number, h: number, tMin?: number): any;
-  tableLayout(t: Table): { caption: string; alt: string; rows: any[][] };
+  clip(P: number[], Q: number[], w: number, h: number, tMin: number): number[][] | null;
+  tableLayout(t: Table): { caption: string; alt: string; rows: FigCell[][] };
   /** <figure class="fig fig-table"><table…></figure>, textContent only. */
   buildTable(t: Table, doc?: Document): HTMLElement;
   KINDS: string[];

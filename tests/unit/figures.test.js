@@ -34,6 +34,7 @@ test("clip: a line goes from border to border, a ray starts at its origin", () =
   assert.deepStrictEqual(j(F.clip([2, 3], [4, 3], 10, 6, 0)), [[2, 3], [10, 3]]);
   assert.deepStrictEqual(j(F.clip([0, 0], [1, 1], 10, 6, -Infinity)), [[0, 0], [6, 6]]);
   assert.deepStrictEqual(j(F.clip([5, 0], [5, 1], 10, 6, -Infinity)), [[5, 0], [5, 6]], "vertical line");
+  assert.strictEqual(F.clip([9, 7], [11, 5], 10, 6, -Infinity), null, "a line touching only a corner draws nothing");
   const L = j(F.layout({ w: 10, h: 6, points: { A: [2, 3], B: [4, 3] }, draw: [{ line: ["A", "B"], label: "(d)" }, { ray: ["B", "A"] }] }));
   assert.deepStrictEqual(L.shapes.slice(0, 2).map((s) => [s.x1, s.y1, s.x2, s.y2]), [[0, 3, 10, 3], [4, 3, 0, 3]]);
   assert.ok(L.shapes.some((s) => s.kind === "text" && s.text === "(d)" && s.cls.includes("fig-name")));

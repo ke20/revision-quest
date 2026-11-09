@@ -6,6 +6,9 @@
    Il est chargé seulement quand on le choisit, avec une balise <script src> (compatible avec la
    Content-Security-Policy script-src 'self' : pas de script inline, pas d'eval, pas de fetch).
    Exposes window.Packs and window.registerPack. */
+// @ts-check
+/** @typedef {{ id: string, label: string, difficulty: number, worldCount: number }} PkGroup A validated group of a catalogue entry. */
+/** @typedef {(err: PackLoadError | null, data?: LoadedPack | null) => void} PkLoadCallback */
 (function () {
   "use strict";
 
@@ -14,56 +17,73 @@
   var COLOR_RE = /^#[0-9a-fA-F]{3,8}$/;
   var LOAD_TIMEOUT = 15000;
 
+  /** @param {object} o @param {string} k */
   function own(o, k) { return Object.prototype.hasOwnProperty.call(o, k); }
+  /** @param {unknown} v @param {number} max @returns {string} */
   function str(v, max) { return typeof v === "string" ? v.slice(0, max) : ""; }
+  /** @param {unknown} v @param {string} dflt @returns {string} */
   function color(v, dflt) { return typeof v === "string" && COLOR_RE.test(v) ? v : dflt; }
 
   /* ---------- catalogue (validated once; everything is still escaped when displayed) ---------- */
 
+  // Raw catalogue data: validated field by field below.
+  /** @type {any} */
   var C = window.CATALOG && typeof window.CATALOG === "object" ? window.CATALOG : {};
-  var subjects = (Array.isArray(C.subjects) ? C.subjects : []).filter(function (s) {
+  /** @type {CatalogSubject[]} */
+  var subjects = (Array.isArray(C.subjects) ? C.subjects : []).filter(/** @param {any} s raw */ function (s) {
     return s && typeof s.id === "string" && ID_RE.test(s.id);
-  }).map(function (s) {
+  }).map(/** @param {any} s */ function (s) {
     return { id: s.id, label: str(s.label, 40) || s.id, icon: str(s.icon, 16), color: color(s.color, "#7C4DFF") };
   });
-  var levels = (Array.isArray(C.levels) ? C.levels : []).filter(function (l) {
+  /** @type {CatalogLevel[]} */
+  var levels = (Array.isArray(C.levels) ? C.levels : []).filter(/** @param {any} l raw */ function (l) {
     return l && typeof l.id === "string" && ID_RE.test(l.id);
-  }).map(function (l) {
+  }).map(/** @param {any} l */ function (l) {
     return { id: l.id, label: str(l.label, 20) || l.id, order: typeof l.order === "number" && isFinite(l.order) ? l.order : 99 };
-  }).sort(function (a, b) { return a.order - b.order; });
+  }).sort(/** @param {CatalogLevel} a @param {CatalogLevel} b */ function (a, b) { return a.order - b.order; });
 
+  /** @template {{ id: string }} T @param {T[]} list @param {string} id @returns {T | null} */
   function find(list, id) { for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i]; return null; }
 
+  /** @param {any} v raw number */
   function count(v) { var n = Math.round(+v); return isFinite(n) && n > 0 ? Math.min(n, 100) : 0; }
+  /** @param {any} v raw number */
   function difficulty(v) { var n = Math.round(+v); return isFinite(n) && n >= 1 ? Math.min(n, 5) : 0; }
 
-  /** Groups of a catalogue entry: [{ id, label, difficulty, worldCount }] (invalid or duplicate ids dropped). */
+  /** Groups of a catalogue entry: [{ id, label, difficulty, worldCount }] (invalid or duplicate ids dropped).
+      @param {any} p a raw catalogue entry
+      @returns {PkGroup[] | null} */
   function groupsOf(p) {
     if (!Array.isArray(p.groups)) return null;
+    /** @type {Record<string, boolean>} */
     var ids = {};
-    return p.groups.filter(function (g) {
+    return p.groups.filter(/** @param {any} g raw */ function (g) {
       if (!g || typeof g.id !== "string" || !ID_RE.test(g.id) || own(ids, g.id)) return false;
       ids[g.id] = true;
       return true;
-    }).slice(0, 20).map(function (g) {
+    }).slice(0, 20).map(/** @param {any} g */ function (g) {
       return { id: g.id, label: str(g.label, 40) || g.id, difficulty: difficulty(g.difficulty), worldCount: count(g.worldCount) };
     });
   }
 
+  /** @type {Record<string, boolean>} */
   var seen = {};
+  /** @type {CatalogPack[]} */
   var packs = [];  // catalogue cards (chapters)
+  /** @type {CatalogPack[]} */
   var units = [];  // playable packs: chapters without groups + every group of a grouped chapter
-  (Array.isArray(C.packs) ? C.packs : []).forEach(function (p) {
+  (Array.isArray(C.packs) ? C.packs : []).forEach(/** @param {any} p raw catalogue entry */ function (p) {
     if (!p || typeof p.path !== "string" || !PATH_RE.test(p.path) || own(seen, p.path)) return;
     var seg = p.path.split("/");
     if (!find(levels, seg[0]) || !find(subjects, seg[1])) return;
     var groups = groupsOf(p);
     if (groups && !groups.length) return; // groups: [] (or only invalid groups) = nothing to play
     seen[p.path] = true;
+    /** @type {CatalogPack} */
     var chapter = {
       id: p.path, level: seg[0], subject: seg[1], // the path is the pack id
       title: str(p.title, 80) || p.path, description: str(p.description, 240), icon: str(p.icon, 16) || "📘",
-      color: color(p.color, find(subjects, seg[1]).color), lang: p.lang === "en" || p.lang === "es" ? p.lang : "fr",
+      color: color(p.color, /** @type {CatalogSubject} */ (find(subjects, seg[1])).color), lang: p.lang === "en" || p.lang === "es" ? p.lang : "fr",
       worldCount: count(p.worldCount), file: "packs/" + p.path + ".js"
     };
     if (!groups) { packs.push(chapter); units.push(chapter); return; }
@@ -83,16 +103,20 @@
 
   /* ---------- registry ---------- */
 
+  /** @type {Record<string, LoadedPack>} */
   var registry = {};  // id -> normalized pack data
+  /** @type {Record<string, PkLoadCallback[]>} */
   var pending = {};   // id -> [callbacks] while its script is loading
 
+  /** @param {unknown} w */
   function validWorlds(w) {
     return Array.isArray(w) && w.length > 0 && w.length <= 100 && w.every(function (x) {
       return x && typeof x === "object" && (typeof x.id === "number" || typeof x.id === "string") && Array.isArray(x.exercises);
     });
   }
 
-  /** Called by pack files. Only accepted for a pack of the catalogue that is currently being loaded. */
+  /** Called by pack files. Only accepted for a pack of the catalogue that is currently being loaded.
+      @param {any} data raw pack file data, validated here */
   window.registerPack = function (data) {
     if (!data || typeof data !== "object" || typeof data.path !== "string" || !own(pending, data.path)) return false;
     var entry = find(units, data.path);
@@ -101,12 +125,13 @@
     registry[data.path] = {
       id: data.path,
       lang: entry.lang, // the catalogue decides (tools/validate-pack.js flags a mismatch with the pack file)
-      documents: docs.filter(function (d) { return d && typeof d === "object"; }),
+      documents: docs.filter(/** @param {any} d raw */ function (d) { return d && typeof d === "object"; }),
       worlds: data.worlds
     };
     return true;
   };
 
+  /** @type {Record<PackLoadError["code"], string>} */
   var ERRORS = {
     unknown: "Ce chapitre n'existe pas (ou plus).",
     network: "Impossible de charger ce chapitre. Vérifie ta connexion internet, puis réessaie.",
@@ -114,7 +139,8 @@
     timeout: "Le chapitre met trop de temps à se charger. Réessaie dans un moment."
   };
 
-  /** Load a pack by id. cb(error|null, packData). error = { code, message } (message in French). */
+  /** Load a pack by id. cb(error|null, packData). error = { code, message } (message in French).
+      @param {string} id @param {PkLoadCallback} cb */
   function load(id, cb) {
     var entry = find(units, id); // a grouped chapter has no file: only its groups can be loaded
     if (!entry) return cb({ code: "unknown", message: ERRORS.unknown });
@@ -124,6 +150,7 @@
     var done = false;
     var s = document.createElement("script");
     var timer = setTimeout(function () { finish("timeout"); }, LOAD_TIMEOUT);
+    /** @param {PackLoadError["code"] | null} code */
     function finish(code) {
       if (done) return;
       done = true;
@@ -138,7 +165,7 @@
     }
     s.onload = function () { finish(null); };
     s.onerror = function () { finish("network"); };
-    s.src = entry.file; // "packs/" + path [+ "/" + group] + ".js", relative; path and group checked above
+    s.src = /** @type {string} */ (entry.file); // "packs/" + path [+ "/" + group] + ".js", relative; path and group checked above
     document.head.appendChild(s);
   }
 

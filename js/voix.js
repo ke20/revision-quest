@@ -1,19 +1,20 @@
 /* Révision Quest — page « Tester les voix » (voix.html): lists the device voices, shows the one the listening
    exercises use (Exercises.speech: same ranking and fallback) and reads a sentence with any of them. Voice names come from the browser:
    they are inserted as text only. */
+// @ts-check
 (function () {
   "use strict";
 
   // Same rule as the game (js/app.js): not usable inside another site's frame (clickjacking).
   var framed = (function () { try { return window.top !== window.self; } catch (e) { return true; } })();
   if (framed) {
-    document.querySelector("main").textContent = "";
+    /** @type {HTMLElement} */ (document.querySelector("main")).textContent = "";
     var a = document.createElement("a");
     a.href = "voix.html";
     a.target = "_blank";
     a.rel = "noopener noreferrer";
     a.textContent = "Ouvre la page « Tester les voix » dans son propre onglet";
-    document.querySelector("main").appendChild(a);
+    /** @type {HTMLElement} */ (document.querySelector("main")).appendChild(a);
     return;
   }
 
@@ -21,18 +22,24 @@
   var S = X.speech;
   var synth = (function () { try { return window.speechSynthesis || null; } catch (e) { return null; } })();
   var QUALITY = ["Gadget", "Normale", "Améliorée", "Premium"];
+  /** @type {Record<string, string>} */
   var SAMPLES = { fr: "Il y a beaucoup de monde au marché aujourd'hui.", en: "If I were you, I would talk to your parents.", es: "Cada mañana, los alumnos cantan el himno." };
   var lang = "fr";
 
-  var $ = function (sel) { return document.querySelector(sel); };
-  var list = $("#list"), chosenBox = $("#chosen"), textBox = $("#text"), count = $("#count");
+  /** Elements of voix.html (always present). @param {string} sel @returns {HTMLElement} */
+  var $ = function (sel) { return /** @type {HTMLElement} */ (document.querySelector(sel)); };
+  var list = $("#list"), chosenBox = $("#chosen"), textBox = /** @type {HTMLInputElement} */ ($("#text")), count = $("#count");
 
+  /** @param {SpeechSynthesisVoice} v */
   function tag(v) { return String(v.lang || "").toLowerCase().replace("_", "-"); }
+  /** @param {SpeechSynthesisVoice} v */
   function ofLang(v) { return tag(v) === lang || tag(v).indexOf(lang + "-") === 0; }
 
+  /** @type {Record<string, boolean>} */
   var silent = {}; // voiceKey → true: tried here, no sound in this browser
 
-  /** A given voice (no fallback, to hear that one) or, without voice, the game voice (with its fallback). */
+  /** A given voice (no fallback, to hear that one) or, without voice, the game voice (with its fallback).
+      @param {SpeechSynthesisVoice | null} voice @param {number} rate */
   function say(voice, rate) {
     S.say(textBox.value || SAMPLES[lang], {
       lang: lang, rate: rate, voice: voice || null,
@@ -40,6 +47,7 @@
     });
   }
 
+  /** @param {string} tagName @param {string} cls @param {string} value */
   function text(tagName, cls, value) {
     var e = document.createElement(tagName);
     if (cls) e.className = cls;
@@ -62,7 +70,7 @@
       "Aucune voix installée sur l'appareil pour cette langue : les exercices d'écoute proposeront « Passer ».";
     // best first, as the game ranks them
     all.sort(function (a, b) {
-      return (b.localService === true) - (a.localService === true) || X.voiceQuality(b) - X.voiceQuality(a) ||
+      return +(b.localService === true) - +(a.localService === true) || X.voiceQuality(b) - X.voiceQuality(a) ||
         String(a.name).localeCompare(String(b.name));
     });
     count.textContent = "(" + all.length + ")";
@@ -88,15 +96,15 @@
   }
 
   document.addEventListener("click", function (e) {
-    var t = e.target.closest ? e.target.closest("button") : null;
+    var t = /** @type {Element} */ (e.target).closest ? /** @type {Element} */ (e.target).closest("button") : null;
     if (!t) return;
     if (t.hasAttribute("data-lang")) {
-      lang = t.getAttribute("data-lang");
+      lang = /** @type {string} */ (t.getAttribute("data-lang"));
       Array.prototype.forEach.call(document.querySelectorAll("[data-lang]"), function (b) {
         b.setAttribute("aria-pressed", b === t ? "true" : "false");
       });
       textBox.value = SAMPLES[lang];
-      Array.prototype.forEach.call(document.querySelectorAll(".lang-name"), function (s) { s.textContent = t.textContent; });
+      Array.prototype.forEach.call(document.querySelectorAll(".lang-name"), function (s) { s.textContent = /** @type {HTMLButtonElement} */ (t).textContent; });
       render();
     } else if (t.hasAttribute("data-play")) {
       say(null, t.getAttribute("data-play") === "game-slow" ? 0.7 : 1);
