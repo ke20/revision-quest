@@ -4,7 +4,7 @@
      node tools/pack-add.js <fichier.js> [--replace]      (ou : mise run pack:add <fichier.js>, npm run pack:add -- <fichier.js>)
    Étapes : lecture au format strict (le fichier n'est jamais exécuté), contrôle complet du pack, puis
      - copie du fichier vers packs/<path>.js s'il est ailleurs (--replace pour écraser un fichier existant différent) ;
-     - écriture de l'entrée dans js/catalog.js, construite depuis meta, lang et le nombre de mondes
+     - écriture de l'entrée dans packs/catalog.js, construite depuis meta, lang et le nombre de mondes
        (même place si le chapitre existe déjà, sinon à la fin de la liste).
    Les chapitres « par groupes » s'ajoutent encore à la main (voir packs/README.md).
    Code de sortie 0 = ajouté ou à jour, 1 = refusé (rien n'est écrit). */
@@ -14,24 +14,24 @@ const fs = require("fs");
 const os = require("os");
 const vm = require("vm");
 const path = require("path");
-const Rules = require("../js/pack-rules.js");
+const Rules = require("../js/core/pack-rules.js");
 const { validatePack, validateCatalog, loadCatalog } = require("./validate-pack.js");
 
 const ROOT = path.resolve(__dirname, "..");
-const CATALOG_FILE = path.join(ROOT, "js", "catalog.js");
+const CATALOG_FILE = path.join(ROOT, "packs", "catalog.js");
 
-/* ---------- js/catalog.js: only the chapter's entry is written, comments and layout stay ----------
+/* ---------- packs/catalog.js: only the chapter's entry is written, comments and layout stay ----------
    An entry is a block "    {" … "    }" (4 spaces) inside "packs: [ … ]", one "key: value" per line. */
 
 const KEY_RE = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
 const key = (k) => (KEY_RE.test(k) ? k : JSON.stringify(k));
 
-/** Catalogue entry as written in js/catalog.js. */
+/** Catalogue entry as written in packs/catalog.js. */
 function formatEntry(p) {
   return "    {\n" + Object.keys(p).map((k) => "      " + key(k) + ": " + JSON.stringify(p[k])).join(",\n") + "\n    }";
 }
 
-/** js/catalog.js text with `entry` written in place (same path) or appended to packs. Throws if the layout is not the usual one. */
+/** packs/catalog.js text with `entry` written in place (same path) or appended to packs. Throws if the layout is not the usual one. */
 function writeEntry(src, entry) {
   const lines = src.split("\n");
   const pathLine = lines.findIndex((l) => l.trim() === "path: " + JSON.stringify(entry.path) + ",");
@@ -68,7 +68,7 @@ function addPack(file, opts = {}) {
   try { text = fs.readFileSync(file, "utf8"); } catch (e) { return fail("fichier introuvable : " + file); }
   try { pack = Rules.parseStrict(text); } catch (e) { return fail(e.message); }
   if (!Rules.checkPath(pack.path, (m) => errors.push(m))) return { ok: false, errors, warnings };
-  if (pack.path.split("/").length !== 3) return fail(`"${pack.path}" est un groupe : les chapitres « par groupes » s'ajoutent à la main dans js/catalog.js (voir packs/README.md)`);
+  if (pack.path.split("/").length !== 3) return fail(`"${pack.path}" est un groupe : les chapitres « par groupes » s'ajoutent à la main dans packs/catalog.js (voir packs/README.md)`);
   if (!Rules.validateMeta(pack.meta, (m) => errors.push(m))) return { ok: false, errors, warnings };
 
   const rel = "packs/" + pack.path + ".js";
@@ -81,8 +81,8 @@ function addPack(file, opts = {}) {
   // the catalogue as it will be: same place when the chapter is already listed, else at the end
   const catalog = plainCopy(loadCatalog(catalogFile));
   const [level, subject] = pack.path.split("/");
-  if (!catalog.levels.some((l) => l.id === level)) return fail(`niveau "${level}" inconnu : ajoute-le d'abord dans CATALOG.levels (js/catalog.js)`);
-  if (!catalog.subjects.some((s) => s.id === subject)) return fail(`matière "${subject}" inconnue : ajoute-la d'abord dans CATALOG.subjects (js/catalog.js)`);
+  if (!catalog.levels.some((l) => l.id === level)) return fail(`niveau "${level}" inconnu : ajoute-le d'abord dans CATALOG.levels (packs/catalog.js)`);
+  if (!catalog.subjects.some((s) => s.id === subject)) return fail(`matière "${subject}" inconnue : ajoute-la d'abord dans CATALOG.subjects (packs/catalog.js)`);
   const entry = Rules.catalogEntry(pack);
   const at = catalog.packs.findIndex((p) => p && p.path === pack.path);
   if (at >= 0 && Array.isArray(catalog.packs[at].groups)) return fail(`"${pack.path}" est un chapitre « par groupes » dans le catalogue : il n'a pas de fichier à lui`);
@@ -100,9 +100,9 @@ function addPack(file, opts = {}) {
 
   const willExist = (r) => r === rel || fs.existsSync(path.join(root, r));
   const catErrors = validateCatalog(catalog, { exists: willExist });
-  if (catErrors.length) { errors.push(...catErrors.map((e) => "js/catalog.js : " + e)); return { ok: false, errors, warnings }; }
+  if (catErrors.length) { errors.push(...catErrors.map((e) => "packs/catalog.js : " + e)); return { ok: false, errors, warnings }; }
 
-  // new js/catalog.js text, checked by reading it back (the file is ours, but its layout is written by hand)
+  // new packs/catalog.js text, checked by reading it back (the file is ours, but its layout is written by hand)
   const oldCatalog = fs.readFileSync(catalogFile, "utf8");
   let newCatalog;
   try {
@@ -111,7 +111,7 @@ function addPack(file, opts = {}) {
     vm.runInNewContext(newCatalog, { window: win }, { timeout: 2000 });
     if (JSON.stringify(plainCopy(win.CATALOG)) !== JSON.stringify(catalog)) throw new Error("le résultat relu ne correspond pas");
   } catch (e) {
-    return fail(`js/catalog.js n'a pas la forme habituelle (${e.message}) : ajoute l'entrée à la main : ${JSON.stringify(entry)}`);
+    return fail(`packs/catalog.js n'a pas la forme habituelle (${e.message}) : ajoute l'entrée à la main : ${JSON.stringify(entry)}`);
   }
   const sameFile = !elsewhere || (fs.existsSync(target) && fs.readFileSync(target, "utf8") === text);
   if (sameFile && newCatalog === oldCatalog) return { ok: true, errors, warnings, action: "déjà à jour", target: rel };
@@ -134,7 +134,7 @@ function main(argv) {
     console.log("\n✗ Refusé : rien n'a été écrit.");
     return 1;
   }
-  console.log(`\n✓ ${r.target} : ${r.action} dans js/catalog.js.`);
+  console.log(`\n✓ ${r.target} : ${r.action} dans packs/catalog.js.`);
   return 0;
 }
 

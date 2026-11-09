@@ -1,12 +1,12 @@
 // @ts-check
 /* Révision Quest — Settings dialog (comfort settings, grade, reset). */
-import { S } from "./state.js";
+import { S } from "../state.js";
 import { gradeButtons, myGrade } from "./catalog.js";
-import { applyComfort } from "./comfort.js";
+import { applyComfort } from "../ui/comfort.js";
 import { fsActive, fsSupported, fsToggle, showHome } from "./home.js";
-import { Sound } from "./sound.js";
-import { confirmBox, each, modal, qs, toast } from "./ui.js";
-import { E } from "./util.js";
+import { Sound } from "../ui/sound.js";
+import { confirmBox, each, modal, qs, toast } from "../ui/ui.js";
+import { E } from "../ui/util.js";
 
 /** @typedef {{ key: keyof PlayerSettings, label: string, values: Array<[string | number, string]> }} SettingRow */
 /** @type {SettingRow[]} */

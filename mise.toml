@@ -43,7 +43,7 @@ description = "Check every content pack of the catalogue (tools/validate-pack.js
 run = "npm run validate"
 
 [tasks."pack:add"]
-description = "Add or update a chapter in js/catalog.js from its file: mise run pack:add packs/<niveau>/<matiere>/<cours>.js"
+description = "Add or update a chapter in packs/catalog.js from its file: mise run pack:add packs/<niveau>/<matiere>/<cours>.js"
 run = "node tools/pack-add.js"
 
 [tasks."test:unit"]

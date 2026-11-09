@@ -16,7 +16,7 @@ test("subfolder hosting: relative pack path and cookie scoped to the folder", as
   await page.goto(SUB); await page.waitForTimeout(400);
   await H.newPlayer(page, 'Zoe');
   await H.gotoPack(page, H.EN);
-  const src = await page.evaluate(() => [...document.scripts].map(s => s.src).filter(s => /packs\//.test(s)));
+  const src = await page.evaluate(() => [...document.scripts].map(s => s.src).filter(s => /packs\/(?!catalog\.js)/.test(s)));
   R.ok(src.length === 1 && src[0] === SUB + 'packs/4e/anglais/giving-advice.js', 'pack loaded relative to the subfolder ' + src);
   const c = (await ctx.cookies()).filter(x => x.name.startsWith('aaa_save'));
   R.ok(c.length >= 2 && c.every(x => x.path === '/english/' && x.sameSite === 'Strict'), 'cookies scoped to /english/ ' + JSON.stringify(c.map(x => [x.name, x.path])));

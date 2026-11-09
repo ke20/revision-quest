@@ -1,17 +1,17 @@
 // @ts-check
 /* Révision Quest — Entry point: boot, fatal error screens, window.App (used by the tests). */
 import { S } from "./state.js";
-import { openPack, showCatalog } from "./catalog.js";
-import { Confetti } from "./confetti.js";
-import { showHome } from "./home.js";
-import { showMap } from "./map.js";
+import { openPack, showCatalog } from "./screens/catalog.js";
+import { Confetti } from "./ui/confetti.js";
+import { showHome } from "./screens/home.js";
+import { showMap } from "./screens/map.js";
 import { goRoute, parseRoute, rerender } from "./nav.js";
-import { pauseGuard, showPause } from "./play.js";
-import { showProfiles } from "./profiles.js";
-import { importShared, takeSharedCode } from "./save.js";
-import { Sound } from "./sound.js";
-import { badgeToasts, openModals } from "./ui.js";
-import { APP_NAME, E, must } from "./util.js";
+import { pauseGuard, showPause } from "./screens/play.js";
+import { showProfiles } from "./screens/profiles.js";
+import { importShared, takeSharedCode } from "./screens/save.js";
+import { Sound } from "./ui/sound.js";
+import { badgeToasts, openModals } from "./ui/ui.js";
+import { APP_NAME, E, must } from "./ui/util.js";
 
 /* ================= Boot ================= */
 
@@ -42,7 +42,7 @@ export function boot() {
   try { document.title = APP_NAME; } catch (e) { /* ignore */ }
   if (isFramed()) { showFramed(); return; }
   if (!window.Engine || !window.Exercises || !window.Packs) { showError("Certains fichiers du jeu n'ont pas pu être chargés."); return; }
-  if (!Packs.list().length) { showError("Le catalogue des chapitres (js/catalog.js) est vide ou invalide."); return; }
+  if (!Packs.list().length) { showError("Le catalogue des chapitres (packs/catalog.js) est vide ou invalide."); return; }
   if (window.I18N) I18N.setLang("fr");
   Exercises.initTranslations(function (key) {
     badgeToasts(Engine.viewTranslation(key));

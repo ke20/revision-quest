@@ -1,15 +1,15 @@
 // @ts-check
 /* Révision Quest — Playing a world: exercises one after the other, result screens, pause, game over. */
-import { S } from "./state.js";
-import { boostOn, scrollBehavior } from "./comfort.js";
-import { Confetti } from "./confetti.js";
+import { S } from "../state.js";
+import { boostOn, scrollBehavior } from "../ui/comfort.js";
+import { Confetti } from "../ui/confetti.js";
 import { showHome } from "./home.js";
 import { showLesson, showMap } from "./map.js";
-import { clearRun, route, saveRun, setNav, worldPath } from "./nav.js";
+import { clearRun, route, saveRun, setNav, worldPath } from "../nav.js";
 import { showProfiles } from "./profiles.js";
-import { Sound } from "./sound.js";
-import { badgeToasts, bigStarsHtml, confirmBox, h, heartsHtml, levelUpPopup, on, qs, shieldsHtml, show, toast } from "./ui.js";
-import { E, must, pick, R, safeColor, T } from "./util.js";
+import { Sound } from "../ui/sound.js";
+import { badgeToasts, bigStarsHtml, confirmBox, h, heartsHtml, levelUpPopup, on, qs, shieldsHtml, show, toast } from "../ui/ui.js";
+import { E, must, pick, R, safeColor, T } from "../ui/util.js";
 
 /* ================= Play ================= */
 

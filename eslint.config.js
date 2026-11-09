@@ -45,7 +45,7 @@ module.exports = [
     rules: { "no-implicit-globals": "error" }
   },
 
-  // The screens (js/app/*.js): ES modules (import / export), loaded by <script type="module" src="js/app/main.js">.
+  // The screens (js/app/**/*.js): ES modules (import / export), loaded by <script type="module" src="js/app/main.js">.
   {
     files: ["js/app/**/*.js"],
     languageOptions: { sourceType: "module" },
@@ -54,7 +54,7 @@ module.exports = [
 
   // Pack rules: also loaded by Node with require() (tools/validate-pack.js), so it may test `module`.
   {
-    files: ["js/pack-rules.js"],
+    files: ["js/core/pack-rules.js"],
     languageOptions: { globals: { module: "readonly" } }
   },
 

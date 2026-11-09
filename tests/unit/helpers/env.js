@@ -42,7 +42,7 @@ function storage(initial) {
  *         globals (extra window properties set before the scripts run, e.g. { CATALOG }) }
  */
 function load(opts = {}) {
-  const scripts = opts.scripts || ["js/i18n.js", "js/catalog.js", "js/packs.js", "js/engine.js", "js/exercises.js"];
+  const scripts = opts.scripts || ["js/core/i18n.js", "packs/catalog.js", "js/core/packs.js", "js/core/engine.js", "js/exercises/exercises.js"];
   const ls = opts.localStorage || storage();
   const jar = opts.cookies || cookieJar();
   const listeners = {};

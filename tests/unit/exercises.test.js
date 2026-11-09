@@ -1,11 +1,11 @@
-// Unit tests for the pure helpers of js/exercises.js (rich text, normalisation, answer checking),
+// Unit tests for the pure helpers of js/exercises/exercises.js (rich text, normalisation, answer checking),
 // run in a fake browser (tests/unit/helpers/env.js). The DOM renderers are covered by the e2e specs.
 "use strict";
 const test = require("node:test");
 const assert = require("node:assert");
 const { load } = require("./helpers/env");
 
-const X = load({ scripts: ["js/i18n.js", "js/exercises.js"] }).window.Exercises;
+const X = load({ scripts: ["js/core/i18n.js", "js/exercises/exercises.js"] }).window.Exercises;
 const j = (x) => JSON.parse(JSON.stringify(x)); // objects from the vm realm → plain objects
 
 /* ---------- escaping and rich text ---------- */
@@ -170,7 +170,7 @@ test("findDocument: docId on any exercise, letterId and letters still read", () 
 });
 
 test("rich: in a language pack (en / es), a French \"(…)\" gloss is wrapped small; never in a fr pack, never inside [[…]]", () => {
-  const env = load({ scripts: ["js/i18n.js", "js/exercises.js"] }).window;
+  const env = load({ scripts: ["js/core/i18n.js", "js/exercises/exercises.js"] }).window;
   const Y = env.Exercises;
   assert.strictEqual(Y.rich("You should talk. (Tu devrais parler.)"), "You should talk. (Tu devrais parler.)", "fr pack: unchanged");
   env.I18N.setLang("es");

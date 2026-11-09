@@ -5,7 +5,7 @@ const { test } = require("@playwright/test");
 const H = require("./helpers");
 const { BASE, EN, SAMPLE, wait, tap } = H;
 
-// test packs (tests/fixtures/packs) are served by routing (H.withTestPacks): never in packs/ or js/catalog.js
+// test packs (tests/fixtures/packs) are served by routing (H.withTestPacks): never in packs/ or packs/catalog.js
 
 async function noHs(page, where) { const d = await H.hscroll(page); H.makeReporter().ok(d <= 0, 'no hscroll at ' + (page.viewportSize().width) + ' on ' + where + ' (' + d + ')'); }
 const textOf = (page, sel) => page.evaluate(s => { const e = document.querySelector(s); return e ? e.innerText : ''; }, sel);
@@ -28,7 +28,7 @@ test("fresh start, lazy pack loading, per-pack progress, test pack, explorer, ch
     await tap(page, '[data-act=catalog]'); await wait(page, 300);
     const realPacks = await page.$$eval('.pack-card', c => c.map(x => x.getAttribute('data-pack')));
     ok(realPacks.includes(EN) && !realPacks.some(p => /sample|test-/.test(p)), 'the production catalogue lists the real packs only (no test pack): ' + realPacks.join());
-    ok(!(await page.evaluate(() => [...document.scripts].some(s => /packs\//.test(s.src)))), 'no pack script loaded before choosing one (lazy)');
+    ok(!(await page.evaluate(() => [...document.scripts].some(s => /packs\/(?!catalog\.js)/.test(s.src)))), 'no pack script loaded before choosing one (lazy)');
     const card = await textOf(page, `.pack-card[data-pack="${EN}"]`);
     ok(/Anglais/.test(card) && /4e/.test(card) && /Dear Agony Aunt/.test(card) && /0\/40/.test(card), 'pack card: subject, level, title, stars 0/40');
     await tap(page, `.pack-card[data-pack="${EN}"]`); await page.waitForSelector('.screen.map');

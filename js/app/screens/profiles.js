@@ -2,11 +2,11 @@
 /* Révision Quest — Players (choice, creation) and leaderboard. */
 import { chip, gradeButtons, resetCatalogFilters } from "./catalog.js";
 import { showHome } from "./home.js";
-import { route, setNav } from "./nav.js";
+import { route, setNav } from "../nav.js";
 import { showSavePanel } from "./save.js";
-import { Sound } from "./sound.js";
-import { confirmBox, each, h, leavePack, on, qs, show, toast } from "./ui.js";
-import { APP_ICON, APP_NAME, E, must } from "./util.js";
+import { Sound } from "../ui/sound.js";
+import { confirmBox, each, h, leavePack, on, qs, show, toast } from "../ui/ui.js";
+import { APP_ICON, APP_NAME, E, must } from "../ui/util.js";
 
 /* ---------- players ---------- */
 

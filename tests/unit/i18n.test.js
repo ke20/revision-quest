@@ -1,10 +1,10 @@
-// Unit tests for js/i18n.js (interface texts of the exercises, by pack language) and the "es" language.
+// Unit tests for js/core/i18n.js (interface texts of the exercises, by pack language) and the "es" language.
 "use strict";
 const test = require("node:test");
 const assert = require("node:assert");
 const { load } = require("./helpers/env");
 
-const I18N = () => load({ scripts: ["js/i18n.js"] }).window.I18N;
+const I18N = () => load({ scripts: ["js/core/i18n.js"] }).window.I18N;
 const LANGS = ["fr", "en", "es"];
 
 test("every language has the same keys, with the same kind of value", () => {
@@ -29,7 +29,7 @@ test("the catalogue keeps lang es (and still turns an unknown lang into fr)", ()
     subjects: [{ id: "espagnol", label: "Espagnol", color: "#DC2626" }],
     packs: [{ path: "4e/espagnol/a", title: "A", lang: "es", worldCount: 1 }, { path: "4e/espagnol/b", title: "B", lang: "de", worldCount: 1 }]
   };
-  const P = load({ scripts: ["js/packs.js"], globals: { CATALOG } }).window.Packs;
+  const P = load({ scripts: ["js/core/packs.js"], globals: { CATALOG } }).window.Packs;
   assert.strictEqual(P.get("4e/espagnol/a").lang, "es");
   assert.strictEqual(P.get("4e/espagnol/b").lang, "fr");
 });

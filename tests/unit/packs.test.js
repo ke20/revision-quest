@@ -1,4 +1,4 @@
-// Unit tests for js/catalog.js + js/packs.js (catalogue validation, pack paths), run in a fake browser.
+// Unit tests for packs/catalog.js + js/core/packs.js (catalogue validation, pack paths), run in a fake browser.
 "use strict";
 const test = require("node:test");
 const assert = require("node:assert");
@@ -8,9 +8,9 @@ const { validatePack } = require("../../tools/validate-pack.js");
 
 const j = (x) => JSON.parse(JSON.stringify(x)); // objects from the vm realm → plain objects
 
-/** window.Packs built from the real js/catalog.js, or from a given catalogue. */
-const real = () => load({ scripts: ["js/catalog.js", "js/packs.js"] }).window.Packs;
-const withCatalog = (CATALOG) => load({ scripts: ["js/packs.js"], globals: { CATALOG } }).window.Packs;
+/** window.Packs built from the real packs/catalog.js, or from a given catalogue. */
+const real = () => load({ scripts: ["packs/catalog.js", "js/core/packs.js"] }).window.Packs;
+const withCatalog = (CATALOG) => load({ scripts: ["js/core/packs.js"], globals: { CATALOG } }).window.Packs;
 
 const SUBJECTS = [{ id: "anglais", label: "Anglais", icon: "🇬🇧", color: "#EC4899" }, { id: "histoire", label: "Histoire", color: "#B45309" }];
 const LEVELS = [{ id: "4e", label: "4e", order: 8 }, { id: "cm2", label: "CM2", order: 5 }];
@@ -86,7 +86,7 @@ test("no catalogue at all: empty lists, no crash", () => {
 });
 
 test("registerPack is ignored unless that pack is being loaded; unknown pack → \"unknown\" error", () => {
-  const env = load({ scripts: ["js/catalog.js", "js/packs.js"] });
+  const env = load({ scripts: ["packs/catalog.js", "js/core/packs.js"] });
   const W = env.window;
   assert.strictEqual(W.registerPack({ path: "4e/anglais/giving-advice", worlds: [{ id: 1, exercises: [] }] }), false);
   assert.strictEqual(W.registerPack(null), false);
@@ -132,7 +132,7 @@ test("catalogue groups: one card per chapter, each group is a playable pack <cou
 });
 
 test("catalogue groups: only a group can be registered and loaded, never the chapter itself", () => {
-  const { window: W } = load({ scripts: ["js/packs.js"], globals: { CATALOG: { subjects: SUBJECTS, levels: LEVELS, packs: [
+  const { window: W } = load({ scripts: ["js/core/packs.js"], globals: { CATALOG: { subjects: SUBJECTS, levels: LEVELS, packs: [
     entry({ path: "cm2/histoire/dictee", groups: [{ id: "g1", label: "Groupe 1", worldCount: 1 }] })
   ] } } });
   const errs = [];

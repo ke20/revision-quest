@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Révision Quest — CI, pull request from a fork (a course proposed by someone outside the project).
 # Every chapter file added or changed by the pull request goes through tools/pack-add.js in this run:
-# strict format (never executed), full check, then its js/catalog.js entry, exactly like the maintainer will do
+# strict format (never executed), full check, then its packs/catalog.js entry, exactly like the maintainer will do
 # with `mise run pack:add` before merging. Nothing is pushed back. The tests that follow see the merged state.
 # Usage: tools/ci-proposed-packs.sh <base commit>     (report also appended to $GITHUB_STEP_SUMMARY when set)
 set -euo pipefail

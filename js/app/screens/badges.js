@@ -1,9 +1,9 @@
 // @ts-check
 /* Révision Quest — Badges screen. */
 import { showHome } from "./home.js";
-import { route, setNav } from "./nav.js";
-import { h, on, show } from "./ui.js";
-import { E } from "./util.js";
+import { route, setNav } from "../nav.js";
+import { h, on, show } from "../ui/ui.js";
+import { E } from "../ui/util.js";
 
 /* ================= Badges ================= */
 

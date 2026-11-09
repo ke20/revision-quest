@@ -1,11 +1,11 @@
 // @ts-check
 /* Révision Quest — Ghost mode (?fantome): free walk through a world's exercises, answers shown. */
-import { S } from "./state.js";
+import { S } from "../state.js";
 import { showMap } from "./map.js";
-import { route, setNav, worldPath } from "./nav.js";
-import { Sound } from "./sound.js";
-import { h, on, qs, show, toast } from "./ui.js";
-import { E, R, T, safeColor } from "./util.js";
+import { route, setNav, worldPath } from "../nav.js";
+import { Sound } from "../ui/sound.js";
+import { h, on, qs, show, toast } from "../ui/ui.js";
+import { E, R, T, safeColor } from "../ui/util.js";
 
 /* ================= Ghost mode: free walk through a world's exercises, answers shown ================= */
 

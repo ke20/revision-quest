@@ -1,4 +1,4 @@
-// Globals shared by the game scripts (classic <script> files, see js/*.js) and by Node for js/pack-rules.js.
+// Globals shared by the game scripts (classic <script> files, see js/*.js) and by Node for js/core/pack-rules.js.
 declare var module: { exports: unknown } | undefined;
 
 interface AppConfig {
@@ -18,9 +18,9 @@ interface Window {
   Figures: FiguresApi;
   qrcodegen: any;
   webkitAudioContext?: typeof AudioContext;
-  /** js/engine.js */
+  /** js/core/engine.js */
   Engine: EngineApi;
-  /** js/pack-rules.js (browser side; Node uses require()) */
+  /** js/core/pack-rules.js (browser side; Node uses require()) */
   PackRules?: unknown;
 }
 
@@ -46,8 +46,8 @@ interface HTMLElement {
 }
 interface Window {
   BarcodeDetector?: any;
-  /** js/catalog.js (raw, checked by js/packs.js) */
+  /** packs/catalog.js (raw, checked by js/core/packs.js) */
   CATALOG?: any;
-  /** js/packs.js: entry point called by every pack file */
+  /** js/core/packs.js: entry point called by every pack file */
   registerPack?: (data: any) => boolean;
 }

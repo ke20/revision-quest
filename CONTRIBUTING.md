@@ -22,16 +22,16 @@ objet, `?.`, `??`, `import()` dynamique). Les anciens fichiers écrits en ES5 re
 **Types** : TypeScript vérifie le JavaScript sans rien compiler (`mise run typecheck`, `tsconfig.json`). Les types
 s'écrivent en commentaires JSDoc (`/** @param {Pack} pack */`) ; les types partagés sont dans `types/*.d.ts`
 (format d'un pack : `types/pack.d.ts`, données du moteur : `types/engine.d.ts`). Un fichier vérifié commence par
-`// @ts-check` et figure dans `tsconfig.json` (`files` ou `include`) : `js/engine.js`, `js/exercises.js`,
-`js/pack-rules.js`, `js/figures.js`, `js/packs.js`, `js/i18n.js`, `js/voix.js` et tous les écrans `js/app/*.js`. Les objets publics des scripts classiques sont décrits dans
+`// @ts-check` et figure dans `tsconfig.json` (`files` ou `include`) : `js/core/engine.js`, `js/exercises/exercises.js`,
+`js/core/pack-rules.js`, `js/exercises/figures.js`, `js/core/packs.js`, `js/core/i18n.js`, `js/pages/voix.js` et tous les écrans `js/app/*.js`. Les objets publics des scripts classiques sont décrits dans
 `types/engine.d.ts` (`EngineApi`) et `types/scripts.d.ts` (`Exercises`, `Packs`, `I18N`, `Figures`) ; `engine.js` et
 `exercises.js` sont vérifiés contre leur interface (`@type {EngineApi}`, `@type {ExercisesApi}`) : changer une
 fonction publique sans mettre son type à jour fait échouer `mise run typecheck`.
 Mode `strict` complet : chaque paramètre a un type JSDoc (`/** @param {string} key */`), une valeur possiblement
 `null` se vérifie avant usage, un objet servant de dictionnaire se déclare `Record<string, …>`. Une valeur que le code sait présente mais que TypeScript ne peut pas suivre se marque
-avec `must(…)` (`js/app/util.js`) ou `qs(node, sélecteur)` (`js/app/ui.js`) : aucun contrôle à l'exécution.
+avec `must(…)` (`js/app/ui/util.js`) ou `qs(node, sélecteur)` (`js/app/ui/ui.js`) : aucun contrôle à l'exécution.
 
-Le nom de l'app est défini à un seul endroit : `APP_CONFIG.name` dans `js/i18n.js` (+ `<title>` dans `index.html`).
+Le nom de l'app est défini à un seul endroit : `APP_CONFIG.name` dans `js/core/i18n.js` (+ `<title>` dans `index.html`).
 
 ## Structure du code
 
@@ -41,24 +41,32 @@ revision-quest/
 ├── css/style.css           design, mobile d'abord
 ├── fonts/                  police Fredoka auto-hébergée + licence
 ├── js/
-│   ├── i18n.js             nom de l'app, textes de l'interface (fr / en)
-│   ├── catalog.js          matières, niveaux, liste des chapitres
-│   ├── packs.js            vérifie le catalogue, charge les chapitres à la demande
-│   ├── engine.js           joueurs, XP, cœurs, étoiles, badges, sauvegarde
-│   ├── exercises.js        affichage et correction des exercices
-│   ├── figures.js          figures de géométrie en SVG
-│   ├── pack-rules.js       règles d'un chapitre (validateur, navigateur et Node)
-│   ├── nomodule.js         message pour un navigateur trop ancien
-│   └── app/                écrans (modules ES) : main.js (démarrage), nav.js (adresses, retour),
-│                           home, catalog, map, play, ghost, profiles, save, settings, badges, ui, sound…
+│   ├── core/               logique sans écran (scripts classiques, testés aussi dans Node)
+│   │   ├── i18n.js         nom de l'app, textes de l'interface (fr / en)
+│   │   ├── packs.js        vérifie le catalogue, charge les chapitres à la demande
+│   │   ├── engine.js       joueurs, XP, cœurs, étoiles, badges, sauvegarde
+│   │   └── pack-rules.js   règles d'un chapitre (validateur, navigateur et Node)
+│   ├── exercises/
+│   │   ├── exercises.js    affichage et correction des exercices, voix
+│   │   └── figures.js      figures de géométrie en SVG, tableaux
+│   ├── app/                le jeu (modules ES)
+│   │   ├── main.js         démarrage
+│   │   ├── state.js        état partagé entre les écrans
+│   │   ├── nav.js          adresses (#/…) et bouton retour
+│   │   ├── screens/        un fichier par écran : home, catalog, profiles, map, play, ghost, badges, settings, save
+│   │   └── ui/             briques communes : ui (écran, toasts, fenêtres), util, sound, confetti, comfort
+│   ├── pages/voix.js       page voix.html (voix disponibles)
+│   ├── vendor/             bibliothèque tierce (QR code), jamais modifiée
+│   └── nomodule.js         message pour un navigateur trop ancien
 ├── packs/
 │   ├── README.md           guide pour écrire un chapitre
+│   ├── catalog.js          matières, niveaux, liste des chapitres (écrit par mise run pack:add)
 │   └── <niveau>/<matiere>/
 │       ├── <cours>.js      un chapitre (son chemin = son identifiant)
 │       └── <cours>/        chapitre « par groupes »
 │           └── <groupe>.js un fichier par groupe
-├── tools/validate-pack.js  vérifie un chapitre ou tout le catalogue (--all), avec js/pack-rules.js
-├── tools/pack-add.js      ajoute ou met à jour un chapitre dans js/catalog.js (depuis son meta)
+├── tools/validate-pack.js  vérifie un chapitre ou tout le catalogue (--all), avec js/core/pack-rules.js
+├── tools/pack-add.js      ajoute ou met à jour un chapitre dans packs/catalog.js (depuis son meta)
 ├── tools/ci-proposed-packs.sh  CI : contrôle les cours proposés depuis un fork
 ├── tests/
 │   ├── unit/               tests node:test
@@ -120,7 +128,7 @@ npm run qa            # = npm run lint && npm run typecheck && npm test
 | `mise run lint:fix` | `npm run lint:fix` | corrige automatiquement ce qu'ESLint sait corriger |
 | `mise run typecheck` | `npm run typecheck` | vérifie les types JSDoc avec TypeScript (`tsconfig.json`), sans rien compiler |
 | `mise run validate` | `npm run validate` | vérifie tous les packs du catalogue (`tools/validate-pack.js --all`) |
-| `mise run pack:add <fichier>` | `npm run pack:add -- <fichier>` | vérifie un chapitre et écrit son entrée dans `js/catalog.js` (`tools/pack-add.js`) |
+| `mise run pack:add <fichier>` | `npm run pack:add -- <fichier>` | vérifie un chapitre et écrit son entrée dans `packs/catalog.js` (`tools/pack-add.js`) |
 | `mise run test:unit` | `npm run test:unit` | tests unitaires `node:test` : moteur, exercices (texte enrichi, correction), catalogue, validateur (packs cassés dans `tests/fixtures/unit/`), doc |
 | `mise run test:e2e` | `npm run test:e2e` | tests Playwright (`tests/e2e/*.spec.js`), Chromium 1280 px + un projet 390 px |
 | `mise run test` | `npm test` | validate, unitaires, e2e, dans cet ordre |
@@ -132,7 +140,7 @@ npm run qa            # = npm run lint && npm run typecheck && npm test
   (4173 par défaut) ; un serveur déjà lancé sur ce port est réutilisé en local.
 - Les packs de test (mini pack d'anglais `5e/anglais/sample`, mini pack d'histoire en français) sont dans
   `tests/fixtures/packs/` et servis par le routage de Playwright, avec leur entrée de catalogue injectée
-  (`tests/fixtures/catalog-*.json`) : ils n'apparaissent jamais dans `packs/` ni dans `js/catalog.js`.
+  (`tests/fixtures/catalog-*.json`) : ils n'apparaissent jamais dans `packs/` ni dans `packs/catalog.js`.
 - En cas d'échec : capture d'écran et trace Playwright dans `test-results/`, rapport dans `playwright-report/`
   (`npx playwright show-trace <trace.zip>` pour rejouer pas à pas).
 - **CI** (`.github/workflows/ci.yml`) : à chaque push, pull request ou lancement manuel, sur ubuntu-latest,
@@ -140,11 +148,11 @@ npm run qa            # = npm run lint && npm run typecheck && npm test
   système, puis `qa` : lint, validation des packs, tests unitaires, tests e2e avec 2 essais en cas d'échec). Le rapport Playwright est
   publié comme artefact (7 jours) si quelque chose échoue. Permissions en lecture seule.
 - **Cours proposé depuis un fork** : la pull request d'un contributeur extérieur ajoute seulement son fichier dans
-  `packs/`, sans toucher `js/catalog.js`. Avant `mise run ci`, `tools/ci-proposed-packs.sh` passe chaque fichier de
+  `packs/`, sans toucher `packs/catalog.js`. Avant `mise run ci`, `tools/ci-proposed-packs.sh` passe chaque fichier de
   chapitre ajouté ou modifié dans `tools/pack-add.js` : format strict (le fichier n'est jamais exécuté), contrôle
   complet, puis entrée du catalogue **dans cette exécution seulement** (rien n'est repoussé). Les tests portent donc
   sur l'état après fusion, et le compte rendu en français s'affiche dans le résumé de la pull request. Avant de
-  fusionner, le responsable lance `mise run pack:add <fichier>` et commite `js/catalog.js`. Les pull requests
+  fusionner, le responsable lance `mise run pack:add <fichier>` et commite `packs/catalog.js`. Les pull requests
   ouvertes depuis le dépôt lui-même n'ont pas cette aide : `pack:add` doit y avoir été lancé.
 - **Publication** (même workflow) : sur un push de `main`, une fois tous les tests verts, les jobs `pages-build` et
   `pages-deploy` publient les fichiers du jeu sur GitHub Pages. Seul `pages-deploy` a le droit d'écrire

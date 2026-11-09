@@ -1,14 +1,14 @@
 // @ts-check
 /* Révision Quest — Catalogue of chapters, group choice, loading a pack. */
-import { S } from "./state.js";
+import { S } from "../state.js";
 import { showHome } from "./home.js";
 import { showMap } from "./map.js";
-import { route, setNav } from "./nav.js";
+import { route, setNav } from "../nav.js";
 import { pauseGuard } from "./play.js";
 import { showProfiles } from "./profiles.js";
-import { Sound } from "./sound.js";
-import { each, h, leavePack, on, show } from "./ui.js";
-import { E, must, safeColor } from "./util.js";
+import { Sound } from "../ui/sound.js";
+import { each, h, leavePack, on, show } from "../ui/ui.js";
+import { E, must, safeColor } from "../ui/util.js";
 
 /* ================= Catalogue ================= */
 
@@ -113,7 +113,7 @@ export function showCatalog() {
   var list = ofLevel.filter(function (p) {
     return !S.catFilter.subject || p.subject === S.catFilter.subject;
   }).sort(function (a, b) {
-    var la = must(Packs.level(a.level)).order, lb = must(Packs.level(b.level)).order; // levels checked by js/packs.js
+    var la = must(Packs.level(a.level)).order, lb = must(Packs.level(b.level)).order; // levels checked by js/core/packs.js
     return la - lb || a.title.localeCompare(b.title);
   });
   var cards = list.map(function (p) {

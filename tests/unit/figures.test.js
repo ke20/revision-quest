@@ -1,4 +1,4 @@
-// Unit tests for js/figures.js (pure layout of geometry figures) and the figure checks of tools/validate-pack.js.
+// Unit tests for js/exercises/figures.js (pure layout of geometry figures) and the figure checks of tools/validate-pack.js.
 // The SVG itself (build) is covered by the e2e specs.
 "use strict";
 const test = require("node:test");
@@ -6,7 +6,7 @@ const assert = require("node:assert");
 const { load } = require("./helpers/env");
 const { validateFigure, validateTable } = require("../../tools/validate-pack");
 
-const F = load({ scripts: ["js/figures.js"] }).window.Figures;
+const F = load({ scripts: ["js/exercises/figures.js"] }).window.Figures;
 const j = (x) => JSON.parse(JSON.stringify(x)); // objects from the vm realm → plain objects
 
 function check(fig) {

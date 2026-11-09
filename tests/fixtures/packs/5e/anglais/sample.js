@@ -1,4 +1,4 @@
-/* TEST ONLY — tiny English pack served by Playwright routing in tests/e2e (catalogue entry: tests/fixtures/catalog-sample-entry.json). Never listed in js/catalog.js. Format : voir packs/README.md */
+/* TEST ONLY — tiny English pack served by Playwright routing in tests/e2e (catalogue entry: tests/fixtures/catalog-sample-entry.json). Never listed in packs/catalog.js. Format : voir packs/README.md */
 window.registerPack({
   "path": "5e/anglais/sample",
   "lang": "en",

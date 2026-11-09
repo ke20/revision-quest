@@ -2,16 +2,16 @@
 /* Révision Quest — Routing (the address follows the screen) and the in-app history (back button). */
 import { S } from "./state.js";
 import { GHOST } from "./state.js";
-import { showBadges } from "./badges.js";
-import { openPack, showCatalog, showGroups } from "./catalog.js";
-import { showGhost } from "./ghost.js";
-import { showHome } from "./home.js";
-import { showLesson, showMap } from "./map.js";
-import { startWorld } from "./play.js";
-import { showLeaderboard, showProfiles } from "./profiles.js";
-import { importShared, takeSharedCode } from "./save.js";
-import { openModals, toast } from "./ui.js";
-import { T } from "./util.js";
+import { showBadges } from "./screens/badges.js";
+import { openPack, showCatalog, showGroups } from "./screens/catalog.js";
+import { showGhost } from "./screens/ghost.js";
+import { showHome } from "./screens/home.js";
+import { showLesson, showMap } from "./screens/map.js";
+import { startWorld } from "./screens/play.js";
+import { showLeaderboard, showProfiles } from "./screens/profiles.js";
+import { importShared, takeSharedCode } from "./screens/save.js";
+import { openModals, toast } from "./ui/ui.js";
+import { T } from "./ui/util.js";
 
 /* ---------- routing: the address follows the screen, so a reload comes back to it ----------
    #/catalogue, #/badges, #/classement, #/joueurs, #/groupes/<chapitre>, #/chapitre/<pack>,

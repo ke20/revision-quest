@@ -1,6 +1,6 @@
 /* Pack « Droites et segments » — géométrie CM2 (points, segments, droites, alignement, sécantes,
    perpendiculaires, parallèles, programme de construction). Format : voir packs/README.md
-   Les figures sont des données (points + tracés) dessinées par js/figures.js. */
+   Les figures sont des données (points + tracés) dessinées par js/exercises/figures.js. */
 window.registerPack({
   "path": "cm2/maths/droites-et-segments",
   "lang": "fr",

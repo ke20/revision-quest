@@ -1,4 +1,4 @@
-// Unit tests for js/engine.js, run in a fake browser (tests/unit/helpers/env.js).
+// Unit tests for js/core/engine.js, run in a fake browser (tests/unit/helpers/env.js).
 "use strict";
 const test = require("node:test");
 const assert = require("node:assert");

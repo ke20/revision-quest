@@ -2,15 +2,15 @@
 /* Révision Quest — Home screen (and the fullscreen button, source and voices links). */
 import { showBadges } from "./badges.js";
 import { openPack, showCatalog } from "./catalog.js";
-import { season } from "./comfort.js";
-import { route, setNav } from "./nav.js";
+import { season } from "../ui/comfort.js";
+import { route, setNav } from "../nav.js";
 import { pauseGuard } from "./play.js";
 import { showLeaderboard, showProfiles } from "./profiles.js";
 import { showSavePanel } from "./save.js";
 import { showSettings } from "./settings.js";
-import { Sound } from "./sound.js";
-import { each, h, leavePack, on, show, toast } from "./ui.js";
-import { APP_ICON, APP_NAME, E, must, safeColor } from "./util.js";
+import { Sound } from "../ui/sound.js";
+import { each, h, leavePack, on, show, toast } from "../ui/ui.js";
+import { APP_ICON, APP_NAME, E, must, safeColor } from "../ui/util.js";
 
 /* ================= Home ================= */
 

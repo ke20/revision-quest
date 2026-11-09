@@ -27,7 +27,7 @@ Chaque pack est **un seul fichier** `packs/<niveau>/<matiere>/<cours>.js`, charg
 
 1. Écrire `packs/<niveau>/<matiere>/<cours>.js` (format ci-dessous), avec ses infos de catalogue dans `meta`.
 2. L'ajouter au catalogue : `mise run pack:add packs/<niveau>/<matiere>/<cours>.js` (ou
-   `npm run pack:add -- packs/…`). La commande vérifie tout le pack, puis écrit son entrée dans `js/catalog.js`.
+   `npm run pack:add -- packs/…`). La commande vérifie tout le pack, puis écrit son entrée dans `packs/catalog.js`.
    Elle sert aussi après chaque modification du pack (titre, nombre de mondes…).
 3. Vérifier : `mise run validate` (ou `node tools/validate-pack.js packs/<niveau>/<matiere>/<cours>.js`).
 4. Tester dans le navigateur : `mise run dev` (ou `npm start`) → « Choisir un chapitre ».
@@ -133,7 +133,7 @@ Champs communs à tous les exercices : `type`, `prompt` (consigne), `explanation
 | `"es"` | espagnol simple + petite aide en français : « Comprobar (Vérifier) », « Toca las palabras de abajo (touche les mots) »… | packs d'espagnol |
 
 Le contenu (consignes, leçons) est écrit par l'auteur dans la langue voulue ; `lang` ne change que les
-boutons et petites aides autour des exercices (textes dans `js/i18n.js`).
+boutons et petites aides autour des exercices (textes dans `js/core/i18n.js`).
 Les écrans généraux (accueil, catalogue, badges, classement) sont toujours en français.
 
 ## 4. Les 7 types d'exercices (+ figures et tableaux)
@@ -258,7 +258,7 @@ Dans une chaîne JS, un `\` de regex s'écrit `\\`.
 
 Tout exercice peut afficher une **figure** sous sa consigne (`figure: {...}`), et une leçon peut en montrer jusqu'à 6
 (`lesson.figures: [...]`). Une figure est une **description en données** : le jeu dessine lui-même le SVG
-(`js/figures.js`). Aucun SVG ni HTML ne vient du pack.
+(`js/exercises/figures.js`). Aucun SVG ni HTML ne vient du pack.
 
 ```js
 figure: {
@@ -291,7 +291,7 @@ Une figure haute pousse les réponses vers le bas : sur téléphone, garder `h` 
 
 Une leçon peut montrer jusqu'à 3 tableaux (`lesson.tables: [...]`) et tout exercice peut en afficher un sous sa
 consigne (`table: {...}`). Comme les figures, c'est une **description en données** dessinée par le jeu
-(`js/figures.js`, `buildTable`) : aucun HTML ne vient du pack.
+(`js/exercises/figures.js`, `buildTable`) : aucun HTML ne vient du pack.
 
 ```js
 table: {
@@ -311,14 +311,14 @@ Une cellule = un texte (`"kL"`) ou `{ text, span, hl }` : `span` = nombre de col
 la couleur du monde. Texte simple (20 caractères max, sans `**` ni `[[...]]`).
 Un tableau qui donne la réponse (« 1 L = ? ») ne va pas sur l'exercice : le garder pour la leçon.
 
-## 5. Ajouter le pack au catalogue (`js/catalog.js`)
+## 5. Ajouter le pack au catalogue (`packs/catalog.js`)
 
 ```bash
 mise run pack:add packs/cm2/histoire/revolution-francaise.js
 ```
 
 La commande lit le pack sans l'exécuter (format strict), le vérifie en entier, puis écrit son entrée dans
-`js/catalog.js` : à la même place s'il y est déjà, sinon à la fin. Les commentaires du catalogue sont gardés. Si le
+`packs/catalog.js` : à la même place s'il y est déjà, sinon à la fin. Les commentaires du catalogue sont gardés. Si le
 fichier est ailleurs (par exemple dans Téléchargements), il est copié dans `packs/<path>.js` ; s'il y en a déjà un
 différent, il faut ajouter `--replace`. En cas de refus, rien n'est écrit. Le niveau et la matière doivent déjà
 exister dans `CATALOG.levels` et `CATALOG.subjects`.

@@ -2,7 +2,7 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
-const Rules = require("../../js/pack-rules.js");
+const Rules = require("../../js/core/pack-rules.js");
 const { expect } = require("@playwright/test");
 
 const BASE = process.env.RQ_BASE_URL || "http://127.0.0.1:4173/";
@@ -67,8 +67,8 @@ function findExercise(pack, test) {
   throw new Error("exercise not found in the test pack");
 }
 
-/* Test packs live in tests/fixtures/packs (never in packs/ nor js/catalog.js): the production app only knows real packs.
-   withTestPacks() serves them by routing and injects their catalogue entries into js/catalog.js. */
+/* Test packs live in tests/fixtures/packs (never in packs/ nor packs/catalog.js): the production app only knows real packs.
+   withTestPacks() serves them by routing and injects their catalogue entries into packs/catalog.js. */
 const TEST_PACKS = {
   sample: { entry: JSON.parse(fixture("catalog-sample-entry.json")), body: fixture("packs/5e/anglais/sample.js") },
   history: { entry: JSON.parse(fixture("catalog-test-entry.json")), body: fixture("packs/cm2/histoire/test-revolution.js") }
@@ -79,7 +79,7 @@ const HISTORY = TEST_PACKS.history.entry.path;
 async function withTestPacks(page, { sample = true, history = false, entry = (e) => e, body = (p, src) => src } = {}) {
   const used = [history && TEST_PACKS.history, sample && TEST_PACKS.sample].filter(Boolean);
   const inject = used.map((t) => JSON.stringify(entry({ ...t.entry })) + ",\n").join("");
-  await page.route("**/js/catalog.js", async (route) => {
+  await page.route("**/packs/catalog.js", async (route) => {
     const res = await route.fetch();
     const src = await res.text();
     // Keep the e2e tests independent of the real packs added over time: only the English pack stays.
@@ -124,7 +124,7 @@ async function gotoPack(page, packId) {
   await expect(page.locator(".screen.map")).toBeVisible();
 }
 /** Wait until the world map stops moving. 250 ms after it is shown, the map smooth-scrolls to the current world
-    when that one is low on the screen (js/app/map.js showMap): a click during that scroll lands on the wrong spot. */
+    when that one is low on the screen (js/app/screens/map.js showMap): a click during that scroll lands on the wrong spot. */
 async function mapSettled(page) {
   await expect(page.locator(".screen.map")).toBeVisible();
   await page.waitForFunction(() => new Promise((resolve) => {

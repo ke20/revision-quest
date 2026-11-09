@@ -1,4 +1,4 @@
-// Geometry figures (js/figures.js): drawn from pack data in the lesson and above an exercise prompt,
+// Geometry figures (js/exercises/figures.js): drawn from pack data in the lesson and above an exercise prompt,
 // readable at 390 px (no horizontal scroll), built with DOM nodes only (pack text never becomes markup).
 "use strict";
 const { test, expect } = require("@playwright/test");

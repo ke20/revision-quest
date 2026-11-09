@@ -132,7 +132,7 @@ interface Pack {
   worlds: World[];
 }
 
-/** One line of js/catalog.js written from a pack (tools/pack-add.js). */
+/** One line of packs/catalog.js written from a pack (tools/pack-add.js). */
 interface CatalogEntry {
   path: string;
   title: string;
@@ -143,5 +143,5 @@ interface CatalogEntry {
   worldCount: number;
 }
 
-/** Reports one problem found by a check of js/pack-rules.js (err: blocking, warn: advice). Messages in French. */
+/** Reports one problem found by a check of js/core/pack-rules.js (err: blocking, warn: advice). Messages in French. */
 type PackReport = (message: string) => void;

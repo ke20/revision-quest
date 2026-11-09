@@ -16,7 +16,7 @@ const ENTRY = {
 const BODY = H.fixture("packs/cm2/histoire/test-revolution.js");
 
 async function withGroups(page) {
-  await page.route("**/js/catalog.js", async (route) => {
+  await page.route("**/packs/catalog.js", async (route) => {
     const res = await route.fetch();
     const src = await res.text();
     // only the English pack + the grouped test chapter: independent of the real packs added over time

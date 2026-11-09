@@ -70,7 +70,7 @@ test("pack file must be at packs/<path>.js", () => {
 });
 
 test("pack must be listed in the catalogue, with the same lang and worldCount", () => {
-  assert.ok(run("valid", { catalog: catalog({ path: "4e/anglais/other" }) }).errors.some((e) => /absent de js\/catalog\.js/.test(e)));
+  assert.ok(run("valid", { catalog: catalog({ path: "4e/anglais/other" }) }).errors.some((e) => /absent de packs\/catalog\.js/.test(e)));
   assert.ok(run("valid", { catalog: catalog({ lang: "en" }) }).errors.some((e) => /lang "en" ≠ lang du pack "fr"/.test(e)));
   assert.ok(run("valid", { catalog: catalog({ worldCount: 3 }) }).errors.some((e) => /worldCount 3 ≠ 1/.test(e)));
 });
@@ -175,10 +175,10 @@ test("mcq with several answers and docId on any exercise (reading comprehension)
   assert.ok(check('"answer": 0', '"screen": "oui"').errors.some((e) => /screen doit être/.test(e)));
 });
 
-test("js/pack-rules.js: the same rules run in the browser (window.PackRules) and in Node", () => {
+test("js/core/pack-rules.js: the same rules run in the browser (window.PackRules) and in Node", () => {
   const { load } = require("./helpers/env");
-  const Browser = load({ scripts: ["js/pack-rules.js"] }).window.PackRules;
-  const NodeRules = require("../../js/pack-rules.js");
+  const Browser = load({ scripts: ["js/core/pack-rules.js"] }).window.PackRules;
+  const NodeRules = require("../../js/core/pack-rules.js");
   assert.ok(Browser && typeof Browser.validateContent === "function", "window.PackRules is defined by a classic <script>");
   const check = (Rules, pack) => {
     const errors = [], warnings = [];
@@ -206,7 +206,7 @@ test("js/pack-rules.js: the same rules run in the browser (window.PackRules) and
 });
 
 test("strict format: read as text, JSON only, never run", () => {
-  const { parseStrict, formatStrict, MAX_PACK_SIZE } = require("../../js/pack-rules.js");
+  const { parseStrict, formatStrict, MAX_PACK_SIZE } = require("../../js/core/pack-rules.js");
   const body = '{ "path": "cm1/maths/x", "lang": "fr", "worlds": [] }';
   assert.deepStrictEqual(parseStrict("window.registerPack(" + body + ");"), { path: "cm1/maths/x", lang: "fr", worlds: [] });
   assert.ok(parseStrict("\uFEFF/* Source : cahier */\n/* deux */\nwindow.registerPack(" + body + ");\n\n"), "BOM, comments, final blank lines");
@@ -227,9 +227,9 @@ test("strict format: read as text, JSON only, never run", () => {
 });
 
 test("strict format: every pack and fixture pack file of the repo", () => {
-  const { parseStrict } = require("../../js/pack-rules.js");
+  const { parseStrict } = require("../../js/core/pack-rules.js");
   const list = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((d) => d.isDirectory() ? list(path.join(dir, d.name)) : d.name.endsWith(".js") ? [path.join(dir, d.name)] : []);
-  const files = list(path.join(ROOT, "packs")).concat(list(path.join(ROOT, "tests", "fixtures", "packs")), list(FIX).filter((f) => !f.endsWith("registers-twice.js")));
+  const files = list(path.join(ROOT, "packs")).filter((f) => f !== path.join(ROOT, "packs", "catalog.js")).concat(list(path.join(ROOT, "tests", "fixtures", "packs")), list(FIX).filter((f) => !f.endsWith("registers-twice.js")));
   assert.ok(files.length > 20);
   for (const f of files) assert.doesNotThrow(() => parseStrict(fs.readFileSync(f, "utf8")), path.relative(ROOT, f));
 });

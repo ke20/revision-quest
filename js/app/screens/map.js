@@ -1,16 +1,16 @@
 // @ts-check
 /* Révision Quest — World map of the current pack, and the lesson of a world. */
-import { S } from "./state.js";
-import { GHOST } from "./state.js";
+import { S } from "../state.js";
+import { GHOST } from "../state.js";
 import { backFromPack, showCatalog } from "./catalog.js";
-import { scrollBehavior } from "./comfort.js";
+import { scrollBehavior } from "../ui/comfort.js";
 import { showGhost } from "./ghost.js";
-import { route, setNav, worldPath } from "./nav.js";
+import { route, setNav, worldPath } from "../nav.js";
 import { pauseGuard, startWorld } from "./play.js";
 import { typedConfirmBox } from "./settings.js";
-import { Sound } from "./sound.js";
-import { each, h, heartsHtml, on, qs, shieldsHtml, show, starsHtml, toast } from "./ui.js";
-import { E, R, T, must, safeColor } from "./util.js";
+import { Sound } from "../ui/sound.js";
+import { each, h, heartsHtml, on, qs, shieldsHtml, show, starsHtml, toast } from "../ui/ui.js";
+import { E, R, T, must, safeColor } from "../ui/util.js";
 
 /* ================= World map (of the current pack) ================= */
 

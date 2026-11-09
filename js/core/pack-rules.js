@@ -57,7 +57,7 @@
   /** Keys of obj that are not in the allowed list. @param {object} obj @param {string[]} allowed @returns {string[]} */
   const unknownKeys = (obj, allowed) => Object.keys(obj).filter((k) => !allowed.includes(k));
 
-  /* ---------- figures (js/figures.js draws them; same limits) ---------- */
+  /* ---------- figures (js/exercises/figures.js draws them; same limits) ---------- */
 
   /** Kind of drawing → number of points. @type {Record<string, number>} */
   const FIG_KINDS = { segment: 2, line: 2, ray: 2, ticks: 2, rightAngle: 3, angle: 3 };
@@ -115,7 +115,7 @@
     if (!isStr(f.alt)) warn(F + " : ajoute alt (description de la figure pour les lecteurs d'écran)");
   }
 
-  /* ---------- tables (js/figures.js buildTable draws them; same limits) ---------- */
+  /* ---------- tables (js/exercises/figures.js buildTable draws them; same limits) ---------- */
 
   const TABLE_KEYS = ["rows", "head", "groups", "caption", "alt"];
   const CELL_KEYS = ["text", "span", "hl"];
@@ -207,7 +207,7 @@
   const META_KEYS = ["title", "description", "icon", "color", "license", "author", "basedOn"];
   const LICENSES = ["CC-BY-SA-4.0"];
   /** @type {Record<string, number>} */
-  const META_LIMITS = { title: 80, description: 240, icon: 16, author: 40 }; // same limits as the game (js/packs.js)
+  const META_LIMITS = { title: 80, description: 240, icon: 16, author: 40 }; // same limits as the game (js/core/packs.js)
 
   /** pack.meta. Returns true when it is usable to build a catalogue entry. @param {any} meta not checked yet @param {PackReport} err @returns {boolean} */
   function validateMeta(meta, err) {
@@ -235,7 +235,7 @@
       @param {Pack} pack @returns {CatalogEntry} */
   function catalogEntry(pack) {
     const m = pack.meta || /** @type {PackMeta} */ ({});
-    /** @type {any} keys in this order: it is the order written in js/catalog.js */
+    /** @type {any} keys in this order: it is the order written in packs/catalog.js */
     const entry = { path: pack.path, title: m.title, description: m.description, icon: m.icon };
     if (m.color != null) entry.color = m.color;
     entry.lang = pack.lang;

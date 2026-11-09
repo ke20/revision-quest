@@ -1,4 +1,4 @@
-// Data kept by js/engine.js (players, progress, world being played). Used in JSDoc comments; never loaded.
+// Data kept by js/core/engine.js (players, progress, world being played). Used in JSDoc comments; never loaded.
 
 interface WorldProgress {
   stars: number;
@@ -77,7 +77,7 @@ interface WorldSession {
   over: boolean;
 }
 
-/* ---------- public engine (window.Engine), checked against js/engine.js (`@type {EngineApi}` on its object) ---------- */
+/* ---------- public engine (window.Engine), checked against js/core/engine.js (`@type {EngineApi}` on its object) ---------- */
 
 interface Badge { id: string; icon: string; name: string; desc: string }
 interface Level { icon: string; name: string; xp: number }
@@ -111,7 +111,7 @@ interface ProfileSummary {
   current: boolean;
 }
 
-/** Result of an exercise, given by js/exercises.js. */
+/** Result of an exercise, given by js/exercises/exercises.js. */
 interface ExerciseResult {
   correct?: boolean;
   attempts?: number;

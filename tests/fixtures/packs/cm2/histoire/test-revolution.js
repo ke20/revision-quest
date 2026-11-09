@@ -1,4 +1,4 @@
-/* TEST ONLY — tiny French pack (history-like) served by Playwright routing in tests/e2e. Never listed in js/catalog.js. */
+/* TEST ONLY — tiny French pack (history-like) served by Playwright routing in tests/e2e. Never listed in packs/catalog.js. */
 window.registerPack({
   "path": "cm2/histoire/test-revolution",
   "lang": "fr",

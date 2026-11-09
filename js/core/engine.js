@@ -69,7 +69,7 @@
   var COMFORT_NO = { pauseEvery: 4, freeMistakes: 1, animations: "normal", difficulty: "normal", playedWorlds: "open", seasonal: "auto", grade: "" };   // defaults (and fallback)
   /** @type {Record<string, string | number>} */
   var COMFORT_YES = { pauseEvery: 2, freeMistakes: 2, animations: "boost", difficulty: "normal", playedWorlds: "open", seasonal: "auto", grade: "" };
-  /* grade: the player's class (a level id of js/catalog.js, e.g. "cm2"), used to pre-filter the chapters; "" = not set.
+  /* grade: the player's class (a level id of packs/catalog.js, e.g. "cm2"), used to pre-filter the chapters; "" = not set.
      Free text checked by its format only: the engine does not know the catalogue, the app ignores an unknown id. */
   var GRADE = /^[a-z0-9-]{1,20}$/;
   /** @param {unknown} g @returns {boolean} */

@@ -1,11 +1,11 @@
-// Unit tests for the course information (meta, js/pack-rules.js) and tools/pack-add.js (node:test, no dependency).
+// Unit tests for the course information (meta, js/core/pack-rules.js) and tools/pack-add.js (node:test, no dependency).
 "use strict";
 const test = require("node:test");
 const assert = require("node:assert");
 const fs = require("fs");
 const os = require("os");
 const path = require("path");
-const Rules = require("../../js/pack-rules.js");
+const Rules = require("../../js/core/pack-rules.js");
 const { addPack, writeEntry } = require("../../tools/pack-add.js");
 const { loadCatalog, validatePack } = require("../../tools/validate-pack.js");
 
@@ -37,12 +37,10 @@ test("meta: catalogue entry built from the pack", () => {
   assert.ok(!("color" in Rules.catalogEntry({ ...pack, meta: noColor })), "no colour: the subject colour is used");
 });
 
-/** A throwaway copy of the repo parts pack:add touches: js/catalog.js and packs/. */
+/** A throwaway copy of the repo parts pack:add touches: packs/catalog.js and packs/. */
 function sandbox() {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "rq-pack-add-test-"));
-  fs.mkdirSync(path.join(dir, "js"));
-  fs.copyFileSync(path.join(ROOT, "js", "catalog.js"), path.join(dir, "js", "catalog.js"));
-  fs.cpSync(path.join(ROOT, "packs"), path.join(dir, "packs"), { recursive: true });
+  fs.cpSync(path.join(ROOT, "packs"), path.join(dir, "packs"), { recursive: true }); // catalog.js included
   const file = (name, pack, text) => {
     const f = path.join(dir, name);
     fs.writeFileSync(f, text != null ? text : Rules.formatStrict(pack, "Pack de test"));
@@ -50,9 +48,9 @@ function sandbox() {
   };
   return {
     dir, file,
-    catalogFile: path.join(dir, "js", "catalog.js"),
-    catalogText: () => fs.readFileSync(path.join(dir, "js", "catalog.js"), "utf8"),
-    add: (f, opts = {}) => addPack(f, { root: dir, catalogFile: path.join(dir, "js", "catalog.js"), ...opts }),
+    catalogFile: path.join(dir, "packs", "catalog.js"),
+    catalogText: () => fs.readFileSync(path.join(dir, "packs", "catalog.js"), "utf8"),
+    add: (f, opts = {}) => addPack(f, { root: dir, catalogFile: path.join(dir, "packs", "catalog.js"), ...opts }),
     done: () => fs.rmSync(dir, { recursive: true, force: true })
   };
 }

@@ -1,9 +1,9 @@
 // @ts-check
 /* Révision Quest — Interface helpers: building and showing a screen, toasts, dialogs, stars / hearts / shields. */
-import { S } from "./state.js";
+import { S } from "../state.js";
 import { applyComfort } from "./comfort.js";
 import { Confetti } from "./confetti.js";
-import { clearRun } from "./nav.js";
+import { clearRun } from "../nav.js";
 import { Sound } from "./sound.js";
 import { E } from "./util.js";
 

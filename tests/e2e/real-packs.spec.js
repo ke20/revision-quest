@@ -1,4 +1,4 @@
-// Every real pack of js/catalog.js renders: each exercise of each world is drawn by the real renderer and CSS
+// Every real pack of packs/catalog.js renders: each exercise of each world is drawn by the real renderer and CSS
 // (prompt shown, nothing broken, figure and document present when asked, no horizontal overflow at 390 px).
 // Answers are checked in tests/unit/real-packs.test.js; playing a world to 3 stars is covered by gameplay specs
 // on the test packs. This spec only renders, so it takes seconds instead of a minute per pack.

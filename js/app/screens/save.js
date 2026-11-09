@@ -1,9 +1,9 @@
 // @ts-check
 /* Révision Quest — Save, export / import, share by link or QR code, QR scanner. */
 import { showHome } from "./home.js";
-import { Sound } from "./sound.js";
-import { h, modal, qs, toast } from "./ui.js";
-import { APP_NAME, E, must } from "./util.js";
+import { Sound } from "../ui/sound.js";
+import { h, modal, qs, toast } from "../ui/ui.js";
+import { APP_NAME, E, must } from "../ui/util.js";
 
 /* ---------- save / export / import ---------- */
 

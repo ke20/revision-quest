@@ -1,7 +1,7 @@
-// Public objects of the classic scripts (js/i18n.js, js/figures.js, js/packs.js…), as used by the screens
+// Public objects of the classic scripts (js/core/i18n.js, js/exercises/figures.js, js/core/packs.js…), as used by the screens
 // (js/app/*.js). Declared by hand: those scripts are IIFEs that set window.X, which TypeScript cannot follow.
 
-/* ---------- js/i18n.js ---------- */
+/* ---------- js/core/i18n.js ---------- */
 
 type UiLang = "fr" | "en" | "es";
 
@@ -16,7 +16,7 @@ interface I18nApi {
   dict: Record<UiLang, Record<string, unknown>>;
 }
 
-/* ---------- js/figures.js ---------- */
+/* ---------- js/exercises/figures.js ---------- */
 
 interface FiguresApi {
   /** Computed drawing of a figure (coordinates, shapes, labels). */
@@ -37,12 +37,12 @@ interface FiguresApi {
   MAX_CELL: number;
 }
 
-/* ---------- js/packs.js ---------- */
+/* ---------- js/core/packs.js ---------- */
 
 interface CatalogSubject { id: string; label: string; icon: string; color: string }
 interface CatalogLevel { id: string; label: string; order: number }
 
-/** A playable pack or a chapter card of the catalogue, as normalized by js/packs.js. */
+/** A playable pack or a chapter card of the catalogue, as normalized by js/core/packs.js. */
 interface CatalogPack {
   /** The path, which is the pack id: "<niveau>/<matiere>/<cours>" (+ "/<groupe>" for a group). */
   id: string;
@@ -89,9 +89,9 @@ interface PacksApi {
   load(id: string, cb: (err: PackLoadError | null, data?: LoadedPack | null) => void): void;
 }
 
-/* ---------- js/exercises.js ---------- */
+/* ---------- js/exercises/exercises.js ---------- */
 
-/** What an exercise reports when it is answered (on top of ExerciseResult, read by js/engine.js). */
+/** What an exercise reports when it is answered (on top of ExerciseResult, read by js/core/engine.js). */
 interface RenderedResult extends ExerciseResult {
   /** The right answer as plain text, shown after a wrong answer. */
   answerText?: string;
