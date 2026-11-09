@@ -18,7 +18,7 @@ interface Window {
   Figures: FiguresApi;
   qrcodegen: any;
   webkitAudioContext?: typeof AudioContext;
-  /** js/core/engine.js */
+  /** js/core/engine/engine.js */
   Engine: EngineApi;
   /** js/core/pack-rules.js (browser side; Node uses require()) */
   PackRules?: unknown;

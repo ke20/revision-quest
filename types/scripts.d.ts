@@ -89,9 +89,9 @@ interface PacksApi {
   load(id: string, cb: (err: PackLoadError | null, data?: LoadedPack | null) => void): void;
 }
 
-/* ---------- js/exercises/exercises.js ---------- */
+/* ---------- js/exercises/exercises.js (window.Exercises, built from js/exercises/common/ and types/) ---------- */
 
-/** What an exercise reports when it is answered (on top of ExerciseResult, read by js/core/engine.js). */
+/** What an exercise reports when it is answered (on top of ExerciseResult, read by js/core/engine/api/play.js). */
 interface RenderedResult extends ExerciseResult {
   /** The right answer as plain text, shown after a wrong answer. */
   answerText?: string;

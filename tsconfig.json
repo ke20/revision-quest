@@ -2,7 +2,6 @@
   // Type checking of the game's JavaScript (no build: nothing is emitted, the browser runs the same files).
   //   npm run typecheck   (mise run typecheck), also part of npm run qa
   // Types are written as JSDoc comments in the files; shared types live in types/*.d.ts.
-  // Files are added one by one as they get typed.
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
@@ -15,6 +14,6 @@
     "moduleResolution": "Bundler",
     "types": []
   },
-  "files": ["types/globals.d.ts", "types/pack.d.ts", "types/engine.d.ts", "types/scripts.d.ts", "js/core/pack-rules.js", "js/core/engine.js", "js/exercises/exercises.js", "js/exercises/figures.js", "js/core/packs.js", "js/core/i18n.js", "js/pages/voix.js"],
-  "include": ["js/app/**/*.js"]
+  "files": ["types/globals.d.ts", "types/pack.d.ts", "types/engine.d.ts", "types/engine-parts.d.ts", "types/scripts.d.ts", "types/exercises-parts.d.ts"],
+  "include": ["js/core/**/*.js", "js/exercises/**/*.js", "js/app/**/*.js", "js/pages/*.js"]
 }

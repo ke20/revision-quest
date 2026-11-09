@@ -22,7 +22,7 @@ objet, `?.`, `??`, `import()` dynamique). Les anciens fichiers écrits en ES5 re
 **Types** : TypeScript vérifie le JavaScript sans rien compiler (`mise run typecheck`, `tsconfig.json`). Les types
 s'écrivent en commentaires JSDoc (`/** @param {Pack} pack */`) ; les types partagés sont dans `types/*.d.ts`
 (format d'un pack : `types/pack.d.ts`, données du moteur : `types/engine.d.ts`). Un fichier vérifié commence par
-`// @ts-check` et figure dans `tsconfig.json` (`files` ou `include`) : `js/core/engine.js`, `js/exercises/exercises.js`,
+`// @ts-check` et figure dans `tsconfig.json` (`files` ou `include`) : `js/core/engine/*.js`, `js/exercises/exercises.js`,
 `js/core/pack-rules.js`, `js/exercises/figures.js`, `js/core/packs.js`, `js/core/i18n.js`, `js/pages/voix.js` et tous les écrans `js/app/*.js`. Les objets publics des scripts classiques sont décrits dans
 `types/engine.d.ts` (`EngineApi`) et `types/scripts.d.ts` (`Exercises`, `Packs`, `I18N`, `Figures`) ; `engine.js` et
 `exercises.js` sont vérifiés contre leur interface (`@type {EngineApi}`, `@type {ExercisesApi}`) : changer une
@@ -44,10 +44,12 @@ revision-quest/
 │   ├── core/               logique sans écran (scripts classiques, testés aussi dans Node)
 │   │   ├── i18n.js         nom de l'app, textes de l'interface (fr / en)
 │   │   ├── packs.js        vérifie le catalogue, charge les chapitres à la demande
-│   │   ├── engine.js       joueurs, XP, cœurs, étoiles, badges, sauvegarde
+│   │   ├── engine/         joueurs, XP, cœurs, étoiles, badges, sauvegarde (engine.js construit window.Engine)
 │   │   └── pack-rules.js   règles d'un chapitre (validateur, navigateur et Node)
 │   ├── exercises/
-│   │   ├── exercises.js    affichage et correction des exercices, voix
+│   │   ├── common/         briques partagées : texte enrichi, corrections, cadre, bulles, voix, documents
+│   │   ├── types/          un fichier par type d'exercice : mcq, sort, match, order, fill, spot, write
+│   │   ├── exercises.js    aiguillage et objet public window.Exercises (chargé en dernier)
 │   │   └── figures.js      figures de géométrie en SVG, tableaux
 │   ├── app/                le jeu (modules ES)
 │   │   ├── main.js         démarrage

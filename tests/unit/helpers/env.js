@@ -8,6 +8,13 @@ const vm = require("vm");
 
 const ROOT = path.resolve(__dirname, "..", "..", "..");
 
+/** The classic scripts a page loads, in order (not the ES modules): the tests follow index.html / voix.html.
+    prefix keeps only the scripts under a folder, e.g. pageScripts("voix.html", "js/exercises/"). */
+function pageScripts(page = "index.html", prefix = "") {
+  const html = fs.readFileSync(path.join(ROOT, page), "utf8");
+  return [...html.matchAll(/<script src="([^"]+)"><\/script>/g)].map((m) => m[1]).filter((s) => s.startsWith(prefix));
+}
+
 /** A cookie jar shared between environments (like one browser profile). */
 function cookieJar() {
   const jar = new Map(); // name -> { value, path }
@@ -43,7 +50,7 @@ function storage(initial) {
  *         globals (extra window properties set before the scripts run, e.g. { CATALOG }) }
  */
 function load(opts = {}) {
-  const scripts = opts.scripts || ["js/core/i18n.js", "packs/catalog.js", "js/core/packs.js", "js/core/engine.js", "js/exercises/exercises.js"];
+  const scripts = opts.scripts || pageScripts("index.html").filter((s) => !s.startsWith("js/vendor/"));
   const ls = opts.localStorage || storage();
   const jar = opts.cookies || cookieJar();
   const listeners = {};
@@ -88,4 +95,4 @@ function makePack(n = 4, k = 2) {
   };
 }
 
-module.exports = { ROOT, load, storage, cookieJar, makePack };
+module.exports = { pageScripts, ROOT, load, storage, cookieJar, makePack };

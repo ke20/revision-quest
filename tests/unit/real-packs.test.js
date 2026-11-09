@@ -1,15 +1,15 @@
 // Every real pack of packs/catalog.js accepts its own expected answers, checked with the very functions the game uses
-// (js/exercises/exercises.js, loaded in the fake browser). Catches a typo in an answer that the validator cannot see,
+// (window.Exercises from js/exercises/, loaded in the fake browser). Catches a typo in an answer that the validator cannot see,
 // in milliseconds instead of playing each pack in a browser. Rendering is covered by tests/e2e/real-packs.spec.js.
 "use strict";
 const path = require("path");
 const test = require("node:test");
 const assert = require("node:assert");
-const { load } = require("./helpers/env");
+const { load, pageScripts } = require("./helpers/env");
 const { catalogUnits, loadCatalog, loadPack } = require("../../tools/validate-pack");
 
 const ROOT = path.resolve(__dirname, "..", "..");
-const X = load({ scripts: ["js/core/i18n.js", "js/exercises/exercises.js"] }).window.Exercises;
+const X = load({ scripts: ["js/core/i18n.js", ...pageScripts("voix.html", "js/exercises/")] }).window.Exercises;
 
 /** Problems of one exercise when answered with its own expected answer (empty = the game accepts it). */
 function problems(ex) {
