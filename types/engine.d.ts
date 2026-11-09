@@ -8,7 +8,7 @@ interface WorldProgress {
 
 interface PackProgress {
   worlds: Record<string, WorldProgress>;
-  lastPlayed?: number;
+  lastPlayed: number;
 }
 
 /** Progress of one player. */

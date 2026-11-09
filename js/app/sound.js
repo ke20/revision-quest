@@ -3,6 +3,7 @@
 
 /* ================= Sounds (WebAudio) ================= */
 export let Sound = (function () {
+  /** @type {AudioContext | null} */
   var ctx = null;
   function ac() {
     if (!ctx) {
@@ -13,6 +14,7 @@ export let Sound = (function () {
     if (ctx.state === "suspended") { try { ctx.resume(); } catch (e) { /* */ } }
     return ctx;
   }
+  /** @param {number} freq @param {number} start @param {number} dur @param {OscillatorType} [type] @param {number} [vol] */
   function tone(freq, start, dur, type, vol) {
     var c = ac(); if (!c) return;
     var t0 = c.currentTime + start;

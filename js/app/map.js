@@ -10,7 +10,7 @@ import { pauseGuard, startWorld } from "./play.js";
 import { typedConfirmBox } from "./settings.js";
 import { Sound } from "./sound.js";
 import { each, h, heartsHtml, on, qs, shieldsHtml, show, starsHtml, toast } from "./ui.js";
-import { E, R, T, safeColor } from "./util.js";
+import { E, R, T, must, safeColor } from "./util.js";
 
 /* ================= World map (of the current pack) ================= */
 
@@ -48,9 +48,9 @@ export function showMap() {
       "Toutes les étoiles de ce chapitre seront effacées et il faudra repartir du monde 1. L'XP, les badges et les autres chapitres sont gardés.",
       "Recommencer", function () { Engine.resetPack(S.pack.id); showMap(); toast("Chapitre remis à zéro ✨"); });
   });
-  each(node, ".map-node", function (n) {
-    n.querySelector(".node-btn").onclick = function () {
-      var w = S.data.worlds[+n.getAttribute("data-i")];
+  each(node, ".map-node", /** @param {HTMLElement} n */ function (n) {
+    qs(n, ".node-btn").onclick = function () {
+      var w = S.data.worlds[+must(n.getAttribute("data-i"))];
       if (!w) return;
       if (!GHOST && !Engine.isUnlocked(w.id)) {
         Sound.wrong();
@@ -72,12 +72,14 @@ export function showMap() {
   }
 }
 
+/** @param {HTMLElement} node */
 export function layoutMap(node) {
-  var path = node.querySelector(".map-path");
-  var svg = node.querySelector(".map-svg");
+  var path = qs(node, ".map-path");
+  var svg = qs(node, ".map-svg");
   var items = path.querySelectorAll(".map-node");
   var W = path.clientWidth, STEP = 150, TOP = 100;
   var offsets = [0, 0.26, 0, -0.26];
+  /** @type {number[][]} */
   var pts = [];
   Array.prototype.forEach.call(items, function (n, i) {
     var x = W / 2 + offsets[i % 4] * W;
@@ -86,7 +88,7 @@ export function layoutMap(node) {
     pts.push([x, y]);
   });
   path.style.height = (TOP + (items.length - 1) * STEP + 120) + "px";
-  svg.setAttribute("width", W); svg.setAttribute("height", path.style.height.replace("px", ""));
+  svg.setAttribute("width", String(W)); svg.setAttribute("height", path.style.height.replace("px", ""));
   var d = "";
   pts.forEach(function (p, i) {
     if (i === 0) { d += "M" + p[0] + " " + p[1]; return; }
@@ -98,6 +100,7 @@ export function layoutMap(node) {
 
 /* ================= Lesson ================= */
 
+/** @param {World} w */
 export function showLesson(w) {
   route(worldPath(w));
   setNav(showMap, function () { showLesson(w); });

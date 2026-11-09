@@ -2,6 +2,7 @@
    Progress is stored per content pack: state.packs[packId].worlds[worldId].
    Exposes window.Engine. */
 // @ts-check
+/** @typedef {SaveDb & { restored?: boolean }} EngLoadedDb A save read at start-up (restored: rebuilt from the cookie). */
 (function () {
   "use strict";
 
@@ -55,6 +56,7 @@
   /* Comfort settings of a player (chosen at creation, editable in "Réglages").
      At creation the player answers one question (attention difficulties, yes / no): the answer only picks
      the initial values below and is NEVER stored. Only the 3 settings are kept in the profile. */
+  /** @type {Record<string, Array<string | number>>} */
   var COMFORT = {
     pauseEvery: [0, 2, 3, 4],                  // pause suggested after N worlds finished in a row (0 = never)
     freeMistakes: [0, 1, 2, 3],                // wrong answers per world that do not cost a heart (shields)
@@ -63,18 +65,23 @@
     playedWorlds: ["open", "replay"], // a world already played stays open, or must be earned again with the current difficulty
     seasonal: ["auto", "off"]         // seasonal themes (Halloween, Christmas) on their dates, or never
   };
+  /** @type {Record<string, string | number>} */
   var COMFORT_NO = { pauseEvery: 4, freeMistakes: 1, animations: "normal", difficulty: "normal", playedWorlds: "open", seasonal: "auto", grade: "" };   // defaults (and fallback)
+  /** @type {Record<string, string | number>} */
   var COMFORT_YES = { pauseEvery: 2, freeMistakes: 2, animations: "boost", difficulty: "normal", playedWorlds: "open", seasonal: "auto", grade: "" };
   /* grade: the player's class (a level id of js/catalog.js, e.g. "cm2"), used to pre-filter the chapters; "" = not set.
      Free text checked by its format only: the engine does not know the catalogue, the app ignores an unknown id. */
   var GRADE = /^[a-z0-9-]{1,20}$/;
+  /** @param {unknown} g @returns {boolean} */
   function validGrade(g) { return g === "" || (typeof g === "string" && GRADE.test(g)); }
 
   /* Stars of a world (0 to MAX_STARS) come from its best accuracy: a 2nd try counts half (see answer()).
      They are always recomputed from the accuracy when a save is read, so a change of thresholds needs no migration. */
   var MAX_STARS = 5;
   var STAR_STEPS = [0.5, 0.65, 0.8, 0.95]; // accuracy for 2, 3, 4 and 5 stars (1 star = world finished)
+  /** @type {Record<PlayerSettings["difficulty"], number>} */
   var STARS_TO_UNLOCK = { easy: 2, normal: 3, medium: 4, hard: 5 };
+  /** @param {number} accuracy @returns {number} */
   function starsFor(accuracy) {
     var n = 1;
     STAR_STEPS.forEach(function (min) { if (accuracy + 1e-9 >= min) n++; });
@@ -82,7 +89,9 @@
   }
 
   function appName() { return (window.APP_CONFIG && window.APP_CONFIG.name) || "Révision Quest"; }
+  /** @param {unknown} o @param {string} k */
   function own(o, k) { return !!o && Object.prototype.hasOwnProperty.call(o, k); }
+  /** @param {unknown} o */
   function isObj(o) { return !!o && typeof o === "object" && !Array.isArray(o); }
 
   /** @returns {PlayerState} */
@@ -99,6 +108,7 @@
     };
   }
 
+  /** @param {string} str @returns {string} */
   function hash(str) { // FNV-1a 32 bits → base36
     var h = 0x811c9dc5;
     str = String(str);
@@ -109,35 +119,44 @@
     return h.toString(36);
   }
 
+  /** @param {string} str */
   function b64encode(str) { // UTF-8 safe
     var bytes = new TextEncoder().encode(str), bin = "";
     for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
     return btoa(bin);
   }
+  /** @param {string} b64 */
   function b64decode(b64) {
     var bin = atob(b64), bytes = new Uint8Array(bin.length);
     for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
     return new TextDecoder().decode(bytes);
   }
+  /** @param {string} b */
   function toUrl64(b) { return b.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, ""); }
+  /** @param {string} b */
   function fromUrl64(b) { b = b.replace(/-/g, "+").replace(/_/g, "/"); while (b.length % 4) b += "="; return b; }
 
+  /** @param {Uint8Array} bytes */
   function bytesToUrl64(bytes) {
     var bin = "";
     for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
     return toUrl64(btoa(bin));
   }
+  /** @param {string} s */
   function url64ToBytes(s) {
     var bin = atob(fromUrl64(s)), bytes = new Uint8Array(bin.length);
     for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
     return bytes;
   }
-  /** Runs bytes through a CompressionStream / DecompressionStream; rejects beyond max bytes (no "zip bomb"). */
+  /** Runs bytes through a CompressionStream / DecompressionStream; rejects beyond max bytes (no "zip bomb").
+      @param {CompressionStream | DecompressionStream} stream @param {Uint8Array<ArrayBuffer>} bytes @param {number} max
+      @returns {Promise<Uint8Array>} */
   function pipeBytes(stream, bytes, max) {
     var writer = stream.writable.getWriter();
     writer.write(bytes).catch(function () {});
     writer.close().catch(function () {});
-    var reader = stream.readable.getReader(), parts = [], total = 0;
+    var reader = stream.readable.getReader(), parts = /** @type {Uint8Array[]} */ ([]), total = 0;
+    /** @returns {Promise<Uint8Array>} */
     function next() {
       return reader.read().then(function (r) {
         if (r.done) {
@@ -162,14 +181,17 @@
   // control, invisible and bidi characters removed from player names (control characters are the point here)
   // eslint-disable-next-line no-control-regex
   var BAD_CHARS = /[\u0000-\u001F\u007F-\u009F\u00AD\u200B-\u200F\u2028-\u202E\u2060-\u206F\uFEFF]/g;
+  /** @param {unknown} name */
   function cleanName(name) { return String(name == null ? "" : name).replace(BAD_CHARS, "").replace(/\s+/g, " ").trim(); }
 
-  /** JSON.parse that drops prototype-related keys (defence against prototype pollution). */
+  /** JSON.parse that drops prototype-related keys (defence against prototype pollution).
+      @param {string} text @returns {any} untrusted data, checked by the normalize functions */
   function safeJsonParse(text) {
     return JSON.parse(text, function (k, v) {
       return k === "__proto__" || k === "constructor" || k === "prototype" ? undefined : v;
     });
   }
+  /** @param {any} v untrusted value @param {number} min @param {number} max @returns {number} */
   function clampInt(v, min, max) {
     v = Math.round(+v);
     return isFinite(v) ? Math.max(min, Math.min(max, v)) : min;
@@ -180,7 +202,7 @@
   /* ---------- validation of anything read from storage, cookie or .save ---------- */
 
   /** Whitelist: any value that is not allowed falls back to the default ("no" answer). */
-  /** @returns {PlayerSettings} */
+  /** @param {any} s untrusted @returns {PlayerSettings} */
   function normalizeSettings(s) {
     /** @type {any} filled key by key from COMFORT */
     var out = {};
@@ -192,9 +214,12 @@
     out.grade = validGrade(g) ? g : "";
     return out;
   }
+  /** @param {boolean} yes */
   function comfortDefaults(yes) { return normalizeSettings(yes === true ? COMFORT_YES : COMFORT_NO); }
 
+  /** @param {any} src untrusted @returns {Record<string, WorldProgress>} */
   function normalizeWorlds(src) {
+    /** @type {Record<string, WorldProgress>} */
     var out = {};
     if (!isObj(src)) return out;
     Object.keys(src).slice(0, MAX_WORLDS).forEach(function (k) {
@@ -210,7 +235,7 @@
 
   /** Make any (possibly old, hand-made or hostile) state object safe to use.
       Anything that is not in the current format is ignored. */
-  /** @returns {PlayerState} */
+  /** @param {any} s untrusted @returns {PlayerState} */
   function normalizeState(s) {
     var d = defaultState();
     if (!isObj(s)) return d;
@@ -225,22 +250,22 @@
       });
     }
     var ids = BADGES.map(function (b) { return b.id; });
-    out.badges = Array.isArray(s.badges) ? s.badges.filter(function (b, i, a) { return ids.indexOf(b) !== -1 && a.indexOf(b) === i; }) : [];
+    out.badges = Array.isArray(s.badges) ? s.badges.filter(/** @param {any} b @param {number} i @param {any[]} a */ function (b, i, a) { return ids.indexOf(b) !== -1 && a.indexOf(b) === i; }) : [];
     out.translations = [];
-    (Array.isArray(s.translations) ? s.translations.slice(0, 2000) : []).forEach(function (t) {
+    (Array.isArray(s.translations) ? s.translations.slice(0, 2000) : []).forEach(/** @param {any} t */ function (t) {
       if (typeof t !== "string" || t.length > 300) return;
       var h = t;
       if (!/^[a-z0-9]{1,8}$/.test(h)) return;     // only short hashes are kept
       if (out.translations.indexOf(h) === -1 && out.translations.length < 500) out.translations.push(h);
     });
-    out.days = Array.isArray(s.days) ? s.days.filter(function (x) { return typeof x === "string" && /^\d{4}-\d{2}-\d{2}$/.test(x); }).slice(-60) : [];
+    out.days = Array.isArray(s.days) ? s.days.filter(/** @param {any} x */ function (x) { return typeof x === "string" && /^\d{4}-\d{2}-\d{2}$/.test(x); }).slice(-60) : [];
     out.sound = s.sound === undefined ? true : !!s.sound;
     out.bestCombo = clampInt(s.bestCombo || 0, 0, 10000);
     out.lastPack = typeof s.lastPack === "string" && PACK_ID.test(s.lastPack) && own(out.packs, s.lastPack) ? s.lastPack : null;
     return out;
   }
 
-  /** A saved or imported player made safe (whitelists, clamped numbers), or null. @returns {Profile|null} */
+  /** A saved or imported player made safe (whitelists, clamped numbers), or null. @param {any} p untrusted @returns {Profile|null} */
   function normalizeProfile(p) {
     if (!isObj(p)) return null;
     var name = cleanName(p.name).slice(0, 20);
@@ -259,7 +284,9 @@
 
   /* ---------- cookie backup ---------- */
 
+  /** @returns {Record<string, string>} */
   function readCookies() {
+    /** @type {Record<string, string>} */
     var out = {};
     try {
       (document.cookie || "").split(";").forEach(function (c) {
@@ -281,6 +308,7 @@
   })();
   var COOKIE_SECURE = (function () { try { return location.protocol === "https:"; } catch (e) { return false; } })();
   var SAFE_COOKIE_VALUE = /^[A-Za-z0-9_-]*$/;
+  /** @param {string} name @param {string} value @param {number} maxAge @param {string} [path] */
   function setCookie(name, value, maxAge, path) {
     if (!SAFE_COOKIE_VALUE.test(name) || !SAFE_COOKIE_VALUE.test(String(value))) return;
     document.cookie = name + "=" + value + "; path=" + (path || COOKIE_PATH) + "; max-age=" + maxAge +
@@ -288,13 +316,17 @@
   }
 
 
+  /** @param {string[]} list */
   function badgeIndexes(list) {
     return list.map(function (b) { for (var i = 0; i < BADGES.length; i++) if (BADGES[i].id === b) return i; return -1; });
   }
+  /** @param {Record<string, WorldProgress>} worlds */
   function worldsToArr(worlds) {
     return Object.keys(worlds).map(function (k) { return [k, worlds[k].stars, Math.round(worlds[k].accuracy * 100)]; });
   }
+  /** @param {unknown} arr untrusted (normalized later) @returns {Record<string, WorldProgress>} */
   function worldsFromArr(arr) {
+    /** @type {Record<string, WorldProgress>} */
     var worlds = {};
     (Array.isArray(arr) ? arr.slice(0, MAX_WORLDS) : []).forEach(function (w) {
       if (Array.isArray(w) && WORLD_ID.test(String(w[0]))) worlds[String(w[0])] = { stars: w[1], accuracy: w[2] / 100, completed: w[1] > 0 };
@@ -308,7 +340,8 @@
       packs = [[packId, lastPlayedSeconds, [[worldId, stars, accuracy%], ...]], ...]
       settings = 5 characters: pauseEvery digit, freeMistakes digit, animations code (n / o / b), difficulty code
                  (e / n / m / h), playedWorlds code (o / r; O / R = seasonal themes off), then the grade if any, e.g. "41onocm2";
-                 shorter codes of older saves get the defaults */
+                 shorter codes of older saves get the defaults
+      @param {Profile} p @param {string[]} [packIds] @returns {unknown[]} */
   function compactProfile(p, packIds) {
     var s = p.state;
     var packs = (packIds || Object.keys(s.packs)).map(function (id) {
@@ -321,6 +354,7 @@
   var ANIM_CODES = ["n", "o", "b"]; // same order as COMFORT.animations
   var DIFFICULTY_CODES = ["e", "n", "m", "h"]; // same order as COMFORT.difficulty
   var PLAYED_CODES = ["o", "r"]; // same order as COMFORT.playedWorlds
+  /** @param {PlayerSettings} st */
   function encodeSettings(st) {
     st = normalizeSettings(st);
     return String(st.pauseEvery) + String(st.freeMistakes) + ANIM_CODES[COMFORT.animations.indexOf(st.animations)] +
@@ -328,6 +362,7 @@
       (st.seasonal === "off" ? PLAYED_CODES[COMFORT.playedWorlds.indexOf(st.playedWorlds)].toUpperCase() : PLAYED_CODES[COMFORT.playedWorlds.indexOf(st.playedWorlds)]) +
       st.grade;
   }
+  /** @param {unknown} code @returns {PlayerSettings|null} */
   function decodeSettings(code) {
     if (typeof code !== "string" || code.length < 3 || code.length > 25) return null; // → defaults
     return normalizeSettings({
@@ -339,21 +374,23 @@
       grade: code.slice(5)
     });
   }
+  /** @param {Profile} p */
   function profileActivity(p) {
     var t = 0;
     Object.keys(p.state.packs).forEach(function (id) { t = Math.max(t, p.state.packs[id].lastPlayed || 0); });
     return t || p.createdAt || 0;
   }
+  /** @param {SaveDb} db @param {unknown[]} list */
   function encodeCookie(db, list) { return toUrl64(b64encode(JSON.stringify({ v: SAVE_VERSION, c: db.currentId, p: list }))); }
   /** Builds the cookie value, at most COOKIE_MAX_BYTES: current player first, then the most recently played ones.
-      Players that do not fit are left out (the cookie is only a backup; localStorage and .save files are the real saves). */
+      Players that do not fit are left out (the cookie is only a backup; localStorage and .save files are the real saves). @param {SaveDb} db */
   function buildCookie(db) {
     var order = db.profiles.slice().sort(function (a, b) {
       if (a.id === db.currentId) return -1;
       if (b.id === db.currentId) return 1;
       return profileActivity(b) - profileActivity(a);
     });
-    var list = [], enc = encodeCookie(db, list);
+    var list = /** @type {unknown[]} */ ([]), enc = encodeCookie(db, list);
     order.forEach(function (p) {
       var tryEnc = encodeCookie(db, list.concat([compactProfile(p)]));
       if (tryEnc.length <= COOKIE_MAX_BYTES) { list.push(compactProfile(p)); enc = tryEnc; return; }
@@ -367,11 +404,13 @@
     });
     return enc;
   }
-  /** Reads the compact cookie (current format only). */
+  /** Reads the compact cookie (current format only).
+      @param {any} c untrusted @returns {{ profiles: Profile[], currentId: string|null } | null} */
   function uncompact(c) {
     if (!isObj(c) || c.v !== SAVE_VERSION || !Array.isArray(c.p)) return null;
-    var profiles = c.p.slice(0, MAX_PROFILES).map(function (a) {
+    var profiles = c.p.slice(0, MAX_PROFILES).map(/** @param {any} a */ function (a) {
       if (!Array.isArray(a)) return null;
+      /** @type {Record<string, PackProgress>} */
       var packs = {};
       (Array.isArray(a[4]) ? a[4].slice(0, MAX_PACKS) : []).forEach(function (pk) {
         if (Array.isArray(pk) && typeof pk[0] === "string" && PACK_ID.test(pk[0])) packs[pk[0]] = { worlds: worldsFromArr(pk[2]), lastPlayed: (+pk[1] || 0) * 1000 };
@@ -386,6 +425,7 @@
   }
 
   var cookieOk = true;
+  /** @param {SaveDb} db */
   function writeCookie(db) {
     try {
       var enc = buildCookie(db);
@@ -420,30 +460,35 @@
 
   /* ---------- merging two copies of the save (several tabs open at once) ---------- */
 
+  /** @template T @param {T[]} a @param {T[]} b @returns {T[]} */
   function unionList(a, b) {
     var out = a.slice();
     b.forEach(function (v) { if (out.indexOf(v) === -1) out.push(v); });
     return out;
   }
+  /** @param {Record<string, WorldProgress>} a @param {Record<string, WorldProgress>} b */
   function mergeWorlds(a, b) {
+    /** @type {Record<string, WorldProgress>} */
     var out = {};
     unionList(Object.keys(a), Object.keys(b)).slice(0, MAX_WORLDS).forEach(function (k) {
       var x = own(a, k) ? a[k] : null, y = own(b, k) ? b[k] : null;
-      out[k] = !x || !y ? (x || y) : {
+      out[k] = !x || !y ? /** @type {WorldProgress} */ (x || y) : { // one of them exists (union of keys)
         stars: Math.max(x.stars, y.stars), accuracy: Math.max(x.accuracy, y.accuracy), completed: x.completed || y.completed
       };
     });
     return out;
   }
-  /** Progress of the same player seen by two tabs: keep the best of both. */
+  /** Progress of the same player seen by two tabs: keep the best of both.
+      @param {PlayerState} mine @param {PlayerState} other @returns {PlayerState} */
   function mergeState(mine, other) {
+    /** @type {Record<string, PackProgress>} */
     var packs = {};
     unionList(Object.keys(mine.packs), Object.keys(other.packs)).slice(0, MAX_PACKS).forEach(function (id) {
       var x = own(mine.packs, id) ? mine.packs[id] : null, y = own(other.packs, id) ? other.packs[id] : null;
-      packs[id] = !x || !y ? (x || y) : { worlds: mergeWorlds(x.worlds, y.worlds), lastPlayed: Math.max(x.lastPlayed, y.lastPlayed) };
+      packs[id] = !x || !y ? /** @type {PackProgress} */ (x || y) : { worlds: mergeWorlds(x.worlds, y.worlds), lastPlayed: Math.max(x.lastPlayed, y.lastPlayed) };
     });
     var badges = unionList(mine.badges, other.badges);
-    var lp = [mine.lastPack, other.lastPack].filter(function (id) { return id && own(packs, id); })
+    var lp = /** @type {string[]} */ ([mine.lastPack, other.lastPack].filter(function (id) { return id && own(packs, id); }))
       .sort(function (a, b) { return packs[b].lastPlayed - packs[a].lastPlayed; })[0] || null;
     return {
       xp: Math.max(mine.xp, other.xp),
@@ -456,7 +501,8 @@
       lastPack: lp
     };
   }
-  /** epoch changes when a progress is reset or replaced by an import: the newest epoch wins, no merge. */
+  /** epoch changes when a progress is reset or replaced by an import: the newest epoch wins, no merge.
+      @param {Profile} mine @param {Profile} other @returns {Profile} */
   function mergeProfile(mine, other) {
     // settings: the most recently changed copy wins (on a tie, this tab's copy)
     var st = (other.settingsAt || 0) > (mine.settingsAt || 0) ? other : mine;
@@ -468,24 +514,28 @@
       state: base ? base.state : mergeState(mine.state, other.state)
     };
   }
+  /** @param {any} d untrusted @returns {Record<string, number>} */
   function normalizeDeleted(d) {
+    /** @type {Record<string, number>} */
     var out = {};
     if (!isObj(d)) return out;
     Object.keys(d).filter(function (id) { return SAFE_ID.test(id); })
-      .map(function (id) { return [id, clampInt(d[id], 0, MAX_TIME)]; })
+      .map(/** @param {string} id @returns {[string, number]} */ function (id) { return [id, clampInt(d[id], 0, MAX_TIME)]; })
       .sort(function (a, b) { return b[1] - a[1]; }).slice(0, MAX_TOMBSTONES)
       .forEach(function (e) { out[e[0]] = e[1]; });
     return out;
   }
   /** Merge another copy of the save into ours (keeps this tab's current player).
-      Players deleted in either copy (tombstones) stay deleted; players created elsewhere are kept. */
+      Players deleted in either copy (tombstones) stay deleted; players created elsewhere are kept.
+      @param {SaveDb} mine @param {SaveDb} other @returns {SaveDb} */
   function mergeDb(mine, other) {
+    /** @type {Record<string, number>} */
     var tomb = {};
     [mine.deleted || {}, other.deleted || {}].forEach(function (d) {
       Object.keys(d).forEach(function (id) { tomb[id] = Math.max(tomb[id] || 0, d[id]); });
     });
     tomb = normalizeDeleted(tomb);
-    var profiles = [], byId = {};
+    var profiles = /** @type {Profile[]} */ ([]), byId = /** @type {Record<string, Profile>} */ ({});
     other.profiles.forEach(function (p) { byId[p.id] = p; });
     mine.profiles.forEach(function (p) {
       if (own(tomb, p.id)) return;
@@ -503,6 +553,7 @@
     return { profiles: profiles, currentId: cur, deleted: tomb };
   }
   /** "Name (n)" that stays within 20 characters. */
+  /** @param {string} name @param {number} n */
   function suffixName(name, n) {
     var suffix = " (" + n + ")";
     return cleanName(name).slice(0, 20 - suffix.length).trim() + suffix;
@@ -511,13 +562,17 @@
   /* ---------- load / save ---------- */
 
   var storageOk = true;
+  /** @type {string | null} */
   var lastRaw = null; // the v3 value this tab last read or wrote (another tab changed it if it differs)
   /** @returns {SaveDb} */
   function emptyDb() { return { profiles: [], currentId: null, deleted: {} }; }
+  /** @param {string} k @returns {string | null} */
   function lsGet(k) { try { return window.localStorage.getItem(k); } catch (e) { storageOk = false; return null; } }
+  /** @param {string} k @param {string} v */
   function lsSet(k, v) { try { window.localStorage.setItem(k, v); return true; } catch (e) { return false; } }
 
-  /** Parse a saved db. Returns null when the value is unusable (corrupted). */
+  /** Parse a saved db. Returns null when the value is unusable (corrupted).
+      @param {string} raw @returns {SaveDb | null} */
   function parseDb(raw) {
     var parsed;
     try { parsed = safeJsonParse(raw); } catch (e) { return null; }
@@ -531,14 +586,15 @@
       deleted: normalizeDeleted(parsed.deleted)
     };
   }
+  /** @param {string | null} raw */
   function backupCorrupt(raw) { if (raw) lsSet(CORRUPT_KEY, String(raw).slice(0, 2000000)); }
 
-  /** revisionQuest.v3, else (missing or corrupted → copied to revisionQuest.v3.corrupt) the cookie backup, else empty. */
+  /** revisionQuest.v3, else (missing or corrupted → copied to revisionQuest.v3.corrupt) the cookie backup, else empty. @returns {EngLoadedDb} */
   function loadDb() {
     var raw = lsGet(STORAGE_KEY), db = raw !== null ? parseDb(raw) : null;
     if (db) { lastRaw = raw; return db; }
     if (raw !== null) backupCorrupt(raw);
-    var c = readCookie();
+    var c = /** @type {EngLoadedDb | null} */ (readCookie()); // deleted is set just below
     if (c && c.profiles.length) { c.restored = true; c.deleted = {}; return c; }
     return emptyDb();
   }
@@ -546,6 +602,7 @@
   var db = loadDb();
   if (db.currentId && !findProfile(db.currentId)) db.currentId = null;
 
+  /** @param {string | null | undefined} id @returns {Profile | null} */
   function findProfile(id) {
     for (var i = 0; i < db.profiles.length; i++) if (db.profiles[i].id === id) return db.profiles[i];
     return null;
@@ -553,9 +610,9 @@
   function current() { return db.currentId ? findProfile(db.currentId) : null; }
 
   var guestState = defaultState(); // used only when no player is selected (never saved)
-  var state = current() ? current().state : guestState;
+  var state = current() ? /** @type {Profile} */ (current()).state : guestState;
 
-  /** Merge a copy written by another tab into memory. */
+  /** Merge a copy written by another tab into memory. @param {SaveDb} other */
   function adopt(other) {
     var p = current();
     if (p) p.state = state;
@@ -582,6 +639,7 @@
   delete db.restored;
 
   /* Another tab saved: merge its copy and tell the app (which re-renders unless an exercise is in progress). */
+  /** @type {Array<() => void>} */
   var changeListeners = [];
   try {
     window.addEventListener("storage", function (e) {
@@ -602,6 +660,7 @@
   var session = null;  // current world session
   var PAUSE_KEY = "revisionQuest.pause"; // { profileId: end time } (only running pauses)
   var PAUSE_MS = 5 * 60 * 1000;          // "Je reprends" stays disabled this long
+  /** @returns {Record<string, any>} untrusted (localStorage) */
   function readPauses() {
     var raw = lsGet(PAUSE_KEY), m;
     if (raw === null) return {};
@@ -615,6 +674,7 @@
 
   function packId() { return pack ? pack.id : null; }
   function worlds() { return (pack && pack.data && pack.data.worlds) || []; }
+  /** @param {PlayerState} st @param {string | null} id @param {boolean} create @returns {PackProgress | null} */
   function packState(st, id, create) {
     if (!id || !PACK_ID.test(id)) return null;
     if (own(st.packs, id)) return st.packs[id];
@@ -623,18 +683,21 @@
     return st.packs[id];
   }
 
+  /** @param {Date} [d] */
   function todayStr(d) {
     d = d || new Date();
     var m = d.getMonth() + 1, day = d.getDate();
     return d.getFullYear() + "-" + (m < 10 ? "0" : "") + m + "-" + (day < 10 ? "0" : "") + day;
   }
 
+  /** @param {number} xp */
   function levelIndexFor(xp) {
     var idx = 0;
     for (var i = 0; i < LEVELS.length; i++) if (xp >= LEVELS[i].xp) idx = i;
     return idx;
   }
 
+  /** @param {number} [xp] @returns {LevelInfo} */
   function levelInfo(xp) {
     if (xp === undefined) xp = state.xp;
     var i = levelIndexFor(xp);
@@ -653,6 +716,7 @@
   }
 
   function streak() {
+    /** @type {Record<string, boolean>} */
     var set = {};
     state.days.forEach(function (d) { set[d] = true; });
     var d = new Date();
@@ -662,20 +726,25 @@
     return n;
   }
 
+  /** @param {string} id */
   function hasBadge(id) { return state.badges.indexOf(id) !== -1; }
+  /** @param {string} id a known badge id @param {Badge[]} list */
   function award(id, list) {
-    if (!hasBadge(id)) { state.badges.push(id); list.push(badgeById(id)); }
+    if (!hasBadge(id)) { state.badges.push(id); list.push(/** @type {Badge} */ (badgeById(id))); }
   }
+  /** @param {string} id @returns {Badge | null} */
   function badgeById(id) {
     for (var i = 0; i < BADGES.length; i++) if (BADGES[i].id === id) return BADGES[i];
     return null;
   }
 
+  /** @param {number | string} id */
   function worldIndex(id) {
     var w = worlds();
     for (var i = 0; i < w.length; i++) if (w[i].id === id) return i;
     return -1;
   }
+  /** @param {number | string} id @returns {WorldProgress} */
   function worldProgress(id) {
     var ps = packState(state, packId(), false), k = String(id);
     return ps && own(ps.worlds, k) ? ps.worlds[k] : { stars: 0, accuracy: 0, completed: false };
@@ -684,7 +753,8 @@
   function starsToUnlock() { return STARS_TO_UNLOCK[settings().difficulty] || STARS_TO_UNLOCK.normal; }
   /** First world always open; any other world opens once the previous one has enough stars for the current difficulty.
       With playedWorlds "open", a world already played also stays open (even after a harder difficulty is chosen).
-      With "replay", the whole chain counts: a world is open only when every world before it has enough stars. */
+      With "replay", the whole chain counts: a world is open only when every world before it has enough stars.
+      @param {number | string} id @returns {boolean} */
   function isUnlocked(id) {
     var i = worldIndex(id);
     if (i <= 0) return i === 0;
@@ -692,6 +762,7 @@
     if (open && worldProgress(id).completed) return true;
     return worldProgress(prev).stars >= starsToUnlock() && (open || isUnlocked(prev));
   }
+  /** @param {World | undefined} w */
   function worldHasDocument(w) {
     return !!(w && Array.isArray(w.exercises) && w.exercises.some(function (e) { return e && (e.docId != null || e.letterId != null); }));
   }
@@ -703,6 +774,7 @@
       if (state.days.length > 60) state.days = state.days.slice(-60);
     }
   }
+  /** @param {Badge[]} nb */
   function markPackPlayed(nb) {
     var ps = packState(state, packId(), true);
     if (!ps) return;
@@ -712,6 +784,7 @@
     if (played >= 2) award("explorer", nb);
   }
 
+  /** @param {number} n @returns {LevelInfo | null} */
   function addXp(n) {
     var before = levelIndexFor(state.xp);
     state.xp = Math.max(0, state.xp + n);
@@ -719,7 +792,7 @@
     return after > before ? levelInfo() : null;
   }
 
-  /** Stars of a state: all packs, or a single pack. */
+  /** Stars of a state: all packs, or a single pack. @param {PlayerState} st @param {string} [id] */
   function starsOf(st, id) {
     var total = 0;
     Object.keys(st.packs).forEach(function (pid) {
@@ -776,7 +849,7 @@
     /** Progress of a pack without loading it: { stars, maxStars, worldsDone, progress }. */
     packSummary: function (id, worldCount) {
       var ps = packState(state, id, false), done = 0, stars = 0;
-      if (ps) Object.keys(ps.worlds).forEach(function (k) { stars += ps.worlds[k].stars; if (ps.worlds[k].stars > 0) done++; });
+      if (ps) Object.keys(ps.worlds).forEach(function (k) { stars += /** @type {PackProgress} */ (ps).worlds[k].stars; if (/** @type {PackProgress} */ (ps).worlds[k].stars > 0) done++; }); // ps checked just before
       var n = Math.max(0, worldCount || 0);
       return {
         stars: n ? Math.min(stars, n * MAX_STARS) : stars, maxStars: n * MAX_STARS,
@@ -792,6 +865,7 @@
 
     /** Record a translation / definition bubble view. Returns array of newly earned badges. */
     viewTranslation: function (key) {
+      /** @type {Badge[]} */
       var nb = [];
       var h = hash(key);
       if (state.translations.indexOf(h) === -1) {
@@ -834,8 +908,8 @@
       if (!isObj(saved) || !pack || saved.packId !== packId()) return null;
       var w = worlds()[worldIndex(saved.worldId)];
       if (!w || saved.total !== w.exercises.length) return null;
-      var num = function (v, lo, hi) { v = Number(v); return isFinite(v) ? Math.max(lo, Math.min(hi, v)) : lo; };
-      var int = function (v, lo, hi) { return Math.floor(num(v, lo, hi)); };
+      var num = /** @param {any} v untrusted @param {number} lo @param {number} hi */ function (v, lo, hi) { v = Number(v); return isFinite(v) ? Math.max(lo, Math.min(hi, v)) : lo; };
+      var int = /** @param {any} v untrusted @param {number} lo @param {number} hi */ function (v, lo, hi) { return Math.floor(num(v, lo, hi)); };
       var maxShields = int(saved.maxShields, 0, 3);
       session = {
         packId: /** @type {string} */ (packId()), // a session only exists inside a loaded pack
@@ -878,7 +952,7 @@
         return { xp: 0, multiplier: 1, combo: session.combo, hearts: session.hearts, shields: session.shields, shieldUsed: false, gameOver: false, levelUp: null, newBadges: [], skipped: true };
       }
       var correct = !!result.correct, attempts = result.attempts || 1;
-      var nb = [], gained = 0, mult = 1, levelUp = null, shieldUsed = false;
+      var nb = /** @type {Badge[]} */ ([]), gained = 0, mult = 1, levelUp = null, shieldUsed = false;
       markDay();
       markPackPlayed(nb);
       if (correct) {
@@ -913,7 +987,7 @@
     /** Finish the current world (all exercises done, hearts left). */
     finishWorld: function () {
       if (!session) return null;
-      var s = session, nb = [];
+      var s = session, nb = /** @type {Badge[]} */ ([]);
       var counted = s.total - (s.skipped || 0);
       var accuracy = counted > 0 ? s.score / counted : 1;
       var stars = starsFor(accuracy);
@@ -976,7 +1050,7 @@
       worldsInARow = 0;
       var running = this.pauseEndsAt();
       if (running) return running;
-      var map = readPauses(), out = {}, now = Date.now(), end = now + PAUSE_MS;
+      var map = readPauses(), out = /** @type {Record<string, number>} */ ({}), now = Date.now(), end = now + PAUSE_MS;
       Object.keys(map).forEach(function (k) { if (typeof map[k] === "number" && map[k] > now && map[k] <= end) out[k] = map[k]; }); // drop old ones
       out[id] = end;
       lsSet(PAUSE_KEY, JSON.stringify(out));
@@ -994,7 +1068,9 @@
       if (!p || !isObj(changes)) return settings();
       var next = normalizeSettings(p.settings);
       Object.keys(COMFORT).forEach(function (k) {
-        if (own(changes, k) && COMFORT[k].indexOf(changes[k]) !== -1) next[k] = changes[k];
+        if (own(changes, k) && COMFORT[k].indexOf(/** @type {Record<string, string | number>} */ (changes)[k]) !== -1) {
+          /** @type {Record<string, unknown>} */ (/** @type {unknown} */ (next))[k] = /** @type {Record<string, unknown>} */ (changes)[k];
+        }
       });
       if (own(changes, "grade") && validGrade(changes.grade)) next.grade = /** @type {string} */ (changes.grade);
       p.settings = next;
@@ -1007,7 +1083,7 @@
       var sound = state.sound;
       state = defaultState();
       state.sound = sound;
-      if (current()) current().epoch = Date.now(); // a stale tab must not bring the old progress back
+      if (current()) /** @type {Profile} */ (current()).epoch = Date.now(); // a stale tab must not bring the old progress back
       session = null;
       save();
     },
@@ -1018,7 +1094,7 @@
       if (!PACK_ID.test(String(id)) || !own(state.packs, id)) return false;
       delete state.packs[id];
       if (session && session.packId === id) session = null;
-      if (current()) current().epoch = Date.now(); // a stale tab must not bring the erased stars back
+      if (current()) /** @type {Profile} */ (current()).epoch = Date.now(); // a stale tab must not bring the erased stars back
       save();
       return true;
     },
@@ -1197,16 +1273,19 @@
 
   /** The player of this device with the same name (case ignored), or null. */
   /** The player with this name (the last one if several), or null. @returns {Profile|null} */
+  /** @param {string} name */
   function sameName(name) {
     var low = String(name).toLowerCase();
     return db.profiles.filter(function (q) { return q.name.toLowerCase() === low; }).pop() || null;
   }
 
+  /** @param {string} name @param {string} [exceptId] */
   function nameTaken(name, exceptId) {
     name = cleanName(name).toLowerCase();
     return db.profiles.some(function (p) { return p.id !== exceptId && p.name.toLowerCase() === name; });
   }
 
+  /** @param {string} id @returns {boolean} */
   function selectProfile(id) {
     var p = findProfile(id);
     if (!p) return false;
@@ -1218,6 +1297,7 @@
     return true;
   }
 
+  /** @param {Profile} p @param {string} [id] @returns {ProfileSummary} */
   function summary(p, id) {
     var li = levelInfo(p.state.xp);
     return {

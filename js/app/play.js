@@ -8,12 +8,17 @@ import { showLesson, showMap } from "./map.js";
 import { clearRun, route, saveRun, setNav, worldPath } from "./nav.js";
 import { showProfiles } from "./profiles.js";
 import { Sound } from "./sound.js";
-import { badgeToasts, bigStarsHtml, confirmBox, h, heartsHtml, levelUpPopup, on, shieldsHtml, show, toast } from "./ui.js";
+import { badgeToasts, bigStarsHtml, confirmBox, h, heartsHtml, levelUpPopup, on, qs, shieldsHtml, show, toast } from "./ui.js";
 import { E, must, pick, R, safeColor, T } from "./util.js";
 
 /* ================= Play ================= */
 
-/** Play a world from its first exercise, or resume a session saved before a reload (resume). */
+/** Elements of the play screen (readDoc: id of the long text already read on its own screen).
+ * @typedef {{ node: HTMLElement, progress: HTMLElement, hearts: HTMLElement, combo: HTMLElement, xp: HTMLElement,
+ *   container: HTMLElement, bar: HTMLElement, feedback: HTMLElement, btn: HTMLButtonElement, readDoc?: string }} PlayUi */
+
+/** Play a world from its first exercise, or resume a session saved before a reload (resume).
+ * @param {World} w @param {WorldSession | null} [resume] */
 export function startWorld(w, resume) {
   if (pauseGuard()) return;
   if (!w.exercises || !w.exercises.length) { toast(T("noExercises")); return; }
@@ -31,16 +36,17 @@ export function startWorld(w, resume) {
     '<footer class="checkbar"><div class="checkbar-inner"><div class="feedback"></div><button class="btn btn-check" data-act="check" disabled>' + T("check") + "</button></div></footer>" +
     "</section>");
   show(node);
+  /** @type {PlayUi} */
   var ui = {
     node: node,
-    progress: node.querySelector(".progress-fill"),
-    hearts: node.querySelector(".hearts"),
-    combo: node.querySelector(".combo"),
-    xp: node.querySelector(".xp-val"),
-    container: node.querySelector(".ex-container"),
-    bar: node.querySelector(".checkbar"),
-    feedback: node.querySelector(".feedback"),
-    btn: node.querySelector('[data-act="check"]')
+    progress: qs(node, ".progress-fill"),
+    hearts: qs(node, ".hearts"),
+    combo: qs(node, ".combo"),
+    xp: qs(node, ".xp-val"),
+    container: qs(node, ".ex-container"),
+    bar: qs(node, ".checkbar"),
+    feedback: qs(node, ".feedback"),
+    btn: /** @type {HTMLButtonElement} */ (node.querySelector('[data-act="check"]'))
   };
   function askQuit() {
     confirmBox(T("quitTitle"), T("quitText"), T("quit"), function () {
@@ -56,6 +62,7 @@ export function startWorld(w, resume) {
   playExercise(w, ui);
 }
 
+/** animateHeart: what was just lost (it breaks). @param {PlayUi} ui @param {false | "shield" | "heart"} animateHeart */
 export function updateTop(ui, animateHeart) {
   var s = Engine.session;
   if (!s) return;
@@ -65,7 +72,7 @@ export function updateTop(ui, animateHeart) {
     var lost = animateHeart === "shield" ? ui.hearts.querySelectorAll(".shield.used") : ui.hearts.querySelectorAll(".heart.lost");
     if (lost[0]) lost[0].classList.add("break");
   }
-  ui.xp.textContent = Engine.state.xp;
+  ui.xp.textContent = String(Engine.state.xp);
   if (s.combo >= 2) {
     ui.combo.innerHTML = '<span class="fire">🔥</span> x' + s.combo + (s.combo >= 6 ? " <em>×2 XP</em>" : s.combo >= 3 ? " <em>×1.5 XP</em>" : "");
     ui.combo.className = "combo on" + (s.combo >= 6 ? " hot" : s.combo >= 3 ? " warm" : "");
@@ -76,24 +83,28 @@ export function updateTop(ui, animateHeart) {
   }
 }
 
+/** @param {PlayUi} ui @param {string} text */
 export function floatXp(ui, text) {
-  var pill = ui.node.querySelector(".xp-pill");
+  var pill = qs(ui.node, ".xp-pill");
   var f = h('<span class="float-xp">' + E(text) + "</span>");
   pill.appendChild(f);
   setTimeout(function () { f.remove(); }, 1200);
 }
 
+/** html must be trusted. @param {PlayUi} ui @param {string} state @param {string} html @param {string} [label] */
 export function setBar(ui, state, html, label) {
   ui.bar.className = "checkbar" + (state ? " " + state : "");
   ui.feedback.innerHTML = html || "";
   if (label) ui.btn.innerHTML = label;
 }
 
+/** @param {World} w @param {PlayUi} ui */
 export function playExercise(w, ui) {
   var s = must(Engine.session);
   var ex = w.exercises[s.index];
   var phase = "answer"; // "answer" | "done"
-  var controller = null;
+  /** @type {ExerciseController} set by Exercises.render below */
+  var controller = /** @type {ExerciseController} */ (/** @type {unknown} */ (null));
   setBar(ui, "", "", T("check"));
   ui.btn.disabled = true;
   ui.btn.style.display = "";
@@ -113,6 +124,7 @@ export function playExercise(w, ui) {
     return;
   }
 
+  /** @param {RenderedResult} res */
   function onResult(res) {
     phase = "done";
     var r = Engine.answer(res);
@@ -139,7 +151,7 @@ export function playExercise(w, ui) {
       else if (boostOn()) Confetti.burst(24, { center: true }); // "Renforcées": a small burst on every right answer
     } else {
       Sound.wrong();
-      ui.node.querySelector(".hearts").classList.add("shake");
+      qs(ui.node, ".hearts").classList.add("shake");
       var ans = res.answerText ? '<div class="fb-answer">' + T("correctAnswer") + ": <b>" + E(res.answerText) + "</b></div>" : "";
       var kind = boostOn() && !r.gameOver ? '<div class="fb-boost">' + pick(T("boostKo")) + "</div>" : "";
       var title = r.gameOver ? T("noHearts") : r.shieldUsed ? T("shieldUsed") : T("lostHeart");
@@ -154,7 +166,7 @@ export function playExercise(w, ui) {
       setTimeout(function () { rv.scrollIntoView({ behavior: scrollBehavior(), block: "center" }); }, 80);
     }
     setTimeout(function () { try { ui.btn.focus({ preventScroll: true }); } catch (e) { /* */ } }, 50);
-    if (r.levelUp) setTimeout(function () { levelUpPopup(r.levelUp); }, 500);
+    if (r.levelUp) setTimeout(function () { levelUpPopup(/** @type {LevelInfo} */ (r.levelUp)); }, 500);
     badgeToasts(r.newBadges);
   }
 
@@ -200,6 +212,7 @@ export function playExercise(w, ui) {
 
 /* ================= Result screens ================= */
 
+/** @param {World} w */
 export function showComplete(w) {
   var sum = must(Engine.finishWorld()); // called with the world being played
   clearRun();
@@ -266,10 +279,10 @@ export function showPause() {
     '<button class="btn btn-ghost btn-small" data-act="switch">🔄 Changer de joueur</button>' +
     "</section>");
   on(node, "switch", function () { Sound.tap(); showProfiles(); }); // another player can play meanwhile (the pause stays for this one)
-  var btn = on(node, "resume", function () {
+  var btn = /** @type {HTMLButtonElement} */ (on(node, "resume", function () {
     if (Engine.pauseEndsAt()) return; // still running (e.g. the clock was changed)
     Sound.tap(); back();
-  });
+  }));
   // a single timer, nothing visible moves: the button simply becomes clickable at the end
   setTimeout(function () { if (document.body.contains(node)) btn.disabled = false; }, Math.max(0, endAt - Date.now()) + 50);
   show(node);
@@ -281,6 +294,7 @@ export function pauseGuard() {
   return false;
 }
 
+/** @param {World} w */
 export function showGameOver(w) {
   var s = Engine.session;
   var xp = s ? s.xpEarned : 0;

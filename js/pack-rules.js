@@ -3,7 +3,7 @@
    Every check reports through err(message) (blocking) or warn(message) (advice). Messages are in French.
    Loaded as a classic <script> (window.PackRules) or with require() (module.exports). ES2017. */
 // @ts-check
-(function (root) {
+(/** @param {Window} root the browser window (this) */ function (root) {
   "use strict";
 
   const ID_RE = /^[a-z0-9-]{1,30}$/; // ids of levels, subjects and groups
@@ -15,22 +15,27 @@
 
   /* ---------- helpers ---------- */
 
+  /** A non-blank string. @param {unknown} v @returns {boolean} */
   const isStr = (v) => typeof v === "string" && v.trim().length > 0;
   const isArr = Array.isArray;
+  /** @param {object} obj @param {string} k */
   const has = (obj, k) => Object.prototype.hasOwnProperty.call(obj, k);
+  /** @param {unknown} v @returns {string} */
   const json = (v) => { const s = JSON.stringify(v); return s === undefined ? "undefined" : s; };
+  /** @param {unknown[]} list */
   const hasDup = (list) => new Set(list).size !== list.length;
+  /** @param {string} text @param {RegExp} re */
   const count = (text, re) => (text.match(re) || []).length;
 
-  /** All strings inside a value (deep). */
+  /** All strings inside a value (deep). @param {unknown} v @param {string[]} [out] @returns {string[]} */
   function strings(v, out = []) {
     if (typeof v === "string") out.push(v);
     else if (isArr(v)) v.forEach((x) => strings(x, out));
-    else if (v && typeof v === "object") Object.keys(v).forEach((k) => strings(v[k], out));
+    else if (v && typeof v === "object") Object.keys(v).forEach((k) => strings(/** @type {Record<string, unknown>} */ (v)[k], out));
     return out;
   }
 
-  /** [[mot|traduction]] must be well formed; ** must be paired. */
+  /** [[mot|traduction]] must be well formed; ** must be paired. @param {unknown} text @param {string} where @param {PackReport} err */
   function checkMarkup(text, where, err) {
     if (typeof text !== "string") return;
     const opens = count(text, /\[\[/g);
@@ -39,20 +44,22 @@
     if (count(text, /\*\*/g) % 2) err(where + " : ** (gras) non fermé");
   }
 
-  /** Fields compared as plain text: no [[...]] allowed. */
+  /** Fields compared as plain text: no [[...]] allowed. @param {unknown} v @param {string} where @param {PackReport} err */
   function noTr(v, where, err) {
     if (strings(v).some((s) => s.includes("[["))) err(where + " : [[...]] interdit dans ce champ (le texte est comparé tel quel)");
   }
 
+  /** Text without the markup. @param {unknown} s @returns {string} */
   function plain(s) {
     return String(s).replace(/\[\[([^|\]]+)\|[^\]]+\]\]/g, "$1").replace(/\*\*(.+?)\*\*/g, "$1");
   }
 
-  /** Keys of obj that are not in the allowed list. */
+  /** Keys of obj that are not in the allowed list. @param {object} obj @param {string[]} allowed @returns {string[]} */
   const unknownKeys = (obj, allowed) => Object.keys(obj).filter((k) => !allowed.includes(k));
 
   /* ---------- figures (js/figures.js draws them; same limits) ---------- */
 
+  /** Kind of drawing → number of points. @type {Record<string, number>} */
   const FIG_KINDS = { segment: 2, line: 2, ray: 2, ticks: 2, rightAngle: 3, angle: 3 };
   const FIG_KIND_NAMES = Object.keys(FIG_KINDS);
   const FIG_DIRS = ["n", "s", "e", "w", "ne", "nw", "se", "sw", "hidden"];
@@ -60,10 +67,12 @@
   const FIG_ITEM_KEYS = FIG_KIND_NAMES.concat(["label", "labelAt", "n", "hl"]);
   const FIG_KEYS = ["w", "h", "grid", "points", "draw", "alt", "caption"];
 
+  /** @param {any} f figure not checked yet @param {string} where @param {PackReport} err @param {PackReport} warn */
   function validateFigure(f, where, err, warn) {
     const F = where + " figure";
     if (!f || typeof f !== "object" || isArr(f)) return err(F + " : objet attendu");
     unknownKeys(f, FIG_KEYS).forEach((k) => err(F + ` : champ "${k}" inconnu (${FIG_KEYS.join(", ")})`));
+    /** @param {unknown} v */
     const size = (v) => typeof v === "number" && v >= 1 && v <= 24;
     if (!size(f.w) || !size(f.h)) return err(F + " : w et h (taille en carreaux) doivent être des nombres de 1 à 24");
     if (f.grid != null && typeof f.grid !== "boolean") err(F + " : grid doit être true ou false");
@@ -79,7 +88,7 @@
     });
     if (!isArr(f.draw)) return err(F + " : draw doit être un tableau (peut être vide)");
     if (f.draw.length > 60) err(F + " : 60 tracés maximum");
-    f.draw.forEach((it, i) => {
+    f.draw.forEach(/** @param {any} it @param {number} i */ (it, i) => {
       const D = `${F} draw[${i}]`;
       if (!it || typeof it !== "object") return err(D + " : objet attendu");
       unknownKeys(it, FIG_ITEM_KEYS).forEach((k) => err(D + ` : champ "${k}" inconnu`));
@@ -91,6 +100,7 @@
       if (hasDup(refs)) err(D + " : points identiques");
       else if (refs.every((r) => isArr(f.points[r]))) {
         const [a, b, c] = refs.map((r) => f.points[r]);
+        /** @param {number[]} p @param {number[]} q */
         const same = (p, q) => p[0] === q[0] && p[1] === q[1];
         if (same(a, b) || (c && same(b, c))) err(D + " : deux points au même endroit");
       }
@@ -111,6 +121,7 @@
   const CELL_KEYS = ["text", "span", "hl"];
   const MAX_ROWS = 8, MAX_COLS = 12, MAX_CELL = 20;
 
+  /** @param {any} t table not checked yet @param {string} where @param {PackReport} err @param {PackReport} warn */
   function validateTable(t, where, err, warn) {
     const T = where + " table";
     if (!t || typeof t !== "object" || isArr(t)) return err(T + " : objet attendu ({ rows: [[…]], … })");
@@ -119,7 +130,8 @@
     if (t.rows.length > MAX_ROWS) err(T + ` : ${MAX_ROWS} lignes maximum`);
     if (t.head != null && (!Number.isInteger(t.head) || t.head < 0 || t.head > t.rows.length)) err(T + " : head = nombre de lignes d'en-tête (0 à rows.length)");
     if (t.groups != null && (!Number.isInteger(t.groups) || t.groups < 1 || t.groups > MAX_COLS)) err(T + ` : groups = un trait épais toutes les N colonnes (1 à ${MAX_COLS})`);
-    const widths = t.rows.map((row, r) => {
+    /** @type {number[]} */
+    const widths = t.rows.map(/** @param {any} row @param {number} r */ (row, r) => {
       const R = `${T} ligne ${r + 1}`;
       if (!isArr(row) || !row.length) { err(R + " : tableau de cellules non vide attendu"); return 0; }
       return row.reduce((w, c, ci) => {
@@ -177,13 +189,14 @@
 
   /* ---------- pack identity ---------- */
 
-  /** The pack path (its id). Returns true when well formed. */
+  /** The pack path (its id). Returns true when well formed. @param {unknown} p @param {PackReport} err @returns {boolean} */
   function checkPath(p, err) {
     if (PACK_PATH_RE.test(String(p))) return true;
     err(`path ${json(p)} invalide (attendu "<niveau>/<matiere>/<cours>" ou "<niveau>/<matiere>/<cours>/<groupe>", minuscules, chiffres, tirets)`);
     return false;
   }
 
+  /** @param {unknown} lang @param {PackReport} err */
   function checkLang(lang, err) {
     if (lang !== "fr" && lang !== "en" && lang !== "es") err(`lang doit être "fr", "en" ou "es" (reçu : ${json(lang)})`);
   }
@@ -193,13 +206,15 @@
 
   const META_KEYS = ["title", "description", "icon", "color", "license", "author", "basedOn"];
   const LICENSES = ["CC-BY-SA-4.0"];
+  /** @type {Record<string, number>} */
   const META_LIMITS = { title: 80, description: 240, icon: 16, author: 40 }; // same limits as the game (js/packs.js)
 
-  /** pack.meta. Returns true when it is usable to build a catalogue entry. */
+  /** pack.meta. Returns true when it is usable to build a catalogue entry. @param {any} meta not checked yet @param {PackReport} err @returns {boolean} */
   function validateMeta(meta, err) {
     if (meta == null) { err("meta manquant : infos du cours pour le catalogue ({ \"title\", \"description\", \"icon\", \"color\" })"); return false; }
     if (typeof meta !== "object" || isArr(meta)) { err("meta doit être un objet"); return false; }
     let failed = 0;
+    /** @type {PackReport} */
     const e = (m) => { failed++; err(m); };
     unknownKeys(meta, META_KEYS).forEach((k) => e(`meta : champ "${k}" inconnu (${META_KEYS.join(", ")})`));
     ["title", "description", "icon"].forEach((k) => {
@@ -258,7 +273,7 @@
     if (pack.worlds.length > 100) err("100 mondes maximum");
     const worldIds = new Set();
     const stats = { worlds: pack.worlds.length, exercises: 0, types: {} };
-    pack.worlds.forEach((w, wi) => {
+    pack.worlds.forEach(/** @param {any} w @param {number} wi */ (w, wi) => {
       const W = `monde ${wi + 1}`;
       if (!w || typeof w !== "object") return err(W + " : objet attendu");
       if (w.id == null || !WORLD_ID_RE.test(String(w.id))) err(W + ` : id ${json(w.id)} invalide (nombre ou texte en minuscules/chiffres/tirets)`);
@@ -270,7 +285,7 @@
       if (w.color == null) warn(W + " : color manquante");
       validateLesson(w.lesson, W, err, warn);
       if (!isArr(w.exercises) || !w.exercises.length) return err(W + " : exercises doit être un tableau non vide");
-      w.exercises.forEach((e, ei) => {
+      w.exercises.forEach(/** @param {any} e @param {number} ei */ (e, ei) => {
         stats.exercises++;
         validateExercise(e, `${W} (${w.title || ""}) ex ${ei + 1}`, { err, warn, docIds, stats });
       });
@@ -278,6 +293,7 @@
     return stats;
   }
 
+  /** @param {any} lesson not checked yet @param {string} W @param {PackReport} err @param {PackReport} warn */
   function validateLesson(lesson, W, err, warn) {
     if (!lesson || typeof lesson !== "object") return warn(W + " : pas de carte leçon (lesson)");
     if (!isArr(lesson.points) || !lesson.points.length) warn(W + " : lesson.points vide");
@@ -287,19 +303,23 @@
       if (!isArr(lesson.figures)) err(W + " : lesson.figures doit être un tableau");
       else {
         if (lesson.figures.length > 6) err(W + " : 6 figures maximum dans une leçon");
-        lesson.figures.forEach((f, fi) => validateFigure(f, `${W} leçon figures[${fi}]`, err, warn));
+        lesson.figures.forEach(/** @param {any} f @param {number} fi */ (f, fi) => validateFigure(f, `${W} leçon figures[${fi}]`, err, warn));
       }
     }
     if (lesson.tables != null) {
       if (!isArr(lesson.tables)) err(W + " : lesson.tables doit être un tableau");
       else {
         if (lesson.tables.length > 3) err(W + " : 3 tableaux maximum dans une leçon");
-        lesson.tables.forEach((tb, ti) => validateTable(tb, `${W} leçon tables[${ti}]`, err, warn));
+        lesson.tables.forEach(/** @param {any} tb @param {number} ti */ (tb, ti) => validateTable(tb, `${W} leçon tables[${ti}]`, err, warn));
       }
     }
   }
 
-  /** One exercise. ctx: { err, warn, docIds (Set of the pack's document ids), stats ({ types }) }. */
+  /** @typedef {{ worlds?: number, exercises?: number, types: Record<string, number> }} RulesStats */
+  /** @typedef {{ err: PackReport, warn: PackReport, docIds?: Set<unknown>, stats?: RulesStats }} RulesExerciseContext */
+  /** @typedef {(e: any, t: string, err: PackReport, warn: PackReport) => void} RulesTypeCheck */
+  /** One exercise. ctx: { err, warn, docIds (Set of the pack's document ids), stats ({ types }) }.
+      @param {any} e exercise not checked yet @param {string} where @param {RulesExerciseContext} ctx */
   function validateExercise(e, where, ctx) {
     const { err, warn } = ctx;
     const docIds = ctx.docIds || new Set(), stats = ctx.stats || { types: {} };
@@ -322,12 +342,13 @@
     TYPE_CHECKS[e.type](e, t, err, warn);
   }
 
+  /** Checks of each exercise type (e: the exercise, t: where). @type {Record<string, RulesTypeCheck>} */
   const TYPE_CHECKS = {
     mcq(e, t, err) {
       if (!isArr(e.options) || e.options.length < 2) return err(t + " : options doit contenir au moins 2 choix");
       if (isArr(e.answer)) { // several answers: tick boxes
         if (!e.answer.length) err(t + " : answer [] vide (au moins une bonne réponse)");
-        if (e.answer.some((a) => !Number.isInteger(a) || a < 0 || a >= e.options.length)) err(t + ` : answer ${json(e.answer)} hors limites (0 à ${e.options.length - 1})`);
+        if (e.answer.some(/** @param {any} a */ (a) => !Number.isInteger(a) || a < 0 || a >= e.options.length)) err(t + ` : answer ${json(e.answer)} hors limites (0 à ${e.options.length - 1})`);
         if (hasDup(e.answer)) err(t + " : answer contient un indice en double");
         if (e.answer.length >= e.options.length) err(t + " : il faut au moins une mauvaise réponse parmi les options");
         if (e.showCount != null && typeof e.showCount !== "boolean") err(t + " : showCount doit être true ou false");
@@ -335,42 +356,42 @@
         if (e.showCount != null) err(t + " : showCount seulement avec plusieurs réponses (answer: [..])");
         if (!Number.isInteger(e.answer) || e.answer < 0 || e.answer >= e.options.length) err(t + ` : answer ${e.answer} hors limites (0 à ${e.options.length - 1})`);
       }
-      if (hasDup(e.options.map((o) => plain(o).trim().toLowerCase()))) err(t + " : options en double");
-      if (e.options.some((o) => !isStr(o))) err(t + " : option vide");
+      if (hasDup(e.options.map(/** @param {any} o */ (o) => plain(o).trim().toLowerCase()))) err(t + " : options en double");
+      if (e.options.some(/** @param {any} o */ (o) => !isStr(o))) err(t + " : option vide");
       noTr(e.options, t + " options", err);
     },
     sort(e, t, err) {
       if (!isArr(e.categories) || e.categories.length < 2) return err(t + " : au moins 2 categories");
       const cats = new Set();
-      e.categories.forEach((c, i) => {
+      e.categories.forEach(/** @param {any} c @param {number} i */ (c, i) => {
         if (!c || !isStr(String(c.id || ""))) err(t + ` : categories[${i}].id manquant`);
         else if (cats.has(c.id)) err(t + ` : catégorie "${c.id}" en double`);
         cats.add(c && c.id);
         if (!c || !isStr(c.label)) err(t + ` : categories[${i}].label manquant`);
       });
       if (!isArr(e.items) || e.items.length < 2) return err(t + " : au moins 2 items");
-      e.items.forEach((it, i) => {
+      e.items.forEach(/** @param {any} it @param {number} i */ (it, i) => {
         if (!it || !isStr(it.text)) err(t + ` : items[${i}].text manquant`);
         if (!it || !cats.has(it.cat)) err(t + ` : items[${i}].cat "${it && it.cat}" n'existe pas dans categories`);
       });
-      noTr(e.items.map((i) => i && i.cat), t + " items.cat", err);
+      noTr(e.items.map(/** @param {any} i */ (i) => i && i.cat), t + " items.cat", err);
     },
     match(e, t, err, warn) {
       if (!isArr(e.pairs) || e.pairs.length < 2) return err(t + " : au moins 2 pairs");
-      e.pairs.forEach((p, i) => { if (!p || !isStr(p.left) || !isStr(p.right)) err(t + ` : pairs[${i}] doit avoir left et right`); });
+      e.pairs.forEach(/** @param {any} p @param {number} i */ (p, i) => { if (!p || !isStr(p.left) || !isStr(p.right)) err(t + ` : pairs[${i}] doit avoir left et right`); });
       if (e.pairs.length > 6) warn(t + " : plus de 6 paires, c'est long sur téléphone");
       noTr(e.pairs, t + " pairs", err);
-      if (hasDup(e.pairs.map((p) => p && plain(p.left)))) err(t + " : left en double");
-      if (hasDup(e.pairs.map((p) => p && plain(p.right)))) err(t + " : right en double");
+      if (hasDup(e.pairs.map(/** @param {any} p */ (p) => p && plain(p.left)))) err(t + " : left en double");
+      if (hasDup(e.pairs.map(/** @param {any} p */ (p) => p && plain(p.right)))) err(t + " : right en double");
     },
     order(e, t, err, warn) {
-      if (!isArr(e.words) || e.words.length < 2 || e.words.some((w) => !isStr(w))) return err(t + " : words doit contenir au moins 2 mots");
+      if (!isArr(e.words) || e.words.length < 2 || e.words.some(/** @param {any} w */ (w) => !isStr(w))) return err(t + " : words doit contenir au moins 2 mots");
       if (e.distractors != null && !isArr(e.distractors)) err(t + " : distractors doit être un tableau");
-      if (e.alternatives != null && (!isArr(e.alternatives) || e.alternatives.some((a) => !isArr(a)))) err(t + " : alternatives doit être un tableau de tableaux de mots");
-      (isArr(e.alternatives) ? e.alternatives : []).forEach((a, i) => {
+      if (e.alternatives != null && (!isArr(e.alternatives) || e.alternatives.some(/** @param {any} a */ (a) => !isArr(a)))) err(t + " : alternatives doit être un tableau de tableaux de mots");
+      (isArr(e.alternatives) ? e.alternatives : []).forEach(/** @param {any} a @param {number} i */ (a, i) => {
         // every word of an alternative must exist among the chips (words + distractors), case-insensitive
         if (!isArr(a)) return;
-        const bank = e.words.concat(isArr(e.distractors) ? e.distractors : []).map((w) => plain(w).trim().toLowerCase());
+        const bank = e.words.concat(isArr(e.distractors) ? e.distractors : []).map(/** @param {any} w */ (w) => plain(w).trim().toLowerCase());
         const missing = a.filter((w) => {
           const k = bank.indexOf(plain(w).trim().toLowerCase());
           if (k === -1) return true;
@@ -384,7 +405,7 @@
     },
     fill(e, t, err, warn) {
       if (!isStr(e.sentence) || e.sentence.split("___").length !== 2) err(t + " : sentence doit contenir exactement un trou ___");
-      if (!isArr(e.answers) || !e.answers.length || e.answers.some((a) => !isStr(a))) err(t + " : answers doit contenir au moins une réponse");
+      if (!isArr(e.answers) || !e.answers.length || e.answers.some(/** @param {any} a */ (a) => !isStr(a))) err(t + " : answers doit contenir au moins une réponse");
       noTr(e.answers, t + " answers", err);
       checkMarkup(e.sentence, t + " sentence", err);
       if (e.listen != null) {
@@ -408,7 +429,7 @@
       const reqIds = new Set();
       let met = 0;
       const model = String(e.modelAnswer || "").replace(/[’‘ʼ`´]/g, "'").replace(/\s+/g, " ");
-      e.requirements.forEach((r, i) => {
+      e.requirements.forEach(/** @param {any} r @param {number} i */ (r, i) => {
         const R = t + ` requirement ${r && r.id ? r.id : i}`;
         if (!r || !isStr(r.id)) err(R + " : id manquant");
         else if (reqIds.has(r.id)) err(R + " : id en double");
@@ -444,4 +465,4 @@
   };
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.PackRules = api;
-})(this);
+})(/** @type {Window} */ (/** @type {unknown} */ (this))); // TypeScript reads this as module.exports

@@ -101,7 +101,7 @@ interface RenderedResult extends ExerciseResult {
 
 interface RenderOptions {
   /** Whether the check button can be pressed (and its label); auto: the exercise answers by itself (match). */
-  onReady?: (enabled: boolean, label?: string, auto?: boolean) => void;
+  onReady?: (enabled: boolean, label?: string | null, auto?: boolean) => void;
   /** A second try is allowed (msg: trusted HTML). */
   onRetry?: (msg: string) => void;
   onHint?: () => void;

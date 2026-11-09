@@ -7,7 +7,7 @@ import { E } from "./util.js";
 
 /* ================= Badges ================= */
 
-/** Locked badges stay secret: no icon, name or description. */
+/** Locked badges stay secret: no icon, name or description. @param {Badge} b @returns {string} */
 export function badgeCard(b) {
   if (!Engine.hasBadge(b.id)) {
     return '<div class="badge-card locked"><div class="badge-icon mystery">?</div><div class="badge-name">???</div>' +

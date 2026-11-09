@@ -15,6 +15,7 @@ import { APP_NAME, E, must } from "./util.js";
 
 /* ================= Boot ================= */
 
+/** @param {string} msg */
 export function showError(msg) {
   S.app.innerHTML = '<section class="screen error"><div class="card result-card"><div class="result-icon">😵</div>' +
     '<h2 class="result-title">Oups ! Le jeu ne peut pas démarrer.</h2>' +

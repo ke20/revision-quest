@@ -12,6 +12,8 @@ import { E, must, safeColor } from "./util.js";
 
 /* ================= Catalogue ================= */
 
+/** @typedef {Pick<PackSummary, "stars" | "maxStars" | "worldsDone" | "progress">} CardSummary */
+
 export function resetCatalogFilters() { S.catFilter = { level: "", subject: "" }; S.catAllGrades = false; }
 
 /** Class of the current player (a level of the catalogue), or null when not set / unknown. */
@@ -19,9 +21,10 @@ export function myGrade() {
   var g = window.Engine && Engine.currentProfile() ? Engine.settings().grade : "";
   return g ? Packs.level(g) : null;
 }
-/** Buttons to pick a class: every level of the catalogue, plus "none" (label noneLabel). attr: data attribute. */
+/** Buttons to pick a class: every level of the catalogue, plus "none" (label noneLabel). attr: data attribute.
+ * @param {string} attr @param {string} current @param {string} noneLabel */
 export function gradeButtons(attr, current, noneLabel) {
-  var btn = function (id, label) {
+  var btn = /** @param {string} id @param {string} label */ function (id, label) {
     var on = current === id;
     return '<button type="button" class="seg-btn' + (on ? " on" : "") + '" ' + attr + '="' + E(id) + '" aria-pressed="' + on + '">' + E(label) + "</button>";
   };
@@ -29,11 +32,12 @@ export function gradeButtons(attr, current, noneLabel) {
     Packs.levels().map(function (l) { return btn(l.id, l.label); }).join("") + btn("", noneLabel) + "</div>";
 }
 
+/** label must be trusted or already escaped. @param {string} kind @param {string} value @param {string} label @param {boolean} active */
 export function chip(kind, value, label, active) {
   return '<button class="filter-chip' + (active ? " on" : "") + '" data-' + kind + '="' + E(value) + '" aria-pressed="' + (active ? "true" : "false") + '">' + label + "</button>";
 }
 
-/** Progress of a catalogue card: a grouped chapter adds up its groups. */
+/** Progress of a catalogue card: a grouped chapter adds up its groups. @param {CatalogPack} p @returns {CardSummary} */
 export function chapterSummary(p) {
   if (!p.groups) return Engine.packSummary(p.id, p.worldCount);
   var stars = 0, max = 0, done = 0, n = 0;
@@ -44,7 +48,8 @@ export function chapterSummary(p) {
   return { stars: stars, maxStars: max, worldsDone: done, progress: n ? Math.min(1, done / n) : 0 };
 }
 
-/** A pack card (catalogue or group choice). tagsHtml must be trusted or already escaped. */
+/** A pack card (catalogue or group choice). tagsHtml must be trusted or already escaped.
+ * @param {CatalogPack} p @param {string | undefined} title @param {string} tagsHtml @param {string} desc @param {CardSummary} sum */
 export function packCard(p, title, tagsHtml, desc, sum) {
   return '<button class="pack-card" data-pack="' + E(p.id) + '" style="--c:' + safeColor(p.color) + '">' +
     '<span class="pack-icon">' + E(p.icon) + "</span>" +
@@ -58,13 +63,13 @@ export function packCard(p, title, tagsHtml, desc, sum) {
   "</button>";
 }
 
-/** Where "back" goes from a pack: its group choice for a group, else the catalogue. */
+/** Where "back" goes from a pack: its group choice for a group, else the catalogue. @param {CatalogPack | null} entry @returns {() => void} */
 export function backFromPack(entry) {
   const parent = entry && entry.parent ? Packs.get(entry.parent) : null;
   return parent ? function () { showGroups(parent.id); } : showCatalog;
 }
 
-/** Group choice of a chapter "par groupes" (catalogue entry with groups). */
+/** Group choice of a chapter "par groupes" (catalogue entry with groups). @param {string} id */
 export function showGroups(id) {
   var ch = Packs.get(id);
   if (!ch || !ch.groups) return showCatalog();
@@ -86,7 +91,7 @@ export function showGroups(id) {
     '<div class="pack-list">' + cards + "</div></section>");
   on(node, "back", function () { Sound.tap(); showCatalog(); });
   each(node, ".pack-card", function (b) {
-    b.onclick = function () { Sound.unlock(); Sound.tap(); openPack(b.getAttribute("data-pack")); };
+    b.onclick = function () { Sound.unlock(); Sound.tap(); openPack(/** @type {string} */ (b.getAttribute("data-pack"))); };
   });
   show(node);
 }
@@ -138,20 +143,21 @@ export function showCatalog() {
     "</section>");
   on(node, "back", function () { Sound.tap(); showHome(); });
   each(node, "[data-level]", function (b) {
-    b.onclick = function () { Sound.tap(); S.catFilter.level = b.getAttribute("data-level"); showCatalog(); };
+    b.onclick = function () { Sound.tap(); S.catFilter.level = /** @type {string} */ (b.getAttribute("data-level")); showCatalog(); };
   });
   on(node, "all-grades", function () { Sound.tap(); S.catAllGrades = true; S.catFilter.level = ""; showCatalog(); });
   on(node, "my-grade", function () { Sound.tap(); S.catAllGrades = false; showCatalog(); });
   each(node, "[data-subject]", function (b) {
-    b.onclick = function () { Sound.tap(); S.catFilter.subject = b.getAttribute("data-subject"); showCatalog(); };
+    b.onclick = function () { Sound.tap(); S.catFilter.subject = /** @type {string} */ (b.getAttribute("data-subject")); showCatalog(); };
   });
   each(node, ".pack-card", function (b) {
-    b.onclick = function () { Sound.unlock(); Sound.tap(); openPack(b.getAttribute("data-pack")); };
+    b.onclick = function () { Sound.unlock(); Sound.tap(); openPack(/** @type {string} */ (b.getAttribute("data-pack"))); };
   });
   show(node);
 }
 
-/** Load a pack (lazily) then show its world map. A load token ignores a late answer if the player went elsewhere. */
+/** Load a pack (lazily) then show its world map. A load token ignores a late answer if the player went elsewhere.
+ * @param {string} id @param {() => void} [then] */
 export function openPack(id, then) {
   const entry = Packs.get(id);
   if (!entry) return showPackError(id, { message: "Ce chapitre n'existe pas (ou plus)." });
@@ -179,6 +185,7 @@ export function openPack(id, then) {
   });
 }
 
+/** @param {string} id @param {{ message: string } | null} err */
 export function showPackError(id, err) {
   leavePack();
   var back = backFromPack(Packs.get(id));

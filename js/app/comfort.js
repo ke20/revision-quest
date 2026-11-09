@@ -24,6 +24,11 @@ export function applyComfort() {
    Decoration only (background, far-away landscape, a few falling petals / leaves / flakes, small animated flyers,
    confetti colours); nothing during an exercise. periods: [[from, to], …] as [month, day], both included, a period
    may run over the new year. The first matching theme wins: the festivals come before the four seasons. */
+/** @typedef {"leaf" | "petal" | "snow"} Fall */
+/** @typedef {"bat" | "butterfly" | "gull"} Flyer */
+/** @typedef {{ id: string, season?: string, periods: number[][][], icon: string, fall: Fall | null, flyer?: Flyer,
+      confetti: string[] }} SeasonTheme */
+/** @type {SeasonTheme[]} */
 export let SEASONS = [
   { id: "halloween", periods: [[[10, 20], [11, 2]]], icon: "🎃", fall: "leaf", flyer: "bat",
     confetti: ["#F97316", "#7C3AED", "#84CC16", "#1F1235", "#FDBA74", "#A855F7", "#F97316"] },
@@ -41,6 +46,7 @@ export let SEASONS = [
 
 
 export let SEASON_PREVIEW = (function () { var m = /[?&]theme=([a-z]+)(&|$)/.exec(location.search || ""); return m ? m[1] : null; })();
+/** @param {SeasonTheme} t @param {Date} d */
 export function inPeriod(t, d) {
   var md = (d.getMonth() + 1) * 100 + d.getDate();
   return t.periods.some(function (p) {
@@ -48,7 +54,7 @@ export function inPeriod(t, d) {
     return a <= b ? md >= a && md <= b : md >= a || md <= b;
   });
 }
-/** The seasonal theme shown now, or null. */
+/** The seasonal theme shown now, or null. @returns {SeasonTheme | null} */
 export function season() {
   var preview = SEASONS.filter(function (t) { return t.id === SEASON_PREVIEW; })[0];
   if (preview) return preview;
@@ -58,6 +64,7 @@ export function season() {
 }
 
 /* small animated drawings (inline SVG built from this trusted markup only): wings move with CSS (.wing) */
+/** @type {Record<Flyer, string>} */
 export let FLYER_SVG = {
   bat: '<svg viewBox="0 0 48 24" width="58" height="29"><g class="wing wing-l"><path d="M22,11 C17,3 9,2 2,6 C6,7 7,10 6,13 C9,11 11,13 12,15 C14,12 17,13 18,15 C19,13 21,13 22,13 Z" fill="#1F1235" stroke="#C4B5FD" stroke-width=".8" stroke-opacity=".6"/></g>' +
     '<g class="wing wing-r"><path d="M26,11 C31,3 39,2 46,6 C42,7 41,10 42,13 C39,11 37,13 36,15 C34,12 31,13 30,15 C29,13 27,13 26,13 Z" fill="#1F1235" stroke="#C4B5FD" stroke-width=".8" stroke-opacity=".6"/></g>' +
@@ -73,6 +80,7 @@ export let FLYER_SVG = {
     '<path d="M46,6 C43,5 40,5 38,5.5 L41,7 Z" fill="#64748B"/></g><ellipse cx="24" cy="11.5" rx="4.5" ry="2.6" fill="#FFFFFF"/>' +
     '<path d="M28,11 l3,0.6 l-3,0.8 z" fill="#F59E0B"/></svg>'
 };
+/** @type {Record<Fall, string[]>} */
 export let FALL_SVG = {
   leaf: ['<svg viewBox="0 0 20 20"><path d="M10,1 C16,4 18,10 10,19 C2,10 4,4 10,1 Z" fill="#EA580C"/><path d="M10,3 L10,18" stroke="#9A3412" stroke-width="1"/></svg>',
     '<svg viewBox="0 0 20 20"><path d="M10,1 C16,4 18,10 10,19 C2,10 4,4 10,1 Z" fill="#CA8A04"/><path d="M10,3 L10,18" stroke="#854D0E" stroke-width="1"/></svg>',
@@ -123,7 +131,7 @@ export function applySeason() {
     f.style.top = (t.flyer === "butterfly" ? 52 + i * 12 : 8 + i * 9) + "%";
     f.style.animationDuration = (t.flyer === "butterfly" ? 26 : 20) + i * 7 + "s";
     f.style.animationDelay = (-i * 11) + "s";
-    f.innerHTML = '<span class="bob">' + FLYER_SVG[t.flyer] + "</span>";
+    f.innerHTML = '<span class="bob">' + FLYER_SVG[/** @type {Flyer} */ (t.flyer)] + "</span>";
     fall.appendChild(f);
   }
   body.insertBefore(fall, body.firstChild);
@@ -131,6 +139,7 @@ export function applySeason() {
 }
 
 /** "🌸 C'est le printemps !" once per season and player (this device), on the home screen. Not for a preview. */
+/** @param {SeasonTheme} t */
 export function seasonHello(t) {
   if (!t.season || SEASON_PREVIEW || !document.querySelector(".screen.home") || !window.Engine) return;
   var me = Engine.currentProfile();
@@ -140,5 +149,5 @@ export function seasonHello(t) {
     if (localStorage.getItem(key) === mark) return;
     localStorage.setItem(key, mark);
   } catch (e) { return; } // no storage: no message rather than one on every screen
-  setTimeout(function () { toast(t.season); }, 600);
+  setTimeout(function () { toast(/** @type {string} */ (t.season)); }, 600);
 }

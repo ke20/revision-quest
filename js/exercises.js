@@ -5,6 +5,18 @@
 (function () {
   "use strict";
 
+  /* Types shared by the renderers below (top-level typedefs of a classic script are global, hence the Ex prefix). */
+  /**
+   * @typedef {RenderOptions & { onReady: NonNullable<RenderOptions["onReady"]>, onRetry: NonNullable<RenderOptions["onRetry"]>, data: LoadedPack | null }} ExRenderOpts
+   *   Options once render() has filled the defaults.
+   * @typedef {(res: RenderedResult) => void} ExDone
+   * @typedef {McqExercise & { answer: number[] }} ExMcqMulti
+   * @typedef {HTMLButtonElement & { _slot: HTMLElement }} ExOrderChip
+   * @typedef {HTMLDivElement & { _back: HTMLElement | null, _onKey: (e: KeyboardEvent) => void }} ExReadLayer
+   * @typedef {{ zone: HTMLElement, list: HTMLElement }} ExSortZone
+   */
+
+  /** @param {string} key @returns {string} */
   function T(key) {
     if (window.I18N) return window.I18N.t.apply(null, /** @type {any} */ (arguments));
     return key;
@@ -12,6 +24,7 @@
 
   /* ---------- helpers ---------- */
 
+  /** @param {unknown} s @returns {string} */
   function escapeHtml(s) {
     return String(s == null ? "" : s)
       .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
@@ -27,7 +40,8 @@
     return l === "en" || l === "es";
   }
 
-  /** Escape, then **bold** and [[word|translation]] (and, in language packs, the French "(…)" glosses). */
+  /** Escape, then **bold** and [[word|translation]] (and, in language packs, the French "(…)" glosses).
+      @param {string} text @returns {string} */
   function rich(text) {
     var s = escapeHtml(text);
     if (isLanguagePack()) {
@@ -42,7 +56,8 @@
     return lines(s);
   }
 
-  /** Line breaks → <br>; consecutive lines starting with "- " → a bullet list (to air out several examples). */
+  /** Line breaks → <br>; consecutive lines starting with "- " → a bullet list (to air out several examples).
+      @param {string} s @returns {string} */
   function lines(s) {
     var out = "", inList = false;
     s.split("\n").forEach(function (line, i) {
@@ -60,13 +75,14 @@
     return out + (inList ? "</ul>" : "");
   }
 
-  /** Plain text version (strip markup) — used for comparisons. */
+  /** Plain text version (strip markup) — used for comparisons. @param {string} text @returns {string} */
   function plain(text) {
     return String(text == null ? "" : text)
       .replace(/\[\[([^|\]]+)\|[^\]]+\]\]/g, "$1")
       .replace(/\*\*(.+?)\*\*/g, "$1");
   }
 
+  /** @param {string} s @returns {string} */
   function normalize(s) {
     return plain(s).toLowerCase()
       .replace(/[’‘ʼ`´]/g, "'")
@@ -79,19 +95,23 @@
 
   /* ---------- answer checking (pure functions, also used by the unit tests) ---------- */
 
-  /** fill: is the typed value one of the accepted answers (case, spaces, apostrophes and final punctuation ignored)? */
+  /** fill: is the typed value one of the accepted answers (case, spaces, apostrophes and final punctuation ignored)?
+      @param {FillExercise} ex @param {string} value */
   function fillAccepted(ex, value) {
     var val = normalize(value);
     return (ex.answers || []).some(function (a) { return normalize(a) === val; });
   }
-  /** order: does the sequence of chosen words match ex.words or one of ex.alternatives? */
+  /** order: does the sequence of chosen words match ex.words or one of ex.alternatives?
+      @param {OrderExercise} ex @param {string[]} words */
   function orderAccepted(ex, words) {
     // same word (case, apostrophes ignored); a punctuation-only token ("," "." "?") must be the very same sign
     // (normalize() strips final punctuation, so "," and "." would both become "")
+    /** @param {string} a @param {string} b */
     function sameToken(a, b) {
       var na = normalize(a), nb = normalize(b);
       return na || nb ? na === nb : String(a).trim() === String(b).trim();
     }
+    /** @param {string[]} a @param {string[]} b */
     function sameSeq(a, b) {
       if (a.length !== b.length) return false;
       for (var i = 0; i < a.length; i++) if (!sameToken(a[i], b[i])) return false;
@@ -99,12 +119,14 @@
     }
     return [ex.words].concat(ex.alternatives || []).some(function (seq) { return sameSeq(words, seq.map(plain)); });
   }
-  /** Words of a text; "don't" and "don’t" (curly apostrophe, typed by phone keyboards) both count as one word. */
+  /** Words of a text; "don't" and "don’t" (curly apostrophe, typed by phone keyboards) both count as one word.
+      @param {string} s */
   function countWords(s) {
     var m = String(s).replace(/[’‘ʼ`´]/g, "'").match(/[A-Za-zÀ-ÿ0-9']+/g);
     return m ? m.length : 0;
   }
-  /** write: which requirements does the text meet, and is it enough (requirements + minWords)? */
+  /** write: which requirements does the text meet, and is it enough (requirements + minWords)?
+      @param {WriteExercise} ex @param {string} text @returns {WriteCheck} */
   function writeCheck(ex, text) {
     var t = String(text).replace(/[’‘ʼ`´]/g, "'").replace(/\s+/g, " ");
     var met = (ex.requirements || []).map(function (r) {
@@ -115,6 +137,7 @@
     return { met: met, count: count, words: words, needed: needed, ok: count >= needed && words >= (ex.minWords || 0) };
   }
 
+  /** @template T @param {T[]} arr @returns {T[]} */
   function shuffle(arr) {
     var a = arr.slice();
     for (var i = a.length - 1; i > 0; i--) {
@@ -123,13 +146,18 @@
     }
     return a;
   }
-  /** Shuffle, trying to avoid returning the original order. */
+  /** Shuffle, trying to avoid returning the original order.
+      @template T @param {T[]} arr @param {(a: T[], b: T[]) => boolean} same @returns {T[]} */
   function shuffleDifferent(arr, same) {
     var a = shuffle(arr);
     for (var k = 0; k < 6 && arr.length > 1 && same(a, arr); k++) a = shuffle(arr);
     return a;
   }
 
+  /**
+   * @template {keyof HTMLElementTagNameMap} K
+   * @param {K} tag @param {string | null} [cls] @param {string | null} [html] @returns {HTMLElementTagNameMap[K]}
+   */
   function el(tag, cls, html) {
     var e = document.createElement(tag);
     if (cls) e.className = cls;
@@ -139,7 +167,8 @@
 
   /* ---------- translation bubbles ---------- */
 
-  var bubble = null, bubbleFor = null, onTranslate = null;
+  var bubble = /** @type {HTMLElement | null} */ (null), bubbleFor = /** @type {Element | null} */ (null);
+  var onTranslate = /** @type {((key: string) => void) | null} */ (null);
 
   function closeBubble() {
     if (bubble) bubble.remove();
@@ -147,6 +176,7 @@
     bubble = null; bubbleFor = null;
   }
 
+  /** @param {HTMLElement} span */
   function openBubble(span) {
     closeBubble();
     bubbleFor = span;
@@ -172,6 +202,7 @@
     }
   }
 
+  /** @param {(key: string) => void} cb */
   function initTranslations(cb) {
     onTranslate = cb;
     // capture phase so a translation inside a button doesn't trigger the button
@@ -181,7 +212,7 @@
       if (span) {
         e.preventDefault();
         e.stopPropagation();
-        if (bubbleFor === span) closeBubble(); else openBubble(span);
+        if (bubbleFor === span) closeBubble(); else openBubble(/** @type {HTMLElement} */ (span));
         return;
       }
       if (bubble && !target.closest(".tr-bubble")) closeBubble();
@@ -210,10 +241,11 @@
      than Jacques, an older French voice). */
   var PREFERRED = /^(thomas|audrey|aurélie|aurelie|marie|amélie|amelie|denise|henri|daniel|kate|serena|samantha|libby|sonia|ryan)\b/i;
 
-  /** Stable identity of a voice (the objects themselves are rebuilt by the browser when its list reloads). */
+  /** Stable identity of a voice (the objects themselves are rebuilt by the browser when its list reloads).
+      @param {SpeechSynthesisVoice} v */
   function voiceKey(v) { return String(v.voiceURI || "") + "|" + String(v.name || ""); }
 
-  /** Quality of a voice from its name / voiceURI: 3 premium (neural), 2 enhanced, 1 normal, 0 novelty. */
+  /** Quality of a voice from its name / voiceURI: 3 premium (neural), 2 enhanced, 1 normal, 0 novelty. @param {SpeechSynthesisVoice} v */
   function voiceQuality(v) {
     var id = String(v.name || "") + " " + String(v.voiceURI || "");
     if (NOVELTY.test(id)) return 0;
@@ -223,19 +255,23 @@
   }
 
   /** Best local voice for a language ("fr", "en"): best quality first (premium, enhanced, normal, novelty last),
-      then the exact region (fr-FR, en-GB), then a known natural voice, then the default voice. */
+      then the exact region (fr-FR, en-GB), then a known natural voice, then the default voice.
+      @param {SpeechSynthesisVoice[]} voices @param {string} [lang] @param {string[]} [exclude]
+      @returns {SpeechSynthesisVoice | null} */
   function pickVoice(voices, lang, exclude) {
     var base = String(lang || "fr").toLowerCase();
     var region = base === "en" ? "en-gb" : base + "-" + base;
+    /** @param {SpeechSynthesisVoice} v */
     var tag = function (v) { return String(v.lang || "").toLowerCase().replace("_", "-"); };
     var local = (voices || []).filter(function (v) {
       return v && v.localService === true && (tag(v) === base || tag(v).indexOf(base + "-") === 0) &&
         !(exclude && exclude.indexOf(voiceKey(v)) !== -1);
     });
+    /** @param {SpeechSynthesisVoice} v */
     var score = function (v) {
       return voiceQuality(v) * 8 + (tag(v) === region ? 4 : 0) + (PREFERRED.test(String(v.name || "")) ? 2 : 0) + (v.default ? 1 : 0);
     };
-    var best = null;
+    var best = /** @type {SpeechSynthesisVoice | null} */ (null);
     local.forEach(function (v) { if (!best || score(v) > score(best)) best = v; }); // first one wins a tie
     return best;
   }
@@ -343,7 +379,8 @@
     }
   };
 
-  /** "🔊 Écouter" + "🐢 Plus lentement" buttons; without a local voice, a message and a "Passer" button (neutral). */
+  /** "🔊 Écouter" + "🐢 Plus lentement" buttons; without a local voice, a message and a "Passer" button (neutral).
+      @param {FillExercise} ex @param {HTMLElement} head @param {() => void} onSkip */
   function listenBar(ex, head, onSkip) {
     var bar = el("div", "listen-bar");
     var play = el("button", "btn-listen", T("listen"));
@@ -367,8 +404,8 @@
         return;
       }
       play.disabled = slow.disabled = false;
-      play.addEventListener("click", function () { Speech.say(ex.listen, { lang: lang, rate: 1 }); });
-      slow.addEventListener("click", function () { Speech.say(ex.listen, { lang: lang, rate: 0.7 }); });
+      play.addEventListener("click", function () { Speech.say(/** @type {string} */ (ex.listen), { lang: lang, rate: 1 }); });
+      slow.addEventListener("click", function () { Speech.say(/** @type {string} */ (ex.listen), { lang: lang, rate: 0.7 }); });
     });
   }
 
@@ -377,6 +414,7 @@
   /**
    * Builds the common frame (prompt + hint) and returns helpers.
    * opts: { onReady(enabled, label), onRetry(message), onHint() -> bool, onAnswered? }
+   * @param {Exercise} ex @param {HTMLElement} container @param {ExRenderOpts} opts
    */
   function frame(ex, container, opts) {
     container.innerHTML = "";
@@ -390,7 +428,7 @@
     if (doc && doc.screen) {
       var back = el("button", "btn-reread", T("backToText"));
       back.type = "button";
-      back.addEventListener("click", function () { openText(doc); });
+      back.addEventListener("click", function () { openText(/** @type {PackDocument} */ (doc)); });
       head.appendChild(back);
     }
     if (ex.figure && window.Figures) {
@@ -402,14 +440,14 @@
     root.appendChild(head);
     var body = el("div", "ex-body");
     root.appendChild(body);
-    var hintBox = null;
+    var hintBox = /** @type {HTMLElement | null} */ (null);
     if (ex.hint) {
       var hb = el("button", "btn-hint", T("hint"));
       hb.type = "button";
       hb.addEventListener("click", function () {
         if (hintBox) return;
         if (opts.onHint) opts.onHint();
-        hintBox = el("div", "hint-box pop", "💡 " + rich(ex.hint));
+        hintBox = el("div", "hint-box pop", "💡 " + rich(/** @type {string} */ (ex.hint)));
         hb.replaceWith(hintBox);
       });
       head.appendChild(hb);
@@ -418,26 +456,31 @@
     return { root: root, body: body, head: head };
   }
 
+  /** @param {HTMLElement} root */
   function lockAll(root) {
     root.classList.add("answered");
     // the listen and re-read buttons stay usable: hearing the word or reading the text again helps with the correction
-    var b = root.querySelectorAll("button:not(.btn-hint):not(.btn-listen):not(.btn-reread), input, textarea");
+    var b = /** @type {NodeListOf<HTMLButtonElement | HTMLInputElement | HTMLTextAreaElement>} */ (
+      root.querySelectorAll("button:not(.btn-hint):not(.btn-listen):not(.btn-reread), input, textarea"));
     for (var i = 0; i < b.length; i++) b[i].disabled = true;
   }
 
+  /** @param {string} html @param {string} [cls] */
   function revealBox(html, cls) {
     return el("div", "reveal pop " + (cls || ""), html);
   }
 
   /* ---------- MCQ ---------- */
 
+  /** @param {McqExercise} ex @param {HTMLElement} container @param {ExDone} done @param {ExRenderOpts} opts
+      @returns {ExerciseController} */
   function renderMcq(ex, container, done, opts) {
-    if (Array.isArray(ex.answer)) return renderMcqMulti(ex, container, done, opts);
+    if (Array.isArray(ex.answer)) return renderMcqMulti(/** @type {ExMcqMulti} */ (ex), container, done, opts);
     var f = frame(ex, container, opts);
     var list = el("div", "options");
     // Options are shown in a new random order each time, so the right answer is never always at the same letter.
     // buttons[] stays indexed like ex.options (data-i = index in the pack); only the display order changes.
-    var selected = -1, buttons = [];
+    var selected = -1, buttons = /** @type {HTMLButtonElement[]} */ ([]);
     shuffle(ex.options.map(function (o, i) { return i; })).forEach(function (i, pos) {
       var opt = ex.options[i];
       var b = el("button", "option", '<span class="opt-key">' + String.fromCharCode(65 + pos) + "</span><span>" + rich(opt) + "</span>");
@@ -460,26 +503,29 @@
         if (selected < 0) return;
         var ok = selected === ex.answer;
         lockAll(f.root);
-        buttons[ex.answer].classList.add("correct");
+        buttons[/** @type {number} */ (ex.answer)].classList.add("correct");
         if (!ok) buttons[selected].classList.add("wrong", "shake");
         else buttons[selected].classList.add("pop");
-        done({ correct: ok, attempts: 1, answerText: plain(ex.options[ex.answer]) });
+        done({ correct: ok, attempts: 1, answerText: plain(ex.options[/** @type {number} */ (ex.answer)]) });
       }
     };
   }
 
   /** answer = [indexes]: tick boxes; right only when exactly the right boxes are ticked (no half point).
       showCount false: "several answers possible" instead of "choose N answers" (and N may be 1). */
+  /** @param {McqExercise} ex @param {number[]} picked */
   function mcqMultiAccepted(ex, picked) {
-    var want = ex.answer.slice().sort(), got = picked.slice().sort();
+    var want = /** @type {number[]} */ (ex.answer).slice().sort(), got = picked.slice().sort();
     return want.length === got.length && want.every(function (v, i) { return v === got[i]; });
   }
 
+  /** @param {ExMcqMulti} ex @param {HTMLElement} container @param {ExDone} done @param {ExRenderOpts} opts
+      @returns {ExerciseController} */
   function renderMcqMulti(ex, container, done, opts) {
     var f = frame(ex, container, opts);
     f.body.appendChild(el("p", "ex-help multi-help", ex.showCount === false ? T("pickSome") : T("pickN", ex.answer.length)));
     var list = el("div", "options options-multi");
-    var picked = {}, buttons = [];
+    var picked = /** @type {Record<string, boolean>} */ ({}), buttons = /** @type {HTMLButtonElement[]} */ ([]);
     shuffle(ex.options.map(function (o, i) { return i; })).forEach(function (i) {
       var b = el("button", "option", '<span class="opt-key opt-box" aria-hidden="true"></span><span>' + rich(ex.options[i]) + "</span>");
       b.type = "button";
@@ -514,16 +560,19 @@
 
   /* ---------- SORT ---------- */
 
+  /** @param {SortExercise} ex @param {HTMLElement} container @param {ExDone} done @param {ExRenderOpts} opts
+      @returns {ExerciseController} */
   function renderSort(ex, container, done, opts) {
     var f = frame(ex, container, opts);
     f.body.appendChild(el("p", "ex-help", T("sortHelp")));
     var pool = el("div", "sort-pool");
     pool.setAttribute("data-empty", T("sortEmpty"));
     var cats = el("div", "sort-cats");
-    var attempts = 1, selectedChip = null, finished = false;
-    var placement = {}; // item index -> cat id
-    var catZones = {};
+    var attempts = 1, selectedChip = /** @type {HTMLElement | null} */ (null), finished = false;
+    var placement = /** @type {Record<number, string>} */ ({}); // item index -> cat id
+    var catZones = /** @type {Record<string, ExSortZone>} */ ({});
 
+    /** @param {HTMLElement} chip */
     function select(chip) {
       if (finished) return;
       if (selectedChip) selectedChip.classList.remove("selected");
@@ -532,8 +581,9 @@
       cats.classList.toggle("armed", !!selectedChip);
     }
 
+    /** @param {HTMLElement} chip @param {string | null} catId */
     function place(chip, catId) {
-      var idx = +chip.getAttribute("data-i");
+      var idx = +/** @type {string} */ (chip.getAttribute("data-i"));
       chip.classList.remove("selected", "wrong", "shake");
       if (catId) { placement[idx] = catId; catZones[catId].list.appendChild(chip); }
       else { delete placement[idx]; pool.appendChild(chip); }
@@ -552,7 +602,7 @@
 
     ex.categories.forEach(function (c) {
       var zone = el("div", "sort-cat");
-      zone.style.setProperty("--i", ex.categories.indexOf(c));
+      zone.style.setProperty("--i", String(ex.categories.indexOf(c)));
       var lbl = el("button", "sort-cat-label", rich(c.label));
       lbl.type = "button";
       var lst = el("div", "sort-cat-list");
@@ -562,34 +612,36 @@
         if (finished || !selectedChip) return;
         place(selectedChip, c.id);
       });
-      zone.addEventListener("dragover", function (e) { e.preventDefault(); zone.classList.add("over"); });
+      zone.addEventListener("dragover", function (/** @type {DragEvent} */ e) { e.preventDefault(); zone.classList.add("over"); });
       zone.addEventListener("dragleave", function () { zone.classList.remove("over"); });
-      zone.addEventListener("drop", function (e) {
+      zone.addEventListener("drop", function (/** @type {DragEvent} */ e) {
         e.preventDefault(); zone.classList.remove("over");
-        var i = e.dataTransfer.getData("text/plain");
-        var chip = f.root.querySelector('.chip[data-i="' + i + '"]');
+        var i = /** @type {DataTransfer} */ (e.dataTransfer).getData("text/plain");
+        var chip = /** @type {HTMLElement | null} */ (f.root.querySelector('.chip[data-i="' + i + '"]'));
         if (chip && !finished) place(chip, c.id);
       });
       cats.appendChild(zone);
     });
 
-    pool.addEventListener("dragover", function (e) { e.preventDefault(); });
-    pool.addEventListener("drop", function (e) {
+    pool.addEventListener("dragover", function (/** @type {DragEvent} */ e) { e.preventDefault(); });
+    pool.addEventListener("drop", function (/** @type {DragEvent} */ e) {
       e.preventDefault();
-      var chip = f.root.querySelector('.chip[data-i="' + e.dataTransfer.getData("text/plain") + '"]');
+      var chip = /** @type {HTMLElement | null} */ (
+        f.root.querySelector('.chip[data-i="' + /** @type {DataTransfer} */ (e.dataTransfer).getData("text/plain") + '"]'));
       if (chip && !finished) place(chip, null);
     });
 
     shuffle(ex.items.map(function (it, i) { return i; })).forEach(function (i) {
       var chip = el("button", "chip", rich(ex.items[i].text));
       chip.type = "button";
-      chip.setAttribute("data-i", i);
+      chip.setAttribute("data-i", String(i));
       chip.draggable = true;
-      chip.addEventListener("dragstart", function (e) {
-        e.dataTransfer.setData("text/plain", String(i));
-        e.dataTransfer.effectAllowed = "move";
+      chip.addEventListener("dragstart", function (/** @type {DragEvent} */ e) {
+        var dt = /** @type {DataTransfer} */ (e.dataTransfer);
+        dt.setData("text/plain", String(i));
+        dt.effectAllowed = "move";
       });
-      chip.addEventListener("click", function (e) {
+      chip.addEventListener("click", function (/** @type {MouseEvent} */ e) {
         e.stopPropagation();
         if (finished) return;
         // tapping a placed chip while another is selected: place selected into that zone
@@ -609,7 +661,7 @@
 
     return {
       check: function () {
-        var wrong = [];
+        var wrong = /** @type {number[]} */ ([]);
         ex.items.forEach(function (it, i) { if (placement[i] !== it.cat) wrong.push(i); });
         if (wrong.length === 0) {
           finished = true;
@@ -621,7 +673,7 @@
         if (attempts === 1) {
           attempts = 2;
           wrong.forEach(function (i) {
-            var chip = f.root.querySelector('.chip[data-i="' + i + '"]');
+            var chip = /** @type {HTMLElement} */ (f.root.querySelector('.chip[data-i="' + i + '"]'));
             chip.classList.add("wrong", "shake");
             setTimeout(function () { place(chip, null); chip.classList.add("was-wrong"); }, 700);
           });
@@ -633,7 +685,7 @@
         lockAll(f.root);
         // show correct placement
         ex.items.forEach(function (it, i) {
-          var chip = f.root.querySelector('.chip[data-i="' + i + '"]');
+          var chip = /** @type {HTMLElement} */ (f.root.querySelector('.chip[data-i="' + i + '"]'));
           var isWrong = wrong.indexOf(i) !== -1;
           catZones[it.cat].list.appendChild(chip);
           chip.classList.add(isWrong ? "fixed" : "correct");
@@ -648,16 +700,18 @@
   var MATCH_ALLOWED = 1;      // mistakes allowed before the exercise is failed
   var MATCH_LOCK_MS = 1000;  // board locked after a wrong pair (anti-spam)
 
+  /** @param {MatchExercise} ex @param {HTMLElement} container @param {ExDone} done @param {ExRenderOpts} opts
+      @returns {ExerciseController} */
   function renderMatch(ex, container, done, opts) {
     var f = frame(ex, container, opts);
     f.body.appendChild(el("p", "ex-help", T("matchHelp")));
     var rule = el("div", "match-rule", '<span>⚠️ Attention : plus d\'1 erreur = exercice raté</span>' +
       '<span class="match-count" aria-live="polite"></span>');
     f.body.appendChild(rule);
-    var counter = rule.querySelector(".match-count");
+    var counter = /** @type {HTMLElement} */ (rule.querySelector(".match-count"));
     var grid = el("div", "match-grid");
     var colL = el("div", "match-col"), colR = el("div", "match-col");
-    var selL = null, selR = null, mistakes = 0, matched = 0, busy = false;
+    var selL = /** @type {HTMLButtonElement | null} */ (null), selR = /** @type {HTMLButtonElement | null} */ (null), mistakes = 0, matched = 0, busy = false;
     var lefts = ex.pairs.map(function (p, i) { return i; });
     var rightsOrder = shuffleDifferent(lefts, function (a, b) { return a.join() === b.join(); });
     var leftsOrder = shuffle(lefts);
@@ -670,10 +724,11 @@
     }
     updateCounter();
 
+    /** @param {number} i @param {"L" | "R"} side */
     function mk(i, side) {
       var b = el("button", "match-item", rich(side === "L" ? ex.pairs[i].left : ex.pairs[i].right));
       b.type = "button";
-      b.setAttribute("data-i", i);
+      b.setAttribute("data-i", String(i));
       b.addEventListener("click", function () {
         if (busy || b.classList.contains("locked")) return;
         if (side === "L") { if (selL) selL.classList.remove("selected"); selL = selL === b ? null : b; }
@@ -685,7 +740,8 @@
     }
 
     function tryPair() {
-      var a = selL, b = selR;
+      // both are set when tryPair() is called
+      var a = /** @type {HTMLButtonElement} */ (selL), b = /** @type {HTMLButtonElement} */ (selR);
       selL = selR = null;
       a.classList.remove("selected"); b.classList.remove("selected");
       if (a.getAttribute("data-i") === b.getAttribute("data-i")) {
@@ -731,6 +787,8 @@
 
   /* ---------- ORDER ---------- */
 
+  /** @param {OrderExercise} ex @param {HTMLElement} container @param {ExDone} done @param {ExRenderOpts} opts
+      @returns {ExerciseController} */
   function renderOrder(ex, container, done, opts) {
     var f = frame(ex, container, opts);
     var line = el("div", "order-line");
@@ -741,7 +799,7 @@
     var order = shuffleDifferent(ids, function (a) {
       return a.map(function (i) { return all[i]; }).join(" ") === ex.words.join(" ");
     });
-    var chips = {};
+    var chips = /** @type {Record<number, ExOrderChip>} */ ({});
 
     function refresh() {
       opts.onReady(line.children.length > 0);
@@ -750,9 +808,9 @@
 
     order.forEach(function (i) {
       var slot = el("span", "order-slot");
-      var chip = el("button", "chip word", escapeHtml(plain(all[i])));
+      var chip = /** @type {ExOrderChip} */ (el("button", "chip word", escapeHtml(plain(all[i]))));
       chip.type = "button";
-      chip.setAttribute("data-i", i);
+      chip.setAttribute("data-i", String(i));
       chip._slot = slot;
       chip.addEventListener("click", function () {
         if (f.root.classList.contains("answered")) return;
@@ -772,7 +830,8 @@
 
     return {
       check: function () {
-        var answer = Array.prototype.map.call(line.children, function (c) { return all[+c.getAttribute("data-i")]; });
+        var answer = /** @type {string[]} */ (Array.prototype.map.call(line.children,
+          function (/** @type {Element} */ c) { return all[+/** @type {string} */ (c.getAttribute("data-i"))]; }));
         var ok = orderAccepted(ex, answer);
         lockAll(f.root);
         line.classList.add(ok ? "correct" : "wrong");
@@ -788,6 +847,8 @@
 
   /* ---------- FILL ---------- */
 
+  /** @param {FillExercise} ex @param {HTMLElement} container @param {ExDone} done @param {ExRenderOpts} opts
+      @returns {ExerciseController} */
   function renderFill(ex, container, done, opts) {
     var f = frame(ex, container, opts);
     var parts = String(ex.sentence).split("___");
@@ -816,7 +877,7 @@
 
     function size() { input.style.width = Math.max(5, input.value.length + 2) + "ch"; }
     input.addEventListener("input", function () { size(); opts.onReady(input.value.trim().length > 0); });
-    input.addEventListener("keydown", function (e) {
+    input.addEventListener("keydown", function (/** @type {KeyboardEvent} */ e) {
       if (e.key === "Enter") { e.preventDefault(); if (input.value.trim()) api.check(); }
     });
     size();
@@ -854,10 +915,12 @@
 
   /* ---------- SPOT ---------- */
 
+  /** @param {SpotExercise} ex @param {HTMLElement} container @param {ExDone} done @param {ExRenderOpts} opts
+      @returns {ExerciseController} */
   function renderSpot(ex, container, done, opts) {
     var f = frame(ex, container, opts);
     var wrap = el("div", "spot-sentence");
-    var selected = -1, btns = [];
+    var selected = -1, btns = /** @type {HTMLButtonElement[]} */ ([]);
     ex.tokens.forEach(function (t, i) {
       var b = el("button", "spot-token", escapeHtml(plain(t)));
       b.type = "button";
@@ -890,6 +953,8 @@
 
   /* ---------- WRITE ---------- */
 
+  /** @param {WriteExercise} ex @param {HTMLElement} container @param {ExDone} done @param {ExRenderOpts} opts
+      @returns {ExerciseController} */
   function renderWrite(ex, container, done, opts) {
     var f = frame(ex, container, opts);
     var doc = findDocument(opts.data, ex);
@@ -906,7 +971,7 @@
       ex.starters.forEach(function (s) {
         var b = el("button", "chip starter", escapeHtml(plain(s)));
         b.type = "button";
-        b.addEventListener("mousedown", function (e) { e.preventDefault(); }); // keep caret
+        b.addEventListener("mousedown", function (/** @type {MouseEvent} */ e) { e.preventDefault(); }); // keep caret
         b.addEventListener("click", function () { insertAtCursor(ta, plain(s)); });
         st.appendChild(b);
       });
@@ -964,15 +1029,17 @@
   }
 
   /** Document shown by a write exercise: docId (or legacy letterId) in data.documents (or legacy data.letters). */
+  /** @param {LoadedPack | Pack | null} data @param {Exercise} ex @returns {PackDocument | null} */
   function findDocument(data, ex) {
     var id = ex.docId != null ? ex.docId : ex.letterId;
     if (id == null || !data) return null;
-    var docs = Array.isArray(data.documents) ? data.documents : Array.isArray(data.letters) ? data.letters : [];
+    var docs = Array.isArray(data.documents) ? data.documents : Array.isArray(/** @type {Pack} */ (data).letters) ? /** @type {PackDocument[]} */ (/** @type {Pack} */ (data).letters) : [];
     for (var i = 0; i < docs.length; i++) if (docs[i] && docs[i].id === id) return docs[i];
     return null;
   }
 
   /** Card showing a pack document: a letter (from) or a text to read (title). */
+  /** @param {PackDocument} doc @param {string} cls */
   function docCard(doc, cls) {
     var card = el("div", cls);
     var text = String(doc.text == null ? "" : doc.text);
@@ -989,7 +1056,7 @@
 
   /* ---------- long texts: reading screen, then "back to the text" over the question ---------- */
 
-  var textLayer = null;
+  var textLayer = /** @type {ExReadLayer | null} */ (null);
 
   function closeText() {
     if (!textLayer) return;
@@ -1002,10 +1069,11 @@
   }
 
   /** The text over the question, full screen: the question and the answer in progress stay as they are below. */
+  /** @param {PackDocument} doc */
   function openText(doc) {
     closeText();
     var opener = document.activeElement;
-    var layer = el("div", "read-layer");
+    var layer = /** @type {ExReadLayer} */ (el("div", "read-layer"));
     layer.setAttribute("role", "dialog");
     layer.setAttribute("aria-modal", "true");
     layer.setAttribute("aria-label", plain(doc.title || T("docDefault")));
@@ -1016,7 +1084,7 @@
     close.addEventListener("click", closeText);
     inner.appendChild(close);
     layer.appendChild(inner);
-    layer._back = opener;
+    layer._back = /** @type {HTMLElement | null} */ (opener);
     layer._onKey = function (e) { if (e.key === "Escape") closeText(); };
     document.addEventListener("keydown", layer._onKey);
     document.body.appendChild(layer);
@@ -1027,6 +1095,7 @@
   }
 
   /** Reading screen shown before the first question on a long text: the child reads first, then answers. */
+  /** @param {PackDocument} doc @param {HTMLElement} container @param {() => void} onContinue */
   function readingScreen(doc, container, onContinue) {
     closeText();
     container.innerHTML = "";
@@ -1041,6 +1110,7 @@
     return root;
   }
 
+  /** @param {HTMLTextAreaElement} ta @param {string} text */
   function insertAtCursor(ta, text) {
     var start = ta.selectionStart != null ? ta.selectionStart : ta.value.length;
     var end = ta.selectionEnd != null ? ta.selectionEnd : ta.value.length;
@@ -1056,6 +1126,8 @@
 
   /* ---------- dispatcher ---------- */
 
+  /* The dispatcher picks the renderer by ex.type, so each one gets its own exercise type: ex is any here. */
+  /** @type {Record<string, (ex: any, container: HTMLElement, done: ExDone, opts: ExRenderOpts) => ExerciseController>} */
   var RENDERERS = {
     mcq: renderMcq, sort: renderSort, match: renderMatch, order: renderOrder,
     fill: renderFill, spot: renderSpot, write: renderWrite
@@ -1077,6 +1149,7 @@
     closeText();
     var fn = RENDERERS[exercise && exercise.type];
     var answered = false;
+    /** @param {RenderedResult} res */
     var once = function (res) {
       if (answered) return;
       answered = true;
@@ -1089,7 +1162,7 @@
       return { check: null, auto: true };
     }
     try {
-      return fn(exercise, container, once, opts);
+      return fn(exercise, container, once, /** @type {ExRenderOpts} */ (opts));
     } catch (e) {
       console.error("Exercise render failed", e, exercise);
       container.innerHTML = '<div class="ex ex-broken"><p>' + T("broken") + "</p></div>";

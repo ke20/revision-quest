@@ -19,13 +19,19 @@ import { T } from "./util.js";
    The address is replaced, never pushed: the back button keeps working as below. A world being played is kept per
    tab (sessionStorage) and resumed at the same exercise, with the same hearts. */
 export let RUN_KEY = "revisionQuest.run";
+/** @param {string} path */
 export function route(path) {
   try {
     var url = String(location.href).split("#")[0] + (path ? "#/" + path : "");
     if (url !== String(location.href)) history.replaceState(history.state, "", url);
   } catch (e) { /* ignore */ }
 }
+/** @param {World} w */
 export function worldPath(w) { return "chapitre/" + S.pack.id + "/monde/" + (S.data.worlds.indexOf(w) + 1); }
+/** @typedef {{ screen: "catalogue" } | { screen: "badges" } | { screen: "classement" } | { screen: "joueurs" }
+      | { screen: "groupes", id: string }
+      | { screen: "chapitre", id: string, world: number | null, play: boolean, ex: number | null }} Route */
+/** The screen named by the address, or null. @returns {Route | null} */
 export function parseRoute() {
   var p = String(location.hash || "").replace(/^#\/?/, ""), m;
   if (!p || /^partie=/.test(p)) return null;
@@ -35,6 +41,7 @@ export function parseRoute() {
   if (m) return { screen: "chapitre", id: m[1], world: m[2] ? +m[2] - 1 : null, play: m[3] === "jeu", ex: m[4] ? +m[4] - 1 : null };
   return null;
 }
+/** @param {Route} r */
 export function goRoute(r) {
   if (r.screen === "catalogue") return showCatalog();
   if (r.screen === "badges") return showBadges();
@@ -58,7 +65,7 @@ export function saveRun() {
   } catch (e) { /* ignore: the world simply restarts after a reload */ }
 }
 export function clearRun() { try { sessionStorage.removeItem(RUN_KEY); } catch (e) { /* ignore */ } }
-/** The saved session of this world for the current player, or null. */
+/** The saved session of this world for the current player, or null. @param {World} w @returns {WorldSession | null} */
 export function takeRun(w) {
   var r, me = Engine.currentProfile();
   try { r = JSON.parse(sessionStorage.getItem(RUN_KEY) || "null"); } catch (e) { r = null; }
@@ -78,6 +85,7 @@ export function pushTrap() {
   if (trapped) return;
   try { history.pushState({ rq: 1 }, ""); trapped = true; } catch (e) { /* ignore */ }
 }
+/** @param {(() => void) | null} [back] @param {(() => void) | null} [again] */
 export function setNav(back, again) {
   S.loadToken++; // any navigation cancels a pack that is still loading
   backAction = back || null;

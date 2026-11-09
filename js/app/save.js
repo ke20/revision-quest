@@ -2,11 +2,12 @@
 /* Révision Quest — Save, export / import, share by link or QR code, QR scanner. */
 import { showHome } from "./home.js";
 import { Sound } from "./sound.js";
-import { h, modal, toast } from "./ui.js";
+import { h, modal, qs, toast } from "./ui.js";
 import { APP_NAME, E, must } from "./util.js";
 
 /* ---------- save / export / import ---------- */
 
+/** @param {string} filename @param {string} content */
 export function download(filename, content) {
   var blob = new Blob([content], { type: "application/octet-stream" });
   var url = URL.createObjectURL(blob);
@@ -17,6 +18,7 @@ export function download(filename, content) {
   setTimeout(function () { URL.revokeObjectURL(url); a.remove(); }, 1000);
 }
 
+/** @param {() => void} [back] */
 export function showSavePanel(back) {
   var me = Engine.currentProfile();
   var ok = Engine.storageAvailable();
@@ -34,7 +36,7 @@ export function showSavePanel(back) {
       "Exporter = garder ta partie dans un fichier. Importer = la remettre dans le jeu.</p>" +
     '<div class="modal-actions"><button class="btn btn-ghost" data-act="close">Fermer</button></div>',
     function (m, close) {
-      var exp = m.querySelector('[data-act="export"]');
+      var exp = /** @type {HTMLElement | null} */ (m.querySelector('[data-act="export"]'));
       if (exp) exp.onclick = function () {
         var f = Engine.exportProfile();
         if (!f) return;
@@ -45,12 +47,12 @@ export function showSavePanel(back) {
           toast("😕 Impossible de créer le fichier.");
         }
       };
-      var sh = m.querySelector('[data-act="share"]');
+      var sh = /** @type {HTMLElement | null} */ (m.querySelector('[data-act="share"]'));
       if (sh) sh.onclick = function () { close(); showShare(back); };
-      var sc = m.querySelector('[data-act="scan"]');
+      var sc = /** @type {HTMLElement | null} */ (m.querySelector('[data-act="scan"]'));
       if (sc) sc.onclick = function () { close(); showScanner(back); };
-      var fileInput = m.querySelector(".file-input");
-      m.querySelector('[data-act="import"]').onclick = function () { fileInput.click(); };
+      var fileInput = /** @type {HTMLInputElement} */ (m.querySelector(".file-input"));
+      qs(m, '[data-act="import"]').onclick = function () { fileInput.click(); };
       fileInput.onchange = function () {
         var file = fileInput.files && fileInput.files[0];
         if (!file) return;
@@ -65,22 +67,25 @@ export function showSavePanel(back) {
         reader.readAsText(file);
         fileInput.value = "";
       };
-      m.querySelector('[data-act="close"]').onclick = function () { close(); (back || showHome)(); };
+      qs(m, '[data-act="close"]').onclick = function () { close(); (back || showHome)(); };
     });
 }
 
+/** @param {string} [msg] */
 export function importError(msg) {
   Sound.wrong();
   modal('<h3>😕 Import impossible</h3><p>' + E(msg) + '</p><div class="modal-actions"><button class="btn btn-primary" data-act="ok">OK</button></div>',
-    function (m, close) { m.querySelector('[data-act="ok"]').onclick = close; });
+    function (m, close) { qs(m, '[data-act="ok"]').onclick = close; });
 }
 
+/** @param {string} text */
 export function handleImport(text) { handleParsed(Engine.parseImport(text)); }
 
-/** A checked save (file, link or QR code): same name already here → replace or keep both. */
+/** A checked save (file, link or QR code): same name already here → replace or keep both. @param {ImportResult} res */
 export function handleParsed(res) {
   if (!res.ok) return importError(res.error);
-  var p = res.profile;
+  var p = /** @type {Profile} */ (res.profile); // ok: the profile is there
+  /** @param {"replace" | "copy"} mode */
   function finish(mode) {
     var done = Engine.importProfile(p, mode);
     if (!done) return importError("Impossible d'ajouter ce joueur (50 joueurs maximum sur cet appareil).");
@@ -97,9 +102,9 @@ export function handleParsed(res) {
     "</div>" +
     '<div class="modal-actions"><button class="btn btn-ghost" data-act="cancel">Annuler</button></div>',
     function (m, close) {
-      m.querySelector('[data-act="replace"]').onclick = function () { close(); finish("replace"); };
-      m.querySelector('[data-act="copy"]').onclick = function () { close(); finish("copy"); };
-      m.querySelector('[data-act="cancel"]').onclick = close;
+      qs(m, '[data-act="replace"]').onclick = function () { close(); finish("replace"); };
+      qs(m, '[data-act="copy"]').onclick = function () { close(); finish("copy"); };
+      qs(m, '[data-act="cancel"]').onclick = close;
     });
 }
 
@@ -109,9 +114,10 @@ export let SHARE_PARAM = "partie";
 export let QR_MAX_VERSION = 25;     // 117 × 117 cells: still easy to scan on a screen; a bigger game is sent as a link
 export let LINK_MAX = 16000;        // beyond, the game is sent as a .save file (never seen: a full game is about 1 000 characters)
 
+/** @param {string} code */
 export function shareLink(code) { return String(location.href).split("#")[0] + "#" + SHARE_PARAM + "=" + code; }
 
-/** QR code as an SVG (dark cells as one path), or null when the link does not fit in a readable QR code. */
+/** QR code as an SVG (dark cells as one path), or null when the link does not fit in a readable QR code. @param {string} text */
 export function qrSvg(text) {
   var Q = window.qrcodegen;
   if (!Q) return null;
@@ -139,6 +145,7 @@ export function qrSvg(text) {
   return svg;
 }
 
+/** @param {() => void} [back] */
 export function showShare(back) {
   const me = must(Engine.currentProfile()); // the share panel is opened by the current player
   if (!me) return;
@@ -146,8 +153,8 @@ export function showShare(back) {
     '<div class="share-body"><p class="save-help">Préparation…</p></div>' +
     '<div class="modal-actions"><button class="btn btn-ghost" data-act="close">Fermer</button></div>',
     function (m, close) {
-      m.querySelector('[data-act="close"]').onclick = function () { close(); if (back) back(); };
-      var body = m.querySelector(".share-body");
+      qs(m, '[data-act="close"]').onclick = function () { close(); if (back) back(); };
+      var body = qs(m, ".share-body");
       Engine.shareCode(me.id).then(function (code) {
         if (!code) { body.innerHTML = '<p class="save-help">Impossible de préparer la partie.</p>'; return; }
         var link = shareLink(code);
@@ -183,6 +190,7 @@ export function showShare(back) {
     });
 }
 
+/** @param {string} text @param {HTMLElement} box */
 export function copyText(text, box) {
   function fallback() { // show the link, selected, to copy by hand
     var old = box.querySelector(".share-link");
@@ -214,7 +222,7 @@ export function sendFile() {
   catch (e) { toast("😕 Impossible de créer le fichier."); }
 }
 
-/** The code inside a scanned text or a link: "…#partie=<code>" or the bare code. */
+/** The code inside a scanned text or a link: "…#partie=<code>" or the bare code. @param {string} text @returns {string | null} */
 export function codeFrom(text) {
   text = String(text || "").trim();
   var m = new RegExp("[#&]" + SHARE_PARAM + "=([A-Za-z0-9._-]+)").exec(text);
@@ -223,7 +231,9 @@ export function codeFrom(text) {
 }
 
 /** A game received by link or QR code: always shown and confirmed before anything is changed. */
+/** @type {string | null} */
 export let sharedOpen = null; // code whose confirmation is on screen (the same link is not asked twice)
+/** @param {string} code */
 export function importShared(code) {
   if (Engine.session) { toast("Termine ton monde, puis ouvre à nouveau le lien."); return; }
   if (sharedOpen === code) return;
@@ -241,8 +251,8 @@ export function importShared(code) {
       function (m, close) {
         sharedOpen = code;
         var shut = function () { sharedOpen = null; close(); };
-        m.querySelector('[data-act="no"]').onclick = shut;
-        m.querySelector('[data-act="yes"]').onclick = function () { shut(); handleParsed(res); };
+        qs(m, '[data-act="no"]').onclick = shut;
+        qs(m, '[data-act="yes"]').onclick = function () { shut(); handleParsed(res); };
       });
   });
 }
@@ -261,8 +271,13 @@ export function canScan() {
   try { return "BarcodeDetector" in window && !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia); } catch (e) { return false; }
 }
 
+/** @param {() => void} [back] */
 export function showScanner(back) {
-  var stream = null, timer = null, done = false;
+  /** @type {MediaStream | null} */
+  var stream = null;
+  /** @type {ReturnType<typeof setTimeout> | null} */
+  var timer = null;
+  var done = false;
   function stop() {
     done = true;
     if (timer) clearTimeout(timer);
@@ -274,9 +289,10 @@ export function showScanner(back) {
     '<p class="save-help scan-msg">Montre le QR code de la partie à la caméra.</p>' +
     '<div class="modal-actions"><button class="btn btn-ghost" data-act="close">Fermer</button></div>',
     function (m, close) {
-      var video = m.querySelector(".scan-video"), msg = m.querySelector(".scan-msg");
+      var video = /** @type {HTMLVideoElement} */ (m.querySelector(".scan-video")), msg = qs(m, ".scan-msg");
       function quit() { stop(); close(); }
-      m.querySelector('[data-act="close"]').onclick = function () { quit(); if (back) back(); };
+      qs(m, '[data-act="close"]').onclick = function () { quit(); if (back) back(); };
+      /** @type {any} BarcodeDetector: not in the DOM types */
       var detector;
       try { detector = new window.BarcodeDetector({ formats: ["qr_code"] }); } catch (e) { msg.textContent = "Ce navigateur ne sait pas lire les QR codes."; return; }
       navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" }, audio: false }).then(function (s) {
@@ -286,8 +302,9 @@ export function showScanner(back) {
         var p = video.play(); if (p && p.catch) p.catch(function () {});
         (function look() {
           if (done) return;
-          detector.detect(video).then(function (codes) {
+          detector.detect(video).then(function (/** @type {Array<{ rawValue: string }>} */ codes) {
             if (done) return;
+            /** @type {string | null} */
             var found = null;
             (codes || []).forEach(function (c) { if (!found && c && codeFrom(c.rawValue)) found = codeFrom(c.rawValue); });
             if (found) { quit(); importShared(found); return; }

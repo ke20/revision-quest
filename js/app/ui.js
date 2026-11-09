@@ -9,6 +9,7 @@ import { E } from "./util.js";
 
 /* ================= UI helpers ================= */
 
+/** Close functions of the open dialogs. @type {Array<() => void>} */
 export let openModals = [];
 
 /** An element of a screen built by this code (it is there). @param {ParentNode} node @param {string} sel @returns {HTMLElement} */
@@ -21,6 +22,7 @@ export function h(html) {
   return /** @type {HTMLElement} */ (d.firstChild);
 }
 
+/** @param {Node} node */
 export function show(node) {
   window.Exercises && Exercises.closeBubble();
   window.Exercises && Exercises.closeText && Exercises.closeText();
@@ -30,15 +32,17 @@ export function show(node) {
   window.scrollTo(0, 0);
 }
 
+/** The [data-act] button gets fn as click handler (if it is there). @param {ParentNode} node @param {string} act @param {(e: MouseEvent) => void} fn @returns {HTMLElement | null} */
 export function on(node, act, fn) {
-  var b = node.querySelector('[data-act="' + act + '"]');
+  var b = /** @type {HTMLElement | null} */ (node.querySelector('[data-act="' + act + '"]'));
   if (b) b.onclick = fn;
   return b;
 }
 
+/** @template {HTMLElement} T @param {ParentNode} node @param {string} sel @param {(el: T, i: number) => void} fn */
 export function each(node, sel, fn) { Array.prototype.forEach.call(node.querySelectorAll(sel), fn); }
 
-/** html must be trusted or already escaped. */
+/** html must be trusted or already escaped. @param {string} html @param {string} [cls] */
 export function toast(html, cls) {
   var wrap = /** @type {HTMLElement} */ (document.getElementById("toasts")); // in index.html
   var t = h('<div class="toast ' + (cls || "") + '">' + html + "</div>");
@@ -47,6 +51,7 @@ export function toast(html, cls) {
   setTimeout(function () { t.remove(); }, 3300);
 }
 
+/** @param {Badge[] | null} [list] */
 export function badgeToasts(list) {
   (list || []).forEach(function (b, i) {
     setTimeout(function () {
@@ -56,6 +61,7 @@ export function badgeToasts(list) {
   });
 }
 
+/** html must be trusted. @param {string} html @param {(m: HTMLElement, close: () => void) => void} [onMount] @returns {() => void} close */
 export function modal(html, onMount) {
   var m = h('<div class="modal-backdrop"><div class="modal pop">' + html + "</div></div>");
   document.body.appendChild(m);
@@ -72,44 +78,49 @@ export function modal(html, onMount) {
   return close;
 }
 
-/** title / text / okLabel must be trusted or already escaped. */
+/** title / text / okLabel must be trusted or already escaped.
+ * @param {string} title @param {string} text @param {string} okLabel @param {() => void} onOk @param {boolean} [danger] @param {string} [cancelLabel] */
 export function confirmBox(title, text, okLabel, onOk, danger, cancelLabel) {
   modal('<h3>' + title + '</h3><p>' + text + '</p><div class="modal-actions">' +
     '<button class="btn btn-ghost" data-act="no">' + (cancelLabel || "Annuler") + '</button>' +
     '<button class="btn ' + (danger ? "btn-danger" : "btn-primary") + '" data-act="yes">' + okLabel + "</button></div>",
     function (m, close) {
-      m.querySelector('[data-act="no"]').onclick = close;
-      m.querySelector('[data-act="yes"]').onclick = function () { close(); onOk(); };
+      qs(m, '[data-act="no"]').onclick = close;
+      qs(m, '[data-act="yes"]').onclick = function () { close(); onOk(); };
     });
 }
 
+/** @param {LevelInfo} info */
 export function levelUpPopup(info) {
   Sound.levelUp();
   Confetti.burst(120, { center: true });
   modal('<div class="levelup"><div class="levelup-burst">🎉</div><div class="levelup-label">NIVEAU SUPÉRIEUR !</div>' +
     '<div class="levelup-num">Niveau ' + info.level + '</div><div class="levelup-name">' + E(info.icon) + " " + E(info.name) + "</div>" +
     '<button class="btn btn-primary btn-big" data-act="ok">Génial !</button></div>',
-    function (m, close) { m.querySelector('[data-act="ok"]').onclick = close; });
+    function (m, close) { qs(m, '[data-act="ok"]').onclick = close; });
 }
 
+/** @param {number} n @param {number} [total] */
 export function starsHtml(n, total) {
   var s = "";
   for (var i = 0; i < (total || Engine.MAX_STARS); i++) s += '<span class="star ' + (i < n ? "on" : "") + '">★</span>';
   return s;
 }
 
+/** @param {number} n */
 export function bigStarsHtml(n) {
   var s = "";
   for (var i = 0; i < Engine.MAX_STARS; i++) s += '<span class="bstar ' + (i < n ? "on" : "") + '" style="animation-delay:' + (0.3 + i * 0.25) + 's">★</span>';
   return s;
 }
 
+/** @param {number} n */
 export function heartsHtml(n) {
   var s = "";
   for (var i = 0; i < Engine.MAX_HEARTS; i++) s += '<span class="heart ' + (i < n ? "" : "lost") + '">' + (i < n ? "❤️" : "🤍") + "</span>";
   return s;
 }
-/** Free mistakes of the world (n left out of max): used before the hearts. */
+/** Free mistakes of the world (n left out of max): used before the hearts. @param {number} n @param {number} max */
 export function shieldsHtml(n, max) {
   var s = "";
   for (var i = 0; i < max; i++) s += '<span class="shield ' + (i < n ? "" : "used") + '">🛡️</span>';

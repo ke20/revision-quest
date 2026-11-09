@@ -37,7 +37,7 @@ export function fsToggle() {
   if (p && p.catch) p.catch(function () { toast("Le plein écran n'est pas disponible ici."); });
 }
 export function fsRefresh() {
-  each(document, '[data-act="fullscreen"]', function (b) {
+  each(document, '[data-act="fullscreen"]', /** @param {HTMLElement} b */ function (b) {
     b.classList.toggle("on", fsActive());
     b.setAttribute("aria-pressed", fsActive() ? "true" : "false");
   });

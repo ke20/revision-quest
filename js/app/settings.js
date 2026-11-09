@@ -5,9 +5,11 @@ import { gradeButtons, myGrade } from "./catalog.js";
 import { applyComfort } from "./comfort.js";
 import { fsActive, fsSupported, fsToggle, showHome } from "./home.js";
 import { Sound } from "./sound.js";
-import { confirmBox, each, modal, toast } from "./ui.js";
+import { confirmBox, each, modal, qs, toast } from "./ui.js";
 import { E } from "./util.js";
 
+/** @typedef {{ key: keyof PlayerSettings, label: string, values: Array<[string | number, string]> }} SettingRow */
+/** @type {SettingRow[]} */
 export let SETTING_ROWS = [
   { key: "pauseEvery", label: "⏸️ Pause conseillée après…", values: [[0, "Jamais"], [2, "2 mondes"], [3, "3 mondes"], [4, "4 mondes"]] },
   { key: "freeMistakes", label: "🛡️ Erreurs sans perdre de cœur", values: [[0, "0"], [1, "1"], [2, "2"], [3, "3"]] },
@@ -22,6 +24,7 @@ export let TEXT_SETTINGS = ["animations", "difficulty", "playedWorlds", "seasona
 
 /** Confirmation that needs a typed phrase (for what cannot be undone). title / text must be trusted or escaped. */
 export let CONFIRM_PHRASE = "Je confirme";
+/** @param {string} title @param {string} text @param {string} okLabel @param {() => void} onOk */
 export function typedConfirmBox(title, text, okLabel, onOk) {
   modal('<h3>' + title + '</h3><p>' + text + '</p>' +
     '<label class="field-label" for="confirm-input">Écris « ' + CONFIRM_PHRASE + ' » pour continuer</label>' +
@@ -29,11 +32,11 @@ export function typedConfirmBox(title, text, okLabel, onOk) {
     '<div class="modal-actions"><button class="btn btn-ghost" data-act="no">Annuler</button>' +
     '<button class="btn btn-danger" data-act="yes" disabled>' + okLabel + "</button></div>",
     function (m, close) {
-      var input = m.querySelector("#confirm-input"), yes = m.querySelector('[data-act="yes"]');
+      var input = /** @type {HTMLInputElement} */ (m.querySelector("#confirm-input")), yes = /** @type {HTMLButtonElement} */ (m.querySelector('[data-act="yes"]'));
       var typed = function () { return input.value.replace(/\s+/g, " ").trim().toLowerCase() === CONFIRM_PHRASE.toLowerCase(); };
       input.oninput = function () { yes.disabled = !typed(); };
       input.onkeydown = function (e) { if (e.key === "Enter" && typed()) yes.click(); };
-      m.querySelector('[data-act="no"]').onclick = close;
+      qs(m, '[data-act="no"]').onclick = close;
       yes.onclick = function () { if (!typed()) return; close(); onOk(); };
       input.focus();
     });
@@ -62,10 +65,12 @@ export function showSettings() {
     function (m, close) {
       each(m, "[data-set]", function (b) {
         b.onclick = function () {
-          var key = b.getAttribute("data-set"), raw = b.getAttribute("data-val"), ch = {};
+          var key = /** @type {keyof PlayerSettings} */ (b.getAttribute("data-set")), raw = /** @type {string} */ (b.getAttribute("data-val"));
+          /** @type {Record<string, string | number>} */
+          var ch = {};
           ch[key] = TEXT_SETTINGS.indexOf(key) !== -1 ? raw : +raw;
           var apply = function () {
-            Engine.setSettings(ch);
+            Engine.setSettings(/** @type {Partial<PlayerSettings>} */ (ch));
             var now = Engine.settings()[key];
             each(m, '[data-set="' + key + '"]', function (x) {
               var v = x.getAttribute("data-val"), on = String(now) === v;
@@ -84,7 +89,7 @@ export function showSettings() {
       });
       each(m, "[data-set-grade]", function (b) {
         b.onclick = function () {
-          Engine.setSettings({ grade: b.getAttribute("data-set-grade") });
+          Engine.setSettings({ grade: /** @type {string} */ (b.getAttribute("data-set-grade")) });
           S.catAllGrades = false; S.catFilter.level = "";
           each(m, "[data-set-grade]", function (x) {
             var on = x.getAttribute("data-set-grade") === Engine.settings().grade;
@@ -93,21 +98,21 @@ export function showSettings() {
           Sound.tap();
         };
       });
-      var fs = m.querySelector('[data-act="fullscreen"]');
+      var fs = /** @type {HTMLElement | null} */ (m.querySelector('[data-act="fullscreen"]'));
       if (fs) fs.onclick = function () { Sound.tap(); fsToggle(); };
-      var tg = m.querySelector('[data-act="sound"]');
+      var tg = qs(m, '[data-act="sound"]');
       tg.onclick = function () {
         Engine.setSound(!Engine.soundOn());
         tg.classList.toggle("on", Engine.soundOn());
         Sound.unlock(); Sound.tap();
       };
-      m.querySelector('[data-act="reset"]').onclick = function () {
+      qs(m, '[data-act="reset"]').onclick = function () {
         close();
         var me = Engine.currentProfile();
         confirmBox("Tout effacer ?", "Toute la progression de " + E(me ? me.name : "") + " sera effacée : XP, étoiles et badges de tous les chapitres.", "Oui, effacer", function () {
           Engine.reset(); showHome(); toast("Progression effacée ✨");
         }, true);
       };
-      m.querySelector('[data-act="close"]').onclick = function () { close(); showHome(); };
+      qs(m, '[data-act="close"]').onclick = function () { close(); showHome(); };
     });
 }

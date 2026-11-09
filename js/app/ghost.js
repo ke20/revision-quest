@@ -9,14 +9,14 @@ import { E, R, T, safeColor } from "./util.js";
 
 /* ================= Ghost mode: free walk through a world's exercises, answers shown ================= */
 
-/** The expected answer of an exercise, as trusted HTML built from escaped pack data. */
+/** The expected answer of an exercise, as trusted HTML built from escaped pack data. @param {Exercise} ex @returns {string} */
 export function ghostAnswer(ex) {
-  var li = function (x) { return "<li>" + x + "</li>"; };
-  var list = function (items) { return "<ul>" + items.map(li).join("") + "</ul>"; };
+  var li = /** @param {string} x */ function (x) { return "<li>" + x + "</li>"; };
+  var list = /** @param {string[]} items */ function (items) { return "<ul>" + items.map(li).join("") + "</ul>"; };
   switch (ex.type) {
     case "mcq": {
       var good = Array.isArray(ex.answer) ? ex.answer : [ex.answer];
-      return list(good.map(function (i) { return E((ex.options || [])[i]); }));
+      return list(good.map(function (/** @type {number} */ i) { return E((ex.options || [])[i]); }));
     }
     case "fill": return list((ex.answers || []).map(E));
     case "match": return list((ex.pairs || []).map(function (p) { return E(p.left) + " → " + E(p.right); }));
@@ -24,7 +24,7 @@ export function ghostAnswer(ex) {
       return "<b>" + E(c.label) + "</b> : " + (ex.items || []).filter(function (i) { return i.cat === c.id; }).map(function (i) { return E(i.text); }).join(" · ");
     }));
     case "order": return "<p>" + E((ex.words || []).join(" ")) + "</p>" +
-      ((ex.alternatives || []).length ? list(ex.alternatives.map(function (a) { return E(a.join(" ")); })) : "");
+      ((ex.alternatives || []).length ? list(/** @type {string[][]} */ (ex.alternatives).map(function (a) { return E(a.join(" ")); })) : "");
     case "spot": return "<p>" + E((ex.tokens || [])[ex.wrongIndex]) + " → <b>" + E(ex.correction) + "</b></p>";
     case "write": return "<p>" + R(ex.modelAnswer || "") + "</p>" +
       list((ex.requirements || []).map(function (r) { return E(r.label); })) + "<p>" + E((ex.minRequirements || 0) + " critère(s) requis, " + (ex.minWords || 0) + " mots minimum") + "</p>";
@@ -32,6 +32,7 @@ export function ghostAnswer(ex) {
   }
 }
 
+/** @param {World} w @param {number} index */
 export function showGhost(w, index) {
   var list = w.exercises || [];
   if (!list.length) { toast(T("noExercises")); return; }
@@ -55,7 +56,7 @@ export function showGhost(w, index) {
   show(node);
   var bar = qs(node, ".checkbar"), feedback = qs(node, ".feedback");
   var btn = /** @type {HTMLButtonElement} */ (node.querySelector('[data-act="check"]'));
-  var go = function (k) { Sound.tap(); showGhost(w, k); };
+  var go = /** @param {number} k */ function (k) { Sound.tap(); showGhost(w, k); };
   on(node, "back", function () { Sound.tap(); showMap(); });
   on(node, "prev", function () { go(i - 1); });
   on(node, "next", function () { go(i + 1); });

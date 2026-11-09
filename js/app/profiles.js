@@ -41,19 +41,19 @@ export function showProfiles() {
   on(node, "new", function () { Sound.unlock(); Sound.tap(); showNewPlayer(); });
   on(node, "ranking", function () { Sound.tap(); showLeaderboard(showProfiles); });
   on(node, "save", function () { Sound.tap(); showSavePanel(showProfiles); });
-  each(node, ".profile-pick", function (b) {
+  each(node, ".profile-pick", /** @param {HTMLElement} b */ function (b) {
     b.onclick = function () {
       Sound.unlock(); Sound.tap();
-      Engine.selectProfile(b.getAttribute("data-id"));
+      Engine.selectProfile(must(b.getAttribute("data-id")));
       resetCatalogFilters();
       var p = Engine.currentProfile();
       showHome();
       if (p) toast("<span>" + E(p.avatar) + " Salut <b>" + E(p.name) + "</b> !</span>");
     };
   });
-  each(node, ".btn-del", function (b) {
+  each(node, ".btn-del", /** @param {HTMLElement} b */ function (b) {
     b.onclick = function () {
-      var id = b.getAttribute("data-del");
+      var id = must(b.getAttribute("data-del"));
       var p = list.filter(function (x) { return x.id === id; })[0];
       if (!p) return;
       confirmBox("Supprimer " + E(p.name) + " ?", "Toute la progression de ce joueur sera effacée (XP, étoiles, badges).<br><small>Astuce : exporte la partie avant, au cas où.</small>",
@@ -95,27 +95,27 @@ export function showNewPlayer() {
     "</section>");
   var input = /** @type {HTMLInputElement} */ (node.querySelector("#np-name")), err = qs(node, ".field-error");
   on(node, "back", showProfiles);
-  each(node, ".avatar-btn", function (b) {
+  each(node, ".avatar-btn", /** @param {HTMLElement} b */ function (b) {
     b.onclick = function () {
       Sound.tap();
-      chosen = b.getAttribute("data-av");
-      each(node, ".avatar-btn", function (x) { x.classList.toggle("selected", x === b); });
+      chosen = must(b.getAttribute("data-av"));
+      each(node, ".avatar-btn", /** @param {HTMLElement} x */ function (x) { x.classList.toggle("selected", x === b); });
     };
   });
   var grade = "";
-  each(node, "[data-grade]", function (b) {
+  each(node, "[data-grade]", /** @param {HTMLElement} b */ function (b) {
     b.onclick = function () {
       Sound.tap();
-      grade = b.getAttribute("data-grade");
-      each(node, "[data-grade]", function (x) { var on = x === b; x.classList.toggle("on", on); x.setAttribute("aria-pressed", on ? "true" : "false"); });
+      grade = must(b.getAttribute("data-grade"));
+      each(node, "[data-grade]", /** @param {HTMLElement} x */ function (x) { var on = x === b; x.classList.toggle("on", on); x.setAttribute("aria-pressed", on ? "true" : "false"); });
     };
   });
   var comfortYes = false; // only lives while this screen is open; never stored
-  each(node, "[data-comfort]", function (b) {
+  each(node, "[data-comfort]", /** @param {HTMLElement} b */ function (b) {
     b.onclick = function () {
       Sound.tap();
       comfortYes = b.getAttribute("data-comfort") === "yes";
-      each(node, "[data-comfort]", function (x) { x.classList.toggle("on", x === b); x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      each(node, "[data-comfort]", /** @param {HTMLElement} x */ function (x) { x.classList.toggle("on", x === b); x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
     };
   });
   function create() {
@@ -139,7 +139,8 @@ export function showNewPlayer() {
   try { input.focus({ preventScroll: true }); } catch (e) { /* ignore */ }
 }
 
-/** Ranking: general (XP), per subject (stars of all its chapters), or per chapter (chosen in the subject's menu). */
+/** Ranking: general (XP), per subject (stars of all its chapters), or per chapter (chosen in the subject's menu).
+    @param {() => void} [back] @param {string | null} [subjectId] @param {string | null} [unitId] */
 export function showLeaderboard(back, subjectId, unitId) {
   route("classement");
   var units = Packs.units(); // a group is ranked on its own (its stars are saved under its own id)
@@ -184,7 +185,7 @@ export function showLeaderboard(back, subjectId, unitId) {
     '<div class="lb-list">' + (body || '<div class="card">Aucun joueur pour l\'instant.</div>') + "</div>" +
     "</section>");
   on(node, "back", function () { (back || showHome)(); });
-  each(node, "[data-lb]", function (b) {
+  each(node, "[data-lb]", /** @param {HTMLElement} b */ function (b) {
     b.onclick = function () { Sound.tap(); showLeaderboard(back, b.getAttribute("data-lb")); };
   });
   const sel = /** @type {HTMLSelectElement|null} */ (node.querySelector(".lb-chapter")); // only shown inside a subject

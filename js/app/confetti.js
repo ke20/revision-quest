@@ -3,15 +3,24 @@
 import { motionOn, season } from "./comfort.js";
 
 /* ================= Confetti (homemade canvas) ================= */
+/** @typedef {{ x: number, y: number, vx: number, vy: number, w: number, h: number, r: number, vr: number, color: string, life: number, shape: string }} Particle */
 export let Confetti = (function () {
-  var canvas, c2d, parts = [], raf = null, launched = 0;
+  /** @type {HTMLCanvasElement | undefined} */
+  var canvas;
+  /** @type {CanvasRenderingContext2D} set by setup(), used once it ran */
+  var c2d;
+  /** @type {Particle[]} */
+  var parts = [];
+  /** @type {number | null} */
+  var raf = null;
+  var launched = 0;
   var COLORS = ["#FF5C8A", "#FFB72B", "#7C4DFF", "#2BD9A0", "#29B6F6", "#FF7A45", "#FFFFFF"];
   function setup() {
     if (canvas) return;
     canvas = document.createElement("canvas");
     canvas.className = "confetti";
     document.body.appendChild(canvas);
-    c2d = canvas.getContext("2d");
+    c2d = /** @type {CanvasRenderingContext2D} */ (canvas.getContext("2d"));
     resize();
     window.addEventListener("resize", resize);
   }
@@ -22,6 +31,7 @@ export let Confetti = (function () {
     canvas.style.width = window.innerWidth + "px"; canvas.style.height = window.innerHeight + "px";
     c2d.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
+  /** @param {number} [n] @param {{ center?: boolean }} [opts] */
   function burst(n, opts) {
     if (!motionOn()) return;
     launched++;
