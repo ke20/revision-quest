@@ -214,14 +214,42 @@ window.registerPack({
                 "6"
               ],
               [
-                "n²",
-                "1",
-                "4",
-                "9",
-                "16",
-                "25",
-                "36"
-              ],
+                {
+                  "text": "n²",
+                  "hl": true
+                },
+                {
+                  "text": "1",
+                  "hl": true
+                },
+                {
+                  "text": "4",
+                  "hl": true
+                },
+                {
+                  "text": "9",
+                  "hl": true
+                },
+                {
+                  "text": "16",
+                  "hl": true
+                },
+                {
+                  "text": "25",
+                  "hl": true
+                },
+                {
+                  "text": "36",
+                  "hl": true
+                }
+              ]
+            ],
+            "head": 1,
+            "caption": "Les carrés de 1 à 6",
+            "alt": "Carrés de 1 à 6 : 1² = 1, 2² = 4, 3² = 9, 4² = 16, 5² = 25, 6² = 36."
+          },
+          {
+            "rows": [
               [
                 "n",
                 "7",
@@ -232,18 +260,39 @@ window.registerPack({
                 "12"
               ],
               [
-                "n²",
-                "49",
-                "64",
-                "81",
-                "100",
-                "121",
-                "144"
+                {
+                  "text": "n²",
+                  "hl": true
+                },
+                {
+                  "text": "49",
+                  "hl": true
+                },
+                {
+                  "text": "64",
+                  "hl": true
+                },
+                {
+                  "text": "81",
+                  "hl": true
+                },
+                {
+                  "text": "100",
+                  "hl": true
+                },
+                {
+                  "text": "121",
+                  "hl": true
+                },
+                {
+                  "text": "144",
+                  "hl": true
+                }
               ]
             ],
-            "head": 0,
-            "caption": "Les carrés parfaits de 1 à 144",
-            "alt": "Table des carrés de 1 à 12."
+            "head": 1,
+            "caption": "Les carrés de 7 à 12",
+            "alt": "Carrés de 7 à 12 : 7² = 49, 8² = 64, 9² = 81, 10² = 100, 11² = 121, 12² = 144."
           }
         ]
       },
@@ -1263,14 +1312,42 @@ window.registerPack({
                 "6"
               ],
               [
-                "n²",
-                "1",
-                "4",
-                "9",
-                "16",
-                "25",
-                "36"
-              ],
+                {
+                  "text": "n²",
+                  "hl": true
+                },
+                {
+                  "text": "1",
+                  "hl": true
+                },
+                {
+                  "text": "4",
+                  "hl": true
+                },
+                {
+                  "text": "9",
+                  "hl": true
+                },
+                {
+                  "text": "16",
+                  "hl": true
+                },
+                {
+                  "text": "25",
+                  "hl": true
+                },
+                {
+                  "text": "36",
+                  "hl": true
+                }
+              ]
+            ],
+            "head": 1,
+            "caption": "Les carrés de 1 à 6",
+            "alt": "Carrés de 1 à 6 : 1² = 1, 2² = 4, 3² = 9, 4² = 16, 5² = 25, 6² = 36."
+          },
+          {
+            "rows": [
               [
                 "n",
                 "7",
@@ -1281,18 +1358,39 @@ window.registerPack({
                 "12"
               ],
               [
-                "n²",
-                "49",
-                "64",
-                "81",
-                "100",
-                "121",
-                "144"
+                {
+                  "text": "n²",
+                  "hl": true
+                },
+                {
+                  "text": "49",
+                  "hl": true
+                },
+                {
+                  "text": "64",
+                  "hl": true
+                },
+                {
+                  "text": "81",
+                  "hl": true
+                },
+                {
+                  "text": "100",
+                  "hl": true
+                },
+                {
+                  "text": "121",
+                  "hl": true
+                },
+                {
+                  "text": "144",
+                  "hl": true
+                }
               ]
             ],
-            "head": 0,
-            "caption": "Les carrés parfaits de 1 à 144",
-            "alt": "Table des carrés de 1 à 12."
+            "head": 1,
+            "caption": "Les carrés de 7 à 12",
+            "alt": "Carrés de 7 à 12 : 7² = 49, 8² = 64, 9² = 81, 10² = 100, 11² = 121, 12² = 144."
           }
         ]
       },
