@@ -22,9 +22,11 @@ objet, `?.`, `??`, `import()` dynamique). Les anciens fichiers écrits en ES5 re
 **Types** : TypeScript vérifie le JavaScript sans rien compiler (`mise run typecheck`, `tsconfig.json`). Les types
 s'écrivent en commentaires JSDoc (`/** @param {Pack} pack */`) ; les types partagés sont dans `types/*.d.ts`
 (format d'un pack : `types/pack.d.ts`, données du moteur : `types/engine.d.ts`). Un fichier vérifié commence par
-`// @ts-check` et figure dans `tsconfig.json` (`files` ou `include`) : `js/engine.js`, `js/pack-rules.js` et tous les
-écrans `js/app/*.js`. Les objets des scripts classiques (`Engine`, `Exercises`, `Packs`…) sont encore typés `any`
-dans `types/globals.d.ts`.
+`// @ts-check` et figure dans `tsconfig.json` (`files` ou `include`) : `js/engine.js`, `js/exercises.js`,
+`js/pack-rules.js` et tous les écrans `js/app/*.js`. Les objets publics des scripts classiques sont décrits dans
+`types/engine.d.ts` (`EngineApi`) et `types/scripts.d.ts` (`Exercises`, `Packs`, `I18N`, `Figures`) ; `engine.js` et
+`exercises.js` sont vérifiés contre leur interface (`@type {EngineApi}`, `@type {ExercisesApi}`) : changer une
+fonction publique sans mettre son type à jour fait échouer `mise run typecheck`.
 
 Le nom de l'app est défini à un seul endroit : `APP_CONFIG.name` dans `js/i18n.js` (+ `<title>` dans `index.html`).
 

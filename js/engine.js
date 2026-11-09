@@ -596,7 +596,7 @@
 
   /* ---------- current pack ---------- */
 
-  /** @type {{ id: string, data: Pack } | null} */
+  /** @type {{ id: string, data: LoadedPack } | null} */
   var pack = null;     // { id, data } of the pack being played
   /** @type {WorldSession | null} */
   var session = null;  // current world session
@@ -730,6 +730,7 @@
     return total;
   }
 
+  /** @type {EngineApi} */
   var Engine = {
     LEVELS: LEVELS,
     BADGES: BADGES,
@@ -738,7 +739,7 @@
     STORAGE_KEY: STORAGE_KEY,
     PACK_ID: PACK_ID,
 
-    /** Select the pack being played (data = registered pack). @param {string|null} id @param {Pack|null} data */
+    /** Select the pack being played (data = registered pack). @param {string|null} id @param {LoadedPack|null} data */
     setPack: function (id, data) { pack = id && data ? { id: id, data: data } : null; session = null; },
     currentPackId: packId,
     packData: function () { return pack ? pack.data : null; },

@@ -12,22 +12,22 @@ interface Window {
   APP_CONFIG?: AppConfig;
   /** js/app/main.js (used by the end-to-end tests) */
   App: unknown;
-  Exercises: any;
+  Exercises: ExercisesApi;
   Packs: PacksApi;
   I18N: I18nApi;
   Figures: FiguresApi;
   qrcodegen: any;
   webkitAudioContext?: typeof AudioContext;
   /** js/engine.js */
-  Engine: any;
+  Engine: EngineApi;
   /** js/pack-rules.js (browser side; Node uses require()) */
   PackRules?: unknown;
 }
 
 // Classic scripts loaded before the screens (index.html): their objects, used as globals by js/app/*.js.
-// Engine and Exercises are still typed loosely (any); the others are declared in types/scripts.d.ts.
-declare var Engine: any;
-declare var Exercises: any;
+// Declared in types/engine.d.ts (EngineApi) and types/scripts.d.ts (the others).
+declare var Engine: EngineApi;
+declare var Exercises: ExercisesApi;
 declare var Packs: PacksApi;
 declare var I18N: I18nApi;
 declare var Figures: FiguresApi;

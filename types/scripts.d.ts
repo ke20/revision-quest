@@ -88,3 +88,69 @@ interface PacksApi {
   loaded(id: string): LoadedPack | null;
   load(id: string, cb: (err: PackLoadError | null, data?: LoadedPack | null) => void): void;
 }
+
+/* ---------- js/exercises.js ---------- */
+
+/** What an exercise reports when it is answered (on top of ExerciseResult, read by js/engine.js). */
+interface RenderedResult extends ExerciseResult {
+  /** The right answer as plain text, shown after a wrong answer. */
+  answerText?: string;
+  /** Trusted HTML note shown with the result. */
+  message?: string;
+}
+
+interface RenderOptions {
+  /** Whether the check button can be pressed (and its label); auto: the exercise answers by itself (match). */
+  onReady?: (enabled: boolean, label?: string, auto?: boolean) => void;
+  /** A second try is allowed (msg: trusted HTML). */
+  onRetry?: (msg: string) => void;
+  onHint?: () => void;
+  onTick?: (ok: boolean) => void;
+  /** The loaded pack (its documents are shown with docId). */
+  data?: LoadedPack | null;
+}
+
+interface ExerciseController {
+  check?: (() => void) | null;
+  auto?: boolean;
+}
+
+interface WriteCheck { met: boolean[]; count: number; words: number; needed: number; ok: boolean }
+
+interface SpeechApi {
+  current: SpeechSynthesisUtterance | null;
+  muted: string[];
+  worked: string[];
+  synth(): SpeechSynthesis | null;
+  voices(): SpeechSynthesisVoice[];
+  stop(): void;
+  mute(v: SpeechSynthesisVoice): void;
+  pick(lang: string): SpeechSynthesisVoice | null;
+  voice(lang: string, cb: (v: SpeechSynthesisVoice | null) => void): void;
+  say(text: string, opts?: { lang?: string; rate?: number; voice?: SpeechSynthesisVoice | null; onSilent?: (v: SpeechSynthesisVoice) => void; retried?: boolean }): void;
+}
+
+interface ExercisesApi {
+  render(exercise: Exercise, container: HTMLElement, onResult: (res: RenderedResult) => void, opts?: RenderOptions): ExerciseController;
+  /** Escape, then **bold**, [[word|translation]], French glosses (language packs) and "- " lists. */
+  rich(text: string): string;
+  /** Text without the markup (for comparisons). */
+  plain(text: string): string;
+  escapeHtml(s: unknown): string;
+  normalize(s: string): string;
+  fillAccepted(ex: FillExercise, value: string): boolean;
+  orderAccepted(ex: OrderExercise, words: string[]): boolean;
+  mcqMultiAccepted(ex: McqExercise, picked: number[]): boolean;
+  findDocument(data: LoadedPack | Pack | null, ex: Exercise): PackDocument | null;
+  readingScreen(doc: PackDocument, container: HTMLElement, onContinue: () => void): void;
+  closeText(): void;
+  writeCheck(ex: WriteExercise, text: string): WriteCheck;
+  pickVoice(voices: SpeechSynthesisVoice[], lang: string, exclude?: string[]): SpeechSynthesisVoice | null;
+  voiceQuality(v: SpeechSynthesisVoice): number;
+  voiceKey(v: SpeechSynthesisVoice): string;
+  speech: SpeechApi;
+  countWords(s: string): number;
+  /** cb(key) each time a translation bubble opens (key = "word|translation"). */
+  initTranslations(cb: (key: string) => void): void;
+  closeBubble(): void;
+}

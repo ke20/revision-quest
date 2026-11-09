@@ -1,6 +1,7 @@
 /* Révision Quest — exercise renderers + rich text (bold + translation / definition bubbles).
    UI texts come from window.I18N (language of the current pack: "en" bilingual or "fr").
    Exposes window.Exercises. */
+// @ts-check
 (function () {
   "use strict";
 
@@ -175,20 +176,22 @@
     onTranslate = cb;
     // capture phase so a translation inside a button doesn't trigger the button
     document.addEventListener("click", function (e) {
-      var span = e.target.closest ? e.target.closest(".tr") : null;
+      var target = /** @type {Element} */ (e.target);
+      var span = target.closest ? target.closest(".tr") : null;
       if (span) {
         e.preventDefault();
         e.stopPropagation();
         if (bubbleFor === span) closeBubble(); else openBubble(span);
         return;
       }
-      if (bubble && !e.target.closest(".tr-bubble")) closeBubble();
+      if (bubble && !target.closest(".tr-bubble")) closeBubble();
     }, true);
     document.addEventListener("keydown", function (e) {
+      var target = /** @type {HTMLElement} */ (e.target);
       if (e.key === "Escape") closeBubble();
-      if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("tr")) {
+      if ((e.key === "Enter" || e.key === " ") && target.classList && target.classList.contains("tr")) {
         e.preventDefault();
-        if (bubbleFor === e.target) closeBubble(); else openBubble(e.target);
+        if (bubbleFor === target) closeBubble(); else openBubble(target);
       }
     });
     window.addEventListener("resize", closeBubble);
@@ -1058,12 +1061,10 @@
   };
 
   /**
-   * Render an exercise.
-   * @param exercise   exercise object from a pack
-   * @param container  DOM element
-   * @param onResult   function({correct, attempts, answerText?})
-   * @param opts       { onReady(enabled, label, auto), onRetry(msgHtml), onHint(), onTick(ok), data }
-   * @returns controller { check: function|null, auto?: bool }
+   * Render an exercise. onResult is called once with { correct, attempts, answerText?, message? }.
+   * Returns a controller: check() for the "Vérifier" button, or auto: true when the exercise answers by itself.
+   * @param {Exercise} exercise @param {HTMLElement} container @param {(res: RenderedResult) => void} onResult
+   * @param {RenderOptions} [opts] @returns {ExerciseController}
    */
   function render(exercise, container, onResult, opts) {
     opts = opts || {};
@@ -1096,7 +1097,8 @@
     }
   }
 
-  window.Exercises = {
+  /** @type {ExercisesApi} */
+  var api = {
     render: render,
     rich: rich,
     plain: plain,
@@ -1117,4 +1119,5 @@
     initTranslations: initTranslations,
     closeBubble: closeBubble
   };
+  window.Exercises = api;
 })();

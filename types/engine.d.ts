@@ -71,8 +71,164 @@ interface WorldSession {
   /** 1 per first-try success, 0.5 per later success. */
   score: number;
   xpEarned: number;
-  newBadges: Array<{ id: string; icon: string; name: string }>;
+  newBadges: Badge[];
   /** Broken exercises, left out of the accuracy. */
   skipped: number;
   over: boolean;
+}
+
+/* ---------- public engine (window.Engine), checked against js/engine.js (`@type {EngineApi}` on its object) ---------- */
+
+interface Badge { id: string; icon: string; name: string; desc: string }
+interface Level { icon: string; name: string; xp: number }
+
+interface LevelInfo {
+  level: number;
+  name: string;
+  icon: string;
+  xp: number;
+  floor: number;
+  next: number | null;
+  nextName: string | null;
+  /** 0 to 1 towards the next level. */
+  progress: number;
+}
+
+interface PackSummary { stars: number; maxStars: number; worldsDone: number; progress: number; lastPlayed: number }
+
+/** A player as listed (players screen, leaderboard). */
+interface ProfileSummary {
+  id: string;
+  name: string;
+  avatar: string;
+  xp: number;
+  level: number;
+  rank: string;
+  rankIcon: string;
+  stars: number;
+  packStars: number;
+  badges: number;
+  current: boolean;
+}
+
+/** Result of an exercise, given by js/exercises.js. */
+interface ExerciseResult {
+  correct?: boolean;
+  attempts?: number;
+  /** Broken exercise, or listening without a voice: neutral (no XP, not counted). */
+  skipped?: boolean;
+  noVoice?: boolean;
+  [more: string]: unknown;
+}
+
+interface AnswerOutcome {
+  xp: number;
+  multiplier: number;
+  combo: number;
+  hearts: number;
+  shields: number;
+  shieldUsed: boolean;
+  gameOver: boolean;
+  levelUp: LevelInfo | null;
+  newBadges: Badge[];
+  skipped?: boolean;
+}
+
+interface WorldSummary {
+  worldId: number | string;
+  stars: number;
+  bestStars: number;
+  accuracy: number;
+  xpEarned: number;
+  maxCombo: number;
+  newBadges: Badge[];
+  unlockedWorld: World | null;
+  starsToUnlock: number;
+  nextLocked: boolean;
+  worldsInARow: number;
+  pauseSuggested: boolean;
+  [more: string]: unknown;
+}
+
+/** ok: profile (and conflict = a player with the same name exists); not ok: error (French). */
+interface ImportResult { ok: boolean; profile?: Profile; conflict?: boolean; error?: string }
+
+interface EngineApi {
+  LEVELS: Level[];
+  BADGES: Badge[];
+  MAX_HEARTS: number;
+  HINT_COST: number;
+  STORAGE_KEY: string;
+  PACK_ID: RegExp;
+  AVATARS: string[];
+  MAX_STARS: number;
+  STARS_TO_UNLOCK: Record<PlayerSettings["difficulty"], number>;
+  PAUSE_MS: number;
+  COMFORT: Record<string, Array<string | number>>;
+
+  /* pack being played */
+  setPack(id: string | null, data: LoadedPack | null): void;
+  currentPackId(): string | null;
+  packData(): LoadedPack | null;
+  readonly state: PlayerState;
+  storageAvailable(): boolean;
+
+  /* progress */
+  levelInfo(xp?: number): LevelInfo;
+  streak(): number;
+  hasBadge(id: string): boolean;
+  badgeById(id: string): Badge | null;
+  worldProgress(worldId: number | string): WorldProgress;
+  isUnlocked(worldId: number | string): boolean;
+  starsFor(accuracy: number): number;
+  starsToUnlock(): number;
+  currentWorldId(): number | string | null;
+  totalStars(packId?: string): number;
+  packSummary(packId: string, worldCount: number): PackSummary;
+  lastPack(): string | null;
+  soundOn(): boolean;
+  setSound(on: boolean): void;
+  /** Records a translation bubble opened; returns the badges just earned. */
+  viewTranslation(key: string): Badge[];
+  translationsCount(): number;
+
+  /* world being played */
+  startWorld(worldId: number | string): WorldSession;
+  readonly session: WorldSession | null;
+  resumeWorld(saved: unknown): WorldSession | null;
+  /** Spends XP for a hint; returns the XP actually spent. */
+  useHint(): number;
+  answer(result: ExerciseResult): AnswerOutcome;
+  finishWorld(): WorldSummary | null;
+  quitWorld(): void;
+  worldsInARow(): number;
+  resetPauseCount(): void;
+  pauseEndsAt(): number;
+  startPause(): number;
+
+  /* settings */
+  comfortDefaults(yes: boolean): PlayerSettings;
+  settings(): PlayerSettings;
+  setSettings(changes: Partial<PlayerSettings>): PlayerSettings;
+  reset(): void;
+  resetPack(packId: string): void;
+
+  /* players */
+  currentProfile(): Profile | null;
+  profiles(): Profile[];
+  profileSummary(p: Profile): ProfileSummary;
+  /** Used by the unit tests only. */
+  _internals: Record<string, any>;
+  onExternalChange(cb: () => void): void;
+  /** An error message (French) or null. */
+  validateName(name: string, exceptId?: string): string | null;
+  createProfile(name: string, avatar: string, comfortYes: boolean, grade?: string): { ok: boolean; profile?: Profile; error?: string };
+  selectProfile(id: string): boolean;
+  deleteProfile(id: string): void;
+  leaderboard(id?: string | Array<{ id: string; worldCount: number }>, worldCount?: number): ProfileSummary[];
+  exportProfile(id?: string): { filename: string; content: string } | null;
+  parseImport(text: string): ImportResult;
+  shareCode(id?: string): Promise<string | null>;
+  parseShareCode(code: string): Promise<ImportResult>;
+  importProfile(profile: unknown, mode: "replace" | "copy"): Profile | null;
 }
