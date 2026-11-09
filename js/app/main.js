@@ -42,7 +42,7 @@ export function boot() {
   try { document.title = APP_NAME; } catch (e) { /* ignore */ }
   if (isFramed()) { showFramed(); return; }
   if (!window.Engine || !window.Exercises || !window.Packs) { showError("Certains fichiers du jeu n'ont pas pu être chargés."); return; }
-  if (!Packs.list().length) { showError("Le catalogue des chapitres (packs/catalog.js) est vide ou invalide."); return; }
+  if (!Packs.list().length) { showError("Le catalogue des chapitres (packs/catalog.js) est vide ou introuvable."); return; }
   if (window.I18N) I18N.setLang("fr");
   Exercises.initTranslations(function (key) {
     badgeToasts(Engine.viewTranslation(key));

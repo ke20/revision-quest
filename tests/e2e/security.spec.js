@@ -141,7 +141,7 @@ test("malicious saves, cookies, storage, CSP and pack loading rules are neutrali
   R.watch(p2, 'cat', { allowCsp: true });
   await p2.route('**/packs/catalog.js', async route => {
     const res = await route.fetch(); let body = await res.text();
-    body = body.replace('packs: [', `packs: [
+    body = body.replace('"packs": [', `"packs": [
       { path: "https://evil.example/x", title: "Evil abs", lang: "fr", worldCount: 1 },
       { path: "../js/app", title: "Evil up", lang: "fr", worldCount: 1 },
       { path: "4e/anglais/../../js/app", title: "Evil up 2", lang: "fr", worldCount: 1 },

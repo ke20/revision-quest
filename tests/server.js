@@ -8,6 +8,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+const { buildCatalog, formatCatalog } = require("../tools/catalog.js");
 
 const ROOT = path.resolve(__dirname, "..");
 const PORT = Number(process.env.PORT) || 4173;
@@ -38,6 +39,12 @@ const server = http.createServer((req, res) => {
   const rel = path.relative(ROOT, file).split(path.sep).join("/");
   // final path inside ROOT, no hidden segment (".git", ".env"…), and in the closed list
   if (rel.startsWith("../") || path.isAbsolute(rel) || rel.split("/").some((seg) => seg.startsWith(".")) || !ALLOWED.test(rel)) return send(res, 404, "Not Found");
+  if (rel === "packs/catalog.js") {
+    // built from the pack files at each request (not in git): a changed pack shows up on reload
+    const { catalog, errors } = buildCatalog(ROOT);
+    errors.forEach((e) => console.error("catalogue : " + e));
+    return send(res, 200, req.method === "HEAD" ? "" : formatCatalog(catalog), TYPES[".js"]);
+  }
   fs.stat(file, (err, st) => {
     if (err || !st.isFile()) return send(res, 404, "Not Found");
     res.writeHead(200, {

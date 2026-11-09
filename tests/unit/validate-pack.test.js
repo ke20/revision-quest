@@ -70,7 +70,7 @@ test("pack file must be at packs/<path>.js", () => {
 });
 
 test("pack must be listed in the catalogue, with the same lang and worldCount", () => {
-  assert.ok(run("valid", { catalog: catalog({ path: "4e/anglais/other" }) }).errors.some((e) => /absent de packs\/catalog\.js/.test(e)));
+  assert.ok(run("valid", { catalog: catalog({ path: "4e/anglais/other" }) }).errors.some((e) => /absent du catalogue/.test(e)));
   assert.ok(run("valid", { catalog: catalog({ lang: "en" }) }).errors.some((e) => /lang "en" ≠ lang du pack "fr"/.test(e)));
   assert.ok(run("valid", { catalog: catalog({ worldCount: 3 }) }).errors.some((e) => /worldCount 3 ≠ 1/.test(e)));
 });

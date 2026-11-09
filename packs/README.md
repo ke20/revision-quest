@@ -25,12 +25,11 @@ Chaque pack est **un seul fichier** `packs/<niveau>/<matiere>/<cours>.js`, charg
 
 Étapes :
 
-1. Écrire `packs/<niveau>/<matiere>/<cours>.js` (format ci-dessous), avec ses infos de catalogue dans `meta`.
-2. L'ajouter au catalogue : `mise run pack:add packs/<niveau>/<matiere>/<cours>.js` (ou
-   `npm run pack:add -- packs/…`). La commande vérifie tout le pack, puis écrit son entrée dans `packs/catalog.js`.
-   Elle sert aussi après chaque modification du pack (titre, nombre de mondes…).
-3. Vérifier : `mise run validate` (ou `node tools/validate-pack.js packs/<niveau>/<matiere>/<cours>.js`).
-4. Tester dans le navigateur : `mise run dev` (ou `npm start`) → « Choisir un chapitre ».
+1. Écrire `packs/<niveau>/<matiere>/<cours>.js` (format ci-dessous), avec ses infos de catalogue dans `meta`. Le
+   catalogue se construit tout seul à partir des fichiers de packs : rien d'autre à modifier. Un fichier écrit ailleurs
+   (par exemple téléchargé) se met en place avec `mise run pack:add <fichier.js>`, qui le vérifie avant de le copier.
+2. Vérifier : `mise run validate` (ou `node tools/validate-pack.js packs/<niveau>/<matiere>/<cours>.js`).
+3. Tester dans le navigateur : `mise run dev` (ou `npm start`) → « Choisir un chapitre ».
 
 ## 1. Le fichier du pack
 
@@ -311,58 +310,73 @@ Une cellule = un texte (`"kL"`) ou `{ text, span, hl }` : `span` = nombre de col
 la couleur du monde. Texte simple (20 caractères max, sans `**` ni `[[...]]`).
 Un tableau qui donne la réponse (« 1 L = ? ») ne va pas sur l'exercice : le garder pour la leçon.
 
-## 5. Ajouter le pack au catalogue (`packs/catalog.js`)
+## 5. Ajouter le pack au catalogue
+
+Le catalogue (`packs/catalog.js`) n'est **pas dans git** : il est construit à partir des fichiers de packs.
+`mise run dev` (et les tests) le construisent à chaque chargement de la page : un pack ajouté ou modifié apparaît en
+rechargeant. La CI l'écrit avant de publier le jeu.
 
 ```bash
-mise run pack:add packs/cm2/histoire/revolution-francaise.js
+mise run pack:add ~/Téléchargements/revolution-francaise.js   # vérifie un pack et le met à sa place dans packs/
+mise run catalog                                               # écrit packs/catalog.js (pour un autre serveur que mise run dev)
 ```
 
-La commande lit le pack sans l'exécuter (format strict), le vérifie en entier, puis écrit son entrée dans
-`packs/catalog.js` : à la même place s'il y est déjà, sinon à la fin. Les commentaires du catalogue sont gardés. Si le
-fichier est ailleurs (par exemple dans Téléchargements), il est copié dans `packs/<path>.js` ; s'il y en a déjà un
-différent, il faut ajouter `--replace`. En cas de refus, rien n'est écrit. Le niveau et la matière doivent déjà
-exister dans `CATALOG.levels` et `CATALOG.subjects`.
+`pack:add` lit le pack sans l'exécuter (format strict), le vérifie en entier avec le catalogue tel qu'il sera, puis
+le copie dans `packs/<path>.js` ; s'il y en a déjà un différent, il faut ajouter `--replace`. En cas de refus, rien
+n'est écrit. Un pack écrit directement dans `packs/` n'a pas besoin de `pack:add` : `mise run validate` le vérifie.
 
-L'entrée écrite reprend `meta`, `lang` et le nombre de mondes. Le validateur signale toute différence entre `meta`
-et le catalogue :
+Ce que le catalogue contient, et d'où ça vient :
+
+| Dans le catalogue | Source |
+|---|---|
+| `subjects`, `levels` | `packs/levels-subjects.json`, écrit à la main |
+| un chapitre | `packs/<niveau>/<matiere>/<cours>.js` : `meta`, `lang`, nombre de mondes |
+| un chapitre « par groupes » | `packs/<niveau>/<matiere>/<cours>/chapter.json` + un fichier par groupe |
+
+Entrée générée pour un chapitre :
 
 ```js
 {
-  path: "cm2/histoire/revolution-francaise",   // <niveau>/<matiere>/<cours> : le fichier est packs/<path>.js
-  title: "La Révolution française",
-  description: "Les dates, les acteurs et les grandes idées de 1789.",
-  icon: "🏰",
-  color: "#B45309",
-  lang: "fr",                       // même valeur que dans le pack
-  worldCount: 6                     // nombre de mondes (étoiles max = worldCount × 5)
+  "path": "cm2/histoire/revolution-francaise",   // <niveau>/<matiere>/<cours> : le fichier est packs/<path>.js
+  "title": "La Révolution française",            // title, description, icon, color : repris de meta
+  "description": "Les dates, les acteurs et les grandes idées de 1789.",
+  "icon": "🏰",
+  "color": "#B45309",
+  "lang": "fr",
+  "worldCount": 6                                // nombre de mondes (étoiles max = worldCount × 5)
 }
 ```
 
-Une nouvelle matière se déclare à la main dans `CATALOG.subjects` (`{ id, label, icon, color }`), avant `pack:add`.
+Les chapitres y sont rangés par chemin. Une nouvelle matière ou un nouveau niveau se déclare dans
+`packs/levels-subjects.json` (matière : `{ "id", "label", "icon", "color" }` ; niveau : `{ "id", "label", "order" }`).
 
 ### Chapitre « par groupes » (même cours, plusieurs niveaux de difficulté)
 
 Pour un cours décliné en groupes (par exemple une dictée avec un groupe 1, 2 et 3), on écrit **un fichier par groupe**
-dans un dossier du nom du cours, et **une seule entrée** de catalogue avec `groups` (pas de `worldCount` ni de fichier
-pour le chapitre lui-même). Cette entrée s'écrit **à la main** (`pack:add` ne gère pas encore les groupes) et les
-fichiers de groupe n'ont pas de `meta` :
+dans un dossier du nom du cours, plus un fichier `chapter.json` avec les infos du chapitre et la liste des groupes.
+Le chapitre n'a pas de fichier `.js` à lui, et les fichiers de groupe n'ont pas de `meta` :
 
-```js
+```json
 {
-  path: "cm2/francais/dictee-statue-de-la-liberte",   // le dossier packs/cm2/francais/dictee-statue-de-la-liberte/
-  title: "Dictée · La statue de la Liberté",
-  icon: "🗽", color: "#7C3AED", lang: "fr",
-  groups: [                                            // de 1 à 20 groupes, dans l'ordre d'affichage
-    { id: "g1", label: "Groupe 1", difficulty: 1, worldCount: 3 },   // fichier .../dictee-statue-de-la-liberte/g1.js
-    { id: "g2", label: "Groupe 2", difficulty: 2, worldCount: 6 },
-    { id: "g3", label: "Groupe 3", difficulty: 3, worldCount: 8 }
+  "title": "Dictée · La statue de la Liberté",
+  "description": "Mots à apprendre, homophones, accords et nombres en lettres de la dictée 8.",
+  "icon": "🗽",
+  "color": "#7C3AED",
+  "groups": [
+    { "id": "g1", "label": "Groupe 1", "difficulty": 1 },
+    { "id": "g2", "label": "Groupe 2", "difficulty": 2 },
+    { "id": "g3", "label": "Groupe 3", "difficulty": 3 }
   ]
 }
 ```
 
+`packs/cm2/francais/dictee-statue-de-la-liberte/chapter.json`, avec `g1.js`, `g2.js` et `g3.js` à côté. La langue
+et le nombre de mondes de chaque groupe sont lus dans son fichier (tous les groupes ont la même `lang`). De 1 à 20
+groupes, dans l'ordre d'affichage.
+
 - `id` du groupe : minuscules, chiffres, tirets (30 max) ; le fichier est `packs/<path>/<id>.js` et son `path` est
   `"<path>/<id>"` (ex. `path: "cm2/francais/dictee-statue-de-la-liberte/g2"`).
-- `label` : nom affiché ; `difficulty` (optionnel) : 1 à 5, affiché en points ●●○ ; `worldCount` : mondes du groupe.
+- `label` : nom affiché ; `difficulty` (optionnel) : 1 à 5, affiché en points ●●○.
 - Le catalogue montre **une carte** (étoiles de tous les groupes additionnées) ; elle ouvre l'écran « Choisis ton groupe ».
 - Chaque groupe est un pack à part : sa propre carte des mondes, sa progression, son classement.
   ⚠️ Comme pour un pack, renommer un groupe change son identifiant (la progression n'est plus reprise).

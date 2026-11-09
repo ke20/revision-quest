@@ -3,7 +3,7 @@
 [![CI](https://github.com/ke20/revision-quest/actions/workflows/ci.yml/badge.svg)](https://github.com/ke20/revision-quest/actions/workflows/ci.yml)
 
 Petit jeu web pour réviser ses cours en s'amusant, organisé en **chapitres** (packs de contenu) par matière et par niveau.
-La liste des chapitres se trouve dans le jeu (écran « Choisir un chapitre ») et dans `packs/catalog.js`.
+La liste des chapitres se trouve dans le jeu (écran « Choisir un chapitre ») et dans `packs/` (un fichier par chapitre).
 
 ## Pourquoi ce projet ?
 

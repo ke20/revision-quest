@@ -83,9 +83,9 @@ async function withTestPacks(page, { sample = true, history = false, entry = (e)
     const res = await route.fetch();
     const src = await res.text();
     // Keep the e2e tests independent of the real packs added over time: only the English pack stays.
-    const others = [...src.matchAll(/path: "([^"]+)"/g)].map((m) => m[1]).filter((p) => p !== EN);
+    const others = [...src.matchAll(/"path": "([^"]+)"/g)].map((m) => m[1]).filter((p) => p !== EN);
     const keep = "\nwindow.CATALOG.packs = window.CATALOG.packs.filter(function (p) { return " + JSON.stringify(others) + ".indexOf(p.path) < 0; });\n";
-    await route.fulfill({ response: res, body: src.replace("packs: [", "packs: [\n" + inject) + keep });
+    await route.fulfill({ response: res, body: src.replace('"packs": [', '"packs": [\n' + inject) + keep });
   });
   for (const t of used) {
     await page.route(`**/packs/${t.entry.path}.js`, (route) => route.fulfill({ status: 200, contentType: "text/javascript", body: body(t.entry.path, t.body) }));

@@ -20,9 +20,9 @@ async function withGroups(page) {
     const res = await route.fetch();
     const src = await res.text();
     // only the English pack + the grouped test chapter: independent of the real packs added over time
-    const others = [...src.matchAll(/path: "([^"]+)"/g)].map((m) => m[1]).filter((p) => p !== H.EN);
+    const others = [...src.matchAll(/"path": "([^"]+)"/g)].map((m) => m[1]).filter((p) => p !== H.EN);
     const keep = "\nwindow.CATALOG.packs = window.CATALOG.packs.filter(function (p) { return " + JSON.stringify(others) + ".indexOf(p.path) < 0; });\n";
-    await route.fulfill({ response: res, body: src.replace("packs: [", "packs: [\n" + JSON.stringify(ENTRY) + ",\n") + keep });
+    await route.fulfill({ response: res, body: src.replace('"packs": [', '"packs": [\n' + JSON.stringify(ENTRY) + ",\n") + keep });
   });
   for (const g of ENTRY.groups) {
     await page.route(`**/packs/${CH}/${g.id}.js`, (route) => route.fulfill({

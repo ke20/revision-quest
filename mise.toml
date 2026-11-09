@@ -39,12 +39,16 @@ description = "Type-check the game's JavaScript with TypeScript (JSDoc types, no
 run = "npm run typecheck"
 
 [tasks.validate]
-description = "Check every content pack of the catalogue (tools/validate-pack.js --all)"
+description = "Check every content pack and the catalogue built from them (tools/validate-pack.js --all)"
 run = "npm run validate"
 
 [tasks."pack:add"]
-description = "Add or update a chapter in packs/catalog.js from its file: mise run pack:add packs/<niveau>/<matiere>/<cours>.js"
+description = "Check a chapter file and put it in packs/: mise run pack:add <fichier.js>"
 run = "node tools/pack-add.js"
+
+[tasks.catalog]
+description = "Write packs/catalog.js (not in git) for a server other than mise run dev, which builds it on each request"
+run = "node tools/catalog.js"
 
 [tasks."test:unit"]
 description = "Unit tests (node:test): engine, exercises, catalogue, pack validator, docs"

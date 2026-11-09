@@ -1,0 +1,114 @@
+{
+  "subjects": [
+    {
+      "id": "anglais",
+      "label": "Anglais",
+      "icon": "🇬🇧",
+      "color": "#EC4899"
+    },
+    {
+      "id": "espagnol",
+      "label": "Espagnol",
+      "icon": "🇪🇸",
+      "color": "#DC2626"
+    },
+    {
+      "id": "francais",
+      "label": "Français",
+      "icon": "📖",
+      "color": "#7C3AED"
+    },
+    {
+      "id": "maths",
+      "label": "Maths",
+      "icon": "🔢",
+      "color": "#2563EB"
+    },
+    {
+      "id": "histoire",
+      "label": "Histoire",
+      "icon": "🏰",
+      "color": "#B45309"
+    },
+    {
+      "id": "geographie",
+      "label": "Géographie",
+      "icon": "🌍",
+      "color": "#059669"
+    },
+    {
+      "id": "sciences",
+      "label": "Sciences",
+      "icon": "🔬",
+      "color": "#0891B2"
+    },
+    {
+      "id": "physique-chimie",
+      "label": "Physique-chimie",
+      "icon": "⚗️",
+      "color": "#0D9488"
+    }
+  ],
+  "levels": [
+    {
+      "id": "cp",
+      "label": "CP",
+      "order": 1
+    },
+    {
+      "id": "ce1",
+      "label": "CE1",
+      "order": 2
+    },
+    {
+      "id": "ce2",
+      "label": "CE2",
+      "order": 3
+    },
+    {
+      "id": "cm1",
+      "label": "CM1",
+      "order": 4
+    },
+    {
+      "id": "cm2",
+      "label": "CM2",
+      "order": 5
+    },
+    {
+      "id": "6e",
+      "label": "6e",
+      "order": 6
+    },
+    {
+      "id": "5e",
+      "label": "5e",
+      "order": 7
+    },
+    {
+      "id": "4e",
+      "label": "4e",
+      "order": 8
+    },
+    {
+      "id": "3e",
+      "label": "3e",
+      "order": 9
+    },
+    {
+      "id": "2nde",
+      "label": "2nde",
+      "order": 10
+    },
+    {
+      "id": "1re",
+      "label": "1re",
+      "order": 11
+    },
+    {
+      "id": "terminale",
+      "label": "Terminale",
+      "order": 12
+    }
+  ]
+}

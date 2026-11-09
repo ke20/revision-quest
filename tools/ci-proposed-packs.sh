@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Révision Quest — CI, pull request from a fork (a course proposed by someone outside the project).
 # Every chapter file added or changed by the pull request goes through tools/pack-add.js in this run:
-# strict format (never executed), full check, then its packs/catalog.js entry, exactly like the maintainer will do
-# with `mise run pack:add` before merging. Nothing is pushed back. The tests that follow see the merged state.
+# strict format (never executed) and full check, exactly like `mise run pack:add`. The catalogue is built from the
+# pack files, so nothing is regenerated before merging. Nothing is pushed back. The tests that follow see the merged state.
 # Usage: tools/ci-proposed-packs.sh <base commit>     (report also appended to $GITHUB_STEP_SUMMARY when set)
 set -euo pipefail
 
@@ -44,4 +44,4 @@ if [ "$failed" -ne 0 ]; then
   } | tee -a "$summary"
   exit 1
 fi
-echo "Chaque cours proposé passe les contrôles. Le responsable du projet lancera mise run pack:add avant de fusionner." | tee -a "$summary"
+echo "Chaque cours proposé passe les contrôles. Ils peuvent être fusionnés tels quels." | tee -a "$summary"

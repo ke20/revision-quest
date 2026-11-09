@@ -60,13 +60,15 @@ revision-quest/
 │   └── nomodule.js         message pour un navigateur trop ancien
 ├── packs/
 │   ├── README.md           guide pour écrire un chapitre
-│   ├── catalog.js          matières, niveaux, liste des chapitres (écrit par mise run pack:add)
+│   ├── catalog.js          catalogue construit depuis les packs (pas dans git, tools/catalog.js)
+│   ├── levels-subjects.json niveaux et matières
 │   └── <niveau>/<matiere>/
 │       ├── <cours>.js      un chapitre (son chemin = son identifiant)
-│       └── <cours>/        chapitre « par groupes »
+│       └── <cours>/        chapitre « par groupes » : chapter.json + un fichier par groupe
 │           └── <groupe>.js un fichier par groupe
 ├── tools/validate-pack.js  vérifie un chapitre ou tout le catalogue (--all), avec js/core/pack-rules.js
-├── tools/pack-add.js      ajoute ou met à jour un chapitre dans packs/catalog.js (depuis son meta)
+├── tools/pack-add.js      vérifie un chapitre et le met à sa place dans packs/
+├── tools/catalog.js       construit le catalogue depuis les fichiers de packs
 ├── tools/ci-proposed-packs.sh  CI : contrôle les cours proposés depuis un fork
 ├── tests/
 │   ├── unit/               tests node:test
@@ -127,8 +129,9 @@ npm run qa            # = npm run lint && npm run typecheck && npm test
 | `mise run lint` | `npm run lint` | ESLint sur tout le JavaScript (`eslint.config.js`) |
 | `mise run lint:fix` | `npm run lint:fix` | corrige automatiquement ce qu'ESLint sait corriger |
 | `mise run typecheck` | `npm run typecheck` | vérifie les types JSDoc avec TypeScript (`tsconfig.json`), sans rien compiler |
-| `mise run validate` | `npm run validate` | vérifie tous les packs du catalogue (`tools/validate-pack.js --all`) |
-| `mise run pack:add <fichier>` | `npm run pack:add -- <fichier>` | vérifie un chapitre et écrit son entrée dans `packs/catalog.js` (`tools/pack-add.js`) |
+| `mise run validate` | `npm run validate` | vérifie tous les packs et le catalogue construit à partir d'eux (`tools/validate-pack.js --all`) |
+| `mise run pack:add <fichier>` | `npm run pack:add -- <fichier>` | vérifie un chapitre et le met à sa place dans `packs/` (`tools/pack-add.js`) |
+| `mise run catalog` | `npm run catalog` | écrit `packs/catalog.js` pour un autre serveur que `mise run dev`, qui le construit à chaque demande (`tools/catalog.js`) |
 | `mise run test:unit` | `npm run test:unit` | tests unitaires `node:test` : moteur, exercices (texte enrichi, correction), catalogue, validateur (packs cassés dans `tests/fixtures/unit/`), doc |
 | `mise run test:e2e` | `npm run test:e2e` | tests Playwright (`tests/e2e/*.spec.js`), Chromium 1280 px + un projet 390 px |
 | `mise run test` | `npm test` | validate, unitaires, e2e, dans cet ordre |
@@ -148,12 +151,11 @@ npm run qa            # = npm run lint && npm run typecheck && npm test
   système, puis `qa` : lint, validation des packs, tests unitaires, tests e2e avec 2 essais en cas d'échec). Le rapport Playwright est
   publié comme artefact (7 jours) si quelque chose échoue. Permissions en lecture seule.
 - **Cours proposé depuis un fork** : la pull request d'un contributeur extérieur ajoute seulement son fichier dans
-  `packs/`, sans toucher `packs/catalog.js`. Avant `mise run ci`, `tools/ci-proposed-packs.sh` passe chaque fichier de
+  `packs/`. Avant `mise run ci`, `tools/ci-proposed-packs.sh` passe chaque fichier de
   chapitre ajouté ou modifié dans `tools/pack-add.js` : format strict (le fichier n'est jamais exécuté), contrôle
-  complet, puis entrée du catalogue **dans cette exécution seulement** (rien n'est repoussé). Les tests portent donc
+  complet (rien n'est repoussé). Le catalogue étant construit à partir des packs, les tests portent
   sur l'état après fusion, et le compte rendu en français s'affiche dans le résumé de la pull request. Avant de
-  fusionner, le responsable lance `mise run pack:add <fichier>` et commite `packs/catalog.js`. Les pull requests
-  ouvertes depuis le dépôt lui-même n'ont pas cette aide : `pack:add` doit y avoir été lancé.
+  fusionner, il n'y a rien à régénérer.
 - **Publication** (même workflow) : sur un push de `main`, une fois tous les tests verts, les jobs `pages-build` et
   `pages-deploy` publient les fichiers du jeu sur GitHub Pages. Seul `pages-deploy` a le droit d'écrire
   (`pages: write`, `id-token: write`) ; les pull requests ne publient jamais rien.

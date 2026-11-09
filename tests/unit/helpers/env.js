@@ -3,6 +3,7 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
+const { buildCatalog, formatCatalog } = require("../../../tools/catalog.js");
 const vm = require("vm");
 
 const ROOT = path.resolve(__dirname, "..", "..", "..");
@@ -66,7 +67,9 @@ function load(opts = {}) {
   Object.assign(win, opts.globals);
   win.window = win;
   const ctx = vm.createContext(win);
-  for (const s of scripts) vm.runInContext(fs.readFileSync(path.join(ROOT, s), "utf8"), ctx, { filename: s });
+  // packs/catalog.js is not in git: built from the pack files, like tests/server.js does
+  const source = (s) => (s === "packs/catalog.js" ? formatCatalog(buildCatalog(ROOT).catalog) : fs.readFileSync(path.join(ROOT, s), "utf8"));
+  for (const s of scripts) vm.runInContext(source(s), ctx, { filename: s });
   return {
     window: win, localStorage: ls, cookies: jar,
     /** simulate another tab writing the save (fires the "storage" listeners) */

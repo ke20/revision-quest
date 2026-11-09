@@ -71,9 +71,11 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
-      # what the game needs, nothing else: no tests, tools, notes, README or package files
+      # what the game needs, nothing else: no tests, tools, notes, README or package files.
+      # packs/catalog.js is not in git: built here from the pack files (tools/catalog.js, no dependency).
       - name: Copy the game files
         run: |
+          node tools/catalog.js
           mkdir -p _site
           cp -R index.html voix.html js css fonts packs _site/
           touch _site/.nojekyll

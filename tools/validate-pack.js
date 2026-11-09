@@ -9,12 +9,11 @@
 
 const fs = require("fs");
 const path = require("path");
-const vm = require("vm");
 
 const Rules = require("../js/core/pack-rules.js"); // the rules themselves, shared with the browser (course editor)
+const { buildCatalog } = require("./catalog.js");
 
 const ROOT = path.resolve(__dirname, "..");
-const CATALOG_FILE = path.join(ROOT, "packs", "catalog.js");
 const { ID_RE, PATH_RE, PACK_PATH_RE, COLOR_RE, isStr, validateFigure, validateTable } = Rules;
 const isArr = Array.isArray;
 const fileOf = (p) => "packs/" + p + ".js";
@@ -30,20 +29,14 @@ function catalogUnits(catalog) {
 }
 
 /* ---------- loading ----------
-   A pack is read as text in the strict format (js/core/pack-rules.js parseStrict): its code never runs here.
-   packs/catalog.js is still run, in node's vm module, which is NOT a security boundary: review any change
-   to packs/catalog.js before running this tool on it. */
+   Nothing is ever run here: a pack is read as text in the strict format (js/core/pack-rules.js parseStrict), and the
+   catalogue is built from the pack files (tools/catalog.js). */
 
-function runFile(file, sandboxWindow) {
-  const code = fs.readFileSync(file, "utf8");
-  vm.runInNewContext(code, { window: sandboxWindow }, { filename: file, timeout: 2000 });
-}
-
-function loadCatalog(file = CATALOG_FILE) {
-  const win = {};
-  runFile(file, win);
-  if (!win.CATALOG || typeof win.CATALOG !== "object") throw new Error("packs/catalog.js ne définit pas window.CATALOG");
-  return win.CATALOG;
+/** The catalogue built from the pack files of `root`. Throws when a source file is broken. */
+function loadCatalog(root = ROOT) {
+  const { catalog, errors } = buildCatalog(root);
+  if (errors.length) throw new Error(errors.join(" | "));
+  return catalog;
 }
 
 /** Reads a pack file without running it (strict format). Throws with a French message. */
@@ -69,7 +62,7 @@ function validatePack(file, catalog, opts = {}) {
   // course information: required on a chapter, not used on a group (its chapter entry is written by hand)
   const isGroup = /^[^/]+\/[^/]+\/[^/]+\/[^/]+$/.test(String(pack.path));
   let metaOk = false;
-  if (isGroup) { if (pack.meta != null) warn("meta ignoré sur un groupe : les infos du chapitre restent dans packs/catalog.js"); }
+  if (isGroup) { if (pack.meta != null) warn("meta ignoré sur un groupe : les infos du chapitre sont dans son chapter.json"); }
   else {
     metaOk = Rules.validateMeta(pack.meta, err);
     if (pack.meta && pack.meta.basedOn != null) err(`meta.basedOn : copie privée du cours "${pack.meta.basedOn}", elle ne peut pas entrer dans le catalogue officiel`);
@@ -77,8 +70,8 @@ function validatePack(file, catalog, opts = {}) {
 
   // catalogue entry
   const entries = catalogUnits(catalog).filter((p) => p.path === pack.path);
-  const fix = ` (lance : mise run pack:add ${rel})`;
-  if (!entries.length) err(`pack "${pack.path}" absent de packs/catalog.js` + (isGroup ? " (ajoute le groupe dans groups: [...] de son chapitre)" : fix));
+  const fix = "";
+  if (!entries.length) err(`pack "${pack.path}" absent du catalogue` + (isGroup ? " (ajoute le groupe dans groups: [...] du chapter.json de son chapitre)" : fix));
   else {
     if (entries.length > 1) err(`pack "${pack.path}" présent ${entries.length} fois dans le catalogue`);
     const e = entries[0];
@@ -174,18 +167,21 @@ function main(argv) {
     console.log("Usage : node tools/validate-pack.js packs/<niveau>/<matiere>/<cours>[/<groupe>].js | --all");
     return 2;
   }
-  let catalog;
-  try { catalog = loadCatalog(); } catch (e) { console.log("✗ packs/catalog.js : " + e.message); return 1; }
+  // the catalogue is built from the pack files (tools/catalog.js): a packs/catalog.js on disk is ignored
+  const { catalog, errors: buildErrors } = buildCatalog();
   let failed = 0;
-  const catErrors = validateCatalog(catalog);
-  if (catErrors.length) { console.log("✗ packs/catalog.js"); catErrors.forEach((e) => console.log("   ERREUR  " + e)); failed++; }
+  const catErrors = buildErrors.concat(validateCatalog(catalog));
+  catalog.packs.filter((p) => p.groups).forEach((p) => {
+    Rules.validateMeta({ title: p.title, description: p.description, icon: p.icon, color: p.color }, (m) => catErrors.push(`packs/${p.path}/chapter.json : ${m}`));
+  });
+  if (catErrors.length) { console.log("✗ catalogue"); catErrors.forEach((e) => console.log("   ERREUR  " + e)); failed++; }
   let files;
   if (argv.includes("--all")) {
     files = catalogUnits(catalog).filter((p) => PACK_PATH_RE.test(p.path) && fs.existsSync(path.join(ROOT, fileOf(p.path)))).map((p) => path.join(ROOT, fileOf(p.path)));
     const listed = new Set(files.map((f) => path.resolve(f)));
-    listJs(path.join(ROOT, "packs")).filter((full) => path.resolve(full) !== path.resolve(CATALOG_FILE)).forEach((full) => {
+    listJs(path.join(ROOT, "packs")).filter((full) => path.resolve(full) !== path.join(ROOT, "packs", "catalog.js")).forEach((full) => {
       const rel = path.relative(ROOT, full).split(path.sep).join("/");
-      if (!listed.has(path.resolve(full))) { console.log(`✗ ${rel} : fichier absent du catalogue (packs/catalog.js)`); failed++; }
+      if (!listed.has(path.resolve(full))) { console.log(`✗ ${rel} : fichier absent du catalogue (groupe manquant dans le chapter.json de son chapitre ?)`); failed++; }
     });
   } else {
     files = argv.filter((a) => !a.startsWith("--")).map((a) => path.resolve(process.cwd(), a));

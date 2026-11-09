@@ -11,3 +11,6 @@ specs/
 
 # Resources for courses and exercices
 resources/
+
+# Generated from the pack files (tools/catalog.js): by the CI before publishing, by tests/server.js on request
+packs/catalog.js
