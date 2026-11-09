@@ -6,7 +6,7 @@
   "use strict";
 
   function T(key) {
-    if (window.I18N) return window.I18N.t.apply(null, arguments);
+    if (window.I18N) return window.I18N.t.apply(null, /** @type {any} */ (arguments));
     return key;
   }
 
@@ -252,6 +252,7 @@
      - but a voice that has already spoken in this page is never set aside: browsers sometimes drop the events
        of a later utterance (start missing, spurious error after a cancel), and setting the good voice aside then
        left a worse voice for the rest of the session. Such a voice is simply tried once more. */
+  /** @type {SpeechApi} */
   var Speech = {
     current: null,
     muted: [], // voices found silent since the page was opened (not saved: a slow first load must not ban a voice)
@@ -273,7 +274,7 @@
     pick: function (lang) { return pickVoice(Speech.voices(), lang, Speech.muted); },
     /** cb(voice | null) once the device voices are known (some browsers fill the list a moment after loading). */
     voice: function (lang, cb) {
-      var s = Speech.synth();
+      const s = Speech.synth();
       if (!s || typeof window.SpeechSynthesisUtterance !== "function") return cb(null);
       if (Speech.voices().length) return cb(Speech.pick(lang));
       var settled = false;
@@ -292,10 +293,10 @@
      */
     say: function (text, opts) {
       opts = opts || {};
-      var s = Speech.synth();
+      const s = Speech.synth();
       if (!s || typeof window.SpeechSynthesisUtterance !== "function") return;
       var wanted = opts.voice ? voiceKey(opts.voice) : null;
-      var voice = wanted ? Speech.voices().filter(function (v) { return voiceKey(v) === wanted; })[0] || opts.voice
+      const voice = wanted ? Speech.voices().filter(function (v) { return voiceKey(v) === wanted; })[0] || opts.voice
         : Speech.pick(opts.lang);
       if (!voice) return;
       var busy = false;

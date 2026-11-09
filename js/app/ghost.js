@@ -4,7 +4,7 @@ import { S } from "./state.js";
 import { showMap } from "./map.js";
 import { route, setNav, worldPath } from "./nav.js";
 import { Sound } from "./sound.js";
-import { h, on, show, toast } from "./ui.js";
+import { h, on, qs, show, toast } from "./ui.js";
 import { E, R, T, safeColor } from "./util.js";
 
 /* ================= Ghost mode: free walk through a world's exercises, answers shown ================= */
@@ -53,7 +53,7 @@ export function showGhost(w, index) {
     '<footer class="checkbar"><div class="checkbar-inner"><div class="feedback"></div><button class="btn btn-check" data-act="check" disabled>' + T("check") + "</button></div></footer>" +
     "</section>");
   show(node);
-  var bar = node.querySelector(".checkbar"), feedback = node.querySelector(".feedback");
+  var bar = qs(node, ".checkbar"), feedback = qs(node, ".feedback");
   var btn = /** @type {HTMLButtonElement} */ (node.querySelector('[data-act="check"]'));
   var go = function (k) { Sound.tap(); showGhost(w, k); };
   on(node, "back", function () { Sound.tap(); showMap(); });
@@ -62,7 +62,7 @@ export function showGhost(w, index) {
   var jump = /** @type {HTMLSelectElement} */ (node.querySelector(".ghost-jump"));
   jump.onchange = function () { go(+jump.value); };
   var done = false;
-  var controller = Exercises.render(ex, node.querySelector(".ex-container"), function (res) { // nothing is recorded
+  var controller = Exercises.render(ex, qs(node, ".ex-container"), function (res) { // nothing is recorded
     done = true;
     bar.className = "checkbar " + (res.correct ? "ok" : "ko");
     feedback.innerHTML = '<div class="fb-title"><span class="fb-ico">' + (res.correct ? "✅" : "❌") + "</span> " + (res.correct ? "Juste" : "Faux") + "</div>" +

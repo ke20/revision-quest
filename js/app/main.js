@@ -11,7 +11,7 @@ import { showProfiles } from "./profiles.js";
 import { importShared, takeSharedCode } from "./save.js";
 import { Sound } from "./sound.js";
 import { badgeToasts, openModals } from "./ui.js";
-import { APP_NAME, E } from "./util.js";
+import { APP_NAME, E, must } from "./util.js";
 
 /* ================= Boot ================= */
 
@@ -37,7 +37,7 @@ export function showFramed() {
 }
 
 export function boot() {
-  S.app = document.getElementById("app");
+  S.app = must(document.getElementById("app")); // in index.html
   try { document.title = APP_NAME; } catch (e) { /* ignore */ }
   if (isFramed()) { showFramed(); return; }
   if (!window.Engine || !window.Exercises || !window.Packs) { showError("Certains fichiers du jeu n'ont pas pu être chargés."); return; }

@@ -125,7 +125,7 @@ interface SpeechApi {
   voices(): SpeechSynthesisVoice[];
   stop(): void;
   mute(v: SpeechSynthesisVoice): void;
-  pick(lang: string): SpeechSynthesisVoice | null;
+  pick(lang?: string): SpeechSynthesisVoice | null;
   voice(lang: string, cb: (v: SpeechSynthesisVoice | null) => void): void;
   say(text: string, opts?: { lang?: string; rate?: number; voice?: SpeechSynthesisVoice | null; onSilent?: (v: SpeechSynthesisVoice) => void; retried?: boolean }): void;
 }
@@ -145,7 +145,7 @@ interface ExercisesApi {
   readingScreen(doc: PackDocument, container: HTMLElement, onContinue: () => void): void;
   closeText(): void;
   writeCheck(ex: WriteExercise, text: string): WriteCheck;
-  pickVoice(voices: SpeechSynthesisVoice[], lang: string, exclude?: string[]): SpeechSynthesisVoice | null;
+  pickVoice(voices: SpeechSynthesisVoice[], lang?: string, exclude?: string[]): SpeechSynthesisVoice | null;
   voiceQuality(v: SpeechSynthesisVoice): number;
   voiceKey(v: SpeechSynthesisVoice): string;
   speech: SpeechApi;

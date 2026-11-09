@@ -39,10 +39,10 @@ declare var APP_CONFIG: AppConfig | undefined;
 interface Document {
   webkitFullscreenEnabled?: boolean;
   webkitFullscreenElement?: Element | null;
-  webkitExitFullscreen?: () => void;
+  webkitExitFullscreen: () => void;
 }
 interface HTMLElement {
-  webkitRequestFullscreen?: () => void;
+  webkitRequestFullscreen: () => void;
 }
 interface Window {
   BarcodeDetector?: any;

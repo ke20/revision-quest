@@ -807,7 +807,7 @@
     startWorld: function (worldId) {
       var w = worlds()[worldIndex(worldId)];
       session = {
-        packId: packId(),
+        packId: /** @type {string} */ (packId()), // a session only exists inside a loaded pack
         worldId: worldId,
         total: w ? w.exercises.length : 0,
         index: 0,
@@ -838,7 +838,7 @@
       var int = function (v, lo, hi) { return Math.floor(num(v, lo, hi)); };
       var maxShields = int(saved.maxShields, 0, 3);
       session = {
-        packId: packId(),
+        packId: /** @type {string} */ (packId()), // a session only exists inside a loaded pack
         worldId: w.id,
         total: w.exercises.length,
         index: int(saved.index, 0, w.exercises.length),
@@ -996,7 +996,7 @@
       Object.keys(COMFORT).forEach(function (k) {
         if (own(changes, k) && COMFORT[k].indexOf(changes[k]) !== -1) next[k] = changes[k];
       });
-      if (own(changes, "grade") && validGrade(changes.grade)) next.grade = changes.grade;
+      if (own(changes, "grade") && validGrade(changes.grade)) next.grade = /** @type {string} */ (changes.grade);
       p.settings = next;
       p.settingsAt = Math.max(Date.now(), (p.settingsAt || 0) + 1);
       save();
@@ -1052,8 +1052,9 @@
       if (err) return { ok: false, error: err };
       if (db.profiles.length >= MAX_PROFILES) return { ok: false, error: "Trop de joueurs sur cet appareil (50 maximum)." };
       var st = comfortDefaults(comfortYes);
-      if (validGrade(grade)) st.grade = grade;
-      var p = normalizeProfile({ name: name, avatar: avatar || AVATARS[0], settings: st, settingsAt: Date.now(), state: defaultState() });
+      if (validGrade(grade)) st.grade = /** @type {string} */ (grade);
+      // the name was validated just above: normalizeProfile cannot return null here
+      var p = /** @type {Profile} */ (normalizeProfile({ name: name, avatar: avatar || AVATARS[0], settings: st, settingsAt: Date.now(), state: defaultState() }));
       db.profiles.push(p);
       selectProfile(p.id);
       return { ok: true, profile: p };
@@ -1080,7 +1081,8 @@
         if (list) {
           r.packStars = list.reduce(function (t, u) {
             var n = starsOf(p.state, u.id);
-            return t + (u.worldCount > 0 ? Math.min(n, u.worldCount * MAX_STARS) : n);
+            var max = u.worldCount || 0;
+            return t + (max > 0 ? Math.min(n, max * MAX_STARS) : n);
           }, 0);
         }
         return r;
@@ -1146,6 +1148,7 @@
       code = String(code || "").trim();
       var m = /^([zj])\.([A-Za-z0-9_-]{1,20000})\.([a-z0-9]{1,8})$/.exec(code);
       if (!m) return Promise.resolve(/^[zj]\./.test(code) ? broken : bad);
+      var expected = m[3];
       var read;
       try {
         read = m[1] === "j" ? Promise.resolve(new TextEncoder().encode(b64decode(fromUrl64(m[2])))) :
@@ -1154,7 +1157,7 @@
       } catch (e) { return Promise.resolve(broken); }
       return read.then(function (bytes) {
         var inner = new TextDecoder().decode(bytes);
-        if (hash(inner) !== m[3]) return broken;
+        if (hash(inner) !== expected) return broken;
         var c = uncompact(safeJsonParse(inner));
         var p = c && c.profiles.length === 1 ? c.profiles[0] : null;
         if (!p) return bad;
@@ -1168,9 +1171,7 @@
     importProfile: function (profile, mode) {
       var p = normalizeProfile(profile);
       if (!p) return null;
-      /** @type {Profile | null} */
-      var existing = null;
-      db.profiles.forEach(function (q) { if (q.name.toLowerCase() === p.name.toLowerCase()) existing = q; });
+      var existing = sameName(p.name);
       if (existing && mode === "replace") {
         existing.avatar = p.avatar;
         existing.state = p.state;
@@ -1195,10 +1196,10 @@
   };
 
   /** The player of this device with the same name (case ignored), or null. */
+  /** The player with this name (the last one if several), or null. @returns {Profile|null} */
   function sameName(name) {
-    var existing = null;
-    db.profiles.forEach(function (q) { if (q.name.toLowerCase() === String(name).toLowerCase()) existing = q; });
-    return existing;
+    var low = String(name).toLowerCase();
+    return db.profiles.filter(function (q) { return q.name.toLowerCase() === low; }).pop() || null;
   }
 
   function nameTaken(name, exceptId) {

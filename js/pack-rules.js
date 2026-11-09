@@ -162,7 +162,7 @@
     if (!m) throw new Error("format strict attendu : un commentaire /* … */ facultatif, puis window.registerPack( + un objet JSON + ); et rien d'autre");
     let pack;
     try { pack = JSON.parse(m[1]); } catch (e) {
-      throw new Error(`format strict : le contenu de window.registerPack(...) doit être du JSON pur, clés entre guillemets, sans virgule finale ni commentaire (${e.message})`, { cause: e });
+      throw new Error(`format strict : le contenu de window.registerPack(...) doit être du JSON pur, clés entre guillemets, sans virgule finale ni commentaire (${/** @type {Error} */ (e).message})`, { cause: e });
     }
     if (!pack || typeof pack !== "object" || isArr(pack)) throw new Error("format strict : window.registerPack doit recevoir un objet { … }");
     return pack;
@@ -416,7 +416,7 @@
         if (!r || !isStr(r.label)) err(R + " : label manquant");
         noTr(r && r.pattern, R + " pattern", err);
         let re = null;
-        try { re = new RegExp(r.pattern, "i"); } catch (x) { err(R + " : regex invalide (" + x.message + ")"); }
+        try { re = new RegExp(r.pattern, "i"); } catch (x) { err(R + " : regex invalide (" + /** @type {Error} */ (x).message + ")"); }
         if (re && re.test(model)) met++;
         else if (re && e.modelAnswer) warn(R + " : non trouvé dans modelAnswer");
       });

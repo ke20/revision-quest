@@ -9,7 +9,7 @@ import { route, setNav, worldPath } from "./nav.js";
 import { pauseGuard, startWorld } from "./play.js";
 import { typedConfirmBox } from "./settings.js";
 import { Sound } from "./sound.js";
-import { each, h, heartsHtml, on, shieldsHtml, show, starsHtml, toast } from "./ui.js";
+import { each, h, heartsHtml, on, qs, shieldsHtml, show, starsHtml, toast } from "./ui.js";
 import { E, R, T, safeColor } from "./util.js";
 
 /* ================= World map (of the current pack) ================= */
@@ -66,7 +66,7 @@ export function showMap() {
   layoutMap(node);
   var onResize = function () { if (document.body.contains(node)) layoutMap(node); else window.removeEventListener("resize", onResize); };
   window.addEventListener("resize", onResize);
-  var curNode = node.querySelector(".map-node.current");
+  const curNode = node.querySelector(".map-node.current");
   if (curNode && curNode.getBoundingClientRect().top > window.innerHeight * 0.7) {
     setTimeout(function () { curNode.scrollIntoView({ behavior: scrollBehavior(), block: "center" }); }, 250);
   }
@@ -122,7 +122,7 @@ export function showLesson(w) {
       " " + shieldsHtml(Engine.settings().freeMistakes, Engine.settings().freeMistakes) + "</div>" +
     '<button class="btn btn-primary btn-big" data-act="go">' + T("go") + "</button>" +
     "</section>");
-  var figBox = node.querySelector(".lesson-figs");
+  var figBox = qs(node, ".lesson-figs"); // only used when there are figures or tables (then it is there)
   figures.forEach(function (f) {
     try { figBox.appendChild(window.Figures.build(f)); } catch (e) { console.error("Figure failed", e); }
   });

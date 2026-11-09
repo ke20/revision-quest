@@ -9,7 +9,9 @@
     "noEmit": true,
     "target": "ES2017",
     "lib": ["ES2017", "ES2022.Error", "DOM"],
-    "strict": false,
+    "strict": true,
+    // every parameter would need a JSDoc type (about 770 places): enabled file by file later
+    "noImplicitAny": false,
     "skipLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",

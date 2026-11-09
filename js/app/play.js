@@ -9,7 +9,7 @@ import { clearRun, route, saveRun, setNav, worldPath } from "./nav.js";
 import { showProfiles } from "./profiles.js";
 import { Sound } from "./sound.js";
 import { badgeToasts, bigStarsHtml, confirmBox, h, heartsHtml, levelUpPopup, on, shieldsHtml, show, toast } from "./ui.js";
-import { E, R, T, pick, safeColor } from "./util.js";
+import { E, must, pick, R, safeColor, T } from "./util.js";
 
 /* ================= Play ================= */
 
@@ -50,7 +50,7 @@ export function startWorld(w, resume) {
   setNav(askQuit, null); // back button during an exercise = the usual quit confirmation
   on(node, "quit", askQuit);
   updateTop(ui, false);
-  var s = Engine.session; // a resumed session can stop right at the end
+  var s = must(Engine.session); // a resumed session can stop right at the end
   if (s.over) return showGameOver(w);
   if (s.index >= s.total) return showComplete(w);
   playExercise(w, ui);
@@ -90,7 +90,7 @@ export function setBar(ui, state, html, label) {
 }
 
 export function playExercise(w, ui) {
-  var s = Engine.session;
+  var s = must(Engine.session);
   var ex = w.exercises[s.index];
   var phase = "answer"; // "answer" | "done"
   var controller = null;
@@ -101,7 +101,7 @@ export function playExercise(w, ui) {
 
   // A long text (document with screen: true) is read on its own screen before its first question;
   // the questions after it on the same text only offer "back to the text".
-  var doc = ex && ex.type !== "write" ? Exercises.findDocument(S.data, ex) : null;
+  const doc = ex && ex.type !== "write" ? Exercises.findDocument(S.data, ex) : null;
   ui.bar.hidden = false;
   if (doc && doc.screen && ui.readDoc !== doc.id) {
     ui.bar.hidden = true; // nothing to check yet, and the bar would cover the "answer the questions" button
@@ -201,7 +201,7 @@ export function playExercise(w, ui) {
 /* ================= Result screens ================= */
 
 export function showComplete(w) {
-  var sum = Engine.finishWorld();
+  var sum = must(Engine.finishWorld()); // called with the world being played
   clearRun();
   route(worldPath(w));
   setNav(showMap, null);
@@ -249,7 +249,7 @@ export function showPause() {
   var endAt = Engine.startPause(); // kept across reloads: the pause cannot be skipped by reloading the page
   Confetti.stop();
   var level = S.pack ? S.pack.level : null;
-  var ideas = window.I18N ? I18N.pauseIdeas(level) : ["Lis 2 pages de ton livre 📖"];
+  var ideas = window.I18N ? I18N.pauseIdeas(level || "") : ["Lis 2 pages de ton livre 📖"];
   function back() { if (S.pack && S.data) showMap(); else showHome(); }
   function stay() {} // back button: the pause stays on screen
   setNav(stay, showPause);

@@ -151,7 +151,7 @@ interface WorldSummary {
 }
 
 /** ok: profile (and conflict = a player with the same name exists); not ok: error (French). */
-interface ImportResult { ok: boolean; profile?: Profile; conflict?: boolean; error?: string }
+interface ImportResult { ok: boolean; profile?: Profile; conflict?: Profile | null; error?: string }
 
 interface EngineApi {
   LEVELS: Level[];

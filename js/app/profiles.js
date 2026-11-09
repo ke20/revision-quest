@@ -5,8 +5,8 @@ import { showHome } from "./home.js";
 import { route, setNav } from "./nav.js";
 import { showSavePanel } from "./save.js";
 import { Sound } from "./sound.js";
-import { confirmBox, each, h, leavePack, on, show, toast } from "./ui.js";
-import { APP_ICON, APP_NAME, E } from "./util.js";
+import { confirmBox, each, h, leavePack, on, qs, show, toast } from "./ui.js";
+import { APP_ICON, APP_NAME, E, must } from "./util.js";
 
 /* ---------- players ---------- */
 
@@ -93,7 +93,7 @@ export function showNewPlayer() {
     "</div>" +
     '<button class="btn btn-primary btn-big" data-act="create">C\'est parti ! 🚀</button>' +
     "</section>");
-  var input = /** @type {HTMLInputElement} */ (node.querySelector("#np-name")), err = node.querySelector(".field-error");
+  var input = /** @type {HTMLInputElement} */ (node.querySelector("#np-name")), err = qs(node, ".field-error");
   on(node, "back", showProfiles);
   each(node, ".avatar-btn", function (b) {
     b.onclick = function () {
@@ -121,7 +121,7 @@ export function showNewPlayer() {
   function create() {
     var res = Engine.createProfile(input.value, chosen, comfortYes, grade);
     if (!res.ok) {
-      err.textContent = res.error;
+      err.textContent = res.error || "";
       input.classList.remove("shake"); void input.offsetWidth; input.classList.add("shake");
       Sound.wrong();
       return;
@@ -129,7 +129,8 @@ export function showNewPlayer() {
     Sound.levelUp();
     resetCatalogFilters();
     showHome();
-    toast("<span>" + E(res.profile.avatar) + " Bienvenue <b>" + E(res.profile.name) + "</b> !</span>");
+    var made = must(res.profile);
+    toast("<span>" + E(made.avatar) + " Bienvenue <b>" + E(made.name) + "</b> !</span>");
   }
   input.addEventListener("input", function () { err.textContent = ""; });
   input.addEventListener("keydown", function (e) { if (e.key === "Enter") create(); });
@@ -145,7 +146,8 @@ export function showLeaderboard(back, subjectId, unitId) {
   var unit = unitId ? Packs.get(unitId) : null;
   if (unit && !unit.groups) subjectId = unit.subject; else unit = null;
   var subject = subjectId ? Packs.subject(subjectId) : null;
-  var inSubject = subject ? units.filter(function (u) { return u.subject === subject.id; }) : [];
+  var subjectKey = subject ? subject.id : "";
+  var inSubject = subject ? units.filter(function (u) { return u.subject === subjectKey; }) : [];
   if (!inSubject.length) { subject = null; unit = null; }
   setNav(back || showHome, function () { showLeaderboard(back, subject && subject.id, unit && unit.id); });
   var ranked = unit ? [unit] : subject ? inSubject : null;
@@ -185,7 +187,7 @@ export function showLeaderboard(back, subjectId, unitId) {
   each(node, "[data-lb]", function (b) {
     b.onclick = function () { Sound.tap(); showLeaderboard(back, b.getAttribute("data-lb")); };
   });
-  var sel = /** @type {HTMLSelectElement|null} */ (node.querySelector(".lb-chapter"));
-  if (sel) sel.onchange = function () { Sound.tap(); showLeaderboard(back, subject.id, sel.value); };
+  const sel = /** @type {HTMLSelectElement|null} */ (node.querySelector(".lb-chapter")); // only shown inside a subject
+  if (sel) sel.onchange = function () { Sound.tap(); showLeaderboard(back, must(subject).id, sel.value); };
   show(node);
 }

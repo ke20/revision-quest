@@ -11,6 +11,9 @@ import { E } from "./util.js";
 
 export let openModals = [];
 
+/** An element of a screen built by this code (it is there). @param {ParentNode} node @param {string} sel @returns {HTMLElement} */
+export function qs(node, sel) { return /** @type {HTMLElement} */ (node.querySelector(sel)); }
+
 /** The element built from a piece of trusted HTML (its first node). @param {string} html @returns {HTMLElement} */
 export function h(html) {
   var d = document.createElement("div");
@@ -37,7 +40,7 @@ export function each(node, sel, fn) { Array.prototype.forEach.call(node.querySel
 
 /** html must be trusted or already escaped. */
 export function toast(html, cls) {
-  var wrap = document.getElementById("toasts");
+  var wrap = /** @type {HTMLElement} */ (document.getElementById("toasts")); // in index.html
   var t = h('<div class="toast ' + (cls || "") + '">' + html + "</div>");
   wrap.appendChild(t);
   setTimeout(function () { t.classList.add("out"); }, 2800);

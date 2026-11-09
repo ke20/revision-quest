@@ -38,7 +38,7 @@ export let Confetti = (function () {
         vy: -(8 + Math.random() * 10),
         w: 6 + Math.random() * 7, h: 4 + Math.random() * 6,
         r: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.4,
-        color: (season() ? season().confetti : COLORS)[Math.floor(Math.random() * COLORS.length)],
+        color: (season() || { confetti: COLORS }).confetti[Math.floor(Math.random() * COLORS.length)],
         life: 0, shape: Math.random() < 0.3 ? "circle" : "rect"
       });
     }

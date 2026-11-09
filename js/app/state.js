@@ -3,12 +3,14 @@
    so what several modules change lives in S. */
 
 export const S = {
-  /** The #app element: every screen is drawn inside it. @type {HTMLElement|null} */
-  app: null,
-  /** Registered data of the pack being played (window.registerPack). @type {LoadedPack|null} */
-  data: null,
-  /** Catalogue entry of the pack being played. @type {CatalogPack|null} */
-  pack: null,
+  /* The three fields below are null only before boot / before a pack is opened; the screens that use them are
+     only reached afterwards (a screen of a pack checks S.data first and goes back to the catalogue otherwise). */
+  /** The #app element: every screen is drawn inside it. */
+  app: /** @type {HTMLElement} */ (/** @type {unknown} */ (null)),
+  /** Registered data of the pack being played (window.registerPack). */
+  data: /** @type {LoadedPack} */ (/** @type {unknown} */ (null)),
+  /** Catalogue entry of the pack being played. */
+  pack: /** @type {CatalogPack} */ (/** @type {unknown} */ (null)),
   /** Bumped by every navigation: a pack that is still loading is ignored when the player went elsewhere. */
   loadToken: 0,
   /** Catalogue filters. */

@@ -69,7 +69,11 @@ export function takeRun(w) {
 /* ---------- in-app history: the browser / Android back button stays inside the app ----------
    Each screen declares its "back" action (same as its ← button) and how to redraw itself.
    A single history entry is pushed as a trap; popstate runs the back action (or closes the open modal). */
-export let backAction = null, rerender = null, trapped = false;
+/** @type {(() => void) | null} */
+export let backAction = null;
+/** @type {(() => void) | null} */
+export let rerender = null;
+export let trapped = false;
 export function pushTrap() {
   if (trapped) return;
   try { history.pushState({ rq: 1 }, ""); trapped = true; } catch (e) { /* ignore */ }

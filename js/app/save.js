@@ -3,7 +3,7 @@
 import { showHome } from "./home.js";
 import { Sound } from "./sound.js";
 import { h, modal, toast } from "./ui.js";
-import { APP_NAME, E } from "./util.js";
+import { APP_NAME, E, must } from "./util.js";
 
 /* ---------- save / export / import ---------- */
 
@@ -140,7 +140,7 @@ export function qrSvg(text) {
 }
 
 export function showShare(back) {
-  var me = Engine.currentProfile();
+  const me = must(Engine.currentProfile()); // the share panel is opened by the current player
   if (!me) return;
   modal('<h3>📲 Partager ma partie</h3><p class="share-who">' + E(me.avatar) + " <b>" + E(me.name) + "</b></p>" +
     '<div class="share-body"><p class="save-help">Préparation…</p></div>' +
@@ -231,7 +231,7 @@ export function importShared(code) {
   Engine.parseShareCode(code).then(function (res) {
     sharedOpen = null;
     if (!res.ok) return importError(res.error);
-    var s = Engine.profileSummary(res.profile);
+    var s = Engine.profileSummary(must(res.profile));
     modal('<h3>📥 Récupérer une partie</h3>' +
       '<p class="share-who">' + E(s.avatar) + " <b>" + E(s.name) + "</b></p>" +
       "<p>Niveau " + s.level + " · " + s.xp + " XP · " + s.stars + " ⭐</p>" +

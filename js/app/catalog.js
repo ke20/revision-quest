@@ -8,7 +8,7 @@ import { pauseGuard } from "./play.js";
 import { showProfiles } from "./profiles.js";
 import { Sound } from "./sound.js";
 import { each, h, leavePack, on, show } from "./ui.js";
-import { E, safeColor } from "./util.js";
+import { E, must, safeColor } from "./util.js";
 
 /* ================= Catalogue ================= */
 
@@ -60,7 +60,7 @@ export function packCard(p, title, tagsHtml, desc, sum) {
 
 /** Where "back" goes from a pack: its group choice for a group, else the catalogue. */
 export function backFromPack(entry) {
-  var parent = entry && entry.parent ? Packs.get(entry.parent) : null;
+  const parent = entry && entry.parent ? Packs.get(entry.parent) : null;
   return parent ? function () { showGroups(parent.id); } : showCatalog;
 }
 
@@ -98,7 +98,7 @@ export function showCatalog() {
   leavePack();
   setNav(showHome, showCatalog);
   var all = Packs.list();
-  var grade = myGrade(), onlyMine = !!grade && !S.catAllGrades;
+  const grade = myGrade(), onlyMine = !!grade && !S.catAllGrades;
   var usedLevels = Packs.levels().filter(function (l) { return all.some(function (p) { return p.level === l.id; }); });
   if (S.catFilter.level && !usedLevels.some(function (l) { return l.id === S.catFilter.level; })) S.catFilter.level = "";
   var level = onlyMine ? grade.id : S.catFilter.level;
@@ -108,11 +108,11 @@ export function showCatalog() {
   var list = ofLevel.filter(function (p) {
     return !S.catFilter.subject || p.subject === S.catFilter.subject;
   }).sort(function (a, b) {
-    var la = Packs.level(a.level).order, lb = Packs.level(b.level).order;
+    var la = must(Packs.level(a.level)).order, lb = must(Packs.level(b.level)).order; // levels checked by js/packs.js
     return la - lb || a.title.localeCompare(b.title);
   });
   var cards = list.map(function (p) {
-    var sub = Packs.subject(p.subject), lvl = Packs.level(p.level);
+    var sub = must(Packs.subject(p.subject)), lvl = must(Packs.level(p.level));
     var tags = '<span class="tag tag-subject">' + E(sub.icon) + " " + E(sub.label) + '</span><span class="tag tag-level">' + E(lvl.label) + "</span>" +
       (p.groups ? '<span class="tag tag-groups">👥 ' + p.groups.length + " groupes</span>" : "");
     return packCard(p, p.title, tags, p.description, chapterSummary(p));
@@ -153,7 +153,7 @@ export function showCatalog() {
 
 /** Load a pack (lazily) then show its world map. A load token ignores a late answer if the player went elsewhere. */
 export function openPack(id, then) {
-  var entry = Packs.get(id);
+  const entry = Packs.get(id);
   if (!entry) return showPackError(id, { message: "Ce chapitre n'existe pas (ou plus)." });
   if (entry.groups) return showGroups(id); // a chapter "par groupes": choose the group first
   var back = backFromPack(entry);
@@ -170,10 +170,11 @@ export function openPack(id, then) {
     clearTimeout(timer);
     if (token !== S.loadToken) return; // the player left the loading screen
     if (err) return showPackError(id, err);
-    S.pack = entry;
-    S.data = data;
-    Engine.setPack(id, data);
-    if (window.I18N) I18N.setLang(data.lang);
+    var loaded = must(data); // no error: the pack is there
+    S.pack = must(entry);
+    S.data = loaded;
+    Engine.setPack(id, loaded);
+    if (window.I18N) I18N.setLang(loaded.lang);
     if (then) then(); else showMap();
   });
 }
