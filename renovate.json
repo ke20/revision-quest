@@ -42,6 +42,12 @@
       "enabled": false
     },
     {
+      "description": "@types/node follows the Node.js major pinned in mise.toml: its majors are moved by hand, with Node",
+      "matchPackageNames": ["@types/node"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
       "description": "Patch updates of dev tools merge themselves once CI is green, but only 3 days after their release (time for a hijacked version to be spotted and unpublished)",
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["patch"],

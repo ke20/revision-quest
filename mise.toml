@@ -6,7 +6,7 @@
 # npm scripts (package.json) stay usable without mise.
 
 [tools]
-node = "22.23.4"
+node = "26.13.0"
 
 [env]
 PORT = "4173"
