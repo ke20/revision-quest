@@ -13,6 +13,7 @@
    Les packs sont lus comme du texte au format strict : leur code n'est jamais exécuté. La validation complète
    (contenu, champs du catalogue) reste dans tools/validate-pack.js. */
 "use strict";
+// @ts-check
 
 const fs = require("fs");
 const path = require("path");
@@ -22,9 +23,20 @@ const ROOT = path.resolve(__dirname, "..");
 const BASE_FILE = "packs/levels-subjects.json";
 const CATALOG_FILE = "packs/catalog.js";
 const CHAPTER_FILE = "chapter.json";
+/** A group of a chapter "par groupes" (id, label, difficulty come from its chapter.json, not checked here). */
+/** @typedef {{ id: any, label: any, difficulty?: any, worldCount: number }} CatalogGroup */
+/** A chapter "par groupes": the fields of its chapter.json, with groups instead of worldCount. */
+/** @typedef {{ path: string, title: any, description: any, icon: any, color?: any, lang: Pack["lang"], groups: CatalogGroup[] }} ChapterEntry */
+/** A catalogue entry: one pack (no groups) or a chapter "par groupes". */
+/** @typedef {(CatalogEntry & { groups?: undefined }) | ChapterEntry} CatalogItem */
+/** subjects and levels come from packs/levels-subjects.json as written (checked by tools/validate-pack.js). */
+/** @typedef {{ subjects: any, levels: any, packs: CatalogItem[] }} Catalog */
+/** @typedef {{ catalog: Catalog, errors: string[] }} BuildResult */
+
 const HEADER = "/* Généré par tools/catalog.js depuis les fichiers de packs et packs/levels-subjects.json (pas dans git). */\n";
 
-/** Sorted names of the sub-folders / files of a repo folder (none when it does not exist). */
+/** Sorted names of the sub-folders / files of a repo folder (none when it does not exist).
+    @param {string} root @param {string} rel @param {boolean} dirs @returns {string[]} */
 function list(root, rel, dirs) {
   const full = path.join(root, rel);
   if (!fs.existsSync(full)) return [];
@@ -34,26 +46,34 @@ function list(root, rel, dirs) {
 /**
  * The catalogue as the pack files describe it: { catalog: { subjects, levels, packs }, errors }.
  * opts.extra: { "packs/<path>.js": text } read as if it were in the repo (tools/pack-add.js, before copying a file).
+ * @param {string} [root] @param {{ extra?: Record<string, string> }} [opts] @returns {BuildResult}
  */
 function buildCatalog(root = ROOT, opts = {}) {
   const extra = opts.extra || {};
+  /** @type {string[]} */
   const errors = [];
+  /** @param {string} rel @returns {string} */
   const read = (rel) => (rel in extra ? extra[rel] : fs.readFileSync(path.join(root, rel), "utf8"));
+  /** Raw JSON of a repo file (any: not checked yet), null on error. @param {string} rel @returns {any} */
   const json = (rel) => {
-    try { return JSON.parse(read(rel)); } catch (e) { errors.push(rel + " : " + (e.code === "ENOENT" ? "fichier introuvable" : "JSON invalide (" + e.message + ")")); return null; }
+    try { return JSON.parse(read(rel)); } catch (e) { const x = /** @type {NodeJS.ErrnoException} */ (e); errors.push(rel + " : " + (x.code === "ENOENT" ? "fichier introuvable" : "JSON invalide (" + x.message + ")")); return null; }
   };
+  /** @param {string} rel @param {string} id @returns {Pack | null} */
   const pack = (rel, id) => {
     let p;
-    try { p = Rules.parseStrict(read(rel)); } catch (e) { errors.push(rel + " : " + (e.code === "ENOENT" ? "fichier introuvable" : e.message)); return null; }
+    try { p = Rules.parseStrict(read(rel)); } catch (e) { const x = /** @type {NodeJS.ErrnoException} */ (e); errors.push(rel + " : " + (x.code === "ENOENT" ? "fichier introuvable" : x.message)); return null; }
     if (!p || typeof p !== "object" || p.path !== id) { errors.push(`${rel} : path ${JSON.stringify(p && p.path)} attendu "${id}"`); return null; }
     return p;
   };
+  /** @param {Pack} p */
   const worldCount = (p) => (Array.isArray(p.worlds) ? p.worlds.length : 0);
 
   const base = json(BASE_FILE) || {};
+  /** @type {CatalogItem[]} */
   const packs = [];
   // folders on disk, plus the folders of the extra files
   const extraParts = Object.keys(extra).map((rel) => rel.split("/"));
+  /** @param {string[]} names @param {string[]} more */
   const union = (names, more) => [...new Set(names.concat(more))].sort();
 
   for (const level of union(list(root, "packs", true), extraParts.filter((p) => p.length >= 4).map((p) => p[1]))) {
@@ -74,8 +94,9 @@ function buildCatalog(root = ROOT, opts = {}) {
         const info = json(`packs/${id}/${CHAPTER_FILE}`);
         if (!info) return;
         const langs = new Set();
-        const groups = (Array.isArray(info.groups) ? info.groups : []).map((g) => {
-          const out = { id: g && g.id, label: g && g.label };
+        const groups = (Array.isArray(info.groups) ? info.groups : []).map(/** @param {any} g */ (g) => {
+          // worldCount is set last: same key order as before in packs/catalog.js
+          const out = /** @type {CatalogGroup} */ ({ id: g && g.id, label: g && g.label });
           if (g && g.difficulty != null) out.difficulty = g.difficulty;
           const p = pack(`packs/${id}/${out.id}.js`, id + "/" + out.id);
           if (p) langs.add(p.lang);
@@ -84,6 +105,7 @@ function buildCatalog(root = ROOT, opts = {}) {
         });
         if (langs.size > 1) errors.push(`packs/${id}/ : tous les groupes doivent avoir la même lang (${[...langs].join(", ")})`);
         // same keys, in the same order, as a chapter entry (Rules.catalogEntry), with groups instead of worldCount
+        /** @type {Omit<ChapterEntry, "lang" | "groups">} */
         const entry = { path: id, title: info.title, description: info.description, icon: info.icon };
         if (info.color != null) entry.color = info.color;
         packs.push({ ...entry, lang: [...langs][0], groups });
@@ -94,11 +116,12 @@ function buildCatalog(root = ROOT, opts = {}) {
   return { catalog: { subjects: base.subjects, levels: base.levels, packs }, errors };
 }
 
-/** Text of packs/catalog.js. */
+/** Text of packs/catalog.js. @param {Catalog} catalog @returns {string} */
 function formatCatalog(catalog) {
   return HEADER + "window.CATALOG = " + JSON.stringify(catalog, null, 2) + ";\n";
 }
 
+/** @param {string[]} argv @param {string} [root] @returns {number} */
 function main(argv, root = ROOT) {
   const { catalog, errors } = buildCatalog(root);
   if (errors.length) {

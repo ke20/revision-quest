@@ -27,6 +27,7 @@ s'écrivent en commentaires JSDoc (`/** @param {Pack} pack */`) ; les types part
 `types/engine.d.ts` (`EngineApi`) et `types/scripts.d.ts` (`Exercises`, `Packs`, `I18N`, `Figures`) ; `engine.js` et
 `exercises.js` sont vérifiés contre leur interface (`@type {EngineApi}`, `@type {ExercisesApi}`) : changer une
 fonction publique sans mettre son type à jour fait échouer `mise run typecheck`.
+Les outils Node (`tools/*.js`, `tests/server.js`) sont vérifiés à part avec `tsconfig.tools.json` (CommonJS, types de Node), lancé par la même commande.
 Mode `strict` complet : chaque paramètre a un type JSDoc (`/** @param {string} key */`), une valeur possiblement
 `null` se vérifie avant usage, un objet servant de dictionnaire se déclare `Record<string, …>`. Une valeur que le code sait présente mais que TypeScript ne peut pas suivre se marque
 avec `must(…)` (`js/app/ui/util.js`) ou `qs(node, sélecteur)` (`js/app/ui/ui.js`) : aucun contrôle à l'exécution.

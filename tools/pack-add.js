@@ -8,6 +8,7 @@
    Un groupe d'un chapitre « par groupes » s'ajoute de la même façon, une fois listé dans le chapter.json du chapitre.
    Code de sortie 0 = ajouté ou à jour, 1 = refusé (rien n'est écrit). */
 "use strict";
+// @ts-check
 
 const fs = require("fs");
 const path = require("path");
@@ -17,18 +18,26 @@ const { buildCatalog } = require("./catalog.js");
 
 const ROOT = path.resolve(__dirname, "..");
 
+/** Result of addPack: action and target only when ok. */
+/** @typedef {{ ok: boolean, errors: string[], warnings: string[], action?: "ajouté" | "mis à jour" | "déjà à jour", target?: string }} AddResult */
+
 /**
  * Adds or updates the pack of `file`. opts: { replace, root }.
  * Returns { ok, errors, warnings, action: "ajouté" | "mis à jour" | "déjà à jour", target }.
+ * @param {string} file @param {{ replace?: boolean, root?: string }} [opts] @returns {AddResult}
  */
 function addPack(file, opts = {}) {
   const root = opts.root || ROOT;
-  const errors = [], warnings = [];
+  /** @type {string[]} */
+  const errors = [];
+  /** @type {string[]} */
+  const warnings = [];
+  /** @param {string} m @returns {AddResult} */
   const fail = (m) => { errors.push(m); return { ok: false, errors, warnings }; };
 
   let text, pack;
   try { text = fs.readFileSync(file, "utf8"); } catch (e) { return fail("fichier introuvable : " + file); }
-  try { pack = Rules.parseStrict(text); } catch (e) { return fail(e.message); }
+  try { pack = Rules.parseStrict(text); } catch (e) { return fail(/** @type {Error} */ (e).message); }
   if (!Rules.checkPath(pack.path, (m) => errors.push(m))) return { ok: false, errors, warnings };
 
   const rel = "packs/" + pack.path + ".js";
@@ -54,6 +63,7 @@ function addPack(file, opts = {}) {
   return { ok: true, errors, warnings, action: existed ? "mis à jour" : "ajouté", target: rel };
 }
 
+/** @param {string[]} argv @returns {number} */
 function main(argv) {
   const files = argv.filter((a) => !a.startsWith("--"));
   if (files.length !== 1 || argv.includes("-h") || argv.includes("--help")) {

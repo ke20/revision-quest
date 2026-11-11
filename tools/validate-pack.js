@@ -6,6 +6,7 @@
      node tools/validate-pack.js --all                valide tous les packs du catalogue (et signale les fichiers orphelins)
    Code de sortie 0 = tout est bon, 1 = au moins une erreur. Les avertissements n'empêchent pas la validation. */
 "use strict";
+// @ts-check
 
 const fs = require("fs");
 const path = require("path");
@@ -16,15 +17,25 @@ const { buildCatalog } = require("./catalog.js");
 const ROOT = path.resolve(__dirname, "..");
 const { ID_RE, PATH_RE, PACK_PATH_RE, COLOR_RE, isStr, validateFigure, validateTable } = Rules;
 const isArr = Array.isArray;
+/** @typedef {import("./catalog.js").Catalog} Catalog */
+/** Counts of validateContent (js/core/pack-rules.js). */
+/** @typedef {{ worlds: number, exercises: number, types: Record<string, number> }} PackStats */
+/** Result of validatePack. */
+/** @typedef {{ file: string, id?: string, errors: string[], warnings: string[], stats?: PackStats }} PackValidation */
+/** A playable pack of the catalogue (fields copied from the catalogue entry, not checked yet). */
+/** @typedef {{ path: string, lang: any, worldCount: any, title?: any, description?: any, icon?: any, color?: any, group?: boolean }} CatalogUnit */
+
+/** @param {string} p */
 const fileOf = (p) => "packs/" + p + ".js";
 
 /** Playable packs of the catalogue: entries without groups, and every group of a grouped entry
-    ({ path: "<cours>/<groupe>", lang, worldCount, group: true }). */
+    ({ path: "<cours>/<groupe>", lang, worldCount, group: true }).
+    @param {any} catalog built or hand-written (tests), not checked yet @returns {CatalogUnit[]} */
 function catalogUnits(catalog) {
-  return (isArr(catalog.packs) ? catalog.packs : []).flatMap((p) => {
+  return (isArr(catalog.packs) ? catalog.packs : []).flatMap(/** @param {any} p @returns {CatalogUnit[]} */ (p) => {
     if (!p || typeof p.path !== "string") return [];
     if (!isArr(p.groups)) return [{ path: p.path, lang: p.lang, worldCount: p.worldCount, title: p.title, description: p.description, icon: p.icon, color: p.color }];
-    return p.groups.filter((g) => g && typeof g.id === "string").map((g) => ({ path: p.path + "/" + g.id, lang: p.lang, worldCount: g.worldCount, group: true }));
+    return p.groups.filter(/** @param {any} g */ (g) => g && typeof g.id === "string").map(/** @param {any} g */ (g) => ({ path: p.path + "/" + g.id, lang: p.lang, worldCount: g.worldCount, group: true }));
   });
 }
 
@@ -32,27 +43,34 @@ function catalogUnits(catalog) {
    Nothing is ever run here: a pack is read as text in the strict format (js/core/pack-rules.js parseStrict), and the
    catalogue is built from the pack files (tools/catalog.js). */
 
-/** The catalogue built from the pack files of `root`. Throws when a source file is broken. */
+/** The catalogue built from the pack files of `root`. Throws when a source file is broken.
+    @param {string} [root] @returns {Catalog} */
 function loadCatalog(root = ROOT) {
   const { catalog, errors } = buildCatalog(root);
   if (errors.length) throw new Error(errors.join(" | "));
   return catalog;
 }
 
-/** Reads a pack file without running it (strict format). Throws with a French message. */
+/** Reads a pack file without running it (strict format). Throws with a French message.
+    @param {string} file @returns {Pack} */
 function loadPack(file) {
   return Rules.parseStrict(fs.readFileSync(file, "utf8"));
 }
 
 /* ---------- pack validation: identity, file location and catalogue entry here, content in js/core/pack-rules.js ---------- */
 
+/** @param {string} file @param {any} catalog built or hand-written (tests), see catalogUnits
+    @param {{ rel?: string }} [opts] @returns {PackValidation} */
 function validatePack(file, catalog, opts = {}) {
-  const errors = [], warnings = [];
-  const err = (m) => errors.push(m), warn = (m) => warnings.push(m);
+  /** @type {string[]} */
+  const errors = [];
+  /** @type {string[]} */
+  const warnings = [];
+  const err = (/** @type {string} */ m) => errors.push(m), warn = (/** @type {string} */ m) => warnings.push(m);
   // opts.rel: path to check as if the file were in the repo (used by the unit tests on fixture packs)
   const rel = opts.rel || path.relative(ROOT, path.resolve(file)).split(path.sep).join("/");
   let pack;
-  try { pack = loadPack(file); } catch (e) { err("chargement impossible : " + e.message); return { file: rel, errors, warnings }; }
+  try { pack = loadPack(file); } catch (e) { err("chargement impossible : " + /** @type {Error} */ (e).message); return { file: rel, errors, warnings }; }
   if (!pack || typeof pack !== "object") { err("registerPack doit recevoir un objet"); return { file: rel, errors, warnings }; }
 
   // identity: the pack path is its id, and the file is packs/<path>.js
@@ -78,8 +96,9 @@ function validatePack(file, catalog, opts = {}) {
     if (e.lang && e.lang !== pack.lang) err(`catalogue : lang "${e.lang}" ≠ lang du pack "${pack.lang}"`);
     if (isArr(pack.worlds) && e.worldCount !== pack.worlds.length) err(`catalogue : worldCount ${e.worldCount} ≠ ${pack.worlds.length} mondes dans le pack${e.group ? " (groupe)" : ""}`);
     if (metaOk && !e.group) {
-      ["title", "description", "icon", "color"].forEach((k) => {
-        if (e[k] !== pack.meta[k]) err(`catalogue : ${k} ${JSON.stringify(e[k])} ≠ meta.${k} ${JSON.stringify(pack.meta[k])}` + fix);
+      const meta = /** @type {PackMeta} */ (pack.meta); // metaOk: present and valid
+      /** @type {Array<"title" | "description" | "icon" | "color">} */ (["title", "description", "icon", "color"]).forEach((k) => {
+        if (e[k] !== meta[k]) err(`catalogue : ${k} ${JSON.stringify(e[k])} ≠ meta.${k} ${JSON.stringify(meta[k])}` + fix);
       });
     }
   }
@@ -90,25 +109,27 @@ function validatePack(file, catalog, opts = {}) {
 
 /* ---------- catalogue validation ---------- */
 
-/** opts.exists(rel) → true when the repo file exists (default: on disk; tools/pack-add.js checks a catalogue before writing). */
+/** opts.exists(rel) → true when the repo file exists (default: on disk; tools/pack-add.js checks a catalogue before writing).
+    @param {any} catalog not checked yet @param {{ exists?: (rel: string) => boolean }} [opts] @returns {string[]} errors */
 function validateCatalog(catalog, opts = {}) {
   const exists = opts.exists || ((rel) => fs.existsSync(path.join(ROOT, rel)));
+  /** @type {string[]} */
   const errors = [];
   const subj = new Set(), lv = new Set(), ids = new Set();
-  (catalog.subjects || []).forEach((s, i) => {
+  (catalog.subjects || []).forEach(/** @param {any} s @param {number} i */ (s, i) => {
     if (!s || !ID_RE.test(String(s.id))) errors.push(`subjects[${i}] : id invalide`);
     else if (subj.has(s.id)) errors.push(`subjects : "${s.id}" en double`);
     subj.add(s && s.id);
     if (!s || !isStr(s.label)) errors.push(`subjects[${i}] : label manquant`);
     if (s && s.color != null && !COLOR_RE.test(s.color)) errors.push(`subjects[${i}] : color invalide`);
   });
-  (catalog.levels || []).forEach((l, i) => {
+  (catalog.levels || []).forEach(/** @param {any} l @param {number} i */ (l, i) => {
     if (!l || !ID_RE.test(String(l.id))) errors.push(`levels[${i}] : id invalide`);
     else if (lv.has(l.id)) errors.push(`levels : "${l.id}" en double`);
     lv.add(l && l.id);
     if (!l || typeof l.order !== "number") errors.push(`levels[${i}] : order (nombre) manquant`);
   });
-  (catalog.packs || []).forEach((p, i) => {
+  (catalog.packs || []).forEach(/** @param {any} p @param {number} i */ (p, i) => {
     const P = `packs[${i}] (${p && p.path})`;
     const m = p && String(p.path).match(PATH_RE);
     if (!m) { errors.push(P + ' : path invalide (attendu "<niveau>/<matiere>/<cours>")'); return; }
@@ -130,7 +151,7 @@ function validateCatalog(catalog, opts = {}) {
     if (p.worldCount != null) errors.push(P + " : pas de worldCount sur un chapitre par groupes (il est dans chaque groupe)");
     if (exists(fileOf(p.path))) errors.push(P + ` : ${fileOf(p.path)} ne sert à rien (chapitre par groupes : un fichier par groupe dans packs/${p.path}/)`);
     const gids = new Set();
-    p.groups.forEach((g, j) => {
+    p.groups.forEach(/** @param {any} g @param {number} j */ (g, j) => {
       const G = `${P} groups[${j}]`;
       if (!g || typeof g !== "object") return errors.push(G + " : objet attendu");
       if (!ID_RE.test(String(g.id))) errors.push(G + ` : id ${JSON.stringify(g.id)} invalide (minuscules, chiffres, tirets, 30 max)`);
@@ -147,7 +168,7 @@ function validateCatalog(catalog, opts = {}) {
 
 /* ---------- CLI ---------- */
 
-/** Every .js file under dir (recursive). */
+/** Every .js file under dir (recursive). @param {string} dir @returns {string[]} */
 function listJs(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((d) => {
     const full = path.join(dir, d.name);
@@ -155,6 +176,7 @@ function listJs(dir) {
   });
 }
 
+/** @param {PackValidation} r */
 function report(r) {
   const s = r.stats ? ` — ${r.stats.worlds} mondes, ${r.stats.exercises} exercices (${Object.entries(r.stats.types).map(([k, v]) => k + ":" + v).join(", ")})` : "";
   console.log((r.errors.length ? "✗ " : "✓ ") + r.file + s);
@@ -162,6 +184,7 @@ function report(r) {
   r.warnings.forEach((w) => console.log("   conseil " + w));
 }
 
+/** @param {string[]} argv @returns {number} */
 function main(argv) {
   if (!argv.length || argv.includes("-h") || argv.includes("--help")) {
     console.log("Usage : node tools/validate-pack.js packs/<niveau>/<matiere>/<cours>[/<groupe>].js | --all");
@@ -175,6 +198,7 @@ function main(argv) {
     Rules.validateMeta({ title: p.title, description: p.description, icon: p.icon, color: p.color }, (m) => catErrors.push(`packs/${p.path}/chapter.json : ${m}`));
   });
   if (catErrors.length) { console.log("✗ catalogue"); catErrors.forEach((e) => console.log("   ERREUR  " + e)); failed++; }
+  /** @type {string[]} */
   let files;
   if (argv.includes("--all")) {
     files = catalogUnits(catalog).filter((p) => PACK_PATH_RE.test(p.path) && fs.existsSync(path.join(ROOT, fileOf(p.path)))).map((p) => path.join(ROOT, fileOf(p.path)));

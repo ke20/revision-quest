@@ -35,7 +35,7 @@ description = "Lint and fix what ESLint can fix automatically"
 run = "npm run lint:fix"
 
 [tasks.typecheck]
-description = "Type-check the game's JavaScript with TypeScript (JSDoc types, nothing emitted: tsconfig.json)"
+description = "Type-check the game's JavaScript with TypeScript (JSDoc types, nothing emitted: tsconfig.json, then tsconfig.tools.json for the Node tools)"
 run = "npm run typecheck"
 
 [tasks.validate]
