@@ -14,6 +14,6 @@
     "moduleResolution": "Bundler",
     "types": []
   },
-  "files": ["types/globals.d.ts", "types/pack.d.ts", "types/engine.d.ts", "types/engine-parts.d.ts", "types/scripts.d.ts", "types/exercises-parts.d.ts"],
-  "include": ["js/core/**/*.js", "js/exercises/**/*.js", "js/app/**/*.js", "js/pages/*.js"]
+  "files": ["types/globals.d.ts", "types/pack.d.ts", "types/engine.d.ts", "types/engine-parts.d.ts", "types/scripts.d.ts", "types/exercises-parts.d.ts", "types/editor.d.ts"],
+  "include": ["js/core/**/*.js", "js/exercises/**/*.js", "js/app/**/*.js", "js/editor/**/*.js", "js/pages/*.js"]
 }

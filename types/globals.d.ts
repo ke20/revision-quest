@@ -21,7 +21,7 @@ interface Window {
   /** js/core/engine/engine.js */
   Engine: EngineApi;
   /** js/core/pack-rules.js (browser side; Node uses require()) */
-  PackRules?: unknown;
+  PackRules?: PackRulesApi;
 }
 
 // Classic scripts loaded before the screens (index.html): their objects, used as globals by js/app/*.js.

@@ -8,7 +8,7 @@ const globals = require("globals");
 // Globals the app scripts define on window (js/*.js); also used inside page.evaluate() in the e2e specs.
 const appGlobals = {
   APP_CONFIG: "readonly", I18N: "readonly", CATALOG: "readonly", Packs: "readonly", registerPack: "readonly",
-  Engine: "readonly", Exercises: "readonly", Figures: "readonly", App: "readonly"
+  Engine: "readonly", Exercises: "readonly", Figures: "readonly", App: "readonly", PackRules: "readonly"
 };
 
 // Rules shared by every file: catch real mistakes, forbid code-from-string (eval and friends).
@@ -45,9 +45,10 @@ module.exports = [
     rules: { "no-implicit-globals": "error" }
   },
 
-  // The screens (js/app/**/*.js): ES modules (import / export), loaded by <script type="module" src="js/app/main.js">.
+  // The screens (js/app/**/*.js) and the course editor (js/editor/**/*.js): ES modules (import / export), loaded by
+  // <script type="module" src="js/app/main.js"> (index.html) and src="js/editor/main.js" (editeur.html).
   {
-    files: ["js/app/**/*.js"],
+    files: ["js/app/**/*.js", "js/editor/**/*.js"],
     languageOptions: { sourceType: "module" },
     rules: { "no-implicit-globals": "off" } // a module has no implicit global
   },

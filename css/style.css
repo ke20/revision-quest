@@ -126,11 +126,12 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
 .pstat-ico { font-size: 1.4rem; }
 .pstat-ico.fire { animation: flicker 1s ease-in-out infinite alternate; display: inline-block; }
 .btn-play { animation: pulse 2s ease-in-out infinite; }
-.source-link { margin: 4px 0 0; text-align: center; font-size: .9rem; }
-.source-link a { display: inline-flex; align-items: center; gap: 7px; color: #fff; opacity: .85; text-decoration: none; }
-.source-link a span { text-decoration: underline; text-underline-offset: 3px; }
+.source-link, .editor-link { margin: 4px 0 0; text-align: center; font-size: .9rem; }
+.source-link a, .editor-link a { display: inline-flex; align-items: center; gap: 7px; color: #fff; opacity: .85; text-decoration: none; }
+.source-link a span, .editor-link a span { text-decoration: underline; text-underline-offset: 3px; }
 .gh-icon { width: 18px; height: 18px; flex: none; }
-.source-link a:hover, .source-link a:focus-visible { opacity: 1; }
+.source-link a:hover, .source-link a:focus-visible, .editor-link a:hover, .editor-link a:focus-visible { opacity: 1; }
+@media (max-width: 767.98px) { .editor-link { display: none; } } /* the course editor needs a computer or a tablet */
 .home-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .note { color: #fff; text-align: center; font-size: .9rem; }
 

@@ -1,5 +1,5 @@
 // @ts-check
-/* Révision Quest — Home screen (and the fullscreen button, source and voices links). */
+/* Révision Quest — Home screen (and the fullscreen button, source, voices and course editor links). */
 import { showBadges } from "./badges.js";
 import { openPack, showCatalog } from "./catalog.js";
 import { season } from "../ui/comfort.js";
@@ -62,6 +62,11 @@ export function voicesLinkHtml() {
   return '<p class="source-link voices-link"><a href="voix.html"><span>🔊 Tester les voix</span></a></p>';
 }
 
+/** « Créer un cours » link (editeur.html, the course editor for parents and teachers): hidden under 768 px (css/style.css). */
+export function editorLinkHtml() {
+  return '<p class="editor-link"><a href="editeur.html"><span>✏️ Créer un cours</span></a></p>';
+}
+
 export function showHome() {
   var me = Engine.currentProfile();
   if (!me) return showProfiles();
@@ -116,7 +121,7 @@ export function showHome() {
       (fsSupported() ? '<button class="btn btn-ghost btn-small fs-btn' + (fsActive() ? " on" : "") + '" data-act="fullscreen" aria-pressed="' + fsActive() + '">' +
         FS_ICON + '<span class="fs-in">Plein écran</span><span class="fs-out">Quitter le plein écran</span></button>' : "") +
       (Engine.storageAvailable() ? "" : '<p class="note">⚠️ Ce navigateur ne peut pas enregistrer ta progression. Pense à exporter ta partie !</p>') +
-      voicesLinkHtml() + sourceLinkHtml() +
+      voicesLinkHtml() + editorLinkHtml() + sourceLinkHtml() +
     "</section>");
   on(node, "continue", function () { Sound.unlock(); Sound.tap(); openPack(must(last).id); });
   on(node, "catalog", function () { Sound.unlock(); Sound.tap(); showCatalog(); });

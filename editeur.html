@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- Same policy as index.html: only scripts from this site (no inline or injected scripts), no network calls. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#7C3AED">
+  <title>Créer un cours · Révision Quest</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✏️</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/editor.css">
+</head>
+<body class="editor-page">
+  <!-- Under 768 px only this message shows (css/editor.css): the editor needs a computer or a tablet. -->
+  <main class="ed-small">
+    <div class="card">
+      <p class="ed-small-icon">✏️</p>
+      <p>La création de cours se fait sur un ordinateur ou une tablette.</p>
+      <p><a href="./">← Retour au jeu</a></p>
+    </div>
+  </main>
+  <div id="editor" class="ed-app">
+    <noscript><p class="ed-fatal">Active JavaScript pour créer un cours.</p></noscript>
+  </div>
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <!-- Interface texts, catalogue (levels, subjects, official chapters), pack loader, pack rules (live checks),
+       the game's exercise renderers (preview), in the same order as index.html; then the editor (ES modules). -->
+  <script src="js/core/i18n.js"></script>
+  <script src="packs/catalog.js"></script>
+  <script src="js/core/packs.js"></script>
+  <script src="js/core/pack-rules.js"></script>
+  <script src="js/exercises/figures.js"></script>
+  <script src="js/exercises/common/text.js"></script>
+  <script src="js/exercises/common/checks.js"></script>
+  <script src="js/exercises/common/dom.js"></script>
+  <script src="js/exercises/common/bubbles.js"></script>
+  <script src="js/exercises/common/speech.js"></script>
+  <script src="js/exercises/common/documents.js"></script>
+  <script src="js/exercises/types/mcq.js"></script>
+  <script src="js/exercises/types/sort.js"></script>
+  <script src="js/exercises/types/match.js"></script>
+  <script src="js/exercises/types/order.js"></script>
+  <script src="js/exercises/types/fill.js"></script>
+  <script src="js/exercises/types/spot.js"></script>
+  <script src="js/exercises/types/write.js"></script>
+  <script src="js/exercises/exercises.js"></script>
+  <script type="module" src="js/editor/main.js"></script>
+</body>
+</html>

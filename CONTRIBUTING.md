@@ -23,7 +23,7 @@ objet, `?.`, `??`, `import()` dynamique). Les anciens fichiers écrits en ES5 re
 s'écrivent en commentaires JSDoc (`/** @param {Pack} pack */`) ; les types partagés sont dans `types/*.d.ts`
 (format d'un pack : `types/pack.d.ts`, données du moteur : `types/engine.d.ts`). Un fichier vérifié commence par
 `// @ts-check` et figure dans `tsconfig.json` (`files` ou `include`) : `js/core/engine/*.js`, `js/exercises/exercises.js`,
-`js/core/pack-rules.js`, `js/exercises/figures.js`, `js/core/packs.js`, `js/core/i18n.js`, `js/pages/voix.js` et tous les écrans `js/app/*.js`. Les objets publics des scripts classiques sont décrits dans
+`js/core/pack-rules.js`, `js/exercises/figures.js`, `js/core/packs.js`, `js/core/i18n.js`, `js/pages/voix.js`, tous les écrans `js/app/*.js` et l'éditeur `js/editor/**/*.js`. Les objets publics des scripts classiques sont décrits dans
 `types/engine.d.ts` (`EngineApi`) et `types/scripts.d.ts` (`Exercises`, `Packs`, `I18N`, `Figures`) ; `engine.js` et
 `exercises.js` sont vérifiés contre leur interface (`@type {EngineApi}`, `@type {ExercisesApi}`) : changer une
 fonction publique sans mettre son type à jour fait échouer `mise run typecheck`.
@@ -32,6 +32,17 @@ Mode `strict` complet : chaque paramètre a un type JSDoc (`/** @param {string} 
 `null` se vérifie avant usage, un objet servant de dictionnaire se déclare `Record<string, …>`. Une valeur que le code sait présente mais que TypeScript ne peut pas suivre se marque
 avec `must(…)` (`js/app/ui/util.js`) ou `qs(node, sélecteur)` (`js/app/ui/ui.js`) : aucun contrôle à l'exécution.
 
+**Éditeur de cours** (`editeur.html`, lien « ✏️ Créer un cours » en bas de l'accueil, masqué sous 768 px) : un parent
+ou un enseignant écrit un chapitre sans code. Plan à gauche, formulaire du nœud choisi, aperçu avec le vrai rendu des
+exercices (`Exercises.render`) ; le pack entier passe par `PackRules` à chaque modification, chaque message va sous son
+champ et compte sur son nœud du plan. Plusieurs brouillons (30 au plus), listés dans « 🗂️ Mes brouillons » et
+enregistrés dans `localStorage` : un index (`revisionQuest.editor.drafts`) et une entrée par brouillon
+(`revisionQuest.editor.draft.<id>`), écrite seulement quand le brouillon a changé. Le
+fichier est téléchargé au format strict (`PackRules.formatStrict`) ; un fichier ouvert est lu comme du texte
+(`PackRules.parseStrict`), jamais exécuté. Les figures, tableaux et textes à lire d'un pack ouvert sont gardés tels quels.
+Les modules purs de `js/editor/model/` n'utilisent ni le DOM ni les globales du navigateur : les tests unitaires les
+importent (`js/editor/package.json` : `"type": "module"` pour Node).
+
 Le nom de l'app est défini à un seul endroit : `APP_CONFIG.name` dans `js/core/i18n.js` (+ `<title>` dans `index.html`).
 
 ## Structure du code
@@ -39,7 +50,10 @@ Le nom de l'app est défini à un seul endroit : `APP_CONFIG.name` dans `js/core
 ```
 revision-quest/
 ├── index.html              page unique, charge les scripts (aucun script inline)
+├── editeur.html            éditeur de cours (parents, enseignants), ordinateur ou tablette
+├── voix.html               page « Tester les voix »
 ├── css/style.css           design, mobile d'abord
+├── css/editor.css          styles de l'éditeur (l'aperçu reprend ceux du jeu)
 ├── fonts/                  police Fredoka auto-hébergée + licence
 ├── js/
 │   ├── core/               logique sans écran (scripts classiques, testés aussi dans Node)
@@ -58,6 +72,10 @@ revision-quest/
 │   │   ├── nav.js          adresses (#/…) et bouton retour
 │   │   ├── screens/        un fichier par écran : home, catalog, profiles, map, play, ghost, badges, settings, save
 │   │   └── ui/             briques communes : ui (écran, toasts, fenêtres), util, sound, confetti, comfort
+│   ├── editor/             l'éditeur de cours (modules ES, point d'entrée main.js)
+│   │   ├── model/          données pures, testées dans Node : brouillon et plan, modèles d'exercice, export, contrôles
+│   │   ├── forms/          un formulaire par nœud (cours, monde, leçon, exercice) et types/ : un par type d'exercice
+│   │   └── …               state (brouillon + enregistrement), tree (plan), preview, checks, io (ouvrir, télécharger)
 │   ├── pages/voix.js       page voix.html (voix disponibles)
 │   ├── vendor/             bibliothèque tierce (QR code), jamais modifiée
 │   └── nomodule.js         message pour un navigateur trop ancien
@@ -135,7 +153,7 @@ npm run qa            # = npm run lint && npm run typecheck && npm test
 | `mise run validate` | `npm run validate` | vérifie tous les packs et le catalogue construit à partir d'eux (`tools/validate-pack.js --all`) |
 | `mise run pack:add <fichier>` | `npm run pack:add -- <fichier>` | vérifie un chapitre et le met à sa place dans `packs/` (`tools/pack-add.js`) |
 | `mise run catalog` | `npm run catalog` | écrit `packs/catalog.js` pour un autre serveur que `mise run dev`, qui le construit à chaque demande (`tools/catalog.js`) |
-| `mise run test:unit` | `npm run test:unit` | tests unitaires `node:test` : moteur, exercices (texte enrichi, correction), catalogue, validateur (packs cassés dans `tests/fixtures/unit/`), doc |
+| `mise run test:unit` | `npm run test:unit` | tests unitaires `node:test` : moteur, exercices (texte enrichi, correction), catalogue, validateur (packs cassés dans `tests/fixtures/unit/`), éditeur (`js/editor/model/`), doc |
 | `mise run test:e2e` | `npm run test:e2e` | tests Playwright (`tests/e2e/*.spec.js`), Chromium 1280 px + un projet 390 px |
 | `mise run test` | `npm test` | validate, unitaires, e2e, dans cet ordre |
 | `mise run qa` | `npm run qa` | lint, types, puis `test` : à lancer avant de pousser |

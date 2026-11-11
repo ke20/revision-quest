@@ -23,6 +23,10 @@ Chaque pack est **un seul fichier** `packs/<niveau>/<matiere>/<cours>.js`, charg
 > qui contient autre chose que des données est refusé. Chaque nouveau pack (ou modification) reste **relu par une
 > personne de confiance (revue de code) avant d'être fusionné**.
 
+> ✏️ **Sans écrire de code** : l'éditeur de cours (`editeur.html`, lien « ✏️ Créer un cours » en bas de l'accueil, sur
+> ordinateur ou tablette) remplit ce format pour toi, avec un aperçu de chaque exercice et les contrôles du validateur
+> en direct. « ⬇️ Télécharger » donne le fichier `<cours>.js`, à mettre en place avec `mise run pack:add <fichier.js>`.
+
 Étapes :
 
 1. Écrire `packs/<niveau>/<matiere>/<cours>.js` (format ci-dessous), avec ses infos de catalogue dans `meta`. Le
