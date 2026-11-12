@@ -27,10 +27,8 @@ function courseCard(box, pack) {
   box.appendChild(card);
 }
 
-/** The lesson card, as before the exercises of a world (js/app/screens/map.js). @param {HTMLElement} box @param {World} w */
-function lessonCard(box, w) {
-  frame(box, w.color || "");
-  box.appendChild(el("p", "ed-preview-label", "Leçon (avant les exercices)"));
+/** The lesson card, as before the exercises of a world (js/app/screens/map.js). @param {World} w @returns {HTMLElement} */
+export function lessonNode(w) {
   var L = w.lesson || {};
   var points = (L.points || []).map(function (p) { return "<li>" + R(p) + "</li>"; }).join("");
   var examples = (L.examples || []).map(function (p) { return '<div class="example">💬 ' + R(p) + "</div>"; }).join("");
@@ -47,7 +45,14 @@ function lessonCard(box, w) {
     figs.forEach(function (make) { try { figBox.appendChild(make()); } catch (e) { /* invalid figure: reported by the checks */ } });
     card.appendChild(figBox);
   }
-  box.appendChild(card);
+  return card;
+}
+
+/** @param {HTMLElement} box @param {World} w */
+function lessonCard(box, w) {
+  frame(box, w.color || "");
+  box.appendChild(el("p", "ed-preview-label", "Leçon (avant les exercices)"));
+  box.appendChild(lessonNode(w));
 }
 
 /** A text to read: the card shown over a question, or the reading screen of a long text.

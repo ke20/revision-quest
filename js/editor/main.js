@@ -5,6 +5,7 @@ import { runChecks } from "./checks.js";
 import { button, el, toast } from "./dom.js";
 import { refreshMessages, renderForm } from "./forms/form.js";
 import { showDrafts } from "./drafts.js";
+import { tryWorld } from "./trial.js";
 import { canRedo, canUndo, redo, startHistory, undo } from "./history.js";
 import { download, duplicateOfficial, newCourse, openFile, readChosenFile } from "./io.js";
 import { renderPreview } from "./preview.js";
@@ -57,6 +58,7 @@ function boot() {
     { act: "new", text: "📄 Nouveau cours", fn: newCourse },
     { act: "duplicate", text: "📚 Dupliquer un chapitre officiel", fn: duplicateOfficial },
     { act: "open", text: "📂 Ouvrir un fichier", fn: function () { openFile(file); } },
+    { act: "try", text: "▶ Essayer", fn: tryWorld },
     { act: "download", text: "⬇️ Télécharger", fn: download }
   ];
   buttons.forEach(function (a) {
@@ -139,7 +141,7 @@ function boot() {
     if (again) again.focus();
   }
   document.addEventListener("keydown", function (e) {
-    if (!(e.metaKey || e.ctrlKey) || e.altKey || document.querySelector(".modal-backdrop")) return;
+    if (!(e.metaKey || e.ctrlKey) || e.altKey || document.querySelector(".modal-backdrop, .ed-try")) return;
     var k = e.key.toLowerCase();
     if (k === "z" || k === "y") {
       e.preventDefault();

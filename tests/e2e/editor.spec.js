@@ -210,6 +210,21 @@ test("course editor: a course with the 7 exercise types, live preview and checks
   await expect(page.locator('.tn[data-key^="d:"]')).toHaveCount(1);
   await expect(page.locator(".ed-status")).toContainText("Aucune erreur");
 
+  // « ▶ Essayer »: world 1 played over the editor (lesson, reading screen, the first question), nothing saved
+  const before = await page.evaluate(() => JSON.stringify(Object.keys(localStorage).sort().map((k) => [k, k.startsWith("revisionQuest.editor") ? "" : localStorage.getItem(k)])));
+  await page.click('.tn[data-key="e:0:3"]');
+  await page.click("[data-act=try]");
+  await expect(page.locator(".ed-try .lesson-card")).toBeVisible();
+  await page.click(".ed-try [data-act=try-next]");
+  await expect(page.locator(".ed-try .read-go")).toBeVisible(); // question 1 shows the long text first
+  await page.click(".ed-try .read-go");
+  await expect(page.locator(".ed-try .ex.ex-mcq")).toBeVisible();
+  await expect(page.locator(".ed-try-count")).toHaveText("Question 1 / 7");
+  await page.keyboard.press("Escape");
+  await expect(page.locator(".ed-try")).toHaveCount(0);
+  const after = await page.evaluate(() => JSON.stringify(Object.keys(localStorage).sort().map((k) => [k, k.startsWith("revisionQuest.editor") ? "" : localStorage.getItem(k)])));
+  ok(before === after, "trying a world writes nothing outside the editor drafts");
+
   // download: strict format, valid pack, named after the course id
   const [dl] = await Promise.all([page.waitForEvent("download"), page.click("[data-act=download]")]);
   ok(dl.suggestedFilename() === "mon-cours-d-essai.js", "file name: " + dl.suggestedFilename());
