@@ -31,6 +31,13 @@ export function ghostAnswer(ex) {
   }
 }
 
+/** The boss: the pupil gets only some of these questions, drawn at random. @param {World} w */
+function bossNote(w) {
+  var pool = (w.exercises || []).length, n = Math.round(+(w.draw || 0));
+  return "👑 Boss : " + (n > 0 && n < pool ? n + " questions tirées au hasard parmi ces " + pool : "ces " + pool + " questions") +
+    ", dans un ordre nouveau à chaque partie. Ici, toute la réserve, dans l'ordre du fichier.";
+}
+
 /** @param {World} w @param {number} index */
 export function showGhost(w, index) {
   var list = w.exercises || [];
@@ -47,6 +54,7 @@ export function showGhost(w, index) {
     '<button class="btn-icon" data-act="prev" aria-label="Exercice précédent"' + (i ? "" : " disabled") + ">◀</button>" +
     '<button class="btn-icon" data-act="next" aria-label="Exercice suivant"' + (i < list.length - 1 ? "" : " disabled") + ">▶</button></header>" +
     '<div class="play-stats"><select class="ghost-jump" aria-label="Aller à l\'exercice">' + options + "</select></div>" +
+    (Engine.isBoss(w.id) ? '<p class="ghost-boss">' + bossNote(w) + "</p>" : "") +
     '<main class="ex-container"></main>' +
     '<div class="card ghost-answer"><div class="ex-label">Réponse attendue</div>' + ghostAnswer(ex) +
       (ex.explanation ? '<div class="fb-expl">' + R(ex.explanation) + "</div>" : "") + "</div>" +

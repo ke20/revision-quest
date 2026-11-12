@@ -22,6 +22,7 @@ test("ghost mode: hidden without ?fantome; with it, any world opens, exercises b
   await expect(page.locator(".screen.ghost")).toBeVisible();
   await expect(page.locator(".ghost-tag")).toContainText("1 /");
   await expect(page.locator(".ghost-answer")).toContainText("Réponse attendue");
+  await expect(page.locator(".ghost-boss")).toContainText("Boss : ces 10 questions"); // world 3 is the boss: the whole pool
   const n = await page.locator(".ghost-jump option").count();
   ok(n > 1, "the jump list lists every exercise");
   await H.tap(page, "[data-act=next]");

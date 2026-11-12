@@ -866,3 +866,4 @@ body.theme-hiver::after { background: #E0F2FE; opacity: .22; }
 .medal-score { font-size: 1.1rem; color: var(--ink-soft); font-weight: 700; }
 .medal-best { color: var(--ink-soft); font-size: .95rem; margin: 0; }
 .node-medal { font-size: 1rem; }
+.ghost-boss { margin: 4px 0 8px; padding: 6px 12px; border-radius: 12px; background: #FEF3C7; color: #92400E; font-size: .9rem; }
