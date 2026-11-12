@@ -5,6 +5,8 @@
    un pack "<niveau>/<matiere>/<cours>/<groupe>" (fichier packs/<cours>/<groupe>.js), choisi sur un écran à part.
    Il est chargé seulement quand on le choisit, avec une balise <script src> (compatible avec la
    Content-Security-Policy script-src 'self' : pas de script inline, pas d'eval, pas de fetch).
+   A private course of « Mes cours » (js/core/courses.js, loaded after this file) is found and loaded here too, after
+   the official catalogue: it is JSON kept in the browser, never a script.
    Exposes window.Packs and window.registerPack. */
 // @ts-check
 /** @typedef {{ id: string, label: string, difficulty: number, worldCount: number }} PkGroup A validated group of a catalogue entry. */
@@ -143,7 +145,11 @@
       @param {string} id @param {PkLoadCallback} cb */
   function load(id, cb) {
     var entry = find(units, id); // a grouped chapter has no file: only its groups can be loaded
-    if (!entry) return cb({ code: "unknown", message: ERRORS.unknown });
+    if (!entry) {
+      // « Mes cours » (js/core/courses.js): JSON checked when read back, never executed
+      var mine = window.MyCourses ? window.MyCourses.data(id) : null;
+      return mine ? cb(null, mine) : cb({ code: "unknown", message: ERRORS.unknown });
+    }
     if (own(registry, id)) return cb(null, registry[id]);
     if (own(pending, id)) { pending[id].push(cb); return; }
     pending[id] = [cb];
@@ -176,8 +182,8 @@
     list: function () { return packs.slice(); },
     /** Playable packs (what gets loaded, saved and ranked): chapters without groups and every group. */
     units: function () { return units.slice(); },
-    /** A chapter or a group, by id. */
-    get: function (id) { return find(packs, id) || find(units, id); },
+    /** A chapter or a group, by id; else a private course of « Mes cours » (mine: true). */
+    get: function (id) { return find(packs, id) || find(units, id) || (window.MyCourses ? window.MyCourses.get(id) : null); },
     subject: function (id) { return find(subjects, id); },
     level: function (id) { return find(levels, id); },
     loaded: function (id) { return own(registry, id) ? registry[id] : null; },

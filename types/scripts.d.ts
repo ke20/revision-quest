@@ -62,6 +62,9 @@ interface CatalogPack {
   parent?: string;
   label?: string;
   difficulty?: number;
+  /** A private course of « Mes cours » (js/core/courses.js), and when it was saved (ms). */
+  mine?: boolean;
+  saved?: number;
 }
 
 /** A pack once loaded (window.registerPack): the catalogue decides its language. */
@@ -81,12 +84,34 @@ interface PacksApi {
   list(): CatalogPack[];
   /** Playable packs: chapters without groups and every group. */
   units(): CatalogPack[];
-  /** A chapter or a group, by id. */
+  /** A chapter or a group, by id; else a private course of « Mes cours » (mine: true). */
   get(id: string): CatalogPack | null;
   subject(id: string): CatalogSubject | null;
   level(id: string): CatalogLevel | null;
   loaded(id: string): LoadedPack | null;
   load(id: string, cb: (err: PackLoadError | null, data?: LoadedPack | null) => void): void;
+}
+
+/* ---------- js/core/courses.js (window.MyCourses) ---------- */
+
+type MyCourseSave = { ok: true; replaced: boolean; id: string } | { ok: false; errors: string[] };
+
+interface MyCoursesApi {
+  MAX_COURSES: number;
+  MAX_COURSE_CHARS: number;
+  MAX_TOTAL_CHARS: number;
+  /** A clean copy of a course (known keys, plain JSON), or the errors in French. */
+  check(data: unknown): { pack: Pack; errors: [] } | { pack: null; errors: string[] };
+  /** Catalogue cards of the private courses, most recently saved first. */
+  list(): CatalogPack[];
+  get(id: string): CatalogPack | null;
+  /** A fresh copy of the course. */
+  pack(id: string): Pack | null;
+  /** What the game plays: a fresh copy, never executed. */
+  data(id: string): LoadedPack | null;
+  /** Adds a course, or replaces the one with the same id. */
+  save(data: unknown): MyCourseSave;
+  remove(id: string): boolean;
 }
 
 /* ---------- js/exercises/exercises.js (window.Exercises, built from js/exercises/common/ and types/) ---------- */

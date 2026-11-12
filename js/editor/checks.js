@@ -19,7 +19,8 @@ export function runChecks(d) {
   if (!d.slug) err("Donne un identifiant court au cours (il se remplit d'après le titre).");
   var pack = exportPack(d);
   var complete = !!(d.level && d.subject && d.slug);
-  if (complete && Packs.get(pack.path)) {
+  var taken = complete ? Packs.get(pack.path) : null;
+  if (taken && !taken.mine) {
     extra.push({ level: "warn", msg: "identifiant " + pack.path + " déjà pris par un chapitre officiel : choisis-en un autre.", key: "course" });
   }
   return buildReport(pack, /** @type {PackRulesApi} */ (window.PackRules), { extra: extra, path: complete });

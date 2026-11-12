@@ -22,6 +22,8 @@ interface Window {
   Engine: EngineApi;
   /** js/core/pack-rules.js (browser side; Node uses require()) */
   PackRules?: PackRulesApi;
+  /** js/core/courses.js: « Mes cours » (only on the game page) */
+  MyCourses?: MyCoursesApi;
 }
 
 // Classic scripts loaded before the screens (index.html): their objects, used as globals by js/app/*.js.
