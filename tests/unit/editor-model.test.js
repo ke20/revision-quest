@@ -183,7 +183,7 @@ test("report: every message of the rules goes to its plan node", async () => {
   assert.strictEqual(t.err, r.byKey["w:1"].err + r.byKey["e:1:0"].err + r.byKey["e:1:1"].err);
 
   assert.strictEqual(X.locate("meta.title manquant", pack), "course");
-  assert.strictEqual(X.locate("documents[0] : text manquant", pack), "course");
+  assert.strictEqual(X.locate("documents[0] : text manquant", pack), "d:0", "a text to read has its own node");
   assert.strictEqual(X.locate("monde 1 leçon : ** (gras) non fermé", pack), "l:0");
   assert.strictEqual(X.locate("monde 1 : 7 points dans la leçon (5 max conseillé, reste court)", pack), "l:0");
   assert.strictEqual(X.locate("monde 1 : exercises doit être un tableau non vide", pack), "w:0");
@@ -191,4 +191,29 @@ test("report: every message of the rules goes to its plan node", async () => {
 
   const noPath = X.buildReport(pack, Rules, { path: false, extra: [{ level: "err", msg: "Choisis un niveau", key: "course" }] });
   assert.strictEqual(noPath.byKey.course.err, 1);
+});
+
+test("texts to read: add with a free id, count and delete (the exercises lose the link), export and plan node", async () => {
+  const D = await load("draft.js");
+  const X = await load("export.js");
+  const d = D.newDraft();
+  const pack = d.pack;
+  assert.strictEqual(D.addDocument(pack), 0);
+  assert.strictEqual(pack.documents[0].id, "texte-1");
+  pack.documents.push({ id: "texte-2", text: "x" });
+  assert.strictEqual(D.addDocument(pack), 2);
+  assert.strictEqual(pack.documents[2].id, "texte-3", "an id not used yet");
+  pack.worlds[0].exercises.push({ type: "fill", docId: "texte-1" }, { type: "fill", docId: "texte-3" });
+  assert.strictEqual(D.docUses(pack, "texte-1"), 1);
+  assert.strictEqual(D.deleteDocument(pack, 0), 0);
+  assert.ok(!("docId" in pack.worlds[0].exercises[0]), "the exercise no longer points to a deleted text");
+  assert.strictEqual(pack.worlds[0].exercises[1].docId, "texte-3");
+  pack.documents[1].title = "Titre";
+  pack.documents[1].from = " ";
+  pack.documents[1].screen = false;
+  const out = X.exportPack(d);
+  assert.deepStrictEqual(out.documents[1], { id: "texte-3", title: "Titre", text: "" }, "empty from and screen: false not written");
+  assert.strictEqual(X.locate("documents[1] : text manquant", pack), "d:1");
+  const letters = { worlds: [], letters: [{ id: 1, text: "Dear…" }] };
+  assert.strictEqual(D.docsOf(letters), letters.letters, "an old file keeps its letters");
 });

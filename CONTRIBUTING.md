@@ -39,7 +39,9 @@ champ et compte sur son nœud du plan. Plusieurs brouillons (30 au plus), listé
 enregistrés dans `localStorage` : un index (`revisionQuest.editor.drafts`) et une entrée par brouillon
 (`revisionQuest.editor.draft.<id>`), écrite seulement quand le brouillon a changé. Le
 fichier est téléchargé au format strict (`PackRules.formatStrict`) ; un fichier ouvert est lu comme du texte
-(`PackRules.parseStrict`), jamais exécuté. Les figures, tableaux et textes à lire d'un pack ouvert sont gardés tels quels.
+(`PackRules.parseStrict`), jamais exécuté. Les textes à lire (`documents`) ont leur place dans le plan ; les figures et
+tableaux d'un pack ouvert sont gardés tels quels. Annuler / rétablir (↶ ↷, Ctrl+Z / ⌘Z) garde en mémoire 100 étapes du
+brouillon ouvert (`history.js`).
 Les modules purs de `js/editor/model/` n'utilisent ni le DOM ni les globales du navigateur : les tests unitaires les
 importent (`js/editor/package.json` : `"type": "module"` pour Node).
 
@@ -75,7 +77,7 @@ revision-quest/
 │   ├── editor/             l'éditeur de cours (modules ES, point d'entrée main.js)
 │   │   ├── model/          données pures, testées dans Node : brouillon et plan, modèles d'exercice, export, contrôles
 │   │   ├── forms/          un formulaire par nœud (cours, monde, leçon, exercice) et types/ : un par type d'exercice
-│   │   └── …               state (brouillon + enregistrement), tree (plan), preview, checks, io (ouvrir, télécharger)
+│   │   └── …               state (brouillons + enregistrement), history (annuler), tree (plan), preview, checks, io (ouvrir, télécharger)
 │   ├── pages/voix.js       page voix.html (voix disponibles)
 │   ├── vendor/             bibliothèque tierce (QR code), jamais modifiée
 │   └── nomodule.js         message pour un navigateur trop ancien

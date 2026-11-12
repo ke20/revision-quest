@@ -4,7 +4,7 @@ import { button, el } from "../dom.js";
 import { DEFAULT_COLOR, setTitle, syncPath } from "../model/draft.js";
 import { slugify } from "../model/text.js";
 import { edited, store } from "../state.js";
-import { emojiPicks, keptNote, select, text } from "./fields.js";
+import { emojiPicks, select, text } from "./fields.js";
 
 export var LANGS = /** @type {Array<[string, string]>} */ ([["fr", "Français"], ["en", "Anglais (boutons en anglais + aide en français)"], ["es", "Espagnol (boutons en espagnol + aide en français)"]]);
 
@@ -77,8 +77,6 @@ export function courseForm(root) {
     onInput: function (v) { m.author = v; edited(); } });
 
   if (m.basedOn) root.appendChild(el("p", "ed-note", "📋 Copie privée du chapitre officiel « " + m.basedOn + " » : elle reste pour ton usage personnel."));
-  var docs = Array.isArray(d.pack.documents) ? d.pack.documents : Array.isArray(d.pack.letters) ? d.pack.letters : [];
-  if (docs.length) keptNote(root, docs.length + " texte" + (docs.length > 1 ? "s" : "") + " à lire (documents)");
 }
 
 /** A colour picker (#RRGGBB; #RGB from a file is widened). @param {HTMLElement} parent @param {string} label @param {string} f

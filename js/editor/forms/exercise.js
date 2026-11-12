@@ -32,7 +32,9 @@ export function exerciseForm(root, wi, ei) {
     onInput: function (v) { ex.prompt = v; edited(); } });
 
   var docs = Array.isArray(pack.documents) ? pack.documents : Array.isArray(pack.letters) ? pack.letters : [];
-  if (docs.length || ex.docId != null) {
+  if (!docs.length && ex.docId == null) {
+    box.appendChild(el("p", "ed-help", "📄 Pour afficher un texte au-dessus de la question : « ＋ Ajouter un texte à lire » dans le plan."));
+  } else {
     select(box, { label: "Texte à lire au-dessus de la question", f: "docId", value: ex.docId == null ? "" : String(ex.docId),
       placeholder: "— aucun —", check: "document",
       options: docs.map(/** @param {PackDocument} doc */ function (doc) {

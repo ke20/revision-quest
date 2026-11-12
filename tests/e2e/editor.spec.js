@@ -170,6 +170,46 @@ test("course editor: a course with the 7 exercise types, live preview and checks
   await expect(page.locator('.tn[data-key="e:0:6"]')).toHaveAttribute("aria-current", "true");
   await expect(page.locator(".ed-form .ed-form-title")).toBeVisible();
 
+  // undo / redo: a typed title comes back, then goes again (buttons and keyboard)
+  await page.click('.tn[data-key="w:0"]');
+  const worldTitle = await page.locator('.ed-form [data-f="w.title"]').inputValue();
+  await put(page, "w.title", "Titre à annuler");
+  await expect(page.locator("[data-act=undo]")).toBeEnabled();
+  await page.click("[data-act=undo]");
+  await expect(page.locator('.ed-form [data-f="w.title"]')).toHaveValue(worldTitle);
+  await page.click("[data-act=redo]");
+  await expect(page.locator('.ed-form [data-f="w.title"]')).toHaveValue("Titre à annuler");
+  await page.keyboard.press("ControlOrMeta+z");
+  await expect(page.locator('.ed-form [data-f="w.title"]')).toHaveValue(worldTitle);
+  // a deleted exercise comes back
+  await page.click('.tn[data-key="e:0:6"]');
+  await page.click('.tn-row.on [data-act="del"]');
+  await page.click(".modal [data-act=yes]");
+  await expect(page.locator('.tn[data-key^="e:0:"]')).toHaveCount(6);
+  await page.click("[data-act=undo]");
+  await expect(page.locator('.tn[data-key^="e:0:"]')).toHaveCount(7);
+
+  // a text to read: written in its own form, shown over the question that picks it, then on a reading screen
+  await page.click("[data-act=add-doc]");
+  await expect(page.locator('.tn[data-key="d:0"]')).toHaveAttribute("aria-current", "true");
+  await put(page, "doc.title", "Le petit texte");
+  await put(page, "doc.text", "Première ligne.\nDeuxième ligne avec du **gras**.");
+  await expect(page.locator(".ed-preview .read-card")).toContainText("Deuxième ligne");
+  await page.click('.tn[data-key="e:0:0"]');
+  await page.selectOption('.ed-form [data-f="docId"]', "texte-1");
+  await expect(page.locator(".ed-preview .read-card")).toContainText("Le petit texte");
+  await page.click('.tn[data-key="d:0"]');
+  await page.check('.ed-form [data-f="doc.screen"]');
+  await expect(page.locator(".ed-preview .read-go")).toBeVisible();
+  await expect(page.locator(".ed-form")).toContainText("Affiché par 1 exercice");
+  // a second text, deleted (confirmed)
+  await page.click("[data-act=add-doc]");
+  await expect(page.locator('.tn[data-key="d:1"]')).toBeVisible();
+  await page.click('.tn-row.on [data-act="del"]');
+  await page.click(".modal [data-act=yes]");
+  await expect(page.locator('.tn[data-key^="d:"]')).toHaveCount(1);
+  await expect(page.locator(".ed-status")).toContainText("Aucune erreur");
+
   // download: strict format, valid pack, named after the course id
   const [dl] = await Promise.all([page.waitForEvent("download"), page.click("[data-act=download]")]);
   ok(dl.suggestedFilename() === "mon-cours-d-essai.js", "file name: " + dl.suggestedFilename());
@@ -181,6 +221,9 @@ test("course editor: a course with the 7 exercise types, live preview and checks
   ok(JSON.stringify(pack.worlds[0].exercises[0].answer) === "[0,2]", "mcq with several answers");
   ok(pack.worlds[0].exercises[5].wrongIndex === 2, "spot: the wrong word");
   ok(!("hint" in pack.worlds[0].exercises[0]), "empty hint not written");
+  ok(pack.documents.length === 1 && pack.documents[0].id === "texte-1" && pack.documents[0].screen === true && !("from" in pack.documents[0]),
+    "the text to read, without its empty fields: " + JSON.stringify(pack.documents));
+  ok(pack.worlds[0].exercises[0].docId === "texte-1", "the exercise shows the text");
   await page.click('.tn[data-key="course"]');
   await expect(page.locator('.ed-form [data-f="slug"]')).toBeDisabled(); // the id is fixed once downloaded
 

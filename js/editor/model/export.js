@@ -35,6 +35,12 @@ function tidyExercise(e) {
   if (e.showCount === true) delete e.showCount; // the default
 }
 
+/** @param {Record<string, any>} d */
+function tidyDocument(d) {
+  dropBlank(d, ["title", "from"]);
+  if (d.screen !== true) delete d.screen;
+}
+
 /** @param {Record<string, any>} w */
 function tidyWorld(w) {
   dropBlank(w, ["subtitle", "subtitleFr"]);
@@ -58,16 +64,22 @@ export function exportPack(draft) {
   Object.keys(src).forEach(function (k) {
     if (k !== "path" && k !== "lang" && k !== "meta" && k !== "worlds" && k !== "__proto__") out[k] = /** @type {any} */ (src)[k];
   });
-  if (Array.isArray(out.documents) && !out.documents.length) delete out.documents;
+  ["documents", "letters"].forEach(function (k) {
+    if (!Array.isArray(out[k])) return;
+    out[k].forEach(/** @param {any} d */ function (d) { if (d && typeof d === "object") tidyDocument(d); });
+    if (!out[k].length) delete out[k];
+  });
   out.worlds = src.worlds;
   out.worlds.forEach(/** @param {any} w */ function (w) { if (w && typeof w === "object") tidyWorld(w); });
   return /** @type {EdPack} */ (out);
 }
 
-/** Plan node of a message of the pack rules ("course", "w:<i>", "l:<i>" or "e:<i>:<j>"), from the prefixes the rules
-    write: « monde 2 : … », « monde 2 leçon … », « monde 2 (<titre>) ex 3 [mcq] : … »; anything else is the course.
+/** Plan node of a message of the pack rules ("course", "d:<i>", "w:<i>", "l:<i>" or "e:<i>:<j>"), from the prefixes the
+    rules write: « documents[0] : … », « monde 2 : … », « monde 2 leçon … », « monde 2 (<titre>) ex 3 [mcq] : … »; anything else is the course.
     @param {string} msg @param {Pack} pack @returns {string} */
 export function locate(msg, pack) {
+  var doc = /^(?:documents|letters)\[(\d+)\]/.exec(msg);
+  if (doc) return "d:" + doc[1];
   var m = /^monde (\d+)/.exec(msg);
   if (!m) return "course";
   var wi = +m[1] - 1;

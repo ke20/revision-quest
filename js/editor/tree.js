@@ -2,7 +2,8 @@
 /* Révision Quest — course editor: the plan on the left (course › worlds › lesson / exercises), with the counts of the
    checks on each node and the actions: add, duplicate, delete (confirmed), move up / down, add an exercise by type. */
 import { button, confirmBox, el } from "./dom.js";
-import { addExercise, addWorld, DEFAULT_COLOR, deleteExercise, deleteWorld, duplicateExercise, duplicateWorld, move } from "./model/draft.js";
+import { addDocument, addExercise, addWorld, DEFAULT_COLOR, deleteDocument, deleteExercise, deleteWorld, docUses, duplicateExercise,
+  duplicateWorld, move } from "./model/draft.js";
 import { worldTotals } from "./model/export.js";
 import { TYPE_LABELS, typeLabel } from "./model/templates.js";
 import { excerpt } from "./model/text.js";
@@ -13,6 +14,7 @@ import { safeColor } from "../app/ui/util.js";
 function keyOf(sel) {
   if (sel.kind === "course") return "course";
   if (sel.kind === "exercise") return "e:" + sel.w + ":" + sel.e;
+  if (sel.kind === "doc") return "d:" + sel.d;
   return (sel.kind === "world" ? "w:" : "l:") + sel.w;
 }
 
@@ -60,12 +62,46 @@ function act(text, label, act, fn, off) {
   return b;
 }
 
+/** The texts to read of the pack (documents), each one with its delete action, and the button to add one.
+    @param {EdPack} pack @param {EdReport} r */
+function docRows(pack, r) {
+  var wrap = el("div", "tn-docs");
+  var docs = Array.isArray(pack.documents) ? pack.documents : Array.isArray(pack.letters) ? pack.letters : [];
+  if (docs.length) {
+    wrap.appendChild(el("p", "tn-head", "📄 Textes à lire"));
+    var list = el("ol", "tn-items");
+    docs.forEach(function (doc, di) {
+      var name = excerpt(doc.title || doc.from || "", 40) || "Texte sans titre";
+      var li = el("li");
+      li.appendChild(row("d:" + di, "📄", name, r.byKey["d:" + di], { kind: "doc", d: di }, [
+        act("🗑", "Supprimer le texte « " + name + " »", "del", function () {
+          var n = docUses(pack, doc.id);
+          confirmBox("Supprimer le texte « " + name + " » ?", n ? n + " exercice(s) l'affichent : ils n'afficheront plus de texte." : "",
+            "Supprimer", function () {
+              var j = deleteDocument(pack, di);
+              restructured(j < 0 ? { kind: "course" } : { kind: "doc", d: j });
+            }, { danger: true });
+        })
+      ]));
+      list.appendChild(li);
+    });
+    wrap.appendChild(list);
+  }
+  var add = button("btn btn-white btn-small tn-add-doc", "＋ Ajouter un texte à lire", function () {
+    restructured({ kind: "doc", d: addDocument(pack) });
+  });
+  add.setAttribute("data-act", "add-doc");
+  wrap.appendChild(add);
+  return wrap;
+}
+
 /** Draws the plan into box. @param {HTMLElement} box */
 export function renderTree(box) {
   var pack = store.draft.pack, r = store.report;
   var scroll = box.scrollTop;
   box.textContent = "";
   box.appendChild(row("course", pack.meta.icon || "📘", pack.meta.title || "Cours sans titre", r.byKey.course, { kind: "course" }));
+  box.appendChild(docRows(pack, r));
   var list = el("ol", "tn-worlds");
   pack.worlds.forEach(function (w, wi) {
     var li = el("li", "tn-world");

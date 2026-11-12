@@ -167,3 +167,48 @@ export function deleteExercise(world, i) {
   world.exercises.splice(i, 1);
   return Math.min(i, world.exercises.length - 1);
 }
+
+/* ---------- texts to read (documents) ---------- */
+
+/** The texts to read of the pack: documents, or letters (old name) in an opened file; documents is created when
+    there are none. @param {EdPack} pack @returns {PackDocument[]} */
+export function docsOf(pack) {
+  if (Array.isArray(pack.documents)) return pack.documents;
+  if (Array.isArray(pack.letters)) return pack.letters;
+  pack.documents = [];
+  return pack.documents;
+}
+
+/** Exercises that show the document with this id (docId, or letterId: the old name). @param {EdPack} pack @param {unknown} id */
+export function docUses(pack, id) {
+  var n = 0;
+  pack.worlds.forEach(function (w) {
+    w.exercises.forEach(function (e) { if (e.docId === id || /** @type {any} */ (e).letterId === id) n++; });
+  });
+  return n;
+}
+
+/** A new empty text to read, with an id not used yet (« texte-1 », « texte-2 »…). Returns its index. @param {EdPack} pack */
+export function addDocument(pack) {
+  var docs = docsOf(pack);
+  var used = docs.map(function (d) { return String(d && d.id); });
+  var n = docs.length + 1;
+  while (used.indexOf("texte-" + n) !== -1) n++;
+  docs.push({ id: "texte-" + n, title: "", from: "", text: "" });
+  return docs.length - 1;
+}
+
+/** Deletes a text to read; the exercises that showed it no longer show any text. Returns the index to select after it
+    (the previous text, or -1 when none is left). @param {EdPack} pack @param {number} i */
+export function deleteDocument(pack, i) {
+  var docs = docsOf(pack);
+  var id = docs[i] && docs[i].id;
+  docs.splice(i, 1);
+  pack.worlds.forEach(function (w) {
+    w.exercises.forEach(function (e) {
+      if (e.docId === id) delete e.docId;
+      if (/** @type {any} */ (e).letterId === id) delete /** @type {any} */ (e).letterId;
+    });
+  });
+  return Math.min(i, docs.length - 1);
+}

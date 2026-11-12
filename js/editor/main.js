@@ -5,6 +5,7 @@ import { runChecks } from "./checks.js";
 import { button, el, toast } from "./dom.js";
 import { refreshMessages, renderForm } from "./forms/form.js";
 import { showDrafts } from "./drafts.js";
+import { canRedo, canUndo, redo, startHistory, undo } from "./history.js";
 import { download, duplicateOfficial, newCourse, openFile, readChosenFile } from "./io.js";
 import { renderPreview } from "./preview.js";
 import { isBlank } from "./model/draft.js";
@@ -38,6 +39,7 @@ function boot() {
     return;
   }
   var restored = loadSaved();
+  startHistory(); // before the other listeners: the undo button state is read when they run
 
   root.textContent = "";
   var top = el("header", "ed-top");
@@ -62,6 +64,12 @@ function boot() {
     b.setAttribute("data-act", a.act);
     actions.appendChild(b);
   });
+  var undoBtn = button("btn btn-small btn-white", "↶", function () { step(undo); }, "Annuler (Ctrl+Z ou ⌘Z)");
+  undoBtn.setAttribute("data-act", "undo");
+  var redoBtn = button("btn btn-small btn-white", "↷", function () { step(redo); }, "Rétablir (Ctrl+Maj+Z ou ⌘⇧Z)");
+  redoBtn.setAttribute("data-act", "redo");
+  actions.insertBefore(redoBtn, actions.firstChild);
+  actions.insertBefore(undoBtn, actions.firstChild);
   actions.appendChild(file);
   top.appendChild(actions);
   var status = el("p", "ed-status");
@@ -95,6 +103,8 @@ function boot() {
       (store.saveError === "full" ? " · ⚠️ stockage plein : supprime un brouillon ou télécharge ce cours" :
         store.saveError ? " · ⚠️ pas d'enregistrement ici : télécharge le fichier" : " · 💾 brouillon enregistré" + drafts());
     status.className = "ed-status " + (r.errors ? "has-err" : "ok");
+    undoBtn.disabled = !canUndo();
+    redoBtn.disabled = !canRedo();
   }
   function drafts() {
     var n = countDrafts();
@@ -119,6 +129,22 @@ function boot() {
       refreshMessages(form);
       renderPreview(preview);
     }, LIVE_DELAY);
+  });
+
+  /** Undo or redo, then the focus back in the same field when it is still there. @param {() => boolean} fn */
+  function step(fn) {
+    var f = document.activeElement && document.activeElement.getAttribute("data-f");
+    if (!fn()) return;
+    var again = f ? /** @type {HTMLElement | null} */ (form.querySelector('[data-f="' + CSS.escape(f) + '"]')) : null;
+    if (again) again.focus();
+  }
+  document.addEventListener("keydown", function (e) {
+    if (!(e.metaKey || e.ctrlKey) || e.altKey || document.querySelector(".modal-backdrop")) return;
+    var k = e.key.toLowerCase();
+    if (k === "z" || k === "y") {
+      e.preventDefault();
+      step(k === "y" || e.shiftKey ? redo : undo);
+    }
   });
 
   window.addEventListener("pagehide", saveNow);

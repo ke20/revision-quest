@@ -23,7 +23,8 @@ type EdSel =
   | { kind: "course" }
   | { kind: "world"; w: number }
   | { kind: "lesson"; w: number }
-  | { kind: "exercise"; w: number; e: number };
+  | { kind: "exercise"; w: number; e: number }
+  | { kind: "doc"; d: number };
 
 /** A pack in the editor: meta is always there (an opened file without it gets an empty one). */
 interface EdPack extends Pack {

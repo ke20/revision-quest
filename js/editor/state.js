@@ -146,6 +146,13 @@ export function restructured(sel) {
 }
 /** @param {EdSel} sel */
 export function select(sel) { store.sel = sel; scheduleSave(); notify("select"); }
+/** Puts back an earlier state of the current draft (undo / redo). @param {EdDraft} d @param {EdSel} sel */
+export function restoreState(d, sel) {
+  store.draft = d;
+  store.sel = validSel(sel, d);
+  scheduleSave();
+  notify("structure");
+}
 
 /* ---------- the list of drafts ---------- */
 
@@ -224,6 +231,8 @@ export function addDraft(d) {
 /** The selection, or the course when it points to a node that no longer exists. @param {any} sel @param {EdDraft} d @returns {EdSel} */
 export function validSel(sel, d) {
   var ws = d.pack.worlds;
+  var docs = Array.isArray(d.pack.documents) ? d.pack.documents : Array.isArray(d.pack.letters) ? d.pack.letters : [];
+  if (sel && typeof sel === "object" && sel.kind === "doc") return Number.isInteger(sel.d) && docs[sel.d] ? { kind: "doc", d: sel.d } : { kind: "course" };
   if (!sel || typeof sel !== "object" || !Number.isInteger(sel.w) || !ws[sel.w]) return { kind: "course" };
   if (sel.kind === "world" || sel.kind === "lesson") return { kind: sel.kind, w: sel.w };
   if (sel.kind === "exercise" && Number.isInteger(sel.e) && ws[sel.w].exercises[sel.e]) return { kind: "exercise", w: sel.w, e: sel.e };

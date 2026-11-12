@@ -72,6 +72,7 @@
     mcqMultiAccepted: mcqMultiAccepted,
     findDocument: findDocument,
     readingScreen: readingScreen,
+    docCard: X.docCard,
     closeText: closeText,
     writeCheck: writeCheck,
     pickVoice: pickVoice,

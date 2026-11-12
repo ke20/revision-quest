@@ -143,6 +143,8 @@ interface ExercisesApi {
   mcqMultiAccepted(ex: McqExercise, picked: number[]): boolean;
   findDocument(data: LoadedPack | Pack | null, ex: Exercise): PackDocument | null;
   readingScreen(doc: PackDocument, container: HTMLElement, onContinue: () => void): void;
+  /** The card of a document, as shown over a question ("read-card read-inline") or on the reading screen ("read-card"). */
+  docCard(doc: PackDocument, cls: string): HTMLElement;
   closeText(): void;
   writeCheck(ex: WriteExercise, text: string): WriteCheck;
   pickVoice(voices: SpeechSynthesisVoice[], lang?: string, exclude?: string[]): SpeechSynthesisVoice | null;

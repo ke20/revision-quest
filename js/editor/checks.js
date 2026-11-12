@@ -57,7 +57,7 @@ export function shortMsg(m, pack) {
     var prefix = "monde " + (+e[1] + 1) + " (" + String((w && w.title) || "") + ") ex " + (+e[2] + 1);
     if (s.indexOf(prefix) === 0) s = s.slice(prefix.length).replace(/^ \[[^\]]*\]/, "");
   } else {
-    s = s.replace(/^monde \d+( leçon)?/, "");
+    s = s.replace(/^monde \d+( leçon)?/, "").replace(/^(documents|letters)\[\d+\]/, "");
   }
   return s.replace(/^\s*:\s*/, "").trim();
 }

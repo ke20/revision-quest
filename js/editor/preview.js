@@ -50,6 +50,20 @@ function lessonCard(box, w) {
   box.appendChild(card);
 }
 
+/** A text to read: the card shown over a question, or the reading screen of a long text.
+    @param {HTMLElement} box @param {EdPack} pack @param {number} di */
+function documentCard(box, pack, di) {
+  var docs = pack.documents || pack.letters || [];
+  var doc = docs[di];
+  frame(box, pack.meta.color || "");
+  if (!doc) return;
+  box.appendChild(el("p", "ed-preview-label", doc.screen ? "Écran de lecture (avant les questions)" : "Texte au-dessus de la question"));
+  var container = el("main", "ex-container");
+  box.appendChild(container);
+  if (doc.screen) Exercises.readingScreen(doc, container, function () { /* the questions come next in the game */ });
+  else container.appendChild(Exercises.docCard(doc, "read-card read-inline"));
+}
+
 /** The exercise on a play-like screen, with a check bar that is not fixed. @param {HTMLElement} box @param {World} w
     @param {Exercise} ex @param {EdPack} pack @param {number} errors */
 function exercise(box, w, ex, pack, errors) {
@@ -113,6 +127,7 @@ export function renderPreview(box) {
   I18N.setLang(pack.lang);
   try {
     if (sel.kind === "course") return courseCard(box, pack);
+    if (sel.kind === "doc") return documentCard(box, pack, sel.d);
     var w = pack.worlds[sel.w];
     if (!w) return courseCard(box, pack);
     if (sel.kind !== "exercise") return lessonCard(box, w);
