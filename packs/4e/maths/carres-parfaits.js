@@ -1676,102 +1676,116 @@ window.registerPack({
       "icon": "🏆",
       "color": "#B45309",
       "lesson": {
-        "title": "Ce qu'il faut savoir pour le contrôle",
+        "title": "Prêt pour le contrôle ?",
         "points": [
-          "Les carrés de 1 à 12 par cœur (1, 4, 9, … 121, 144).",
-          "n² = n × n, et pas n × 2.",
-          "(−n)² est positif ; −n² est négatif.",
-          "√a est le nombre positif dont le carré est a ; il n'existe que si a ≥ 0.",
-          "Encadrer √a entre deux entiers avec les carrés parfaits qui entourent a."
-        ],
-        "examples": [
-          "13² = 169",
-          "√169 = 13",
-          "x² = 81 : x = 9 ou x = −9",
-          "11 < √130 < 12"
+          "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
+          "Sans calculatrice. Écris seulement le **nombre** (l'unité est acceptée). Un seul essai par question : vérifie ton calcul.",
+          "Rappel : n² = n × n, et **pas** n × 2."
         ]
       },
+      "draw": 12,
       "exercises": [
         {
-          "type": "fill",
-          "prompt": "Calcule.",
-          "sentence": "12² = ___",
+          "type": "question",
+          "prompt": "Calcule **12²**.",
           "answers": [
             "144"
           ],
-          "explanation": "12 × 12 = **144**."
+          "explanation": "12² = 12 × 12 = **144**."
         },
         {
-          "type": "fill",
-          "prompt": "Calcule.",
-          "sentence": "√81 = ___",
+          "type": "question",
+          "prompt": "Calcule **15²**.",
+          "answers": [
+            "225"
+          ],
+          "explanation": "15² = 15 × 15 = 150 + 75 = **225**."
+        },
+        {
+          "type": "question",
+          "prompt": "Calcule **√81**.",
           "answers": [
             "9"
           ],
-          "explanation": "9² = 81 : √81 = **9**."
+          "explanation": "9² = 81 et 9 est positif : √81 = **9**."
         },
         {
-          "type": "mcq",
-          "prompt": "Que vaut (−11)² ?",
-          "options": [
-            "121",
-            "−22",
-            "−121",
-            "22"
-          ],
-          "answer": 0,
-          "explanation": "(−11) × (−11) = **121**."
-        },
-        {
-          "type": "fill",
-          "prompt": "Calcule.",
-          "sentence": "0,7² = ___",
-          "answers": [
-            "0,49",
-            "0.49"
-          ],
-          "explanation": "7 × 7 = 49, deux chiffres après la virgule : **0,49**."
-        },
-        {
-          "type": "mcq",
-          "prompt": "Quel nombre n'est **pas** un carré parfait ?",
-          "options": [
-            "121",
-            "128",
-            "169",
-            "144"
-          ],
-          "answer": 1,
-          "explanation": "121 = 11², 144 = 12², 169 = 13². **128** se termine par 8 : jamais un carré parfait."
-        },
-        {
-          "type": "fill",
-          "prompt": "Résous l'équation x² = 81.",
-          "sentence": "x = 9 ou x = ___",
-          "answers": [
-            "-9",
-            "−9",
-            "–9"
-          ],
-          "explanation": "9² = 81 et (−9)² = 81 : **9 et −9**."
-        },
-        {
-          "type": "fill",
-          "prompt": "Encadre √130 entre deux entiers qui se suivent.",
-          "sentence": "___ < √130 < 12",
+          "type": "question",
+          "prompt": "Calcule **√121**.",
           "answers": [
             "11"
           ],
-          "explanation": "121 < 130 < 144, donc **11** < √130 < 12."
+          "explanation": "11² = 121 : √121 = **11**."
         },
         {
-          "type": "fill",
-          "prompt": "Un carré a une aire de 121 cm². Combien mesure son côté ?",
-          "sentence": "Côté = ___ cm",
+          "type": "question",
+          "prompt": "De quel nombre entier positif **169** est-il le carré ?",
           "answers": [
-            "11"
+            "13"
           ],
-          "explanation": "11² = 121 : le côté mesure **11 cm**.",
+          "explanation": "13 × 13 = 169, donc 169 = **13²**."
+        },
+        {
+          "type": "question",
+          "prompt": "Calcule **0,3²**.",
+          "answers": [
+            "0,09"
+          ],
+          "explanation": "0,3 × 0,3 = **0,09** : 3 × 3 = 9, et deux chiffres après la virgule."
+        },
+        {
+          "type": "question",
+          "prompt": "Calcule **1,2²**.",
+          "answers": [
+            "1,44"
+          ],
+          "explanation": "12 × 12 = 144, et deux chiffres après la virgule : 1,2² = **1,44**."
+        },
+        {
+          "type": "question",
+          "prompt": "Le carré d'un nombre négatif est-il positif ou négatif ?",
+          "answers": [
+            "positif",
+            "il est positif",
+            "toujours positif",
+            "un nombre positif"
+          ],
+          "explanation": "Moins par moins donne plus : (−5)² = **25**, un carré est toujours **positif** (ou nul)."
+        },
+        {
+          "type": "question",
+          "prompt": "Sans calculer tout le carré, quel est le chiffre des unités de **23²** ?",
+          "answers": [
+            "9"
+          ],
+          "explanation": "Seul le dernier chiffre compte : 3 × 3 = **9**. (23² = 529.)"
+        },
+        {
+          "type": "question",
+          "prompt": "Quel est le plus petit carré parfait plus grand que **50** ?",
+          "answers": [
+            "64"
+          ],
+          "explanation": "49 = 7² < 50, puis vient 8² = **64**."
+        },
+        {
+          "type": "question",
+          "prompt": "Quelle est l'aire d'un carré de **9 cm** de côté, en cm² ?",
+          "answers": [
+            "81",
+            "81 cm²",
+            "81cm²"
+          ],
+          "explanation": "Aire = côté × côté = 9 × 9 = **81 cm²**."
+        },
+        {
+          "type": "question",
+          "prompt": "Ce carré a une aire de 121 cm². Combien mesure son côté, en cm ?",
+          "answers": [
+            "11",
+            "11 cm",
+            "11cm"
+          ],
           "figure": {
             "w": 7,
             "h": 7,
@@ -1860,50 +1874,250 @@ window.registerPack({
             ],
             "alt": "Un carré ABCD, d'aire 121 cm².",
             "caption": "Aire : 121 cm²"
-          }
+          },
+          "explanation": "11² = 121 : le côté mesure **11 cm**."
         },
         {
-          "type": "match",
-          "prompt": "Relie chaque expression à sa valeur.",
-          "pairs": [
-            {
-              "left": "−4²",
-              "right": "−16"
-            },
-            {
-              "left": "(−4)²",
-              "right": "16"
-            },
-            {
-              "left": "√16",
-              "right": "4"
-            },
-            {
-              "left": "0,4²",
-              "right": "0,16"
-            }
+          "type": "question",
+          "prompt": "Un carré a une aire de **64 cm²**. Quel est son périmètre, en cm ?",
+          "answers": [
+            "32",
+            "32 cm",
+            "32cm"
           ],
-          "explanation": "−4² = −16 ; (−4)² = 16 ; √16 = 4 ; 0,4² = 0,16."
+          "explanation": "Le côté mesure 8 cm (8² = 64), donc le périmètre vaut 4 × 8 = **32 cm**."
         },
         {
-          "type": "spot",
-          "prompt": "Touche le nombre faux.",
-          "tokens": [
-            "Les",
-            "solutions",
-            "de",
-            "x²",
-            "=",
-            "36",
-            "sont",
-            "6",
-            "et",
-            "−5",
-            "."
+          "type": "question",
+          "prompt": "√30 est compris entre deux nombres entiers qui se suivent. Quel est le plus petit des deux ?",
+          "answers": [
+            "5"
           ],
-          "wrongIndex": 9,
-          "correction": "−6",
-          "explanation": "6² = 36 et (−6)² = 36 : les solutions sont **6 et −6**."
+          "explanation": "25 < 30 < 36, donc **5** < √30 < 6."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel nombre entier est le plus proche de **√99** ?",
+          "answers": [
+            "10"
+          ],
+          "explanation": "81 < 99 < 100 et 99 est tout près de 100 : √99 est tout près de **10**."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien de solutions a l'équation **x² = 49** ?",
+          "answers": [
+            "2",
+            "deux",
+            "2 solutions",
+            "deux solutions"
+          ],
+          "explanation": "7² = 49 et (−7)² = 49 : **deux** solutions, 7 et −7."
+        },
+        {
+          "type": "question",
+          "prompt": "Calcule **7²**.",
+          "answers": [
+            "49"
+          ],
+          "explanation": "7² = 7 × 7 = **49** (et non 7 × 2 = 14)."
+        },
+        {
+          "type": "question",
+          "prompt": "Calcule **14²**.",
+          "answers": [
+            "196"
+          ],
+          "explanation": "14² = 14 × 14 = 140 + 56 = **196**."
+        },
+        {
+          "type": "question",
+          "prompt": "Calcule **20²**.",
+          "answers": [
+            "400"
+          ],
+          "explanation": "20² = 20 × 20 = **400**."
+        },
+        {
+          "type": "question",
+          "prompt": "Calcule **√64**.",
+          "answers": [
+            "8"
+          ],
+          "explanation": "8² = 64 et 8 est positif : √64 = **8**."
+        },
+        {
+          "type": "question",
+          "prompt": "Calcule **(−6)²**.",
+          "answers": [
+            "36"
+          ],
+          "explanation": "(−6) × (−6) = **36** : moins par moins donne plus."
+        },
+        {
+          "type": "question",
+          "prompt": "Calcule **−4²** (sans parenthèses).",
+          "answers": [
+            "−16"
+          ],
+          "explanation": "Sans parenthèses, le carré ne concerne que le 4 : −4² = −(4 × 4) = **−16**."
+        },
+        {
+          "type": "question",
+          "prompt": "Calcule **0,4²**.",
+          "answers": [
+            "0,16"
+          ],
+          "explanation": "4 × 4 = 16, et deux chiffres après la virgule : 0,4² = **0,16**."
+        },
+        {
+          "type": "question",
+          "prompt": "Un nombre entier se termine par **7**. Peut-il être un carré parfait ?",
+          "answers": [
+            "non",
+            "non, jamais",
+            "jamais"
+          ],
+          "explanation": "**Non** : un carré parfait ne se termine jamais par 2, 3, 7 ou 8."
+        },
+        {
+          "type": "question",
+          "prompt": "√70 est compris entre deux nombres entiers qui se suivent. Quel est le plus grand des deux ?",
+          "answers": [
+            "9"
+          ],
+          "explanation": "64 < 70 < 81, donc 8 < √70 < **9**."
+        },
+        {
+          "type": "question",
+          "prompt": "Un carré a un périmètre de **28 cm**. Quelle est son aire, en cm² ?",
+          "answers": [
+            "49",
+            "49 cm²",
+            "49cm²"
+          ],
+          "explanation": "Le côté mesure 28 ÷ 4 = 7 cm, donc l'aire vaut 7² = **49 cm²**."
+        },
+        {
+          "type": "question",
+          "prompt": "Quelle est l'aire de ce carré, en m² ?",
+          "answers": [
+            "2,25",
+            "2,25 m²",
+            "2,25m²"
+          ],
+          "figure": {
+            "w": 6,
+            "h": 6,
+            "points": {
+              "A": [
+                1,
+                1,
+                "nw"
+              ],
+              "B": [
+                5,
+                1,
+                "ne"
+              ],
+              "C": [
+                5,
+                5,
+                "se"
+              ],
+              "D": [
+                1,
+                5,
+                "sw"
+              ]
+            },
+            "draw": [
+              {
+                "segment": [
+                  "A",
+                  "B"
+                ],
+                "label": "1,5 m"
+              },
+              {
+                "segment": [
+                  "B",
+                  "C"
+                ]
+              },
+              {
+                "segment": [
+                  "C",
+                  "D"
+                ]
+              },
+              {
+                "segment": [
+                  "D",
+                  "A"
+                ]
+              },
+              {
+                "rightAngle": [
+                  "D",
+                  "A",
+                  "B"
+                ]
+              },
+              {
+                "ticks": [
+                  "A",
+                  "B"
+                ],
+                "n": 1
+              },
+              {
+                "ticks": [
+                  "B",
+                  "C"
+                ],
+                "n": 1
+              },
+              {
+                "ticks": [
+                  "C",
+                  "D"
+                ],
+                "n": 1
+              },
+              {
+                "ticks": [
+                  "D",
+                  "A"
+                ],
+                "n": 1
+              }
+            ],
+            "alt": "Un carré ABCD de côté 1,5 m.",
+            "caption": "Côté : 1,5 m"
+          },
+          "explanation": "Aire = 1,5 × 1,5 = **2,25 m²** : 15 × 15 = 225, et deux chiffres après la virgule."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien de solutions a l'équation **x² = −9** ?",
+          "answers": [
+            "0",
+            "aucune",
+            "zéro",
+            "aucune solution",
+            "0 solution"
+          ],
+          "explanation": "Un carré n'est jamais négatif : l'équation n'a **aucune** solution."
+        },
+        {
+          "type": "question",
+          "prompt": "x² = 36 et x est un nombre **négatif**. Que vaut x ?",
+          "answers": [
+            "−6",
+            "x = −6"
+          ],
+          "explanation": "6² = 36 et (−6)² = 36 ; la solution négative est **−6**."
         }
       ]
     }

@@ -675,34 +675,14 @@ window.registerPack({
           "explanation": "Sept **piques**, comme les 7 continents et les 7 océans."
         },
         {
-          "type": "write",
-          "prompt": "Explique en une phrase ce que représentent les piques de la couronne.",
+          "type": "fill",
+          "prompt": "Lis le texte, puis complète la phrase.",
           "docId": "a-lire",
-          "minWords": 8,
-          "requirements": [
-            {
-              "id": "piques",
-              "label": "Parle des piques",
-              "pattern": "piques?"
-            },
-            {
-              "id": "continents",
-              "label": "Utilise le mot « continents »",
-              "pattern": "continents?"
-            },
-            {
-              "id": "oceans",
-              "label": "Utilise le mot « océans »",
-              "pattern": "oc[ée]ans?"
-            }
+          "sentence": "Les sept piques de la couronne représentent les sept continents et les sept ___.",
+          "answers": [
+            "océans"
           ],
-          "minRequirements": 2,
-          "starters": [
-            "Les sept piques",
-            "Elles représentent"
-          ],
-          "modelAnswer": "Les sept piques de la couronne représentent les continents et les océans.",
-          "explanation": "Les **7 piques** représentent les **7 continents** et les **7 océans**."
+          "explanation": "Les **7 piques** représentent les **7 continents** et les **7 océans** : la Liberté éclaire le monde entier."
         }
       ]
     },
@@ -853,130 +833,260 @@ window.registerPack({
     },
     {
       "id": "bonus",
-      "title": "⭐ Bonus : la suite de la dictée",
-      "subtitle": "Le texte du groupe 3 (111 mots)",
+      "title": "⭐ Le grand test",
+      "subtitle": "Toute la dictée du groupe 3",
       "icon": "🏆",
       "color": "#B45309",
       "lesson": {
-        "title": "La suite du texte",
+        "title": "Le test de fin de groupe",
         "points": [
-          "La statue de la **Liberté** est l'œuvre du sculpteur **français** Bartholdi.",
-          "Elle a été créée en France, puis elle a été démontée, transportée par bateau et enfin remontée aux États-Unis.",
-          "Le **socle** et le piédestal de granit rose ont été construits sur place."
-        ],
-        "examples": [
-          "🧠 Astuce : **œuvre** s'écrit avec **œ** (o et e collés)."
+          "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
+          "Avec **être**, le participe passé s'accorde avec le sujet : elle a été **créée**, le socle et le piédestal ont été **construits**.",
+          "Homophones : **a**/à, **est**/et, **ont**/on ; nombres avec des traits d'union ; **œuvre** avec œ."
         ]
       },
+      "draw": 12,
       "exercises": [
         {
-          "type": "fill",
-          "prompt": "Écoute et écris le mot qui manque.",
-          "listen": "La statue de la Liberté est l'œuvre du sculpteur français Bartholdi.",
-          "sentence": "La statue de la Liberté est l'___ du sculpteur français Bartholdi.",
-          "answers": [
-            "œuvre",
-            "oeuvre"
-          ],
-          "explanation": "**Œuvre** s'écrit avec œ.",
-          "hint": "Un mot qui veut dire « travail d'artiste »."
-        },
-        {
-          "type": "mcq",
-          "prompt": "Qui a sculpté la statue de la Liberté ?",
-          "options": [
-            "Bartholdi",
-            "Gustave Eiffel",
-            "Louis IX",
-            "Henri IV"
-          ],
-          "answer": 0,
-          "explanation": "La statue est l'œuvre du sculpteur français **Bartholdi**."
-        },
-        {
-          "type": "order",
-          "prompt": "Remets les mots dans l'ordre.",
-          "words": [
-            "Elle",
-            "a",
-            "été",
-            "créée",
-            "en",
-            "France",
-            "."
-          ],
-          "translation": "Elle a été créée en France.",
-          "explanation": "**A** été (avoir) et **créée** (féminin)."
-        },
-        {
-          "type": "spot",
-          "prompt": "Touche le mot faux.",
-          "tokens": [
-            "Elle",
-            "a",
-            "été",
-            "démontée",
-            "est",
-            "transportée",
-            "par",
-            "bateau",
-            "."
-          ],
-          "wrongIndex": 4,
-          "correction": "et",
-          "explanation": "On peut dire « et puis transportée » : c'est **et**."
-        },
-        {
-          "type": "fill",
-          "prompt": "Écoute et écris le mot qui manque.",
-          "listen": "Elle a été transportée par bateau et enfin remontée aux États-Unis.",
-          "sentence": "Elle a été transportée par bateau et enfin ___ aux États-Unis.",
-          "answers": [
-            "remontée"
-          ],
-          "explanation": "Elle = féminin : **remontée**.",
-          "hint": "Le verbe remonter, accordé avec « elle »."
-        },
-        {
-          "type": "spot",
-          "prompt": "Touche le mot mal accordé.",
-          "tokens": [
-            "Le",
-            "socle",
-            "et",
-            "le",
-            "piédestal",
-            "ont",
-            "été",
-            "construit",
-            "sur",
-            "place",
-            "."
-          ],
-          "wrongIndex": 7,
-          "correction": "construits",
-          "explanation": "Le socle et le piédestal = masculin pluriel : **construits**."
-        },
-        {
-          "type": "mcq",
-          "prompt": "En quoi sont le socle et le piédestal ?",
-          "options": [
-            "En granit rose",
-            "En acier",
-            "En bois",
-            "En marbre blanc"
-          ],
-          "answer": 0,
-          "explanation": "Le piédestal est en **granit rose**."
-        },
-        {
-          "type": "fill",
-          "prompt": "Complète avec ont ou on.",
-          "sentence": "Le socle et le piédestal ___ été construits sur place.",
+          "type": "question",
+          "prompt": "Complète avec ont ou on : « Le socle et le piédestal ___ été construits sur place. »",
           "answers": [
             "ont"
           ],
-          "explanation": "On peut dire « avaient été » : c'est **ont**."
+          "explanation": "On peut dire « avaient été » : c'est **ont**, le verbe avoir."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec est ou et : « La statue ___ l'œuvre du sculpteur Bartholdi. »",
+          "answers": [
+            "est"
+          ],
+          "explanation": "On peut dire « était l'œuvre » : c'est **est**, le verbe être."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec a ou à : « Elle ___ été créée en France. »",
+          "answers": [
+            "a"
+          ],
+          "explanation": "On peut dire « avait été » : c'est **a**, le verbe avoir."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe créer, bien accordé : « Elle a été … en France. »",
+          "answers": [
+            "créée"
+          ],
+          "explanation": "Créer → **créé**, puis **-e** car « elle » est féminin : **créée**, trois e."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe démonter, bien accordé : « Puis elle a été … »",
+          "answers": [
+            "démontée"
+          ],
+          "explanation": "Elle = féminin singulier : **démontée**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe transporter, bien accordé : « Elle a été … par bateau. »",
+          "answers": [
+            "transportée"
+          ],
+          "explanation": "Elle = féminin singulier : **transportée**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe construire, bien accordé : « Le socle et le piédestal ont été … sur place. »",
+          "answers": [
+            "construits"
+          ],
+          "explanation": "Le socle et le piédestal = masculin pluriel : **construits**."
+        },
+        {
+          "type": "question",
+          "prompt": "Ce mot est mal écrit : « l'euvre du sculpteur ». Écris-le correctement.",
+          "answers": [
+            "œuvre",
+            "oeuvre",
+            "l'œuvre",
+            "l'oeuvre"
+          ],
+          "explanation": "**Œuvre** s'écrit avec **œ** : le o et le e collés."
+        },
+        {
+          "type": "question",
+          "prompt": "Accorde le verbe pouvoir au présent : « Quarante personnes … tenir dans sa tête. »",
+          "answers": [
+            "peuvent"
+          ],
+          "explanation": "Le sujet « quarante personnes » est au pluriel : **peuvent**."
+        },
+        {
+          "type": "question",
+          "prompt": "Accorde l'adjectif : « la Déclaration d'indépendance (américain) »",
+          "answers": [
+            "américaine"
+          ],
+          "explanation": "La Déclaration est féminin singulier : **américaine**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le nombre en lettres : 225",
+          "answers": [
+            "deux-cent-vingt-cinq"
+          ],
+          "explanation": "225 = **deux-cent-vingt-cinq** : cent et vingt sont suivis d'un autre nombre, donc pas de s."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le nombre en lettres : 93",
+          "answers": [
+            "quatre-vingt-treize"
+          ],
+          "explanation": "93 = 4 × 20 + 13 : **quatre-vingt-treize**, pas de s à vingt."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le nombre en lettres : « Le poids dépasse 200 tonnes. »",
+          "answers": [
+            "deux-cents"
+          ],
+          "explanation": "**Deux-cents** : cent est multiplié et rien ne le suit, donc il prend un s."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot qui veut dire « les 100 ans d'un événement » (le … de la Déclaration).",
+          "answers": [
+            "centenaire",
+            "le centenaire"
+          ],
+          "explanation": "**Cent**enaire contient « cent » : on fête les **100 ans**."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec ont ou on : « ___ peut visiter la statue. »",
+          "answers": [
+            "on"
+          ],
+          "explanation": "On ne peut pas dire « avaient peut » : c'est **on**, le pronom."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec est ou et : « Gustave Eiffel ___ ses ouvriers ont fait la charpente. »",
+          "answers": [
+            "et"
+          ],
+          "explanation": "On ne peut pas dire « était ses ouvriers » : c'est **et**, qui relie deux mots."
+        },
+        {
+          "type": "question",
+          "prompt": "Ce mot est mal écrit : « le piédestale ». Écris-le correctement.",
+          "answers": [
+            "piédestal",
+            "le piédestal"
+          ],
+          "explanation": "**Piédestal** finit par -al, sans e, avec un accent aigu : pié-des-tal."
+        },
+        {
+          "type": "question",
+          "prompt": "Ce mot est mal écrit : « le sculteur Bartholdi ». Écris correctement le deuxième mot.",
+          "answers": [
+            "sculpteur"
+          ],
+          "explanation": "**Sculpteur** : on n'entend pas le p, mais il s'écrit, comme dans « sculpture »."
+        },
+        {
+          "type": "question",
+          "prompt": "Accorde le verbe être au présent : « La statue et la tour Eiffel … des œuvres célèbres. »",
+          "answers": [
+            "sont"
+          ],
+          "explanation": "**Deux sujets au singulier = verbe au pluriel** : la statue et la tour Eiffel **sont**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe offrir au passé composé : « Les Français … la statue aux États-Unis. »",
+          "answers": [
+            "ont offert"
+          ],
+          "explanation": "Passé composé = **avoir** au présent (ils **ont**) + participe passé **offert**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe remonter, bien accordé : « Enfin, elle a été … à New York. »",
+          "answers": [
+            "remontée"
+          ],
+          "explanation": "Avec **être**, le participe passé s'accorde avec le sujet « elle » (féminin) : remonté**e**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe construire, bien accordé : « La tour Eiffel a été … de 1887 à 1889. »",
+          "answers": [
+            "construite"
+          ],
+          "explanation": "Avec **être**, le participe passé s'accorde avec « la tour » (féminin) : construit**e**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe transporter, bien accordé : « Les morceaux de la statue ont été … par bateau. »",
+          "answers": [
+            "transportés"
+          ],
+          "explanation": "Avec **être**, le participe s'accorde avec « les morceaux » (masculin pluriel) : transporté**s**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe créer, bien accordé : « Les deux statues ont été … en France. »",
+          "answers": [
+            "créées"
+          ],
+          "explanation": "Avec **être**, accord avec « les statues » (féminin pluriel) : cré + é + e + s = **créées**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le nombre en lettres : 280",
+          "answers": [
+            "deux-cent-quatre-vingts"
+          ],
+          "explanation": "**vingt** est multiplié (4 × 20) et à la fin : quatre-vingt**s** ; **cent** n'est pas à la fin : pas de s."
+        },
+        {
+          "type": "question",
+          "prompt": "Recopie la phrase sans faute : « La statue a été créé en France, puis elle a été démonté est transportée par bateau. »",
+          "answers": [
+            "La statue a été créée en France, puis elle a été démontée et transportée par bateau."
+          ],
+          "explanation": "Elle = féminin : **créée**, **démontée** ; on peut dire « et puis transportée » : c'est **et**.",
+          "multiline": true
+        },
+        {
+          "type": "question",
+          "prompt": "Recopie la phrase sans faute : « Le socle et le piédestal on été construit sur place. »",
+          "answers": [
+            "Le socle et le piédestal ont été construits sur place."
+          ],
+          "explanation": "On peut dire « avaient été » : **ont** ; deux noms masculins : **construits**.",
+          "multiline": true
+        },
+        {
+          "type": "question",
+          "prompt": "Recopie la phrase sans faute : « La tour Eiffel a été construit de 1887 a 1889. »",
+          "answers": [
+            "La tour Eiffel a été construite de 1887 à 1889."
+          ],
+          "explanation": "Avec **être**, accord avec « la tour » : **construite** ; on ne peut pas dire « avait 1889 » : **à**.",
+          "multiline": true
+        },
+        {
+          "type": "question",
+          "prompt": "Recopie la phrase sans faute : « Les Français on offert la statue, qui a été remonté à New York. »",
+          "answers": [
+            "Les Français ont offert la statue, qui a été remontée à New York."
+          ],
+          "explanation": "On peut dire « avaient offert » : **ont** ; avec **être**, accord avec « la statue » : **remontée**.",
+          "multiline": true
         }
       ]
     }

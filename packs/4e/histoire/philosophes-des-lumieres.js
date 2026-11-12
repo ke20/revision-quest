@@ -33,11 +33,6 @@ window.registerPack({
       "id": "voltaire",
       "title": "Voltaire, Traité sur la tolérance (1763)",
       "text": "« Ce n'est donc plus aux hommes que je m'adresse, c'est à toi, Dieu de tous les êtres, de tous les mondes et de tous les temps… Tu ne nous as point donné un cœur pour nous haïr et des mains pour nous égorger… Puissent tous les hommes se souvenir qu'ils sont frères ! »"
-    },
-    {
-      "id": "diffusion",
-      "title": "La diffusion des idées des Lumières",
-      "text": "Les philosophes réussissent, malgré les **mises à l'Index** de l'Église (censure d'un ouvrage) et les **interdictions** de publication venant du roi **Louis XV**, à publier leurs ouvrages.\n\nLes **académies** permettent l'emprunt de ces livres. Les bourgeois et quelques nobles se réunissent dans les **cafés** à Paris (ex. : le café **Procope**). Enfin, les **correspondances** (lettres) permettent des échanges entre philosophes (Hume en Angleterre, Kant en Allemagne).\n\nCertains se mettent au service de « **despotes éclairés** » (ex. : Voltaire échange avec Frédéric II de Prusse)."
     }
   ],
   "worlds": [
@@ -988,176 +983,309 @@ window.registerPack({
     },
     {
       "id": 8,
-      "title": "Boss : les textes des philosophes",
-      "subtitle": "Lire, comprendre, expliquer",
+      "title": "Boss : le contrôle",
+      "subtitle": "Tout le chapitre, en questions",
       "icon": "🏆",
       "color": "#9333EA",
       "lesson": {
-        "title": "Que contestent-ils ? Que proposent-ils ?",
+        "title": "Prêt pour le contrôle ?",
         "points": [
-          "**Montesquieu** conteste l'absolutisme (le despotisme) → propose la **séparation des pouvoirs**.",
-          "**Rousseau** conteste l'absolutisme → propose la **démocratie** ; si le souverain est injuste, le peuple peut se révolter.",
-          "**Voltaire** conteste l'**intolérance** et la **torture** (chevalier de La Barre) → propose la **tolérance**.",
-          "**Diderot** conteste le pouvoir absolu → propose la **liberté** : « Aucun homme n'a reçu de la nature le droit de commander aux autres »."
-        ],
-        "examples": [
-          "🧠 Astuce : tous contestent l'**Ancien Régime** (absolutisme + société d'ordres)."
+          "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
+          "Réponds par un **nom**, un **mot**, une **date** ou une expression courte. Un seul essai par question : relis-toi.",
+          "Pour chaque philosophe, pense à son **œuvre** et à son **idée** principale."
         ]
       },
+      "draw": 12,
       "exercises": [
         {
-          "type": "mcq",
-          "prompt": "Qui a écrit : « Tout serait perdu si le même homme exerçait ces trois pouvoirs » ?",
-          "options": [
-            "Montesquieu",
+          "type": "question",
+          "prompt": "Quel roi installe la monarchie absolue en France (règne de 1661 à 1715) ?",
+          "answers": [
+            "Louis XIV",
+            "Louis 14",
+            "Louis quatorze"
+          ],
+          "explanation": "**Louis XIV** règne de 1661 à 1715 en monarque absolu de droit divin."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel ordre représente 97 % de la population du royaume ?",
+          "answers": [
+            "le Tiers état",
+            "Tiers état"
+          ],
+          "explanation": "Le **Tiers état** (paysans, artisans, bourgeois…) est presque toute la population, et il paie tous les impôts."
+        },
+        {
+          "type": "question",
+          "prompt": "Comment appelle-t-on les droits et avantages du clergé et de la noblesse, comme ne pas payer d'impôts ?",
+          "answers": [
+            "les privilèges",
+            "privilèges",
+            "des privilèges",
+            "privilège"
+          ],
+          "explanation": "Les **privilèges** rendent la société d'ordres très inégalitaire."
+        },
+        {
+          "type": "question",
+          "prompt": "Comment appelle-t-on le XVIIIe siècle ?",
+          "answers": [
+            "le siècle des Lumières",
+            "siècle des Lumières",
+            "les Lumières",
+            "Lumières"
+          ],
+          "explanation": "Le XVIIIe siècle est le **siècle des Lumières** : les lumières de la raison chassent l'ignorance."
+        },
+        {
+          "type": "question",
+          "prompt": "Que veulent placer les philosophes des Lumières au centre de tout ?",
+          "answers": [
+            "la raison",
+            "raison"
+          ],
+          "explanation": "Les philosophes veulent réfléchir avec la **raison**, au lieu de croire sans réfléchir le clergé et le roi."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel protestant de Toulouse, exécuté en 1762, Voltaire défend-il ?",
+          "answers": [
+            "Jean Calas",
+            "Calas"
+          ],
+          "explanation": "**Jean Calas**, accusé à tort d'avoir tué son fils, est exécuté. Voltaire obtient sa réhabilitation en 1765."
+        },
+        {
+          "type": "question",
+          "prompt": "Quelle valeur Voltaire défend-il dans l'affaire Calas ?",
+          "answers": [
+            "la tolérance",
+            "tolérance",
+            "la tolérance religieuse"
+          ],
+          "explanation": "Voltaire combat le fanatisme et défend la **tolérance** (*Traité sur la tolérance*, 1763)."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel philosophe propose la séparation des pouvoirs ?",
+          "answers": [
+            "Montesquieu"
+          ],
+          "explanation": "**Montesquieu**, dans *De l'esprit des lois* (1748), veut séparer les pouvoirs pour éviter le despotisme."
+        },
+        {
+          "type": "question",
+          "prompt": "Les trois pouvoirs à séparer sont le législatif, l'exécutif et… ?",
+          "answers": [
+            "le judiciaire",
+            "judiciaire",
+            "le pouvoir judiciaire",
+            "pouvoir judiciaire"
+          ],
+          "explanation": "Le pouvoir **judiciaire** juge et sanctionne ; le législatif fait les lois, l'exécutif les applique."
+        },
+        {
+          "type": "question",
+          "prompt": "Lis le texte. Quel mot Montesquieu emploie-t-il pour le régime où un seul homme a les trois pouvoirs ?",
+          "answers": [
+            "despotisme",
+            "le despotisme",
+            "un affreux despotisme",
+            "un despotisme"
+          ],
+          "docId": "montesquieu",
+          "explanation": "Quand un seul a tous les pouvoirs, il règne un affreux **despotisme** : une dictature."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel philosophe écrit *Le Contrat social* et veut une démocratie ?",
+          "answers": [
             "Rousseau",
-            "Voltaire",
-            "Diderot"
+            "Jean-Jacques Rousseau"
           ],
-          "answer": 0,
-          "explanation": "**Montesquieu**, *De l'esprit des lois* : il veut séparer les trois pouvoirs."
+          "explanation": "**Rousseau** est le seul à vouloir une **démocratie** : le peuple participe aux lois."
         },
         {
-          "type": "mcq",
-          "prompt": "Qui a écrit : « La puissance législative appartient au peuple » ?",
-          "options": [
-            "Rousseau",
-            "Montesquieu",
-            "Voltaire",
-            "Louis XV"
+          "type": "question",
+          "prompt": "Lis le texte. Selon Rousseau, à qui appartient la puissance législative ?",
+          "answers": [
+            "au peuple",
+            "le peuple",
+            "peuple"
           ],
-          "answer": 0,
-          "explanation": "**Rousseau**, *Le Contrat social* : le peuple fait les lois, c'est la démocratie."
+          "docId": "rousseau",
+          "explanation": "Pour Rousseau, la puissance législative appartient **au peuple** et ne peut appartenir qu'à lui."
         },
         {
-          "type": "mcq",
-          "prompt": "Qui a écrit : « Aucun homme n'a reçu de la nature le droit de commander aux autres » ?",
-          "options": [
-            "Diderot",
-            "Voltaire",
-            "Montesquieu",
-            "Frédéric II"
+          "type": "question",
+          "prompt": "Quel grand ouvrage Diderot dirige-t-il avec d'Alembert ?",
+          "answers": [
+            "l'Encyclopédie",
+            "Encyclopédie",
+            "une encyclopédie"
           ],
-          "answer": 0,
-          "explanation": "**Diderot**, dans l'*Encyclopédie* (article « Autorité politique »)."
+          "explanation": "L'**Encyclopédie** rassemble toutes les connaissances : c'est l'outil décisif pour diffuser les idées."
         },
         {
-          "type": "mcq",
-          "prompt": "« Puissent tous les hommes se souvenir qu'ils sont frères ! » Que défend Voltaire ici ?",
-          "options": [
-            "La tolérance",
-            "La séparation des pouvoirs",
-            "La monarchie absolue",
-            "Les privilèges"
+          "type": "question",
+          "prompt": "Dans quel café de Paris discute-t-on des idées des Lumières ?",
+          "answers": [
+            "le Procope",
+            "Procope",
+            "le café Procope",
+            "café Procope",
+            "au Procope",
+            "au café Procope"
           ],
-          "answer": 0,
-          "explanation": "Dans le *Traité sur la tolérance*, **Voltaire** défend la **tolérance**."
+          "explanation": "Le café **Procope** est fréquenté par Voltaire et Diderot."
         },
         {
-          "type": "sort",
-          "prompt": "Contestent-ils ou proposent-ils ?",
-          "categories": [
-            {
-              "id": "contre",
-              "label": "❌ Ils contestent"
-            },
-            {
-              "id": "pour",
-              "label": "✅ Ils proposent"
-            }
+          "type": "question",
+          "prompt": "Comment appelle-t-on un roi qui garde tout son pouvoir mais écoute les philosophes, comme Frédéric II de Prusse ?",
+          "answers": [
+            "un despote éclairé",
+            "despote éclairé",
+            "les despotes éclairés",
+            "despotes éclairés"
           ],
-          "items": [
-            {
-              "text": "L'absolutisme",
-              "cat": "contre"
-            },
-            {
-              "text": "La séparation des pouvoirs",
-              "cat": "pour"
-            },
-            {
-              "text": "L'intolérance",
-              "cat": "contre"
-            },
-            {
-              "text": "La démocratie",
-              "cat": "pour"
-            },
-            {
-              "text": "La torture",
-              "cat": "contre"
-            },
-            {
-              "text": "La tolérance",
-              "cat": "pour"
-            }
-          ],
-          "explanation": "Ils **contestent** l'Ancien Régime et **proposent** une société plus libre et plus juste."
+          "explanation": "Le **despote éclairé** garde son autorité mais gouverne de façon raisonnée. Voltaire conseille Frédéric II."
         },
         {
-          "type": "write",
-          "prompt": "Explique en 2 ou 3 phrases comment les idées des Lumières se diffusent malgré la censure.",
-          "docId": "diffusion",
-          "minWords": 20,
-          "requirements": [
-            {
-              "id": "censure",
-              "label": "Parle de la censure (Index, interdictions)",
-              "pattern": "censur|index|interdi"
-            },
-            {
-              "id": "livres",
-              "label": "Cite un écrit (Encyclopédie, livres, presse, gazettes)",
-              "pattern": "encyclop|livres?|presse|gazettes?|journa"
-            },
-            {
-              "id": "lieux",
-              "label": "Cite un lieu de discussion (salons, cafés)",
-              "pattern": "salons?|caf[ée]s?|procope|jardins?"
-            },
-            {
-              "id": "lettres",
-              "label": "Parle des lettres entre philosophes",
-              "pattern": "lettres?|correspondance"
-            }
+          "type": "question",
+          "prompt": "Pour quelle guerre l'État français a-t-il beaucoup dépensé avant 1789 ?",
+          "answers": [
+            "la guerre d'Amérique",
+            "guerre d'Amérique",
+            "la guerre d'indépendance américaine",
+            "guerre d'indépendance américaine",
+            "la guerre d'indépendance des États-Unis",
+            "guerre d'indépendance des États-Unis"
           ],
-          "minRequirements": 3,
-          "starters": [
-            "Malgré la censure",
-            "On discute dans",
-            "Les philosophes s'écrivent"
-          ],
-          "modelAnswer": "Malgré la censure de l'Église et du roi, les philosophes publient leurs livres et l'Encyclopédie. On discute de leurs idées dans les salons et dans les cafés comme le Procope. Les philosophes s'écrivent aussi des lettres.",
-          "explanation": "Censure contournée : **livres** et **Encyclopédie**, **salons** et **cafés**, **lettres** entre philosophes."
+          "explanation": "La France a aidé les Insurgés dans la **guerre d'Amérique** : les dettes de l'État s'accumulent."
         },
         {
-          "type": "write",
-          "prompt": "Explique en 2 phrases pourquoi le peuple est mécontent avant 1789.",
-          "minWords": 15,
-          "requirements": [
-            {
-              "id": "prix",
-              "label": "Parle de la hausse des prix (récoltes, pain)",
-              "pattern": "prix|r[ée]coltes?|pain"
-            },
-            {
-              "id": "impots",
-              "label": "Parle des impôts",
-              "pattern": "imp[ôo]ts?"
-            },
-            {
-              "id": "egalite",
-              "label": "Parle d'égalité ou des privilèges",
-              "pattern": "[ée]galit|in[ée]galit|privil[èe]ges?"
-            }
+          "type": "question",
+          "prompt": "En quelle année commence la Révolution française ?",
+          "answers": [
+            "1789",
+            "en 1789"
           ],
-          "minRequirements": 2,
-          "starters": [
-            "Les prix augmentent",
-            "Le peuple réclame"
+          "explanation": "La **Révolution française** commence en **1789**."
+        },
+        {
+          "type": "question",
+          "prompt": "Dans une monarchie de droit divin, de qui le roi dit-il recevoir son pouvoir ?",
+          "answers": [
+            "de Dieu",
+            "Dieu"
           ],
-          "modelAnswer": "Les prix augmentent à cause des mauvaises récoltes et les impôts aussi. Le peuple réclame plus d'égalité, car les privilégiés ne paient pas d'impôts.",
-          "explanation": "**Hausse des prix** + **impôts** + **inégalités** = mécontentement avant 1789."
+          "explanation": "Le roi est **de droit divin** : il dit tenir son pouvoir **de Dieu**, personne ne peut donc le contrôler."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel ordre représente environ 1 % de la population du royaume ?",
+          "answers": [
+            "la noblesse",
+            "noblesse",
+            "les nobles",
+            "nobles"
+          ],
+          "explanation": "La **noblesse** (1 %) a des privilèges : pas d'impôts, droit de chasse et de colombier, port des armes."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel est le vrai nom de Voltaire ?",
+          "answers": [
+            "François-Marie Arouet",
+            "Arouet"
+          ],
+          "explanation": "Voltaire est le nom de plume de **François-Marie Arouet** (1694-1778)."
+        },
+        {
+          "type": "question",
+          "prompt": "Dans quelle prison Voltaire est-il enfermé plusieurs mois à cause de ses idées ?",
+          "answers": [
+            "la Bastille",
+            "Bastille",
+            "à la Bastille"
+          ],
+          "explanation": "Ses idées dérangent : Voltaire passe plusieurs mois à la **Bastille**."
+        },
+        {
+          "type": "question",
+          "prompt": "Par quel supplice Jean Calas est-il exécuté en 1762 ?",
+          "answers": [
+            "le supplice de la roue",
+            "supplice de la roue",
+            "la roue",
+            "roue",
+            "sur la roue"
+          ],
+          "explanation": "Jean Calas meurt par le **supplice de la roue**, alors qu'il était innocent."
+        },
+        {
+          "type": "question",
+          "prompt": "En quelle année Jean Calas est-il réhabilité, c'est-à-dire déclaré innocent ?",
+          "answers": [
+            "1765",
+            "en 1765"
+          ],
+          "explanation": "Grâce à Voltaire et à son *Traité sur la tolérance*, Calas est réhabilité en **1765**."
+        },
+        {
+          "type": "question",
+          "prompt": "Quelle liberté Diderot défend-il ?",
+          "answers": [
+            "la liberté d'expression",
+            "liberté d'expression",
+            "la liberté de s'exprimer",
+            "liberté de s'exprimer"
+          ],
+          "explanation": "Diderot défend la **liberté d'expression** : pouvoir dire et publier ses idées."
+        },
+        {
+          "type": "question",
+          "prompt": "Comment appelle-t-on l'interdiction de publier ou de lire un texte ?",
+          "answers": [
+            "la censure",
+            "censure"
+          ],
+          "explanation": "Malgré la **censure** de l'Église (mise à l'Index) et du roi Louis XV, les philosophes publient leurs livres."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel roi de Prusse, despote éclairé, Voltaire conseille-t-il ?",
+          "answers": [
+            "Frédéric II",
+            "Frédéric 2",
+            "Frédéric deux",
+            "Frédéric II de Prusse"
+          ],
+          "explanation": "Voltaire conseille **Frédéric II** de Prusse, un despote éclairé."
+        },
+        {
+          "type": "question",
+          "prompt": "Lis le texte. Selon Diderot, quel droit aucun homme n'a-t-il reçu de la nature ?",
+          "answers": [
+            "commander aux autres",
+            "le droit de commander aux autres",
+            "commander",
+            "le droit de commander"
+          ],
+          "docId": "diderot",
+          "explanation": "Pour Diderot, aucun homme n'a reçu de la nature le droit de **commander aux autres** : tous naissent libres."
+        },
+        {
+          "type": "question",
+          "prompt": "Lis le texte. Selon Voltaire, tous les hommes doivent se souvenir qu'ils sont… ?",
+          "answers": [
+            "frères",
+            "des frères",
+            "tous frères"
+          ],
+          "docId": "voltaire",
+          "explanation": "« Puissent tous les hommes se souvenir qu'ils sont **frères** ! » : c'est un appel à la **tolérance**."
         }
       ]
     }

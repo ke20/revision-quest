@@ -12,7 +12,7 @@ const ROOT = path.resolve(__dirname, "..", "..");
 const X = load({ scripts: ["js/core/i18n.js", ...pageScripts("voix.html", "js/exercises/")] }).window.Exercises;
 
 /** Problems of one exercise when answered with its own expected answer (empty = the game accepts it). */
-function problems(ex) {
+function problems(ex, lang) {
   const out = [];
   switch (ex.type) {
     case "mcq":
@@ -30,9 +30,10 @@ function problems(ex) {
       if (!X.orderAccepted(ex, ex.words.map(X.plain))) out.push("words refused");
       (ex.alternatives || []).forEach((alt, i) => { if (!X.orderAccepted(ex, alt.map(X.plain))) out.push(`alternative ${i} refused`); });
       break;
-    case "write": {
-      const r = X.writeCheck(ex, ex.modelAnswer);
-      if (!r.ok) out.push(`modelAnswer refused (${r.count}/${r.needed} requirements, ${r.words} words)`);
+    case "question": {
+      ex.answers.forEach((a) => { if (!X.questionAccepted(ex, a, lang)) out.push(`answer "${a}" refused`); });
+      const keys = ex.answers.map((a) => X.answerKey(a, lang));
+      keys.forEach((k, i) => { if (keys.indexOf(k) !== i) out.push(`answer "${ex.answers[i]}" is the same as "${ex.answers[keys.indexOf(k)]}" once compared`); });
       break;
     }
     case "spot":
@@ -57,7 +58,7 @@ for (const unit of catalogUnits(loadCatalog())) {
     const pack = loadPack(path.join(ROOT, "packs", unit.path + ".js"));
     const bad = [];
     pack.worlds.forEach((w, wi) => w.exercises.forEach((ex, ei) => {
-      problems(ex).forEach((p) => bad.push(`world ${wi + 1} exercise ${ei + 1} (${ex.type}): ${p}`));
+      problems(ex, pack.lang).forEach((p) => bad.push(`world ${wi + 1} exercise ${ei + 1} (${ex.type}): ${p}`));
     }));
     assert.deepStrictEqual(bad, []);
   });
@@ -65,6 +66,7 @@ for (const unit of catalogUnits(loadCatalog())) {
 
 test("problems(): a wrong expected answer is reported (the check is not a no-op)", () => {
   assert.deepStrictEqual(problems({ type: "fill", answers: ["?"] }), ["first answer is empty once normalised"]);
-  assert.match(problems({ type: "write", requirements: [{ pattern: "chat" }], modelAnswer: "un chien" })[0], /modelAnswer refused/);
+  assert.match(problems({ type: "question", answers: ["I am 12.", "I'm 12"] }, "en")[0], /is the same as "I am 12\." once compared/);
+  assert.match(problems({ type: "question", answers: ["   "] }, "fr")[0], /refused/);
   assert.deepStrictEqual(problems({ type: "sort", categories: [{ id: "a" }], items: [{ text: "x", cat: "b" }] }), ['item "x" has no box']);
 });

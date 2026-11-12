@@ -8,16 +8,30 @@
     readPauses = E.readPauses, settings = E.settings, packId = E.packId, worlds = E.worlds, packState = E.packState,
     streak = E.streak, award = E.award, worldIndex = E.worldIndex, worldProgress = E.worldProgress,
     starsToUnlock = E.starsToUnlock, isUnlocked = E.isUnlocked, worldHasDocument = E.worldHasDocument,
-    markDay = E.markDay, markPackPlayed = E.markPackPlayed, addXp = E.addXp;
+    markDay = E.markDay, markPackPlayed = E.markPackPlayed, addXp = E.addXp, isBoss = E.isBoss, BOSS_PASS = E.BOSS_PASS,
+    medalFor = E.medalFor;
+
+  /** Indexes of the exercises played in this run. A boss draws `draw` questions from its pool (all of them when
+      draw is missing), in a new random order each time; other worlds play every exercise in order.
+      @param {World} w @param {boolean} boss @returns {number[]} */
+  function runOrder(w, boss) {
+    var all = w.exercises.map(function (_, i) { return i; });
+    if (!boss) return all;
+    for (var i = all.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = all[i]; all[i] = all[j]; all[j] = t; }
+    var n = Math.round(+(/** @type {any} */ (w).draw));
+    return isFinite(n) && n > 0 && n < all.length ? all.slice(0, n) : all;
+  }
 
   E.apiPlay = {
     /** Start a world session in the current pack. @param {number|string} worldId @returns {WorldSession} */
     startWorld: function (worldId) {
       var w = worlds()[worldIndex(worldId)];
+      var order = w ? runOrder(w, isBoss(worldId)) : [];
       E.session = {
         packId: /** @type {string} */ (packId()), // a session only exists inside a loaded pack
         worldId: worldId,
-        total: w ? w.exercises.length : 0,
+        order: order,
+        total: order.length,
         index: 0,
         hearts: MAX_HEARTS,
         shields: settings().freeMistakes, // free mistakes left in this world (used before a heart)
@@ -28,7 +42,8 @@
         xpEarned: 0,
         newBadges: [],
         skipped: 0,         // broken exercises, left out of the accuracy
-        over: false
+        over: false,
+        boss: isBoss(worldId) // last world: no heart lost
       };
       return E.session;
     },
@@ -40,28 +55,48 @@
     resumeWorld: function (saved) {
       if (!isObj(saved) || !E.pack || saved.packId !== packId()) return null;
       var w = worlds()[worldIndex(saved.worldId)];
-      if (!w || saved.total !== w.exercises.length) return null;
+      if (!w) return null;
+      // the exercises of the saved run: distinct indexes of this world (a boss draws some of them), else all in order
+      var n = w.exercises.length, seen = /** @type {Record<number, boolean>} */ ({});
+      var order = Array.isArray(saved.order) && saved.order.length >= 1 && saved.order.length <= n &&
+        saved.order.every(function (/** @type {unknown} */ i) {
+          if (typeof i !== "number" || !isFinite(i) || i % 1 || i < 0 || i >= n || seen[i]) return false;
+          return (seen[i] = true);
+        }) ? saved.order.slice() : null;
+      if (!order) { if (isBoss(w.id) || saved.total !== n) return null; order = runOrder(w, false); }
+      if (saved.total !== order.length) return null;
+      var total = order.length;
       var num = /** @param {any} v untrusted @param {number} lo @param {number} hi */ function (v, lo, hi) { v = Number(v); return isFinite(v) ? Math.max(lo, Math.min(hi, v)) : lo; };
       var int = /** @param {any} v untrusted @param {number} lo @param {number} hi */ function (v, lo, hi) { return Math.floor(num(v, lo, hi)); };
       var maxShields = int(saved.maxShields, 0, 3);
       E.session = {
         packId: /** @type {string} */ (packId()), // a session only exists inside a loaded pack
         worldId: w.id,
-        total: w.exercises.length,
-        index: int(saved.index, 0, w.exercises.length),
+        order: order,
+        total: total,
+        index: int(saved.index, 0, total),
         hearts: int(saved.hearts, 0, MAX_HEARTS),
         shields: int(saved.shields, 0, maxShields),
         maxShields: maxShields,
         combo: int(saved.combo, 0, 1000),
         maxCombo: int(saved.maxCombo, 0, 1000),
-        score: num(saved.score, 0, w.exercises.length),
+        score: num(saved.score, 0, total),
         xpEarned: int(saved.xpEarned, -100000, 100000),
         newBadges: [],
-        skipped: int(saved.skipped, 0, w.exercises.length),
-        over: false
+        skipped: int(saved.skipped, 0, total),
+        over: false,
+        boss: isBoss(w.id)
       };
       E.session.over = E.session.hearts === 0;
       return E.session;
+    },
+
+    /** The exercise to play now in this world (a boss: drawn from its pool), or null when the run is over.
+        @param {World} w @returns {Exercise | null} */
+    currentExercise: function (w) {
+      var s = E.session;
+      if (!s || !w || s.index >= s.total) return null;
+      return w.exercises[s.order ? s.order[s.index] : s.index] || null;
     },
 
     /** Spend XP for a hint. Returns the XP actually spent. */
@@ -103,7 +138,8 @@
         E.session.xpEarned += gained;
       } else {
         E.session.combo = 0;
-        if (E.session.shields > 0) { E.session.shields--; shieldUsed = true; } // a free mistake: no heart lost
+        if (E.session.boss) { /* the boss: a wrong answer costs no heart, only points */ }
+        else if (E.session.shields > 0) { E.session.shields--; shieldUsed = true; } // a free mistake: no heart lost
         else E.session.hearts = Math.max(0, E.session.hearts - 1);
         if (E.session.hearts === 0) E.session.over = true;
       }
@@ -138,7 +174,8 @@
       // "Grand lecteur": the second-to-last world of a chapter (the reading world before the boss),
       // or any world whose exercises show a document to read (docId / letterId).
       if ((w.length >= 2 && i === w.length - 2) || worldHasDocument(w[i])) award("bookworm", nb);
-      if (w.length && i === w.length - 1) award("boss", nb);
+      var boss = isBoss(s.worldId), passed = boss && accuracy + 1e-9 >= BOSS_PASS;
+      if (passed || (w.length === 1 && i === 0)) award("boss", nb); // chapter validated (a 1-world course: finished)
       if (w.length && w.every(function (x) { return worldProgress(x.id).stars >= MAX_STARS; })) award("stars", nb);
       if (streak() >= 3) award("streak3", nb);
       save();
@@ -157,7 +194,11 @@
         starsToUnlock: starsToUnlock(),
         nextLocked: !!nextWorld && !isUnlocked(nextWorld.id),
         worldsInARow: E.worldsInARow,
-        pauseSuggested: pe > 0 && E.worldsInARow >= pe
+        pauseSuggested: pe > 0 && E.worldsInARow >= pe,
+        boss: boss,
+        passed: passed,
+        medal: boss ? medalFor(accuracy) : null,
+        bestMedal: boss ? medalFor(entry.accuracy) : null
       };
       E.session = null;
       return summary;

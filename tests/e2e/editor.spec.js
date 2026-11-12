@@ -137,12 +137,10 @@ test("course editor: a course with the 7 exercise types, live preview and checks
   await put(page, "correction", "écoutent");
   await common(page, "spot", "Touche le mot faux.");
 
-  // 7. Write
-  await addExercise(page, "write");
-  await put(page, "requirements.0.label", "Parle de l'école");
-  await put(page, "requirements.0.pattern", "école");
-  await put(page, "modelAnswer", "Ce matin, je suis allé à l'école avec mon petit frère et ma sœur.");
-  await common(page, "write", "Raconte ta matinée en une phrase.");
+  // 7. Question
+  await addExercise(page, "question");
+  await put(page, "answers.0", "Henri IV");
+  await common(page, "question", "Qui signe l'Édit de Nantes ?");
 
   // the plan: 7 exercises, no error left anywhere
   await expect(page.locator('.tn[data-key^="e:0:"]')).toHaveCount(7);
@@ -232,7 +230,7 @@ test("course editor: a course with the 7 exercise types, live preview and checks
   const { pack, errors } = packErrors(text);
   expect(errors).toEqual([]);
   ok(pack.path === "cm2/francais/mon-cours-d-essai", "path " + pack.path);
-  ok(pack.worlds[0].exercises.map((e) => e.type).join() === "mcq,sort,match,order,fill,spot,write", "the 7 types in order");
+  ok(pack.worlds[0].exercises.map((e) => e.type).join() === "mcq,sort,match,order,fill,spot,question", "the 7 types in order");
   ok(JSON.stringify(pack.worlds[0].exercises[0].answer) === "[0,2]", "mcq with several answers");
   ok(pack.worlds[0].exercises[5].wrongIndex === 2, "spot: the wrong word");
   ok(!("hint" in pack.worlds[0].exercises[0]), "empty hint not written");

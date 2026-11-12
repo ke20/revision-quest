@@ -26,8 +26,7 @@ export function ghostAnswer(ex) {
     case "order": return "<p>" + E((ex.words || []).join(" ")) + "</p>" +
       ((ex.alternatives || []).length ? list(/** @type {string[][]} */ (ex.alternatives).map(function (a) { return E(a.join(" ")); })) : "");
     case "spot": return "<p>" + E((ex.tokens || [])[ex.wrongIndex]) + " → <b>" + E(ex.correction) + "</b></p>";
-    case "write": return "<p>" + R(ex.modelAnswer || "") + "</p>" +
-      list((ex.requirements || []).map(function (r) { return E(r.label); })) + "<p>" + E((ex.minRequirements || 0) + " critère(s) requis, " + (ex.minWords || 0) + " mots minimum") + "</p>";
+    case "question": return list((ex.answers || []).map(E));
     default: return "<p>?</p>";
   }
 }

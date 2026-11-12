@@ -7,11 +7,11 @@
 
   var T = X.T, escapeHtml = X.escapeHtml, rich = X.rich, plain = X.plain, normalize = X.normalize,
     fillAccepted = X.fillAccepted, orderAccepted = X.orderAccepted, countWords = X.countWords,
-    writeCheck = X.writeCheck, mcqMultiAccepted = X.mcqMultiAccepted, closeBubble = X.closeBubble,
+    answerKey = X.answerKey, questionAccepted = X.questionAccepted, mcqMultiAccepted = X.mcqMultiAccepted, closeBubble = X.closeBubble,
     initTranslations = X.initTranslations, voiceKey = X.voiceKey, voiceQuality = X.voiceQuality,
     pickVoice = X.pickVoice, Speech = X.Speech, findDocument = X.findDocument, closeText = X.closeText,
     readingScreen = X.readingScreen, renderMcq = X.renderMcq, renderSort = X.renderSort, renderMatch = X.renderMatch,
-    renderOrder = X.renderOrder, renderFill = X.renderFill, renderSpot = X.renderSpot, renderWrite = X.renderWrite;
+    renderOrder = X.renderOrder, renderFill = X.renderFill, renderSpot = X.renderSpot, renderQuestion = X.renderQuestion;
 
   /* ---------- dispatcher ---------- */
 
@@ -19,7 +19,7 @@
   /** @type {Record<string, (ex: any, container: HTMLElement, done: ExDone, opts: ExRenderOpts) => ExerciseController>} */
   var RENDERERS = {
     mcq: renderMcq, sort: renderSort, match: renderMatch, order: renderOrder,
-    fill: renderFill, spot: renderSpot, write: renderWrite
+    fill: renderFill, spot: renderSpot, question: renderQuestion
   };
 
   /**
@@ -74,7 +74,8 @@
     readingScreen: readingScreen,
     docCard: X.docCard,
     closeText: closeText,
-    writeCheck: writeCheck,
+    answerKey: answerKey,
+    questionAccepted: questionAccepted,
     pickVoice: pickVoice,
     voiceQuality: voiceQuality,
     voiceKey: voiceKey,

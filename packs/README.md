@@ -77,7 +77,7 @@ Règles :
   être lisibles : dans le fichier, mettre les guillemets.
 - `documents` : `{ id, title, from, text }`. `title` sert d'en-tête (« 📬 Le serment du Jeu de paume ») ;
   sans `title`, l'en-tête est fabriqué avec `from`. Les noms `letters` / `letterId` (lettres) sont aussi acceptés.
-- **Texte à lire** : tout exercice (pas seulement `write`) peut afficher un document avec `docId`. Plusieurs
+- **Texte à lire** : tout exercice peut afficher un document avec `docId`. Plusieurs
   questions peuvent porter sur le même texte.
   - Texte court (1 à 3 phrases) : il s'affiche au-dessus de la question.
   - Texte long : ajouter `screen: true` au document. Avant la première question sur ce texte, l'enfant le lit
@@ -106,7 +106,21 @@ Règles :
 Le monde suivant se débloque quand le précédent a assez d'étoiles (sur 5) : 3 par défaut, 2, 4 ou 5 selon le
 réglage « difficulté » du joueur. Un monde déjà joué reste ouvert, sauf si le joueur a choisi « À rejouer » dans ses
 réglages.
-Le **dernier** monde est le « boss » du chapitre (badge « Chapitre terminé »).
+Le **dernier** monde est le **boss** du chapitre (dès 2 mondes) : le contrôle final.
+
+- Il ne contient **que** des exercices `question`, sans `hint` (le validateur le vérifie) : **10 à 20**, ou une
+  **réserve** plus grande (40 au plus) avec `"draw": 12` sur le monde (10 à 20) : à chaque partie, 12 questions sont
+  tirées au hasard, dans un ordre nouveau. Viser une réserve d'au moins **deux fois** `draw` (conseil du
+  validateur), pour que rejouer le boss ne revienne pas à réciter les mêmes réponses. Chaque question doit se suffire
+  à elle-même (jamais « la question précédente »).
+  Langues : des phrases à traduire depuis le français ; autres matières : des questions à réponse courte.
+  Sa leçon commence par la consigne, par exemple « Avec ce que tu as appris, traduis correctement les phrases
+  ci-dessous. » ou « Avec ce que tu as appris, réponds correctement aux questions ci-dessous. ».
+- Pendant le boss : aucun cœur perdu, un seul essai par question. Le boss se rejoue : la meilleure médaille est gardée.
+- À la fin, une **médaille** selon le pourcentage de bonnes réponses : 🍫 Chocolat (0 %), 🪵 Bois (10 %),
+  🪨 Pierre (20 %), 🟤 Cuivre (30 %), ⚙️ Fer (40 %), 🥉 Bronze (50 %), 🥈 Argent (60 %), 🥇 Or (70 %),
+  💚 Émeraude (80 %), 💎 Diamant (90 %), 🏆 Platine (100 %). La meilleure reste affichée sur la carte.
+- **80 %** ou plus valide le chapitre (badge « Chapitre terminé »).
 
 ## 2. Les textes : `**gras**` et `[[mot|explication]]`
 
@@ -121,7 +135,7 @@ Le **dernier** monde est le « boss » du chapitre (badge « Chapitre terminé �
   `(…)` s'affiche en petit et en gris.
 - Pas de HTML : tout est affiché comme du texte (`<b>` s'affiche tel quel).
 - **Interdit** dans les champs comparés à la réponse de l'élève : `[[...]]` dans `options` (QCM), `answers` (fill),
-  `tokens` (spot), `words` / `distractors` / `alternatives` (order), `pairs` (match), `pattern` (write).
+  `tokens` (spot), `words` / `distractors` / `alternatives` (order), `pairs` (match), `answers` (question).
   Le validateur le signale.
 
 Champs communs à tous les exercices : `type`, `prompt` (consigne), `explanation` (affichée après la réponse),
@@ -237,25 +251,27 @@ compréhension orale). Deux boutons s'affichent sous la consigne : « 🔊 Écou
 
 `wrongIndex` = position du mot faux (0 = le 1er). Ponctuation dans des étiquettes séparées.
 
-### `write` — réponse rédigée (vérifiée automatiquement)
+### `question` — question ou phrase à traduire (réponse tapée)
 
 ```js
-{ type: "write", prompt: "Explique en 2 phrases pourquoi les députés prêtent serment.",
-  docId: "serment",                // optionnel : document affiché au-dessus (ancien nom : letterId)
-  minWords: 15,
-  requirements: [                  // vérifiés par expression régulière, insensible à la casse
-    { id: "deputes", label: "Parle des députés", pattern: "députés?" },
-    { id: "constitution", label: "Utilise le mot « constitution »", pattern: "constitution" },
-    { id: "roi", label: "Parle du roi", pattern: "\\broi\\b" }
-  ],
-  minRequirements: 2,              // nombre de cases à cocher pour pouvoir valider
-  starters: ["Les députés", "Ils veulent"],   // optionnel : débuts de phrase cliquables
-  modelAnswer: "Les députés jurent de rester unis. Ils veulent donner une constitution à la France.",
-  explanation: "…" }
+{ type: "question", prompt: "Traduis : « Elle a 12 ans. »",
+  answers: ["She is 12.", "She is twelve.", "She is 12 years old.", "She is twelve years old."],
+  multiline: true,                 // optionnel : zone de plusieurs lignes (réponse longue, deux phrases)
+  explanation: "L'âge se dit avec **be**." }
 ```
 
-`modelAnswer` doit valider au moins `minRequirements` et avoir au moins `minWords` mots (le validateur vérifie).
-Dans une chaîne JS, un `\` de regex s'écrit `\\`.
+Un seul essai : juste ou faux, la bonne réponse (`answers[0]`) s'affiche après une erreur.
+
+- `answers` : **toutes** les bonnes réponses (10 au plus), texte simple. Une traduction peut souvent s'écrire de
+  plusieurs façons : les lister.
+- Ne comptent pas : majuscules, espaces, ponctuation, traits d'union, et l'accent d'une **majuscule tapée par
+  l'élève** (« A la maison » = « à la maison », « Edit » = « Édit » ; mais « Ou » n'est pas « où »). Les autres accents
+  comptent. « 3 000 » = « 3000 », « cm³ » = « cm3 » ; le signe moins compte (−4 n'est pas 4).
+- Packs `en` : formes courtes et longues équivalentes, inutile de les lister (I'm = I am, don't = do not,
+  can't = cannot = can not, he's = he is, 's got = has got, 're, 've, 'll). « I'd » n'est pas automatique.
+- Langues : une phrase en français à traduire, avec **seulement** le vocabulaire et les tournures du chapitre.
+  Autres matières : une question à réponse **courte et précise** (une date, un nom, un nombre, un mot).
+- `listen` n'existe pas sur `question` (utiliser `fill`).
 
 ### Les figures (géométrie)
 
@@ -404,7 +420,7 @@ node tools/validate-pack.js packs/cm2/francais/dictee-statue-de-la-liberte/g1.js
 - [ ] **Explications courtes** (1 à 2 phrases) qui disent *pourquoi*, avec le mot-clé en `**gras**`.
 - [ ] **Leçon** : 2 à 4 points maximum, 1 à 3 exemples. On doit pouvoir la lire en 30 secondes.
 - [ ] **Progression du plus facile au plus difficile** : reconnaître (QCM, relier) → classer / ordonner →
-      produire (texte à trou, trouver l'erreur) → rédiger (`write`, en dernier monde).
+      produire (texte à trou, trouver l'erreur) → boss en `question` (dernier monde).
 - [ ] 6 à 12 exercices par monde, types variés, une seule notion nouvelle par monde.
 - [ ] Les mauvaises réponses des QCM sont plausibles (pas de réponse absurde), une seule est juste.
 - [ ] Contenu exact et vérifié avec le cours de l'élève (dates, orthographe, accents).

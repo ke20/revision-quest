@@ -24,7 +24,7 @@ function tidyList(o, k, optional) {
 function tidyExercise(e) {
   dropBlank(e, ["hint", "translation", "listen", "docId"]);
   tidyList(e, "distractors", true);
-  tidyList(e, "starters", true);
+  if (e.multiline !== true) delete e.multiline;
   tidyList(e, "answers", false);
   if (Array.isArray(e.alternatives)) {
     e.alternatives = e.alternatives.filter(function (a) { return !Array.isArray(a) || a.length; });

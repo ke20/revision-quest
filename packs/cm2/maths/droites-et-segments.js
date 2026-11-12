@@ -3073,7 +3073,7 @@ window.registerPack({
       ]
     },
     {
-      "id": 8,
+      "id": "construction",
       "title": "Programme de construction",
       "subtitle": "Le défi du sorcier Géométrix",
       "icon": "🧙",
@@ -3571,41 +3571,615 @@ window.registerPack({
           "answer": 2,
           "explanation": "(d) et (g) sont toutes les deux perpendiculaires à **(f)** : elles sont **parallèles**. (g) // (d).",
           "hint": "Regarde les deux petits carrés : (d) et (g) sont perpendiculaires à la même droite."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Boss : le défi du sorcier Géométrix",
+      "subtitle": "Tout le chapitre !",
+      "icon": "🧙",
+      "color": "#4F46E5",
+      "lesson": {
+        "title": "Le défi du sorcier",
+        "points": [
+          "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
+          "Écris juste **un mot** ou **un nombre**. Tu n'as qu'**un essai** par question : relis-toi avant de valider.",
+          "Regarde bien les figures : un **petit carré** = un angle droit."
+        ]
+      },
+      "draw": 12,
+      "exercises": [
+        {
+          "type": "question",
+          "prompt": "Comment s'appelle un trait droit qui s'arrête à deux points ?",
+          "answers": [
+            "un segment",
+            "segment",
+            "le segment"
+          ],
+          "explanation": "Un **segment** a deux extrémités : il s'arrête en ces deux points."
         },
         {
-          "type": "write",
-          "prompt": "Explique comment vérifier que deux droites (a) et (b) sont parallèles.",
-          "minWords": 12,
-          "requirements": [
-            {
-              "id": "equerre",
-              "label": "Parle de l'équerre",
-              "pattern": "[ée]querre"
-            },
-            {
-              "id": "regle",
-              "label": "Parle de la règle",
-              "pattern": "r[èe]gle"
-            },
-            {
-              "id": "glisser",
-              "label": "Dis qu'on fait glisser l'équerre",
-              "pattern": "gliss"
-            },
-            {
-              "id": "angle",
-              "label": "Parle de l'angle droit",
-              "pattern": "angle droit"
-            }
+          "type": "question",
+          "prompt": "Comment s'appelle un trait droit qui ne s'arrête jamais, d'aucun côté ?",
+          "answers": [
+            "une droite",
+            "droite",
+            "la droite"
           ],
-          "minRequirements": 3,
-          "starters": [
-            "Je pose l'équerre",
-            "Je fais glisser",
-            "Si l'équerre"
+          "explanation": "Une **droite** ne s'arrête jamais. La demi-droite, elle, a une origine."
+        },
+        {
+          "type": "question",
+          "prompt": "Comment s'appelle le point qui coupe un segment en deux parties de même longueur ?",
+          "answers": [
+            "le milieu",
+            "milieu",
+            "le milieu du segment"
           ],
-          "modelAnswer": "Je pose un côté de l'angle droit de l'équerre sur la droite (a). Je place la règle contre l'équerre, puis je fais glisser l'équerre le long de la règle. Si elle arrive juste sur (b), les droites sont parallèles.",
-          "explanation": "On utilise l'**équerre** (angle droit) posée sur (a) et on la fait **glisser** le long de la **règle** jusqu'à (b)."
+          "explanation": "Le **milieu** est à la même distance des deux extrémités du segment."
+        },
+        {
+          "type": "question",
+          "prompt": "Sur la figure du sorcier, J est le milieu de [AB] et AB = 6 cm. Combien mesure [AJ] ?",
+          "answers": [
+            "3 cm",
+            "3",
+            "3cm",
+            "3 centimètres",
+            "trois centimètres",
+            "trois"
+          ],
+          "figure": {
+            "w": 10,
+            "h": 8,
+            "points": {
+              "A": [
+                2.5,
+                7.3,
+                "w"
+              ],
+              "B": [
+                7.5,
+                0.7,
+                "e"
+              ],
+              "J": [
+                5,
+                4,
+                "nw"
+              ],
+              "C": [
+                9,
+                4,
+                "n"
+              ],
+              "D": [
+                1.5,
+                4,
+                "n"
+              ]
+            },
+            "draw": [
+              {
+                "segment": [
+                  "A",
+                  "B"
+                ]
+              },
+              {
+                "line": [
+                  "D",
+                  "C"
+                ],
+                "label": "(d)",
+                "labelAt": "start"
+              }
+            ],
+            "alt": "Un segment [AB] et une droite (d) qui passe par D, J et C ; J est au milieu de [AB]."
+          },
+          "explanation": "J coupe [AB] en deux parties égales : 6 ÷ 2 = **3 cm**."
+        },
+        {
+          "type": "question",
+          "prompt": "Que veut dire le signe ∈ dans « A ∈ (d) » ?",
+          "answers": [
+            "appartient à",
+            "appartient",
+            "appartient à la droite",
+            "A appartient à (d)",
+            "appartenir à",
+            "appartenir"
+          ],
+          "explanation": "**∈** veut dire « **appartient à** » : le point A est sur la droite (d). Le contraire s'écrit ∉."
+        },
+        {
+          "type": "question",
+          "prompt": "Des points placés sur une même droite sont… ?",
+          "answers": [
+            "alignés",
+            "ils sont alignés",
+            "aligné"
+          ],
+          "explanation": "Des points sur une **même droite** sont **alignés**."
+        },
+        {
+          "type": "question",
+          "prompt": "Avec quel instrument vérifie-t-on que des points sont alignés ?",
+          "answers": [
+            "la règle",
+            "règle",
+            "une règle",
+            "avec une règle",
+            "avec la règle"
+          ],
+          "explanation": "On pose la **règle** : tous les points doivent toucher le même bord."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien de droites passent par deux points A et B ?",
+          "answers": [
+            "une",
+            "1",
+            "une seule",
+            "une seule droite",
+            "1 droite",
+            "une droite"
+          ],
+          "explanation": "Par deux points, il passe **une seule** droite : la droite (AB)."
+        },
+        {
+          "type": "question",
+          "prompt": "Comment appelle-t-on deux droites qui se coupent ?",
+          "answers": [
+            "sécantes",
+            "des droites sécantes",
+            "elles sont sécantes",
+            "sécante"
+          ],
+          "explanation": "Deux droites qui se coupent sont **sécantes**. Elles se coupent au **point d'intersection**."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel est le point d'intersection des droites (d1) et (d3) ?",
+          "answers": [
+            "F",
+            "le point F",
+            "point F",
+            "en F"
+          ],
+          "figure": {
+            "w": 13,
+            "h": 7,
+            "points": {
+              "A": [
+                2,
+                1.5,
+                "n"
+              ],
+              "B": [
+                6,
+                1.5,
+                "ne"
+              ],
+              "C": [
+                11,
+                1.5,
+                "n"
+              ],
+              "D": [
+                5.25,
+                3.5,
+                "w"
+              ],
+              "E": [
+                4.5,
+                5.5,
+                "w"
+              ],
+              "F": [
+                6.5,
+                4.27,
+                "s"
+              ]
+            },
+            "draw": [
+              {
+                "line": [
+                  "A",
+                  "C"
+                ],
+                "label": "(d2)",
+                "labelAt": "start"
+              },
+              {
+                "line": [
+                  "A",
+                  "F"
+                ],
+                "label": "(d1)"
+              },
+              {
+                "line": [
+                  "E",
+                  "C"
+                ],
+                "label": "(d3)"
+              },
+              {
+                "line": [
+                  "B",
+                  "E"
+                ],
+                "label": "(d4)",
+                "labelAt": "start"
+              }
+            ],
+            "alt": "Quatre droites (d1), (d2), (d3) et (d4) qui se coupent aux points A, B, C, D, E et F."
+          },
+          "explanation": "(d1) et (d3) se croisent au point **F**."
+        },
+        {
+          "type": "question",
+          "prompt": "Comment appelle-t-on deux droites qui se coupent en formant un angle droit ?",
+          "answers": [
+            "perpendiculaires",
+            "des droites perpendiculaires",
+            "elles sont perpendiculaires",
+            "perpendiculaire"
+          ],
+          "explanation": "Deux droites qui se coupent avec un **angle droit** sont **perpendiculaires**."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien d'angles droits forment deux droites perpendiculaires ?",
+          "answers": [
+            "4",
+            "quatre",
+            "4 angles droits",
+            "quatre angles droits"
+          ],
+          "explanation": "Autour du point d'intersection, les **4** angles sont droits."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel instrument utilise-t-on pour tracer un angle droit ?",
+          "answers": [
+            "l'équerre",
+            "équerre",
+            "une équerre",
+            "avec une équerre",
+            "avec l'équerre"
+          ],
+          "explanation": "L'**équerre** a un angle droit. Le compas sert pour les cercles et les longueurs."
+        },
+        {
+          "type": "question",
+          "prompt": "Comment appelle-t-on deux droites qui ne se coupent jamais et gardent le même écartement ?",
+          "answers": [
+            "parallèles",
+            "des droites parallèles",
+            "elles sont parallèles",
+            "parallèle"
+          ],
+          "explanation": "Deux droites qui ne se coupent **jamais** sont **parallèles**."
+        },
+        {
+          "type": "question",
+          "prompt": "(f) et (g) sont perpendiculaires à la même droite (d). Comment sont les droites (f) et (g) ?",
+          "answers": [
+            "parallèles",
+            "elles sont parallèles",
+            "parallèle",
+            "des droites parallèles"
+          ],
+          "figure": {
+            "w": 10,
+            "h": 6,
+            "points": {
+              "d0": [
+                0,
+                5,
+                "hidden"
+              ],
+              "d1": [
+                10,
+                5,
+                "hidden"
+              ],
+              "H": [
+                3,
+                5,
+                "sw"
+              ],
+              "K": [
+                7,
+                5,
+                "se"
+              ],
+              "f": [
+                3,
+                0,
+                "hidden"
+              ],
+              "g": [
+                7,
+                0,
+                "hidden"
+              ]
+            },
+            "draw": [
+              {
+                "line": [
+                  "d0",
+                  "d1"
+                ],
+                "label": "(d)"
+              },
+              {
+                "line": [
+                  "H",
+                  "f"
+                ],
+                "label": "(f)"
+              },
+              {
+                "line": [
+                  "K",
+                  "g"
+                ],
+                "label": "(g)"
+              },
+              {
+                "rightAngle": [
+                  "f",
+                  "H",
+                  "d1"
+                ]
+              },
+              {
+                "rightAngle": [
+                  "g",
+                  "K",
+                  "d1"
+                ]
+              }
+            ],
+            "alt": "Une droite (d) horizontale et deux droites (f) et (g) qui la coupent chacune avec un angle droit."
+          },
+          "explanation": "Deux droites **perpendiculaires à une même droite** sont **parallèles** : (f) // (g)."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel instrument sert à tracer un cercle ou à reporter une longueur ?",
+          "answers": [
+            "le compas",
+            "compas",
+            "un compas",
+            "avec un compas",
+            "avec le compas"
+          ],
+          "explanation": "Le **compas** trace les cercles et reporte les longueurs. La règle trace, l'équerre fait l'angle droit."
+        },
+        {
+          "type": "question",
+          "prompt": "Comment s'appelle un trait droit qui a une origine et continue d'un seul côté ?",
+          "answers": [
+            "une demi-droite",
+            "demi-droite",
+            "la demi-droite"
+          ],
+          "explanation": "Une **demi-droite** commence à son origine et ne s'arrête jamais de l'autre côté."
+        },
+        {
+          "type": "question",
+          "prompt": "La notation (AB), avec des parenthèses, désigne-t-elle un segment, une droite ou une demi-droite ?",
+          "answers": [
+            "une droite",
+            "droite",
+            "la droite",
+            "la droite AB",
+            "droite AB"
+          ],
+          "explanation": "Les **parenthèses** montrent que le trait continue des deux côtés : (AB) est une **droite**."
+        },
+        {
+          "type": "question",
+          "prompt": "Dans la notation [AB), en quel point commence la demi-droite ?",
+          "answers": [
+            "A",
+            "en A",
+            "le point A",
+            "point A"
+          ],
+          "explanation": "Le crochet est du côté de **A** : la demi-droite [AB) commence en A."
+        },
+        {
+          "type": "question",
+          "prompt": "Que veut dire le signe ∉ dans « B ∉ (d) » ?",
+          "answers": [
+            "n'appartient pas à",
+            "n'appartient pas",
+            "n'appartient pas à la droite",
+            "B n'appartient pas à (d)",
+            "ne pas appartenir"
+          ],
+          "explanation": "**∉** veut dire « **n'appartient pas à** » : le point B n'est pas sur la droite (d)."
+        },
+        {
+          "type": "question",
+          "prompt": "Comment s'appelle le point où deux droites sécantes se coupent ?",
+          "answers": [
+            "le point d'intersection",
+            "point d'intersection",
+            "l'intersection",
+            "intersection"
+          ],
+          "explanation": "Deux droites sécantes se coupent en un **point d'intersection**."
+        },
+        {
+          "type": "question",
+          "prompt": "Sur une figure, avec quel codage montre-t-on un angle droit ?",
+          "answers": [
+            "un petit carré",
+            "petit carré",
+            "avec un petit carré",
+            "par un petit carré",
+            "un carré"
+          ],
+          "explanation": "Un **petit carré** dessiné dans l'angle code un angle droit."
+        },
+        {
+          "type": "question",
+          "prompt": "Sur une figure, que montrent des petits traits pareils sur deux segments ?",
+          "answers": [
+            "des longueurs égales",
+            "longueurs égales",
+            "la même longueur",
+            "même longueur",
+            "ils ont la même longueur",
+            "qu'ils ont la même longueur"
+          ],
+          "explanation": "Des **petits traits pareils** codent des **longueurs égales**."
+        },
+        {
+          "type": "question",
+          "prompt": "Que veut dire le signe // dans « (a) // (b) » ?",
+          "answers": [
+            "parallèles",
+            "sont parallèles",
+            "est parallèle à",
+            "parallèle à",
+            "parallèle"
+          ],
+          "explanation": "**//** veut dire que les droites (a) et (b) sont **parallèles** : elles ne se coupent jamais."
+        },
+        {
+          "type": "question",
+          "prompt": "Comment s'appelle un point où deux côtés d'une figure se rejoignent ?",
+          "answers": [
+            "un sommet",
+            "sommet",
+            "le sommet"
+          ],
+          "explanation": "Un **sommet** est le point où deux côtés se rejoignent."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel est le point d'intersection des droites (d2) et (d4) ?",
+          "answers": [
+            "B",
+            "le point B",
+            "point B",
+            "en B"
+          ],
+          "figure": {
+            "w": 13,
+            "h": 7,
+            "points": {
+              "A": [
+                2,
+                1.5,
+                "n"
+              ],
+              "B": [
+                6,
+                1.5,
+                "ne"
+              ],
+              "C": [
+                11,
+                1.5,
+                "n"
+              ],
+              "D": [
+                5.25,
+                3.5,
+                "w"
+              ],
+              "E": [
+                4.5,
+                5.5,
+                "w"
+              ],
+              "F": [
+                6.5,
+                4.27,
+                "s"
+              ]
+            },
+            "draw": [
+              {
+                "line": [
+                  "A",
+                  "C"
+                ],
+                "label": "(d2)",
+                "labelAt": "start"
+              },
+              {
+                "line": [
+                  "A",
+                  "F"
+                ],
+                "label": "(d1)"
+              },
+              {
+                "line": [
+                  "E",
+                  "C"
+                ],
+                "label": "(d3)"
+              },
+              {
+                "line": [
+                  "B",
+                  "E"
+                ],
+                "label": "(d4)",
+                "labelAt": "start"
+              }
+            ],
+            "alt": "Quatre droites (d1), (d2), (d3) et (d4) qui se coupent aux points A, B, C, D, E et F."
+          },
+          "explanation": "(d2) et (d4) se croisent au point **B**."
+        },
+        {
+          "type": "question",
+          "prompt": "M est le milieu de [AB] et AM = 4 cm. Combien mesure AB ?",
+          "answers": [
+            "8 cm",
+            "8",
+            "8cm",
+            "8 centimètres",
+            "huit centimètres",
+            "huit"
+          ],
+          "explanation": "M coupe [AB] en deux parties égales : AB = 4 × 2 = **8 cm**."
+        },
+        {
+          "type": "question",
+          "prompt": "Pour vérifier que deux droites sont parallèles, on fait glisser l'équerre le long de quel instrument ?",
+          "answers": [
+            "la règle",
+            "règle",
+            "une règle",
+            "le long de la règle"
+          ],
+          "explanation": "On pose l'équerre sur une droite, puis on la fait **glisser** le long de la **règle**."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien de points d'intersection ont deux droites parallèles ?",
+          "answers": [
+            "0",
+            "aucun",
+            "zéro",
+            "aucun point",
+            "0 point"
+          ],
+          "explanation": "Deux droites parallèles ne se coupent **jamais** : **aucun** point d'intersection."
         }
       ]
     }

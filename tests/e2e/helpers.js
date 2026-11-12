@@ -156,7 +156,7 @@ async function startWorld(page, i) {
   await expect(page.locator(".screen.play")).toBeVisible();
 }
 
-const curEx = (page, wi) => page.evaluate(wi => Engine.packData().worlds[wi].exercises[Engine.session.index], wi);
+const curEx = (page, wi) => page.evaluate(wi => Engine.currentExercise(Engine.packData().worlds[wi]), wi);
 
 /** Answer the current exercise correctly (generic for every type). */
 async function solve(page, ex) {
@@ -184,7 +184,7 @@ async function solve(page, ex) {
       break;
     case "fill": await page.fill(".fill-input", ex.answers[0]); break;
     case "spot": await page.locator(".spot-token").nth(ex.wrongIndex).click(); break;
-    case "write": await page.fill(".write-area", ex.modelAnswer); break;
+    case "question": await page.fill(".question-input", ex.answers[0]); break;
   }
   await tap(page, "[data-act=check]");
 }

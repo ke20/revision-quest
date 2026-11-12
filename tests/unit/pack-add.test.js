@@ -96,7 +96,7 @@ test("pack:add: a new chapter is copied to packs/ and appears in the catalogue; 
     assert.deepStrictEqual([r.ok, r.action, r.target, r.errors], [true, "ajouté", "packs/cm1/maths/ajout-de-test.js", []]);
     assert.ok(fs.existsSync(path.join(box.dir, "packs", "cm1", "maths", "ajout-de-test.js")));
     const cat = box.catalog();
-    assert.deepStrictEqual(cat.packs.find((p) => p.path === "cm1/maths/ajout-de-test"), { path: "cm1/maths/ajout-de-test", ...META, lang: "fr", worldCount: 1 });
+    assert.deepStrictEqual(cat.packs.find((p) => p.path === "cm1/maths/ajout-de-test"), { path: "cm1/maths/ajout-de-test", ...META, lang: "fr", worldCount: 2 });
 
     assert.strictEqual(box.add(path.join(box.dir, "packs", "cm1", "maths", "ajout-de-test.js")).action, "déjà à jour");
 
@@ -120,7 +120,7 @@ test("catalogue: a chapter « par groupes » is built from its chapter.json and 
     assert.deepStrictEqual(errors, []);
     assert.deepStrictEqual(catalog.packs.find((p) => p.path === "cm1/maths/groupes"), {
       path: "cm1/maths/groupes", title: "Par groupes", description: "Deux groupes.", icon: "👥", lang: "fr",
-      groups: [{ id: "b", label: "Groupe B", difficulty: 2, worldCount: 1 }, { id: "a", label: "Groupe A", worldCount: 1 }]
+      groups: [{ id: "b", label: "Groupe B", difficulty: 2, worldCount: 2 }, { id: "a", label: "Groupe A", worldCount: 2 }]
     }, "groups in chapter.json order");
     fs.writeFileSync(path.join(dir, "a.js"), Rules.formatStrict({ ...VALID, path: "cm1/maths/groupes/a", lang: "en" }, "Groupe"));
     assert.match(buildCatalog(box.dir).errors.join(" | "), /même lang/);

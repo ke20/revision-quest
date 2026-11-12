@@ -30,7 +30,9 @@ export function showMap() {
         '<span class="node-icon">' + (unlocked ? E(w.icon || "⭐") : "🔒") + "</span>" +
         '<span class="node-num">' + (i + 1) + "</span>" +
       "</button>" +
-      '<div class="node-label"><b>' + E(w.title) + '</b><span class="node-stars">' + starsHtml(p.stars) + "</span></div>" +
+      '<div class="node-label"><b>' + E(w.title) + '</b><span class="node-stars">' + starsHtml(p.stars) +
+        (i === S.data.worlds.length - 1 && p.completed ? ' <span class="node-medal" title="' + E(Engine.medalFor(p.accuracy || 0).name) + '">' + E(Engine.medalFor(p.accuracy || 0).icon) + "</span>" : "") +
+      "</span></div>" +
     "</div>";
   }).join("");
   var node = h('<section class="screen map">' +
@@ -100,6 +102,12 @@ export function layoutMap(node) {
 
 /* ================= Lesson ================= */
 
+/** The boss: how many questions are drawn, and from how many. @param {World} w */
+function bossCount(w) {
+  var pool = (w.exercises || []).length, n = Math.round(+(w.draw || 0));
+  return n > 0 && n < pool ? T("bossDraw", n, pool) : "📝 " + T("exercises", pool);
+}
+
 /** @param {World} w */
 export function showLesson(w) {
   route(worldPath(w));
@@ -121,8 +129,10 @@ export function showLesson(w) {
       (examples ? '<div class="lesson-examples"><div class="ex-label">' + T("examples") + "</div>" + examples + "</div>" : "") +
       (hasTr ? '<p class="lesson-tip">' + T("lessonTip") + "</p>" : "") +
     "</div>" +
-    '<div class="lesson-meta">📝 ' + T("exercises", (w.exercises || []).length) + " · " + heartsHtml(Engine.MAX_HEARTS) +
-      " " + shieldsHtml(Engine.settings().freeMistakes, Engine.settings().freeMistakes) + "</div>" +
+    (Engine.isBoss(w.id)
+      ? '<div class="lesson-meta boss-rules">' + bossCount(w) + "<br>" + T("bossRules") + "</div>"
+      : '<div class="lesson-meta">📝 ' + T("exercises", (w.exercises || []).length) + " · " + heartsHtml(Engine.MAX_HEARTS) +
+        " " + shieldsHtml(Engine.settings().freeMistakes, Engine.settings().freeMistakes) + "</div>") +
     '<button class="btn btn-primary btn-big" data-act="go">' + T("go") + "</button>" +
     "</section>");
   var figBox = qs(node, ".lesson-figs"); // only used when there are figures or tables (then it is there)

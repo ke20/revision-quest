@@ -15,7 +15,7 @@
     parseDb = E.parseDb, save = E.save, changeListeners = E.changeListeners, packId = E.packId, worlds = E.worlds,
     packState = E.packState, levelInfo = E.levelInfo, streak = E.streak, hasBadge = E.hasBadge, award = E.award,
     badgeById = E.badgeById, worldProgress = E.worldProgress, starsToUnlock = E.starsToUnlock,
-    isUnlocked = E.isUnlocked, starsOf = E.starsOf;
+    isUnlocked = E.isUnlocked, starsOf = E.starsOf, isBoss = E.isBoss, medalFor = E.medalFor;
 
   /** @type {Omit<EngineApi, EnginePlayKeys | EngineProfileKeys | EngineShareKeys>} */
   var base = {
@@ -45,6 +45,18 @@
     starsFor: starsFor,
     starsToUnlock: starsToUnlock,
     STARS_TO_UNLOCK: STARS_TO_UNLOCK,
+    BOSS_PASS: E.BOSS_PASS,
+    MEDALS: E.MEDALS,
+    medalFor: medalFor,
+    /** Is this world the boss of the current pack (its last world)? */
+    isBoss: isBoss,
+    /** Best medal on the boss of the current pack, or null while it is not played. */
+    bossMedal: function () {
+      var w = worlds();
+      if (!w.length) return null;
+      var p = worldProgress(w[w.length - 1].id);
+      return p.completed ? medalFor(p.accuracy || 0) : null;
+    },
 
     /** Id of the world the player should play next (first unlocked world without enough stars to open the next one,
         else last unlocked). */

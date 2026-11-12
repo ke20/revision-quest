@@ -48,7 +48,7 @@ test("combo multipliers: ×1 for 1–2, ×1.5 from 3, ×2 from 6; a mistake rese
 });
 
 test("hearts: 3 per world, −1 per wrong answer, game over at 0", () => {
-  const { E } = setup({ pack: makePack(1, 5) });
+  const { E } = setup({ pack: makePack(2, 5) }); // world 1: the last world (2) is the boss, without hearts
   E.setSettings({ freeMistakes: 0 }); // no shield: every wrong answer costs a heart
   E.startWorld(1);
   assert.strictEqual(E.session.hearts, E.MAX_HEARTS);
@@ -261,7 +261,7 @@ test("badges: translator (Curieux) after 10 different translations", () => {
   assert.strictEqual(E.translationsCount(), 10);
 });
 
-test("badges: bookworm = second-to-last world, or a world with a document; boss = last world; stars = 3★ everywhere", () => {
+test("badges: bookworm = second-to-last world, or a world with a document; boss = last world passed; stars = 3★ everywhere", () => {
   let { E } = setup({ pack: makePack(5, 1) }); // world 3 shows a document
   playWorld(E, 1); playWorld(E, 2);
   assert.strictEqual(E.hasBadge("bookworm"), false);
@@ -275,8 +275,61 @@ test("badges: bookworm = second-to-last world, or a world with a document; boss 
   assert.strictEqual(E.hasBadge("boss"), false);
   assert.strictEqual(E.hasBadge("stars"), false);
   playWorld(E, 4);
-  assert.strictEqual(E.hasBadge("boss"), true);
+  assert.strictEqual(E.hasBadge("boss"), true, "boss passed (100 %)");
   assert.strictEqual(E.hasBadge("stars"), true);
+});
+
+test("boss (last world): no heart lost, no shield used, never game over; medal by steps of 10 %; chapter validated from 80 %", () => {
+  const { E } = setup({ pack: makePack(2, 10) });
+  E.setSettings({ freeMistakes: 1 });
+  assert.strictEqual(E.isBoss(1), false);
+  assert.strictEqual(E.isBoss(2), true);
+  assert.strictEqual(E.bossMedal(), null, "not played yet");
+  let s = E.startWorld(2);
+  assert.strictEqual(s.boss, true);
+  for (let i = 0; i < 4; i++) {
+    const r = E.answer({ correct: false });
+    assert.deepStrictEqual([r.hearts, r.shields, r.shieldUsed, r.gameOver], [3, 1, false, false]);
+  }
+  for (let i = 0; i < 6; i++) E.answer({ correct: true, attempts: 1 });
+  let sum = E.finishWorld();
+  assert.deepStrictEqual([sum.boss, sum.passed, sum.medal.id, sum.bestMedal.id], [true, false, "silver", "silver"], "60 %");
+  assert.strictEqual(E.hasBadge("boss"), false, "below 80 %: chapter not validated");
+  sum = playWorld(E, 2, Array(10).fill({ correct: true, attempts: 1 }).fill({ correct: false }, 0, 2));
+  assert.deepStrictEqual([sum.passed, sum.medal.id], [true, "emerald"], "80 %");
+  assert.strictEqual(E.hasBadge("boss"), true);
+  sum = playWorld(E, 2, Array(10).fill({ correct: false }));
+  assert.deepStrictEqual([sum.passed, sum.medal.id, sum.bestMedal.id, E.bossMedal().id], [false, "chocolate", "emerald", "emerald"], "best medal kept");
+  const ids = [0, 0.09, 0.1, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.99, 1].map((a) => E.medalFor(a).id);
+  assert.deepStrictEqual(ids, ["chocolate", "chocolate", "wood", "stone", "copper", "iron", "bronze", "silver", "gold", "emerald", "diamond", "platinum"]);
+  const w1 = E.startWorld(1);
+  assert.strictEqual(w1.boss, false);
+  assert.strictEqual(E.answer({ correct: false }).shieldUsed, true, "other worlds keep their shields and hearts");
+});
+
+test("boss draw: a run plays `draw` questions of the pool, all different, in a random order; other worlds play all, in order", () => {
+  const pack = makePack(2, 30);
+  pack.worlds[1].draw = 12;
+  const { E } = setup({ pack });
+  const s1 = E.startWorld(2);
+  assert.strictEqual(s1.total, 12);
+  assert.strictEqual(new Set(s1.order).size, 12, "no question twice");
+  assert.ok(s1.order.every((i) => Number.isInteger(i) && i >= 0 && i < 30));
+  assert.strictEqual(E.currentExercise(pack.worlds[1]), pack.worlds[1].exercises[s1.order[0]]);
+  const orders = new Set([s1.order.join()]);
+  for (let k = 0; k < 5; k++) orders.add(E.startWorld(2).order.join());
+  assert.ok(orders.size > 1, "a new draw at each run");
+  assert.deepStrictEqual(E.startWorld(1).order, Array.from({ length: 30 }, (_, i) => i), "not a boss: every exercise, in order");
+  // resume after a reload: the same questions, checked
+  const s = E.startWorld(2); E.answer({ correct: true, attempts: 1 });
+  const saved = JSON.parse(JSON.stringify(s));
+  assert.deepStrictEqual(E.resumeWorld(saved).order, s.order);
+  assert.strictEqual(E.resumeWorld({ ...saved, order: [0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }), null, "a question twice: refused");
+  assert.strictEqual(E.resumeWorld({ ...saved, order: [99, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] }), null, "out of range: refused");
+  assert.strictEqual(E.resumeWorld({ ...saved, order: undefined }), null, "a boss without its order: refused");
+  const w1 = JSON.parse(JSON.stringify(E.startWorld(1)));
+  delete w1.order;
+  assert.strictEqual(E.resumeWorld(w1).total, 30, "an older saved run of a normal world (no order) still resumes");
 });
 
 test("badges: stars needs 3★ on every world of the chapter", () => {
@@ -707,7 +760,7 @@ test("comfort: multi-tab merge keeps the most recently changed settings (setting
 });
 
 test("comfort: free mistakes (shields) are used before hearts, per world session", () => {
-  const { E } = setup({ pack: makePack(1, 8) });
+  const { E } = setup({ pack: makePack(2, 8) }); // world 1 (world 2, the boss, has no hearts)
   E.setSettings({ freeMistakes: 2 });
   E.startWorld(1);
   assert.strictEqual(E.session.shields, 2);

@@ -82,7 +82,7 @@ function open(pack, w, wi) {
   function exercise() {
     var ex = w.exercises[index];
     count.textContent = "Question " + (index + 1) + " / " + w.exercises.length;
-    var doc = ex.type !== "write" ? Exercises.findDocument(/** @type {Pack} */ (pack), ex) : null;
+    var doc = Exercises.findDocument(/** @type {Pack} */ (pack), ex);
     if (doc && doc.screen && readDoc !== doc.id) {
       bar.hidden = true;
       Exercises.readingScreen(doc, container, function () { readDoc = doc && doc.id; exercise(); });

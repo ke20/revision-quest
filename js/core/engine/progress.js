@@ -97,6 +97,8 @@
     for (var i = 0; i < w.length; i++) if (w[i].id === id) return i;
     return -1;
   }
+  /** The boss is the last world of a pack of 2 worlds or more. @param {number | string} id */
+  function isBoss(id) { var n = worlds().length; return n >= 2 && worldIndex(id) === n - 1; }
   /** @param {number | string} id @returns {WorldProgress} */
   function worldProgress(id) {
     var ps = packState(E.state, packId(), false), k = String(id);
@@ -158,7 +160,7 @@
 
   E.PAUSE_KEY = PAUSE_KEY; E.PAUSE_MS = PAUSE_MS; E.readPauses = readPauses; E.settings = settings; E.packId = packId;
   E.worlds = worlds; E.packState = packState; E.levelInfo = levelInfo; E.streak = streak; E.hasBadge = hasBadge;
-  E.award = award; E.badgeById = badgeById; E.worldIndex = worldIndex; E.worldProgress = worldProgress;
+  E.award = award; E.badgeById = badgeById; E.worldIndex = worldIndex; E.isBoss = isBoss; E.worldProgress = worldProgress;
   E.starsToUnlock = starsToUnlock; E.isUnlocked = isUnlocked; E.worldHasDocument = worldHasDocument;
   E.markDay = markDay; E.markPackPlayed = markPackPlayed; E.addXp = addXp; E.starsOf = starsOf;
 })(window.EngineParts = window.EngineParts || /** @type {EngineParts} */ ({}));

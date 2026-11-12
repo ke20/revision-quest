@@ -705,191 +705,253 @@ window.registerPack({
       "icon": "👑",
       "color": "#5B21B6",
       "lesson": {
-        "title": "Récapitulons",
+        "title": "Le grand défi",
         "points": [
-          "Trouve le **sujet** : « Qui est-ce qui ? » ou « c'est… qui ».",
-          "Groupe nominal : accorde avec le **nom noyau**, pas avec le nom qui le suit.",
-          "Plusieurs noms au singulier → verbe au **pluriel**. Plusieurs verbes → **chacun** s'accorde."
+          "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
+          "Trouve le **sujet** (« Qui est-ce qui ? ») et son **nom noyau**, pas le nom qui le suit.",
+          "Plusieurs noms → verbe au **pluriel**. Plusieurs verbes → **chacun** s'accorde avec le sujet."
         ],
         "examples": [
-          "Le pot **de** confitures **est** vide. — Le pot **et** la confiture **sont** sur la table."
+          "Le panier **de** pommes **est** lourd. — Le chien **et** le chat **dorment**."
         ]
       },
+      "draw": 12,
       "exercises": [
         {
-          "type": "mcq",
-          "prompt": "Quelle phrase est bien écrite ?",
-          "options": [
-            "Les fleurs du jardin sentent bon.",
-            "Les fleurs du jardin sent bon.",
-            "Les fleurs du jardin sente bon.",
-            "Les fleurs du jardin sentes bon."
-          ],
-          "answer": 0,
-          "explanation": "Nom noyau : **fleurs** (pluriel) → elles sent**ent**."
-        },
-        {
-          "type": "mcq",
-          "prompt": "Quelle phrase est bien écrite ?",
-          "options": [
-            "Le cahier et le livre sont rangés.",
-            "Le cahier et le livre est rangé.",
-            "Le cahier et le livre sont rangé.",
-            "Le cahier et le livre est rangés."
-          ],
-          "answer": 0,
-          "explanation": "Deux noms = ils → ils **sont** rangé**s**."
-        },
-        {
-          "type": "sort",
-          "prompt": "Range chaque sujet selon le verbe qu'il demande.",
-          "categories": [
-            {
-              "id": "est",
-              "label": "… est là."
-            },
-            {
-              "id": "sont",
-              "label": "… sont là."
-            }
-          ],
-          "items": [
-            {
-              "text": "La boîte de crayons",
-              "cat": "est"
-            },
-            {
-              "text": "Les crayons de couleur",
-              "cat": "sont"
-            },
-            {
-              "text": "Le directeur et la maîtresse",
-              "cat": "sont"
-            },
-            {
-              "text": "Le chef des pompiers",
-              "cat": "est"
-            },
-            {
-              "text": "Mon frère et ma cousine",
-              "cat": "sont"
-            },
-            {
-              "text": "Le panier des fruits",
-              "cat": "est"
-            }
-          ],
-          "explanation": "Avec **de**, on garde le nom noyau. Avec **et**, plusieurs noms → pluriel."
-        },
-        {
-          "type": "fill",
-          "prompt": "Complète avec le verbe bien accordé.",
-          "sentence": "Le troupeau de moutons ___ dans le pré. (brouter)",
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Les abeilles (récolter) le nectar. »",
           "answers": [
-            "broute"
+            "récoltent"
           ],
-          "explanation": "Nom noyau : **troupeau** (un seul) → il brout**e**."
+          "explanation": "Sujet : **les abeilles** (pluriel) → elles récolt**ent**."
         },
         {
-          "type": "fill",
-          "prompt": "Complète avec le verbe bien accordé.",
-          "sentence": "Le renard et la belette ___ le poulailler. (guetter)",
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Mon petit frère (regarder) un dessin animé. »",
           "answers": [
-            "guettent"
+            "regarde"
           ],
-          "explanation": "Deux noms = ils → guett**ent**."
+          "explanation": "Sujet : **mon petit frère** (singulier) → il regard**e**."
         },
         {
-          "type": "fill",
-          "prompt": "Complète avec le verbe bien accordé.",
-          "sentence": "Les chats de la voisine grimpent et ___ sur le mur. (dormir)",
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Les feuilles de l'arbre (tomber) en automne. »",
           "answers": [
-            "dorment"
+            "tombent"
           ],
-          "explanation": "Sujet : « les chats » (nom noyau pluriel) pour les deux verbes → ils dorm**ent**."
+          "explanation": "Nom noyau : **feuilles** (pluriel), pas « l'arbre » → elles tomb**ent**."
         },
         {
-          "type": "spot",
-          "prompt": "Touche le verbe mal accordé.",
-          "tokens": [
-            "Les",
-            "feuilles",
-            "de",
-            "l'arbre",
-            "tombe",
-            "en",
-            "automne",
-            "."
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Le chien de mes voisins (garder) la maison. »",
+          "answers": [
+            "garde"
           ],
-          "wrongIndex": 4,
-          "correction": "tombent",
-          "explanation": "Nom noyau : **feuilles** (pluriel) → elles tomb**ent**. « de l'arbre » est un piège."
+          "explanation": "Nom noyau : **chien** (singulier), pas « voisins » → il gard**e**."
         },
         {
-          "type": "spot",
-          "prompt": "Touche le verbe mal accordé.",
-          "tokens": [
-            "La",
-            "sortie",
-            "des",
-            "élèves",
-            "ont",
-            "lieu",
-            "à",
-            "midi",
-            "."
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Le panier de pommes (être) lourd. »",
+          "answers": [
+            "est"
           ],
-          "wrongIndex": 4,
-          "correction": "a",
-          "explanation": "Nom noyau : **sortie** (une seule) → elle **a** lieu."
+          "explanation": "Nom noyau : **panier** (un seul) → il **est** lourd."
         },
         {
-          "type": "spot",
-          "prompt": "Touche le verbe mal accordé.",
-          "tokens": [
-            "Mon",
-            "père",
-            "et",
-            "ma",
-            "mère",
-            "travaille",
-            ",",
-            "rentrent",
-            "et",
-            "cuisinent",
-            "."
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Les élèves de la classe (avoir) un exposé à préparer. »",
+          "answers": [
+            "ont"
           ],
-          "wrongIndex": 5,
-          "correction": "travaillent",
-          "explanation": "Deux noms = ils : **tous** les verbes au pluriel → travaill**ent**."
+          "explanation": "Nom noyau : **élèves** (pluriel) → ils **ont**."
         },
         {
-          "type": "write",
-          "prompt": "Écris une phrase où le sujet est « Les abeilles de la ruche » avec deux verbes au présent.",
-          "minWords": 7,
-          "requirements": [
-            {
-              "id": "sujet",
-              "label": "Commence par « Les abeilles de la ruche »",
-              "pattern": "^\\s*les abeilles de la ruche\\b"
-            },
-            {
-              "id": "ent",
-              "label": "Contient un verbe en -ent",
-              "pattern": "\\w+ent\\b"
-            },
-            {
-              "id": "deux",
-              "label": "Relie deux verbes avec « et » ou une virgule",
-              "pattern": "\\w+ent\\b[^.]*(,| et )[^.]*\\b\\w+(ent|ont)\\b"
-            }
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Le renard et le loup (chasser) la nuit. »",
+          "answers": [
+            "chassent"
           ],
-          "minRequirements": 3,
-          "starters": [
-            "Les abeilles de la ruche"
+          "explanation": "Deux noms reliés par **et** = ils → chass**ent**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Ma sœur, mon frère et mon cousin (jouer) au ballon. »",
+          "answers": [
+            "jouent"
           ],
-          "modelAnswer": "Les abeilles de la ruche butinent les fleurs et fabriquent du miel.",
-          "explanation": "Le nom noyau est **abeilles** (pluriel) : les deux verbes prennent **-ent** (ou font, vont, ont, sont)."
+          "explanation": "Trois noms = **ils** → jou**ent**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Toi et moi (chanter) dans la chorale. »",
+          "answers": [
+            "chantons"
+          ],
+          "explanation": "Toi et moi = **nous** → nous chant**ons**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Toi et ton frère (ranger) la chambre. »",
+          "answers": [
+            "rangez"
+          ],
+          "explanation": "Toi et ton frère = **vous** → vous rang**ez**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Le jardinier arrose les fleurs et (ramasser) les tomates. »",
+          "answers": [
+            "ramasse"
+          ],
+          "explanation": "Le même sujet, **le jardinier** (singulier), commande les deux verbes → il ramass**e**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Les enfants courent, sautent et (crier) dans la cour. »",
+          "answers": [
+            "crient"
+          ],
+          "explanation": "Sujet : **les enfants** pour les trois verbes → ils cri**ent**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « La maîtresse des élèves de CM2 (corriger) les cahiers. »",
+          "answers": [
+            "corrige"
+          ],
+          "explanation": "Nom noyau : **maîtresse** (singulier), pas « élèves » → elle corrig**e**."
+        },
+        {
+          "type": "question",
+          "prompt": "Recopie la phrase en corrigeant l'erreur : « Les chats de la voisine dort sur le mur. »",
+          "answers": [
+            "Les chats de la voisine dorment sur le mur."
+          ],
+          "explanation": "Nom noyau : **chats** (pluriel) → ils **dorment**."
+        },
+        {
+          "type": "question",
+          "prompt": "Recopie la phrase en corrigeant l'erreur : « Le directeur et la maîtresse parle aux parents. »",
+          "answers": [
+            "Le directeur et la maîtresse parlent aux parents."
+          ],
+          "multiline": true,
+          "explanation": "Deux noms reliés par **et** = ils → ils **parlent**."
+        },
+        {
+          "type": "question",
+          "prompt": "Recopie la phrase en corrigeant les deux erreurs : « Mes parents prépare le repas et mette la table. »",
+          "answers": [
+            "Mes parents préparent le repas et mettent la table."
+          ],
+          "multiline": true,
+          "explanation": "Sujet : **mes parents** (= ils) pour les deux verbes → ils prépar**ent** et mett**ent**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Le soleil (briller) dans le ciel. »",
+          "answers": [
+            "brille"
+          ],
+          "explanation": "Sujet : **le soleil** (singulier) → il brill**e**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Les oiseaux (construire) leur nid. »",
+          "answers": [
+            "construisent"
+          ],
+          "explanation": "Sujet : **les oiseaux** (pluriel) → ils construis**ent**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Nous (finir) nos devoirs avant le dîner. »",
+          "answers": [
+            "finissons"
+          ],
+          "explanation": "Sujet : **nous** → nous finiss**ons**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « La boîte de crayons (rester) sur la table. »",
+          "answers": [
+            "reste"
+          ],
+          "explanation": "Nom noyau : **boîte** (singulier), pas « crayons » → elle rest**e**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Les chaussures de mon père (sentir) mauvais. »",
+          "answers": [
+            "sentent"
+          ],
+          "explanation": "Nom noyau : **chaussures** (pluriel), pas « père » → elles sent**ent**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Le bruit des vagues (bercer) les enfants. »",
+          "answers": [
+            "berce"
+          ],
+          "explanation": "Nom noyau : **bruit** (singulier), pas « vagues » → il berc**e**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Les amies de ma mère (venir) dîner ce soir. »",
+          "answers": [
+            "viennent"
+          ],
+          "explanation": "Nom noyau : **amies** (pluriel), pas « mère » → elles **viennent**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Mon cousin et moi (partir) en vacances demain. »",
+          "answers": [
+            "partons"
+          ],
+          "explanation": "Mon cousin et moi = **nous** → nous part**ons**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Ta sœur et toi (aller) au cinéma. »",
+          "answers": [
+            "allez"
+          ],
+          "explanation": "Ta sœur et toi = **vous** → vous **allez**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Le boulanger pétrit la pâte et (cuire) le pain. »",
+          "answers": [
+            "cuit"
+          ],
+          "explanation": "Le même sujet, **le boulanger** (singulier), commande les deux verbes → il cui**t**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe entre parenthèses au présent, bien accordé : « Les chevaux galopent et (franchir) la rivière. »",
+          "answers": [
+            "franchissent"
+          ],
+          "explanation": "Sujet : **les chevaux** pour les deux verbes → ils franchiss**ent**."
+        },
+        {
+          "type": "question",
+          "prompt": "Recopie la phrase en corrigeant l'erreur : « Le bouquet de roses sentent bon. »",
+          "answers": [
+            "Le bouquet de roses sent bon."
+          ],
+          "multiline": true,
+          "explanation": "Nom noyau : **bouquet** (un seul), pas « roses » → il **sent** bon."
+        },
+        {
+          "type": "question",
+          "prompt": "Recopie la phrase en corrigeant les deux erreurs : « Les élèves lève le doigt et répond à la question. »",
+          "answers": [
+            "Les élèves lèvent le doigt et répondent à la question."
+          ],
+          "multiline": true,
+          "explanation": "Sujet : **les élèves** (= ils) pour les deux verbes → ils lèv**ent** et répond**ent**."
         }
       ]
     }

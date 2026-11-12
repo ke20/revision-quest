@@ -6,7 +6,6 @@ const assert = require("node:assert");
 const { load, pageScripts } = require("./helpers/env");
 
 const X = load({ scripts: ["js/core/i18n.js", ...pageScripts("voix.html", "js/exercises/")] }).window.Exercises;
-const j = (x) => JSON.parse(JSON.stringify(x)); // objects from the vm realm → plain objects
 
 /* ---------- escaping and rich text ---------- */
 
@@ -93,23 +92,32 @@ test("countWords: words, contractions and numbers; punctuation alone is not a wo
   assert.strictEqual(X.countWords("I don’t know"), 3, "curly apostrophe (phone keyboards): one word");
 });
 
-test("writeCheck: requirements met (case-insensitive regex), minRequirements, minWords, curly apostrophes", () => {
-  const ex = {
-    minWords: 5,
-    requirements: [{ label: "should", pattern: "\\bshould\\b" }, { label: "don't", pattern: "don't" }, { label: "bad", pattern: "(" }]
-  };
-  let r = j(X.writeCheck(ex, "You SHOULD talk. Don’t worry."));
-  assert.deepStrictEqual(r.met, [true, true, false], "invalid regex never matches, never throws");
-  assert.strictEqual(r.count, 2);
-  assert.strictEqual(r.words, 5);
-  assert.strictEqual(r.needed, 3, "all requirements by default");
-  assert.strictEqual(r.ok, false);
-  r = j(X.writeCheck({ ...ex, minRequirements: 2 }, "You SHOULD talk. Don’t worry."));
-  assert.strictEqual(r.ok, true, "2 of 3 required");
-  r = j(X.writeCheck({ ...ex, minRequirements: 2 }, "You should. Don't."));
-  assert.strictEqual(r.ok, false, "too few words");
-  r = j(X.writeCheck({}, ""));
-  assert.deepStrictEqual([r.met, r.count, r.needed, r.ok], [[], 0, 0, true], "no requirements, no minimum");
+test("question: case, spaces, punctuation and hyphens ignored; accents count, except on a capital the pupil typed", () => {
+  const ok = (answers, value, lang = "fr") => X.questionAccepted({ answers }, value, lang);
+  assert.ok(ok(["Édit de Nantes"], "  édit   de nantes !"));
+  assert.ok(ok(["Édit de Nantes"], "Edit de Nantes"), "capital typed without its accent");
+  assert.ok(!ok(["Édit de Nantes"], "edit de nantes"), "a missing accent on a lower-case letter is a mistake");
+  assert.ok(ok(["où"], "Où") && !ok(["où"], "Ou") && !ok(["où"], "ou"), "« Ou » is the other homophone");
+  assert.ok(ok(["à la brocante"], "A la brocante") && !ok(["à la brocante"], "a la brocante"));
+  assert.ok(ok(["l'Édit de Nantes"], "L'Edit de Nantes"), "capital after an apostrophe");
+  assert.ok(ok(["peut-être"], "peut être") && ok(["deux cents"], "Deux Cents."));
+  assert.ok(ok(["1598"], "1598") && !ok(["1598"], "1589"));
+  assert.ok(!ok(["chat"], "") && !ok(["chat"], " ! "), "an empty answer is never right");
+  assert.ok(!ok(["chat"], "chats"), "spelling counts");
+});
+
+test("question: English short and long forms are the same answer", () => {
+  const ok = (answers, value) => X.questionAccepted({ answers }, value, "en");
+  assert.ok(ok(["I am not tall."], "I'm not tall"));
+  assert.ok(ok(["She doesn't like spinach."], "she does not like spinach"));
+  assert.ok(ok(["It isn't difficult."], "It's not difficult."));
+  assert.ok(ok(["I can't swim."], "I cannot swim") && ok(["I can't swim."], "I can not swim"));
+  assert.ok(ok(["I have got a cat."], "I’ve got a cat"), "curly apostrophe (phone keyboards)");
+  assert.ok(ok(["My sister has got blonde hair."], "My sister's got blonde hair"));
+  assert.ok(!ok(["She doesn't like spinach."], "She doesn't likes spinach"));
+  assert.ok(!ok(["It isn't difficult."], "its not difficult"), "its is not it's");
+  assert.ok(!ok(["Tom's book"], "Tom is book"), "a possessive 's stays a possessive");
+  assert.strictEqual(X.answerKey("I'm 12, aren't I?", "en"), "i am 12 are not i");
 });
 
 /* ---------- speech: choice of the device voice (field `listen`) ---------- */

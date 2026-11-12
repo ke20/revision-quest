@@ -140,7 +140,6 @@ interface ExerciseController {
   auto?: boolean;
 }
 
-interface WriteCheck { met: boolean[]; count: number; words: number; needed: number; ok: boolean }
 
 interface SpeechApi {
   current: SpeechSynthesisUtterance | null;
@@ -171,7 +170,9 @@ interface ExercisesApi {
   /** The card of a document, as shown over a question ("read-card read-inline") or on the reading screen ("read-card"). */
   docCard(doc: PackDocument, cls: string): HTMLElement;
   closeText(): void;
-  writeCheck(ex: WriteExercise, text: string): WriteCheck;
+  /** The comparable form of a typed answer (lang "en": English short forms expanded). */
+  answerKey(s: string, lang?: string): string;
+  questionAccepted(ex: QuestionExercise, value: string, lang?: string): boolean;
   pickVoice(voices: SpeechSynthesisVoice[], lang?: string, exclude?: string[]): SpeechSynthesisVoice | null;
   voiceQuality(v: SpeechSynthesisVoice): number;
   voiceKey(v: SpeechSynthesisVoice): string;

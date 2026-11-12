@@ -11,7 +11,8 @@
   const PATH_RE = /^([a-z0-9-]{1,30})\/([a-z0-9-]{1,30})\/([a-z0-9-]{1,60})$/; // a catalogue path: <niveau>/<matiere>/<cours>
   const PACK_PATH_RE = /^[a-z0-9-]{1,30}\/[a-z0-9-]{1,30}\/[a-z0-9-]{1,60}(\/[a-z0-9-]{1,30})?$/; // a pack id: the same, plus /<groupe> for a group
   const COLOR_RE = /^#[0-9a-fA-F]{3,8}$/;
-  const TYPES = ["mcq", "sort", "match", "order", "fill", "spot", "write"];
+  const TYPES = ["mcq", "sort", "match", "order", "fill", "spot", "question"];
+  const BOSS_MIN = 10, BOSS_MAX = 20, BOSS_POOL = 40; // the boss (last world): 10 to 20 questions per run, from a pool of 40 at most
 
   /* ---------- helpers ---------- */
 
@@ -290,6 +291,30 @@
         validateExercise(e, `${W} (${w.title || ""}) ex ${ei + 1}`, { err, warn, docIds, stats });
       });
     });
+    pack.worlds.forEach(/** @param {any} w @param {number} wi */ (w, wi) => {
+      if (w && w.draw != null && (pack.worlds.length < 2 || wi !== pack.worlds.length - 1)) err(`monde ${wi + 1} : draw seulement sur le boss (dernier monde)`);
+    });
+    // the boss: the last world of a chapter of 2 worlds or more, made of 10 to 20 questions only, without hints
+    // (one try, like a test). A course of one world has no boss.
+    const boss = pack.worlds.length >= 2 ? pack.worlds[pack.worlds.length - 1] : null;
+    if (boss && typeof boss === "object" && isArr(boss.exercises)) {
+      const B = `monde ${pack.worlds.length} (boss)`;
+      const n = boss.exercises.length, draw = boss.draw;
+      if (draw == null) {
+        if (n < BOSS_MIN || n > BOSS_MAX) err(B + ` : ${n} exercices, il en faut ${BOSS_MIN} à ${BOSS_MAX} (ou une réserve plus grande avec draw)`);
+      } else if (!Number.isInteger(draw) || draw < BOSS_MIN || draw > BOSS_MAX) {
+        err(B + ` : draw ${json(draw)} doit être un nombre entier de ${BOSS_MIN} à ${BOSS_MAX} (questions tirées à chaque partie)`);
+      } else {
+        if (n < draw) err(B + ` : ${n} questions dans la réserve, il en faut au moins draw (${draw})`);
+        else if (n < 2 * draw) warn(B + ` : réserve de ${n} questions pour ${draw} tirées à chaque partie : vise au moins ${2 * draw} pour que deux parties se ressemblent peu`);
+        if (n > BOSS_POOL) err(B + ` : ${n} questions, ${BOSS_POOL} au plus dans la réserve`);
+      }
+      boss.exercises.forEach(/** @param {any} e @param {number} ei */ (e, ei) => {
+        if (!e || typeof e !== "object") return;
+        if (e.type !== "question") err(B + ` ex ${ei + 1} : le boss ne contient que des exercices question (reçu : ${json(e.type)})`);
+        if (e.hint != null) err(B + ` ex ${ei + 1} : pas d'indice dans le boss`);
+      });
+    }
     return stats;
   }
 
@@ -332,9 +357,9 @@
     if (isStr(e.prompt) && plain(e.prompt).length > 160) warn(t + " : consigne longue (" + plain(e.prompt).length + " caractères) — fais simple");
     if (isStr(e.explanation) && plain(e.explanation).length > 300) warn(t + " : explication longue (" + plain(e.explanation).length + " caractères)");
     strings([e.prompt, e.explanation, e.hint]).forEach((s) => checkMarkup(s, t, err));
-    // text to read: any exercise can show a pack document (docId; letterId is the old name, write only)
+    // text to read: any exercise can show a pack document (docId; letterId was its old name)
     if (e.docId != null && e.letterId != null) err(t + " : utilise docId OU letterId, pas les deux");
-    if (e.letterId != null && e.type !== "write") err(t + " : letterId seulement sur write (utilise docId)");
+    if (e.letterId != null) err(t + " : letterId n'existe plus (utilise docId)");
     const docRef = e.docId != null ? e.docId : e.letterId;
     if (docRef != null && !docIds.has(docRef)) err(t + ` : document ${docRef} introuvable dans documents/letters`);
     if (e.figure != null) validateFigure(e.figure, t, err, warn);
@@ -424,39 +449,19 @@
       if (!isStr(e.correction)) err(t + " : correction manquante");
       noTr(e.tokens, t + " tokens", err);
     },
-    write(e, t, err, warn) {
-      if (!isArr(e.requirements) || !e.requirements.length) return err(t + " : requirements manquant");
-      const reqIds = new Set();
-      let met = 0;
-      const model = String(e.modelAnswer || "").replace(/[’‘ʼ`´]/g, "'").replace(/\s+/g, " ");
-      e.requirements.forEach(/** @param {any} r @param {number} i */ (r, i) => {
-        const R = t + ` requirement ${r && r.id ? r.id : i}`;
-        if (!r || !isStr(r.id)) err(R + " : id manquant");
-        else if (reqIds.has(r.id)) err(R + " : id en double");
-        reqIds.add(r && r.id);
-        if (!r || !isStr(r.label)) err(R + " : label manquant");
-        noTr(r && r.pattern, R + " pattern", err);
-        let re = null;
-        try { re = new RegExp(r.pattern, "i"); } catch (x) { err(R + " : regex invalide (" + /** @type {Error} */ (x).message + ")"); }
-        if (re && re.test(model)) met++;
-        else if (re && e.modelAnswer) warn(R + " : non trouvé dans modelAnswer");
-      });
-      const min = e.minRequirements != null ? e.minRequirements : e.requirements.length;
-      if (!Number.isInteger(min) || min < 1 || min > e.requirements.length) err(t + ` : minRequirements ${e.minRequirements} doit être entre 1 et ${e.requirements.length}`);
-      if (!isStr(e.modelAnswer)) err(t + " : modelAnswer manquant");
-      else {
-        if (met < min) err(t + ` : modelAnswer ne valide que ${met}/${min} requirements`);
-        const words = (e.modelAnswer.trim().match(/[A-Za-zÀ-ÿ0-9']+/g) || []).length;
-        if (e.minWords && words < e.minWords) err(t + ` : modelAnswer trop court (${words} mots < minWords ${e.minWords})`);
-      }
-      if (e.starters != null && !isArr(e.starters)) err(t + " : starters doit être un tableau");
-      noTr(e.starters, t + " starters", err);
+    question(e, t, err) {
+      if (!isArr(e.answers) || !e.answers.length) return err(t + " : answers doit contenir au moins une réponse");
+      if (e.answers.length > 10) err(t + " : 10 réponses acceptées au plus");
+      if (!e.answers.every(isStr)) err(t + " : answers ne contient que du texte non vide");
+      if (hasDup(e.answers)) err(t + " : answers en double");
+      noTr(e.answers, t + " answers", err);
+      if (e.multiline != null && typeof e.multiline !== "boolean") err(t + " : multiline doit être true ou false");
     }
   };
 
   const api = {
     ID_RE, WORLD_ID_RE, PATH_RE, PACK_PATH_RE, COLOR_RE, TYPES,
-    MAX_ROWS, MAX_COLS, MAX_CELL, MAX_PACK_SIZE,
+    MAX_ROWS, MAX_COLS, MAX_CELL, MAX_PACK_SIZE, BOSS_MIN, BOSS_MAX, BOSS_POOL,
     parseStrict, formatStrict,
     isStr, plain, checkMarkup,
     checkPath, checkLang, validateMeta, catalogEntry, LICENSES,

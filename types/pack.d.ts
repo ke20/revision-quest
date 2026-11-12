@@ -96,20 +96,14 @@ interface SpotExercise extends ExerciseBase {
   wrongIndex: number;
   correction: string;
 }
-interface WriteRequirement {
-  id: string;
-  label: string;
-  pattern: string;
+interface QuestionExercise extends ExerciseBase {
+  type: "question";
+  /** Accepted answers (plain text): case, spaces, punctuation, English short forms and a capital's accent ignored. */
+  answers: string[];
+  /** A box of several lines (long answer, two sentences to translate). */
+  multiline?: boolean;
 }
-interface WriteExercise extends ExerciseBase {
-  type: "write";
-  minWords?: number;
-  requirements: WriteRequirement[];
-  minRequirements?: number;
-  starters?: string[];
-  modelAnswer: string;
-}
-type Exercise = McqExercise | SortExercise | MatchExercise | OrderExercise | FillExercise | SpotExercise | WriteExercise;
+type Exercise = McqExercise | SortExercise | MatchExercise | OrderExercise | FillExercise | SpotExercise | QuestionExercise;
 
 interface World {
   id: number | string;
@@ -119,6 +113,8 @@ interface World {
   icon?: string;
   color?: string;
   lesson?: Lesson;
+  /** The boss only: questions drawn from its exercises at each run (10 to 20); all of them when missing. */
+  draw?: number;
   exercises: Exercise[];
 }
 

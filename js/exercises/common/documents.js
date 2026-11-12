@@ -8,7 +8,7 @@
 
   var T = X.T, escapeHtml = X.escapeHtml, rich = X.rich, plain = X.plain, el = X.el;
 
-  /** Document shown by a write exercise: docId (or legacy letterId) in data.documents (or legacy data.letters). */
+  /** Document shown with an exercise: docId (or legacy letterId) in data.documents (or legacy data.letters). */
   /** @param {LoadedPack | Pack | null} data @param {Exercise} ex @returns {PackDocument | null} */
   function findDocument(data, ex) {
     var id = ex.docId != null ? ex.docId : ex.letterId;

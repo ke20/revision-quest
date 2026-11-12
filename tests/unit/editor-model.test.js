@@ -28,11 +28,7 @@ const FILL = {
   order(e, T) { e.prompt = "Remets dans l'ordre."; e.words = T.splitWords("Le chat dort."); e.translation = "The cat sleeps."; },
   fill(e) { e.prompt = "Complète."; e.sentence = "Le chat ___ sur le lit."; e.answers = ["dort", ""]; },
   spot(e, T) { e.prompt = "Touche le mot faux."; e.tokens = T.splitWords("Les élèves écoute la maîtresse."); e.wrongIndex = 2; e.correction = "écoutent"; },
-  write(e) {
-    e.prompt = "Raconte ta journée."; e.minWords = 5;
-    e.requirements = [{ id: "r1", label: "Parle de l'école", pattern: "école" }]; e.minRequirements = 1;
-    e.modelAnswer = "Ce matin je suis allé à l'école avec mon frère.";
-  }
+  question(e) { e.prompt = "Qui signe l'Édit de Nantes ?"; e.answers = ["Henri IV", "Henri 4", ""]; }
 };
 
 test("every exercise type: the empty template is refused, the filled one passes the pack rules once exported", async () => {

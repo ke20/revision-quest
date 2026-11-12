@@ -3,7 +3,7 @@
 // Never loaded; used in JSDoc comments only.
 
 /** Members of EngineApi added by js/core/engine/api/play.js. */
-type EnginePlayKeys = "startWorld" | "resumeWorld" | "useHint" | "answer" | "finishWorld" | "quitWorld" | "worldsInARow" |
+type EnginePlayKeys = "startWorld" | "resumeWorld" | "currentExercise" | "useHint" | "answer" | "finishWorld" | "quitWorld" | "worldsInARow" |
   "resetPauseCount" | "PAUSE_MS" | "pauseEndsAt" | "startPause";
 /** Members of EngineApi added by js/core/engine/api/profiles.js. */
 type EngineProfileKeys = "COMFORT" | "comfortDefaults" | "settings" | "setSettings" | "reset" | "resetPack" | "currentProfile" |
@@ -62,6 +62,9 @@ interface EngineParts {
   MAX_STARS: number;
   STARS_TO_UNLOCK: Record<PlayerSettings["difficulty"], number>;
   starsFor(accuracy: number): number;
+  BOSS_PASS: number;
+  MEDALS: Medal[];
+  medalFor(accuracy: number): Medal;
   ALLOWED_AVATARS: string[];
   SAFE_ID: RegExp;
 
@@ -130,6 +133,7 @@ interface EngineParts {
   award(id: string, list: Badge[]): void;
   badgeById(id: string): Badge | null;
   worldIndex(id: number | string): number;
+  isBoss(id: number | string): boolean;
   worldProgress(id: number | string): WorldProgress;
   starsToUnlock(): number;
   isUnlocked(id: number | string): boolean;

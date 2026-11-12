@@ -1359,167 +1359,336 @@ window.registerPack({
       "lesson": {
         "title": "La grande enquête",
         "points": [
-          "Une longue histoire : lis-la **calmement**, jusqu'au bout, avant de répondre.",
-          "C'est une **enquête** : chaque indice compte, note-les dans ta tête.",
-          "Tu auras besoin de ce que tu as lu **à bord du Nautilus** (monde 7).",
-          "N'hésite pas à utiliser « 📖 Retour au texte » pour vérifier."
+          "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
+          "Lis l'histoire **jusqu'au bout**, calmement, avant de répondre. Utilise « 📖 Retour au texte » pour vérifier.",
+          "Réponds en **un ou quelques mots**, copiés du texte sans faute."
         ],
         "examples": [
-          "« Mobilis in mobili » = mobile dans l'élément mobile."
+          "« Mobilis in mobili » = mobile dans l'élément mobile."
         ]
       },
+      "draw": 12,
       "exercises": [
         {
-          "type": "mcq",
+          "type": "question",
           "docId": "m8-secret",
-          "prompt": "Où Nina trouve-t-elle le livre ?",
-          "options": [
-            "Chez Monsieur Marin",
-            "Dans le grenier de Malo",
-            "À la brocante du village",
-            "À la bibliothèque"
+          "prompt": "Où Nina et Malo se promènent-ils au début de l'histoire ?",
+          "answers": [
+            "la brocante",
+            "à la brocante",
+            "brocante",
+            "la brocante du village",
+            "à la brocante du village"
           ],
-          "answer": 2,
-          "explanation": "Ils se promènent « à la **brocante** du village » et Nina achète le livre deux euros."
+          "explanation": "Ils se promènent « à la **brocante** du village »."
         },
         {
-          "type": "mcq",
+          "type": "question",
           "docId": "m8-secret",
-          "prompt": "À qui appartenait le livre avant ?",
-          "options": [
-            "Au capitaine Nemo",
-            "À la fille de Monsieur Marin",
-            "À Monsieur Marin, l'ancien maître d'école",
-            "Au vendeur à moustache"
+          "prompt": "Combien Nina paie-t-elle le livre ?",
+          "answers": [
+            "deux euros",
+            "2 euros",
+            "deux",
+            "2"
           ],
-          "answer": 2,
-          "explanation": "Le vendeur le dit : « Il appartenait à **Monsieur Marin**, l'ancien maître d'école. »"
+          "explanation": "Le vendeur dit : « **Deux euros** »."
         },
         {
-          "type": "mcq",
+          "type": "question",
           "docId": "m8-secret",
-          "prompt": "Que découvre Nina dans le livre ?",
-          "options": [
-            "Une carte du village",
-            "Des mots soulignés au crayon",
-            "Une lettre de Monsieur Marin",
-            "La clé du cadenas",
-            "Une phrase sous la carte"
+          "prompt": "Quel est le titre du livre que Nina achète ?",
+          "answers": [
+            "Vingt mille lieues sous les mers",
+            "20000 lieues sous les mers"
           ],
-          "answer": [
-            0,
-            1,
-            4
-          ],
-          "explanation": "Dans le livre : mots soulignés, carte, phrase. La **lettre** est dans la boîte, à la fin. Il n'y a pas de clé : c'est un cadenas à code.",
-          "showCount": false
+          "explanation": "C'est « **Vingt mille lieues sous les mers** », le roman du capitaine Nemo."
         },
         {
-          "type": "mcq",
+          "type": "question",
           "docId": "m8-secret",
-          "prompt": "Pourquoi les mots soulignés font-ils penser à la devise du capitaine Nemo ?",
-          "options": [
-            "Le capitaine Nemo a souligné le livre",
-            "Le livre parle de Malo",
-            "« Mobilis in mobili » veut dire « mobile dans l'élément mobile »",
-            "Monsieur Marin s'appelle Nemo"
+          "prompt": "À qui le livre appartenait-il avant ?",
+          "answers": [
+            "Monsieur Marin",
+            "à Monsieur Marin",
+            "M. Marin",
+            "à M. Marin",
+            "Marin"
           ],
-          "answer": 2,
-          "explanation": "Les mots recopiés, « ce qui est mobile dans l'élément mobile », sont la **traduction** de la devise du Nautilus (monde 7)."
+          "explanation": "« Il appartenait à **Monsieur Marin**, l'ancien maître d'école. »"
         },
         {
-          "type": "mcq",
+          "type": "question",
           "docId": "m8-secret",
-          "prompt": "Comment se sentent les enfants en arrivant près du moulin ?",
-          "options": [
-            "Fatigués",
-            "Effrayés",
-            "Découragés",
-            "Joyeux"
+          "prompt": "Quel était le métier de Monsieur Marin ?",
+          "answers": [
+            "maître d'école",
+            "ancien maître d'école",
+            "maître",
+            "instituteur",
+            "professeur",
+            "professeur des écoles",
+            "enseignant"
           ],
-          "answer": 2,
-          "explanation": "« ils s'arrêtèrent, **découragés** » : ils ne voient que de l'herbe, des pierres et de l'eau."
+          "explanation": "C'était « l'ancien **maître d'école** »."
         },
         {
-          "type": "mcq",
+          "type": "question",
           "docId": "m8-secret",
-          "prompt": "Comment Gros Bec aide-t-il, sans le vouloir, à résoudre l'énigme ?",
-          "options": [
-            "Il se pose sur la roue en criant « Mobilis ! », ce qui donne l'idée à Nina",
-            "Il lit la carte",
-            "Il trouve la boîte avec son bec",
-            "Il donne le code du cadenas"
+          "prompt": "Près de quoi est la petite croix dessinée sur la carte ?",
+          "answers": [
+            "la rivière",
+            "rivière",
+            "près de la rivière",
+            "de la rivière"
           ],
-          "answer": 0,
-          "explanation": "Malo croit à une **bêtise**, mais Nina comprend : la roue est mobile, dans l'eau qui est mobile aussi."
+          "explanation": "La carte montre « une petite croix près de la **rivière** »."
         },
         {
-          "type": "mcq",
+          "type": "question",
           "docId": "m8-secret",
-          "prompt": "Que désigne finalement « ce qui est mobile dans l'élément mobile » ?",
-          "options": [
-            "Le Nautilus",
-            "La rivière",
-            "La roue du moulin, qui tourne dans l'eau qui coule",
-            "Gros Bec qui vole"
+          "prompt": "Devant quel bâtiment les enfants s'arrêtent-ils, découragés ?",
+          "answers": [
+            "le moulin",
+            "le vieux moulin",
+            "moulin",
+            "vieux moulin",
+            "un moulin",
+            "un vieux moulin"
           ],
-          "answer": 2,
-          "explanation": "Nina l'explique : « La roue bouge, et l'eau qui la fait tourner bouge aussi. »"
+          "explanation": "« Arrivés près du **vieux moulin**, ils s'arrêtèrent, découragés. »"
         },
         {
-          "type": "fill",
+          "type": "question",
           "docId": "m8-secret",
-          "prompt": "Complète d'après le texte.",
-          "sentence": "Le code du cadenas est ___.",
+          "prompt": "Comment s'appelle l'oiseau perché sur l'épaule de Malo ?",
+          "answers": [
+            "Gros Bec"
+          ],
+          "explanation": "L'oiseau s'appelle **Gros Bec**."
+        },
+        {
+          "type": "question",
+          "docId": "m8-secret",
+          "prompt": "Quel mot Gros Bec crie-t-il, posé sur la roue du moulin ?",
+          "answers": [
+            "Mobilis",
+            "Mobilis Mobilis"
+          ],
+          "explanation": "Il crie « **Mobilis !** », ce qui donne l'idée à Nina."
+        },
+        {
+          "type": "question",
+          "docId": "m8-secret",
+          "prompt": "Quelle lettre est gravée sur la pierre du mur ?",
+          "answers": [
+            "N",
+            "un N",
+            "la lettre N"
+          ],
+          "explanation": "Une pierre « où était gravé un **N** », comme Nemo et Nautilus."
+        },
+        {
+          "type": "question",
+          "docId": "m8-secret",
+          "prompt": "Combien de chiffres a le cadenas de la boîte ?",
+          "answers": [
+            "trois",
+            "3",
+            "3 chiffres",
+            "trois chiffres"
+          ],
+          "explanation": "C'est « un cadenas à **trois** chiffres »."
+        },
+        {
+          "type": "question",
+          "docId": "m8-secret",
+          "prompt": "Quel est le code du cadenas ?",
           "answers": [
             "702",
-            "7-0-2",
-            "7,0,2",
-            "7, 0, 2",
             "7 0 2"
           ],
-          "explanation": "**70** (la longueur du Nautilus en mètres) puis **2** (Conseil et Ned Land) : **7, 0, 2**.",
-          "hint": "La longueur du Nautilus, puis le nombre de compagnons d'Aronnax."
+          "explanation": "**70** mètres (la longueur du Nautilus), puis **2** compagnons : **7, 0, 2**."
         },
         {
-          "type": "order",
+          "type": "question",
           "docId": "m8-secret",
-          "prompt": "Remets les étapes de l'enquête dans l'ordre.",
-          "words": [
-            "Nina achète le livre",
-            "Les enfants recopient les mots soulignés",
-            "Gros Bec se pose sur la roue",
-            "Ils trouvent la pierre gravée d'un N",
-            "Le cadenas s'ouvre"
+          "prompt": "Comment s'appellent les deux compagnons d'Aronnax ?",
+          "answers": [
+            "Conseil et Ned Land",
+            "Ned Land et Conseil",
+            "Conseil et Ned",
+            "Ned et Conseil"
           ],
-          "translation": "Nina achète le livre → Les enfants recopient les mots soulignés → Gros Bec se pose sur la roue → Ils trouvent la pierre gravée d'un N → Le cadenas s'ouvre",
-          "explanation": "Brocante, mots soulignés, cri de Gros Bec sur la roue, pierre au N, puis le code 7, 0, 2."
+          "explanation": "Nina le dit : « **Conseil** et **Ned Land** »."
         },
         {
-          "type": "mcq",
+          "type": "question",
           "docId": "m8-secret",
-          "prompt": "Pourquoi le texte dit-il que Gros Bec « n'avait pas tout à fait tort » ?",
-          "options": [
-            "Il n'y a pas d'or, mais les photos et la lettre sont un vrai trésor pour les enfants",
-            "Gros Bec a trouvé un autre trésor",
-            "La boîte est pleine d'or",
-            "Gros Bec ne se trompe jamais"
+          "prompt": "Dans la boîte, que trouvent-ils à côté des photos et du coquillage ?",
+          "answers": [
+            "une lettre",
+            "lettre",
+            "la lettre",
+            "une lettre de Monsieur Marin"
           ],
-          "answer": 0,
-          "explanation": "« Ni or ni bijoux »… mais des souvenirs et un beau message : un autre genre de **trésor**."
+          "explanation": "Il y a « de vieilles photos de classe, un petit coquillage et une **lettre** »."
         },
         {
-          "type": "mcq",
+          "type": "question",
           "docId": "m8-secret",
-          "prompt": "Que veut dire Monsieur Marin par « Un livre est un voyage » ?",
-          "options": [
-            "Il faut emporter ses livres en vacances",
-            "Les livres parlent tous de voyages",
-            "Il faut lire quand on voyage en train",
-            "En lisant, on découvre d'autres lieux et d'autres vies"
+          "prompt": "Quel mot Gros Bec répète-t-il sur le chemin du retour ?",
+          "answers": [
+            "Trésor",
+            "Trésor Trésor"
           ],
-          "answer": 3,
-          "explanation": "Grâce au livre, Nina et Malo sont partis à bord du Nautilus… sans quitter leur village."
+          "explanation": "« **Trésor !** Trésor ! » : pour une fois, il n'avait pas tout à fait tort."
+        },
+        {
+          "type": "question",
+          "docId": "m8-secret",
+          "prompt": "Quel jour de la semaine Nina et Malo vont-ils à la brocante ?",
+          "answers": [
+            "dimanche",
+            "le dimanche",
+            "un dimanche",
+            "dimanche matin",
+            "un dimanche matin"
+          ],
+          "explanation": "« Un **dimanche** matin, Nina et Malo se promenaient à la brocante »."
+        },
+        {
+          "type": "question",
+          "docId": "m8-secret",
+          "prompt": "De quelles couleurs est la couverture du livre ?",
+          "answers": [
+            "rouge et dorée",
+            "rouge et doré",
+            "dorée et rouge",
+            "doré et rouge",
+            "rouge et or"
+          ],
+          "explanation": "Un livre « à la couverture **rouge et dorée** »."
+        },
+        {
+          "type": "question",
+          "docId": "m8-secret",
+          "prompt": "Le vendeur est « un monsieur à… » quoi ?",
+          "answers": [
+            "moustache",
+            "une moustache",
+            "à moustache"
+          ],
+          "explanation": "Le vendeur est « un monsieur à **moustache** »."
+        },
+        {
+          "type": "question",
+          "docId": "m8-secret",
+          "prompt": "Chez qui Monsieur Marin est-il parti vivre ?",
+          "answers": [
+            "chez sa fille",
+            "sa fille",
+            "sa fille en ville",
+            "chez sa fille en ville"
+          ],
+          "explanation": "« Il est parti vivre **chez sa fille**, en ville. »"
+        },
+        {
+          "type": "question",
+          "docId": "m8-secret",
+          "prompt": "Avec quel argent Nina paie-t-elle le livre ?",
+          "answers": [
+            "ses économies",
+            "avec ses économies",
+            "économies",
+            "les économies"
+          ],
+          "explanation": "« Nina paya avec **ses économies**. »"
+        },
+        {
+          "type": "question",
+          "docId": "m8-secret",
+          "prompt": "Avec quoi certains mots du livre sont-ils soulignés ?",
+          "answers": [
+            "au crayon",
+            "crayon",
+            "un crayon",
+            "le crayon",
+            "avec un crayon"
+          ],
+          "explanation": "Certains mots « étaient soulignés **au crayon** »."
+        },
+        {
+          "type": "question",
+          "docId": "m8-secret",
+          "prompt": "Sur quelle page du livre la carte est-elle dessinée ?",
+          "answers": [
+            "la dernière page",
+            "dernière page",
+            "la dernière",
+            "dernière",
+            "sur la dernière page"
+          ],
+          "explanation": "« Sur la **dernière page**, quelqu'un avait dessiné une carte du village »."
+        },
+        {
+          "type": "question",
+          "docId": "m8-secret",
+          "prompt": "De quel personnage les mots soulignés rappellent-ils la devise ?",
+          "answers": [
+            "le capitaine Nemo",
+            "capitaine Nemo",
+            "Nemo"
+          ],
+          "explanation": "Malo dit : « On dirait la devise du **capitaine Nemo** »."
+        },
+        {
+          "type": "question",
+          "docId": "m8-secret",
+          "prompt": "Qu'est-ce qui fait tourner la roue du moulin ?",
+          "answers": [
+            "l'eau",
+            "eau",
+            "le courant",
+            "courant",
+            "la rivière",
+            "l'eau de la rivière",
+            "le courant de la rivière"
+          ],
+          "explanation": "La roue « tournait lentement dans le **courant** » : c'est **l'eau** qui la fait tourner."
+        },
+        {
+          "type": "question",
+          "docId": "m8-secret",
+          "prompt": "En quelle matière est la boîte cachée derrière la pierre ?",
+          "answers": [
+            "fer",
+            "en fer",
+            "du fer"
+          ],
+          "explanation": "C'est « une boîte en **fer** »."
+        },
+        {
+          "type": "question",
+          "docId": "m8-secret",
+          "prompt": "Qui a écrit la lettre trouvée dans la boîte ?",
+          "answers": [
+            "Monsieur Marin",
+            "M. Marin",
+            "Marin"
+          ],
+          "explanation": "La lettre est signée par **Monsieur Marin**, l'ancien maître d'école."
+        },
+        {
+          "type": "question",
+          "docId": "m8-secret",
+          "prompt": "D'après la lettre, à quoi un livre ressemble-t-il ?",
+          "answers": [
+            "un voyage",
+            "voyage",
+            "à un voyage"
+          ],
+          "explanation": "« Un livre est un **voyage** : n'arrête jamais de voyager »."
         }
       ]
     }

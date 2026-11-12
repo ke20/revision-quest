@@ -1121,265 +1121,248 @@ window.registerPack({
       "lesson": {
         "title": "Les 50 mots",
         "points": [
-          "Pense aux **lettres muettes** : beaucou**p**, longtem**ps**, toujour**s**, tro**p**, mieu**x**.",
-          "Pense aux **accents** : là-bas, peut-être, près, tôt, aussitôt, bientôt, malgré.",
-          "Pense aux mots **en deux morceaux** : parce que (deux mots), d'abord et aujourd'hui (apostrophe), là-bas et peut-être (trait d'union)."
+          "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
+          "Pense aux **lettres muettes** (beaucou**p**, longtem**ps**, toujour**s**) et aux **accents** (tôt, près, malgré).",
+          "Pense aux mots **en deux morceaux** : parce que (deux mots), d'abord et aujourd'hui (apostrophe)."
         ],
         "examples": [
-          "🧠 Astuce : un mot invariable ne prend **jamais** de s de pluriel (malgré, sans, presque)."
+          "🧠 Un mot invariable ne prend **jamais** de s de pluriel."
         ]
       },
+      "draw": 12,
       "exercises": [
         {
-          "type": "mcq",
-          "prompt": "Lequel de ces mots est bien écrit ?",
-          "options": [
-            "parceque",
-            "malgrés",
-            "longtemps",
-            "toujour"
-          ],
-          "answer": 2,
-          "explanation": "**longtemps** est juste. Il faut écrire **toujours**, **malgré** et **parce que**."
-        },
-        {
-          "type": "mcq",
-          "prompt": "Lequel de ces mots est mal écrit ?",
-          "options": [
-            "aujourdhui",
-            "là-bas",
-            "beaucoup",
-            "d'abord"
-          ],
-          "answer": 0,
-          "explanation": "On écrit **aujourd'hui**, avec une apostrophe."
-        },
-        {
-          "type": "sort",
-          "prompt": "Ce mot prend-il un accent ?",
-          "categories": [
-            {
-              "id": "accent",
-              "label": "✍️ Avec un accent"
-            },
-            {
-              "id": "sans",
-              "label": "➖ Sans accent"
-            }
-          ],
-          "items": [
-            {
-              "text": "près",
-              "cat": "accent"
-            },
-            {
-              "text": "tôt",
-              "cat": "accent"
-            },
-            {
-              "text": "malgré",
-              "cat": "accent"
-            },
-            {
-              "text": "bientôt",
-              "cat": "accent"
-            },
-            {
-              "text": "presque",
-              "cat": "sans"
-            },
-            {
-              "text": "tard",
-              "cat": "sans"
-            },
-            {
-              "text": "demain",
-              "cat": "sans"
-            },
-            {
-              "text": "souvent",
-              "cat": "sans"
-            }
-          ],
-          "explanation": "**près**, **tôt**, **malgré** et **bientôt** ont un accent ; **presque**, **tard**, **demain** et **souvent** n'en ont pas."
-        },
-        {
-          "type": "match",
-          "prompt": "Relie chaque mot à son contraire.",
-          "pairs": [
-            {
-              "left": "près",
-              "right": "loin"
-            },
-            {
-              "left": "beaucoup",
-              "right": "peu"
-            },
-            {
-              "left": "partout",
-              "right": "nulle part"
-            },
-            {
-              "left": "souvent",
-              "right": "rarement"
-            },
-            {
-              "left": "devant",
-              "right": "derrière"
-            }
-          ],
-          "explanation": "Chaque mot invariable a souvent un contraire qui aide à s'en souvenir."
-        },
-        {
-          "type": "fill",
-          "prompt": "Écoute et écris le mot qui manque.",
-          "listen": "Je reste à la maison parce que j'ai froid.",
-          "sentence": "Je reste à la maison ___ j'ai froid.",
-          "answers": [
-            "parce que"
-          ],
-          "hint": "Le mot qui donne la raison.",
-          "explanation": "**parce que** s'écrit en **deux mots**."
-        },
-        {
-          "type": "fill",
-          "prompt": "Écoute et écris le mot qui manque.",
-          "listen": "Regarde le bateau là-bas, au bout du port.",
-          "sentence": "Regarde le bateau ___, au bout du port.",
-          "answers": [
-            "là-bas"
-          ],
-          "hint": "À cet endroit, loin d'ici.",
-          "explanation": "**là-bas** : un accent grave sur le **à** et un **trait d'union**."
-        },
-        {
-          "type": "fill",
-          "prompt": "Écoute et écris le mot qui manque.",
-          "listen": "J'ai presque fini mon dessin.",
-          "sentence": "J'ai ___ fini mon dessin.",
-          "answers": [
-            "presque"
-          ],
-          "hint": "Pas tout à fait.",
-          "explanation": "**presque** : **qu** et un **e** à la fin."
-        },
-        {
-          "type": "fill",
-          "prompt": "Complète avec un mot des listes, le contraire de « toujours ».",
-          "sentence": "Je ne mange ___ de piment : je déteste ça !",
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « pas une seule fois ».",
           "answers": [
             "jamais"
           ],
-          "explanation": "**jamais** est le contraire de **toujours**. Il finit par un **s** muet."
+          "explanation": "**jamais** finit par un **s** muet."
         },
         {
-          "type": "fill",
-          "prompt": "Complète avec un mot des listes qui veut dire « le jour après aujourd'hui ».",
-          "sentence": "Aujourd'hui c'est lundi, ___ ce sera mardi.",
+          "type": "question",
+          "prompt": "Écris le mot invariable contraire de « tard ».",
           "answers": [
-            "demain"
+            "tôt"
           ],
-          "explanation": "**demain** = le jour après aujourd'hui. Son contraire est **hier**."
+          "explanation": "**tôt** prend un accent circonflexe sur le o."
         },
         {
-          "type": "fill",
-          "prompt": "Complète avec un mot des listes qui indique le début d'une durée qui continue encore.",
-          "sentence": "J'habite dans cette ville ___ trois ans.",
+          "type": "question",
+          "prompt": "Écris le mot invariable contraire de « peu ».",
           "answers": [
-            "depuis"
+            "beaucoup"
           ],
-          "explanation": "**depuis** s'écrit en un seul mot et finit par un **s** muet."
-        },
-        {
-          "type": "spot",
-          "prompt": "Touche le mot mal écrit.",
-          "tokens": [
-            "Il",
-            "y",
-            "a",
-            "vraiment",
-            "beaucou",
-            "de",
-            "monde",
-            "aujourd'hui",
-            "."
-          ],
-          "wrongIndex": 4,
-          "correction": "beaucoup",
           "explanation": "**beaucoup** finit par un **p** muet."
         },
         {
-          "type": "spot",
-          "prompt": "Touche le mot mal écrit.",
-          "tokens": [
-            "Je",
-            "reste",
-            "au",
-            "chaud",
-            "parceque",
-            "le",
-            "vent",
-            "souffle",
-            "."
+          "type": "question",
+          "prompt": "Écris le mot invariable contraire de « dedans ».",
+          "answers": [
+            "dehors"
           ],
-          "wrongIndex": 4,
-          "correction": "parce que",
+          "explanation": "**dehors** finit par un **s** muet."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « le jour où nous sommes » (ni hier, ni demain).",
+          "answers": [
+            "aujourd'hui"
+          ],
+          "explanation": "**aujourd'hui** s'écrit avec une **apostrophe**."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec le mot qui pose la question : « ___ pleures-tu ? »",
+          "answers": [
+            "pourquoi"
+          ],
+          "explanation": "**Pourquoi** pose la question, **parce que** donne la réponse."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète la réponse : « – Pourquoi pleures-tu ? – ___ je suis tombé. »",
+          "answers": [
+            "parce que"
+          ],
           "explanation": "**parce que** s'écrit en **deux mots**."
         },
         {
-          "type": "spot",
-          "prompt": "Touche le mot mal écrit.",
-          "tokens": [
-            "Il",
-            "a",
-            "quelquesfois",
-            "peur",
-            "du",
-            "noir",
-            "."
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « à côté de » : « Il habite tout ___ de l'école. »",
+          "answers": [
+            "près"
           ],
-          "wrongIndex": 2,
-          "correction": "quelquefois",
-          "explanation": "**quelquefois** s'écrit en un seul mot, sans **s** au milieu."
+          "explanation": "**près** prend un accent grave (à ne pas confondre avec **prêt**)."
         },
         {
-          "type": "write",
-          "prompt": "Écris une phrase avec au moins deux mots de la liste ci-dessous.",
-          "minWords": 6,
-          "requirements": [
-            {
-              "id": "toujours",
-              "label": "toujours",
-              "pattern": "\\btoujours\\b"
-            },
-            {
-              "id": "parce-que",
-              "label": "parce que",
-              "pattern": "\\bparce qu"
-            },
-            {
-              "id": "beaucoup",
-              "label": "beaucoup",
-              "pattern": "\\bbeaucoup\\b"
-            },
-            {
-              "id": "jamais",
-              "label": "jamais",
-              "pattern": "\\bjamais\\b"
-            },
-            {
-              "id": "maintenant",
-              "label": "maintenant",
-              "pattern": "\\bmaintenant\\b"
-            }
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « pendant beaucoup de temps ».",
+          "answers": [
+            "longtemps"
           ],
-          "minRequirements": 2,
-          "starters": [
-            "Je mange toujours",
-            "Je ne joue jamais"
+          "explanation": "**longtemps** se termine par **ps**, comme le mot **temps**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « tout le temps, à chaque fois ».",
+          "answers": [
+            "toujours"
           ],
-          "modelAnswer": "Je mange toujours des fruits parce que c'est bon pour la santé.",
-          "explanation": "Vérifie l'orthographe : **toujours**, **parce que**, **beaucoup**, **jamais**, **maintenant**."
+          "explanation": "**toujours** finit par un **s** muet."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « en premier ».",
+          "answers": [
+            "d'abord"
+          ],
+          "explanation": "**d'abord** s'écrit avec une **apostrophe**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « plus qu'il ne faut ».",
+          "answers": [
+            "trop"
+          ],
+          "explanation": "**trop** finit par un **p** muet."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « ce n'est pas sûr » : « Il va ___ pleuvoir. »",
+          "answers": [
+            "peut-être"
+          ],
+          "explanation": "**peut-être** : un trait d'union et un accent circonflexe sur le **ê**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « même s'il y a » : « Il joue dehors ___ le froid. »",
+          "answers": [
+            "malgré"
+          ],
+          "explanation": "**malgré** prend un accent aigu et jamais de s."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « dans un autre endroit ».",
+          "answers": [
+            "ailleurs"
+          ],
+          "explanation": "**ailleurs** finit par un **s** muet."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris, en un seul mot, le mot invariable qui veut dire la même chose que « parfois ».",
+          "answers": [
+            "quelquefois"
+          ],
+          "explanation": "**quelquefois** s'écrit en **un seul mot**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « le jour après aujourd'hui ».",
+          "answers": [
+            "demain"
+          ],
+          "explanation": "**demain** : on l'écrit comme on l'entend, sans lettre muette."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « le jour avant aujourd'hui ».",
+          "answers": [
+            "hier"
+          ],
+          "explanation": "**hier** commence par un **h** muet."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable contraire de « derrière ».",
+          "answers": [
+            "devant"
+          ],
+          "explanation": "**devant** finit par un **t** muet."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable contraire de « tôt ».",
+          "answers": [
+            "tard"
+          ],
+          "explanation": "**tard** finit par un **d** muet, comme **retard**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable contraire de « assis » : « Reste ___, ne t'assieds pas ! »",
+          "answers": [
+            "debout"
+          ],
+          "explanation": "**debout** s'écrit en **un seul mot** et finit par un **t** muet."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « dans très peu de temps » : « Les vacances arrivent ___ ! »",
+          "answers": [
+            "bientôt"
+          ],
+          "explanation": "**bientôt** finit comme **tôt**, avec un accent circonflexe."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « dans tous les endroits ».",
+          "answers": [
+            "partout"
+          ],
+          "explanation": "**partout** finit par un **t** muet."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « dans le passé, il y a très longtemps ».",
+          "answers": [
+            "autrefois"
+          ],
+          "explanation": "**autrefois** s'écrit en **un seul mot** et finit par un **s** muet."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « en ce moment, à cet instant ».",
+          "answers": [
+            "maintenant"
+          ],
+          "explanation": "**maintenant** finit par un **t** muet."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « tout à coup » : « ___, le chien se mit à aboyer. »",
+          "answers": [
+            "soudain",
+            "soudainement"
+          ],
+          "explanation": "**soudain** finit par **ain**, comme **demain**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « plus bien » : « Elle chante ___ que moi. »",
+          "answers": [
+            "mieux"
+          ],
+          "explanation": "**mieux** finit par un **x** muet."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « pas tout à fait » : « Il est ___ midi, encore cinq minutes. »",
+          "answers": [
+            "presque"
+          ],
+          "explanation": "**presque** : pas d'accent sur le e, et **que** à la fin."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot invariable qui veut dire « dans ce lieu, un peu loin ».",
+          "answers": [
+            "là-bas"
+          ],
+          "explanation": "**là-bas** : un accent grave sur le **à** et un **trait d'union**."
         }
       ]
     }

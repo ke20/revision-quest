@@ -22,7 +22,7 @@
     { id: "perfect", icon: "💯", name: "Sans faute", desc: "100 % de réussite sur un monde" },
     { id: "translator", icon: "🔎", name: "Curieux", desc: "Consulte 10 traductions ou définitions" },
     { id: "bookworm", icon: "📚", name: "Grand lecteur", desc: "Termine l'avant-dernier monde d'un chapitre, ou un monde avec un document à lire" },
-    { id: "boss", icon: "🏆", name: "Chapitre terminé", desc: "Termine le dernier monde d'un chapitre" },
+    { id: "boss", icon: "🏆", name: "Chapitre terminé", desc: "Réussis le boss d'un chapitre (80 % ou plus)" },
     { id: "stars", icon: "🌟", name: "Collectionneur", desc: "5 étoiles sur tous les mondes d'un chapitre" },
     { id: "streak3", icon: "📅", name: "Série de 3 jours", desc: "Joue 3 jours de suite" },
     { id: "explorer", icon: "🧭", name: "Explorateur", desc: "Joue dans 2 chapitres différents" }
@@ -85,6 +85,30 @@
     return n;
   }
 
+  /* The boss (last world of a chapter): no heart lost, one try per question. Its score (accuracy) gives a medal, by
+     steps of 10 %; the chapter is validated (badge "boss") from BOSS_PASS. Read from the best accuracy already saved. */
+  var BOSS_PASS = 0.8;
+  /** @type {Medal[]} */
+  var MEDALS = [
+    { id: "chocolate", icon: "🍫", name: "Chocolat", min: 0 },
+    { id: "wood", icon: "🪵", name: "Bois", min: 0.1 },
+    { id: "stone", icon: "🪨", name: "Pierre", min: 0.2 },
+    { id: "copper", icon: "🟤", name: "Cuivre", min: 0.3 },
+    { id: "iron", icon: "⚙️", name: "Fer", min: 0.4 },
+    { id: "bronze", icon: "🥉", name: "Bronze", min: 0.5 },
+    { id: "silver", icon: "🥈", name: "Argent", min: 0.6 },
+    { id: "gold", icon: "🥇", name: "Or", min: 0.7 },
+    { id: "emerald", icon: "💚", name: "Émeraude", min: 0.8 },
+    { id: "diamond", icon: "💎", name: "Diamant", min: 0.9 },
+    { id: "platinum", icon: "🏆", name: "Platine", min: 1 }
+  ];
+  /** @param {number} accuracy 0 to 1 @returns {Medal} */
+  function medalFor(accuracy) {
+    var m = MEDALS[0];
+    MEDALS.forEach(function (x) { if (accuracy + 1e-9 >= x.min) m = x; });
+    return m;
+  }
+
   var ALLOWED_AVATARS = AVATARS.concat(["🙂"]);
   var SAFE_ID = /^p[a-z0-9]{4,24}$/;
 
@@ -96,6 +120,6 @@
   E.AVATARS = AVATARS; E.PACK_ID = PACK_ID; E.WORLD_ID = WORLD_ID; E.MAX_PACKS = MAX_PACKS; E.MAX_WORLDS = MAX_WORLDS;
   E.MAX_PROFILES = MAX_PROFILES; E.MAX_TIME = MAX_TIME; E.COMFORT = COMFORT; E.COMFORT_NO = COMFORT_NO;
   E.COMFORT_YES = COMFORT_YES; E.validGrade = validGrade; E.MAX_STARS = MAX_STARS;
-  E.STARS_TO_UNLOCK = STARS_TO_UNLOCK; E.starsFor = starsFor; E.ALLOWED_AVATARS = ALLOWED_AVATARS;
+  E.STARS_TO_UNLOCK = STARS_TO_UNLOCK; E.starsFor = starsFor; E.BOSS_PASS = BOSS_PASS; E.MEDALS = MEDALS; E.medalFor = medalFor; E.ALLOWED_AVATARS = ALLOWED_AVATARS;
   E.SAFE_ID = SAFE_ID;
 })(window.EngineParts = window.EngineParts || /** @type {EngineParts} */ ({}));

@@ -150,11 +150,16 @@ for (const [vw, vh, tag] of [[390, 844, "m"], [1280, 800, "d"]]) {
     await H.shot();
     await tap(page, '[data-act=next]'); await wait(page, 300);
     await H.startWorld(page, 1);
+    // the boss draws its questions in a random order: answer until the one with the text (docId) comes
+    for (let k = 0; k < 10 && !(await H.curEx(page, 1)).docId; k++) {
+      await H.solve(page, await H.curEx(page, 1)); await wait(page, 300); await H.closeModals(page);
+      await tap(page, '[data-act=check]'); await wait(page, 300); await H.closeModals(page);
+    }
     const wr = await page.evaluate(() => document.querySelector('.screen.play').innerText);
-    ok(/Le serment du Jeu de paume/i.test(wr) && /mots/.test(wr) && /requis/.test(wr) && /Valider/.test(wr) && !ENGLISH_CHROME.test(wr), tag + ' write + document (docId) chrome French only');
+    ok(/Le serment du Jeu de paume/i.test(wr) && /Vérifier/.test(wr) && /Boss/.test(wr) && !ENGLISH_CHROME.test(wr), tag + ' boss question + document (docId) chrome French only');
     await H.shot();
-    await noHs(page, 'French write');
-    await page.click('.letter-card .tr'); await wait(page, 200);
+    await noHs(page, 'French question');
+    await page.click('.read-card .tr'); await wait(page, 200);
     ok((await textOf(page, '.tr-bubble')).includes('💡') && (await textOf(page, '.tr-bubble')).includes('ensemble de lois'), tag + ' definition bubble with 💡 (not 🇫🇷)');
     await page.mouse.click(5, 5);
     await tap(page, '[data-act=quit]'); await wait(page, 200);

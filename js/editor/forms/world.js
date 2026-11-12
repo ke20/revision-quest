@@ -4,7 +4,7 @@ import { el } from "../dom.js";
 import { DEFAULT_COLOR } from "../model/draft.js";
 import { edited, store } from "../state.js";
 import { colorField } from "./course.js";
-import { emojiPicks, keptNote, LIST_HELP, RICH_HELP, text, textList } from "./fields.js";
+import { emojiPicks, keptNote, LIST_HELP, number, RICH_HELP, text, textList } from "./fields.js";
 
 /** @param {HTMLElement} root @param {number} wi */
 export function worldForm(root, wi) {
@@ -27,6 +27,13 @@ export function worldForm(root, wi) {
     onInput: function (v) { w.icon = v; edited(); } });
   colorField(look, "Couleur", "w.color", w.color, DEFAULT_COLOR, "^color", function (v) { w.color = v; edited(); });
   emojiPicks(box, icon, function (ic) { w.icon = ic; edited(); });
+  var worlds = store.draft.pack.worlds;
+  if (worlds.length >= 2 && wi === worlds.length - 1) { // the boss
+    root.appendChild(el("p", "ed-help", "👑 Ce monde est le boss : 10 à 20 exercices « Question ou traduction », sans indice, un essai chacun. " +
+      "Pour que deux parties ne se ressemblent pas, écris une réserve plus grande (jusqu'à 40) et choisis combien de questions sont tirées au hasard à chaque partie."));
+    number(root, { label: "Questions tirées à chaque partie (facultatif, 10 à 20)", f: "w.draw", value: w.draw, min: 10, max: 20, check: "draw",
+      onInput: function (v) { if (v) w.draw = v; else delete w.draw; edited(); } });
+  } else if (w.draw != null) delete w.draw; // only on the boss
   root.appendChild(el("p", "ed-help", "Numéro interne du monde : " + String(w.id) + " (la progression des enfants y est rattachée)."));
 }
 

@@ -66,7 +66,7 @@ revision-quest/
 │   │   └── pack-rules.js   règles d'un chapitre (validateur, navigateur et Node)
 │   ├── exercises/
 │   │   ├── common/         briques partagées : texte enrichi, corrections, cadre, bulles, voix, documents
-│   │   ├── types/          un fichier par type d'exercice : mcq, sort, match, order, fill, spot, write
+│   │   ├── types/          un fichier par type d'exercice : mcq, sort, match, order, fill, spot, question
 │   │   ├── exercises.js    aiguillage et objet public window.Exercises (chargé en dernier)
 │   │   └── figures.js      figures de géométrie en SVG, tableaux
 │   ├── app/                le jeu (modules ES)
@@ -116,7 +116,7 @@ Types d'exercices :
 - `order` : remettre dans l'ordre
 - `fill` : texte à trou
 - `spot` : trouver l'erreur
-- `write` : réponse rédigée, vérifiée automatiquement
+- `question` : question ou phrase à traduire, réponse tapée (juste ou faux) ; le boss en est fait
 
 Tous peuvent afficher une figure de géométrie (`figure`).
 

@@ -61,6 +61,8 @@ interface SaveDb {
 interface WorldSession {
   packId: string;
   worldId: number | string;
+  /** Indexes of the exercises of this run (a boss draws `draw` of them, in a random order). */
+  order: number[];
   total: number;
   index: number;
   hearts: number;
@@ -75,7 +77,12 @@ interface WorldSession {
   /** Broken exercises, left out of the accuracy. */
   skipped: number;
   over: boolean;
+  /** The last world of the pack: no heart lost. */
+  boss?: boolean;
 }
+
+/** A medal of the boss, from its score (accuracy). */
+interface Medal { id: string; icon: string; name: string; min: number }
 
 /* ---------- public engine (window.Engine), checked against js/core/engine/engine.js (`@type {EngineApi}` on its object) ---------- */
 
@@ -147,6 +154,11 @@ interface WorldSummary {
   nextLocked: boolean;
   worldsInARow: number;
   pauseSuggested: boolean;
+  /** The boss: validated from BOSS_PASS; medal of this run and best medal. */
+  boss: boolean;
+  passed: boolean;
+  medal: Medal | null;
+  bestMedal: Medal | null;
   [more: string]: unknown;
 }
 
@@ -181,6 +193,11 @@ interface EngineApi {
   worldProgress(worldId: number | string): WorldProgress;
   isUnlocked(worldId: number | string): boolean;
   starsFor(accuracy: number): number;
+  BOSS_PASS: number;
+  MEDALS: Medal[];
+  medalFor(accuracy: number): Medal;
+  isBoss(worldId: number | string): boolean;
+  bossMedal(): Medal | null;
   starsToUnlock(): number;
   currentWorldId(): number | string | null;
   totalStars(packId?: string): number;
@@ -196,6 +213,7 @@ interface EngineApi {
   startWorld(worldId: number | string): WorldSession;
   readonly session: WorldSession | null;
   resumeWorld(saved: unknown): WorldSession | null;
+  currentExercise(w: World): Exercise | null;
   /** Spends XP for a hint; returns the XP actually spent. */
   useHint(): number;
   answer(result: ExerciseResult): AnswerOutcome;

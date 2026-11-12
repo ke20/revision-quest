@@ -114,20 +114,107 @@ window.registerPack({
           "explanation": "Ok."
         },
         {
-          "type": "write",
+          "type": "question",
           "prompt": "Écris.",
           "docId": "d1",
-          "minWords": 3,
-          "requirements": [
-            {
-              "id": "chat",
-              "label": "Parle du chat",
-              "pattern": "chat"
-            }
+          "answers": [
+            "Le chat dort."
           ],
-          "minRequirements": 1,
-          "modelAnswer": "Le chat dort bien.",
           "explanation": "Ok."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Boss",
+      "icon": "👑",
+      "color": "#EF4444",
+      "lesson": {
+        "title": "Contrôle",
+        "points": [
+          "Avec ce que tu as appris, réponds correctement aux questions ci-dessous."
+        ]
+      },
+      "exercises": [
+        {
+          "type": "question",
+          "prompt": "Combien font 1 + 1 ?",
+          "answers": [
+            "2"
+          ],
+          "explanation": "Le résultat est 2."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien font 2 + 1 ?",
+          "answers": [
+            "3"
+          ],
+          "explanation": "Le résultat est 3."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien font 3 + 1 ?",
+          "answers": [
+            "4"
+          ],
+          "explanation": "Le résultat est 4."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien font 4 + 1 ?",
+          "answers": [
+            "5"
+          ],
+          "explanation": "Le résultat est 5."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien font 5 + 1 ?",
+          "answers": [
+            "6"
+          ],
+          "explanation": "Le résultat est 6."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien font 6 + 1 ?",
+          "answers": [
+            "7"
+          ],
+          "explanation": "Le résultat est 7."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien font 7 + 1 ?",
+          "answers": [
+            "8"
+          ],
+          "explanation": "Le résultat est 8."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien font 8 + 1 ?",
+          "answers": [
+            "9"
+          ],
+          "explanation": "Le résultat est 9."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien font 9 + 1 ?",
+          "answers": [
+            "10"
+          ],
+          "explanation": "Le résultat est 10."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien font 10 + 1 ?",
+          "answers": [
+            "11"
+          ],
+          "explanation": "Le résultat est 11."
         }
       ]
     }

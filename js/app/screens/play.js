@@ -67,7 +67,7 @@ export function updateTop(ui, animateHeart) {
   var s = Engine.session;
   if (!s) return;
   ui.progress.style.width = Math.round((s.index / s.total) * 100) + "%";
-  ui.hearts.innerHTML = heartsHtml(s.hearts) + shieldsHtml(s.shields, s.maxShields);
+  ui.hearts.innerHTML = s.boss ? '<span class="boss-tag">' + T("bossTag") + "</span>" : heartsHtml(s.hearts) + shieldsHtml(s.shields, s.maxShields);
   if (animateHeart) { // the shield or heart just lost breaks
     var lost = animateHeart === "shield" ? ui.hearts.querySelectorAll(".shield.used") : ui.hearts.querySelectorAll(".heart.lost");
     if (lost[0]) lost[0].classList.add("break");
@@ -100,8 +100,8 @@ export function setBar(ui, state, html, label) {
 
 /** @param {World} w @param {PlayUi} ui */
 export function playExercise(w, ui) {
-  var s = must(Engine.session);
-  var ex = w.exercises[s.index];
+  must(Engine.session); // a world is being played
+  var ex = /** @type {Exercise} */ (Engine.currentExercise(w));
   var phase = "answer"; // "answer" | "done"
   /** @type {ExerciseController} set by Exercises.render below */
   var controller = /** @type {ExerciseController} */ (/** @type {unknown} */ (null));
@@ -112,7 +112,7 @@ export function playExercise(w, ui) {
 
   // A long text (document with screen: true) is read on its own screen before its first question;
   // the questions after it on the same text only offer "back to the text".
-  const doc = ex && ex.type !== "write" ? Exercises.findDocument(S.data, ex) : null;
+  const doc = ex ? Exercises.findDocument(S.data, ex) : null;
   ui.bar.hidden = false;
   if (doc && doc.screen && ui.readDoc !== doc.id) {
     ui.bar.hidden = true; // nothing to check yet, and the bar would cover the "answer the questions" button
@@ -151,10 +151,10 @@ export function playExercise(w, ui) {
       else if (boostOn()) Confetti.burst(24, { center: true }); // "Renforcées": a small burst on every right answer
     } else {
       Sound.wrong();
-      qs(ui.node, ".hearts").classList.add("shake");
+      if (!Engine.session || !Engine.session.boss) qs(ui.node, ".hearts").classList.add("shake");
       var ans = res.answerText ? '<div class="fb-answer">' + T("correctAnswer") + ": <b>" + E(res.answerText) + "</b></div>" : "";
       var kind = boostOn() && !r.gameOver ? '<div class="fb-boost">' + pick(T("boostKo")) + "</div>" : "";
-      var title = r.gameOver ? T("noHearts") : r.shieldUsed ? T("shieldUsed") : T("lostHeart");
+      var title = r.gameOver ? T("noHearts") : r.shieldUsed ? T("shieldUsed") : Engine.session && Engine.session.boss ? T("wrongAnswer") : T("lostHeart");
       setBar(ui, "ko" + (r.shieldUsed ? " shielded" : ""), '<div class="fb-title"><span class="fb-ico">' + (r.shieldUsed ? "😌" : "❌") + "</span> " + title + "</div>" + kind + note + ans + expl,
         r.gameOver ? T("seeResults") : T("next"));
     }
@@ -212,6 +212,16 @@ export function playExercise(w, ui) {
 
 /* ================= Result screens ================= */
 
+/** The boss: medal of this run, chapter validated or the score still needed, best medal.
+    @param {WorldSummary} sum @param {number} acc percent */
+function medalHtml(sum, acc) {
+  var m = /** @type {Medal} */ (sum.medal), best = sum.bestMedal;
+  return '<div class="medal pop medal-' + E(m.id) + '"><span class="medal-icon">' + E(m.icon) + '</span><b class="medal-name">' + E(m.name) + "</b>" +
+    '<span class="medal-score">' + acc + " %</span></div>" +
+    '<p class="result-msg">' + (sum.passed ? T("bossPassed") : T("bossNeed", Math.round(Engine.BOSS_PASS * 100))) + "</p>" +
+    (best && best.id !== m.id ? '<p class="medal-best">' + T("bestMedal") + " : " + E(best.icon) + " " + E(best.name) + "</p>" : "");
+}
+
 /** @param {World} w */
 export function showComplete(w) {
   var sum = must(Engine.finishWorld()); // called with the world being played
@@ -228,7 +238,7 @@ export function showComplete(w) {
       '<div class="result-icon bounce">' + E(w.icon || "🏆") + "</div>" +
       '<h2 class="result-title">' + T("complete") + '</h2><p class="result-sub">' + E(w.title) + " · <small>" + T("completeSub") + "</small></p>" +
       '<div class="big-stars">' + bigStarsHtml(sum.stars) + "</div>" +
-      '<p class="result-msg">' + msg + "</p>" +
+      (sum.medal ? medalHtml(sum, acc) : '<p class="result-msg">' + msg + "</p>") +
       '<div class="result-stats">' +
         '<div class="rstat"><b>+' + Math.max(0, sum.xpEarned) + "</b><small>" + T("xpEarned") + "</small></div>" +
         '<div class="rstat"><b>' + acc + "%</b><small>" + T("accuracy") + "</small></div>" +

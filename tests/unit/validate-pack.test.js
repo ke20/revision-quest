@@ -14,7 +14,7 @@ const REL = "packs/4e/anglais/unit-valid.js"; // where the fixture pack would li
 const catalog = (over = {}) => ({
   subjects: [{ id: "anglais", label: "Anglais" }],
   levels: [{ id: "4e", label: "4e", order: 8 }],
-  packs: [Object.assign({ path: "4e/anglais/unit-valid", title: "Test", description: "Pack de test des contrôles.", icon: "🧪", lang: "fr", worldCount: 1 }, over)]
+  packs: [Object.assign({ path: "4e/anglais/unit-valid", title: "Test", description: "Pack de test des contrôles.", icon: "🧪", lang: "fr", worldCount: 2 }, over)]
 });
 const run = (name, opts = {}) => validatePack(path.join(FIX, name + ".js"), opts.catalog || catalog(), { rel: opts.rel || REL });
 
@@ -27,10 +27,10 @@ test("the real catalogue and every real pack are valid", () => {
   }
 });
 
-test("a valid fixture pack passes (all 7 exercise types)", () => {
+test("a valid fixture pack passes (all 7 exercise types, a boss of 10 questions)", () => {
   const r = run("valid");
   assert.deepStrictEqual(r.errors, []);
-  assert.deepStrictEqual(Object.keys(r.stats.types).sort(), ["fill", "match", "mcq", "order", "sort", "spot", "write"]);
+  assert.deepStrictEqual(Object.keys(r.stats.types).sort(), ["fill", "match", "mcq", "order", "question", "sort", "spot"]);
 });
 
 const BROKEN = {
@@ -43,9 +43,10 @@ const BROKEN = {
   "order-alternative-unknown-word": /alternatives\[0\] utilise des mots absents des étiquettes : chien/,
   "fill-two-blanks": /exactement un trou ___/,
   "spot-index-out-of-range": /wrongIndex 9 hors limites/,
-  "write-bad-regex": /regex invalide/,
-  "write-model-misses-requirements": /modelAnswer ne valide que 0\/1/,
-  "write-unknown-document": /document nope introuvable/,
+  "question-no-answer": /answers doit contenir au moins une réponse/,
+  "question-unknown-document": /document nope introuvable/,
+  "boss-too-short": /monde 2 \(boss\) : 4 exercices, il en faut 10 à 20/,
+  "boss-not-only-questions": /le boss ne contient que des exercices question \(reçu : "mcq"\)/,
   "duplicate-world-id": /monde 2 : id 1 en double/,
   "unknown-exercise-type": /type "boom" inconnu/,
   "broken-markup": /\[\[mot\|traduction\]\] mal formée/,
@@ -72,7 +73,7 @@ test("pack file must be at packs/<path>.js", () => {
 test("pack must be listed in the catalogue, with the same lang and worldCount", () => {
   assert.ok(run("valid", { catalog: catalog({ path: "4e/anglais/other" }) }).errors.some((e) => /absent du catalogue/.test(e)));
   assert.ok(run("valid", { catalog: catalog({ lang: "en" }) }).errors.some((e) => /lang "en" ≠ lang du pack "fr"/.test(e)));
-  assert.ok(run("valid", { catalog: catalog({ worldCount: 3 }) }).errors.some((e) => /worldCount 3 ≠ 1/.test(e)));
+  assert.ok(run("valid", { catalog: catalog({ worldCount: 3 }) }).errors.some((e) => /worldCount 3 ≠ 2/.test(e)));
 });
 
 test("catalogue: path segments must be a known level and subject, no duplicates, valid fields", () => {
@@ -122,7 +123,7 @@ test("catalogue: a chapter par groupes has groups (id, label, difficulty, worldC
 
 test("a group pack: path <cours>/<groupe>, found through the groups of its catalogue entry", () => {
   const cat = { subjects: [{ id: "anglais", label: "Anglais" }], levels: [{ id: "4e", label: "4e", order: 8 }],
-    packs: [{ path: "4e/anglais/unit", title: "t", lang: "fr", groups: [{ id: "valid", label: "Groupe", worldCount: 1 }] }] };
+    packs: [{ path: "4e/anglais/unit", title: "t", lang: "fr", groups: [{ id: "valid", label: "Groupe", worldCount: 2 }] }] };
   assert.deepStrictEqual(catalogUnits(cat).map((u) => u.path), ["4e/anglais/unit/valid"]);
   const src = fs.readFileSync(path.join(FIX, "valid.js"), "utf8").replace(/"path": "[^"]+"/, '"path": "4e/anglais/unit/valid"');
   const tmp = path.join(require("os").tmpdir(), "rq-group-valid-" + process.pid + ".js");
@@ -131,7 +132,7 @@ test("a group pack: path <cours>/<groupe>, found through the groups of its catal
     assert.deepStrictEqual(validatePack(tmp, cat, { rel: "packs/4e/anglais/unit/valid.js" }).errors, []);
     assert.ok(validatePack(tmp, cat, { rel: "packs/4e/anglais/unit-valid.js" }).errors.some((e) => /le fichier doit être packs\/4e\/anglais\/unit\/valid\.js/.test(e)));
     const wrongCount = JSON.parse(JSON.stringify(cat)); wrongCount.packs[0].groups[0].worldCount = 4;
-    assert.ok(validatePack(tmp, wrongCount, { rel: "packs/4e/anglais/unit/valid.js" }).errors.some((e) => /worldCount 4 ≠ 1 mondes dans le pack \(groupe\)/.test(e)));
+    assert.ok(validatePack(tmp, wrongCount, { rel: "packs/4e/anglais/unit/valid.js" }).errors.some((e) => /worldCount 4 ≠ 2 mondes dans le pack \(groupe\)/.test(e)));
   } finally { fs.unlinkSync(tmp); }
 });
 
@@ -171,7 +172,7 @@ test("mcq with several answers and docId on any exercise (reading comprehension)
   assert.ok(check('"answer": 0, "showCount": false').errors.some((e) => /showCount seulement/.test(e)));
   assert.ok(check('"answer": [0], "showCount": "non"').errors.some((e) => /showCount doit être/.test(e)));
   assert.ok(check('"answer": 0, "docId": "nope"').errors.some((e) => /document nope introuvable/.test(e)));
-  assert.ok(check('"answer": 0, "letterId": "d1"').errors.some((e) => /letterId seulement sur write/.test(e)));
+  assert.ok(check('"answer": 0, "letterId": "d1"').errors.some((e) => /letterId n'existe plus/.test(e)));
   assert.ok(check('"answer": 0', '"screen": "oui"').errors.some((e) => /screen doit être/.test(e)));
 });
 
@@ -190,19 +191,51 @@ test("js/core/pack-rules.js: the same rules run in the browser (window.PackRules
   const broken = { documents: [{ id: 1, text: "**x" }, { id: 1, text: "y" }], worlds: [{ id: "A B", title: "", exercises: [
     { type: "mcq", prompt: "p", explanation: "e", options: ["a", "A"], answer: 3 },
     { type: "sort", prompt: "p", explanation: "e", categories: [{ id: "c", label: "C" }, { id: "c", label: "D" }], items: [{ text: "t", cat: "z" }, { text: "u", cat: "c" }] },
-    { type: "write", prompt: "p", explanation: "e", requirements: [{ id: "r", label: "R", pattern: "(" }], modelAnswer: "x" },
+    { type: "question", prompt: "p", explanation: "e", answers: ["a", "a"] },
     { type: "nope" }
   ] }] };
   for (const pack of packs.concat([broken])) assert.deepStrictEqual(check(Browser, pack), check(NodeRules, pack));
   const r = check(NodeRules, broken);
   for (const re of [/id 1 en double/, /\*\* \(gras\) non fermé/, /id "A B" invalide/, /title manquant/, /answer 3 hors limites/, /options en double/,
-    /catégorie "c" en double/, /cat "z" n'existe pas/, /regex invalide/, /type "nope" inconnu/]) {
+    /catégorie "c" en double/, /cat "z" n'existe pas/, /answers en double/, /type "nope" inconnu/]) {
     assert.ok(r.errors.some((e) => re.test(e)), re + " — " + r.errors.join(" | "));
   }
   const errs = [];
   assert.strictEqual(NodeRules.checkPath("cm1/maths/les-fractions", (m) => errs.push(m)), true);
   assert.strictEqual(NodeRules.checkPath("CM1/maths", (m) => errs.push(m)), false);
   assert.match(errs.join(" | "), /path "CM1\/maths" invalide/);
+});
+
+test("boss: no hint; write and letterId no longer exist", () => {
+  const r = run("boss-not-only-questions");
+  assert.ok(r.errors.some((e) => /monde 2 \(boss\) ex 2 : pas d'indice dans le boss/.test(e)), r.errors.join(" | "));
+  const Rules = require("../../js/core/pack-rules.js");
+  const errors = [];
+  Rules.validateExercise({ type: "write", prompt: "p", explanation: "e" }, "ex", { err: (m) => errors.push(m), warn: () => {} });
+  Rules.validateExercise({ type: "question", prompt: "p", explanation: "e", answers: ["a"], letterId: 1, multiline: "yes" }, "ex2", { err: (m) => errors.push(m), warn: () => {} });
+  assert.match(errors.join(" | "), /type "write" inconnu/);
+  assert.match(errors.join(" | "), /letterId n'existe plus/);
+  assert.match(errors.join(" | "), /multiline doit être true ou false/);
+});
+
+test("boss draw: 10 to 20 drawn from a pool of 40 at most, the pool twice as big advised, only on the boss", () => {
+  const Rules = require("../../js/core/pack-rules.js");
+  const q = (i) => ({ type: "question", prompt: "q" + i, answers: ["a" + i], explanation: "e" });
+  const run = (pool, draw, onFirst) => {
+    const errors = [], warnings = [];
+    const worlds = [{ id: 1, title: "W", icon: "⭐", color: "#123456", exercises: [q(0)] }, { id: 2, title: "Boss", icon: "👑", color: "#123456", exercises: Array.from({ length: pool }, (_, i) => q(i)) }];
+    if (draw !== undefined) worlds[1].draw = draw;
+    if (onFirst) worlds[0].draw = 12;
+    Rules.validateContent({ worlds }, (m) => errors.push(m), (m) => warnings.push(m));
+    return { errors: errors.join(" | "), warnings: warnings.filter((w) => !/lesson/.test(w)).join(" | ") };
+  };
+  assert.deepStrictEqual(run(24, 12), { errors: "", warnings: "" });
+  assert.match(run(30, undefined).errors, /30 exercices, il en faut 10 à 20/);
+  assert.match(run(15, 12).warnings, /vise au moins 24/);
+  assert.match(run(10, 12).errors, /10 questions dans la réserve, il en faut au moins draw \(12\)/);
+  assert.match(run(41, 12).errors, /40 au plus/);
+  assert.match(run(24, 9).errors, /draw 9 doit être un nombre entier de 10 à 20/);
+  assert.match(run(24, 12, true).errors, /monde 1 : draw seulement sur le boss/);
 });
 
 test("strict format: read as text, JSON only, never run", () => {

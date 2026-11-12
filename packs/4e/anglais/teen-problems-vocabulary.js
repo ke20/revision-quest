@@ -1247,253 +1247,296 @@ window.registerPack({
     },
     {
       "id": 8,
-      "title": "Boss: Word Master",
+      "title": "Boss: Translate!",
       "subtitle": "All the words of the six letters",
-      "subtitleFr": "Le défi final : tout le vocabulaire",
+      "subtitleFr": "Traduis les phrases en anglais avec le vocabulaire des lettres",
       "icon": "🏆",
       "color": "#EAB308",
       "lesson": {
-        "title": "[[The final challenge|Le défi final]]",
+        "title": "[[Boss: translate!|Boss : traduis !]]",
         "points": [
-          "Ce monde mélange **tout** le vocabulaire des six lettres.",
-          "Faux amis :\n- [[**a mark**|une note]] (une marque = [[**a brand**|une marque]])\n- [[**a subject**|une matière]] (pas un sujet)\n- [[**severe**|grave, gros]] (pas sévère)",
-          "Pour finir, écris ta propre lettre à l'Agony Aunt."
+          "Avec ce que tu as appris, traduis correctement les phrases ci-dessous en anglais. Une seule chance par phrase !",
+          "Faux amis : [[**a mark**|une note]] (pas une marque), [[**a subject**|une matière]] (pas un sujet).",
+          "N'oublie pas les petits mots :\n- [[**give up**|abandonner]], [[**fit in**|s'intégrer]]\n- [[**make fun of**|se moquer de]], [[**ask for help**|demander de l'aide]], [[**addicted to**|accro à]]"
         ],
         "examples": [
-          "[[I feel **insecure about** my **appearance**.|Je suis complexé·e par mon apparence.]]"
+          "[[I feel **stuck** and **hopeless**.|Je me sens bloqué et désespéré.]]"
         ]
       },
+      "draw": 12,
       "exercises": [
         {
-          "type": "match",
-          "prompt": "Relie les mots des six lettres à leur traduction.",
-          "pairs": [
-            {
-              "left": "safe",
-              "right": "sans danger"
-            },
-            {
-              "left": "bullied",
-              "right": "harcelé"
-            },
-            {
-              "left": "pressure",
-              "right": "pression"
-            },
-            {
-              "left": "trendy",
-              "right": "à la mode"
-            },
-            {
-              "left": "addicted to",
-              "right": "accro à"
-            },
-            {
-              "left": "to give up",
-              "right": "abandonner"
-            }
-          ],
-          "explanation": "✅ Un mot par lettre : Lily, Sarah, Sam, Susan, Abby, Mark."
-        },
-        {
-          "type": "mcq",
-          "prompt": "Faux ami : \"Every time I get a bad **mark**, I feel sad.\" Que veut dire **mark** ?",
-          "options": [
-            "une marque",
-            "un match",
-            "une tache",
-            "une note"
-          ],
-          "answer": 3,
-          "explanation": "✅ **a mark** = une note. Une marque (de vêtements) se dit **a brand** : [[**unbranded**|sans marque]]."
-        },
-        {
-          "type": "mcq",
-          "prompt": "Faux ami : \"I have difficulties understanding **subjects** like maths.\" Que veut dire **subjects** ?",
-          "options": [
-            "des leçons",
-            "des exercices",
-            "des matières",
-            "des sujets"
-          ],
-          "answer": 2,
-          "explanation": "✅ **a subject** = une matière (maths, science…). Le sujet d'une rédaction se dit [[**a topic**|un sujet]]."
-        },
-        {
-          "type": "mcq",
-          "prompt": "Faux ami : \"I have **severe** difficulties.\" Que veut dire **severe** ?",
-          "options": [
-            "petites",
-            "grosses, graves",
-            "sévères",
-            "nouvelles"
-          ],
-          "answer": 1,
-          "explanation": "✅ **severe** = grave, important. Un professeur sévère se dit [[**a strict teacher**|un professeur sévère]]."
-        },
-        {
-          "type": "fill",
-          "prompt": "Écris en anglais : « se moquer de ».",
-          "sentence": "Some kids ___ me.",
+          "type": "question",
+          "prompt": "Traduis : « Je me sens stressé. »",
           "answers": [
-            "make fun of"
+            "I feel stressed."
           ],
-          "explanation": "✅ **to make fun of** = se moquer de.",
-          "hint": "make … … (3 mots)"
+          "explanation": "« je me sens » = **I feel**, puis l'adjectif : [[I feel stressed.|Je me sens stressé.]]"
         },
         {
-          "type": "fill",
-          "prompt": "Écris en anglais : « n'a pas les moyens d'acheter » (2 mots).",
-          "sentence": "My family ___ these things.",
+          "type": "question",
+          "prompt": "Traduis : « Mes parents sont furieux. »",
           "answers": [
-            "cannot afford",
-            "can't afford",
-            "can not afford"
+            "My parents are furious."
           ],
-          "explanation": "✅ **cannot afford** = ne pas avoir les moyens d'acheter."
+          "explanation": "**furious** ressemble au français, mais attention : **u** et pas *eu* : [[My parents are furious.|Mes parents sont furieux.]]"
         },
         {
-          "type": "fill",
-          "prompt": "Écris en anglais : « mes notes baissent ».",
-          "sentence": "My ___ are dropping.",
+          "type": "question",
+          "prompt": "Traduis : « Je suis accro à mon smartphone. »",
           "answers": [
-            "grades",
-            "marks"
+            "I am addicted to my smartphone.",
+            "I am addicted to my smart phone."
           ],
-          "explanation": "✅ **grades** ou **marks** = les notes."
+          "explanation": "« être accro à » = **to be addicted to** : [[I am addicted to my smartphone.|Je suis accro à mon smartphone.]]"
         },
         {
-          "type": "fill",
-          "prompt": "Conseil pour Lily : complète avec le verbe **meet up** à la bonne forme.",
-          "sentence": "How about ___ up in a public place?",
+          "type": "question",
+          "prompt": "Traduis : « Mes notes baissent. »",
           "answers": [
-            "meeting"
+            "My marks are dropping.",
+            "My grades are dropping.",
+            "My marks are falling.",
+            "My grades are falling.",
+            "My marks are going down.",
+            "My grades are going down."
           ],
-          "explanation": "✅ Après **How about**, le verbe prend **-ing** : [[How about **meeting up** in a public place?|Et si vous vous retrouviez dans un lieu public ?]]",
-          "hint": "How about + verbe en -ing"
+          "explanation": "« une note » = **a mark** ou **a grade** (faux ami : pas *a brand*) : [[My grades are dropping.|Mes notes baissent.]]"
         },
         {
-          "type": "spot",
-          "prompt": "Touche le mot faux.",
-          "tokens": [
-            "Lily",
-            "is",
-            "not",
-            "sure",
-            "if",
-            "it",
-            "is",
-            "safe",
-            "to",
-            "meet",
-            "down",
-            "with",
-            "her",
-            "online",
-            "friend",
-            "."
+          "type": "question",
+          "prompt": "Traduis : « Des élèves se moquent de moi. »",
+          "answers": [
+            "Some kids make fun of me.",
+            "Some students make fun of me.",
+            "Some pupils make fun of me.",
+            "Kids make fun of me.",
+            "Students make fun of me.",
+            "Pupils make fun of me."
           ],
-          "wrongIndex": 10,
-          "correction": "up",
-          "explanation": "✅ Se retrouver = **to meet up**."
+          "explanation": "« se moquer de » = **make fun of** (avec **of**) : [[Some kids make fun of me.|Des élèves se moquent de moi.]]"
         },
         {
-          "type": "spot",
-          "prompt": "Touche le mot faux : le sens ne va pas.",
-          "tokens": [
-            "Mark",
-            "feels",
-            "hopeless",
-            "because",
-            "he",
-            "gets",
-            "good",
-            "marks",
-            "in",
-            "maths",
-            "and",
-            "science",
-            "."
+          "type": "question",
+          "prompt": "Traduis : « Ma famille n'a pas les moyens d'acheter des vêtements chers. »",
+          "answers": [
+            "My family cannot afford expensive clothes."
           ],
-          "wrongIndex": 6,
-          "correction": "bad",
-          "explanation": "✅ Mark est désespéré parce qu'il a de [[**bad marks**|mauvaises notes]]."
+          "explanation": "« ne pas avoir les moyens d'acheter » = **cannot afford** ; « cher » = **expensive** : [[My family cannot afford expensive clothes.|Ma famille n'a pas les moyens d'acheter des vêtements chers.]]"
         },
         {
-          "type": "sort",
-          "prompt": "Range chaque mot dans la bonne lettre.",
-          "categories": [
-            {
-              "id": "abby",
-              "label": "📱 Abby"
-            },
-            {
-              "id": "mark",
-              "label": "📚 Mark"
-            }
+          "type": "question",
+          "prompt": "Traduis : « Je veux arrêter et abandonner. »",
+          "answers": [
+            "I want to quit and give up."
           ],
-          "items": [
-            {
-              "text": "offline",
-              "cat": "abby"
-            },
-            {
-              "text": "stayed up",
-              "cat": "abby"
-            },
-            {
-              "text": "confiscate",
-              "cat": "abby"
-            },
-            {
-              "text": "subjects",
-              "cat": "mark"
-            },
-            {
-              "text": "give up",
-              "cat": "mark"
-            },
-            {
-              "text": "hopeless",
-              "cat": "mark"
-            }
-          ],
-          "explanation": "✅ Abby parle de son téléphone ; Mark parle de l'école."
+          "explanation": "« arrêter » = **quit**, « abandonner » = **give up** : [[I want to quit and give up.|Je veux arrêter et abandonner.]]"
         },
         {
-          "type": "write",
-          "prompt": "Écris à ton tour une lettre à l'Agony Aunt (3 phrases ou plus) avec le vocabulaire du chapitre.",
-          "minWords": 25,
-          "requirements": [
-            {
-              "id": "dear",
-              "label": "Commence par « Dear Agony Aunt »",
-              "pattern": "dear agony aunt"
-            },
-            {
-              "id": "feel",
-              "label": "Dis ce que tu ressens (I feel + adjectif)",
-              "pattern": "i feel (so |really |very |completely )?(stressed|upset|sad|anxious|insecure|stuck|hopeless|tired|furious)"
-            },
-            {
-              "id": "vocab",
-              "label": "Utilise un mot des lettres (bullied, marks, pressure, offline…)",
-              "pattern": "bull(y|ied|ying)|marks?|grades?|pressure|offline|online|social media|addicted|trendy|unbranded|afford|make fun of|give up|fit in"
-            },
-            {
-              "id": "question",
-              "label": "Finis par une question (What should I do? / How can I…?)",
-              "pattern": "(what should i do|how can i)[^?]*\\?"
-            }
+          "type": "question",
+          "prompt": "Traduis : « Je me sens bloqué et désespéré. »",
+          "answers": [
+            "I feel stuck and hopeless."
           ],
-          "minRequirements": 3,
-          "starters": [
-            "Dear Agony Aunt,",
-            "I feel",
-            "What should I do?"
+          "explanation": "« bloqué » = **stuck**, « désespéré » = **hopeless** : [[I feel stuck and hopeless.|Je me sens bloqué et désespéré.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Je dois demander de l'aide. »",
+          "answers": [
+            "I must ask for help.",
+            "I have to ask for help.",
+            "I need to ask for help."
           ],
-          "modelAnswer": "Dear Agony Aunt, I feel stressed because I have bad marks in maths. My parents put a lot of pressure on me and some kids make fun of me. I want to give up. What should I do?",
-          "explanation": "✅ Une bonne lettre : **Dear Agony Aunt**, ton sentiment (**I feel…**), ton problème avec les mots du chapitre, puis une question."
+          "explanation": "« demander de l'aide » = **ask for help** (avec **for**) : [[I must ask for help.|Je dois demander de l'aide.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Je ne veux pas décevoir ma famille. »",
+          "answers": [
+            "I don't want to disappoint my family."
+          ],
+          "explanation": "« décevoir » = **to disappoint** : [[I don't want to disappoint my family.|Je ne veux pas décevoir ma famille.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Comment est-ce que je peux m'intégrer ? »",
+          "answers": [
+            "How can I fit in?"
+          ],
+          "explanation": "« s'intégrer » = **fit in** (verbe + petit mot) : [[How can I fit in?|Comment est-ce que je peux m'intégrer ?]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « J'ai de mauvaises notes en maths. »",
+          "answers": [
+            "I get bad marks in maths.",
+            "I get bad grades in maths.",
+            "I have bad marks in maths.",
+            "I have bad grades in maths.",
+            "I've got bad marks in maths.",
+            "I've got bad grades in maths."
+          ],
+          "explanation": "Faux ami : « une note » = **a mark** ou **a grade** : [[I get bad marks in maths.|J'ai de mauvaises notes en maths.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Je suis complexée par mon apparence. »",
+          "answers": [
+            "I feel insecure about my appearance.",
+            "I am insecure about my appearance."
+          ],
+          "explanation": "« complexé(e) par » = **insecure about** : [[I feel insecure about my appearance.|Je suis complexée par mon apparence.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Je ne suis pas sûre que ce soit sans danger. »",
+          "answers": [
+            "I am not sure if it is safe.",
+            "I am not sure it is safe.",
+            "I am not sure that it is safe."
+          ],
+          "explanation": "« sans danger » = **safe** (son contraire : **dangerous**) : [[I'm not sure if it's safe.|Je ne suis pas sûre que ce soit sans danger.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Je suis trop fatiguée pour me concentrer en classe. »",
+          "answers": [
+            "I am too tired to focus in class.",
+            "I am too tired to concentrate in class."
+          ],
+          "multiline": true,
+          "explanation": "« fatigué(e) » = **tired**, « se concentrer » = **focus** : [[I am too tired to focus in class.|Je suis trop fatiguée pour me concentrer en classe.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Dès que je me réveille, je consulte les réseaux sociaux. »",
+          "answers": [
+            "As soon as I wake up, I check social media.",
+            "I check social media as soon as I wake up."
+          ],
+          "multiline": true,
+          "explanation": "« dès que » = **as soon as**, « se réveiller » = **wake up** : [[As soon as I wake up, I check social media.|Dès que je me réveille, je consulte les réseaux sociaux.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Mon amie est harcelée. Elle est bouleversée. »",
+          "answers": [
+            "My friend is bullied. She is upset.",
+            "My friend is being bullied. She is upset.",
+            "My friend is bullied. She feels upset.",
+            "My friend is being bullied. She feels upset."
+          ],
+          "multiline": true,
+          "explanation": "« être harcelé(e) » = **to be bullied**, « bouleversé(e) » = **upset** : [[My friend is being bullied. She is upset.|Mon amie est harcelée. Elle est bouleversée.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « J'ai mal au ventre. »",
+          "answers": [
+            "My stomach hurts.",
+            "I have a stomach ache.",
+            "I have a stomachache."
+          ],
+          "explanation": "« j'ai mal au ventre » = **my stomach hurts** (mot à mot : mon ventre fait mal) : [[My stomach hurts.|J'ai mal au ventre.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Je me sens triste et anxieuse. »",
+          "answers": [
+            "I feel sad and anxious."
+          ],
+          "explanation": "**I feel** + adjectifs : « triste » = **sad**, « anxieuse » = **anxious** : [[I feel sad and anxious.|Je me sens triste et anxieuse.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Ils m'insultent. »",
+          "answers": [
+            "They call me names."
+          ],
+          "explanation": "« insulter quelqu'un » = **call someone names** : [[They call me names.|Ils m'insultent.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Mes vêtements sont sans marque. »",
+          "answers": [
+            "My clothes are unbranded."
+          ],
+          "explanation": "« sans marque » = **unbranded** ; **clothes** est toujours au pluriel : [[My clothes are unbranded.|Mes vêtements sont sans marque.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Les vêtements à la mode sont chers. »",
+          "answers": [
+            "Trendy clothes are expensive."
+          ],
+          "explanation": "« à la mode » = **trendy**, placé **avant** le nom ; « cher » = **expensive** : [[Trendy clothes are expensive.|Les vêtements à la mode sont chers.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Mes parents veulent confisquer mon téléphone. »",
+          "answers": [
+            "My parents want to confiscate my phone.",
+            "My parents want to confiscate my smartphone.",
+            "My parents want to confiscate my smart phone."
+          ],
+          "explanation": "« confisquer » = **to confiscate** : [[My parents want to confiscate my phone.|Mes parents veulent confisquer mon téléphone.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Les maths sont une matière difficile. »",
+          "answers": [
+            "Maths is a difficult subject.",
+            "Math is a difficult subject.",
+            "Maths is a hard subject.",
+            "Math is a hard subject."
+          ],
+          "explanation": "Faux ami : « une matière » = **a subject** (pas un sujet). **Maths** prend un verbe au singulier : [[Maths is a difficult subject.|Les maths sont une matière difficile.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Mes parents attendent de moi des notes parfaites. »",
+          "answers": [
+            "My parents expect me to get perfect marks.",
+            "My parents expect me to get perfect grades.",
+            "My parents expect me to have perfect marks.",
+            "My parents expect me to have perfect grades."
+          ],
+          "explanation": "« attendre de quelqu'un » = **expect someone to** + verbe : [[My parents expect me to get perfect marks.|Mes parents attendent de moi des notes parfaites.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Être hors ligne me rend anxieuse. »",
+          "answers": [
+            "Being offline makes me anxious."
+          ],
+          "explanation": "« hors ligne » = **offline** ; « me rend » = **makes me** : [[Being offline makes me anxious.|Être hors ligne me rend anxieuse.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Je travaille régulièrement. Cependant, mes notes ne sont pas assez bonnes. »",
+          "answers": [
+            "I work regularly. However, my marks are not good enough.",
+            "I work regularly. However, my grades are not good enough.",
+            "I study regularly. However, my marks are not good enough.",
+            "I study regularly. However, my grades are not good enough."
+          ],
+          "multiline": true,
+          "explanation": "« régulièrement » = **regularly**, « cependant » = **However** ; **enough** se place **après** l'adjectif : [[However, my marks are not good enough.|Cependant, mes notes ne sont pas assez bonnes.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Je ne m'intègre pas. Des élèves m'insultent. »",
+          "answers": [
+            "I don't fit in. Some kids call me names.",
+            "I don't fit in. Some students call me names.",
+            "I don't fit in. Some pupils call me names.",
+            "I don't fit in. Kids call me names.",
+            "I don't fit in. Students call me names.",
+            "I don't fit in. Pupils call me names."
+          ],
+          "multiline": true,
+          "explanation": "« s'intégrer » = **fit in**, « insulter » = **call someone names** : [[I don't fit in. Some kids call me names.|Je ne m'intègre pas. Des élèves m'insultent.]]"
         }
       ]
     }

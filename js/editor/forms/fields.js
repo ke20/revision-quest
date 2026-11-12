@@ -153,7 +153,7 @@ export function rowText(row, f, value, onInput, label, placeholder, multiline) {
   return input;
 }
 
-/** A list of texts (lesson points, accepted answers, sentence starters…).
+/** A list of texts (lesson points, accepted answers, model answers…).
     @param {HTMLElement} parent @param {FieldOpts & { list: string[], min?: number, max?: number, placeholder?: string, addLabel?: string, multiline?: boolean, onChange: () => void }} o */
 export function textList(parent, o) {
   return rows(parent, {

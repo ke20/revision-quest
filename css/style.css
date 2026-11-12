@@ -376,37 +376,21 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
 .reveal-text { font-size: 1.15rem; font-weight: 600; }
 .reveal-text s { color: var(--red); }
 .reveal-tr { margin-top: 6px; color: var(--ink-soft); }
-.model-answer { font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", var(--font); font-size: 1.05rem; line-height: 1.6; }
 
-/* write */
-.letter-card {
-  position: relative; background: #FFFDF4; border-radius: 6px 6px 18px 18px; padding: 22px 18px 18px; margin-bottom: 16px;
-  box-shadow: 0 8px 20px rgba(120, 80, 0, .15), inset 0 0 0 1px #F1E3B8;
-  background-image: repeating-linear-gradient(transparent 0 27px, #EFE3C2 27px 28px); line-height: 28px;
-  transform: rotate(-.6deg); font-size: 1.02rem;
-}
-.letter-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 6px; border-radius: 6px 6px 0 0; background: repeating-linear-gradient(90deg, #FF5C8A 0 16px, #fff 16px 22px, #29B6F6 22px 38px, #fff 38px 44px); }
+/* texts shown with an exercise (documents) */
 .letter-stamp { position: absolute; right: 12px; top: 12px; font-size: 1.8rem; transform: rotate(10deg); }
 .letter-tag { font-weight: 700; color: #A16207; font-size: .9rem; text-transform: uppercase; letter-spacing: .5px; padding-right: 40px; }
 .letter-head, .letter-from { font-weight: 600; }
 .letter-from { text-align: right; }
-.starters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-.starters-label { width: 100%; color: var(--ink-soft); font-size: .88rem; }
-.chip.starter { font-size: .92rem; padding: 6px 11px; background: color-mix(in srgb, var(--c) 10%, #fff); border-color: color-mix(in srgb, var(--c) 40%, #fff); }
-.write-area {
-  width: 100%; font: inherit; font-size: 1.05rem; line-height: 1.5; padding: 14px; border-radius: 16px; border: 3px solid var(--line);
-  resize: vertical; min-height: 170px; outline: none; color: var(--ink); background: #fff;
+/* question */
+.question-input {
+  width: 100%; font: inherit; font-size: 1.2rem; font-weight: 600; color: var(--purple); padding: 12px 14px; border-radius: 14px;
+  border: 3px solid var(--line); outline: none; background: #fff;
 }
-.write-area:focus { border-color: var(--c); }
-.write-meta { display: flex; gap: 10px; margin: 10px 0; flex-wrap: wrap; }
-.word-count, .req-count { background: #F5F0FB; border-radius: 999px; padding: 4px 12px; font-size: .95rem; transition: background .2s; }
-.word-count.done, .req-count.done { background: var(--green-bg); color: #166534; }
-.checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
-.checklist li { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 12px; background: #FAF6FF; transition: background .2s, color .2s; }
-.checklist .tick { width: 24px; height: 24px; border-radius: 50%; border: 3px solid #D7CBE6; flex: none; display: grid; place-items: center; font-size: .8rem; color: #fff; transition: all .2s; }
-.checklist li.done { background: var(--green-bg); color: #166534; }
-.checklist li.done .tick { background: var(--green); border-color: var(--green); }
-.checklist li.done .tick::after { content: "✓"; font-weight: 700; }
+.question-input.multi { resize: vertical; min-height: 96px; line-height: 1.5; }
+.question-input:focus { border-color: var(--c); }
+.question-input.correct { color: #15803D; border-color: var(--green); background: var(--green-bg); }
+.question-input.wrong { color: #B91C1C; border-color: var(--red); background: var(--red-bg); }
 
 /* translation */
 .tr { border-bottom: 2px dotted var(--purple); cursor: pointer; color: inherit; padding-bottom: 0; border-radius: 2px; }
@@ -872,3 +856,13 @@ body.theme-hiver {
 }
 body.theme-hiver::before { background: #BAE6FD; opacity: .3; }
 body.theme-hiver::after { background: #E0F2FE; opacity: .22; }
+
+/* boss: medal on the result screen and on the map */
+.boss-tag { font-weight: 700; font-size: .95rem; padding: 2px 10px; border-radius: 999px; background: #FEF3C7; color: #92400E; }
+.boss-rules { line-height: 1.5; }
+.medal { display: flex; flex-direction: column; align-items: center; gap: 2px; margin: 8px auto 4px; }
+.medal-icon { font-size: 3.4rem; line-height: 1; }
+.medal-name { font-size: 1.3rem; }
+.medal-score { font-size: 1.1rem; color: var(--ink-soft); font-weight: 700; }
+.medal-best { color: var(--ink-soft); font-size: .95rem; margin: 0; }
+.node-medal { font-size: 1rem; }

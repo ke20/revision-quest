@@ -1,7 +1,12 @@
-/* Unit-test fixture for tools/validate-pack.js (write-model-misses-requirements). Not a real pack. */
+/* Unit-test fixture for tools/validate-pack.js (boss-too-short). Not a real pack. */
 window.registerPack({
   "path": "4e/anglais/unit-valid",
   "lang": "fr",
+  "meta": {
+    "title": "Test",
+    "description": "Pack de test des contrôles.",
+    "icon": "🧪"
+  },
   "documents": [
     {
       "id": "d1",
@@ -114,20 +119,59 @@ window.registerPack({
           "explanation": "Ok."
         },
         {
-          "type": "write",
+          "type": "question",
           "prompt": "Écris.",
           "docId": "d1",
-          "minWords": 3,
-          "requirements": [
-            {
-              "id": "chat",
-              "label": "Parle du chat",
-              "pattern": "chat"
-            }
+          "answers": [
+            "Le chat dort."
           ],
-          "minRequirements": 1,
-          "modelAnswer": "Il pleut beaucoup ici.",
           "explanation": "Ok."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Boss",
+      "icon": "👑",
+      "color": "#EF4444",
+      "lesson": {
+        "title": "Contrôle",
+        "points": [
+          "Avec ce que tu as appris, réponds correctement aux questions ci-dessous."
+        ]
+      },
+      "exercises": [
+        {
+          "type": "question",
+          "prompt": "Combien font 1 + 1 ?",
+          "answers": [
+            "2"
+          ],
+          "explanation": "Le résultat est 2."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien font 2 + 1 ?",
+          "answers": [
+            "3"
+          ],
+          "explanation": "Le résultat est 3."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien font 3 + 1 ?",
+          "answers": [
+            "4"
+          ],
+          "explanation": "Le résultat est 4."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien font 4 + 1 ?",
+          "answers": [
+            "5"
+          ],
+          "explanation": "Le résultat est 5."
         }
       ]
     }

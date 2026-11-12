@@ -11,13 +11,6 @@ window.registerPack({
     "icon": "👑",
     "color": "#B45309"
   },
-  "documents": [
-    {
-      "id": "synthese",
-      "title": "Du Moyen Âge aux Temps modernes",
-      "text": "👑 **Moyen Âge (Louis IX)** : le roi partage le pouvoir avec les seigneurs. On construit des châteaux forts pour la guerre. Le monde est fermé, tout tourne autour de la foi. Pas de tolérance (croisades).\n\n🎨 **Temps modernes (François Ier, Henri IV)** : le roi gouverne seul, l'État moderne s'impose. On construit des châteaux de plaisance. Le monde s'ouvre : sciences, grandes découvertes. Début de la tolérance (Édit de Nantes)."
-    }
-  ],
   "worlds": [
     {
       "id": 1,
@@ -765,114 +758,316 @@ window.registerPack({
       "lesson": {
         "title": "Prêt pour le contrôle ?",
         "points": [
-          "Ce monde mélange **tout le chapitre**, comme le jour du contrôle.",
-          "Pas de panique : utilise les **indices** 💡 si tu bloques.",
-          "Dernier défi : écrire **une phrase** avec tes mots."
-        ],
-        "examples": [
-          "Louis IX **1226** · Marignan **1515** · Cartier **1534** · Villers-Cotterêts **1539** · Saint-Barthélemy **1572** · Édit de Nantes **1598** · Ravaillac **1610**"
+          "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
+          "Écris juste un **nom**, un **mot** ou une **date**. Tu n'as qu'**un essai** par question : relis-toi avant de valider.",
+          "Pense aux trois rois dans l'ordre : **Louis IX**, **François Ier**, **Henri IV**."
         ]
       },
+      "draw": 12,
       "exercises": [
         {
-          "type": "mcq",
-          "prompt": "Qui assure la régence pour Louis IX ?",
-          "options": [
-            "Blanche de Castille",
-            "Sully",
-            "Léonard de Vinci",
-            "Ravaillac"
-          ],
-          "answer": 0,
-          "explanation": "Sa mère, **Blanche de Castille**."
-        },
-        {
-          "type": "fill",
-          "prompt": "Complète avec la bonne année.",
-          "sentence": "Le massacre de la Saint-Barthélemy a lieu en ___.",
+          "type": "question",
+          "prompt": "À quel âge Louis IX devient-il roi ?",
           "answers": [
-            "1572"
+            "12 ans",
+            "12",
+            "douze ans",
+            "douze",
+            "à 12 ans",
+            "à douze ans"
           ],
-          "explanation": "**1572** : massacre de la Saint-Barthélemy, pendant les guerres de Religion.",
-          "hint": "Entre 1539 et 1598."
+          "explanation": "Louis IX devient roi à **12 ans**, en 1226 : c'est encore un enfant."
         },
         {
-          "type": "spot",
-          "prompt": "Touche le mot faux.",
-          "tokens": [
-            "François",
-            "Ier",
-            "protège",
-            "les",
-            "artistes",
-            "comme",
+          "type": "question",
+          "prompt": "Qui gouverne à la place de Louis IX quand il est trop jeune ?",
+          "answers": [
+            "Blanche de Castille",
+            "sa mère Blanche de Castille",
+            "sa mère",
+            "Blanche",
+            "la reine Blanche de Castille"
+          ],
+          "explanation": "Sa mère, **Blanche de Castille**, gouverne à sa place : c'est la régence."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel monument Louis IX fait-il construire ?",
+          "answers": [
+            "la Sainte-Chapelle",
+            "Sainte-Chapelle",
+            "une Sainte-Chapelle"
+          ],
+          "explanation": "Louis IX, roi très pieux, fait bâtir la **Sainte-Chapelle**."
+        },
+        {
+          "type": "question",
+          "prompt": "Dans quelle ville Louis IX meurt-il de la peste, en 1270 ?",
+          "answers": [
+            "Tunis",
+            "à Tunis"
+          ],
+          "explanation": "Il meurt de la peste à **Tunis**, pendant sa deuxième croisade."
+        },
+        {
+          "type": "question",
+          "prompt": "Les croisés rapportent un objet qui montre le nord. Lequel ?",
+          "answers": [
+            "la boussole",
+            "boussole",
+            "une boussole"
+          ],
+          "explanation": "La **boussole** fait partie des techniques découvertes dans le monde musulman, avec le moulin et le papier."
+        },
+        {
+          "type": "question",
+          "prompt": "Quelle bataille François Ier gagne-t-il en 1515 ?",
+          "answers": [
+            "Marignan",
+            "la bataille de Marignan",
+            "bataille de Marignan",
+            "à Marignan"
+          ],
+          "explanation": "**1515 : Marignan**. Le même nombre deux fois, facile à retenir !"
+        },
+        {
+          "type": "question",
+          "prompt": "Quel grand artiste italien François Ier accueille-t-il en France ?",
+          "answers": [
+            "Léonard de Vinci",
+            "Léonard",
+            "de Vinci",
+            "Vinci"
+          ],
+          "explanation": "François Ier aime l'art italien : il accueille **Léonard de Vinci**."
+        },
+        {
+          "type": "question",
+          "prompt": "Comment appelle-t-on une personne qui protège et paie les artistes ?",
+          "answers": [
+            "un mécène",
+            "mécène",
+            "les mécènes",
+            "mécènes"
+          ],
+          "explanation": "Un **mécène** protège et paie les artistes, comme François Ier."
+        },
+        {
+          "type": "question",
+          "prompt": "Donne le nom d'un château de plaisance de la Renaissance.",
+          "answers": [
+            "Chambord",
+            "Blois",
+            "le château de Chambord",
+            "le château de Blois",
+            "château de Chambord",
+            "château de Blois"
+          ],
+          "explanation": "**Chambord** et **Blois** sont des châteaux de plaisance : lumineux, faits pour la fête et le confort."
+        },
+        {
+          "type": "question",
+          "prompt": "En 1539, quelle langue remplace le latin dans les textes officiels ?",
+          "answers": [
+            "le français",
+            "français",
+            "la langue française"
+          ],
+          "explanation": "L'ordonnance de Villers-Cotterêts impose le **français** à la place du latin."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel explorateur part au Canada en 1534, payé par François Ier ?",
+          "answers": [
+            "Jacques Cartier",
+            "Cartier"
+          ],
+          "explanation": "**Jacques Cartier** explore le **Canada** en 1534."
+        },
+        {
+          "type": "question",
+          "prompt": "Comment s'appellent les guerres entre catholiques et protestants, à la fin du XVIe siècle ?",
+          "answers": [
+            "les guerres de Religion",
+            "guerres de Religion",
+            "la guerre de Religion",
+            "guerre de Religion",
+            "les guerres de religions",
+            "guerres de religions"
+          ],
+          "explanation": "Les **guerres de Religion** opposent catholiques et protestants (massacre de la Saint-Barthélemy en 1572)."
+        },
+        {
+          "type": "question",
+          "prompt": "Henri de Navarre est protestant. Quelle religion choisit-il pour devenir roi ?",
+          "answers": [
+            "catholique",
+            "la religion catholique",
+            "le catholicisme",
+            "catholicisme",
+            "il devient catholique",
+            "religion catholique"
+          ],
+          "explanation": "Il devient **catholique** pour être roi : c'est **Henri IV**."
+        },
+        {
+          "type": "question",
+          "prompt": "En quelle année Henri IV signe-t-il l'Édit de Nantes ?",
+          "answers": [
+            "1598",
+            "en 1598"
+          ],
+          "explanation": "**1598** : l'Édit de Nantes, deux ans avant 1600."
+        },
+        {
+          "type": "question",
+          "prompt": "L'Édit de Nantes laisse les protestants prier librement. Comment appelle-t-on le fait d'accepter que les autres pensent autrement ?",
+          "answers": [
+            "la tolérance",
+            "tolérance"
+          ],
+          "explanation": "C'est la **tolérance** : on peut être un bon sujet du roi sans être catholique."
+        },
+        {
+          "type": "question",
+          "prompt": "Qui assassine Henri IV en 1610 ?",
+          "answers": [
             "Ravaillac",
-            "."
+            "François Ravaillac"
           ],
-          "wrongIndex": 6,
-          "correction": "Léonard de Vinci",
-          "explanation": "Ravaillac est l'assassin d'Henri IV ! François Ier protège **Léonard de Vinci**."
+          "explanation": "Henri IV est assassiné par **Ravaillac** en 1610."
         },
         {
-          "type": "mcq",
-          "prompt": "Pourquoi l'Édit de Nantes est-il important ?",
-          "options": [
-            "Il impose le latin",
-            "Il met la paix entre les religions",
-            "Il lance les croisades",
-            "Il construit Chambord"
+          "type": "question",
+          "prompt": "En quelle année Louis IX devient-il roi ?",
+          "answers": [
+            "1226",
+            "en 1226"
           ],
-          "answer": 1,
-          "explanation": "C'est un édit de **tolérance** : le roi place la paix et les lois au-dessus de la religion."
+          "explanation": "Louis IX devient roi en **1226**, à 12 ans."
         },
         {
-          "type": "match",
-          "prompt": "Relie chaque roi à son surnom.",
-          "pairs": [
-            {
-              "left": "Louis IX",
-              "right": "le roi chrétien"
-            },
-            {
-              "left": "François Ier",
-              "right": "le roi de la Renaissance"
-            },
-            {
-              "left": "Henri IV",
-              "right": "le roi de la paix religieuse"
-            }
+          "type": "question",
+          "prompt": "Comment appelle-t-on le fait de gouverner à la place d'un roi trop jeune ?",
+          "answers": [
+            "la régence",
+            "régence",
+            "une régence"
           ],
-          "explanation": "Louis IX très **pieux**, François Ier **mécène**, Henri IV et l'**Édit de Nantes**."
+          "explanation": "C'est la **régence** : Blanche de Castille gouverne à la place de son fils."
         },
         {
-          "type": "write",
-          "prompt": "Écris une phrase : qu'a fait Henri IV pour la paix ?",
-          "docId": "synthese",
-          "minWords": 8,
-          "requirements": [
-            {
-              "id": "edit",
-              "label": "Parle de l'Édit de Nantes",
-              "pattern": "[ée]dit"
-            },
-            {
-              "id": "protestants",
-              "label": "Parle des protestants",
-              "pattern": "protestant"
-            },
-            {
-              "id": "date",
-              "label": "Donne la date (1598)",
-              "pattern": "1598"
-            }
+          "type": "question",
+          "prompt": "Comment appelle-t-on une guerre religieuse des chrétiens contre les musulmans ?",
+          "answers": [
+            "une croisade",
+            "croisade",
+            "la croisade",
+            "les croisades",
+            "croisades"
           ],
-          "minRequirements": 2,
-          "starters": [
-            "Henri IV signe",
-            "En 1598,"
+          "explanation": "Une **croisade** : Louis IX part en croisade deux fois."
+        },
+        {
+          "type": "question",
+          "prompt": "Donne un produit précieux que les croisés rapportent du monde musulman.",
+          "answers": [
+            "les épices",
+            "épices",
+            "des épices",
+            "la soie",
+            "soie",
+            "de la soie",
+            "les miroirs",
+            "miroirs",
+            "des miroirs"
           ],
-          "modelAnswer": "En 1598, Henri IV signe l'Édit de Nantes qui laisse les protestants prier librement.",
-          "explanation": "Avec l'**Édit de Nantes** (1598), les **protestants** peuvent pratiquer leur religion. C'est la tolérance."
+          "explanation": "Les croisés rapportent des **épices**, de la **soie** et des **miroirs**."
+        },
+        {
+          "type": "question",
+          "prompt": "Comment appelle-t-on les hommes qui commandent au nom du roi ?",
+          "answers": [
+            "les baillis",
+            "baillis",
+            "des baillis",
+            "un bailli",
+            "bailli"
+          ],
+          "explanation": "Le roi nomme des **baillis** pour commander en son nom : il devient plus fort."
+        },
+        {
+          "type": "question",
+          "prompt": "Comment s'appelle l'ordonnance de 1539 qui impose le français dans les textes officiels ?",
+          "answers": [
+            "Villers-Cotterêts",
+            "l'ordonnance de Villers-Cotterêts",
+            "ordonnance de Villers-Cotterêts",
+            "Villers-Cotterets",
+            "l'ordonnance de Villers-Cotterets"
+          ],
+          "explanation": "L'ordonnance de **Villers-Cotterêts** (1539) remplace le latin par le français."
+        },
+        {
+          "type": "question",
+          "prompt": "Que crée l'ordonnance de 1539 pour noter les baptêmes dans des registres ?",
+          "answers": [
+            "l'état civil",
+            "état civil",
+            "les registres d'état civil",
+            "registres d'état civil"
+          ],
+          "explanation": "Elle crée l'**état civil** : on note les baptêmes (les naissances) dans des registres."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel massacre de protestants a lieu en 1572 ?",
+          "answers": [
+            "la Saint-Barthélemy",
+            "Saint-Barthélemy",
+            "le massacre de la Saint-Barthélemy",
+            "massacre de la Saint-Barthélemy"
+          ],
+          "explanation": "**1572** : le massacre de la **Saint-Barthélemy**, pendant les guerres de Religion."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel ministre aide Henri IV à moderniser l'économie et l'agriculture ?",
+          "answers": [
+            "Sully"
+          ],
+          "explanation": "**Sully** aide Henri IV à relancer l'économie et l'agriculture (« la poule au pot »)."
+        },
+        {
+          "type": "question",
+          "prompt": "Comment s'appelle la nouvelle façon de penser qui met l'Homme, les sciences et les arts au centre ?",
+          "answers": [
+            "l'humanisme",
+            "humanisme"
+          ],
+          "explanation": "L'**humanisme** se développe à la Renaissance, au temps de François Ier."
+        },
+        {
+          "type": "question",
+          "prompt": "Quel type de château construisait-on au Moyen Âge pour faire la guerre ?",
+          "answers": [
+            "le château fort",
+            "château fort",
+            "un château fort",
+            "les châteaux forts",
+            "châteaux forts"
+          ],
+          "explanation": "Au Moyen Âge, on bâtit des **châteaux forts** ; à la Renaissance, des châteaux de plaisance."
+        },
+        {
+          "type": "question",
+          "prompt": "À quelle période de l'histoire appartiennent François Ier et Henri IV ?",
+          "answers": [
+            "les Temps modernes",
+            "Temps modernes",
+            "aux Temps modernes"
+          ],
+          "explanation": "Louis IX vit au **Moyen Âge** ; François Ier et Henri IV, aux **Temps modernes**."
         }
       ]
     }

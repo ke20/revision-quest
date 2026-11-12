@@ -10,7 +10,7 @@ export var TYPE_LABELS = [
   ["order", "Remettre dans l'ordre"],
   ["fill", "Texte à trous"],
   ["spot", "Trouver l'erreur"],
-  ["write", "Réponse rédigée"]
+  ["question", "Question ou traduction"]
 ];
 
 /** French name of a type (the type itself when unknown). @param {unknown} type @returns {string} */
@@ -29,9 +29,7 @@ var EMPTY = {
   order: function () { return { words: [], distractors: [], translation: "" }; },
   fill: function () { return { sentence: "", answers: [""] }; },
   spot: function () { return { tokens: [], wrongIndex: -1, correction: "" }; },
-  write: function () {
-    return { minWords: 10, requirements: [{ id: "r1", label: "", pattern: "" }], minRequirements: 1, starters: [], modelAnswer: "" };
-  }
+  question: function () { return { answers: [""] }; }
 };
 
 /** A new exercise of this type: type, prompt, the fields of the type, then explanation and hint (the order of the file).
@@ -47,7 +45,7 @@ export function emptyExercise(type) {
   return ex;
 }
 
-/** A free id "<prefix><n>" among the ids of a list (sort categories c1, c2…, write requirements r1, r2…).
+/** A free id "<prefix><n>" among the ids of a list (sort categories c1, c2…).
     @param {Array<{ id?: unknown }>} list @param {string} prefix */
 export function nextId(list, prefix) {
   var used = list.map(function (x) { return x && String(x.id); });

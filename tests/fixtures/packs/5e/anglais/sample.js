@@ -207,67 +207,89 @@ window.registerPack({
       },
       "exercises": [
         {
-          "type": "write",
-          "prompt": "Answer Lily's letter. Use 1 empathy sentence and 2 advice structures.",
-          "letterId": 1,
-          "minWords": 20,
-          "requirements": [
-            {
-              "id": "empathy",
-              "label": "1 empathy sentence",
-              "pattern": "(i understand (why|how) you feel|that sounds like)"
-            },
-            {
-              "id": "should",
-              "label": "You should / shouldn't + BV",
-              "pattern": "you\\s+(should|shouldn'?t|should not)\\s+(?!to\\b)[a-z]+"
-            },
-            {
-              "id": "whydont",
-              "label": "Why don't you + BV ?",
-              "pattern": "why don'?t you\\s+[a-z]+"
-            }
+          "type": "question",
+          "prompt": "Read Lily's letter. Translate: « Tu devrais en parler à tes parents. »",
+          "docId": 1,
+          "answers": [
+            "You should talk to your parents.",
+            "You should speak to your parents."
           ],
-          "minRequirements": 2,
-          "starters": [
-            "Dear Lily,",
-            "I understand how you feel.",
-            "You should",
-            "Why don't you"
-          ],
-          "modelAnswer": "Dear Lily,\nI understand how you feel. You shouldn't meet this person alone. Why don't you talk to your parents?",
-          "explanation": "Well done! You used empathy and advice."
+          "explanation": "✅ **You should** + verbe."
         },
         {
-          "type": "write",
-          "prompt": "Answer Abby's letter.",
-          "letterId": 5,
-          "minWords": 25,
-          "requirements": [
-            {
-              "id": "empathy",
-              "label": "1 empathy sentence",
-              "pattern": "(i understand (why|how) you feel|that sounds like)"
-            },
-            {
-              "id": "ifiwere",
-              "label": "If I were you, I would / I'd + BV",
-              "pattern": "if i were you,? i(('d)| would) [a-z]+"
-            },
-            {
-              "id": "howabout",
-              "label": "How about + BVing ?",
-              "pattern": "how about [a-z]+ing"
-            }
+          "type": "question",
+          "prompt": "Read Abby's letter. Translate: « Si j'étais toi, je dirais non. Je comprends ce que tu ressens. »",
+          "docId": 5,
+          "multiline": true,
+          "answers": [
+            "If I were you, I would say no. I understand how you feel.",
+            "If I were you, I'd say no. I understand how you feel."
           ],
-          "minRequirements": 3,
-          "starters": [
-            "Dear Abby,",
-            "If I were you, I would",
-            "How about"
+          "explanation": "✅ **If I were you, I would…** et **I understand how you feel**."
+        },
+        {
+          "type": "question",
+          "prompt": "Translate: « Je comprends ce que tu ressens. »",
+          "answers": [
+            "I understand how you feel."
           ],
-          "modelAnswer": "Dear Abby, I understand how you feel. If I were you, I would turn off my phone at 9 p.m. How about reading a book instead?",
-          "explanation": "Great letter!"
+          "explanation": "✅ I understand how you feel."
+        },
+        {
+          "type": "question",
+          "prompt": "Translate: « Tu ne devrais pas sortir seul. »",
+          "answers": [
+            "You shouldn't go out alone."
+          ],
+          "explanation": "✅ You shouldn't go out alone."
+        },
+        {
+          "type": "question",
+          "prompt": "Translate: « Pourquoi tu ne parles pas à un professeur ? »",
+          "answers": [
+            "Why don't you talk to a teacher?"
+          ],
+          "explanation": "✅ Why don't you talk to a teacher?"
+        },
+        {
+          "type": "question",
+          "prompt": "Translate: « Ça a l'air difficile. »",
+          "answers": [
+            "That sounds difficult."
+          ],
+          "explanation": "✅ That sounds difficult."
+        },
+        {
+          "type": "question",
+          "prompt": "Translate: « Tu devrais dormir plus. »",
+          "answers": [
+            "You should sleep more."
+          ],
+          "explanation": "✅ You should sleep more."
+        },
+        {
+          "type": "question",
+          "prompt": "Translate: « Si j'étais toi, je resterais à la maison. »",
+          "answers": [
+            "If I were you, I would stay at home."
+          ],
+          "explanation": "✅ If I were you, I would stay at home."
+        },
+        {
+          "type": "question",
+          "prompt": "Translate: « Et si tu faisais du sport ? »",
+          "answers": [
+            "How about doing sport?"
+          ],
+          "explanation": "✅ How about doing sport?"
+        },
+        {
+          "type": "question",
+          "prompt": "Translate: « Tu devrais demander de l'aide. »",
+          "answers": [
+            "You should ask for help."
+          ],
+          "explanation": "✅ You should ask for help."
         }
       ]
     }

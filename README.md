@@ -23,10 +23,11 @@ S'il peut aussi aider d'autres enfants, parents ou enseignants, tant mieux ! �
    choisie, seuls ses chapitres sont proposés (« Voir toutes les classes » montre les autres).
 3. Le 1er monde est disponible tout de suite ; les suivants se débloquent au fur et à mesure de la progression,
    avec une difficulté croissante. Chaque monde commence par une courte **leçon**, suivie d'exercices variés
-   (QCM, tri, paires à relier, phrases à remettre dans l'ordre, texte à trou, mot faux à trouver, réponse rédigée).
+   (QCM, tri, paires à relier, phrases à remettre dans l'ordre, texte à trou, mot faux à trouver, question à réponse tapée).
 4. Les bonnes réponses rapportent de l'**XP** (plus avec les combos), les erreurs coûtent des **cœurs**.
    On gagne jusqu'à 5 ⭐ par monde selon la réussite ; il en faut 3 pour ouvrir le monde suivant (2, 4 ou 5 selon
-   la difficulté choisie). Le dernier monde est le « boss » du chapitre.
+   la difficulté choisie). Le dernier monde est le « boss » du chapitre : des questions ou des phrases à traduire,
+   sans perdre de cœur, avec une médaille (de 🍫 chocolat à 🏆 platine) ; 80 % de bonnes réponses valident le chapitre.
 
 En bonus : des indices, des mots expliqués d'un toucher, des niveaux et des badges secrets à découvrir.
 

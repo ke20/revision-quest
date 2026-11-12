@@ -1576,178 +1576,299 @@ window.registerPack({
       "id": 7
     },
     {
-      "title": "Jefe final: el presente",
-      "subtitle": "The final challenge",
-      "subtitleFr": "Le défi final du présent",
+      "title": "Jefe final: ¡traduce!",
+      "subtitle": "Translate into Spanish",
+      "subtitleFr": "Le défi final : traduis au présent en espagnol",
       "icon": "🏆",
       "color": "#CA8A04",
       "lesson": {
-        "title": "[[¡Último desafío!|Dernier défi !]]",
+        "title": "[[¡Traduce!|Traduis !]]",
         "points": [
-          "Ce monde mélange **tout** : les trois groupes, ser / estar, tener / haber et les irréguliers.",
-          "N'oublie pas les **accents** :\n- vosotros : habláis, coméis, vivís\n- estar : estás, están",
-          "Pour finir, écris quelques phrases sur toi au présent."
+          "Avec ce que tu as appris, traduis correctement les phrases ci-dessous en espagnol, au présent. Une seule chance par phrase !",
+          "Trouve le groupe (-AR, -ER, -IR) et la personne. Le pronom (yo, tú…) n'est pas obligatoire.",
+          "Pense aux irréguliers (**soy, estoy, tengo, hago, puedo**) et aux **accents** : habláis, estás, están."
         ],
         "examples": [
           "[[Me llamo Lucas, **tengo** catorce años y **vivo** en Francia.|Je m'appelle Lucas, j'ai quatorze ans et j'habite en France.]]"
         ]
       },
+      "draw": 12,
       "exercises": [
         {
-          "type": "match",
-          "prompt": "Relie chaque verbe à sa forme avec **yo**.",
-          "pairs": [
-            {
-              "left": "ser",
-              "right": "soy"
-            },
-            {
-              "left": "estar",
-              "right": "estoy"
-            },
-            {
-              "left": "tener",
-              "right": "tengo"
-            },
-            {
-              "left": "hacer",
-              "right": "hago"
-            },
-            {
-              "left": "poder",
-              "right": "puedo"
-            }
-          ],
-          "explanation": "✅ Cinq formes de **yo** irrégulières à savoir par cœur."
-        },
-        {
-          "type": "fill",
-          "prompt": "Conjugue [[**tener**|avoir]] avec **tú**.",
-          "sentence": "Tú ___ razón.",
+          "type": "question",
+          "prompt": "Traduis : « Je parle espagnol. »",
           "answers": [
-            "tienes"
+            "Hablo español.",
+            "Yo hablo español."
           ],
-          "explanation": "✅ **tienes** : e → ie."
+          "explanation": "Verbe en -AR avec yo : **-o** → **hablo** : [[Hablo español.|Je parle espagnol.]]"
         },
         {
-          "type": "fill",
-          "prompt": "Conjugue [[**estar**|être]] avec **ellos**.",
-          "sentence": "Ellos ___ en La Habana.",
+          "type": "question",
+          "prompt": "Traduis : « J'habite en France. »",
           "answers": [
-            "están"
+            "Vivo en Francia.",
+            "Yo vivo en Francia."
           ],
-          "explanation": "✅ **están** : un lieu, avec un accent."
+          "explanation": "**vivir** = habiter ; avec yo : **vivo** : [[Vivo en Francia.|J'habite en France.]]"
         },
         {
-          "type": "fill",
-          "prompt": "Conjugue [[**ser**|être]] avec **nosotros**.",
-          "sentence": "Nosotros ___ alumnos de cuarto.",
+          "type": "question",
+          "prompt": "Traduis : « Je suis français. »",
           "answers": [
-            "somos"
+            "Soy francés.",
+            "Yo soy francés."
           ],
-          "explanation": "✅ **somos** : ser avec nosotros."
+          "explanation": "Une nationalité ne change pas → **ser** : **soy** : [[Soy francés.|Je suis français.]]"
         },
         {
-          "type": "fill",
-          "prompt": "Conjugue [[**comer**|manger]] avec **vosotros**.",
-          "sentence": "Vosotros ___ en el comedor.",
+          "type": "question",
+          "prompt": "Traduis : « J'ai quatorze ans. »",
           "answers": [
-            "coméis"
+            "Tengo catorce años.",
+            "Yo tengo catorce años."
           ],
-          "explanation": "✅ **coméis** : -ER, vosotros → **-éis**."
+          "explanation": "L'âge se dit avec **tener** (jamais *soy*) : [[Tengo catorce años.|J'ai quatorze ans.]]"
         },
         {
-          "type": "fill",
-          "prompt": "Conjugue [[**vivir**|habiter]] avec **vosotros**.",
-          "sentence": "Vosotros ___ cerca del colegio.",
+          "type": "question",
+          "prompt": "Traduis : « Nous mangeons à la cantine. »",
           "answers": [
-            "vivís"
+            "Comemos en el comedor.",
+            "Nosotros comemos en el comedor.",
+            "Nosotras comemos en el comedor."
           ],
-          "explanation": "✅ **vivís** : -IR, vosotros → **-ís**."
+          "explanation": "Verbe en -ER avec nosotros : **-emos** ; « la cantine » = **el comedor** : [[Comemos en el comedor.|Nous mangeons à la cantine.]]"
         },
         {
-          "type": "mcq",
-          "prompt": "\"Los alumnos ___ el saludo revolucionario.\" Verbe : [[hacer|faire]].",
-          "options": [
-            "hago",
-            "hacen",
-            "hagan",
-            "hacemos"
+          "type": "question",
+          "prompt": "Traduis : « Nous écrivons une lettre. »",
+          "answers": [
+            "Escribimos una carta.",
+            "Nosotros escribimos una carta.",
+            "Nosotras escribimos una carta."
           ],
-          "answer": 1,
-          "explanation": "✅ **hacen** : seul yo est irrégulier (hago)."
+          "explanation": "Verbe en -IR avec nosotros : **-imos** (pas *-emos*) : [[Escribimos una carta.|Nous écrivons une lettre.]]"
         },
         {
-          "type": "spot",
-          "prompt": "Touche le verbe faux.",
-          "tokens": [
-            "Yo",
-            "estoy",
-            "francés",
-            "y",
-            "vivo",
-            "en",
-            "París",
-            "."
+          "type": "question",
+          "prompt": "Traduis : « Vous parlez beaucoup. » (vous = vosotros)",
+          "answers": [
+            "Habláis mucho.",
+            "Vosotros habláis mucho.",
+            "Vosotras habláis mucho."
           ],
-          "wrongIndex": 1,
-          "correction": "soy",
-          "explanation": "✅ La nationalité : **ser** → [[Yo **soy** francés y vivo en París.|Je suis français et j'habite à Paris.]]"
+          "explanation": "Avec vosotros, -AR → **-áis**, avec l'accent : [[Habláis mucho.|Vous parlez beaucoup.]]"
         },
         {
-          "type": "spot",
-          "prompt": "Touche le verbe mal conjugué.",
-          "tokens": [
-            "En",
-            "Cuba",
-            ",",
-            "los",
-            "alumnos",
-            "no",
-            "podan",
-            "hablar",
-            "libremente",
-            "."
+          "type": "question",
+          "prompt": "Traduis : « Tu es très sympathique. »",
+          "answers": [
+            "Eres muy simpático.",
+            "Tú eres muy simpático.",
+            "Eres muy simpática.",
+            "Tú eres muy simpática."
           ],
-          "wrongIndex": 6,
-          "correction": "pueden",
-          "explanation": "✅ **poder** : o → ue → [[En Cuba, los alumnos no **pueden** hablar libremente.|À Cuba, les élèves ne peuvent pas parler librement.]]"
+          "explanation": "Le caractère → **ser** ; avec tú : **eres** : [[Eres muy simpático.|Tu es très sympathique.]]"
         },
         {
-          "type": "write",
-          "prompt": "Présente-toi en espagnol (3 phrases ou plus) avec au moins trois verbes au présent. Me llamo = je m'appelle.",
-          "minWords": 15,
-          "requirements": [
-            {
-              "id": "ser",
-              "label": "Utilise ser (soy…)",
-              "pattern": "\\b(soy|eres|es|somos|sois|son)\\b"
-            },
-            {
-              "id": "tener",
-              "label": "Utilise tener (tengo…)",
-              "pattern": "\\b(tengo|tienes|tiene|tenemos|tenéis|tienen)\\b"
-            },
-            {
-              "id": "regular",
-              "label": "Utilise un verbe régulier avec yo (vivo, hablo, como…)",
-              "pattern": "\\b(vivo|hablo|como|aprendo|escribo|estudio|llevo|canto|leo|bebo)\\b"
-            },
-            {
-              "id": "estar",
-              "label": "Utilise estar (estoy…)",
-              "pattern": "\\b(estamos|estáis|estás|están|estoy|está)"
-            }
+          "type": "question",
+          "prompt": "Traduis : « Mon frère est à l'école. »",
+          "answers": [
+            "Mi hermano está en la escuela.",
+            "Mi hermano está en el colegio."
           ],
-          "minRequirements": 3,
-          "starters": [
-            "Me llamo",
-            "Soy",
-            "Tengo",
-            "Vivo en"
+          "explanation": "Un lieu → **estar** : **está**, avec l'accent : [[Mi hermano está en la escuela.|Mon frère est à l'école.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Les élèves sont dans la cour. »",
+          "answers": [
+            "Los alumnos están en el patio.",
+            "Los estudiantes están en el patio."
           ],
-          "modelAnswer": "Me llamo Lucas y soy francés. Tengo catorce años y vivo en Lyon. Hablo español en el colegio. Hoy estoy muy contento.",
-          "explanation": "✅ Une bonne présentation :\n- [[**soy**|je suis]] : ton identité\n- [[**tengo**|j'ai]] : ton âge\n- [[**vivo**|j'habite]] : ton lieu\n- [[**estoy**|je suis]] : comment tu vas"
+          "explanation": "Un lieu → **estar** ; avec los alumnos : **están** : [[Los alumnos están en el patio.|Les élèves sont dans la cour.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Aujourd'hui, je suis très contente. »",
+          "answers": [
+            "Hoy estoy muy contenta.",
+            "Hoy yo estoy muy contenta.",
+            "Estoy muy contenta hoy.",
+            "Yo estoy muy contenta hoy."
+          ],
+          "explanation": "Un état passager → **estar** : **estoy** : [[Hoy estoy muy contenta.|Aujourd'hui, je suis très contente.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Il y a trente élèves dans la classe. »",
+          "answers": [
+            "Hay treinta alumnos en la clase.",
+            "En la clase hay treinta alumnos.",
+            "Hay treinta estudiantes en la clase.",
+            "En la clase hay treinta estudiantes."
+          ],
+          "explanation": "« il y a » = **hay** (verbe haber) : [[Hay treinta alumnos en la clase.|Il y a trente élèves dans la classe.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Je fais mes devoirs. »",
+          "answers": [
+            "Hago mis deberes.",
+            "Yo hago mis deberes.",
+            "Hago los deberes.",
+            "Yo hago los deberes."
+          ],
+          "explanation": "**hacer** : seul yo est irrégulier → **hago** : [[Hago los deberes.|Je fais mes devoirs.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Elle doit étudier. »",
+          "answers": [
+            "Tiene que estudiar.",
+            "Ella tiene que estudiar."
+          ],
+          "explanation": "**tener que** + infinitif ; avec ella : **tiene** (e → ie) : [[Ella tiene que estudiar.|Elle doit étudier.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Ils ne peuvent pas parler. »",
+          "answers": [
+            "No pueden hablar.",
+            "Ellos no pueden hablar."
+          ],
+          "explanation": "**poder** : **o → ue** avec ellos → **pueden**, puis l'infinitif : [[No pueden hablar.|Ils ne peuvent pas parler.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Nous sommes en classe. Le professeur ouvre la porte. »",
+          "answers": [
+            "Estamos en clase. El profesor abre la puerta.",
+            "Nosotros estamos en clase. El profesor abre la puerta.",
+            "Nosotras estamos en clase. El profesor abre la puerta."
+          ],
+          "multiline": true,
+          "explanation": "Un lieu → **estamos** ; **abrir** avec él : **abre** : [[Estamos en clase. El profesor abre la puerta.|Nous sommes en classe. Le professeur ouvre la porte.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Je m'appelle Lucas. J'ai quatorze ans et j'habite à Lyon. »",
+          "answers": [
+            "Me llamo Lucas. Tengo catorce años y vivo en Lyon.",
+            "Yo me llamo Lucas. Tengo catorce años y vivo en Lyon.",
+            "Me llamo Lucas. Yo tengo catorce años y vivo en Lyon.",
+            "Yo me llamo Lucas. Yo tengo catorce años y vivo en Lyon."
+          ],
+          "multiline": true,
+          "explanation": "L'âge avec **tengo**, la ville avec **vivo en** : [[Me llamo Lucas. Tengo catorce años y vivo en Lyon.|Je m'appelle Lucas. J'ai quatorze ans et j'habite à Lyon.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Tu lis la lettre. »",
+          "answers": [
+            "Lees la carta.",
+            "Tú lees la carta."
+          ],
+          "explanation": "**leer** est en -ER ; avec tú : **lees** : [[Lees la carta.|Tu lis la lettre.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Vous mangez à la maison. » (vous = vosotros)",
+          "answers": [
+            "Coméis en casa.",
+            "Vosotros coméis en casa.",
+            "Vosotras coméis en casa."
+          ],
+          "explanation": "Verbe en -ER avec vosotros : **-éis**, avec l'accent ; « à la maison » = **en casa** : [[Coméis en casa.|Vous mangez à la maison.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Je suis fatigué. »",
+          "answers": [
+            "Estoy cansado.",
+            "Yo estoy cansado."
+          ],
+          "explanation": "Un état passager → **estar** : **estoy** : [[Estoy cansado.|Je suis fatigué.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Elle a un chien. »",
+          "answers": [
+            "Tiene un perro.",
+            "Ella tiene un perro."
+          ],
+          "explanation": "« avoir, posséder » = **tener** ; avec ella : **tiene** (e → ie) : [[Tiene un perro.|Elle a un chien.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Nous pouvons chanter. »",
+          "answers": [
+            "Podemos cantar.",
+            "Nosotros podemos cantar.",
+            "Nosotras podemos cantar."
+          ],
+          "explanation": "**poder** avec nosotros : pas de **ue** → **podemos**, puis l'infinitif : [[Podemos cantar.|Nous pouvons chanter.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Ils défendent leurs idées. »",
+          "answers": [
+            "Defienden sus ideas.",
+            "Ellos defienden sus ideas."
+          ],
+          "explanation": "**defender** : **e → ie** avec ellos → **defienden** : [[Defienden sus ideas.|Ils défendent leurs idées.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Tu habites à Lyon ? »",
+          "answers": [
+            "¿Vives en Lyon?",
+            "¿Tú vives en Lyon?"
+          ],
+          "explanation": "**vivir** avec tú : **vives** ; en espagnol, la question s'ouvre avec **¿** : [[¿Vives en Lyon?|Tu habites à Lyon ?]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Mon frère est professeur. »",
+          "answers": [
+            "Mi hermano es profesor."
+          ],
+          "explanation": "Un métier ne change pas → **ser** : **es** (et pas d'article devant le métier) : [[Mi hermano es profesor.|Mon frère est professeur.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Vous êtes à la cantine. » (vous = vosotros)",
+          "answers": [
+            "Estáis en el comedor.",
+            "Vosotros estáis en el comedor.",
+            "Vosotras estáis en el comedor."
+          ],
+          "explanation": "Un lieu → **estar** ; avec vosotros : **estáis** ; « la cantine » = **el comedor** : [[Estáis en el comedor.|Vous êtes à la cantine.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Ma sœur est sympathique. Elle apprend l'espagnol. »",
+          "answers": [
+            "Mi hermana es simpática. Aprende español.",
+            "Mi hermana es simpática. Ella aprende español.",
+            "Mi hermana es simpática. Aprende el español.",
+            "Mi hermana es simpática. Ella aprende el español."
+          ],
+          "multiline": true,
+          "explanation": "Le caractère → **ser** : **es** ; **aprender** avec ella : **aprende** : [[Mi hermana es simpática. Aprende español.|Ma sœur est sympathique. Elle apprend l'espagnol.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Je ne peux pas manger. Je dois faire mes devoirs. »",
+          "answers": [
+            "No puedo comer. Tengo que hacer mis deberes.",
+            "No puedo comer. Tengo que hacer los deberes.",
+            "Yo no puedo comer. Tengo que hacer mis deberes.",
+            "Yo no puedo comer. Tengo que hacer los deberes."
+          ],
+          "multiline": true,
+          "explanation": "**poder** : o → ue → **puedo** ; puis **tengo que** + **hacer** : [[No puedo comer. Tengo que hacer mis deberes.|Je ne peux pas manger. Je dois faire mes devoirs.]]"
         }
       ],
       "id": 8

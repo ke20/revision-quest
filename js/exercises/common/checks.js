@@ -36,16 +36,54 @@
     var m = String(s).replace(/[’‘ʼ`´]/g, "'").match(/[A-Za-zÀ-ÿ0-9']+/g);
     return m ? m.length : 0;
   }
-  /** write: which requirements does the text meet, and is it enough (requirements + minWords)?
-      @param {WriteExercise} ex @param {string} text @returns {WriteCheck} */
-  function writeCheck(ex, text) {
-    var t = String(text).replace(/[’‘ʼ`´]/g, "'").replace(/\s+/g, " ");
-    var met = (ex.requirements || []).map(function (r) {
-      try { return new RegExp(r.pattern, "i").test(t); } catch (e) { return false; }
+
+  /* question: right or wrong, compared with every accepted answer. Ignored: case, spaces, punctuation, hyphens, and a
+     missing accent on a capital letter typed by the pupil (« Ou » = « où », « A la maison » = « à la maison »; « Où »
+     typed with its accent is right too). English (lang "en"): short and long forms are the same answer
+     (I'm = I am, don't = do not, can't = cannot = can not, he's = he is, 's got = has got…). Other accents count. */
+  /** @type {Array<[RegExp, string]>} */
+  var EN_FORMS = [
+    [/\bcan't\b|\bcannot\b/g, "can not"], [/\bwon't\b/g, "will not"], [/\bshan't\b/g, "shall not"],
+    [/\b([a-z]+)n't\b/g, "$1 not"], [/\blet's\b/g, "let us"],
+    [/\b([a-z]+)'s got\b/g, "$1 has got"],
+    [/\b(he|she|it|that|what|where|who|there|here|how|when|why)'s\b/g, "$1 is"],
+    [/'m\b/g, " am"], [/'re\b/g, " are"], [/'ve\b/g, " have"], [/'ll\b/g, " will"]
+  ];
+  /** Punctuation and hyphens out, spaces collapsed. Kept: a minus sign before a number (−36 is not 36); numbers
+      written with spaces between thousands are joined (3 000 = 3000). @param {string} t */
+  function words(t) {
+    return t.replace(/(^|[\s(])[-−–](?=\d)/g, "$1\u2212")
+      .replace(/[^a-zA-Z0-9À-ÖØ-öø-ÿŒœÆæ'\s\u2212]/g, " ").replace(/(^|\s)'|'(\s|$)/g, " ").replace(/\s+/g, " ").trim()
+      .replace(/(\d) (?=\d{3}(?!\d))/g, "$1");
+  }
+  /** The comparable form of an answer (lower case, accents kept). @param {string} s @param {string} [lang] */
+  function answerKey(s, lang) {
+    var t = plain(s).normalize("NFKC").replace(/[’‘ʼ`´]/g, "'").toLowerCase();
+    if (lang === "en") EN_FORMS.forEach(function (r) { t = t.replace(r[0], r[1]); });
+    return words(t);
+  }
+  /** @param {string} c */
+  function bare(c) { return c.normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+  /** Is the typed answer one of the accepted answers? @param {QuestionExercise} ex @param {string} value @param {string} [lang] */
+  function questionAccepted(ex, value, lang) {
+    var v = answerKey(value, lang);
+    if (!v) return false;
+    // the same text without the lower-casing, letter for letter, to know which letters were typed as capitals
+    // (not in English, where the short forms change the text; accents rarely matter there)
+    var raw = lang === "en" ? "" : words(plain(value).normalize("NFKC").replace(/[’‘ʼ`´]/g, "'"));
+    var aligned = raw.length === v.length;
+    return (ex.answers || []).some(function (a) {
+      var want = answerKey(a, lang);
+      if (want === v) return true;
+      if (!aligned || want.length !== v.length) return false;
+      for (var i = 0; i < v.length; i++) {
+        if (want[i] === v[i]) continue;
+        // a capital typed without its accent: « Ou » is not « où », but « A la » is « à la », « L'Edit » is « l'édit »
+        var capital = raw[i] !== raw[i].toLowerCase();
+        if (!capital || v[i] !== bare(v[i]) || bare(want[i]) !== v[i]) return false;
+      }
+      return true;
     });
-    var count = met.filter(Boolean).length, words = countWords(text);
-    var needed = ex.minRequirements || (ex.requirements || []).length;
-    return { met: met, count: count, words: words, needed: needed, ok: count >= needed && words >= (ex.minWords || 0) };
   }
 
   /** answer = [indexes]: tick boxes; right only when exactly the right boxes are ticked (no half point).
@@ -59,6 +97,7 @@
   X.fillAccepted = fillAccepted;
   X.orderAccepted = orderAccepted;
   X.countWords = countWords;
-  X.writeCheck = writeCheck;
+  X.answerKey = answerKey;
+  X.questionAccepted = questionAccepted;
   X.mcqMultiAccepted = mcqMultiAccepted;
 })(window.ExercisesParts = window.ExercisesParts || /** @type {ExercisesParts} */ ({}));

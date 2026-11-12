@@ -1430,179 +1430,256 @@ window.registerPack({
       "lesson": {
         "title": "Le grand mélange",
         "points": [
-          "Pour chaque homophone, fais le **test de remplacement** : **avait**, **était**, **étaient**, **avaient**, **il**, **lorsque**, **ici**…",
-          "Regarde le mot d'après : un **nom** ou un **verbe** ?",
-          "Une phrase négative (**pas**, **plus**, **jamais**) demande **on n'**."
+          "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
+          "Fais le **test de remplacement** : **avait**, **était**, **étaient**, **avaient**, **il**, **lorsque**, **ici**…",
+          "Regarde le mot d'après : un **nom** ou un **verbe** ? S'il y a **pas** ou **jamais**, pense à **on n'**."
         ],
         "examples": [
-          "Ils **ont** (avaient) dit **qu'**on **n'**irait pas **là**-bas."
+          "Ils **ont** (avaient) dit qu'**on n'**irait pas **là** (ici)."
         ]
       },
+      "draw": 12,
       "exercises": [
         {
-          "type": "mcq",
-          "prompt": "Dans « Les enfants ___ joué dans le jardin », quel mot manque ?",
-          "options": [
-            "ont",
-            "on",
-            "sont",
-            "son"
-          ],
-          "answer": 0,
-          "explanation": "On peut dire « les enfants **avaient** joué » : c'est le verbe avoir, **ont**."
-        },
-        {
-          "type": "match",
-          "prompt": "Relie chaque mot à son test.",
-          "pairs": [
-            {
-              "left": "sont",
-              "right": "étaient"
-            },
-            {
-              "left": "ont",
-              "right": "avaient"
-            },
-            {
-              "left": "on",
-              "right": "il"
-            },
-            {
-              "left": "quand",
-              "right": "lorsque"
-            },
-            {
-              "left": "c'est",
-              "right": "cela est"
-            }
-          ],
-          "explanation": "Le **test de remplacement** donne toujours la bonne orthographe."
-        },
-        {
-          "type": "fill",
-          "prompt": "Complète avec a ou à.",
-          "sentence": "Le train ___ dix minutes de retard.",
+          "type": "question",
+          "prompt": "Complète avec a ou à : « Mon frère ___ un nouveau vélo. »",
           "answers": [
             "a"
           ],
-          "explanation": "On peut dire « le train **avait** dix minutes de retard » : on écrit **a**."
+          "explanation": "On peut dire « mon frère **avait** un nouveau vélo » : c'est le verbe avoir, **a**."
         },
         {
-          "type": "fill",
-          "prompt": "Complète avec on ou on n'.",
-          "sentence": "Quand il pleut, ___ est pas content.",
+          "type": "question",
+          "prompt": "Complète avec et ou est : « Le ciel ___ tout bleu ce matin. »",
           "answers": [
-            "on n'",
-            "On n'"
+            "est"
           ],
-          "explanation": "Il y a **pas** : la phrase est négative, on écrit **on n'** (il n'est pas content).",
-          "hint": "Cherche le petit mot « pas »."
+          "explanation": "On peut dire « le ciel **était** tout bleu » : c'est le verbe être, **est**."
         },
         {
-          "type": "fill",
-          "prompt": "Complète avec ce ou se.",
-          "sentence": "Le hérisson ___ roule en boule.",
+          "type": "question",
+          "prompt": "Complète avec ou ou où : « Je ne sais plus ___ j'ai rangé mes clés. »",
+          "answers": [
+            "où"
+          ],
+          "explanation": "On parle d'un **lieu** : on écrit **où**, avec un accent."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec on ou ont : « Mes amis ___ gagné le match. »",
+          "answers": [
+            "ont"
+          ],
+          "explanation": "On peut dire « mes amis **avaient** gagné » : c'est le verbe avoir, **ont**."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec on ou on n' : « ___ a pas le droit de courir dans le couloir. »",
+          "answers": [
+            "on n'"
+          ],
+          "explanation": "Il y a **pas** : la phrase est négative, on écrit **on n'** (il n'a pas le droit)."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec ce ou se : « Le chat ___ lèche les pattes. »",
           "answers": [
             "se"
           ],
-          "explanation": "Devant le verbe **roule** : il **se** roule (je **me** roule)."
+          "explanation": "Devant le verbe **lèche** : il **se** lèche (je **me** lèche)."
         },
         {
-          "type": "fill",
-          "prompt": "Complète avec leur ou leurs.",
-          "sentence": "Les élèves sortent ___ cahiers.",
+          "type": "question",
+          "prompt": "Complète avec ces ou ses : « Ma sœur range ___ jouets dans sa chambre. »",
+          "answers": [
+            "ses"
+          ],
+          "explanation": "Ce sont **les siens** : son jouet → **ses** jouets."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec c'est ou s'est : « Mon frère ___ coupé le doigt. »",
+          "answers": [
+            "s'est"
+          ],
+          "explanation": "On peut dire « je **me** suis coupé » : on écrit **s'est**."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec leur ou leurs : « Les enfants prennent ___ cartables. »",
           "answers": [
             "leurs"
           ],
-          "explanation": "Devant le nom **cahiers**, au pluriel : on écrit **leurs**."
+          "explanation": "Devant le nom **cartables**, au pluriel : on écrit **leurs**."
         },
         {
-          "type": "spot",
-          "prompt": "Touche le mot mal écrit.",
-          "tokens": [
-            "Mes",
-            "parents",
-            "son",
-            "partis",
-            "faire",
-            "les",
-            "courses",
-            "."
+          "type": "question",
+          "prompt": "Complète avec leur ou leurs : « Les élèves ont faim : je ___ donne un goûter. »",
+          "answers": [
+            "leur"
           ],
-          "wrongIndex": 2,
-          "correction": "sont",
-          "explanation": "On peut dire « mes parents **étaient** partis » : on écrit **sont**."
+          "explanation": "Devant un **verbe**, leur veut dire « à eux » (je **lui** donne) : jamais de s."
         },
         {
-          "type": "spot",
-          "prompt": "Touche le mot mal écrit.",
-          "tokens": [
-            "Il",
-            "c'est",
-            "levé",
-            "avant",
-            "le",
-            "soleil",
-            "."
+          "type": "question",
+          "prompt": "Complète avec la, là ou l'a : « Le chat est caché ___, sous le lit. »",
+          "answers": [
+            "là"
           ],
-          "wrongIndex": 1,
-          "correction": "s'est",
-          "explanation": "On peut dire « je **me** suis levé » : on écrit **s'est**."
+          "explanation": "C'est un **lieu** : on peut dire « **ici** », on écrit **là**."
         },
         {
-          "type": "spot",
-          "prompt": "Touche le mot mal écrit.",
-          "tokens": [
-            "Le",
-            "gâteau",
-            "est",
-            "près",
-            ",",
-            "on",
-            "peut",
-            "le",
-            "manger",
-            "!"
+          "type": "question",
+          "prompt": "Complète avec la, là ou l'a : « Le ballon ? Paul ___ lancé très loin. »",
+          "answers": [
+            "l'a"
           ],
-          "wrongIndex": 3,
-          "correction": "prêt",
-          "explanation": "Le gâteau est **préparé** : on écrit **prêt**, l'adjectif."
+          "explanation": "On peut dire « Paul **l'avait** lancé » : on écrit **l'a**."
         },
         {
-          "type": "spot",
-          "prompt": "Touche le mot mal écrit.",
-          "tokens": [
-            "Quant",
-            "tu",
-            "auras",
-            "fini",
-            ",",
-            "appelle-moi",
-            "."
+          "type": "question",
+          "prompt": "Complète avec quelle ou qu'elle : « Ma sœur dit ___ a faim. »",
+          "answers": [
+            "qu'elle"
           ],
-          "wrongIndex": 0,
-          "correction": "Quand",
-          "explanation": "On peut dire « **lorsque** tu auras fini » : on écrit **Quand**."
+          "explanation": "On peut dire « ma sœur dit **qu'il** a faim » : on écrit **qu'elle**."
         },
         {
-          "type": "order",
-          "prompt": "Remets les mots dans l'ordre.",
-          "words": [
-            "Quand",
-            "on",
-            "est",
-            "prêt",
-            ",",
-            "on",
-            "part",
-            "."
+          "type": "question",
+          "prompt": "Complète avec quand ou quant : « ___ il pleut, je prends mon parapluie. »",
+          "answers": [
+            "quand"
           ],
-          "explanation": "« **Quand** (lorsque) **on** (il) est **prêt** (préparé), on part. »",
-          "translation": "Test : lorsqu'il est préparé, il part.",
-          "distractors": [
-            "ont",
-            "près"
-          ]
+          "explanation": "On peut dire « **lorsqu'**il pleut » : c'est le temps, on écrit **quand**."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec peu ou peut : « Mon petit frère ___ marcher tout seul. »",
+          "answers": [
+            "peut"
+          ],
+          "explanation": "On peut dire « il **pouvait** marcher » : c'est le verbe pouvoir, **peut**."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec près ou prêt : « Le bus est ___ à partir. »",
+          "answers": [
+            "prêt"
+          ],
+          "explanation": "**Prêt à** partir : c'est l'adjectif (prête, prêts), pas « à côté de »."
+        },
+        {
+          "type": "question",
+          "prompt": "Recopie la phrase en corrigeant les deux erreurs : « Les élèves son partis a la piscine. »",
+          "answers": [
+            "Les élèves sont partis à la piscine."
+          ],
+          "multiline": true,
+          "explanation": "Les élèves **étaient** partis → **sont** ; « à la piscine » ne se remplace pas par avait → **à**."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec a ou à : « Nous allons ___ la plage dimanche. »",
+          "answers": [
+            "à"
+          ],
+          "explanation": "On ne peut pas dire « nous allons **avait** la plage » : c'est **à**, avec un accent."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec et ou est : « J'ai acheté du pain ___ du fromage. »",
+          "answers": [
+            "et"
+          ],
+          "explanation": "On peut dire « du pain **et puis** du fromage » : on écrit **et**."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec ou ou où : « Tu préfères le chocolat ___ la vanille ? »",
+          "answers": [
+            "ou"
+          ],
+          "explanation": "On peut dire « le chocolat **ou bien** la vanille » : c'est un choix, **ou** sans accent."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec son ou sont : « Mes grands-parents ___ arrivés hier soir. »",
+          "answers": [
+            "sont"
+          ],
+          "explanation": "On peut dire « mes grands-parents **étaient** arrivés » : c'est le verbe être, **sont**."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec son ou sont : « Léo a oublié ___ manteau à l'école. »",
+          "answers": [
+            "son"
+          ],
+          "explanation": "Devant le nom **manteau** : c'est **le sien**, on écrit **son**."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec on ou on n' : « ___ entend les oiseaux chanter. »",
+          "answers": [
+            "on"
+          ],
+          "explanation": "Il n'y a ni **pas**, ni **jamais**, ni **rien** : la phrase n'est pas négative, on écrit **on** (il entend)."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec ces ou ses : « Regarde ___ beaux nuages dans le ciel ! »",
+          "answers": [
+            "ces"
+          ],
+          "explanation": "On montre les nuages : ce nuage → **ces** nuages. Ce ne sont pas « les siens »."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec c'est ou s'est : « ___ mon meilleur ami. »",
+          "answers": [
+            "c'est"
+          ],
+          "explanation": "On peut dire « **cela est** mon meilleur ami » : on écrit **c'est**."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec leur ou leurs : « Les enfants ont rangé ___ chambre. »",
+          "answers": [
+            "leur"
+          ],
+          "explanation": "Devant le nom **chambre**, au singulier : on écrit **leur**, sans s."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec quelle ou qu'elle : « ___ belle journée ! »",
+          "answers": [
+            "quelle"
+          ],
+          "explanation": "On ne peut pas dire « qu'il belle journée » : **quelle** s'accorde avec **journée** (féminin)."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec quand ou quant : « ___ à moi, je reste à la maison. »",
+          "answers": [
+            "quant"
+          ],
+          "explanation": "Devant **à** (quant à moi) : on écrit **quant**, avec un t."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec plus tôt ou plutôt : « Demain, je me lèverai ___ que d'habitude pour ne pas rater le train. »",
+          "answers": [
+            "plus tôt"
+          ],
+          "explanation": "On peut dire « **plus tard** que d'habitude » : c'est le temps, **plus tôt** en deux mots."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec plus tôt ou plutôt : « Je ne veux pas de lait, je prendrai ___ du jus d'orange. »",
+          "answers": [
+            "plutôt"
+          ],
+          "explanation": "C'est une **préférence** (au lieu du lait) : on écrit **plutôt** en un seul mot."
         }
       ]
     }

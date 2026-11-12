@@ -2,7 +2,8 @@
    Format : voir packs/README.md
    Source : cahier de 4e, chapitre 1 « la masse volumique » (rappels de chimie, bilan, diagnostic, entraînement,
    sujet type contrôle sur le transport du bois). Données reformulées ; masses volumiques vérifiées (Wikipédia).
-   Le boss reprend le sujet type contrôle. Fichier produit par un générateur (options de QCM mélangées). */
+   Le boss : questions à réponse courte sur tout le chapitre (dont le transport du bois). Fichier produit par un
+   générateur (options de QCM mélangées), boss réécrit à la main. */
 window.registerPack({
   "path": "4e/physique-chimie/masse-volumique",
   "lang": "fr",
@@ -2637,205 +2638,323 @@ window.registerPack({
     },
     {
       "id": 7,
-      "title": "Sujet type contrôle",
-      "subtitle": "Le transport du bois",
+      "title": "Boss : le contrôle",
+      "subtitle": "Tout le chapitre, en questions",
       "icon": "🏆",
       "color": "#B45309",
       "lesson": {
         "title": "Méthode du contrôle",
         "points": [
-          "Écrire la **formule**, puis le calcul, puis le résultat **avec son unité**.",
-          "Vérifier que les **unités sont d'accord** avant de calculer.",
-          "Pour flotter : comparer à l'eau, **1 g/cm³**."
-        ],
-        "examples": [
-          "ρ = m ÷ V = 350 ÷ 500 = 0,7 g/cm³ < 1 g/cm³ : le bois flotte."
+          "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
+          "Fais le calcul au brouillon, puis écris le **résultat** : le nombre seul ou avec son **unité**. Un seul essai par question.",
+          "Vérifie que les **unités sont d'accord** avant de calculer."
         ]
       },
+      "draw": 12,
       "exercises": [
         {
-          "type": "fill",
-          "prompt": "Un morceau d'acajou a un volume de 500 cm³ et une masse de 350 g. Calcule sa masse volumique.",
-          "sentence": "ρ = ___ g/cm³",
+          "type": "question",
+          "prompt": "Comment s'appelle le passage de l'état solide à l'état liquide ?",
           "answers": [
-            "0,7",
-            "0,7 g/cm3",
-            "0,7 g/cm³",
-            "0,7g/cm3",
-            "0,7g/cm³",
-            "0.7",
-            "0.7 g/cm3",
-            "0.7 g/cm³",
-            "0.7g/cm3",
-            "0.7g/cm³"
+            "la fusion",
+            "fusion",
+            "une fusion"
           ],
-          "explanation": "ρ = m ÷ V = 350 ÷ 500 = **0,7 g/cm³**."
+          "explanation": "Solide → liquide : c'est la **fusion** (un glaçon qui fond)."
         },
         {
-          "type": "fill",
-          "prompt": "Un cube d'ébène a 10 cm de côté. Calcule son volume (côté × côté × côté).",
-          "sentence": "V = ___ cm³",
+          "type": "question",
+          "prompt": "De la buée se forme sur un miroir : la vapeur d'eau devient liquide. Comment s'appelle ce changement d'état ?",
+          "answers": [
+            "la liquéfaction",
+            "liquéfaction",
+            "une liquéfaction"
+          ],
+          "explanation": "Gaz → liquide : c'est la **liquéfaction**."
+        },
+        {
+          "type": "question",
+          "prompt": "On met 500 g d'eau au congélateur. Quelle est la masse de la glace obtenue, en g ?",
+          "answers": [
+            "500",
+            "500 g",
+            "500g",
+            "500 grammes"
+          ],
+          "explanation": "Pendant un changement d'état, la **masse se conserve** : 500 g. Seul le volume change."
+        },
+        {
+          "type": "question",
+          "prompt": "Convertis **2,5 L** en mL.",
+          "answers": [
+            "2 500",
+            "2 500 mL",
+            "2 500mL"
+          ],
+          "explanation": "1 L = 1 000 mL, donc 2,5 L = **2 500 mL**."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien de cm³ y a-t-il dans **1 dm³** ?",
           "answers": [
             "1 000",
-            "1 000 cm3",
             "1 000 cm³",
-            "1 000cm3",
-            "1 000cm³",
-            "1000",
-            "1000 cm3",
-            "1000 cm³",
-            "1000cm3",
             "1000cm³"
           ],
-          "explanation": "V = 10 × 10 × 10 = **1 000 cm³**."
+          "explanation": "1 dm³ = **1 000 cm³** (et 1 L = 1 dm³)."
         },
         {
-          "type": "fill",
-          "prompt": "Ce cube d'ébène de 1 000 cm³ a une masse de 1 200 g. Calcule sa masse volumique.",
-          "sentence": "ρ = ___ g/cm³",
+          "type": "question",
+          "prompt": "Une éprouvette contient 40 mL d'eau. On y plonge une bille : le niveau monte à 47 mL. Quel est le volume de la bille, en mL ?",
           "answers": [
-            "1,2",
-            "1,2 g/cm3",
-            "1,2 g/cm³",
-            "1,2g/cm3",
-            "1,2g/cm³",
-            "1.2",
-            "1.2 g/cm3",
-            "1.2 g/cm³",
-            "1.2g/cm3",
-            "1.2g/cm³"
+            "7",
+            "7 mL",
+            "7mL",
+            "7 cm³",
+            "7cm³"
           ],
-          "explanation": "ρ = 1 200 ÷ 1 000 = **1,2 g/cm³**."
+          "explanation": "V(bille) = V(final) − V(initial) = 47 − 40 = **7 mL** (soit 7 cm³)."
         },
         {
-          "type": "sort",
-          "prompt": "Quels bois peuvent être transportés par flottage ?",
-          "categories": [
-            {
-              "id": "flotte",
-              "label": "🛶 Flottage possible"
-            },
-            {
-              "id": "coule",
-              "label": "🚚 Il faut un camion"
-            }
+          "type": "question",
+          "prompt": "La masse volumique, c'est la masse divisée par… ?",
+          "answers": [
+            "le volume",
+            "volume",
+            "V",
+            "par le volume",
+            "son volume"
           ],
-          "items": [
-            {
-              "text": "Acajou (0,7 g/cm³)",
-              "cat": "flotte"
-            },
-            {
-              "text": "Sapin (0,45 g/cm³)",
-              "cat": "flotte"
-            },
-            {
-              "text": "Ébène (1,2 g/cm³)",
-              "cat": "coule"
-            },
-            {
-              "text": "Chêne (0,75 g/cm³)",
-              "cat": "flotte"
-            }
-          ],
-          "explanation": "Seuls les bois **moins denses que l'eau** (moins de 1 g/cm³) flottent."
+          "explanation": "**ρ = m ÷ V** : la masse divisée par le **volume**."
         },
         {
-          "type": "fill",
-          "prompt": "Le réservoir d'une voiture contient 50 L d'essence. La masse volumique de l'essence est 750 g/L. Calcule la masse d'essence, en kg.",
-          "sentence": "m = ___ kg",
+          "type": "question",
+          "prompt": "Quelle est l'unité officielle de la masse volumique ?",
+          "answers": [
+            "kg/m³",
+            "kilogramme par mètre cube",
+            "kilogrammes par mètre cube",
+            "kg par m³"
+          ],
+          "explanation": "L'unité officielle est le **kg/m³**. On utilise aussi g/cm³, g/mL ou kg/L."
+        },
+        {
+          "type": "question",
+          "prompt": "Quelle est la masse volumique de l'eau, en g/cm³ ?",
+          "answers": [
+            "1",
+            "1 g/cm³",
+            "1g/cm³",
+            "un"
+          ],
+          "explanation": "Pour l'eau : ρ = **1 g/cm³** = 1 kg/L = 1 000 kg/m³."
+        },
+        {
+          "type": "question",
+          "prompt": "Un bloc a une masse de 360 g et un volume de 120 cm³. Calcule sa masse volumique, en g/cm³.",
+          "answers": [
+            "3",
+            "3 g/cm³",
+            "3g/cm³"
+          ],
+          "explanation": "ρ = m ÷ V = 360 ÷ 120 = **3 g/cm³**."
+        },
+        {
+          "type": "question",
+          "prompt": "Une huile a une masse volumique de 0,9 g/mL. Quelle est la masse de 200 mL de cette huile, en g ?",
+          "answers": [
+            "180",
+            "180 g",
+            "180g"
+          ],
+          "explanation": "m = ρ × V = 0,9 × 200 = **180 g**."
+        },
+        {
+          "type": "question",
+          "prompt": "Un morceau de métal de 560 g a une masse volumique de 7 g/cm³. Quel est son volume, en cm³ ?",
+          "answers": [
+            "80",
+            "80 cm³",
+            "80cm³"
+          ],
+          "explanation": "V = m ÷ ρ = 560 ÷ 7 = **80 cm³**."
+        },
+        {
+          "type": "question",
+          "prompt": "Un objet de 81 g occupe 30 cm³. En quel métal est-il ? (aluminium 2,7 ; fer 7,87 ; cuivre 8,96 ; en g/cm³)",
+          "answers": [
+            "aluminium",
+            "l'aluminium",
+            "en aluminium",
+            "de l'aluminium"
+          ],
+          "explanation": "ρ = 81 ÷ 30 = **2,7 g/cm³** : c'est l'**aluminium**."
+        },
+        {
+          "type": "question",
+          "prompt": "Lis les données. Quel bois ne peut pas être transporté par flottage ?",
+          "answers": [
+            "l'ébène",
+            "ébène",
+            "le bois d'ébène",
+            "bois d'ébène"
+          ],
+          "docId": "transport",
+          "explanation": "L'**ébène** (1,2 g/cm³) est plus dense que l'eau (1 g/cm³) : il coule. Le sapin et l'acajou flottent."
+        },
+        {
+          "type": "question",
+          "prompt": "Un liquide qui ne se mélange pas à l'eau a une masse volumique de 0,8 g/mL. Se place-t-il au-dessus ou en dessous de l'eau ?",
+          "answers": [
+            "au-dessus",
+            "dessus",
+            "au-dessus de l'eau",
+            "il se place au-dessus",
+            "il flotte"
+          ],
+          "explanation": "0,8 g/mL est **plus petit** que 1 g/mL : le liquide se place **au-dessus** de l'eau."
+        },
+        {
+          "type": "question",
+          "prompt": "Un réservoir contient 50 L d'essence. La masse volumique de l'essence est 750 g/L. Quelle est la masse d'essence, en kg ?",
           "answers": [
             "37,5",
             "37,5 kg",
-            "37,5kg",
-            "37.5",
-            "37.5 kg",
-            "37.5kg"
+            "37,5kg"
           ],
-          "explanation": "m = ρ × V = 750 × 50 = 37 500 g = **37,5 kg**.",
-          "hint": "Calcule en g, puis convertis en kg."
+          "explanation": "m = ρ × V = 750 × 50 = 37 500 g = **37,5 kg**."
         },
         {
-          "type": "mcq",
-          "prompt": "Quand il fait chaud, l'essence se dilate (son volume augmente). On paie l'essence au litre. Quand vaut-il mieux faire le plein ?",
-          "options": [
-            "C'est pareil : la masse volumique ne change jamais",
-            "Le matin, au frais : chaque litre contient plus d'essence (plus de masse)",
-            "L'après-midi : le volume est plus grand, donc on en a plus",
-            "L'après-midi, au chaud : chaque litre contient plus de masse"
-          ],
-          "answer": 1,
-          "explanation": "Chauffée, la même masse prend plus de volume : un litre contient **moins de masse**. Au frais, on a **plus d'essence pour le même prix**."
-        },
-        {
-          "type": "spot",
-          "prompt": "La masse volumique d'un liquide est 0,8 g/cm³. Touche l'erreur.",
-          "tokens": [
-            "0,75",
-            "L",
-            "de",
-            "ce",
-            "liquide",
-            "ont",
-            "une",
-            "masse",
-            "de",
-            "600",
-            "kg",
-            "."
-          ],
-          "wrongIndex": 10,
-          "correction": "g",
-          "explanation": "0,75 L = 750 cm³ ; m = 0,8 × 750 = **600 g**, pas 600 kg."
-        },
-        {
-          "type": "fill",
-          "prompt": "Un bloc a une masse de 0,36 kg et un volume de 400 cm³. Calcule sa masse volumique en kg/m³.",
-          "sentence": "ρ = ___ kg/m³",
+          "type": "question",
+          "prompt": "Comment s'appelle le passage de l'état liquide à l'état solide ?",
           "answers": [
-            "900",
-            "900 kg/m3",
-            "900 kg/m³",
-            "900kg/m3",
-            "900kg/m³"
+            "la solidification",
+            "solidification",
+            "une solidification"
           ],
-          "explanation": "400 cm³ = 0,0004 m³ ; ρ = 0,36 ÷ 0,0004 = **900 kg/m³** (ou 0,9 g/cm³ × 1 000).",
-          "hint": "Calcule en g/cm³, puis multiplie par 1 000."
+          "explanation": "Liquide → solide : c'est la **solidification** (l'eau qui gèle)."
         },
         {
-          "type": "write",
-          "prompt": "Explique comment savoir si un bois peut être transporté par flottage.",
+          "type": "question",
+          "prompt": "Comment s'appelle le passage de l'état liquide à l'état gazeux ?",
+          "answers": [
+            "la vaporisation",
+            "vaporisation",
+            "une vaporisation"
+          ],
+          "explanation": "Liquide → gaz : c'est la **vaporisation**."
+        },
+        {
+          "type": "question",
+          "prompt": "Convertis **0,75 L** en mL.",
+          "answers": [
+            "750",
+            "750 mL",
+            "750mL"
+          ],
+          "explanation": "1 L = 1 000 mL, donc 0,75 L = **750 mL**."
+        },
+        {
+          "type": "question",
+          "prompt": "Convertis **1 500 g** en kg.",
+          "answers": [
+            "1,5",
+            "1,5 kg",
+            "1,5kg"
+          ],
+          "explanation": "1 kg = 1 000 g, donc 1 500 g = **1,5 kg**."
+        },
+        {
+          "type": "question",
+          "prompt": "Sur une éprouvette, il y a 5 intervalles entre 0 et 10 mL. Combien vaut une petite graduation, en mL ?",
+          "answers": [
+            "2",
+            "2 mL",
+            "2mL"
+          ],
+          "explanation": "Écart ÷ nombre d'intervalles = 10 ÷ 5 = **2 mL**."
+        },
+        {
+          "type": "question",
+          "prompt": "Convertis **0,8 g/cm³** en kg/m³.",
+          "answers": [
+            "800",
+            "800 kg/m³",
+            "800kg/m³"
+          ],
+          "explanation": "Des g/cm³ aux kg/m³, on multiplie par 1 000 : 0,8 g/cm³ = **800 kg/m³**."
+        },
+        {
+          "type": "question",
+          "prompt": "Une huile a une masse volumique de **0,9 g/mL**. Combien cela fait-il en kg/L ?",
+          "answers": [
+            "0,9",
+            "0,9 kg/L",
+            "0,9kg/L"
+          ],
+          "explanation": "Des g/mL aux kg/L, le nombre ne change pas : **0,9 kg/L**."
+        },
+        {
+          "type": "question",
+          "prompt": "150 g d'un liquide occupent 125 mL. Calcule sa masse volumique, en g/mL.",
+          "answers": [
+            "1,2",
+            "1,2 g/mL",
+            "1,2g/mL"
+          ],
+          "explanation": "ρ = m ÷ V = 150 ÷ 125 = **1,2 g/mL**."
+        },
+        {
+          "type": "question",
+          "prompt": "Le fer a une masse volumique de 7,87 g/cm³. Quelle est la masse de 10 cm³ de fer, en g ?",
+          "answers": [
+            "78,7",
+            "78,7 g",
+            "78,7g"
+          ],
+          "explanation": "m = ρ × V = 7,87 × 10 = **78,7 g**."
+        },
+        {
+          "type": "question",
+          "prompt": "Du sable a une masse volumique de 1,5 kg/L. Quel volume occupent 45 kg de sable, en L ?",
+          "answers": [
+            "30",
+            "30 L",
+            "30L"
+          ],
+          "explanation": "V = m ÷ ρ = 45 ÷ 1,5 = **30 L**."
+        },
+        {
+          "type": "question",
+          "prompt": "Un récipient vide pèse 50 g. Rempli de liquide, la balance affiche 250 g. Quelle est la masse du liquide, en g ?",
+          "answers": [
+            "200",
+            "200 g",
+            "200g"
+          ],
+          "explanation": "Masse du liquide = masse affichée − masse du récipient = 250 − 50 = **200 g**."
+        },
+        {
+          "type": "question",
+          "prompt": "Lis les données. Quel bois a la plus petite masse volumique ?",
+          "answers": [
+            "le sapin",
+            "sapin",
+            "le bois de sapin",
+            "bois de sapin"
+          ],
           "docId": "transport",
-          "minWords": 15,
-          "requirements": [
-            {
-              "id": "rho",
-              "label": "Parle de la masse volumique",
-              "pattern": "masse volumique|ρ|rh[oô]"
-            },
-            {
-              "id": "eau",
-              "label": "Compare à l'eau",
-              "pattern": "\\beau\\b"
-            },
-            {
-              "id": "compare",
-              "label": "Dit « plus petite » ou « inférieure »",
-              "pattern": "plus petite|inf[ée]rieure|moins|<"
-            },
-            {
-              "id": "flotte",
-              "label": "Utilise le mot « flotte »",
-              "pattern": "flott"
-            }
+          "explanation": "Le **sapin** (0,45 g/cm³) est le moins dense : il flotte très bien sur l'eau."
+        },
+        {
+          "type": "question",
+          "prompt": "Lis le texte. Comment s'appelle le transport du bois en faisant descendre les troncs sur les fleuves ?",
+          "answers": [
+            "le flottage",
+            "flottage"
           ],
-          "minRequirements": 3,
-          "starters": [
-            "On calcule",
-            "Si elle est"
-          ],
-          "modelAnswer": "On calcule la masse volumique du bois avec ρ = m ÷ V. Si elle est plus petite que celle de l'eau (1 g/cm³), le bois flotte et peut être transporté par flottage.",
-          "explanation": "Méthode : **calculer ρ**, puis **comparer à 1 g/cm³** (l'eau)."
+          "docId": "transport",
+          "explanation": "C'est le **flottage**, utilisé du Moyen Âge au XIXe siècle."
         }
       ]
     }

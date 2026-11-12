@@ -25,7 +25,8 @@ interface ExercisesParts {
   fillAccepted: ExercisesApi["fillAccepted"];
   orderAccepted: ExercisesApi["orderAccepted"];
   countWords: ExercisesApi["countWords"];
-  writeCheck: ExercisesApi["writeCheck"];
+  answerKey: ExercisesApi["answerKey"];
+  questionAccepted: ExercisesApi["questionAccepted"];
   mcqMultiAccepted: ExercisesApi["mcqMultiAccepted"];
   // common/dom.js
   shuffle<T>(arr: T[]): T[];
@@ -57,7 +58,7 @@ interface ExercisesParts {
   renderOrder: ExRenderer<OrderExercise>;
   renderFill: ExRenderer<FillExercise>;
   renderSpot: ExRenderer<SpotExercise>;
-  renderWrite: ExRenderer<WriteExercise>;
+  renderQuestion: ExRenderer<QuestionExercise>;
 }
 
 interface Window {

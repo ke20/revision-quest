@@ -688,179 +688,260 @@ window.registerPack({
           "explanation": "Sept **piques**, comme les 7 continents et les 7 océans."
         },
         {
-          "type": "write",
-          "prompt": "Explique en une phrase ce que représentent les piques de la couronne.",
+          "type": "fill",
+          "prompt": "Lis le texte, puis complète la phrase.",
           "docId": "a-lire",
-          "minWords": 8,
-          "requirements": [
-            {
-              "id": "piques",
-              "label": "Parle des piques",
-              "pattern": "piques?"
-            },
-            {
-              "id": "continents",
-              "label": "Utilise le mot « continents »",
-              "pattern": "continents?"
-            },
-            {
-              "id": "oceans",
-              "label": "Utilise le mot « océans »",
-              "pattern": "oc[ée]ans?"
-            }
+          "sentence": "Les sept piques de la couronne représentent les sept continents et les sept ___.",
+          "answers": [
+            "océans"
           ],
-          "minRequirements": 2,
-          "starters": [
-            "Les sept piques",
-            "Elles représentent"
-          ],
-          "modelAnswer": "Les sept piques de la couronne représentent les continents et les océans.",
-          "explanation": "Les **7 piques** représentent les **7 continents** et les **7 océans**."
+          "explanation": "Les **7 piques** représentent les **7 continents** et les **7 océans** : la Liberté éclaire le monde entier."
         }
       ]
     },
     {
       "id": "dictee",
       "title": "Dictée bilan",
-      "subtitle": "Le texte de la dictée (68 mots)",
+      "subtitle": "Le test des mots, homophones, accords et nombres",
       "icon": "🗽",
       "color": "#059669",
       "lesson": {
-        "title": "Le texte de la dictée",
+        "title": "Le test de fin de groupe",
         "points": [
-          "En 1886, pour le **centenaire** de la **Déclaration** d'indépendance **américaine**, le **peuple** **français** a offert la statue de la **Liberté** aux États-Unis.",
-          "Elle se trouve sur une petite ile à l'entrée du **port** de New York.",
-          "Elle pèse deux-cent-vingt-cinq tonnes et **mesure** **environ** quatre-vingt-treize mètres de haut avec son **socle**.",
-          "La statue de la Liberté se visite : quarante personnes **peuvent** tenir à l'**intérieur** de sa **tête** !"
-        ],
-        "examples": [
-          "🧠 Astuce : relis ta phrase en vérifiant les mots appris, les accords et les homophones."
+          "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
+          "Homophones : remplace pour vérifier (**a** → avait, **et** → et puis, **son** → mon, **se** devant un verbe).",
+          "Accorde le verbe avec son sujet, et écris les nombres avec des **traits d'union**."
         ]
       },
+      "draw": 12,
       "exercises": [
         {
-          "type": "fill",
-          "prompt": "Complète avec a ou à.",
-          "sentence": "Le peuple français ___ offert la statue de la Liberté aux États-Unis.",
+          "type": "question",
+          "prompt": "Complète avec a ou à : « Le peuple français ___ offert la statue. »",
           "answers": [
             "a"
           ],
           "explanation": "On peut dire « avait offert » : c'est le verbe avoir, **a** sans accent."
         },
         {
-          "type": "spot",
-          "prompt": "Touche le mot faux.",
-          "tokens": [
-            "Elle",
-            "se",
-            "trouve",
-            "sur",
-            "une",
-            "petite",
-            "ile",
-            "a",
-            "l'entrée",
-            "du",
-            "port",
-            "."
+          "type": "question",
+          "prompt": "Complète avec a ou à : « Elle se trouve ___ l'entrée du port. »",
+          "answers": [
+            "à"
           ],
-          "wrongIndex": 7,
-          "correction": "à",
           "explanation": "On ne peut pas dire « avait l'entrée » : c'est **à** avec un accent."
         },
         {
-          "type": "fill",
-          "prompt": "Écris 225 en lettres.",
-          "sentence": "Elle pèse ___ tonnes.",
+          "type": "question",
+          "prompt": "Complète avec et ou est : « Elle pèse 225 tonnes ___ mesure environ 93 mètres. »",
           "answers": [
-            "deux-cent-vingt-cinq",
-            "deux cent vingt-cinq"
+            "et"
           ],
-          "explanation": "225 = **deux-cent-vingt-cinq**, sans s."
-        },
-        {
-          "type": "spot",
-          "prompt": "Touche le mot faux.",
-          "tokens": [
-            "Elle",
-            "pèse",
-            "225",
-            "tonnes",
-            "est",
-            "mesure",
-            "environ",
-            "93",
-            "mètres",
-            "."
-          ],
-          "wrongIndex": 4,
-          "correction": "et",
           "explanation": "On peut dire « et puis mesure » : c'est **et**."
         },
         {
-          "type": "fill",
-          "prompt": "Complète avec son ou sont.",
-          "sentence": "Elle mesure environ 93 mètres de haut avec ___ socle.",
+          "type": "question",
+          "prompt": "Complète avec son ou sont : « Elle mesure 93 mètres avec ___ socle. »",
           "answers": [
             "son"
           ],
           "explanation": "On peut dire « avec mon socle » : c'est **son**."
         },
         {
-          "type": "mcq",
-          "prompt": "Choisis les bons mots : « La statue ___ visite : quarante personnes ___ tenir dans sa tête. »",
-          "options": [
-            "se / peuvent",
-            "ce / peuvent",
-            "se / peut",
-            "ce / peut"
-          ],
-          "answer": 0,
-          "explanation": "**Se** devant le verbe visiter ; **peuvent** car le sujet « quarante personnes » est au pluriel."
-        },
-        {
-          "type": "spot",
-          "prompt": "Touche le mot faux.",
-          "tokens": [
-            "On",
-            "fête",
-            "la",
-            "Déclaration",
-            "d'indépendance",
-            "américain",
-            "."
-          ],
-          "wrongIndex": 5,
-          "correction": "américaine",
-          "explanation": "La Déclaration est féminin : **américaine** avec un e."
-        },
-        {
-          "type": "fill",
-          "prompt": "Écris 40 en lettres.",
-          "sentence": "___ personnes peuvent tenir à l'intérieur de sa tête.",
+          "type": "question",
+          "prompt": "Complète avec se ou ce : « La statue de la Liberté ___ visite. »",
           "answers": [
-            "Quarante"
+            "se"
           ],
-          "explanation": "40 = **quarante**."
+          "explanation": "Devant le verbe visiter, on écrit **se**."
         },
         {
-          "type": "order",
-          "prompt": "Remets les mots dans l'ordre.",
-          "words": [
-            "Elle",
-            "se",
-            "trouve",
-            "à",
-            "l'entrée",
-            "du",
-            "port",
-            "de",
-            "New",
-            "York",
-            "."
+          "type": "question",
+          "prompt": "Écris le nombre en lettres : 40",
+          "answers": [
+            "quarante"
           ],
-          "translation": "Elle se trouve à l'entrée du port de New York.",
-          "explanation": "**Se** trouve (verbe) et **à** l'entrée (on ne peut pas dire « avait »)."
+          "explanation": "40 = **quarante**, avec -ante à la fin."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le nombre en lettres : 93",
+          "answers": [
+            "quatre-vingt-treize"
+          ],
+          "explanation": "93 = 4 × 20 + 13 : **quatre-vingt-treize**, pas de s à vingt car treize le suit."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le nombre en lettres : 225",
+          "answers": [
+            "deux-cent-vingt-cinq"
+          ],
+          "explanation": "225 = **deux-cent-vingt-cinq** : cent et vingt sont suivis d'un autre nombre, donc pas de s."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le nombre en lettres : « Le poids dépasse 200 tonnes. »",
+          "answers": [
+            "deux-cents"
+          ],
+          "explanation": "**Deux-cents** : cent est multiplié (2 × 100) et rien ne le suit, donc il prend un s."
+        },
+        {
+          "type": "question",
+          "prompt": "Accorde le verbe pouvoir au présent : « Quarante personnes … tenir dans sa tête. »",
+          "answers": [
+            "peuvent"
+          ],
+          "explanation": "Le sujet « quarante personnes » est au pluriel : **peuvent**."
+        },
+        {
+          "type": "question",
+          "prompt": "Accorde le verbe peser au présent : « Elle … deux-cent-vingt-cinq tonnes. »",
+          "answers": [
+            "pèse"
+          ],
+          "explanation": "Le sujet « elle » est au singulier : elle **pèse**, avec un accent grave."
+        },
+        {
+          "type": "question",
+          "prompt": "Accorde l'adjectif : « la Déclaration d'indépendance (américain) »",
+          "answers": [
+            "américaine"
+          ],
+          "explanation": "La Déclaration est féminin : **américaine**, avec un e."
+        },
+        {
+          "type": "question",
+          "prompt": "Accorde l'adjectif : « Elle se trouve sur une (petit) ile. »",
+          "answers": [
+            "petite"
+          ],
+          "explanation": "Une ile est féminin singulier : **petite**."
+        },
+        {
+          "type": "question",
+          "prompt": "Ce mot est mal écrit : « Elle mesure environs 93 mètres. » Écris-le correctement.",
+          "answers": [
+            "environ"
+          ],
+          "explanation": "**Environ** ne change jamais : jamais de s à la fin."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec a ou à : « La statue ___ une couronne. »",
+          "answers": [
+            "a"
+          ],
+          "explanation": "On peut dire « avait une couronne » : c'est **a**, le verbe avoir."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec et ou est : « La statue ___ à New York. »",
+          "answers": [
+            "est"
+          ],
+          "explanation": "On peut dire « était à New York » : c'est **est**, le verbe être."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec son ou sont : « Les touristes ___ dans la tête de la statue. »",
+          "answers": [
+            "sont"
+          ],
+          "explanation": "On peut dire « étaient dans la tête » : c'est **sont**, le verbe être."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec se ou ce : « ___ port est très grand. »",
+          "answers": [
+            "ce"
+          ],
+          "explanation": "Devant un nom (port), on écrit **ce**."
+        },
+        {
+          "type": "question",
+          "prompt": "Accorde le verbe pouvoir au présent : « Une seule personne … monter dans la couronne. »",
+          "answers": [
+            "peut"
+          ],
+          "explanation": "Sujet au singulier (une personne) : **peut**, avec un t."
+        },
+        {
+          "type": "question",
+          "prompt": "Accorde le verbe se trouver au présent : « Les bateaux se … dans le port. »",
+          "answers": [
+            "trouvent"
+          ],
+          "explanation": "Sujet au pluriel (les bateaux) : le verbe finit par **-ent** → trouvent."
+        },
+        {
+          "type": "question",
+          "prompt": "Accorde l'adjectif : « une famille (français) »",
+          "answers": [
+            "française"
+          ],
+          "explanation": "Nom féminin : on ajoute un **e** → française (avec la cédille)."
+        },
+        {
+          "type": "question",
+          "prompt": "Accorde l'adjectif : « deux (petit) iles »",
+          "answers": [
+            "petites"
+          ],
+          "explanation": "Nom féminin pluriel : on ajoute **e** et **s** → petites."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le nombre en lettres : 300",
+          "answers": [
+            "trois-cents"
+          ],
+          "explanation": "**cent** est multiplié (3 × 100) et à la fin du nombre : trois-cent**s**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le nombre en lettres : 320",
+          "answers": [
+            "trois-cent-vingt"
+          ],
+          "explanation": "**cent** n'est pas à la fin : pas de s. Des **traits d'union** entre tous les mots."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le nombre en lettres : 80",
+          "answers": [
+            "quatre-vingts"
+          ],
+          "explanation": "**vingt** est multiplié (4 × 20) et à la fin du nombre : quatre-vingt**s**."
+        },
+        {
+          "type": "question",
+          "prompt": "Recopie la phrase sans faute : « Elle se trouve sur une petite ile a l'entrée du port. »",
+          "answers": [
+            "Elle se trouve sur une petite ile à l'entrée du port.",
+            "Elle se trouve sur une petite île à l'entrée du port."
+          ],
+          "explanation": "On ne peut pas dire « avait l'entrée » : c'est **à** avec un accent.",
+          "multiline": true
+        },
+        {
+          "type": "question",
+          "prompt": "Recopie la phrase sans faute : « Quarante personnes peut tenir a l'intérieur de sa tète ! »",
+          "answers": [
+            "Quarante personnes peuvent tenir à l'intérieur de sa tête !"
+          ],
+          "explanation": "Sujet pluriel : **peuvent** ; **à** l'intérieur (pas « avait ») ; **tête** avec un accent circonflexe.",
+          "multiline": true
+        },
+        {
+          "type": "question",
+          "prompt": "Recopie la phrase sans faute : « La statue de la Liberté ce visite et elle et très grande. »",
+          "answers": [
+            "La statue de la Liberté se visite et elle est très grande."
+          ],
+          "explanation": "**se** devant un verbe (se visiter) ; on peut dire « elle était grande » : **est**.",
+          "multiline": true
         }
       ]
     }

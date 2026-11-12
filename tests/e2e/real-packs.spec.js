@@ -32,9 +32,8 @@ test(`real packs (${PACKS.length}): every exercise renders at 390 px`, async ({ 
           if (box.querySelector(".ex-broken") || !box.querySelector(".ex-prompt")) out.push(where + ": not rendered");
           if (ex.figure && !box.querySelector(".ex-head svg.fig-svg text")) out.push(where + ": figure missing");
           if (ex.table && !box.querySelector(".ex-head table.conv-table td, .ex-head table.conv-table th")) out.push(where + ": table missing");
-          if (ex.type === "write" && (ex.docId != null || ex.letterId != null) && !box.querySelector(".letter-card")) out.push(where + ": document missing");
           // a text to read on another type: above the question (short) or a "back to the text" button (screen: true)
-          if (ex.type !== "write" && ex.docId != null && !box.querySelector(".ex-head .read-inline, .ex-head .btn-reread")) out.push(where + ": text to read missing");
+          if (ex.docId != null && !box.querySelector(".ex-head .read-inline, .ex-head .btn-reread")) out.push(where + ": text to read missing");
           if (box.scrollWidth > box.clientWidth + 1) out.push(where + ": wider than the screen (" + box.scrollWidth + " > " + box.clientWidth + ")");
         }));
         screen.remove();

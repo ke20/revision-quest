@@ -10,38 +10,6 @@ window.registerPack({
     "icon": "💌",
     "color": "#EC4899"
   },
-  "letters": [
-    {
-      "id": 1,
-      "from": "Lily",
-      "text": "Dear Agony Aunt,\nI've been talking to this person [[online|en ligne]] for [[quite a while|pas mal de temps]] now and we have become friends. [[However|Cependant]] they [[keep asking me|n'arrêtent pas de me demander]] if I would like to [[meet up|se voir / se rencontrer]]. I would like to meet them but I'm not sure if it's [[safe|sans danger]]. What should I do?\nFrom, Lily"
-    },
-    {
-      "id": 2,
-      "from": "Sarah",
-      "text": "Dear Agony Aunt,\nI think my friend is [[being bullied|en train de se faire harceler]]. At lunch time a few of the girls [[keep calling her names|n'arrêtent pas de l'insulter]], at first I thought it was a [[joke|blague]] because we were all laughing so I [[joined in|m'y suis mise aussi / ai participé]] too but now I think she's [[upset|bouleversée / triste]] and [[won't talk|refuse de parler]] to anyone. What should I do?\nFrom, Sarah"
-    },
-    {
-      "id": 3,
-      "from": "Sam",
-      "text": "Dear Agony Aunt,\nI am writing to you because I feel [[stressed|stressé]]. Next month, I have my [[final exams|examens de fin d'année]], and my parents [[expect|s'attendent à ce que]] me to get perfect [[marks|notes]] so I can go to a top [[university|université]]. I study for five hours every night, but I still feel like it's not [[enough|assez]]. Every time I think about the exam, [[my stomach hurts|j'ai mal au ventre]], and I can't sleep. I don't want to [[disappoint|décevoir]] my family, but the [[pressure|pression]] is [[ruining|en train de gâcher]] my life.\nFrom, Sam"
-    },
-    {
-      "id": 4,
-      "from": "Susan",
-      "text": "Dear Agony Aunt,\nI need your advice. Everyone at my school wears [[expensive|chers]] clothes and [[trendy|à la mode]] shoes. My family [[cannot afford|n'a pas les moyens d'acheter]] these things, so I have to wear [[unbranded|sans marque]] clothes. Because of this, some kids at school [[make fun of|se moquent de]] me. I feel so [[insecure|mal dans ma peau / complexée]] about my [[appearance|apparence]] that I don't even want to go to school [[anymore|plus]]. How can I [[fit in|m'intégrer]] without [[changing who I am|changer qui je suis]]?\nFrom, Susan"
-    },
-    {
-      "id": 5,
-      "from": "Abby",
-      "text": "Dear Agony Aunt,\nI think I have a serious problem. I am completely [[addicted to|accro à]] my smartphone. [[As soon as|Dès que]] I [[wake up|me réveille]], I check [[social media|les réseaux sociaux]], and I spend all evening playing video games with my online friends. Last night, I [[stayed up|suis restée debout / ai veillé]] until 3:00 AM gaming. Now, I am too [[tired|fatiguée]] to [[focus|me concentrer]] in class, and my [[grades are dropping|notes baissent]]. My parents are [[furious|furieux]] and want to [[confiscate|confisquer]] my phone, but [[the thought of|l'idée de]] being [[offline|hors ligne / déconnectée]] makes me [[anxious|anxieuse]]. How can I stop?\nFrom, Abby"
-    },
-    {
-      "id": 6,
-      "from": "Mark",
-      "text": "Dear Agony Aunt,\nI really need your help. I absolutely hate school. The lessons are too fast, and I have [[severe difficulties|de grosses difficultés]] understanding [[subjects|matières]] like maths and science. Every time I get a [[bad mark|mauvaise note]], I feel sad, so I want to [[quit|arrêter]] and [[give up|abandonner]]. My teachers say I must [[ask for help|demander de l'aide]] and also work [[regularly|régulièrement]] but I feel completely [[stuck|bloqué]] and [[hopeless|désespéré]].\nFrom, Mark"
-    }
-  ],
   "worlds": [
     {
       "id": 1,
@@ -1563,205 +1531,311 @@ window.registerPack({
     },
     {
       "id": 8,
-      "title": "Boss: Agony Aunt Pro",
-      "subtitle": "Write a real answer",
-      "subtitleFr": "Écris une vraie réponse à une lettre",
+      "title": "Boss: Translate!",
+      "subtitle": "Give advice in English",
+      "subtitleFr": "Traduis les conseils en anglais",
       "icon": "👑",
       "color": "#E5383B",
       "lesson": {
-        "title": "[[Your turn, Agony Aunt!|À toi, Agony Aunt !]]",
+        "title": "[[Boss: translate!|Boss : traduis !]]",
         "points": [
-          "Commence par [[**Dear + prénom,**|Cher / Chère + prénom,]] puis une phrase d'**empathie** 💗.",
-          "Donne plusieurs **conseils** 💡 avec des débuts **différents** :\n- [[You should…|tu devrais…]]\n- [[If I were you, I'd…|si j'étais toi, je…]]\n- [[Why don't you…?|pourquoi tu ne… pas ?]]\n- [[How about …ing?|et si tu… ?]]",
-          "Termine gentiment, puis signe :\n- [[**Good luck!**|Bonne chance !]]\n- [[**You can do it!**|Tu peux y arriver !]]\n- [[**Take care,**|Prends soin de toi,]]",
-          "Tu peux toucher les **phrases d'aide** pour commencer. Vérifie : pas de *to* après should, **were** (pas was), verbe + **ing** après How about."
+          "Avec ce que tu as appris, traduis correctement les phrases ci-dessous en anglais. Une seule chance par phrase !",
+          "Après **You should / shouldn't**, **I would / I'd** et **Why don't you** : le verbe tout simple. Après **How about** : le verbe + **ing**.",
+          "Toujours [[**If I were you**|si j'étais toi]], jamais *If I was you*."
         ],
         "examples": [
-          "[[Dear Abby, I understand how you feel. You should switch off your phone at 10 pm.|Chère Abby, je comprends ce que tu ressens. Tu devrais éteindre ton téléphone à 22 h.]]",
-          "[[If I were you, I'd leave it in the kitchen. Why don't you read a book? How about doing a sport? Good luck!|Si j'étais toi, je le laisserais dans la cuisine. Pourquoi tu ne lis pas un livre ? Et si tu faisais du sport ? Bonne chance !]]"
+          "[[I understand how you feel. **You should** talk to a teacher.|Je comprends ce que tu ressens. Tu devrais parler à un professeur.]]"
         ]
       },
+      "draw": 12,
       "exercises": [
         {
-          "type": "write",
-          "prompt": "Réponds à la lettre d'**Abby** (au moins 30 mots). Coche au moins 3 cases de la liste, par exemple 1 phrase d'empathie 💗 + 2 conseils 💡 différents.",
-          "letterId": 5,
-          "minWords": 30,
-          "requirements": [
-            {
-              "id": "empathy",
-              "label": "1 phrase pour montrer que tu comprends (empathie 💗)",
-              "pattern": "(i\\s+understand\\s+(why|how)\\s+you\\s+feel|that\\s+sounds\\s+like)"
-            },
-            {
-              "id": "should",
-              "label": "You should / shouldn't + verbe",
-              "pattern": "you\\s+(should|shouldn['’]?t|should\\s+not)\\s+(?!to\\b)[a-z]+"
-            },
-            {
-              "id": "ifiwere",
-              "label": "If I were you, I would / I'd + verbe",
-              "pattern": "if\\s+i\\s+were\\s+you\\s*,?\\s*i(['’]d|\\s+would)\\s+(?!to\\b)[a-z]+"
-            },
-            {
-              "id": "whydont",
-              "label": "Why don't you + verbe ?",
-              "pattern": "why\\s+(don['’]?t|do\\s+not)\\s+you\\s+(?!to\\b)[a-z]+"
-            },
-            {
-              "id": "howabout",
-              "label": "How about + verbe-ing ?",
-              "pattern": "how\\s+about\\s+[a-z]+ing\\b"
-            }
+          "type": "question",
+          "prompt": "Traduis : « Tu devrais parler à un professeur. »",
+          "answers": [
+            "You should talk to a teacher.",
+            "You should speak to a teacher."
           ],
-          "minRequirements": 3,
-          "starters": [
-            "Dear Abby,",
-            "I understand how you feel.",
-            "You should switch off your phone at ",
-            "If I were you, I'd leave my phone ",
-            "Why don't you ",
-            "How about doing ",
-            "Good luck!"
-          ],
-          "modelAnswer": "Dear Abby, I understand how you feel. Phones can be very addictive! You should switch off your phone at 10 pm. If I were you, I'd leave it in the kitchen at night. Why don't you buy a real alarm clock? How about doing a sport with your friends instead of gaming? You can do it! Love, Agony Aunt",
-          "explanation": "✅ Une bonne réponse : d'abord l'empathie 💗, puis plusieurs conseils 💡. Le verbe tout simple après should / I'd / Why don't you, et le verbe + **ing** après How about."
+          "explanation": "Après **should**, le verbe tout simple, sans *to* : [[You should talk to a teacher.|Tu devrais parler à un professeur.]]"
         },
         {
-          "type": "write",
-          "prompt": "Réponds à la lettre de **Sam** (au moins 35 mots). Coche au moins 3 cases de la liste, par exemple 1 phrase d'empathie 💗 + 2 conseils 💡 différents.",
-          "letterId": 3,
-          "minWords": 35,
-          "requirements": [
-            {
-              "id": "empathy",
-              "label": "1 phrase pour montrer que tu comprends (empathie 💗)",
-              "pattern": "(i\\s+understand\\s+(why|how)\\s+you\\s+feel|that\\s+sounds\\s+like)"
-            },
-            {
-              "id": "should",
-              "label": "You should / shouldn't + verbe",
-              "pattern": "you\\s+(should|shouldn['’]?t|should\\s+not)\\s+(?!to\\b)[a-z]+"
-            },
-            {
-              "id": "ifiwere",
-              "label": "If I were you, I would / I'd + verbe",
-              "pattern": "if\\s+i\\s+were\\s+you\\s*,?\\s*i(['’]d|\\s+would)\\s+(?!to\\b)[a-z]+"
-            },
-            {
-              "id": "whydont",
-              "label": "Why don't you + verbe ?",
-              "pattern": "why\\s+(don['’]?t|do\\s+not)\\s+you\\s+(?!to\\b)[a-z]+"
-            },
-            {
-              "id": "howabout",
-              "label": "How about + verbe-ing ?",
-              "pattern": "how\\s+about\\s+[a-z]+ing\\b"
-            }
+          "type": "question",
+          "prompt": "Traduis : « Je comprends ce que tu ressens. »",
+          "answers": [
+            "I understand how you feel."
           ],
-          "minRequirements": 3,
-          "starters": [
-            "Dear Sam,",
+          "explanation": "C'est la phrase d'empathie 💗 du chapitre : « ce que tu ressens » se dit **how you feel** : [[I understand how you feel.|Je comprends ce que tu ressens.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Pourquoi tu ne demandes pas de l'aide ? »",
+          "answers": [
+            "Why don't you ask for help?"
+          ],
+          "explanation": "**Why don't you** + le verbe tout simple, et un **?** à la fin : [[Why don't you ask for help?|Pourquoi tu ne demandes pas de l'aide ?]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Et si tu faisais une pause ? »",
+          "answers": [
+            "How about taking a break?",
+            "How about having a break?",
+            "What about taking a break?"
+          ],
+          "explanation": "Après **How about**, le verbe + **ing** : [[How about taking a break?|Et si tu faisais une pause ?]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Tu ne devrais pas rencontrer cette personne seule. »",
+          "answers": [
+            "You shouldn't meet this person alone.",
+            "You shouldn't meet that person alone.",
+            "You shouldn't meet up with this person alone.",
+            "You shouldn't meet up with that person alone."
+          ],
+          "explanation": "**You shouldn't** (= should not) + le verbe tout simple : [[You shouldn't meet this person alone.|Tu ne devrais pas rencontrer cette personne seule.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Ça a l'air d'être une situation vraiment difficile. »",
+          "answers": [
             "That sounds like a really difficult situation.",
-            "You shouldn't study ",
-            "If I were you, I would talk to ",
-            "Why don't you ",
-            "How about taking ",
-            "Take care,"
+            "It sounds like a really difficult situation."
           ],
-          "modelAnswer": "Dear Sam, that sounds like a really difficult situation. You shouldn't study five hours every night. How about taking short breaks to go for a walk? If I were you, I would talk to my parents about the pressure. Why don't you go to bed earlier? Sleep is important. Take care, Agony Aunt",
-          "explanation": "✅ Sam doit se **détendre** : faire des pauses, dormir plus et parler à ses parents. Commence par l'empathie 💗, puis donne tes conseils 💡."
+          "explanation": "Phrase d'empathie 💗 : **sounds** avec un **s**, puis **like** : [[That sounds like a really difficult situation.|Ça a l'air d'être une situation vraiment difficile.]]"
         },
         {
-          "type": "write",
-          "prompt": "Réponds à la lettre de **Sarah** (au moins 40 mots). Coche au moins 4 cases de la liste, par exemple 1 phrase d'empathie 💗 + 3 conseils 💡 différents.",
-          "letterId": 2,
-          "minWords": 40,
-          "requirements": [
-            {
-              "id": "empathy",
-              "label": "1 phrase pour montrer que tu comprends (empathie 💗)",
-              "pattern": "(i\\s+understand\\s+(why|how)\\s+you\\s+feel|that\\s+sounds\\s+like)"
-            },
-            {
-              "id": "should",
-              "label": "You should / shouldn't + verbe",
-              "pattern": "you\\s+(should|shouldn['’]?t|should\\s+not)\\s+(?!to\\b)[a-z]+"
-            },
-            {
-              "id": "ifiwere",
-              "label": "If I were you, I would / I'd + verbe",
-              "pattern": "if\\s+i\\s+were\\s+you\\s*,?\\s*i(['’]d|\\s+would)\\s+(?!to\\b)[a-z]+"
-            },
-            {
-              "id": "whydont",
-              "label": "Why don't you + verbe ?",
-              "pattern": "why\\s+(don['’]?t|do\\s+not)\\s+you\\s+(?!to\\b)[a-z]+"
-            },
-            {
-              "id": "howabout",
-              "label": "How about + verbe-ing ?",
-              "pattern": "how\\s+about\\s+[a-z]+ing\\b"
-            }
-          ],
-          "minRequirements": 4,
-          "starters": [
-            "Dear Sarah,",
+          "type": "question",
+          "prompt": "Traduis : « Je comprends pourquoi tu es bouleversée. »",
+          "answers": [
             "I understand why you feel upset.",
-            "You shouldn't laugh ",
-            "If I were you, I would say sorry ",
-            "Why don't you tell ",
-            "How about inviting ",
-            "Good luck!"
+            "I understand why you are upset."
           ],
-          "modelAnswer": "Dear Sarah, I understand why you feel upset. It's good that you want to help your friend. You shouldn't laugh with those girls again. If I were you, I would say sorry to your friend. Why don't you tell a teacher about the bullying? How about inviting your friend to eat lunch with you? Good luck! Agony Aunt",
-          "explanation": "✅ Sarah doit arrêter de rire avec ces filles, dire pardon et prévenir un adulte. Le harcèlement, c'est grave : en parler à un prof est toujours un bon conseil."
+          "explanation": "« pourquoi » = **why**, « bouleversé(e) » = **upset** : [[I understand why you feel upset.|Je comprends pourquoi tu es bouleversée.]]"
         },
         {
-          "type": "write",
-          "prompt": "Boss final ! Réponds à la lettre de **Mark** (au moins 50 mots). Coche au moins 4 cases de la liste, par exemple 1 phrase d'empathie 💗 + 3 conseils 💡 différents.",
-          "letterId": 6,
-          "minWords": 50,
-          "requirements": [
-            {
-              "id": "empathy",
-              "label": "1 phrase pour montrer que tu comprends (empathie 💗)",
-              "pattern": "(i\\s+understand\\s+(why|how)\\s+you\\s+feel|that\\s+sounds\\s+like)"
-            },
-            {
-              "id": "should",
-              "label": "You should / shouldn't + verbe",
-              "pattern": "you\\s+(should|shouldn['’]?t|should\\s+not)\\s+(?!to\\b)[a-z]+"
-            },
-            {
-              "id": "ifiwere",
-              "label": "If I were you, I would / I'd + verbe",
-              "pattern": "if\\s+i\\s+were\\s+you\\s*,?\\s*i(['’]d|\\s+would)\\s+(?!to\\b)[a-z]+"
-            },
-            {
-              "id": "whydont",
-              "label": "Why don't you + verbe ?",
-              "pattern": "why\\s+(don['’]?t|do\\s+not)\\s+you\\s+(?!to\\b)[a-z]+"
-            },
-            {
-              "id": "howabout",
-              "label": "How about + verbe-ing ?",
-              "pattern": "how\\s+about\\s+[a-z]+ing\\b"
-            }
+          "type": "question",
+          "prompt": "Traduis : « Tu ne devrais pas veiller si tard. »",
+          "answers": [
+            "You shouldn't stay up so late.",
+            "You shouldn't stay up that late."
           ],
-          "minRequirements": 4,
-          "starters": [
-            "Dear Mark,",
-            "I understand how you feel.",
-            "That sounds like a really difficult situation.",
-            "You shouldn't give up.",
-            "If I were you, I'd ask ",
-            "Why don't you ",
-            "How about studying ",
-            "You can do it!"
+          "explanation": "« veiller tard » = **stay up**, le verbe tout simple après **shouldn't** : [[You shouldn't stay up so late.|Tu ne devrais pas veiller si tard.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Pourquoi tu n'éteins pas ton téléphone la nuit ? »",
+          "answers": [
+            "Why don't you turn off your phone at night?",
+            "Why don't you switch off your phone at night?",
+            "Why don't you turn your phone off at night?",
+            "Why don't you switch your phone off at night?"
           ],
-          "modelAnswer": "Dear Mark, I understand how you feel. That sounds like a really difficult situation, but you shouldn't give up. If I were you, I'd ask my maths teacher for help after class. Why don't you work a little every day? It's better than five hours once a week. How about studying with a friend who is good at science? You can do it! Take care, Agony Aunt",
-          "explanation": "✅ Mark est découragé : montre que tu comprends 💗, dis-lui de ne pas abandonner, et donne des idées concrètes (demander de l'aide, travailler un peu chaque jour)."
+          "explanation": "**Why don't you** + verbe tout simple (pas de *to*) : [[Why don't you turn off your phone at night?|Pourquoi tu n'éteins pas ton téléphone la nuit ?]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Pourquoi tu ne t'inscris pas à un club au collège ? »",
+          "answers": [
+            "Why don't you join a club at school?"
+          ],
+          "explanation": "« s'inscrire à un club » = **join a club**, après **Why don't you** : [[Why don't you join a club at school?|Pourquoi tu ne t'inscris pas à un club au collège ?]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Et si tu te faisais de nouveaux amis ? »",
+          "answers": [
+            "How about making new friends?",
+            "What about making new friends?"
+          ],
+          "explanation": "**How about** + verbe + **ing** : make perd son **e** → **making** : [[How about making new friends?|Et si tu te faisais de nouveaux amis ?]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Si j'étais toi, je parlerais à tes parents. »",
+          "answers": [
+            "If I were you, I would talk to your parents.",
+            "If I were you, I'd talk to your parents.",
+            "If I were you, I would speak to your parents.",
+            "If I were you, I'd speak to your parents.",
+            "I would talk to your parents if I were you.",
+            "I'd talk to your parents if I were you.",
+            "I would speak to your parents if I were you.",
+            "I'd speak to your parents if I were you."
+          ],
+          "explanation": "**If I were you** (jamais *was*), puis **I would** ou **I'd** + verbe tout simple : [[If I were you, I'd talk to your parents.|Si j'étais toi, je parlerais à tes parents.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Et si tu portais des vêtements que tu aimes ? »",
+          "answers": [
+            "How about wearing clothes you like?",
+            "How about wearing clothes that you like?",
+            "What about wearing clothes you like?",
+            "What about wearing clothes that you like?"
+          ],
+          "explanation": "**How about** + **wearing** (verbe + ing) : [[How about wearing clothes you like?|Et si tu portais des vêtements que tu aimes ?]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Tu ne devrais pas abandonner. Pourquoi tu ne travailles pas avec un ami ? »",
+          "answers": [
+            "You shouldn't give up. Why don't you work with a friend?"
+          ],
+          "multiline": true,
+          "explanation": "« abandonner » = **give up** ; deux conseils, verbe tout simple à chaque fois : [[You shouldn't give up. Why don't you work with a friend?|Tu ne devrais pas abandonner. Pourquoi tu ne travailles pas avec un ami ?]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Je comprends ce que tu ressens. Si j'étais toi, je dirais pardon à ton amie. »",
+          "answers": [
+            "I understand how you feel. If I were you, I would say sorry to your friend.",
+            "I understand how you feel. If I were you, I'd say sorry to your friend.",
+            "I understand how you feel. If I were you, I would apologise to your friend.",
+            "I understand how you feel. If I were you, I'd apologise to your friend.",
+            "I understand how you feel. If I were you, I would apologize to your friend.",
+            "I understand how you feel. If I were you, I'd apologize to your friend.",
+            "I understand how you feel. I would say sorry to your friend if I were you.",
+            "I understand how you feel. I'd say sorry to your friend if I were you."
+          ],
+          "multiline": true,
+          "explanation": "D'abord l'empathie 💗, puis le conseil 💡 : [[I understand how you feel. If I were you, I'd say sorry to your friend.|Je comprends ce que tu ressens. Si j'étais toi, je dirais pardon à ton amie.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Ça a l'air d'être une situation vraiment difficile. Et si tu demandais de l'aide à un professeur ? »",
+          "answers": [
+            "That sounds like a really difficult situation. How about asking a teacher for help?",
+            "It sounds like a really difficult situation. How about asking a teacher for help?",
+            "That sounds like a really difficult situation. How about getting help from a teacher?",
+            "It sounds like a really difficult situation. How about getting help from a teacher?",
+            "That sounds like a really difficult situation. What about asking a teacher for help?",
+            "It sounds like a really difficult situation. What about asking a teacher for help?"
+          ],
+          "multiline": true,
+          "explanation": "Empathie 💗 puis conseil 💡 avec **How about** + verbe en **ing** : [[That sounds like a really difficult situation. How about asking a teacher for help?|Ça a l'air difficile. Et si tu demandais de l'aide à un professeur ?]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Tu devrais demander de l'aide à ton professeur. »",
+          "answers": [
+            "You should ask your teacher for help.",
+            "You should ask for help from your teacher.",
+            "You should get help from your teacher."
+          ],
+          "explanation": "**You should** + le verbe tout simple ; « demander de l'aide à quelqu'un » = **ask** someone **for help** : [[You should ask your teacher for help.|Tu devrais demander de l'aide à ton professeur.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Tu ne devrais pas abandonner. »",
+          "answers": [
+            "You shouldn't give up."
+          ],
+          "explanation": "« abandonner » = **give up** ; après **shouldn't**, le verbe tout simple : [[You shouldn't give up.|Tu ne devrais pas abandonner.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Si j'étais toi, je le dirais à un professeur. »",
+          "answers": [
+            "If I were you, I would tell a teacher.",
+            "If I were you, I'd tell a teacher.",
+            "I would tell a teacher if I were you.",
+            "I'd tell a teacher if I were you."
+          ],
+          "explanation": "**If I were you** (jamais *was*), puis **I would** + verbe tout simple : [[If I were you, I would tell a teacher.|Si j'étais toi, je le dirais à un professeur.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Pourquoi tu ne laisses pas ton téléphone dans la cuisine la nuit ? »",
+          "answers": [
+            "Why don't you leave your phone in the kitchen at night?"
+          ],
+          "explanation": "**Why don't you** + verbe tout simple ; « laisser » = **leave** : [[Why don't you leave your phone in the kitchen at night?|Pourquoi tu ne laisses pas ton téléphone dans la cuisine la nuit ?]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Et si tu éteignais ton téléphone ? »",
+          "answers": [
+            "How about switching off your phone?",
+            "How about turning off your phone?",
+            "How about switching your phone off?",
+            "How about turning your phone off?",
+            "What about switching off your phone?",
+            "What about turning off your phone?"
+          ],
+          "explanation": "Après **How about**, le verbe + **ing** : [[How about switching off your phone?|Et si tu éteignais ton téléphone ?]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Pourquoi tu ne parles pas à ton amie ? »",
+          "answers": [
+            "Why don't you talk to your friend?",
+            "Why don't you speak to your friend?"
+          ],
+          "explanation": "**Why don't you** + **talk** (pas *talking*), et un **?** à la fin : [[Why don't you talk to your friend?|Pourquoi tu ne parles pas à ton amie ?]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Et si tu dormais plus ? »",
+          "answers": [
+            "How about sleeping more?",
+            "What about sleeping more?"
+          ],
+          "explanation": "**How about** + verbe + **ing** : sleep → **sleeping** : [[How about sleeping more?|Et si tu dormais plus ?]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Si j'étais toi, je ne veillerais pas tard. »",
+          "answers": [
+            "If I were you, I wouldn't stay up late.",
+            "I wouldn't stay up late if I were you."
+          ],
+          "explanation": "**I wouldn't** (= I would not) + **stay up** (veiller tard) : [[If I were you, I wouldn't stay up late.|Si j'étais toi, je ne veillerais pas tard.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Tu ne devrais pas étudier cinq heures chaque soir. »",
+          "answers": [
+            "You shouldn't study five hours every night.",
+            "You shouldn't study for five hours every night.",
+            "You shouldn't work five hours every night.",
+            "You shouldn't work for five hours every night."
+          ],
+          "explanation": "**shouldn't** + verbe tout simple ; « chaque soir » = **every night** : [[You shouldn't study five hours every night.|Tu ne devrais pas étudier cinq heures chaque soir.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Je comprends pourquoi tu es contrarié. Tu devrais parler à tes parents. »",
+          "answers": [
+            "I understand why you feel upset. You should talk to your parents.",
+            "I understand why you are upset. You should talk to your parents.",
+            "I understand why you feel upset. You should speak to your parents.",
+            "I understand why you are upset. You should speak to your parents."
+          ],
+          "multiline": true,
+          "explanation": "D'abord l'empathie 💗 (**why you feel upset**), puis le conseil 💡 : [[I understand why you feel upset. You should talk to your parents.|Je comprends pourquoi tu es contrarié. Tu devrais parler à tes parents.]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Je comprends ce que tu ressens. Pourquoi tu ne t'inscris pas à un club pour te faire des amis ? »",
+          "answers": [
+            "I understand how you feel. Why don't you join a club to make friends?",
+            "I understand how you feel. Why don't you join a club to make new friends?"
+          ],
+          "multiline": true,
+          "explanation": "Empathie 💗 puis conseil 💡 : **Why don't you join** + « pour » = **to** : [[I understand how you feel. Why don't you join a club to make friends?|Je comprends ce que tu ressens. Pourquoi tu ne t'inscris pas à un club pour te faire des amis ?]]"
+        },
+        {
+          "type": "question",
+          "prompt": "Traduis : « Ça a l'air d'être une situation vraiment difficile. Tu devrais dormir plus et faire des pauses. »",
+          "answers": [
+            "That sounds like a really difficult situation. You should sleep more and take breaks.",
+            "It sounds like a really difficult situation. You should sleep more and take breaks.",
+            "That sounds like a really difficult situation. You should sleep more and have breaks.",
+            "It sounds like a really difficult situation. You should sleep more and have breaks."
+          ],
+          "multiline": true,
+          "explanation": "Après **should**, deux verbes tout simples reliés par **and** : [[You should sleep more and take breaks.|Tu devrais dormir plus et faire des pauses.]]"
         }
       ]
     }

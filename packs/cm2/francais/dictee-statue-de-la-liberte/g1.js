@@ -475,125 +475,258 @@ window.registerPack({
     {
       "id": "dictee",
       "title": "Dictée bilan",
-      "subtitle": "Les mots appris dans le texte",
+      "subtitle": "Le test des mots appris",
       "icon": "🗽",
       "color": "#059669",
       "lesson": {
-        "title": "Le texte de la dictée",
+        "title": "Le test de fin de groupe",
         "points": [
-          "En 1886, pour le **centenaire** de la **Déclaration** d'indépendance **américaine**, le **peuple** **français** a offert la statue de la **Liberté** aux États-Unis.",
-          "Elle se trouve sur une petite ile à l'entrée du **port** de New York.",
-          "Elle pèse deux-cent-vingt-cinq tonnes et **mesure** **environ** quatre-vingt-treize mètres de haut avec son **socle**.",
-          "La statue de la Liberté se visite : quarante personnes **peuvent** tenir à l'**intérieur** de sa **tête** !"
-        ],
-        "examples": [
-          "🧠 Astuce : relis ta phrase en vérifiant les mots appris, les accords et les homophones."
+          "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
+          "Relis chaque mot : **accents** (liberté, déclaration, intérieur, américain), **tête** (^), **français** (ç).",
+          "**environ** ne prend jamais de s ; **tonnes** prend deux n."
         ]
       },
+      "draw": 12,
       "exercises": [
         {
-          "type": "fill",
-          "prompt": "Écoute et écris le mot qui manque.",
-          "listen": "En 1886, pour le centenaire de la Déclaration d'indépendance américaine.",
-          "sentence": "En 1886, pour le ___ de la Déclaration d'indépendance américaine…",
+          "type": "question",
+          "prompt": "Ce mot est mal écrit : « la tète ». Écris-le correctement.",
           "answers": [
-            "centenaire"
+            "tête",
+            "la tête"
           ],
-          "explanation": "**Centenaire** : on fête les 100 ans.",
-          "hint": "Un mot qui veut dire « 100 ans »."
+          "explanation": "**Tête** prend un accent circonflexe sur le e."
         },
         {
-          "type": "fill",
-          "prompt": "Écoute et écris le mot qui manque.",
-          "listen": "Le peuple français a offert la statue de la Liberté aux États-Unis.",
-          "sentence": "Le peuple ___ a offert la statue de la Liberté aux États-Unis.",
+          "type": "question",
+          "prompt": "Ce mot est mal écrit : « le peuple francais ». Écris correctement le dernier mot.",
           "answers": [
             "français"
           ],
-          "explanation": "**Français** avec une cédille, et une minuscule car c'est un adjectif.",
-          "hint": "L'adjectif qui vient de « France »."
+          "explanation": "**Français** prend une cédille : ç, pour faire le son « s » devant a."
         },
         {
-          "type": "fill",
-          "prompt": "Écoute et écris le mot qui manque.",
-          "listen": "Elle se trouve sur une petite ile à l'entrée du port de New York.",
-          "sentence": "Elle se trouve sur une petite ile à l'entrée du ___ de New York.",
+          "type": "question",
+          "prompt": "Ce mot est mal écrit : « elle mesure environs 93 mètres ». Écris correctement le mot qui veut dire « à peu près ».",
           "answers": [
-            "port"
+            "environ"
           ],
-          "explanation": "Le **port** : un t muet à la fin (pense à « portuaire »).",
-          "hint": "L'endroit où arrivent les bateaux."
+          "explanation": "**Environ** ne change jamais : jamais de s à la fin."
         },
         {
-          "type": "spot",
-          "prompt": "Touche le mot mal écrit.",
-          "tokens": [
-            "Elle",
-            "mesure",
-            "environs",
-            "93",
-            "mètres",
-            "avec",
-            "son",
+          "type": "question",
+          "prompt": "Ce mot est mal écrit : « la déclarassion ». Écris-le correctement.",
+          "answers": [
+            "déclaration",
+            "la déclaration"
+          ],
+          "explanation": "**Déclaration** : un accent sur le é, et la fin **-tion** qui se lit « sion »."
+        },
+        {
+          "type": "question",
+          "prompt": "Ce mot est mal écrit : « l'interieur de sa tête ». Écris-le correctement.",
+          "answers": [
+            "intérieur",
+            "l'intérieur"
+          ],
+          "explanation": "**Intérieur** : un accent aigu sur le é, et **-eur** à la fin."
+        },
+        {
+          "type": "question",
+          "prompt": "Ce mot est mal écrit : « americain ». Écris-le correctement.",
+          "answers": [
+            "américain"
+          ],
+          "explanation": "**Américain** : un accent aigu sur le é (Amérique → américain)."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot qui veut dire « l'endroit où arrivent les bateaux » (l'entrée du … de New York).",
+          "answers": [
+            "port",
+            "le port"
+          ],
+          "explanation": "Le **port** : un t muet à la fin (pense à « portuaire »)."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le nom du gros bloc sur lequel la statue est posée.",
+          "answers": [
             "socle",
-            "."
+            "le socle",
+            "un socle"
           ],
-          "wrongIndex": 2,
-          "correction": "environ",
-          "explanation": "**Environ** ne prend jamais de s."
+          "explanation": "Le **socle** : s-o-c-l-e, le bloc qui porte la statue."
         },
         {
-          "type": "fill",
-          "prompt": "Écoute et écris le mot qui manque.",
-          "listen": "Elle mesure environ 93 mètres de haut avec son socle.",
-          "sentence": "Elle mesure environ 93 mètres de haut avec son ___.",
+          "type": "question",
+          "prompt": "Écris le mot qui veut dire « les 100 ans d'un événement » (le … de la Déclaration).",
           "answers": [
-            "socle"
+            "centenaire",
+            "le centenaire"
           ],
-          "explanation": "Le **socle** : le bloc sous la statue.",
-          "hint": "Le bloc sur lequel la statue est posée."
+          "explanation": "**Cent**enaire contient « cent » : on fête les **100 ans**."
         },
         {
-          "type": "spot",
-          "prompt": "Touche le mot mal écrit.",
-          "tokens": [
-            "Quarante",
-            "personnes",
-            "peuvent",
-            "tenir",
-            "à",
-            "l'intérieur",
-            "de",
-            "sa",
-            "tète",
-            "!"
-          ],
-          "wrongIndex": 8,
-          "correction": "tête",
-          "explanation": "**Tête** prend un accent circonflexe."
-        },
-        {
-          "type": "fill",
-          "prompt": "Écoute et écris le mot qui manque.",
-          "listen": "En 1886, pour le centenaire de la Déclaration d'indépendance américaine.",
-          "sentence": "En 1886, pour le centenaire de la ___ d'indépendance américaine…",
+          "type": "question",
+          "prompt": "Complète avec le mot qui veut dire « pouvoir faire ses choix » : « la statue de la … »",
           "answers": [
-            "Déclaration"
+            "Liberté"
           ],
-          "explanation": "**Déclaration** : accent sur le é et fin en -tion.",
-          "hint": "Un texte officiel : la … d'indépendance."
+          "explanation": "La statue de la **Liberté** : un accent aigu à la fin, et une majuscule car c'est son nom."
         },
         {
-          "type": "mcq",
-          "prompt": "Quelle phrase est bien écrite ?",
-          "options": [
-            "Le peuple français a offert la statue.",
-            "Le peuple francais a offert la statue.",
-            "Le peuple français a offer la statue.",
-            "Le peupe français a offert la statue."
+          "type": "question",
+          "prompt": "Complète avec le verbe offrir : « Le peuple français a … la statue. »",
+          "answers": [
+            "offert"
           ],
-          "answer": 0,
-          "explanation": "**Peuple**, **français** (ç) et **offert** (t à la fin)."
+          "explanation": "Offrir → il a **offert**, avec un t à la fin."
+        },
+        {
+          "type": "question",
+          "prompt": "Ce mot est mal écrit : « deux-cents tones ». Écris correctement le dernier mot.",
+          "answers": [
+            "tonnes"
+          ],
+          "explanation": "**Tonnes** s'écrit avec deux n."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le mot qui veut dire « une terre entourée d'eau » (la statue est sur une petite …).",
+          "answers": [
+            "ile",
+            "île"
+          ],
+          "explanation": "Une **ile** (on peut aussi écrire **île**) : une terre entourée d'eau."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec le verbe peser : « Elle … 225 tonnes. »",
+          "answers": [
+            "pèse"
+          ],
+          "explanation": "Elle **pèse** : un accent grave sur le premier e."
+        },
+        {
+          "type": "question",
+          "prompt": "Ce mot est mal écrit : « la liberte ». Écris-le correctement.",
+          "answers": [
+            "liberté",
+            "la liberté"
+          ],
+          "explanation": "**Liberté** finit par un é : accent aigu sur le dernier e."
+        },
+        {
+          "type": "question",
+          "prompt": "Ce mot est mal écrit : « le peupple ». Écris-le correctement.",
+          "answers": [
+            "peuple",
+            "le peuple"
+          ],
+          "explanation": "**Peuple** s'écrit p-e-u-p-l-e : un seul p au milieu."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le verbe qui veut dire « avoir un certain poids ». Écris-le à l'infinitif.",
+          "answers": [
+            "peser"
+          ],
+          "explanation": "**Peser**, c'est avoir un certain poids : la statue pèse 225 tonnes."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec le verbe mesurer : « Elle … environ 93 mètres. »",
+          "answers": [
+            "mesure"
+          ],
+          "explanation": "Elle **mesure** : avec « elle », le verbe finit par **-e**."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec le verbe se trouver : « La statue se … à New York. »",
+          "answers": [
+            "trouve"
+          ],
+          "explanation": "Elle se **trouve** : avec « elle », le verbe finit par **-e**."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec le verbe pouvoir : « On … visiter la statue. »",
+          "answers": [
+            "peut"
+          ],
+          "explanation": "On **peut** : avec « on », le verbe pouvoir finit par un **t**."
+        },
+        {
+          "type": "question",
+          "prompt": "Complète avec le verbe offrir : « J'… un cadeau à ma mère. »",
+          "answers": [
+            "offre"
+          ],
+          "explanation": "J'**offre** : avec « je », le verbe offrir finit par **-e**."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le contraire de « l'extérieur ».",
+          "answers": [
+            "intérieur",
+            "l'intérieur"
+          ],
+          "explanation": "Le contraire de l'extérieur, c'est l'**intérieur** : accent aigu sur le premier e."
+        },
+        {
+          "type": "question",
+          "prompt": "Ce mot est mal écrit : « le poid de la statue ». Écris-le correctement.",
+          "answers": [
+            "poids",
+            "le poids"
+          ],
+          "explanation": "**Poids** finit par un d et un s muets, même quand il n'y en a qu'un."
+        },
+        {
+          "type": "question",
+          "prompt": "Combien de piques a la couronne de la statue ? Écris le nombre en lettres.",
+          "answers": [
+            "sept"
+          ],
+          "explanation": "La couronne a **sept** piques : les 7 continents et les 7 océans."
+        },
+        {
+          "type": "question",
+          "prompt": "Écris le prénom et le nom de l'homme dont les ateliers ont fait la charpente de la statue.",
+          "answers": [
+            "Gustave Eiffel",
+            "Eiffel"
+          ],
+          "explanation": "La charpente a été faite dans les ateliers de **Gustave Eiffel**, qui a aussi construit la tour Eiffel."
+        },
+        {
+          "type": "question",
+          "prompt": "Recopie la phrase sans faute : « Le peuple francais a offer la statue. »",
+          "answers": [
+            "Le peuple français a offert la statue."
+          ],
+          "explanation": "**Français** prend une cédille et **offert** un t à la fin.",
+          "multiline": true
+        },
+        {
+          "type": "question",
+          "prompt": "Recopie la phrase sans faute : « Elle mesur environ 93 mètre avec son socle. »",
+          "answers": [
+            "Elle mesure environ 93 mètres avec son socle."
+          ],
+          "explanation": "Elle **mesure** (avec un e) et 93 **mètres** (plusieurs mètres : un s).",
+          "multiline": true
+        },
+        {
+          "type": "question",
+          "prompt": "Recopie la phrase sans faute : « Le poid de la statue dépasse deux-cents tones. »",
+          "answers": [
+            "Le poids de la statue dépasse deux-cents tonnes."
+          ],
+          "explanation": "**Poids** finit par ds et **tonnes** prend deux n.",
+          "multiline": true
         }
       ]
     }

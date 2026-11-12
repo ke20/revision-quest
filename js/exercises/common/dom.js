@@ -45,9 +45,9 @@
     container.innerHTML = "";
     var root = el("div", "ex ex-" + ex.type);
     var head = el("div", "ex-head");
-    // A text to read (docId), for every type but write (which shows it in its body): a short text sits above the
-    // question; a long one (doc.screen) was read on its own screen first, so here only a button opens it again.
-    var doc = ex.type !== "write" ? X.findDocument(opts.data, ex) : null;
+    // A text to read (docId): a short text sits above the question; a long one (doc.screen) was read on its own
+    // screen first, so here only a button opens it again.
+    var doc = X.findDocument(opts.data, ex);
     if (doc && !doc.screen) head.appendChild(X.docCard(doc, "read-card read-inline"));
     head.appendChild(el("h2", "ex-prompt", rich(ex.prompt)));
     if (doc && doc.screen) {

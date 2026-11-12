@@ -11,10 +11,10 @@ import { mcqForm } from "./types/mcq.js";
 import { orderForm } from "./types/order.js";
 import { sortForm } from "./types/sort.js";
 import { spotForm } from "./types/spot.js";
-import { writeForm } from "./types/write.js";
+import { questionForm } from "./types/question.js";
 
 /** @type {Record<string, (root: HTMLElement, ex: any) => void>} */
-var TYPE_FORMS = { mcq: mcqForm, sort: sortForm, match: matchForm, order: orderForm, fill: fillForm, spot: spotForm, write: writeForm };
+var TYPE_FORMS = { mcq: mcqForm, sort: sortForm, match: matchForm, order: orderForm, fill: fillForm, spot: spotForm, question: questionForm };
 
 /** @param {HTMLElement} root @param {number} wi @param {number} ei */
 export function exerciseForm(root, wi, ei) {
