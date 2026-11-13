@@ -206,6 +206,8 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
 .fig-mark { fill: color-mix(in srgb, var(--c) 30%, transparent); stroke: var(--ink); stroke-width: .05; }
 .fig-arc { fill: none; stroke: var(--c); stroke-width: .08; }
 .fig-tick { stroke: #DC2626; stroke-width: .07; stroke-linecap: round; }
+.fig-axis-tip, .fig-arrow { fill: var(--ink); stroke: none; }
+.fig-arrow.fig-hl { fill: var(--c); }
 .fig-label { font-size: .62px; font-weight: 600; fill: var(--ink); font-family: inherit; }
 .fig-name { font-style: italic; fill: color-mix(in srgb, var(--c) 70%, #000); }
 .fig-small { font-size: .5px; fill: var(--ink-soft); }

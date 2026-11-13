@@ -296,7 +296,10 @@ figure: {
     { rightAngle: ["A", "T", "C"] },               // petit carré de l'angle droit en T
     { angle: ["B", "A", "C"] },                    // arc de l'angle en A
     { ticks: ["A", "M"], n: 2 },                   // codage de longueurs égales (1 à 3 traits)
-    { segment: ["A", "B"], hl: true }              // hl : trait épais, couleur du monde
+    { segment: ["A", "B"], hl: true },             // hl : trait épais, couleur du monde
+    { axis: ["O", "Z"], from: 1100, to: 1500, step: 100,   // droite graduée de O à Z (points "hidden")
+      every: 1,                                    // optionnel : un nombre sous chaque graduation (2 : une sur deux, 0 : aucun)
+      marks: [{ at: 1250 }, { at: 1400, label: "?" }] }    // 6 flèches max, au-dessus ; label par défaut = le nombre
   ],
   alt: "Un segment [AB] de 8 cm.", // description pour les lecteurs d'écran (conseillée)
   caption: "Le segment [AB]"       // optionnel : légende sous la figure
@@ -306,6 +309,12 @@ figure: {
 Le validateur vérifie les noms, les coordonnées (dans la figure), les points cités et les champs inconnus.
 Pour des points alignés ou des droites perpendiculaires, calculer les coordonnées (les vérifier à l'œil ne suffit pas).
 Une figure haute pousse les réponses vers le bas : sur téléphone, garder `h` raisonnable (≤ 10).
+
+**Droite graduée** (`axis`) : graduations de `from` à `to` tous les `step` (40 au plus ; `to − from` multiple de
+`step`), nombres écrits à la française (« 1 250 », « 0,5 ») sous les graduations, flèches (`marks`) au-dessus. Les
+deux points d'appui sont `"hidden"`. Laisser assez de place entre deux nombres écrits : environ 0,3 carreau par
+chiffre (avec `every` pour n'en écrire qu'une partie), et 1,5 carreau de marge à gauche et à droite. Pour un nombre
+à trouver, mettre `label: "?"` (sinon la flèche affiche la réponse).
 
 ### Les tableaux (conversions, numération…)
 

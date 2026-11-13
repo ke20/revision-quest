@@ -24,6 +24,10 @@ interface FiguresApi {
   /** <figure class="fig"><svg…></figure>, built with the DOM only (no innerHTML). */
   build(fig: Figure, doc?: Document): HTMLElement;
   clip(P: number[], Q: number[], w: number, h: number, tMin: number): number[][] | null;
+  /** A number written the French way ("1 250", "0,5"). */
+  frNumber(n: number): string;
+  MAX_AXIS_TICKS: number;
+  MAX_AXIS_MARKS: number;
   tableLayout(t: Table): { caption: string; alt: string; rows: FigCell[][] };
   /** <figure class="fig fig-table"><table…></figure>, textContent only. */
   buildTable(t: Table, doc?: Document): HTMLElement;

@@ -92,6 +92,49 @@ test("validateFigure: reports bad sizes, points, items and options", () => {
   assert.match(errs({ ...BASE, svg: "<svg/>" }), /champ "svg" inconnu/);
 });
 
+/* ---------- number line (axis) ---------- */
+
+const AXIS = { w: 12, h: 3, alt: "Droite graduée", points: { A: [1, 1.5, "hidden"], B: [11, 1.5, "hidden"] },
+  draw: [{ axis: ["A", "B"], from: 1100, to: 1500, step: 100, marks: [{ at: 1250 }, { at: 1400, label: "?" }] }] };
+
+test("frNumber: groups of 3 digits with a non-breaking space, decimal comma, minus sign", () => {
+  assert.deepStrictEqual([F.frNumber(1250), F.frNumber(150000000), F.frNumber(0.5), F.frNumber(-12000), F.frNumber(999)],
+    ["1\u00a0250", "150\u00a0000\u00a0000", "0,5", "\u221212\u00a0000", "999"]);
+});
+
+test("layout axis: graduations every step, numbers under them, arrows above pointing at a value", () => {
+  const L = j(F.layout(AXIS));
+  const texts = L.shapes.filter((s) => s.kind === "text");
+  assert.deepStrictEqual(texts.map((t) => t.text), ["1\u00a0100", "1\u00a0200", "1\u00a0300", "1\u00a0400", "1\u00a0500", "1\u00a0250", "?"]);
+  const n1200 = texts[1], n1250 = texts[5];
+  assert.strictEqual(n1200.x, 3.5);
+  assert.ok(n1200.y > 1.5, "numbers under the line");
+  assert.strictEqual(n1250.x, 4.75, "1 250 is halfway between 1 200 and 1 300");
+  assert.ok(n1250.y < 1.5, "arrow label above the line");
+  assert.strictEqual(L.shapes.filter((s) => s.cls === "fig-arrow fig-hl").length, 2);
+  const every2 = j(F.layout({ ...AXIS, draw: [{ ...AXIS.draw[0], every: 2, marks: [] }] }));
+  assert.deepStrictEqual(every2.shapes.filter((s) => s.kind === "text").map((t) => t.text), ["1\u00a0100", "1\u00a0300", "1\u00a0500"]);
+  const bad = [{ ...AXIS.draw[0], step: 0 }, { ...AXIS.draw[0], to: 1000 }, { ...AXIS.draw[0], step: 1 }, { ...AXIS.draw[0], from: "1" }];
+  bad.forEach((d) => assert.deepStrictEqual(j(F.layout({ ...AXIS, draw: [d] })).shapes, [], JSON.stringify(d)));
+  const outside = j(F.layout({ ...AXIS, draw: [{ ...AXIS.draw[0], marks: [{ at: 2000 }, { at: "1250" }] }] }));
+  assert.strictEqual(outside.shapes.filter((s) => s.kind === "text").length, 5, "marks off the line are skipped");
+});
+
+test("validateFigure axis: correct line passes; reports bad bounds, step, marks and axis-only fields", () => {
+  assert.deepStrictEqual(check(AXIS), { errors: [], warnings: [] });
+  const errs = (d) => check({ ...AXIS, draw: [{ ...AXIS.draw[0], ...d }] }).errors.join(" | ");
+  assert.match(errs({ to: 1100 }), /from < to/);
+  assert.match(errs({ step: 30 }), /multiple de step/);
+  assert.match(errs({ step: 1 }), /40 graduations/);
+  assert.match(errs({ from: undefined }), /from, to et step/);
+  assert.match(errs({ every: -1 }), /every/);
+  assert.match(errs({ marks: [{ at: 99 }] }), /at doit être un nombre de 1100 à 1500/);
+  assert.match(errs({ marks: [{ at: 1200, color: "red" }] }), /champ "color" inconnu/);
+  assert.match(errs({ marks: Array(7).fill({ at: 1200 }) }), /6 flèches/);
+  assert.match(check({ ...BASE, draw: [{ segment: ["A", "B"], step: 2 }] }).errors.join(), /step seulement pour axis/);
+  assert.strictEqual(check({ ...AXIS, draw: [{ ...AXIS.draw[0], label: "x" }] }).warnings.length, 1);
+});
+
 /* ---------- tables ---------- */
 
 const TAB = {

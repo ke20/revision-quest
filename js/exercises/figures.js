@@ -1,5 +1,6 @@
 /* Révision Quest — geometry figures drawn from pack data (no SVG or HTML comes from a pack).
-   A figure is plain data: points + a list of things to draw (segment, line, ray, right angle, angle, equal-length ticks).
+   A figure is plain data: points + a list of things to draw (segment, line, ray, right angle, angle, equal-length ticks,
+   number line).
    layout(fig) is pure (unit-tested) and turns the data into shapes; build(fig) turns the shapes into a <figure><svg>.
    Bad data never throws: unknown items, unknown points and non-finite numbers are skipped.
    Format: see packs/README.md § « Les figures ». Exposes window.Figures. */
@@ -22,7 +23,15 @@
   var MAX_SIZE = 24, MAX_POINTS = 40, MAX_ITEMS = 60;
   /** @type {Record<string, FigVec>} */
   var DIRS = { n: [0, -1], s: [0, 1], e: [1, 0], w: [-1, 0], ne: [0.75, -0.75], nw: [-0.75, -0.75], se: [0.75, 0.75], sw: [-0.75, 0.75] };
-  var KINDS = ["segment", "line", "ray", "rightAngle", "angle", "ticks"];
+  var KINDS = ["segment", "line", "ray", "rightAngle", "angle", "ticks", "axis"];
+  var MAX_AXIS_TICKS = 40, MAX_AXIS_MARKS = 6;
+
+  /** A number written the French way: thin groups of 3 digits, decimal comma ("1 250", "0,5"). @param {number} n */
+  function frNumber(n) {
+    var neg = n < 0, s = String(round(Math.abs(n))).split("."), int = s[0];
+    if (int.length > 3) int = int.replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0");
+    return (neg ? "\u2212" : "") + int + (s[1] ? "," + s[1] : "");
+  }
 
   /** @param {unknown} v @param {number} min @param {number} max @param {number} def @returns {number} */
   function num(v, min, max, def) {
@@ -107,7 +116,7 @@
       var cls = it.hl ? " fig-hl" : "";
       var A = refs[0], B = refs[1], C = refs[2];
       var lab = text(it.label, 16);
-      if ((kind === "segment" || kind === "line" || kind === "ray" || kind === "ticks") && (refs.length !== 2 || !unit(sub(B, A)))) return;
+      if ((kind === "segment" || kind === "line" || kind === "ray" || kind === "ticks" || kind === "axis") && (refs.length !== 2 || !unit(sub(B, A)))) return;
       if ((kind === "rightAngle" || kind === "angle") && (refs.length !== 3 || !unit(sub(A, B)) || !unit(sub(C, B)))) return;
 
       if (kind === "segment") {
@@ -142,8 +151,44 @@
           var cc = add(mid, mul(d, (k - (count - 1) / 2) * 0.18));
           marks.push({ kind: "line", x1: round(cc[0] - slant[0] * 0.24), y1: round(cc[1] - slant[1] * 0.24), x2: round(cc[0] + slant[0] * 0.24), y2: round(cc[1] + slant[1] * 0.24), cls: "fig-tick" + cls });
         }
+      } else if (kind === "axis") {
+        axis(A, B, it, cls);
       }
     });
+
+    /** Number line from A to B: graduations from `from` to `to` every `step`, numbers under every `every`-th
+        graduation, and up to 6 arrows pointing at a value from above (label above the arrow, "?" to find).
+        @param {FigVec} A @param {FigVec} B @param {Record<string, unknown>} it @param {string} cls */
+    function axis(A, B, it, cls) {
+      var from = Number(it.from), to = Number(it.to), step = Number(it.step);
+      if (typeof it.from !== "number" || typeof it.to !== "number" || typeof it.step !== "number") return;
+      if (!isFinite(from) || !isFinite(to) || !(step > 0) || to <= from) return;
+      var count = Math.round((to - from) / step);
+      if (count < 1 || count > MAX_AXIS_TICKS) return;
+      var every = it.every == null ? 1 : Math.round(num(it.every, 0, MAX_AXIS_TICKS, 1));
+      var d = /** @type {FigVec} */ (unit(sub(B, A))), up = [d[1], -d[0]];
+      if (up[1] > 0) up = mul(up, -1);
+      var down = mul(up, -1);
+      /** @param {number} v @returns {FigVec} */
+      function at(v) { return add(A, mul(sub(B, A), (v - from) / (to - from))); }
+      var end = add(B, mul(d, 0.5));
+      seg(A, end, "fig-stroke" + cls);
+      marks.push({ kind: "poly", points: [add(end, add(mul(d, -0.3), mul(up, 0.18))), end, add(end, add(mul(d, -0.3), mul(down, 0.18)))]
+        .map(function (p) { return [round(p[0]), round(p[1])]; }), cls: "fig-axis-tip" });
+      for (var k = 0; k <= count; k++) {
+        var v = from + k * step, p = at(v);
+        seg(add(p, mul(up, 0.22)), add(p, mul(down, 0.22)), "fig-stroke");
+        if (every && k % every === 0) label(add(p, mul(down, 0.85)), frNumber(v), "middle", "fig-label fig-small");
+      }
+      (Array.isArray(it.marks) ? it.marks.slice(0, MAX_AXIS_MARKS) : []).forEach(function (m) {
+        if (!m || typeof m !== "object" || typeof m.at !== "number" || !isFinite(m.at) || m.at < from || m.at > to) return;
+        var p = at(m.at), tip = add(p, mul(up, 0.3)), tail = add(p, mul(up, 1.15)), mc = m.hl === false ? "" : " fig-hl";
+        seg(tail, tip, "fig-stroke" + mc);
+        marks.push({ kind: "poly", points: [add(tip, add(mul(up, 0.25), mul(d, -0.15))), tip, add(tip, add(mul(up, 0.25), mul(d, 0.15)))]
+          .map(function (q) { return [round(q[0]), round(q[1])]; }), cls: "fig-arrow" + mc });
+        label(add(p, mul(up, 1.4)), m.label == null ? frNumber(m.at) : text(m.label, 16), "middle", "fig-label");
+      });
+    }
 
     Object.keys(pts).forEach(function (name) {
       var p = pts[name];
@@ -270,6 +315,6 @@
     return wrap;
   }
 
-  window.Figures = { layout: layout, build: build, clip: clip, tableLayout: tableLayout, buildTable: buildTable, KINDS: KINDS, DIRS: Object.keys(DIRS),
+  window.Figures = { layout: layout, build: build, clip: clip, frNumber: frNumber, MAX_AXIS_TICKS: MAX_AXIS_TICKS, MAX_AXIS_MARKS: MAX_AXIS_MARKS, tableLayout: tableLayout, buildTable: buildTable, KINDS: KINDS, DIRS: Object.keys(DIRS),
                      MAX_SIZE: MAX_SIZE, MAX_POINTS: MAX_POINTS, MAX_ITEMS: MAX_ITEMS, MAX_ROWS: MAX_ROWS, MAX_COLS: MAX_COLS, MAX_CELL: MAX_CELL };
 })();

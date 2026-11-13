@@ -61,11 +61,13 @@
   /* ---------- figures (js/exercises/figures.js draws them; same limits) ---------- */
 
   /** Kind of drawing → number of points. @type {Record<string, number>} */
-  const FIG_KINDS = { segment: 2, line: 2, ray: 2, ticks: 2, rightAngle: 3, angle: 3 };
+  const FIG_KINDS = { segment: 2, line: 2, ray: 2, ticks: 2, rightAngle: 3, angle: 3, axis: 2 };
   const FIG_KIND_NAMES = Object.keys(FIG_KINDS);
   const FIG_DIRS = ["n", "s", "e", "w", "ne", "nw", "se", "sw", "hidden"];
   const FIG_POINT_RE = /^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ0-9']{0,3}$/;
-  const FIG_ITEM_KEYS = FIG_KIND_NAMES.concat(["label", "labelAt", "n", "hl"]);
+  const FIG_ITEM_KEYS = FIG_KIND_NAMES.concat(["label", "labelAt", "n", "hl", "from", "to", "step", "every", "marks"]);
+  const AXIS_KEYS = ["from", "to", "step", "every", "marks"], AXIS_MARK_KEYS = ["at", "label", "hl"];
+  const MAX_AXIS_TICKS = 40, MAX_AXIS_MARKS = 6;
   const FIG_KEYS = ["w", "h", "grid", "points", "draw", "alt", "caption"];
 
   /** @param {any} f figure not checked yet @param {string} where @param {PackReport} err @param {PackReport} warn */
@@ -110,10 +112,37 @@
       if (it.labelAt != null && (it.labelAt !== "start" && it.labelAt !== "end" || (kind !== "line" && kind !== "ray"))) err(D + ' : labelAt ("start" ou "end") seulement pour line et ray');
       if (it.n != null && (kind !== "ticks" || !Number.isInteger(it.n) || it.n < 1 || it.n > 3)) err(D + " : n (1 à 3 traits) seulement pour ticks");
       if (it.hl != null && typeof it.hl !== "boolean") err(D + " : hl doit être true ou false");
+      if (kind === "axis") validateAxis(it, D, err, warn);
+      else AXIS_KEYS.forEach((k) => { if (it[k] != null) err(D + ` : ${k} seulement pour axis`); });
     });
     if (f.caption != null && (typeof f.caption !== "string" || f.caption.length > 80)) err(F + " : caption doit être un texte court (80 caractères max)");
     if (f.alt != null && typeof f.alt !== "string") err(F + " : alt doit être un texte");
     if (!isStr(f.alt)) warn(F + " : ajoute alt (description de la figure pour les lecteurs d'écran)");
+  }
+
+  /** Number line: from < to, step > 0, at most 40 graduations, up to 6 arrows on values of the line.
+      @param {any} it @param {string} D @param {PackReport} err @param {PackReport} warn */
+  function validateAxis(it, D, err, warn) {
+    /** @param {unknown} v */
+    const isNum = (v) => typeof v === "number" && isFinite(v);
+    if (it.label != null) warn(D + " : label ignoré pour axis (les nombres s'écrivent seuls)");
+    if (!isNum(it.from) || !isNum(it.to) || !isNum(it.step)) return err(D + " : axis attend from, to et step (nombres)");
+    if (it.to <= it.from || it.step <= 0) return err(D + " : axis attend from < to et step > 0");
+    const count = (it.to - it.from) / it.step;
+    if (Math.abs(count - Math.round(count)) > 1e-9) err(D + " : (to − from) doit être un multiple de step");
+    if (Math.round(count) > MAX_AXIS_TICKS) err(D + ` : ${MAX_AXIS_TICKS} graduations maximum (augmente step)`);
+    if (it.every != null && (!Number.isInteger(it.every) || it.every < 0 || it.every > MAX_AXIS_TICKS)) err(D + " : every = un nombre toutes les N graduations (0 : aucun)");
+    if (it.marks == null) return;
+    if (!isArr(it.marks)) return err(D + " : marks doit être un tableau de flèches ({ at, label })");
+    if (it.marks.length > MAX_AXIS_MARKS) err(D + ` : ${MAX_AXIS_MARKS} flèches maximum`);
+    it.marks.forEach(/** @param {any} m @param {number} i */ (m, i) => {
+      const M = `${D} marks[${i}]`;
+      if (!m || typeof m !== "object" || isArr(m)) return err(M + " : objet attendu ({ at, label })");
+      unknownKeys(m, AXIS_MARK_KEYS).forEach((k) => err(M + ` : champ "${k}" inconnu (${AXIS_MARK_KEYS.join(", ")})`));
+      if (!isNum(m.at) || m.at < it.from || m.at > it.to) err(M + ` : at doit être un nombre de ${it.from} à ${it.to}`);
+      if (m.label != null && (typeof m.label !== "string" || m.label.length > 16)) err(M + " : label doit être un texte court (16 caractères max)");
+      if (m.hl != null && typeof m.hl !== "boolean") err(M + " : hl doit être true ou false");
+    });
   }
 
   /* ---------- tables (js/exercises/figures.js buildTable draws them; same limits) ---------- */
