@@ -267,7 +267,7 @@ Un seul essai : juste ou faux, la bonne réponse (`answers[0]`) s'affiche après
 - Ne comptent pas : majuscules, espaces, ponctuation, et l'accent d'une **majuscule tapée par
   l'élève** (« A la maison » = « à la maison », « Edit » = « Édit » ; mais « Ou » n'est pas « où »). Les autres accents
   comptent, les **traits d'union** aussi (« peut être » n'est pas « peut-être » ; pour un nombre en
-  lettres, lister l'orthographe traditionnelle et la rectifiée si les deux sont admises). « 3 000 » = « 3000 », « cm³ » = « cm3 » ; le signe moins compte (−4 n'est pas 4).
+  lettres, lister l'orthographe traditionnelle et la rectifiée si les deux sont admises). « 3 000 » = « 3000 », « 3,7 » = « 3.7 » (mais « 2,500 » n'est pas « 2 500 » ; en anglais « 1,000 » = « 1000 »), « cm³ » = « cm3 » ; le signe moins compte (−4 n'est pas 4).
 - Packs `en` : formes courtes et longues équivalentes, inutile de les lister (I'm = I am, don't = do not,
   can't = cannot = can not, he's = he is, 's got = has got, 're, 've, 'll). « I'd » n'est pas automatique.
 - Langues : une phrase en français à traduire, avec **seulement** le vocabulaire et les tournures du chapitre.

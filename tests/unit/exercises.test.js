@@ -105,6 +105,9 @@ test("question: case, spaces and punctuation ignored; hyphens and accents count,
   assert.ok(!ok(["deux cents"], "deux-cents") && ok(["deux cents"], "Deux Cents."));
   assert.ok(ok(["oui"], "- oui -") && ok(["−4"], "-4") && !ok(["4"], "-4"), "a dash alone is punctuation, a minus is not");
   assert.ok(ok(["1598"], "1598") && !ok(["1598"], "1589"));
+  assert.ok(ok(["3,7"], "3.7") && ok(["3,7 L"], "3.7 l") && ok(["2 500"], "2500") && ok(["1 234,5"], "1234.5"), "decimal comma or point");
+  assert.ok(!ok(["2 500"], "2,500") && !ok(["3,7"], "3 7") && !ok(["3,7"], "37"), "a decimal comma is not a thousands space");
+  assert.ok(ok(["a b"], "a, b") && ok(["1 2"], "1, 2"), "a comma followed by a space stays punctuation");
   assert.ok(!ok(["chat"], "") && !ok(["chat"], " ! "), "an empty answer is never right");
   assert.ok(!ok(["chat"], "chats"), "spelling counts");
 });
@@ -121,6 +124,7 @@ test("question: English short and long forms are the same answer", () => {
   assert.ok(!ok(["It isn't difficult."], "its not difficult"), "its is not it's");
   assert.ok(!ok(["Tom's book"], "Tom is book"), "a possessive 's stays a possessive");
   assert.strictEqual(X.answerKey("I'm 12, aren't I?", "en"), "i am 12 are not i");
+  assert.ok(ok(["1,000 people"], "1000 people") && ok(["2.5 km"], "2,5 km"), "English: 1,000 is a thousand, the point is a decimal");
 });
 
 /* ---------- speech: choice of the device voice (field `listen`) ---------- */

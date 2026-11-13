@@ -49,19 +49,23 @@
     [/\b(he|she|it|that|what|where|who|there|here|how|when|why)'s\b/g, "$1 is"],
     [/'m\b/g, " am"], [/'re\b/g, " are"], [/'ve\b/g, " have"], [/'ll\b/g, " will"]
   ];
-  /** Punctuation out, spaces collapsed. Kept: hyphens inside a word (« vingt-cinq » is not « vingt cinq »; spaces
+  /** Punctuation out, spaces collapsed. Kept: a decimal comma or point between two digits (3,7 = 3.7, but 2,500 is
+      not 2 500); hyphens inside a word (« vingt-cinq » is not « vingt cinq »; spaces
       around them ignored); a minus sign before a number (−36 is not 36); numbers written with spaces between
       thousands are joined (3 000 = 3000). @param {string} t */
   function words(t) {
-    return t.replace(/[‐‑]/g, "-").replace(/(^|[\s(])[-−–](?=\d)/g, "$1−")
-      .replace(/[^a-zA-Z0-9À-ÖØ-öø-ÿŒœÆæ'\s−-]/g, " ").replace(/(^|\s)'|'(\s|$)/g, " ")
+    return t.replace(/#/g, " ").replace(/(\d)[,.](?=\d)/g, "$1#").replace(/[‐‑]/g, "-").replace(/(^|[\s(])[-−–](?=\d)/g, "$1−")
+      .replace(/[^a-zA-Z0-9À-ÖØ-öø-ÿŒœÆæ'\s−#-]/g, " ").replace(/(^|\s)'|'(\s|$)/g, " ")
       .replace(/\s*-+\s*/g, "-").replace(/(^|\s)-+|-+(?=\s|$)/g, "$1").replace(/\s+/g, " ").trim()
       .replace(/(\d) (?=\d{3}(?!\d))/g, "$1");
   }
   /** The comparable form of an answer (lower case, accents kept). @param {string} s @param {string} [lang] */
   function answerKey(s, lang) {
     var t = plain(s).normalize("NFKC").replace(/[’‘ʼ`´]/g, "'").toLowerCase();
-    if (lang === "en") EN_FORMS.forEach(function (r) { t = t.replace(r[0], r[1]); });
+    if (lang === "en") {
+      t = t.replace(/(\d),(?=\d{3}(?!\d))/g, "$1"); // English thousands: 1,000 = 1000
+      EN_FORMS.forEach(function (r) { t = t.replace(r[0], r[1]); });
+    }
     return words(t);
   }
   /** @param {string} c */
