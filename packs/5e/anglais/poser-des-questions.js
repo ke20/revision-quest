@@ -453,7 +453,8 @@ window.registerPack({
           "Structure : **(mot interrogatif) + auxiliaire + sujet + verbe + (complément)**.",
           "L'auxiliaire : **be** (is, are), **can**, **must**… ou **do / does** pour les autres verbes.\n- [[Where **does** your sister live?|Où habite ta sœur ?]]\n- [[What **can** you buy with 2 pounds?|Que peux-tu acheter avec 2 livres ?]]",
           "Sans mot interrogatif, on répond **yes** ou **no** : [[**Does** she play the piano? Yes, she does.|Est-ce qu'elle joue du piano ? Oui.]]",
-          "⚠️ Avec **does**, le verbe perd son -s : Does she **play**…?"
+          "⚠️ Avec **does**, le verbe perd son -s : Does she **play**…?",
+          "Avec **have got**, pas de do : on inverse **have / has** et le sujet.\n- [[**Have** you **got** a pet?|As-tu un animal ?]]\n- [[How many brothers **has** he **got**?|Combien de frères a-t-il ?]]"
         ],
         "examples": [
           "[[Can you help me, please?|Peux-tu m'aider, s'il te plaît ?]]",
@@ -461,6 +462,33 @@ window.registerPack({
         ]
       },
       "exercises": [
+        {
+          "type": "fill",
+          "prompt": "Complète la question.",
+          "sentence": "___ you got a pet?",
+          "answers": [
+            "have"
+          ],
+          "explanation": "✅ Avec **have got**, on inverse : [[Have you got a pet?|As-tu un animal ?]]"
+        },
+        {
+          "type": "order",
+          "prompt": "Remets les mots dans l'ordre.",
+          "words": [
+            "How",
+            "many",
+            "sisters",
+            "has",
+            "she",
+            "got",
+            "?"
+          ],
+          "distractors": [
+            "does"
+          ],
+          "translation": "Combien de sœurs a-t-elle ?",
+          "explanation": "✅ **How many sisters** + **has** + she + **got** ?"
+        },
         {
           "type": "mcq",
           "prompt": "Quel auxiliaire manque ? « ___ she play the piano? »",

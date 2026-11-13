@@ -180,7 +180,7 @@ window.registerPack({
     {
       "id": 2,
       "title": "To have",
-      "subtitle": "I have, she has",
+      "subtitle": "have, has, have got",
       "subtitleFr": "Le verbe avoir",
       "icon": "🎒",
       "color": "#8B5CF6",
@@ -188,12 +188,13 @@ window.registerPack({
         "title": "[[The verb to have|Le verbe avoir]]",
         "points": [
           "**have** = avoir. Au présent :\n- [[I / you / we / they **have**|j'ai, tu as, nous avons, ils ont]]\n- [[he / she / it **has**|il / elle a]]",
-          "⚠️ À la **3e personne du singulier** (he, she, it, my sister, Tom…), **have** devient **has**."
+          "⚠️ À la **3e personne du singulier** (he, she, it, my sister, Tom…), **have** devient **has**.",
+          "On dit aussi **have got** / **has got**, avec le même sens (très utilisé en Grande-Bretagne). Formes courtes : **I've got**, **she's got**.\n- [[I **have got** a cat.|J'ai un chat.]]\n- [[She **has got** blue eyes.|Elle a les yeux bleus.]]"
         ],
         "examples": [
-          "[[I have a cat.|J'ai un chat.]]",
-          "[[My sister has blonde hair.|Ma sœur a les cheveux blonds.]]",
-          "[[They have a red car.|Ils ont une voiture rouge.]]"
+          "[[I have a cat.|J'ai un chat.]] = [[I've got a cat.|J'ai un chat.]]",
+          "[[My sister has blonde hair.|Ma sœur a les cheveux blonds.]] = [[My sister's got blonde hair.|Ma sœur a les cheveux blonds.]]",
+          "[[They have got a red car.|Ils ont une voiture rouge.]]"
         ]
       },
       "exercises": [
@@ -353,6 +354,43 @@ window.registerPack({
           ],
           "answer": 3,
           "explanation": "✅ **Cindy** = she → **has**. « haves » n'existe pas. [[Cindy has a sister.|Cindy a une sœur.]]"
+        },
+        {
+          "type": "fill",
+          "prompt": "Complète la phrase.",
+          "sentence": "My brother ___ got a new bike.",
+          "answers": [
+            "has"
+          ],
+          "explanation": "✅ **has got** avec he, she, it : [[My brother has got a new bike.|Mon frère a un nouveau vélo.]]",
+          "hint": "my brother = he"
+        },
+        {
+          "type": "mcq",
+          "prompt": "Quelle phrase veut dire la même chose que « I have a pet » ?",
+          "options": [
+            "I'm got a pet.",
+            "I've got a pet.",
+            "I've a got pet.",
+            "I got have a pet."
+          ],
+          "answer": 1,
+          "explanation": "✅ **I've got** = I have got = I have. [[pet|animal de compagnie]]"
+        },
+        {
+          "type": "spot",
+          "prompt": "Touche le mot faux.",
+          "tokens": [
+            "He",
+            "have",
+            "got",
+            "a",
+            "dog",
+            "."
+          ],
+          "wrongIndex": 1,
+          "correction": "has",
+          "explanation": "✅ he → **has got** : [[He has got a dog.|Il a un chien.]]"
         }
       ]
     },
@@ -367,7 +405,7 @@ window.registerPack({
         "title": "[[Be or have?|Être ou avoir ?]]",
         "points": [
           "**be** (am, is, are) dit **comment est** quelqu'un ou quelque chose : sa couleur, sa taille, son caractère, où il est.",
-          "**have** (have, has) dit **ce qu'on a** : un animal, un objet, et aussi les **yeux** et les **cheveux**.",
+          "**have** (have, has, ou **have got**, **has got**) dit **ce qu'on a** : un animal, un objet, et aussi les **yeux** et les **cheveux**.",
           "⚠️ Comme en français : [[She has blonde hair.|Elle a les cheveux blonds.]] Mais : [[She is very tall.|Elle est très grande.]]"
         ],
         "examples": [
@@ -407,12 +445,12 @@ window.registerPack({
           "type": "mcq",
           "prompt": "Choisis la bonne forme : « Our English books ___ at home. »",
           "options": [
-            "have",
             "are",
+            "have",
             "has",
             "is"
           ],
-          "answer": 1,
+          "answer": 0,
           "explanation": "✅ Où ils sont : **be** ; **books** au pluriel → **are**. [[Our English books are at home.|Nos livres d'anglais sont à la maison.]]"
         },
         {
@@ -469,12 +507,12 @@ window.registerPack({
           "type": "mcq",
           "prompt": "Choisis la bonne forme : « She ___ very tall. »",
           "options": [
-            "is",
             "has",
+            "is",
             "have",
             "are"
           ],
-          "answer": 0,
+          "answer": 1,
           "explanation": "✅ Sa taille, comment elle est : **she is**. [[She is very tall.|Elle est très grande.]]"
         },
         {
@@ -491,6 +529,21 @@ window.registerPack({
           "wrongIndex": 2,
           "correction": "has",
           "explanation": "✅ Les cheveux : **have** → **my sister has**. [[My sister has blonde hair.|Ma sœur a les cheveux blonds.]]"
+        },
+        {
+          "type": "spot",
+          "prompt": "Touche le mot faux.",
+          "tokens": [
+            "She",
+            "is",
+            "got",
+            "blue",
+            "eyes",
+            "."
+          ],
+          "wrongIndex": 1,
+          "correction": "has",
+          "explanation": "✅ Les yeux : **have got** → [[She has got blue eyes.|Elle a les yeux bleus.]] (she's got = she **has** got)."
         },
         {
           "type": "fill",
@@ -527,12 +580,12 @@ window.registerPack({
           "type": "mcq",
           "prompt": "Comment dit-on « J'ai 12 ans » ?",
           "options": [
-            "I have 12.",
             "I am 12.",
+            "I have 12.",
             "I have 12 years.",
             "I is 12."
           ],
-          "answer": 1,
+          "answer": 0,
           "explanation": "✅ L'âge se dit avec **be** : **I am 12** (ou I'm 12 years old)."
         },
         {
@@ -587,12 +640,12 @@ window.registerPack({
           "type": "mcq",
           "prompt": "« How old is Ken? » Choisis la bonne réponse.",
           "options": [
-            "He's five years old.",
             "He has five years old.",
             "He have five.",
+            "He's five years old.",
             "His five years old."
           ],
-          "answer": 0,
+          "answer": 2,
           "explanation": "✅ **He's** = he is. [[He's five years old.|Il a cinq ans.]] Attention : **his** veut dire « son »."
         },
         {
@@ -716,10 +769,10 @@ window.registerPack({
           "options": [
             "are",
             "has",
-            "is",
-            "have"
+            "have",
+            "is"
           ],
-          "answer": 2,
+          "answer": 3,
           "explanation": "✅ **a big Christmas tree** : singulier → **there is**. [[in the middle of the picture|au milieu de l'image]]"
         },
         {
@@ -769,11 +822,11 @@ window.registerPack({
           "prompt": "Comment dit-on « Il y a un chat dans le jardin » ?",
           "options": [
             "There are a cat in the garden.",
+            "There is a cat in the garden.",
             "It has a cat in the garden.",
-            "He has a cat in the garden.",
-            "There is a cat in the garden."
+            "He has a cat in the garden."
           ],
-          "answer": 3,
+          "answer": 1,
           "explanation": "✅ **a cat** : singulier → **there is**. « It has » est une traduction mot à mot, fausse ici."
         },
         {
@@ -798,7 +851,7 @@ window.registerPack({
         "title": "[[Final test|Le contrôle final]]",
         "points": [
           "Avec ce que tu as appris, traduis correctement les phrases ci-dessous.",
-          "**be** : am, is, are (comment on est, où on est, l'**âge**). **have** / **has** : ce qu'on a, les yeux, les cheveux.",
+          "**be** : am, is, are (comment on est, où on est, l'**âge**). **have** / **has** (ou **have got** / **has got**) : ce qu'on a, les yeux, les cheveux.",
           "**there is** + singulier, **there are** + pluriel."
         ]
       },
