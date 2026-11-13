@@ -49,11 +49,13 @@
     [/\b(he|she|it|that|what|where|who|there|here|how|when|why)'s\b/g, "$1 is"],
     [/'m\b/g, " am"], [/'re\b/g, " are"], [/'ve\b/g, " have"], [/'ll\b/g, " will"]
   ];
-  /** Punctuation and hyphens out, spaces collapsed. Kept: a minus sign before a number (−36 is not 36); numbers
-      written with spaces between thousands are joined (3 000 = 3000). @param {string} t */
+  /** Punctuation out, spaces collapsed. Kept: hyphens inside a word (« vingt-cinq » is not « vingt cinq »; spaces
+      around them ignored); a minus sign before a number (−36 is not 36); numbers written with spaces between
+      thousands are joined (3 000 = 3000). @param {string} t */
   function words(t) {
-    return t.replace(/(^|[\s(])[-−–](?=\d)/g, "$1\u2212")
-      .replace(/[^a-zA-Z0-9À-ÖØ-öø-ÿŒœÆæ'\s\u2212]/g, " ").replace(/(^|\s)'|'(\s|$)/g, " ").replace(/\s+/g, " ").trim()
+    return t.replace(/[‐‑]/g, "-").replace(/(^|[\s(])[-−–](?=\d)/g, "$1−")
+      .replace(/[^a-zA-Z0-9À-ÖØ-öø-ÿŒœÆæ'\s−-]/g, " ").replace(/(^|\s)'|'(\s|$)/g, " ")
+      .replace(/\s*-+\s*/g, "-").replace(/(^|\s)-+|-+(?=\s|$)/g, "$1").replace(/\s+/g, " ").trim()
       .replace(/(\d) (?=\d{3}(?!\d))/g, "$1");
   }
   /** The comparable form of an answer (lower case, accents kept). @param {string} s @param {string} [lang] */

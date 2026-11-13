@@ -92,7 +92,7 @@ test("countWords: words, contractions and numbers; punctuation alone is not a wo
   assert.strictEqual(X.countWords("I don’t know"), 3, "curly apostrophe (phone keyboards): one word");
 });
 
-test("question: case, spaces, punctuation and hyphens ignored; accents count, except on a capital the pupil typed", () => {
+test("question: case, spaces and punctuation ignored; hyphens and accents count, except the accent of a capital the pupil typed", () => {
   const ok = (answers, value, lang = "fr") => X.questionAccepted({ answers }, value, lang);
   assert.ok(ok(["Édit de Nantes"], "  édit   de nantes !"));
   assert.ok(ok(["Édit de Nantes"], "Edit de Nantes"), "capital typed without its accent");
@@ -100,7 +100,10 @@ test("question: case, spaces, punctuation and hyphens ignored; accents count, ex
   assert.ok(ok(["où"], "Où") && !ok(["où"], "Ou") && !ok(["où"], "ou"), "« Ou » is the other homophone");
   assert.ok(ok(["à la brocante"], "A la brocante") && !ok(["à la brocante"], "a la brocante"));
   assert.ok(ok(["l'Édit de Nantes"], "L'Edit de Nantes"), "capital after an apostrophe");
-  assert.ok(ok(["peut-être"], "peut être") && ok(["deux cents"], "Deux Cents."));
+  assert.ok(ok(["peut-être"], "Peut-être !") && !ok(["peut-être"], "peut être"), "a hyphen counts");
+  assert.ok(ok(["vingt-cinq"], "vingt - cinq") && ok(["vingt-cinq"], "vingt‑cinq"), "spaces around a hyphen, phone hyphen");
+  assert.ok(!ok(["deux cents"], "deux-cents") && ok(["deux cents"], "Deux Cents."));
+  assert.ok(ok(["oui"], "- oui -") && ok(["−4"], "-4") && !ok(["4"], "-4"), "a dash alone is punctuation, a minus is not");
   assert.ok(ok(["1598"], "1598") && !ok(["1598"], "1589"));
   assert.ok(!ok(["chat"], "") && !ok(["chat"], " ! "), "an empty answer is never right");
   assert.ok(!ok(["chat"], "chats"), "spelling counts");
