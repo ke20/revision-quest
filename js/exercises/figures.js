@@ -124,7 +124,8 @@
         // Normal of a non-zero A→B (checked above): never null.
         var n = /** @type {FigVec} */ (unit([B[1] - A[1], A[0] - B[0]]));
         if (n[1] > 0) n = mul(n, -1); // label above the segment
-        label(add(mul(add(A, B), 0.5), mul(n, 0.45)), lab, "middle", "fig-label fig-small");
+        // A steep segment gets its label further away: half the text width (≈ 0.14 square per character) on the side.
+        label(add(mul(add(A, B), 0.5), mul(n, 0.45 + Math.abs(n[0]) * lab.length * 0.14)), lab, "middle", "fig-label fig-small");
       } else if (kind === "line" || kind === "ray") {
         var c = clip(A, B, w, h, kind === "ray" ? 0 : -Infinity);
         if (!c) return;

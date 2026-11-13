@@ -30,7 +30,7 @@ test(`real packs (${PACKS.length}): every exercise renders at 390 px`, async ({ 
           Exercises.render(ex, box, () => {}, { data: pack });
           n++;
           if (box.querySelector(".ex-broken") || !box.querySelector(".ex-prompt")) out.push(where + ": not rendered");
-          if (ex.figure && !box.querySelector(".ex-head svg.fig-svg text")) out.push(where + ": figure missing");
+          if (ex.figure && !box.querySelector(".ex-head svg.fig-svg line")) out.push(where + ": figure missing");
           if (ex.table && !box.querySelector(".ex-head table.conv-table td, .ex-head table.conv-table th")) out.push(where + ": table missing");
           // a text to read on another type: above the question (short) or a "back to the text" button (screen: true)
           if (ex.docId != null && !box.querySelector(".ex-head .read-inline, .ex-head .btn-reread")) out.push(where + ": text to read missing");
