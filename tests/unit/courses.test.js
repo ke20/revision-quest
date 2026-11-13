@@ -186,3 +186,32 @@ test("most recently saved first", () => {
   } finally { Date.now = now; }
   assert.deepStrictEqual(j(w.MyCourses.list().map((c) => c.id)), ["cm2/francais/b", "cm2/francais/c", "cm2/francais/a"]);
 });
+
+test("Mes cours: a copy that became official is hidden unless modified since it was proposed (sent hash kept on update)", () => {
+  const { window: w, localStorage: ls } = env();
+  const official = "cm2/francais/mots-invariables"; // in the real catalogue
+  w.MyCourses.save(course({ path: official }));
+  w.MyCourses.save(course());
+  let c = j(w.MyCourses.get(official));
+  assert.deepStrictEqual([c.official, c.modified], [true, true], "never proposed: kept, as « version modifiée »");
+  assert.deepStrictEqual(j(w.MyCourses.shown().map((x) => x.id)).sort(), ["cm2/francais/mon-cours", official]);
+  // proposed (« Proposer à tous » will store this hash), then accepted under the same id: hidden
+  const raw = JSON.parse(ls.getItem(KEY));
+  const item = raw.courses.find((x) => x.pack.path === official);
+  item.sent = w.MyCourses.hash(JSON.stringify(item.pack));
+  ls.setItem(KEY, JSON.stringify(raw));
+  c = j(w.MyCourses.get(official));
+  assert.deepStrictEqual([c.official, c.modified], [true, false]);
+  assert.deepStrictEqual(j(w.MyCourses.shown().map((x) => x.id)), ["cm2/francais/mon-cours"], "the official chapter replaces it");
+  // changed after it was sent: back, as « version modifiée »; the sent hash stays
+  w.MyCourses.save(course({ path: official, meta: { title: "Ma version", description: "x", icon: "✏️" } }));
+  assert.ok(JSON.parse(ls.getItem(KEY)).courses.find((x) => x.pack.path === official).sent, "sent kept on update");
+  assert.strictEqual(j(w.MyCourses.get(official)).modified, true);
+  assert.strictEqual(w.MyCourses.shown().length, 2);
+  // a bad sent value is dropped when read back
+  const raw2 = JSON.parse(ls.getItem(KEY));
+  raw2.courses[0].sent = "<script>";
+  ls.setItem(KEY, JSON.stringify(raw2));
+  w.MyCourses.list();
+  assert.strictEqual(j(w.MyCourses.get(raw2.courses[0].pack.path)).modified, true);
+});

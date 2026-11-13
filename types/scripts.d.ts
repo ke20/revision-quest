@@ -65,6 +65,9 @@ interface CatalogPack {
   /** A private course of « Mes cours » (js/core/courses.js), and when it was saved (ms). */
   mine?: boolean;
   saved?: number;
+  /** A private course: the official catalogue has the same id; it changed since it was proposed. */
+  official?: boolean;
+  modified?: boolean;
 }
 
 /** A pack once loaded (window.registerPack): the catalogue decides its language. */
@@ -104,6 +107,9 @@ interface MyCoursesApi {
   check(data: unknown): { pack: Pack; errors: [] } | { pack: null; errors: string[] };
   /** Catalogue cards of the private courses, most recently saved first. */
   list(): CatalogPack[];
+  /** The ones shown in « Mes cours » (an official one not modified since it was proposed is hidden). */
+  shown(): CatalogPack[];
+  hash(s: string): string;
   get(id: string): CatalogPack | null;
   /** A fresh copy of the course. */
   pack(id: string): Pack | null;

@@ -7,7 +7,7 @@ import { refreshMessages, renderForm } from "./forms/form.js";
 import { showDrafts } from "./drafts.js";
 import { tryWorld } from "./trial.js";
 import { canRedo, canUndo, redo, startHistory, undo } from "./history.js";
-import { download, duplicateOfficial, newCourse, openFile, readChosenFile } from "./io.js";
+import { addToMyCourses, download, duplicateOfficial, newCourse, openFile, readChosenFile } from "./io.js";
 import { renderPreview } from "./preview.js";
 import { isBlank } from "./model/draft.js";
 import { countDrafts, followOtherTabs, loadSaved, saveNow, storageWorks, store, subscribe } from "./state.js";
@@ -59,6 +59,7 @@ function boot() {
     { act: "duplicate", text: "📚 Dupliquer un chapitre officiel", fn: duplicateOfficial },
     { act: "open", text: "📂 Ouvrir un fichier", fn: function () { openFile(file); } },
     { act: "try", text: "▶ Essayer", fn: tryWorld },
+    { act: "mine", text: "➕ Ajouter à Mes cours", fn: addToMyCourses },
     { act: "download", text: "⬇️ Télécharger", fn: download }
   ];
   buttons.forEach(function (a) {

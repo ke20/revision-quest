@@ -867,3 +867,11 @@ body.theme-hiver::after { background: #E0F2FE; opacity: .22; }
 .medal-best { color: var(--ink-soft); font-size: .95rem; margin: 0; }
 .node-medal { font-size: 1rem; }
 .ghost-boss { margin: 4px 0 8px; padding: 6px 12px; border-radius: 12px; background: #FEF3C7; color: #92400E; font-size: .9rem; }
+
+/* « Mes cours » in the catalogue */
+.cat-section { margin: 14px 4px 8px; font-size: 1.05rem; color: #fff; text-shadow: 0 2px 0 rgba(0, 0, 0, .2); }
+.mine-item { position: relative; }
+.mine-item .pack-card { width: 100%; padding-right: 52px; }
+.mine-del { position: absolute; top: 8px; right: 8px; }
+.tag-mine { background: #FEF3C7; color: #92400E; }
+.tag-modified { background: #E0E7FF; color: #3730A3; }

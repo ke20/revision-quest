@@ -7,7 +7,7 @@ import { route, setNav } from "../nav.js";
 import { pauseGuard } from "./play.js";
 import { showProfiles } from "./profiles.js";
 import { Sound } from "../ui/sound.js";
-import { each, h, leavePack, on, show } from "../ui/ui.js";
+import { confirmBox, each, h, leavePack, on, show, toast } from "../ui/ui.js";
 import { E, must, safeColor } from "../ui/util.js";
 
 /* ================= Catalogue ================= */
@@ -96,6 +96,21 @@ export function showGroups(id) {
   show(node);
 }
 
+/** « ✏️ Mes cours »: the courses made with the editor on this device (js/core/courses.js), above the official
+    chapters, whatever the filters (a family's own courses). A card opens the course; 🗑️ deletes it from the device. */
+function myCoursesHtml() {
+  var mine = window.MyCourses ? window.MyCourses.shown() : [];
+  if (!mine.length) return "";
+  return '<h3 class="cat-section">✏️ Mes cours</h3><div class="pack-list mine-list">' + mine.map(function (p) {
+    var sub = Packs.subject(p.subject), lvl = Packs.level(p.level);
+    var tags = (sub ? '<span class="tag tag-subject">' + E(sub.icon) + " " + E(sub.label) + "</span>" : "") +
+      (lvl ? '<span class="tag tag-level">' + E(lvl.label) + "</span>" : "") + '<span class="tag tag-mine">fait maison</span>' +
+      (p.official ? '<span class="tag tag-modified">version modifiée</span>' : "");
+    return '<div class="mine-item">' + packCard(p, p.title, tags, p.description, Engine.packSummary(p.id, p.worldCount)).replace('class="pack-card"', 'class="pack-card" data-mine="1"') +
+      '<button class="btn-icon mine-del" data-del="' + E(p.id) + '" aria-label="Supprimer le cours ' + E(p.title) + '">🗑️</button></div>';
+  }).join("") + '</div><h3 class="cat-section">📚 Les chapitres</h3>';
+}
+
 export function showCatalog() {
   if (!Engine.currentProfile()) return showProfiles();
   if (pauseGuard()) return;
@@ -137,6 +152,7 @@ export function showCatalog() {
         chip("subject", "", "Toutes", !S.catFilter.subject) +
         usedSubjects.map(function (s) { return chip("subject", s.id, E(s.icon) + " " + E(s.label), S.catFilter.subject === s.id); }).join("") + "</div>" +
     "</div>" +
+    myCoursesHtml() +
     '<div class="pack-list">' + (cards || (onlyMine
       ? '<div class="card empty-card"><p>Pas encore de chapitre pour la classe ' + E(grade.label) + '. Touche « Voir toutes les classes » pour réviser autre chose.</p></div>'
       : '<div class="card empty-card"><p>Aucun chapitre pour ce choix. Essaie un autre filtre !</p></div>')) + "</div>" +
@@ -151,15 +167,28 @@ export function showCatalog() {
     b.onclick = function () { Sound.tap(); S.catFilter.subject = /** @type {string} */ (b.getAttribute("data-subject")); showCatalog(); };
   });
   each(node, ".pack-card", function (b) {
-    b.onclick = function () { Sound.unlock(); Sound.tap(); openPack(/** @type {string} */ (b.getAttribute("data-pack"))); };
+    b.onclick = function () { Sound.unlock(); Sound.tap(); openPack(/** @type {string} */ (b.getAttribute("data-pack")), undefined, b.hasAttribute("data-mine")); };
+  });
+  each(node, "[data-del]", function (b) {
+    b.onclick = function () {
+      Sound.tap();
+      var id = /** @type {string} */ (b.getAttribute("data-del")), c = window.MyCourses && window.MyCourses.get(id);
+      if (!c) return;
+      confirmBox("Supprimer « " + E(c.title) + " » ?", "Ce cours disparaît de cet appareil, pour tous les joueurs. Les étoiles déjà gagnées restent.",
+        "🗑️ Supprimer", function () {
+          if (window.MyCourses && window.MyCourses.remove(id)) toast("🗑️ Cours supprimé");
+          showCatalog();
+        }, true);
+    };
   });
   show(node);
 }
 
 /** Load a pack (lazily) then show its world map. A load token ignores a late answer if the player went elsewhere.
- * @param {string} id @param {() => void} [then] */
-export function openPack(id, then) {
-  const entry = Packs.get(id);
+    mine: a course of « Mes cours » (its JSON, never executed), even when an official chapter has the same id.
+ * @param {string} id @param {() => void} [then] @param {boolean} [mine] */
+export function openPack(id, then, mine) {
+  const entry = mine ? (window.MyCourses ? window.MyCourses.get(id) : null) : Packs.get(id);
   if (!entry) return showPackError(id, { message: "Ce chapitre n'existe pas (ou plus)." });
   if (entry.groups) return showGroups(id); // a chapter "par groupes": choose the group first
   var back = backFromPack(entry);
@@ -172,7 +201,12 @@ export function openPack(id, then) {
     '<button class="btn btn-white" data-act="cancel">← Retour</button></div></section>');
   on(loading, "cancel", function () { Sound.tap(); cancel(); });
   var timer = setTimeout(function () { if (token === S.loadToken) show(loading); }, 120); // no flash when cached
-  Packs.load(id, function (err, data) {
+  /** @typedef {(err: PackLoadError | null, data?: LoadedPack | null) => void} LoadCb */
+  var load = mine ? function (/** @type {LoadCb} */ cb) {
+    var d = window.MyCourses ? window.MyCourses.data(id) : null;
+    cb(d ? null : { code: "unknown", message: "Ce cours n'est plus sur cet appareil." }, d);
+  } : function (/** @type {LoadCb} */ cb) { Packs.load(id, cb); };
+  load(function (err, data) {
     clearTimeout(timer);
     if (token !== S.loadToken) return; // the player left the loading screen
     if (err) return showPackError(id, err);

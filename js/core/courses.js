@@ -5,7 +5,8 @@
    stars of the players stay attached to it. Loaded after js/core/packs.js and js/core/pack-rules.js.
    Exposes window.MyCourses (js/core/packs.js reads it to show and load a private course). ES2017. */
 // @ts-check
-/** @typedef {{ pack: Pack, saved: number }} MyCourseItem A private course as stored (pack checked, saved: time in ms). */
+/** @typedef {{ pack: Pack, saved: number, sent?: string }} MyCourseItem A private course as stored (pack checked, saved: time in ms,
+    sent: hash of the course when it was proposed to everyone, set by « Proposer à tous »). */
 (function () {
   "use strict";
 
@@ -26,6 +27,13 @@
   function parse(text) {
     return JSON.parse(text, (k, v) => (k === "__proto__" || k === "constructor" || k === "prototype" ? undefined : v));
   }
+  /** Short hash of a text (FNV-1a, base 36): tells whether a course changed since it was proposed. @param {string} s */
+  function hash(s) {
+    let h = 0x811c9dc5;
+    for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+    return h.toString(36);
+  }
+  const SENT_RE = /^[a-z0-9]{1,16}$/;
   /** @param {string} k @returns {string | null} */
   function lsGet(k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } }
   /** @param {string} k @param {string} v @returns {boolean} */
@@ -99,7 +107,10 @@
       if (!c.pack || Object.prototype.hasOwnProperty.call(seen, c.pack.path)) return;
       seen[c.pack.path] = true;
       const saved = Math.round(+item.saved);
-      cache.push({ pack: c.pack, saved: isFinite(saved) && saved > 0 && saved < MAX_TIME ? saved : 0 });
+      /** @type {MyCourseItem} */
+      const kept = { pack: c.pack, saved: isFinite(saved) && saved > 0 && saved < MAX_TIME ? saved : 0 };
+      if (typeof item.sent === "string" && SENT_RE.test(item.sent)) kept.sent = item.sent;
+      cache.push(kept);
     });
     return cache;
   }
@@ -123,14 +134,19 @@
   /* ---------- catalogue entries and loaded data ---------- */
 
   /** The catalogue card of a private course (same shape as an official one, file: null, mine: true).
+      official: the official catalogue has a chapter with the same id (the course was proposed and accepted);
+      modified: it changed since it was proposed (never proposed: modified). An official one that was not modified
+      is hidden: the official chapter replaces it, with the same id, so the stars are kept.
       @param {MyCourseItem} item @returns {CatalogPack} */
   function entryOf(item) {
     const p = item.pack, m = /** @type {PackMeta} */ (p.meta), seg = p.path.split("/");
     const subject = /** @type {CatalogSubject} */ (Packs.subject(seg[1])); // checked by check()
+    const official = Packs.units().some((u) => u.id === p.path);
     return {
       id: p.path, level: seg[0], subject: seg[1], title: m.title, description: m.description, icon: m.icon,
       color: m.color || subject.color, lang: /** @type {UiLang} */ (p.lang), worldCount: p.worlds.length,
-      file: null, mine: true, saved: item.saved
+      file: null, mine: true, saved: item.saved, official: official,
+      modified: !item.sent || item.sent !== hash(JSON.stringify(p))
     };
   }
 
@@ -143,9 +159,14 @@
   window.MyCourses = {
     MAX_COURSES: MAX_COURSES, MAX_COURSE_CHARS: MAX_COURSE_CHARS, MAX_TOTAL_CHARS: MAX_TOTAL_CHARS,
     check: check,
+    hash: hash,
     /** Catalogue cards of the private courses, most recently saved first. */
     list: function () {
       return read().slice().sort((a, b) => b.saved - a.saved).map(entryOf);
+    },
+    /** The cards to show in « Mes cours »: without the ones that became official and were not modified since. */
+    shown: function () {
+      return this.list().filter((c) => !c.official || c.modified);
     },
     /** The catalogue card of a private course, or null. */
     get: function (id) {
@@ -165,7 +186,9 @@
       if (!c.pack) return { ok: false, errors: c.errors };
       const list = read().slice();
       const i = indexOf(c.pack.path);
+      /** @type {MyCourseItem} */
       const item = { pack: c.pack, saved: Date.now() };
+      if (i >= 0 && read()[i].sent) item.sent = read()[i].sent; // still proposed: tells later whether it changed
       if (i < 0 && list.length >= MAX_COURSES) return { ok: false, errors: [`${MAX_COURSES} cours au plus sur cet appareil : supprimes-en un d'abord`] };
       if (i < 0) list.push(item); else list[i] = item;
       if (!write(list)) return { ok: false, errors: ["plus de place dans ce navigateur pour ce cours : supprime un cours d'abord"] };

@@ -124,6 +124,18 @@ export function readChosenFile(input) {
 /** The file name: <id>.js. */
 export function fileName() { return (store.draft.slug || "mon-cours") + ".js"; }
 
+/** « ➕ Ajouter à Mes cours »: the course goes into this browser's « ✏️ Mes cours » (js/core/courses.js), where every
+    player of the device finds it in the game. Only without errors; adding it again updates it (same id, stars kept). */
+export function addToMyCourses() {
+  var report = runChecks(store.draft);
+  var errors = report.list.filter(function (m) { return m.level === "err"; }).length;
+  if (errors) { toast("😕 Corrige d'abord " + (errors > 1 ? "les " + errors + " erreurs" : "l'erreur") + " du cours."); return; }
+  if (!window.MyCourses) { toast("😕 « Mes cours » n'est pas disponible ici."); return; }
+  var r = window.MyCourses.save(exportPack(store.draft));
+  if (!r.ok) { toast("😕 " + r.errors[0]); return; }
+  toast(r.replaced ? "✅ Cours mis à jour dans « Mes cours »." : "✅ Ajouté à « Mes cours » : ouvre le jeu, il est en haut de la liste des chapitres.");
+}
+
 /** Download the course in the strict format. With errors: a warning that lists them first (the download stays possible). */
 export function download() {
   var report = runChecks(store.draft);
