@@ -926,3 +926,17 @@ body.theme-hiver::after { background: #E0F2FE; opacity: .22; }
 .tag-review { background: #FFEDD5; color: #9A3412; }
 .map-review { background: #FFEDD5; color: #9A3412; font-weight: 700; border-radius: 14px; padding: 6px 12px; margin: 6px auto; max-width: 520px; text-align: center; font-size: .92rem; }
 .review-won { margin-top: 12px; background: #FFEDD5; color: #9A3412; border-radius: 14px; padding: 8px 10px; font-weight: 700; }
+
+/* ---------- rewards: daily challenge (home, result) ---------- */
+.daily-card { padding: 14px 16px; }
+.daily-card.done { background: #F0FDF4; }
+.daily-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 1.05rem; }
+.daily-xp { font-weight: 700; color: var(--purple); white-space: nowrap; }
+.daily-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.daily-list li { display: flex; align-items: center; gap: 8px; font-size: .95rem; }
+.daily-list li.ok .daily-text { text-decoration: line-through; color: var(--ink-soft); }
+.daily-ico { flex: none; width: 1.6em; text-align: center; }
+.daily-text { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.daily-n { flex: none; font-weight: 700; color: var(--ink-soft); font-size: .88rem; }
+.daily-bravo { margin: 8px 0 0; font-weight: 600; color: #166534; text-align: center; }
+.daily-won { margin-top: 12px; background: var(--green-bg); color: #166534; border-radius: 14px; padding: 8px 10px; font-weight: 700; }

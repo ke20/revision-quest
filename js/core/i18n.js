@@ -122,7 +122,8 @@
       trophyMax: "Perfect chapter! 🎉 <small>(chapitre parfait)</small>",
       trophyWon: "New trophy! <small>(nouveau trophée)</small>",
       reviewTag: "🔁 Time to review: +50 % XP on your next world! <small>(à réviser : +50 % d'XP sur le prochain monde)</small>",
-      reviewBonus: /** @param {number} n */ function (n) { return "🔁 Review bonus: +" + n + " XP <small>(bonus de révision)</small>"; }
+      reviewBonus: /** @param {number} n */ function (n) { return "🔁 Review bonus: +" + n + " XP <small>(bonus de révision)</small>"; },
+      dailyDone: /** @param {number} n */ function (n) { return "🎯 Daily challenge done! +" + n + " XP <small>(défi du jour réussi)</small>"; }
     },
     es: {
       check: "Comprobar <small>(Vérifier)</small>",
@@ -218,7 +219,8 @@
       trophyMax: "¡Capítulo perfecto! 🎉 <small>(chapitre parfait)</small>",
       trophyWon: "¡Nuevo trofeo! <small>(nouveau trophée)</small>",
       reviewTag: "🔁 ¡Hora de repasar: +50 % de XP en tu próximo mundo! <small>(à réviser : +50 % d'XP sur le prochain monde)</small>",
-      reviewBonus: /** @param {number} n */ function (n) { return "🔁 Bonus de repaso: +" + n + " XP <small>(bonus de révision)</small>"; }
+      reviewBonus: /** @param {number} n */ function (n) { return "🔁 Bonus de repaso: +" + n + " XP <small>(bonus de révision)</small>"; },
+      dailyDone: /** @param {number} n */ function (n) { return "🎯 ¡Reto del día superado! +" + n + " XP <small>(défi du jour réussi)</small>"; }
     },
     fr: {
       check: "Vérifier",
@@ -309,7 +311,8 @@
       trophyMax: "Chapitre parfait ! 🎉",
       trophyWon: "Nouveau trophée !",
       reviewTag: "🔁 À réviser : +50 % d'XP sur le prochain monde !",
-      reviewBonus: /** @param {number} n */ function (n) { return "🔁 Bonus de révision : +" + n + " XP"; }
+      reviewBonus: /** @param {number} n */ function (n) { return "🔁 Bonus de révision : +" + n + " XP"; },
+      dailyDone: /** @param {number} n */ function (n) { return "🎯 Défi du jour réussi ! +" + n + " XP"; }
     }
   };
 

@@ -26,7 +26,18 @@ interface PlayerState {
   lastPack: string | null;
   /** Right answers in total (tiered badge); missing in older saves (0). */
   correct: number;
+  /** Today's challenge (never in the cookie: it lives one day). */
+  daily: DailyState | null;
+  /** Daily challenges completed (tiered badge). */
+  dailyDone: number;
 }
+
+/** A goal of the daily challenge (js/core/engine/constants.js DAILY_GOALS). */
+interface DailyGoalDef { id: string; kind: string; icon: string; text: string; target: number }
+/** The daily challenge as saved: goal ids drawn from the day, progress of each one. */
+interface DailyState { day: string; goals: string[]; progress: number[]; done: boolean }
+/** Today's challenge as shown (Engine.daily). */
+interface DailyView { day: string; done: boolean; goals: Array<{ id: string; icon: string; text: string; target: number; progress: number }> }
 
 /** Comfort settings of a player (Réglages). */
 interface PlayerSettings {
@@ -100,7 +111,7 @@ interface Medal { id: string; icon: string; name: string; min: number }
 /** family / goal: one tier of a tiered badge (earned when the family's count reaches goal); none: a secret "exploit". */
 interface Badge { id: string; icon: string; name: string; desc: string; family?: string; goal?: number }
 /** Count of each tiered badge family (Engine.badgeValues). */
-interface BadgeValues { chapters: number; gold: number; stars: number; streak: number; correct: number }
+interface BadgeValues { chapters: number; gold: number; stars: number; streak: number; correct: number; daily: number }
 interface Level { icon: string; name: string; xp: number }
 
 interface LevelInfo {
@@ -154,6 +165,8 @@ interface AnswerOutcome {
   levelUp: LevelInfo | null;
   newBadges: Badge[];
   skipped?: boolean;
+  /** The daily challenge was just completed (+DAILY_XP). */
+  daily?: boolean;
 }
 
 interface WorldSummary {
@@ -180,6 +193,8 @@ interface WorldSummary {
   trophyXp: number;
   /** « À réviser »: bonus XP (+50 % of the world's XP). */
   reviewXp: number;
+  /** The daily challenge was just completed (+DAILY_XP). */
+  daily: boolean;
   levelUp: LevelInfo | null;
   [more: string]: unknown;
 }
@@ -224,6 +239,8 @@ interface EngineApi {
   badgeValues(): BadgeValues;
   REVIEW_DAYS: number;
   needsReview(packId: string): boolean;
+  DAILY_XP: number;
+  daily(): DailyView;
   isBoss(worldId: number | string): boolean;
   bossMedal(): Medal | null;
   starsToUnlock(): number;

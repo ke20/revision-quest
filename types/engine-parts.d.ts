@@ -151,6 +151,14 @@ interface EngineParts {
   awardTiers(nb: Badge[]): void;
   REVIEW_DAYS: number;
   REVIEW_BONUS: number;
+  DAILY_GOALS: DailyGoalDef[];
+  DAILY_COUNT: number;
+  DAILY_XP: number;
+  normalizeDaily(d: any): DailyState | null;
+  dailyGoal(id: unknown): DailyGoalDef | null;
+  drawDaily(day: string, review: boolean): string[];
+  dailyState(): DailyState;
+  dailyStep(kind: string, n: number, max: boolean, nb: Badge[]): boolean;
   needsReview(st: PlayerState, id: string): boolean;
   /** Packs whose review bonus is due today (memory only): pack id → day. */
   reviewDue: Record<string, string>;

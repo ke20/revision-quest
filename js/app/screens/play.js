@@ -167,6 +167,7 @@ export function playExercise(w, ui) {
     }
     setTimeout(function () { try { ui.btn.focus({ preventScroll: true }); } catch (e) { /* */ } }, 50);
     if (r.levelUp) setTimeout(function () { levelUpPopup(/** @type {LevelInfo} */ (r.levelUp)); }, 500);
+    if (r.daily) { toast(T("dailyDone", Engine.DAILY_XP), "badge"); Sound.levelUp(); }
     badgeToasts(r.newBadges);
   }
 
@@ -247,6 +248,7 @@ export function showComplete(w) {
       '<div class="xp-line">Niveau ' + li.level + " · " + E(li.icon) + " " + E(li.name) + '<div class="xpbar"><div class="xpbar-fill" style="width:' + Math.round(li.progress * 100) + '%"></div></div></div>' +
       badges +
       (sum.reviewXp ? '<div class="review-won pop">' + T("reviewBonus", sum.reviewXp) + "</div>" : "") +
+      (sum.daily ? '<div class="daily-won pop">' + T("dailyDone", Engine.DAILY_XP) + "</div>" : "") +
       (sum.newTrophy ? '<div class="trophy-won pop trophy-' + E(sum.trophy.id) + '"><span class="trophy-won-icon">' + E(sum.trophy.icon) + "</span>" +
         "<span><b>" + T("trophyWon") + "</b><br>" + T("trophyTitle", T("trophyNames")[sum.trophy.tier]) + ' <span class="fb-xp">+' + sum.trophyXp + " XP</span></span></div>" : "") +
       (sum.unlockedWorld ? '<div class="unlocked pop">' + T("unlocked") + " <b>" + E(sum.unlockedWorld.icon || "") + " " + E(sum.unlockedWorld.title) + "</b></div>" : "") +

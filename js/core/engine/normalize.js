@@ -9,6 +9,7 @@
     MAX_STARS = E.MAX_STARS, starsFor = E.starsFor, ALLOWED_AVATARS = E.ALLOWED_AVATARS, SAFE_ID = E.SAFE_ID,
     own = E.own, isObj = E.isObj, newId = E.newId, cleanName = E.cleanName, clampInt = E.clampInt;
   var MAX_COUNT = 10000000; // cap of the counters (right answers…)
+  var DAILY_GOALS = E.DAILY_GOALS, DAILY_COUNT = E.DAILY_COUNT;
 
   /** @returns {PlayerState} */
   function defaultState() {
@@ -21,7 +22,9 @@
       sound: true,
       bestCombo: 0,
       lastPack: null,      // id of the last pack played
-      correct: 0           // right answers in total (tiered badge)
+      correct: 0,          // right answers in total (tiered badge)
+      daily: null,         // today's challenge { day, goals, progress, done } (never in the cookie)
+      dailyDone: 0         // daily challenges completed (tiered badge)
     };
   }
 
@@ -89,7 +92,34 @@
     out.bestCombo = clampInt(s.bestCombo || 0, 0, 10000);
     out.lastPack = typeof s.lastPack === "string" && PACK_ID.test(s.lastPack) && own(out.packs, s.lastPack) ? s.lastPack : null;
     out.correct = clampInt(s.correct || 0, 0, MAX_COUNT); // missing in older saves: 0
+    out.daily = normalizeDaily(s.daily);
+    out.dailyDone = clampInt(s.dailyDone || 0, 0, MAX_COUNT);
     return out;
+  }
+
+  /** A daily challenge, or null: a valid day, DAILY_COUNT known and distinct goals, progress clamped to each target.
+      @param {any} d untrusted @returns {DailyState | null} */
+  function normalizeDaily(d) {
+    if (!isObj(d) || typeof d.day !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(d.day)) return null;
+    if (!Array.isArray(d.goals) || d.goals.length !== DAILY_COUNT || !Array.isArray(d.progress)) return null;
+    /** @type {DailyGoalDef[]} */
+    var defs = [];
+    for (var i = 0; i < DAILY_COUNT; i++) {
+      var def = dailyGoal(d.goals[i]);
+      if (!def || defs.indexOf(def) !== -1) return null;
+      defs.push(def);
+    }
+    return {
+      day: d.day,
+      goals: defs.map(function (g) { return g.id; }),
+      progress: defs.map(function (g, k) { return clampInt(d.progress[k] || 0, 0, g.target); }),
+      done: d.done === true
+    };
+  }
+  /** @param {unknown} id @returns {DailyGoalDef | null} */
+  function dailyGoal(id) {
+    for (var i = 0; i < DAILY_GOALS.length; i++) if (DAILY_GOALS[i].id === id) return DAILY_GOALS[i];
+    return null;
   }
 
   /** A saved or imported player made safe (whitelists, clamped numbers), or null. @param {any} p untrusted @returns {Profile|null} */
@@ -123,5 +153,5 @@
 
   E.defaultState = defaultState; E.normalizeSettings = normalizeSettings; E.comfortDefaults = comfortDefaults;
   E.normalizeWorlds = normalizeWorlds; E.normalizeState = normalizeState; E.normalizeProfile = normalizeProfile;
-  E.normalizeDeleted = normalizeDeleted;
+  E.normalizeDeleted = normalizeDeleted; E.normalizeDaily = normalizeDaily; E.dailyGoal = dailyGoal;
 })(window.EngineParts = window.EngineParts || /** @type {EngineParts} */ ({}));

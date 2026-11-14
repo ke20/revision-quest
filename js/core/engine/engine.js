@@ -53,6 +53,15 @@
     trophy: function (id) { return trophyOf(E.state, id); },
     badgeValues: function () { return E.badgeValues(E.state); },
     REVIEW_DAYS: E.REVIEW_DAYS,
+    DAILY_XP: E.DAILY_XP,
+    /** Today's challenge: its goals (icon, text, target, progress) and whether it is done. */
+    daily: function () {
+      var d = E.dailyState();
+      return { day: d.day, done: d.done, goals: d.goals.map(function (id, i) {
+        var g = /** @type {DailyGoalDef} */ (E.dailyGoal(id));
+        return { id: g.id, icon: g.icon, text: g.text, target: g.target, progress: d.progress[i] };
+      }) };
+    },
     /** « À réviser »: started, and not played for REVIEW_DAYS days (or its review bonus is still due today). */
     needsReview: function (id) { return E.needsReview(E.state, id) || E.reviewDue[id] === E.todayStr(); },
     /** Is this world the boss of the current pack (its last world)? */
@@ -116,7 +125,7 @@
       safeJsonParse: safeJsonParse, cleanName: cleanName, hash: hash, normalizeProfile: normalizeProfile, normalizeState: normalizeState, normalizeWorlds: normalizeWorlds,
       parseDb: parseDb, mergeDb: mergeDb, buildCookie: buildCookie, uncompact: uncompact, suffixName: suffixName,
       normalizeSettings: normalizeSettings, encodeSettings: encodeSettings, decodeSettings: decodeSettings, compactProfile: compactProfile,
-      COOKIE_MAX_BYTES: COOKIE_MAX_BYTES
+      COOKIE_MAX_BYTES: COOKIE_MAX_BYTES, drawDaily: E.drawDaily
     },
     /** cb() is called when another tab changed the save (already merged into memory). */
     onExternalChange: function (cb) { changeListeners.push(cb); }

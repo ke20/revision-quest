@@ -48,8 +48,22 @@
       sound: mine.sound,
       bestCombo: Math.max(mine.bestCombo, other.bestCombo),
       lastPack: lp,
-      correct: Math.max(mine.correct, other.correct)
+      correct: Math.max(mine.correct, other.correct),
+      daily: mergeDaily(mine.daily, other.daily),
+      dailyDone: Math.max(mine.dailyDone, other.dailyDone)
     };
+  }
+  /** Today's challenge seen by two tabs: the newest day; the same day: the most advanced (done first).
+      @param {DailyState | null} a @param {DailyState | null} b @returns {DailyState | null} */
+  function mergeDaily(a, b) {
+    if (!a || !b) return a || b;
+    if (a.day !== b.day) return a.day > b.day ? a : b;
+    if (a.goals.join() === b.goals.join()) {
+      return { day: a.day, goals: a.goals.slice(), progress: a.progress.map(function (n, i) { return Math.max(n, b.progress[i]); }), done: a.done || b.done };
+    }
+    var sum = /** @param {DailyState} d */ function (d) { return d.progress.reduce(function (x, y) { return x + y; }, 0); };
+    if (a.done !== b.done) return a.done ? a : b;
+    return sum(b) > sum(a) ? b : a;
   }
   /** epoch changes when a progress is reset or replaced by an import: the newest epoch wins, no merge.
       @param {Profile} mine @param {Profile} other @returns {Profile} */

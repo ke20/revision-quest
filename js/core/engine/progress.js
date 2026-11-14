@@ -234,7 +234,7 @@
       if (t >= 1) chapters++;
       if (t >= 3) gold++;
     });
-    return { chapters: chapters, gold: gold, stars: starsOf(st), streak: st === E.state ? streak() : 0, correct: st.correct };
+    return { chapters: chapters, gold: gold, stars: starsOf(st), streak: st === E.state ? streak() : 0, correct: st.correct, daily: st.dailyDone };
   }
   /** Award every tier reached by the current player (a badge earned stays earned). @param {Badge[]} nb */
   function awardTiers(nb) {
@@ -242,11 +242,55 @@
     BADGES.forEach(function (b) { if (b.family && own(v, b.family) && v[b.family] >= /** @type {number} */ (b.goal)) award(b.id, nb); });
   }
 
+  /* ---------- daily challenge ---------- */
+
+  /** Goals of a day: drawn from the date (a small pseudo-random generator seeded by it), two goals never of the same
+      kind; "review" only when a chapter is « à réviser ». @param {string} day @param {boolean} review @returns {string[]} */
+  function drawDaily(day, review) {
+    var seed = 0, out = /** @type {string[]} */ ([]), kinds = /** @type {string[]} */ ([]);
+    for (var i = 0; i < day.length; i++) seed = (seed * 31 + day.charCodeAt(i)) % 2147483647;
+    var pool = E.DAILY_GOALS.filter(function (g) { return review || g.kind !== "review"; });
+    while (out.length < E.DAILY_COUNT) {
+      seed = (seed * 48271) % 2147483647;
+      var g = pool[seed % pool.length];
+      if (kinds.indexOf(g.kind) === -1) { out.push(g.id); kinds.push(g.kind); }
+    }
+    return out;
+  }
+  /** Today's challenge of the current player, created when missing or old (memory: saved with the next change). */
+  function dailyState() {
+    var day = todayStr(), d = E.state.daily;
+    if (d && d.day === day) return d;
+    var review = Object.keys(E.state.packs).some(function (id) { return needsReview(E.state, id); });
+    var goals = drawDaily(day, review);
+    E.state.daily = { day: day, goals: goals, progress: goals.map(function () { return 0; }), done: false };
+    return E.state.daily;
+  }
+  /** Progress of today's goals of a kind: add n, or (max) keep the best value. Returns true when the challenge was just
+      completed (+DAILY_XP, once a day, and the daily badges). @param {string} kind @param {number} n @param {boolean} max
+      @param {Badge[]} nb */
+  function dailyStep(kind, n, max, nb) {
+    var d = dailyState();
+    if (d.done) return false;
+    d.goals.forEach(function (id, i) {
+      var g = /** @type {DailyGoalDef} */ (E.dailyGoal(id));
+      if (g.kind !== kind) return;
+      d.progress[i] = Math.min(g.target, max ? Math.max(d.progress[i], n) : d.progress[i] + n);
+    });
+    var all = d.goals.every(function (id, i) { return d.progress[i] >= /** @type {DailyGoalDef} */ (E.dailyGoal(id)).target; });
+    if (!all) return false;
+    d.done = true;
+    E.state.dailyDone++;
+    awardTiers(nb);
+    return true;
+  }
+
   E.PAUSE_KEY = PAUSE_KEY; E.PAUSE_MS = PAUSE_MS; E.readPauses = readPauses; E.settings = settings; E.packId = packId;
   E.worlds = worlds; E.packState = packState; E.levelInfo = levelInfo; E.streak = streak; E.hasBadge = hasBadge;
   E.award = award; E.badgeById = badgeById; E.worldIndex = worldIndex; E.isBoss = isBoss; E.worldProgress = worldProgress;
   E.starsToUnlock = starsToUnlock; E.isUnlocked = isUnlocked; E.worldHasDocument = worldHasDocument;
   E.markDay = markDay; E.markPackPlayed = markPackPlayed; E.addXp = addXp; E.starsOf = starsOf;
+  E.drawDaily = drawDaily; E.dailyState = dailyState; E.dailyStep = dailyStep;
   E.needsReview = needsReview; E.todayStr = todayStr;
   E.unitInfo = unitInfo; E.trophyOf = trophyOf; E.badgeValues = badgeValues; E.awardTiers = awardTiers;
 })(window.EngineParts = window.EngineParts || /** @type {EngineParts} */ ({}));

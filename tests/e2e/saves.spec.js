@@ -31,7 +31,7 @@ test("export/import round-trip is lossless, cookie restore gives back the player
     // cookie restore (v3): wipe localStorage only
     await page.evaluate(() => localStorage.clear()); await page.reload(); await wait(page, 400);
     const afterCookie = await page.evaluate(() => JSON.stringify(Engine.currentProfile()));
-    const strip = s => { const o = JSON.parse(s); Object.values(o.state.packs).forEach(p => { p.lastPlayed = Math.floor(p.lastPlayed / 1000); }); o.state.days = o.state.days.slice(-14); o.state.translations = []; return JSON.stringify(o); };
+    const strip = s => { const o = JSON.parse(s); Object.values(o.state.packs).forEach(p => { p.lastPlayed = Math.floor(p.lastPlayed / 1000); }); o.state.days = o.state.days.slice(-14); o.state.translations = []; o.state.daily = null; return JSON.stringify(o); }; // today's challenge is not in the cookie
     ok(strip(afterCookie) === strip(before), 'cookie restore (v3) gives back the profile (all packs, lastPack, badges…; translations are not in the cookie)');
     ok(JSON.parse(afterCookie).state.translations.length === 0, 'translations are never stored in the cookie');
     ok(JSON.parse(afterCookie).state.correct === 321, 'the right answers counter is in the cookie');
@@ -95,7 +95,7 @@ test("a save from before the rewards (no right answers counter, 14-field cookie)
   await page.reload();
   await expect(page.locator(".screen.home")).toBeVisible();
   const st = await page.evaluate(() => Engine.state);
-  ok(st.xp === 300 && st.correct === 0 && st.badges.join() === "first_step,boss,streak3" && !("daily" in st && st.daily), "cookie of the previous version: counter 0, badges kept " + JSON.stringify(st));
+  ok(st.xp === 300 && st.correct === 0 && st.badges.join() === "first_step,boss,streak3" && st.dailyDone === 0 && (!st.daily || st.daily.progress.every((n) => n === 0)), "cookie of the previous version: counter 0, badges kept " + JSON.stringify(st));
   // a .save of the previous version (state without the new fields)
   const file = H.saveFile("RQSAVE", { app: "revision-quest", version: 3, profile: { name: "Ancien", state: { xp: 40, packs: {}, badges: ["perfect"], translations: [], days: [], sound: true, bestCombo: 2, lastPack: null } } });
   const r = await page.evaluate((f) => Engine.parseImport(f), file);

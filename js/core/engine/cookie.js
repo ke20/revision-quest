@@ -64,7 +64,8 @@
 
   /** Compact form (v3) of one profile: only the fields needed to rebuild the progress (no translations).
       profile = [id, name, avatar, xp, packs, badgeIdx, translations(always []), days(≤14), sound, bestCombo, createdAt, lastPack,
-                 settings, settingsAt, correct]   (new fields only ever go at the end: older cookies lack them)
+                 settings, settingsAt, correct, dailyDone]   (new fields only ever go at the end: older cookies lack them;
+                 today's challenge is not kept: it only lives one day)
       packs = [[packId, lastPlayedSeconds, [[worldId, stars, accuracy%], ...]], ...]
       settings = 5 characters: pauseEvery digit, freeMistakes digit, animations code (n / o / b), difficulty code
                  (e / n / m / h), playedWorlds code (o / r; O / R = seasonal themes off), then the grade if any, e.g. "41onocm2";
@@ -77,7 +78,7 @@
     });
     return [p.id, p.name, p.avatar, s.xp, packs, badgeIndexes(s.badges),
       [], s.days.slice(-14).map(function (d) { return d.replace(/-/g, ""); }),
-      s.sound ? 1 : 0, s.bestCombo, p.createdAt, s.lastPack || "", encodeSettings(p.settings), p.settingsAt || 0, s.correct];
+      s.sound ? 1 : 0, s.bestCombo, p.createdAt, s.lastPack || "", encodeSettings(p.settings), p.settingsAt || 0, s.correct, s.dailyDone];
   }
   var ANIM_CODES = ["n", "o", "b"]; // same order as COMFORT.animations
   var DIFFICULTY_CODES = ["e", "n", "m", "h"]; // same order as COMFORT.difficulty
@@ -144,7 +145,7 @@
         if (Array.isArray(pk) && typeof pk[0] === "string" && PACK_ID.test(pk[0])) packs[pk[0]] = { worlds: worldsFromArr(pk[2]), lastPlayed: (+pk[1] || 0) * 1000 };
       });
       return normalizeProfile({ id: a[0], name: a[1], avatar: a[2], createdAt: a[10], settings: decodeSettings(a[12]), settingsAt: a[13], state: {
-        xp: a[3], packs: packs, lastPack: a[11], sound: a[8] !== 0, bestCombo: a[9], correct: a[14],
+        xp: a[3], packs: packs, lastPack: a[11], sound: a[8] !== 0, bestCombo: a[9], correct: a[14], dailyDone: a[15],
         badges: (Array.isArray(a[5]) ? a[5] : []).map(function (i) { return typeof i === "number" && BADGES[i] ? BADGES[i].id : null; }),
         days: (Array.isArray(a[7]) ? a[7] : []).map(function (d) { d = String(d); return d.slice(0, 4) + "-" + d.slice(4, 6) + "-" + d.slice(6, 8); })
       } });

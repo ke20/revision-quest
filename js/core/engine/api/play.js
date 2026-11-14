@@ -9,7 +9,8 @@
     streak = E.streak, award = E.award, worldIndex = E.worldIndex, worldProgress = E.worldProgress,
     starsToUnlock = E.starsToUnlock, isUnlocked = E.isUnlocked, worldHasDocument = E.worldHasDocument,
     markDay = E.markDay, markPackPlayed = E.markPackPlayed, addXp = E.addXp, isBoss = E.isBoss, BOSS_PASS = E.BOSS_PASS,
-    medalFor = E.medalFor, needsReview = E.needsReview, todayStr = E.todayStr, trophyOf = E.trophyOf, TROPHIES = E.TROPHIES, awardTiers = E.awardTiers;
+    medalFor = E.medalFor, needsReview = E.needsReview, todayStr = E.todayStr, trophyOf = E.trophyOf, TROPHIES = E.TROPHIES, awardTiers = E.awardTiers,
+    dailyStep = E.dailyStep, DAILY_XP = E.DAILY_XP;
 
   /** Indexes of the exercises played in this run. A boss draws `draw` questions from its pool (all of them when
       draw is missing), in a new random order each time; other worlds play every exercise in order.
@@ -124,7 +125,7 @@
         return { xp: 0, multiplier: 1, combo: E.session.combo, hearts: E.session.hearts, shields: E.session.shields, shieldUsed: false, gameOver: false, levelUp: null, newBadges: [], skipped: true };
       }
       var correct = !!result.correct, attempts = result.attempts || 1;
-      var nb = /** @type {Badge[]} */ ([]), gained = 0, mult = 1, levelUp = null, shieldUsed = false;
+      var nb = /** @type {Badge[]} */ ([]), gained = 0, mult = 1, levelUp = null, shieldUsed = false, daily = false;
       markDay();
       markPackPlayed(nb);
       if (correct) {
@@ -139,7 +140,9 @@
         award("first_step", nb);
         if (E.session.combo >= 5) award("combo5", nb);
         if (E.session.combo >= 10) award("combo10", nb);
-        levelUp = addXp(gained);
+        daily = dailyStep("correct", 1, false, nb) || daily;
+        daily = dailyStep("combo", E.session.combo, true, nb) || daily;
+        levelUp = addXp(gained + (daily ? DAILY_XP : 0));
         E.session.xpEarned += gained;
       } else {
         E.session.combo = 0;
@@ -155,7 +158,7 @@
       save();
       return {
         xp: gained, multiplier: mult, combo: E.session.combo, hearts: E.session.hearts, shields: E.session.shields, shieldUsed: shieldUsed,
-        gameOver: E.session.over, levelUp: levelUp, newBadges: nb
+        gameOver: E.session.over, levelUp: levelUp, newBadges: nb, daily: daily
       };
     },
 
@@ -191,7 +194,13 @@
       // « à réviser »: the first world played again gives 50 % more XP (once: the chapter is fresh again)
       var reviewXp = s.review ? Math.round(Math.max(0, s.xpEarned) * E.REVIEW_BONUS) : 0;
       if (s.review) delete E.reviewDue[s.packId];
-      if (trophyXp + reviewXp) levelUp = addXp(trophyXp + reviewXp);
+      // daily challenge: worlds finished, a boss played to the end, one more star on a world already done, a review
+      var daily = dailyStep("worlds", 1, false, nb);
+      if (boss) daily = dailyStep("boss", 1, false, nb) || daily;
+      if (prev.completed && entry.stars > (prev.stars || 0)) daily = dailyStep("star", 1, false, nb) || daily;
+      if (s.review) daily = dailyStep("review", 1, false, nb) || daily;
+      var bonus = trophyXp + reviewXp + (daily ? DAILY_XP : 0);
+      if (bonus) levelUp = addXp(bonus);
       awardTiers(nb);
       save();
       E.worldsInARow++;
@@ -218,6 +227,7 @@
         newTrophy: trophy.tier > trophyBefore,
         trophyXp: trophyXp,
         reviewXp: reviewXp,
+        daily: daily,
         levelUp: levelUp
       };
       E.session = null;

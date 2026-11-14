@@ -355,7 +355,7 @@ test("trophy: bronze = boss ≥ 80 %, silver = + 3★ everywhere, gold = 5★ ev
   const xp = E.state.xp;
   sum = playWorld(E, 3, ok10(8)); // boss 80 % → bronze
   assert.deepStrictEqual([sum.trophy.id, sum.newTrophy, sum.trophyXp], ["bronze", true, 50]);
-  assert.strictEqual(E.state.xp, xp + sum.xpEarned + 50, "bonus added to the XP");
+  assert.strictEqual(E.state.xp, xp + sum.xpEarned + 50 + (sum.daily ? 30 : 0), "bonus added to the XP");
   assert.deepStrictEqual(j(sum.trophy.next), { tier: 2, worlds: 1, stars: 3, boss: 0 }, "world 1 still needs 3★");
   sum = playWorld(E, 3, ok10(8));
   assert.deepStrictEqual([sum.newTrophy, sum.trophyXp], [false, 0], "no bonus twice");
@@ -584,7 +584,7 @@ test("tiered badges: right answers, stars, days in a row, chapters (trophies) an
   E.state.packs["5e/anglais/other"] = { worlds: w, lastPlayed: 1 };
   playWorld(E, 1);
   assert.ok(E.hasBadge("stars50") && !E.hasBadge("stars100"));
-  assert.deepStrictEqual(j(E.badgeValues()), { chapters: 1, gold: 1, stars: 65, streak: 7, correct: 140 });
+  assert.deepStrictEqual(j(E.badgeValues()), { chapters: 1, gold: 1, stars: 65, streak: 7, correct: 140, daily: E.state.dailyDone });
   E.resetPack(PACK); E.resetPack("5e/anglais/other");
   E.state.days = [];
   assert.ok(E.hasBadge("stars50") && E.hasBadge("gold1") && E.hasBadge("streak7"), "kept after a reset");
@@ -614,7 +614,7 @@ test("correct goes everywhere the state goes: cookie (last field), .save, share 
   E.createProfile("Cora", "🐸");
   E.state.correct = 4321; E.setSound(true);
   const compact = E._internals.compactProfile(E.currentProfile());
-  assert.strictEqual(compact.length, 15);
+  assert.strictEqual(compact.length, 16);
   assert.strictEqual(compact[14], 4321, "added at the end of the compact profile");
   assert.strictEqual(load({ cookies: jar }).window.Engine.state.correct, 4321, "cookie round-trip");
   const E2 = load().window.Engine;
@@ -646,12 +646,103 @@ test("à réviser: a chapter started and not played for 14 days; the first world
   const sum = playWorld(E, 2);
   assert.strictEqual(sum.reviewXp, Math.round(sum.xpEarned / 2));
   assert.ok(sum.reviewXp > 0);
-  assert.strictEqual(E.state.xp, xp + sum.xpEarned + sum.reviewXp);
+  assert.strictEqual(E.state.xp, xp + sum.xpEarned + sum.reviewXp + (sum.daily ? 30 : 0));
   assert.strictEqual(E.needsReview(PACK), false, "reviewed");
   assert.strictEqual(playWorld(E, 1).reviewXp, 0, "only the first world");
   assert.ok(E.totalStars(PACK) >= stars && E.trophy(PACK).tier >= trophy, "no star or trophy lost");
   E.state.packs["5e/anglais/old"] = { worlds: {}, lastPlayed: 1 };
   assert.strictEqual(E.needsReview("5e/anglais/old"), false, "opened but no world finished: not started");
+});
+
+/* ---------- daily challenge ---------- */
+
+const today = () => { const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); };
+
+test("daily: 3 goals drawn from the date, the same all day, never two of the same kind; « review » only when a chapter needs it", () => {
+  const { E } = setup();
+  const d1 = j(E.daily());
+  assert.strictEqual(d1.day, today());
+  assert.strictEqual(d1.goals.length, 3);
+  assert.deepStrictEqual(j(E.daily()), d1, "the same during the day");
+  assert.ok(!d1.goals.some((g) => g.id === "review"), "no chapter to review: no review goal");
+  const seen = new Set();
+  for (let i = 0; i < 400; i++) {
+    const day = new Date(2026, 0, 1 + i);
+    const key = day.getFullYear() + "-" + String(day.getMonth() + 1).padStart(2, "0") + "-" + String(day.getDate()).padStart(2, "0");
+    const fresh = E._internals.drawDaily(key, true);
+    assert.deepStrictEqual(j(fresh), j(E._internals.drawDaily(key, true)), "deterministic");
+    const kinds = fresh.map((id) => id.replace(/\d+$/, ""));
+    assert.strictEqual(new Set(kinds).size, 3, key + " " + fresh);
+    fresh.forEach((id) => seen.add(id));
+    assert.ok(!E._internals.drawDaily(key, false).includes("review"));
+  }
+  assert.strictEqual(seen.size, 7, "every goal comes up: " + [...seen]);
+});
+
+test("daily: progress from answers and finished worlds; +30 XP and the badge once when the 3 goals are reached", () => {
+  const { E } = setup({ pack: makePack(3, 10) });
+  E.state.daily = { day: today(), goals: ["worlds2", "combo10", "correct20"], progress: [0, 0, 0], done: false };
+  let sum = playWorld(E, 1);
+  assert.deepStrictEqual(j(E.daily().goals.map((g) => g.progress)), [1, 10, 10]);
+  assert.strictEqual(sum.daily, false);
+  const xp = E.state.xp;
+  sum = playWorld(E, 2);
+  assert.strictEqual(sum.daily, true);
+  assert.strictEqual(E.daily().done, true);
+  assert.strictEqual(E.state.xp, xp + sum.xpEarned + sum.trophyXp + sum.reviewXp + 30);
+  assert.strictEqual(E.state.dailyDone, 1);
+  assert.ok(sum.newBadges.some((b) => b.id === "daily1"));
+  assert.strictEqual(playWorld(E, 1).daily, false, "once a day");
+  assert.strictEqual(E.state.dailyDone, 1);
+  // the next day: a new challenge
+  E.state.daily.day = "2000-01-01";
+  assert.notStrictEqual(E.daily().day, "2000-01-01");
+  assert.strictEqual(E.daily().done, false);
+});
+
+test("daily: boss, one more star on a world already done, a chapter « à réviser »; answers can complete it too", () => {
+  const { E } = setup({ pack: makePack(3, 10) });
+  playWorld(E, 1, ok10(6));
+  E.state.packs[PACK].lastPlayed = Date.now() - 20 * 86400000;
+  E.state.daily = { day: today(), goals: ["review", "star", "boss"], progress: [0, 0, 0], done: false };
+  playWorld(E, 1); // review + one more star
+  assert.deepStrictEqual(j(E.daily().goals.map((g) => g.progress)), [1, 1, 0]);
+  playWorld(E, 2); // a new world: no star « de plus »
+  assert.strictEqual(E.daily().goals[1].progress, 1);
+  assert.strictEqual(playWorld(E, 3, ok10(2)).daily, true, "a boss played to the end, even failed");
+  // completed by an answer: the bonus comes with it
+  E.state.daily = { day: today(), goals: ["worlds2", "combo10", "correct20"], progress: [2, 10, 19], done: false };
+  E.startWorld(1);
+  const r = E.answer({ correct: true, attempts: 1 });
+  assert.strictEqual(r.daily, true);
+  assert.strictEqual(E.state.dailyDone, 2);
+});
+
+test("daily: normalized (hostile values), merged (newest day, most advanced), never in the cookie; dailyDone is", () => {
+  const jar = cookieJar();
+  const E = load({ cookies: jar }).window.Engine;
+  const I = E._internals;
+  const ok = { day: "2026-11-14", goals: ["worlds2", "combo10", "boss"], progress: [5, 3, "x"], done: true };
+  assert.deepStrictEqual(j(I.normalizeState({ daily: ok }).daily), { day: "2026-11-14", goals: ["worlds2", "combo10", "boss"], progress: [2, 3, 0], done: true });
+  for (const bad of [null, "x", { ...ok, day: "14/11/2026" }, { ...ok, goals: ["worlds2", "worlds2", "boss"] }, { ...ok, goals: ["nope", "combo10", "boss"] },
+    { ...ok, goals: ["worlds2", "boss"] }, { ...ok, progress: "123" }, { ...ok, goals: ["__proto__", "combo10", "boss"] }]) {
+    assert.strictEqual(I.normalizeState({ daily: bad }).daily, null, JSON.stringify(bad));
+  }
+  assert.strictEqual(I.normalizeState({}).daily, null, "older saves: no challenge");
+  assert.strictEqual(I.normalizeState({}).dailyDone, 0);
+  const P = (daily, dailyDone) => I.normalizeProfile({ id: "pdaily0001", name: "Dan", state: { daily, dailyDone } });
+  const merge = (a, b) => j(I.mergeDb({ currentId: null, deleted: {}, profiles: [P(a, 1)] }, { currentId: null, deleted: {}, profiles: [P(b, 4)] })).profiles[0].state;
+  const day = (d, progress, done) => ({ day: d, goals: ["worlds2", "combo10", "boss"], progress, done });
+  assert.deepStrictEqual(merge(day("2026-11-14", [2, 1, 0], false), day("2026-11-14", [0, 7, 1], false)).daily.progress, [2, 7, 1]);
+  assert.strictEqual(merge(day("2026-11-13", [2, 10, 1], true), day("2026-11-14", [0, 0, 0], false)).daily.day, "2026-11-14");
+  assert.strictEqual(merge(day("2026-11-14", [2, 10, 1], true), null).daily.done, true);
+  assert.strictEqual(merge(null, null).dailyDone, 4);
+  E.createProfile("Dan", "🦊");
+  E.daily(); E.state.dailyDone = 6; E.setSound(true);
+  const R = load({ cookies: jar }).window.Engine;
+  assert.strictEqual(R.state.dailyDone, 6);
+  assert.strictEqual(R.state.daily, null, "the challenge only lives one day: not in the cookie");
+  assert.strictEqual(R.parseImport(E.exportProfile().content).profile.state.daily.day, today(), "kept in a .save");
 });
 
 /* ---------- multi-tab merge ---------- */
@@ -760,6 +851,7 @@ test("cookie backup: small saves round-trip exactly (minus translations)", () =>
   const R = load({ cookies: jar }).window.Engine;
   const after = j(R.currentProfile());
   before.state.translations = [];
+  before.state.daily = null; // today's challenge is not in the cookie
   Object.values(before.state.packs).forEach((p) => { p.lastPlayed = Math.floor(p.lastPlayed / 1000) * 1000; });
   assert.deepStrictEqual(after, before);
 });

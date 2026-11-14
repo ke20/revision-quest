@@ -68,6 +68,20 @@ export function editorLinkHtml() {
   return '<p class="editor-link"><a href="editeur.html"><span>✏️ Créer un cours</span></a></p>';
 }
 
+/** Today's challenge: 3 goals with their progress, +30 XP when all are reached. Texts from the engine (French). */
+export function dailyHtml() {
+  var d = Engine.daily();
+  return '<div class="card daily-card' + (d.done ? " done" : "") + '">' +
+    '<div class="daily-head"><b>🎯 Défi du jour</b><span class="daily-xp">' + (d.done ? "✅ +" : "+") + Engine.DAILY_XP + " XP</span></div>" +
+    '<ul class="daily-list">' + d.goals.map(function (g) {
+      var ok = g.progress >= g.target;
+      return '<li class="' + (ok ? "ok" : "") + '"><span class="daily-ico">' + (ok ? "✅" : E(g.icon)) + "</span>" +
+        '<span class="daily-text">' + E(g.text) + '</span><span class="daily-n">' + g.progress + "/" + g.target + "</span></li>";
+    }).join("") + "</ul>" +
+    (d.done ? '<p class="daily-bravo">Bravo, défi réussi ! Reviens demain pour un nouveau défi 🌙</p>' : "") +
+  "</div>";
+}
+
 export function showHome() {
   var me = Engine.currentProfile();
   if (!me) return showProfiles();
@@ -113,6 +127,7 @@ export function showHome() {
             '<b class="cont-title">' + E(last.title) + '</b><small>⭐ ' + must(lastSum).stars + "/" + must(lastSum).maxStars + "</small></span></button>" +
           '<button class="btn btn-white btn-wide" data-act="catalog">📚 Choisir un chapitre</button>'
         : '<button class="btn btn-primary btn-big btn-play" data-act="catalog">📚 Choisir un chapitre</button>') +
+      dailyHtml() +
       '<div class="home-row">' +
         '<button class="btn btn-white" data-act="badges">🏅 Badges</button>' +
         '<button class="btn btn-white" data-act="trophies">🏆 Trophées</button>' +

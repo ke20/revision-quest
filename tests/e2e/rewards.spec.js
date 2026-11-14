@@ -74,11 +74,11 @@ test("tiered badges: earned while playing (right answers counter), shown family 
   expect(await page.evaluate(() => Engine.state.correct)).toBe(102);
   await page.evaluate(() => App.showHome());
   await H.tap(page, "[data-act=badges]");
-  await expect(page.locator(".screen.badges .cat-section")).toHaveText(["🎖️ Exploits", "🏆 Chapitres terminés", "🥇 Trophées d'or", "⭐ Étoiles", "📅 Jours de suite", "✅ Bonnes réponses"]);
-  const correct = page.locator(".badge-grid.tiers").last();
+  await expect(page.locator(".screen.badges .cat-section")).toHaveText(["🎖️ Exploits", "🏆 Chapitres terminés", "🥇 Trophées d'or", "⭐ Étoiles", "📅 Jours de suite", "✅ Bonnes réponses", "🎯 Défis du jour"]);
+  const correct = page.locator(".badge-grid.tiers").nth(4);
   await expect(correct.locator(".badge-card.on")).toHaveText(["✅100 bonnes réponses"]);
   await expect(correct.locator(".badge-card.locked")).toHaveCount(3);
-  await expect(page.locator(".badge-count").last()).toHaveText("102 bonnes réponses · prochain : 500 bonnes réponses");
+  await expect(page.locator(".badge-count").nth(4)).toHaveText("102 bonnes réponses · prochain : 500 bonnes réponses");
   R.done();
 });
 
@@ -99,5 +99,27 @@ test("à réviser: tag on the catalogue card and the map, +50 % XP on the first 
   expect(await page.evaluate((id) => Engine.state.packs[id].worlds["1"].stars, HISTORY)).toBe(5);
   await H.tap(page, "[data-act=next]"); await H.closeModals(page);
   await expect(page.locator(".map-review")).toHaveCount(0);
+  R.done();
+});
+
+test("daily challenge: 3 goals on the home screen with their progress, +30 XP once when done, a badge", async ({ page }) => {
+  const R = H.makeReporter();
+  R.watch(page, "daily");
+  const day = await (async () => { const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); })();
+  await withPlayer(page, { daily: { day, goals: ["worlds2", "combo10", "correct20"], progress: [1, 10, 17], done: false } }, { history: true });
+  const card = page.locator(".daily-card");
+  await expect(card.locator(".daily-list li")).toHaveCount(3);
+  await expect(card.locator(".daily-list li").first()).toContainText("Termine 2 mondes1/2");
+  await expect(card.locator("li.ok")).toHaveCount(1);
+  await expect(card).toContainText("+30 XP");
+  await H.gotoPack(page, H.HISTORY);
+  await H.startWorld(page, 0);
+  await H.playWorld(page, 0);
+  await expect(page.locator(".screen.complete .daily-won")).toContainText("Défi du jour réussi ! +30 XP");
+  await expect(page.locator(".screen.complete .new-badges")).toContainText("Défi du jour");
+  expect(await page.evaluate(() => [Engine.state.daily.done, Engine.state.dailyDone])).toEqual([true, 1]);
+  await page.evaluate(() => App.showHome());
+  await expect(page.locator(".daily-card.done")).toContainText("Bravo, défi réussi");
+  await expect(page.locator(".daily-card li.ok")).toHaveCount(3);
   R.done();
 });

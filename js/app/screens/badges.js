@@ -17,7 +17,8 @@ var FAMILIES = [
   { id: "gold", title: "🥇 Trophées d'or", count: function (n) { return plural(n, "trophée d'or", "trophées d'or"); } },
   { id: "stars", title: "⭐ Étoiles", count: function (n) { return plural(n, "étoile", "étoiles"); } },
   { id: "streak", title: "📅 Jours de suite", count: function (n) { return plural(n, "jour de suite", "jours de suite"); } },
-  { id: "correct", title: "✅ Bonnes réponses", count: function (n) { return plural(n, "bonne réponse", "bonnes réponses"); } }
+  { id: "correct", title: "✅ Bonnes réponses", count: function (n) { return plural(n, "bonne réponse", "bonnes réponses"); } },
+  { id: "daily", title: "🎯 Défis du jour", count: function (n) { return plural(n, "défi réussi", "défis réussis"); } }
 ];
 
 /** Locked badges stay secret: no icon, name or description. @param {Badge} b @returns {string} */
