@@ -1,0 +1,23 @@
+{
+  "title": "Dictée · Les statues de l'île de Pâques",
+  "description": "Mots à apprendre, homophones, accords et nombres en lettres de la dictée 9. Groupe 1, 2 ou 3 au choix.",
+  "icon": "🗿",
+  "color": "#0F766E",
+  "groups": [
+    {
+      "id": "g1",
+      "label": "Groupe 1",
+      "difficulty": 1
+    },
+    {
+      "id": "g2",
+      "label": "Groupe 2",
+      "difficulty": 2
+    },
+    {
+      "id": "g3",
+      "label": "Groupe 3 (+ bonus)",
+      "difficulty": 3
+    }
+  ]
+}
