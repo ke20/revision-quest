@@ -130,6 +130,22 @@ Tous peuvent afficher une figure de géométrie (`figure`).
 - Plusieurs onglets ouverts : chaque onglet relit la sauvegarde avant d'écrire et fusionne joueur par joueur ;
   un joueur supprimé reste supprimé partout ; pour les réglages, la copie modifiée le plus récemment gagne.
 
+## Récompenses (détails techniques)
+
+- **Calculé, pas stocké** : le trophée d'un chapitre (`Engine.trophy(id)`) et l'étiquette « à réviser »
+  (`Engine.needsReview(id)`) se calculent à partir de `packs[id].worlds` et `packs[id].lastPlayed`. Pour un chapitre
+  qui n'est pas chargé, le catalogue donne l'id de son boss (`boss`, écrit par `tools/catalog.js`, un par groupe).
+  Les bonus d'XP (trophée, révision, défi) sont donnés au moment où on les gagne.
+- **Stocké** : un badge gagné reste dans `badges`. `BADGES` (`js/core/engine/constants.js`) ne se réordonne jamais,
+  car le cookie garde des index : on ajoute à la fin. Un badge avec `family` et `goal` est un palier, gagné quand le
+  compteur de sa famille (`Engine.badgeValues()`) atteint `goal`.
+- **Nouveaux champs de l'état** : `correct` (bonnes réponses), `dailyDone` (défis réussis) et `daily`
+  (`{ day, goals, progress, done }`, le défi du jour). Tous passent par `normalize` ; une ancienne sauvegarde sans eux
+  se charge (0, 0, null). La fusion garde le plus grand compteur et, pour `daily`, le jour le plus récent puis le plus
+  avancé. `correct` et `dailyDone` sont en fin de profil dans le cookie ; `daily` n'y est pas (il ne vit qu'un jour).
+- Les objectifs du défi sont tirés à partir de la date (`drawDaily`) puis gardés dans `daily.goals` : l'objectif
+  « révise un chapitre à réviser » n'est tiré que si un chapitre est à réviser ce jour-là.
+
 ## Tests et CI
 
 Avec mise (recommandé) : installation une fois, puis tous les contrôles :

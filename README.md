@@ -29,7 +29,28 @@ S'il peut aussi aider d'autres enfants, parents ou enseignants, tant mieux ! �
    la difficulté choisie). Le dernier monde est le « boss » du chapitre : des questions ou des phrases à traduire,
    sans perdre de cœur, avec une médaille (de 🍫 chocolat à 🏆 platine) ; 80 % de bonnes réponses valident le chapitre.
 
-En bonus : des indices, des mots expliqués d'un toucher, des niveaux et des badges secrets à découvrir.
+En bonus : des indices, des mots expliqués d'un toucher, des niveaux, des trophées et des badges à gagner (voir
+ci-dessous).
+
+## Récompenses
+
+Chaque chapitre rapporte quelque chose, même quand on a déjà beaucoup joué :
+
+- **Niveaux sans fin** : de 🐣 Débutant à 🏆 Légende (1 400 XP), puis Légende 2, Légende 3… tous les 500 XP.
+- **Trophée de chapitre** (un par groupe pour une dictée « par groupes ») :
+  - 🥉 bronze : boss réussi (80 % ou plus) ;
+  - 🥈 argent : bronze, et au moins 3 ⭐ sur tous les mondes ;
+  - 🥇 or : 5 ⭐ sur tous les mondes, et boss à 90 % ou plus.
+
+  Le trophée s'affiche sur la carte du catalogue et sur la carte des mondes, avec ce qu'il manque pour le suivant
+  (« Pour 🥈 : encore 4 mondes à 3★ »). L'écran « 🏆 Mes trophées » les rassemble. Gagner un palier fait une petite
+  fête et donne +50, +100 ou +200 XP.
+- **Badges** : des exploits secrets (premier pas, combo, sans faute…) et des badges à paliers, rangés par famille :
+  chapitres terminés, trophées d'or, étoiles, jours de suite, bonnes réponses, défis du jour.
+- **🔁 À réviser** : un chapitre commencé mais pas joué depuis 14 jours porte cette étiquette. Le premier monde rejoué
+  rapporte +50 % d'XP. On ne perd rien : ni étoiles, ni trophée.
+- **🎯 Défi du jour** : 3 objectifs, les mêmes toute la journée (terminer 2 mondes, 10 bonnes réponses d'affilée,
+  rejouer un boss…). Les réussir tous donne +30 XP, une fois par jour.
 
 La partie est **sauvegardée automatiquement** sur le poste, dans le navigateur. Pour jouer sur un autre poste ou un
 autre navigateur, on peut **exporter** sa sauvegarde puis l'**importer** de l'autre côté. Aucun serveur ne collecte
