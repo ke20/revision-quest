@@ -120,7 +120,9 @@
         return "For " + icon + ": " + parts.join(" and ") + " <small>(" + trophyNextFr(icon, worlds, stars, boss) + ")</small>";
       },
       trophyMax: "Perfect chapter! 🎉 <small>(chapitre parfait)</small>",
-      trophyWon: "New trophy! <small>(nouveau trophée)</small>"
+      trophyWon: "New trophy! <small>(nouveau trophée)</small>",
+      reviewTag: "🔁 Time to review: +50 % XP on your next world! <small>(à réviser : +50 % d'XP sur le prochain monde)</small>",
+      reviewBonus: /** @param {number} n */ function (n) { return "🔁 Review bonus: +" + n + " XP <small>(bonus de révision)</small>"; }
     },
     es: {
       check: "Comprobar <small>(Vérifier)</small>",
@@ -214,7 +216,9 @@
         return "Para " + icon + ": " + parts.join(" y ") + " <small>(" + trophyNextFr(icon, worlds, stars, boss) + ")</small>";
       },
       trophyMax: "¡Capítulo perfecto! 🎉 <small>(chapitre parfait)</small>",
-      trophyWon: "¡Nuevo trofeo! <small>(nouveau trophée)</small>"
+      trophyWon: "¡Nuevo trofeo! <small>(nouveau trophée)</small>",
+      reviewTag: "🔁 ¡Hora de repasar: +50 % de XP en tu próximo mundo! <small>(à réviser : +50 % d'XP sur le prochain monde)</small>",
+      reviewBonus: /** @param {number} n */ function (n) { return "🔁 Bonus de repaso: +" + n + " XP <small>(bonus de révision)</small>"; }
     },
     fr: {
       check: "Vérifier",
@@ -303,7 +307,9 @@
       trophyNone: "Pas encore de trophée",
       trophyNext: trophyNextFr,
       trophyMax: "Chapitre parfait ! 🎉",
-      trophyWon: "Nouveau trophée !"
+      trophyWon: "Nouveau trophée !",
+      reviewTag: "🔁 À réviser : +50 % d'XP sur le prochain monde !",
+      reviewBonus: /** @param {number} n */ function (n) { return "🔁 Bonus de révision : +" + n + " XP"; }
     }
   };
 

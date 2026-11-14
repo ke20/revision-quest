@@ -40,6 +40,7 @@ export function showMap() {
     "<h2>" + T("mapTitle") + '</h2><span class="head-right">⭐ ' + Engine.totalStars(S.pack.id) + "/" + S.data.worlds.length * Engine.MAX_STARS + "</span></header>" +
     '<p class="map-pack"><span>' + E(S.pack.icon) + "</span> " + E(S.pack.title) + "</p>" +
     trophyLineHtml(Engine.trophy(S.pack.id)) +
+    (Engine.needsReview(S.pack.id) ? '<p class="map-review">' + T("reviewTag") + "</p>" : "") +
     '<div class="map-path"><svg class="map-svg" aria-hidden="true"></svg>' + nodes + "</div>" +
     (Engine.packSummary(S.pack.id, S.data.worlds.length).worldsDone > 0
       ? '<div class="map-foot"><button class="btn btn-white btn-small" data-act="reset-pack">↺ Recommencer ce chapitre</button></div>' : "") +

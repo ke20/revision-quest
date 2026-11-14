@@ -55,6 +55,11 @@ export function cardTrophy(p) {
   return p.groups.map(function (g) { return Engine.trophy(g.id); })
     .reduce(function (best, t) { return t.tier > best.tier ? t : best; });
 }
+/** « 🔁 à réviser » tag: the pack, or one of its groups, was not played for 14 days. @param {CatalogPack} p */
+export function reviewTagHtml(p) {
+  var due = p.groups ? p.groups.some(function (g) { return Engine.needsReview(g.id); }) : Engine.needsReview(p.id);
+  return due ? '<span class="tag tag-review">🔁 à réviser</span>' : "";
+}
 /** Small trophy icon of a card (nothing before bronze). @param {Trophy} t */
 export function trophyIconHtml(t) {
   return t.tier ? '<span class="pack-trophy trophy-' + E(t.id) + '" title="Trophée ' + E(t.name) + '" aria-label="Trophée ' + E(t.name) + '">' + E(t.icon) + "</span>" : "";
@@ -93,7 +98,7 @@ export function showGroups(id) {
   var cards = ch.groups.map(function (g) {
     var dots = g.difficulty ? '<span class="tag tag-difficulty" aria-label="Difficulté ' + g.difficulty + ' sur 5">' +
       new Array(g.difficulty + 1).join("●") + "</span>" : "";
-    return packCard(g, g.label, dots + '<span class="tag tag-level">' + g.worldCount + " monde" + (g.worldCount > 1 ? "s" : "") + "</span>", "", Engine.packSummary(g.id, g.worldCount));
+    return packCard(g, g.label, dots + '<span class="tag tag-level">' + g.worldCount + " monde" + (g.worldCount > 1 ? "s" : "") + "</span>" + reviewTagHtml(g), "", Engine.packSummary(g.id, g.worldCount));
   }).join("");
   var node = h('<section class="screen groups">' +
     '<header class="screen-head"><button class="btn-icon" data-act="back" aria-label="Chapitres">←</button><h2>👥 Choisis ton groupe</h2>' +
@@ -117,7 +122,7 @@ function myCoursesHtml() {
     var sub = Packs.subject(p.subject), lvl = Packs.level(p.level);
     var tags = (sub ? '<span class="tag tag-subject">' + E(sub.icon) + " " + E(sub.label) + "</span>" : "") +
       (lvl ? '<span class="tag tag-level">' + E(lvl.label) + "</span>" : "") + '<span class="tag tag-mine">fait maison</span>' +
-      (p.official ? '<span class="tag tag-modified">version modifiée</span>' : "");
+      (p.official ? '<span class="tag tag-modified">version modifiée</span>' : "") + reviewTagHtml(p);
     return '<div class="mine-item">' + packCard(p, p.title, tags, p.description, Engine.packSummary(p.id, p.worldCount)).replace('class="pack-card"', 'class="pack-card" data-mine="1"') +
       '<button class="btn-icon mine-del" data-del="' + E(p.id) + '" aria-label="Supprimer le cours ' + E(p.title) + '">🗑️</button></div>';
   }).join("") + '</div><h3 class="cat-section">📚 Les chapitres</h3>';
@@ -146,7 +151,7 @@ export function showCatalog() {
   var cards = list.map(function (p) {
     var sub = must(Packs.subject(p.subject)), lvl = must(Packs.level(p.level));
     var tags = '<span class="tag tag-subject">' + E(sub.icon) + " " + E(sub.label) + '</span><span class="tag tag-level">' + E(lvl.label) + "</span>" +
-      (p.groups ? '<span class="tag tag-groups">👥 ' + p.groups.length + " groupes</span>" : "");
+      (p.groups ? '<span class="tag tag-groups">👥 ' + p.groups.length + " groupes</span>" : "") + reviewTagHtml(p);
     return packCard(p, p.title, tags, p.description, chapterSummary(p));
   }).join("");
   var node = h('<section class="screen catalog">' +

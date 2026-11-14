@@ -626,6 +626,34 @@ test("correct goes everywhere the state goes: cookie (last field), .save, share 
   assert.strictEqual(m.profiles[0].state.correct, 25);
 });
 
+/* ---------- « à réviser » ---------- */
+
+test("à réviser: a chapter started and not played for 14 days; the first world played again gives +50 % XP, once; nothing is lost", () => {
+  const { E } = setup({ pack: makePack(3, 10) });
+  const DAY = 86400000;
+  assert.strictEqual(E.needsReview(PACK), false, "never played");
+  playWorld(E, 1);
+  assert.strictEqual(E.needsReview(PACK), false, "just played");
+  E.state.packs[PACK].lastPlayed = Date.now() - 13 * DAY;
+  assert.strictEqual(E.needsReview(PACK), false, "13 days");
+  E.state.packs[PACK].lastPlayed = Date.now() - 14 * DAY;
+  assert.strictEqual(E.needsReview(PACK), true, "14 days");
+  const stars = E.totalStars(PACK), trophy = E.trophy(PACK).tier;
+  // a world started then quit keeps the bonus for the next world, the same day
+  E.startWorld(2); E.answer({ correct: true }); E.quitWorld();
+  assert.strictEqual(E.needsReview(PACK), true, "still due after a quit");
+  const xp = E.state.xp;
+  const sum = playWorld(E, 2);
+  assert.strictEqual(sum.reviewXp, Math.round(sum.xpEarned / 2));
+  assert.ok(sum.reviewXp > 0);
+  assert.strictEqual(E.state.xp, xp + sum.xpEarned + sum.reviewXp);
+  assert.strictEqual(E.needsReview(PACK), false, "reviewed");
+  assert.strictEqual(playWorld(E, 1).reviewXp, 0, "only the first world");
+  assert.ok(E.totalStars(PACK) >= stars && E.trophy(PACK).tier >= trophy, "no star or trophy lost");
+  E.state.packs["5e/anglais/old"] = { worlds: {}, lastPlayed: 1 };
+  assert.strictEqual(E.needsReview("5e/anglais/old"), false, "opened but no world finished: not started");
+});
+
 /* ---------- multi-tab merge ---------- */
 
 test("merge: max xp / stars / accuracy, unions of badges, days, translations, newest lastPack, local current player", () => {

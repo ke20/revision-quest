@@ -81,3 +81,23 @@ test("tiered badges: earned while playing (right answers counter), shown family 
   await expect(page.locator(".badge-count").last()).toHaveText("102 bonnes réponses · prochain : 500 bonnes réponses");
   R.done();
 });
+
+test("à réviser: tag on the catalogue card and the map, +50 % XP on the first world played again", async ({ page }) => {
+  const R = H.makeReporter();
+  R.watch(page, "review");
+  const HISTORY = H.HISTORY, old = Date.now() - 20 * 86400000;
+  await withPlayer(page, { packs: { [HISTORY]: { lastPlayed: old, worlds: { 1: { stars: 2, accuracy: 0.55, completed: true } } } } }, { history: true });
+  await H.tap(page, "[data-act=catalog]");
+  await expect(page.locator(`.pack-card[data-pack="${HISTORY}"] .tag-review`)).toHaveText("🔁 à réviser");
+  await expect(page.locator(`.pack-card[data-pack="${H.EN}"] .tag-review`)).toHaveCount(0);
+  await H.tap(page, `.pack-card[data-pack="${HISTORY}"]`);
+  await expect(page.locator(".map-review")).toContainText("+50 % d'XP");
+  await H.startWorld(page, 0);
+  await H.playWorld(page, 0);
+  const sum = page.locator(".screen.complete");
+  await expect(sum.locator(".review-won")).toContainText("Bonus de révision : +");
+  expect(await page.evaluate((id) => Engine.state.packs[id].worlds["1"].stars, HISTORY)).toBe(5);
+  await H.tap(page, "[data-act=next]"); await H.closeModals(page);
+  await expect(page.locator(".map-review")).toHaveCount(0);
+  R.done();
+});

@@ -921,3 +921,8 @@ body.theme-hiver::after { background: #E0F2FE; opacity: .22; }
 .badge-card.tier { padding: 10px 6px; }
 .badge-card.tier .badge-icon { font-size: 1.8rem; }
 .badge-card.tier .badge-name { font-size: .85rem; margin: 2px 0 0; overflow-wrap: anywhere; }
+
+/* ---------- rewards: « à réviser » ---------- */
+.tag-review { background: #FFEDD5; color: #9A3412; }
+.map-review { background: #FFEDD5; color: #9A3412; font-weight: 700; border-radius: 14px; padding: 6px 12px; margin: 6px auto; max-width: 520px; text-align: center; font-size: .92rem; }
+.review-won { margin-top: 12px; background: #FFEDD5; color: #9A3412; border-radius: 14px; padding: 8px 10px; font-weight: 700; }

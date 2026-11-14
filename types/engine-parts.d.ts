@@ -149,6 +149,12 @@ interface EngineParts {
   trophyOf(st: PlayerState, id: string): Trophy;
   badgeValues(st: PlayerState): BadgeValues;
   awardTiers(nb: Badge[]): void;
+  REVIEW_DAYS: number;
+  REVIEW_BONUS: number;
+  needsReview(st: PlayerState, id: string): boolean;
+  /** Packs whose review bonus is due today (memory only): pack id → day. */
+  reviewDue: Record<string, string>;
+  todayStr(d?: Date): string;
 
   /* ---------- api/profiles.js ---------- */
   sameName(name: string): Profile | null;

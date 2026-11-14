@@ -209,6 +209,20 @@
     return { tier: tier, id: t.id, icon: t.icon, name: t.name, next: next };
   }
 
+  /* ---------- « à réviser » ---------- */
+
+  /** A chapter started (a world finished) and not played for REVIEW_DAYS days. @param {PlayerState} st @param {string} id */
+  function needsReview(st, id) {
+    var ps = own(st.packs, id) ? st.packs[id] : null;
+    if (!ps || !ps.lastPlayed) return false;
+    var w = ps.worlds, started = Object.keys(w).some(function (k) { return w[k].completed; });
+    return started && Date.now() - ps.lastPlayed >= E.REVIEW_DAYS * 86400000;
+  }
+  /* Packs where a review bonus is due today (memory only): playing a world updates lastPlayed, so a world quit
+     before its end does not lose the bonus of the next one, the same day. */
+  /** @type {Record<string, string>} */
+  E.reviewDue = {};
+
   /* ---------- tiered badges ---------- */
 
   /** The count of each tiered badge family for a state: chapters with a trophy (bronze or better), gold trophies,
@@ -233,5 +247,6 @@
   E.award = award; E.badgeById = badgeById; E.worldIndex = worldIndex; E.isBoss = isBoss; E.worldProgress = worldProgress;
   E.starsToUnlock = starsToUnlock; E.isUnlocked = isUnlocked; E.worldHasDocument = worldHasDocument;
   E.markDay = markDay; E.markPackPlayed = markPackPlayed; E.addXp = addXp; E.starsOf = starsOf;
+  E.needsReview = needsReview; E.todayStr = todayStr;
   E.unitInfo = unitInfo; E.trophyOf = trophyOf; E.badgeValues = badgeValues; E.awardTiers = awardTiers;
 })(window.EngineParts = window.EngineParts || /** @type {EngineParts} */ ({}));

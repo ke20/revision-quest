@@ -52,6 +52,9 @@
     /** Trophy of a playable pack (a chapter, or a group of a chapter "par groupes"), computed from the progress. */
     trophy: function (id) { return trophyOf(E.state, id); },
     badgeValues: function () { return E.badgeValues(E.state); },
+    REVIEW_DAYS: E.REVIEW_DAYS,
+    /** « À réviser »: started, and not played for REVIEW_DAYS days (or its review bonus is still due today). */
+    needsReview: function (id) { return E.needsReview(E.state, id) || E.reviewDue[id] === E.todayStr(); },
     /** Is this world the boss of the current pack (its last world)? */
     isBoss: isBoss,
     /** Best medal on the boss of the current pack, or null while it is not played. */

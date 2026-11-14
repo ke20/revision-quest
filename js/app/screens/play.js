@@ -246,6 +246,7 @@ export function showComplete(w) {
       "</div>" +
       '<div class="xp-line">Niveau ' + li.level + " · " + E(li.icon) + " " + E(li.name) + '<div class="xpbar"><div class="xpbar-fill" style="width:' + Math.round(li.progress * 100) + '%"></div></div></div>' +
       badges +
+      (sum.reviewXp ? '<div class="review-won pop">' + T("reviewBonus", sum.reviewXp) + "</div>" : "") +
       (sum.newTrophy ? '<div class="trophy-won pop trophy-' + E(sum.trophy.id) + '"><span class="trophy-won-icon">' + E(sum.trophy.icon) + "</span>" +
         "<span><b>" + T("trophyWon") + "</b><br>" + T("trophyTitle", T("trophyNames")[sum.trophy.tier]) + ' <span class="fb-xp">+' + sum.trophyXp + " XP</span></span></div>" : "") +
       (sum.unlockedWorld ? '<div class="unlocked pop">' + T("unlocked") + " <b>" + E(sum.unlockedWorld.icon || "") + " " + E(sum.unlockedWorld.title) + "</b></div>" : "") +

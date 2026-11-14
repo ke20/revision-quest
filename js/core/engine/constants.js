@@ -137,6 +137,11 @@
   var TROPHY_SILVER_STARS = 3;
   var TROPHY_GOLD_BOSS = 0.9;
 
+  /* « À réviser »: a chapter started but not played for REVIEW_DAYS days. The first world played again that day gives
+     REVIEW_BONUS more XP (computed from lastPlayed: nothing is stored, nothing is lost). */
+  var REVIEW_DAYS = 14;
+  var REVIEW_BONUS = 0.5;
+
   var ALLOWED_AVATARS = AVATARS.concat(["🙂"]);
   var SAFE_ID = /^p[a-z0-9]{4,24}$/;
 
@@ -149,6 +154,7 @@
   E.MAX_PROFILES = MAX_PROFILES; E.MAX_TIME = MAX_TIME; E.COMFORT = COMFORT; E.COMFORT_NO = COMFORT_NO;
   E.COMFORT_YES = COMFORT_YES; E.validGrade = validGrade; E.MAX_STARS = MAX_STARS;
   E.STARS_TO_UNLOCK = STARS_TO_UNLOCK; E.starsFor = starsFor; E.BOSS_PASS = BOSS_PASS; E.MEDALS = MEDALS; E.medalFor = medalFor; E.ALLOWED_AVATARS = ALLOWED_AVATARS;
+  E.REVIEW_DAYS = REVIEW_DAYS; E.REVIEW_BONUS = REVIEW_BONUS;
   E.TROPHIES = TROPHIES; E.TROPHY_SILVER_STARS = TROPHY_SILVER_STARS; E.TROPHY_GOLD_BOSS = TROPHY_GOLD_BOSS;
   E.SAFE_ID = SAFE_ID;
 })(window.EngineParts = window.EngineParts || /** @type {EngineParts} */ ({}));

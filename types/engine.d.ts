@@ -81,6 +81,8 @@ interface WorldSession {
   over: boolean;
   /** The last world of the pack: no heart lost. */
   boss?: boolean;
+  /** A chapter « à réviser »: +50 % XP when this world is finished. */
+  review?: boolean;
 }
 
 /** A tier of the chapter trophy (index 0 = none, 1 bronze, 2 silver, 3 gold) and its bonus XP. */
@@ -176,6 +178,8 @@ interface WorldSummary {
   trophy: Trophy;
   newTrophy: boolean;
   trophyXp: number;
+  /** « À réviser »: bonus XP (+50 % of the world's XP). */
+  reviewXp: number;
   levelUp: LevelInfo | null;
   [more: string]: unknown;
 }
@@ -218,6 +222,8 @@ interface EngineApi {
   trophy(packId: string): Trophy;
   /** Count of each tiered badge family for the current player. */
   badgeValues(): BadgeValues;
+  REVIEW_DAYS: number;
+  needsReview(packId: string): boolean;
   isBoss(worldId: number | string): boolean;
   bossMedal(): Medal | null;
   starsToUnlock(): number;

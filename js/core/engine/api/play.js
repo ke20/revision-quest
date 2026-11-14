@@ -9,7 +9,7 @@
     streak = E.streak, award = E.award, worldIndex = E.worldIndex, worldProgress = E.worldProgress,
     starsToUnlock = E.starsToUnlock, isUnlocked = E.isUnlocked, worldHasDocument = E.worldHasDocument,
     markDay = E.markDay, markPackPlayed = E.markPackPlayed, addXp = E.addXp, isBoss = E.isBoss, BOSS_PASS = E.BOSS_PASS,
-    medalFor = E.medalFor, trophyOf = E.trophyOf, TROPHIES = E.TROPHIES, awardTiers = E.awardTiers;
+    medalFor = E.medalFor, needsReview = E.needsReview, todayStr = E.todayStr, trophyOf = E.trophyOf, TROPHIES = E.TROPHIES, awardTiers = E.awardTiers;
 
   /** Indexes of the exercises played in this run. A boss draws `draw` questions from its pool (all of them when
       draw is missing), in a new random order each time; other worlds play every exercise in order.
@@ -27,6 +27,8 @@
     startWorld: function (worldId) {
       var w = worlds()[worldIndex(worldId)];
       var order = w ? runOrder(w, isBoss(worldId)) : [];
+      var pid = /** @type {string} */ (packId());
+      if (needsReview(E.state, pid)) E.reviewDue[pid] = todayStr();
       E.session = {
         packId: /** @type {string} */ (packId()), // a session only exists inside a loaded pack
         worldId: worldId,
@@ -43,7 +45,8 @@
         newBadges: [],
         skipped: 0,         // broken exercises, left out of the accuracy
         over: false,
-        boss: isBoss(worldId) // last world: no heart lost
+        boss: isBoss(worldId), // last world: no heart lost
+        review: E.reviewDue[pid] === todayStr() // « à réviser »: +50 % XP when this world is finished
       };
       return E.session;
     },
@@ -85,7 +88,8 @@
         newBadges: [],
         skipped: int(saved.skipped, 0, total),
         over: false,
-        boss: isBoss(w.id)
+        boss: isBoss(w.id),
+        review: saved.review === true && E.reviewDue[/** @type {string} */ (packId())] === todayStr()
       };
       E.session.over = E.session.hearts === 0;
       return E.session;
@@ -184,7 +188,10 @@
       // a new trophy tier (or several at once): its bonus XP, given only now (the trophy itself is computed)
       var trophy = trophyOf(E.state, s.packId), trophyXp = 0, levelUp = null;
       for (var t = trophyBefore + 1; t <= trophy.tier; t++) trophyXp += TROPHIES[t].xp;
-      if (trophyXp) levelUp = addXp(trophyXp);
+      // « à réviser »: the first world played again gives 50 % more XP (once: the chapter is fresh again)
+      var reviewXp = s.review ? Math.round(Math.max(0, s.xpEarned) * E.REVIEW_BONUS) : 0;
+      if (s.review) delete E.reviewDue[s.packId];
+      if (trophyXp + reviewXp) levelUp = addXp(trophyXp + reviewXp);
       awardTiers(nb);
       save();
       E.worldsInARow++;
@@ -210,6 +217,7 @@
         trophy: trophy,
         newTrophy: trophy.tier > trophyBefore,
         trophyXp: trophyXp,
+        reviewXp: reviewXp,
         levelUp: levelUp
       };
       E.session = null;
