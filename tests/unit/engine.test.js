@@ -539,6 +539,93 @@ test("data in another format (old versions) is ignored", () => {
   assert.strictEqual(I.uncompact({ v: 2, p: [["pabcd1234", "X", "🦊", 1, [[1, 3, 100]]]] }), null);
 });
 
+/* ---------- right answers counter, tiered badges, older saves ---------- */
+
+const OLD_BADGES = ["first_step", "combo5", "combo10", "perfect", "translator", "bookworm", "boss", "stars", "streak3", "explorer"];
+
+test("badges: the first ten keep their place (the cookie stores indexes); tiers are added at the end", () => {
+  const { E } = setup({ player: false });
+  assert.deepStrictEqual(j(E.BADGES.slice(0, 10).map((b) => b.id)), OLD_BADGES);
+  const ids = E.BADGES.map((b) => b.id);
+  assert.strictEqual(new Set(ids).size, ids.length, "unique ids");
+  for (const id of ["chapters3", "chapters30", "gold1", "gold10", "stars50", "stars1000", "streak7", "streak30", "correct100", "correct5000"]) assert.ok(ids.includes(id), id);
+  assert.ok(E.BADGES.filter((b) => b.family).every((b) => Number.isInteger(b.goal) && b.goal > 0));
+});
+
+test("correct: counts right answers only (a 2nd try too), never a skipped or wrong one", () => {
+  const { E } = setup({ pack: makePack(1, 10) });
+  E.startWorld(1);
+  E.answer({ correct: true, attempts: 1 }); E.answer({ correct: true, attempts: 2 });
+  E.answer({ correct: false }); E.answer({ skipped: true });
+  assert.strictEqual(E.state.correct, 2);
+  assert.strictEqual(j(E.badgeValues()).correct, 2);
+});
+
+test("tiered badges: right answers, stars, days in a row, chapters (trophies) and gold trophies; a badge earned stays earned", () => {
+  const { E } = setup({ pack: makePack(3, 10) });
+  E.state.correct = 98;
+  E.startWorld(1);
+  E.answer({ correct: true });
+  assert.ok(!E.hasBadge("correct100"));
+  assert.deepStrictEqual(j(E.answer({ correct: true }).newBadges).map((b) => b.id), ["correct100"]);
+  E.quitWorld();
+  // days in a row: 7 days up to today
+  const d = new Date(), days = [];
+  for (let i = 6; i >= 0; i--) { const x = new Date(d); x.setDate(d.getDate() - i); days.push(x.getFullYear() + "-" + String(x.getMonth() + 1).padStart(2, "0") + "-" + String(x.getDate()).padStart(2, "0")); }
+  E.state.days = days;
+  playWorld(E, 1); playWorld(E, 2);
+  assert.ok(E.hasBadge("streak3") && E.hasBadge("streak7") && !E.hasBadge("streak14"));
+  const sum = playWorld(E, 3); // gold trophy at once
+  const got = sum.newBadges.map((b) => b.id);
+  assert.ok(got.includes("boss") && got.includes("gold1"), got.join());
+  assert.ok(!E.hasBadge("chapters3"));
+  // stars: 50 in total (other packs count too)
+  const w = {}; for (let i = 1; i <= 10; i++) w[i] = { stars: 5, accuracy: 1, completed: true };
+  E.state.packs["5e/anglais/other"] = { worlds: w, lastPlayed: 1 };
+  playWorld(E, 1);
+  assert.ok(E.hasBadge("stars50") && !E.hasBadge("stars100"));
+  assert.deepStrictEqual(j(E.badgeValues()), { chapters: 1, gold: 1, stars: 65, streak: 7, correct: 140 });
+  E.resetPack(PACK); E.resetPack("5e/anglais/other");
+  E.state.days = [];
+  assert.ok(E.hasBadge("stars50") && E.hasBadge("gold1") && E.hasBadge("streak7"), "kept after a reset");
+});
+
+test("older saves: no correct counter → 0 (storage, .save, cookie); hostile values are clamped", () => {
+  const { E } = setup({ player: false });
+  const I = E._internals;
+  const old = { xp: 12, packs: {}, badges: ["boss", "stars"], translations: [], days: [], sound: true, bestCombo: 3, lastPack: null };
+  assert.strictEqual(j(I.normalizeState(old)).correct, 0);
+  for (const [v, want] of [["x", 0], [-5, 0], [1e99, 10000000], [12.7, 13], [null, 0]]) assert.strictEqual(I.normalizeState({ ...old, correct: v }).correct, want, String(v));
+  // a cookie written before the counter (14 fields)
+  const c = I.uncompact({ v: 3, c: "pcook00001", p: [["pcook00001", "Old", "🦊", 40, [], [6, 7, 9], [], ["20261101"], 1, 3, 1, "", "41ono", 0]] });
+  assert.strictEqual(c.profiles[0].state.correct, 0);
+  assert.deepStrictEqual(j(c.profiles[0].state.badges), ["boss", "stars", "explorer"]);
+  // a .save written before the counter
+  const inner = (o) => { const s = JSON.stringify(o); return "RQSAVE." + Buffer.from(s).toString("base64") + "." + I.hash(s); };
+  const r = E.parseImport(inner({ app: "revision-quest", version: 3, profile: { name: "Vieux", state: old } }));
+  assert.ok(r.ok);
+  assert.strictEqual(r.profile.state.correct, 0);
+  assert.deepStrictEqual(j(r.profile.state.badges), ["boss", "stars"]);
+});
+
+test("correct goes everywhere the state goes: cookie (last field), .save, share code, merge (highest)", async () => {
+  const jar = cookieJar();
+  const E = load({ cookies: jar }).window.Engine;
+  E.createProfile("Cora", "🐸");
+  E.state.correct = 4321; E.setSound(true);
+  const compact = E._internals.compactProfile(E.currentProfile());
+  assert.strictEqual(compact.length, 15);
+  assert.strictEqual(compact[14], 4321, "added at the end of the compact profile");
+  assert.strictEqual(load({ cookies: jar }).window.Engine.state.correct, 4321, "cookie round-trip");
+  const E2 = load().window.Engine;
+  assert.strictEqual(E2.parseImport(E.exportProfile().content).profile.state.correct, 4321, ".save");
+  assert.strictEqual((await E2.parseShareCode(await E.shareCode())).profile.state.correct, 4321, "share code");
+  const I = E._internals;
+  const P = (correct) => I.normalizeProfile({ id: "pcorr00001", name: "Cora", state: { correct } });
+  const m = j(I.mergeDb({ currentId: null, deleted: {}, profiles: [P(10)] }, { currentId: null, deleted: {}, profiles: [P(25)] }));
+  assert.strictEqual(m.profiles[0].state.correct, 25);
+});
+
 /* ---------- multi-tab merge ---------- */
 
 test("merge: max xp / stars / accuracy, unions of badges, days, translations, newest lastPack, local current player", () => {

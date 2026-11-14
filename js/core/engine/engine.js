@@ -51,6 +51,7 @@
     TROPHIES: E.TROPHIES,
     /** Trophy of a playable pack (a chapter, or a group of a chapter "par groupes"), computed from the progress. */
     trophy: function (id) { return trophyOf(E.state, id); },
+    badgeValues: function () { return E.badgeValues(E.state); },
     /** Is this world the boss of the current pack (its last world)? */
     isBoss: isBoss,
     /** Best medal on the boss of the current pack, or null while it is not played. */

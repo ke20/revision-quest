@@ -47,7 +47,8 @@
       days: unionList(mine.days, other.days).sort().slice(-60),
       sound: mine.sound,
       bestCombo: Math.max(mine.bestCombo, other.bestCombo),
-      lastPack: lp
+      lastPack: lp,
+      correct: Math.max(mine.correct, other.correct)
     };
   }
   /** epoch changes when a progress is reset or replaced by an import: the newest epoch wins, no merge.

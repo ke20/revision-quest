@@ -14,19 +14,34 @@
   ];
 
   /* The order of this list must never change: the cookie backup stores badge indexes.
-     New badges are always added at the end. Ids are kept from older versions (nobody loses a badge). */
-  var BADGES = [
+     New badges are always added at the end. Ids are kept from older versions (nobody loses a badge).
+     A badge with a family is one tier of a tiered badge: earned when the family's count (progress.js badgeValues)
+     reaches its goal. The other badges are "exploits", kept secret until earned. */
+  /** @type {Badge[]} */
+  var BADGES = /** @type {Badge[]} */ ([
     { id: "first_step", icon: "👣", name: "Premier pas", desc: "Ta première bonne réponse" },
     { id: "combo5", icon: "🔥", name: "Combo 5", desc: "5 bonnes réponses d'affilée" },
     { id: "combo10", icon: "☄️", name: "Combo 10", desc: "10 bonnes réponses d'affilée" },
     { id: "perfect", icon: "💯", name: "Sans faute", desc: "100 % de réussite sur un monde" },
     { id: "translator", icon: "🔎", name: "Curieux", desc: "Consulte 10 traductions ou définitions" },
     { id: "bookworm", icon: "📚", name: "Grand lecteur", desc: "Termine l'avant-dernier monde d'un chapitre, ou un monde avec un document à lire" },
-    { id: "boss", icon: "🏆", name: "Chapitre terminé", desc: "Réussis le boss d'un chapitre (80 % ou plus)" },
+    { id: "boss", icon: "🏆", name: "Chapitre terminé", desc: "Réussis le boss d'un chapitre (80 % ou plus)", family: "chapters", goal: 1 },
     { id: "stars", icon: "🌟", name: "Collectionneur", desc: "5 étoiles sur tous les mondes d'un chapitre" },
-    { id: "streak3", icon: "📅", name: "Série de 3 jours", desc: "Joue 3 jours de suite" },
+    { id: "streak3", icon: "📅", name: "Série de 3 jours", desc: "Joue 3 jours de suite", family: "streak", goal: 3 },
     { id: "explorer", icon: "🧭", name: "Explorateur", desc: "Joue dans 2 chapitres différents" }
-  ];
+  ]).concat(
+    tiers("chapters", "🏆", [3, 5, 10, 20, 30], function (n) { return [n + " chapitres", "Gagne le trophée 🥉 de " + n + " chapitres (boss réussi)"]; }),
+    tiers("gold", "🥇", [1, 3, 5, 10], function (n) { return [n > 1 ? n + " trophées d'or" : "Trophée d'or", n > 1 ? "Gagne " + n + " trophées 🥇" : "Gagne un trophée 🥇 : 5★ partout et boss à 90 %"]; }),
+    tiers("stars", "⭐", [50, 100, 250, 500, 1000], function (n) { return [n + " étoiles", "Gagne " + n + " étoiles en tout"]; }),
+    tiers("streak", "📅", [7, 14, 30], function (n) { return ["Série de " + n + " jours", "Joue " + n + " jours de suite"]; }),
+    tiers("correct", "✅", [100, 500, 1000, 5000], function (n) { return [n + " bonnes réponses", "Donne " + n + " bonnes réponses en tout"]; })
+  );
+  /** Badges of a tiered family, one per goal (ids family + goal, e.g. "stars50").
+      @param {string} family @param {string} icon @param {number[]} goals @param {(n: number) => string[]} text [name, desc]
+      @returns {Badge[]} */
+  function tiers(family, icon, goals, text) {
+    return goals.map(function (n) { var t = text(n); return { id: family + n, icon: icon, name: t[0], desc: t[1], family: family, goal: n }; });
+  }
 
   var MAX_HEARTS = 3;
   var HINT_COST = 3;

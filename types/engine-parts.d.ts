@@ -147,6 +147,8 @@ interface EngineParts {
   starsOf(st: PlayerState, id?: string): number;
   unitInfo(id: string): { ids: string[] | null; count: number; boss: string } | null;
   trophyOf(st: PlayerState, id: string): Trophy;
+  badgeValues(st: PlayerState): BadgeValues;
+  awardTiers(nb: Badge[]): void;
 
   /* ---------- api/profiles.js ---------- */
   sameName(name: string): Profile | null;

@@ -8,6 +8,7 @@
     COMFORT = E.COMFORT, COMFORT_NO = E.COMFORT_NO, COMFORT_YES = E.COMFORT_YES, validGrade = E.validGrade,
     MAX_STARS = E.MAX_STARS, starsFor = E.starsFor, ALLOWED_AVATARS = E.ALLOWED_AVATARS, SAFE_ID = E.SAFE_ID,
     own = E.own, isObj = E.isObj, newId = E.newId, cleanName = E.cleanName, clampInt = E.clampInt;
+  var MAX_COUNT = 10000000; // cap of the counters (right answers…)
 
   /** @returns {PlayerState} */
   function defaultState() {
@@ -19,7 +20,8 @@
       days: [],            // "YYYY-MM-DD" days played
       sound: true,
       bestCombo: 0,
-      lastPack: null       // id of the last pack played
+      lastPack: null,      // id of the last pack played
+      correct: 0           // right answers in total (tiered badge)
     };
   }
 
@@ -86,6 +88,7 @@
     out.sound = s.sound === undefined ? true : !!s.sound;
     out.bestCombo = clampInt(s.bestCombo || 0, 0, 10000);
     out.lastPack = typeof s.lastPack === "string" && PACK_ID.test(s.lastPack) && own(out.packs, s.lastPack) ? s.lastPack : null;
+    out.correct = clampInt(s.correct || 0, 0, MAX_COUNT); // missing in older saves: 0
     return out;
   }
 

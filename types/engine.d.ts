@@ -24,6 +24,8 @@ interface PlayerState {
   sound: boolean;
   bestCombo: number;
   lastPack: string | null;
+  /** Right answers in total (tiered badge); missing in older saves (0). */
+  correct: number;
 }
 
 /** Comfort settings of a player (Réglages). */
@@ -93,7 +95,10 @@ interface Medal { id: string; icon: string; name: string; min: number }
 
 /* ---------- public engine (window.Engine), checked against js/core/engine/engine.js (`@type {EngineApi}` on its object) ---------- */
 
-interface Badge { id: string; icon: string; name: string; desc: string }
+/** family / goal: one tier of a tiered badge (earned when the family's count reaches goal); none: a secret "exploit". */
+interface Badge { id: string; icon: string; name: string; desc: string; family?: string; goal?: number }
+/** Count of each tiered badge family (Engine.badgeValues). */
+interface BadgeValues { chapters: number; gold: number; stars: number; streak: number; correct: number }
 interface Level { icon: string; name: string; xp: number }
 
 interface LevelInfo {
@@ -211,6 +216,8 @@ interface EngineApi {
   medalFor(accuracy: number): Medal;
   TROPHIES: TrophyTier[];
   trophy(packId: string): Trophy;
+  /** Count of each tiered badge family for the current player. */
+  badgeValues(): BadgeValues;
   isBoss(worldId: number | string): boolean;
   bossMedal(): Medal | null;
   starsToUnlock(): number;

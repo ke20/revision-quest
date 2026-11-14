@@ -72,7 +72,7 @@ test("players, match rule, leaderboard, export/import, cookie fallback", async (
   // 3. badges hidden
   await tap(page, '[data-act=badges]'); await wait(page, 200);
   let btxt = await page.textContent('.badge-grid');
-  ok(!/Premier pas|Combo|Curieux|👣/.test(btxt) && (btxt.match(/\?\?\?/g) || []).length === 10, 'all 10 badges hidden initially');
+  ok(!/Premier pas|Combo|Curieux|👣/.test(btxt) && (btxt.match(/\?\?\?/g) || []).length === 8, 'all 8 exploits hidden initially (the tiered badges have their own families)');
   ok(btxt.includes('Badge secret'), 'secret teaser shown');
   await tap(page, '[data-act=back]');
 

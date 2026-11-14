@@ -913,3 +913,11 @@ body.theme-hiver::after { background: #E0F2FE; opacity: .22; }
 .trophy-row-main small { color: var(--ink-soft); font-size: .82rem; }
 .trophy-row-cup { font-size: 1.9rem; flex: none; min-width: 34px; text-align: center; }
 .trophy-row.none .trophy-row-cup { color: #CBB8E0; }
+
+/* ---------- rewards: tiered badges (badges screen) ---------- */
+.badges .cat-section:first-of-type { margin-top: 0; }
+.badge-count { color: #fff; margin: -4px 4px 8px; font-size: .95rem; opacity: .95; }
+.badge-grid.tiers { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
+.badge-card.tier { padding: 10px 6px; }
+.badge-card.tier .badge-icon { font-size: 1.8rem; }
+.badge-card.tier .badge-name { font-size: .85rem; margin: 2px 0 0; overflow-wrap: anywhere; }

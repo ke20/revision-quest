@@ -9,7 +9,7 @@
     streak = E.streak, award = E.award, worldIndex = E.worldIndex, worldProgress = E.worldProgress,
     starsToUnlock = E.starsToUnlock, isUnlocked = E.isUnlocked, worldHasDocument = E.worldHasDocument,
     markDay = E.markDay, markPackPlayed = E.markPackPlayed, addXp = E.addXp, isBoss = E.isBoss, BOSS_PASS = E.BOSS_PASS,
-    medalFor = E.medalFor, trophyOf = E.trophyOf, TROPHIES = E.TROPHIES;
+    medalFor = E.medalFor, trophyOf = E.trophyOf, TROPHIES = E.TROPHIES, awardTiers = E.awardTiers;
 
   /** Indexes of the exercises played in this run. A boss draws `draw` questions from its pool (all of them when
       draw is missing), in a new random order each time; other worlds play every exercise in order.
@@ -131,6 +131,7 @@
         mult = E.session.combo >= 6 ? 2 : E.session.combo >= 3 ? 1.5 : 1;
         gained = Math.round(base * mult);
         E.session.score += attempts <= 1 ? 1 : 0.5;
+        E.state.correct++;
         award("first_step", nb);
         if (E.session.combo >= 5) award("combo5", nb);
         if (E.session.combo >= 10) award("combo10", nb);
@@ -144,6 +145,7 @@
         if (E.session.hearts === 0) E.session.over = true;
       }
       if (streak() >= 3) award("streak3", nb);
+      awardTiers(nb);
       E.session.index++;
       E.session.newBadges = E.session.newBadges.concat(nb);
       save();
@@ -183,6 +185,7 @@
       var trophy = trophyOf(E.state, s.packId), trophyXp = 0, levelUp = null;
       for (var t = trophyBefore + 1; t <= trophy.tier; t++) trophyXp += TROPHIES[t].xp;
       if (trophyXp) levelUp = addXp(trophyXp);
+      awardTiers(nb);
       save();
       E.worldsInARow++;
       var pe = settings().pauseEvery;

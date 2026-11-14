@@ -14,7 +14,7 @@ test("export/import round-trip is lossless, cookie restore gives back the player
     await H.newPlayer(page, 'Inès', 3);
     await page.evaluate(EN => { // a player with progress in two packs, badges, days, translations
       const s = Engine.state;
-      s.xp = 512; s.badges.push('first_step', 'combo5', 'perfect', 'translator'); s.translations.push('1a2b3c', 'zz9'); s.days.push('2026-10-30', '2026-10-31'); s.bestCombo = 7;
+      s.xp = 512; s.badges.push('first_step', 'combo5', 'perfect', 'translator'); s.translations.push('1a2b3c', 'zz9'); s.days.push('2026-10-30', '2026-10-31'); s.bestCombo = 7; s.correct = 321;
       s.packs[EN] = { worlds: { 1: { stars: 5, accuracy: 1, completed: true }, 2: { stars: 4, accuracy: 0.8, completed: true } }, lastPlayed: 1761900000000 };
       s.lastPack = EN;
     }, EN);
@@ -34,6 +34,7 @@ test("export/import round-trip is lossless, cookie restore gives back the player
     const strip = s => { const o = JSON.parse(s); Object.values(o.state.packs).forEach(p => { p.lastPlayed = Math.floor(p.lastPlayed / 1000); }); o.state.days = o.state.days.slice(-14); o.state.translations = []; return JSON.stringify(o); };
     ok(strip(afterCookie) === strip(before), 'cookie restore (v3) gives back the profile (all packs, lastPack, badges…; translations are not in the cookie)');
     ok(JSON.parse(afterCookie).state.translations.length === 0, 'translations are never stored in the cookie');
+    ok(JSON.parse(afterCookie).state.correct === 321, 'the right answers counter is in the cookie');
     // wipe everything, import the v3 file
     await page.evaluate(() => localStorage.clear()); await ctx.clearCookies(); await page.reload(); await wait(page, 300);
     await tap(page, '[data-act=save]'); await wait(page, 300);
@@ -78,6 +79,27 @@ test("data in an old or unknown format is ignored: the app starts fresh, never c
   // a current state carrying an old "worlds" field keeps only the current fields
   const mixed = await page.evaluate((f) => Engine.parseImport(f), H.saveFile("RQSAVE", { app: "revision-quest", version: 3, profile: { name: "Mix", state: { xp: 5, worlds: { 1: { stars: 3 } } } } }));
   ok(mixed.ok && Object.keys(mixed.profile.state.packs).length === 0 && mixed.profile.state.xp === 5, "old-format fields inside a current save are ignored");
+  await ctx.close();
+  R.done();
+});
+
+test("a save from before the rewards (no right answers counter, 14-field cookie) still loads, badges kept", async ({ browser }) => {
+  const R = H.makeReporter(); const ok = R.ok;
+  const ctx = await browser.newContext(); const page = await ctx.newPage(); R.watch(page, "pre-rewards");
+  await page.goto(BASE);
+  // cookie written by the previous version: 14 fields, badges boss (6) and streak3 (8) by index
+  const old = Buffer.from(JSON.stringify({ v: 3, c: "pprev0001", p: [["pprev0001", "Avant", "🐼", 300, [[EN, 1762000000, [[1, 5, 100]]]], [0, 6, 8], [], ["20261101"], 1, 4, 1, EN, "41ono", 0]] }), "utf8")
+    .toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  await page.evaluate(() => localStorage.clear());
+  await ctx.addCookies([H.cookie("aaa_save", "1"), H.cookie("aaa_save_0", old)]);
+  await page.reload();
+  await expect(page.locator(".screen.home")).toBeVisible();
+  const st = await page.evaluate(() => Engine.state);
+  ok(st.xp === 300 && st.correct === 0 && st.badges.join() === "first_step,boss,streak3" && !("daily" in st && st.daily), "cookie of the previous version: counter 0, badges kept " + JSON.stringify(st));
+  // a .save of the previous version (state without the new fields)
+  const file = H.saveFile("RQSAVE", { app: "revision-quest", version: 3, profile: { name: "Ancien", state: { xp: 40, packs: {}, badges: ["perfect"], translations: [], days: [], sound: true, bestCombo: 2, lastPack: null } } });
+  const r = await page.evaluate((f) => Engine.parseImport(f), file);
+  ok(r.ok && r.profile.state.correct === 0 && r.profile.state.badges.join() === "perfect", ".save of the previous version imports");
   await ctx.close();
   R.done();
 });

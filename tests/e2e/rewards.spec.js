@@ -62,3 +62,22 @@ test("trophies: on the catalogue card, on the map with what is missing, a party 
   await expect(page.locator(".screen.map")).toBeVisible();
   R.done();
 });
+
+test("tiered badges: earned while playing (right answers counter), shown family by family on the badges screen", async ({ page }) => {
+  const R = H.makeReporter();
+  R.watch(page, "badges");
+  await withPlayer(page, { correct: 99 }, { history: true });
+  await H.gotoPack(page, H.HISTORY);
+  await H.startWorld(page, 0);
+  await H.playWorld(page, 0);
+  await expect(page.locator(".screen.complete .new-badges")).toContainText("100 bonnes réponses");
+  expect(await page.evaluate(() => Engine.state.correct)).toBe(102);
+  await page.evaluate(() => App.showHome());
+  await H.tap(page, "[data-act=badges]");
+  await expect(page.locator(".screen.badges .cat-section")).toHaveText(["🎖️ Exploits", "🏆 Chapitres terminés", "🥇 Trophées d'or", "⭐ Étoiles", "📅 Jours de suite", "✅ Bonnes réponses"]);
+  const correct = page.locator(".badge-grid.tiers").last();
+  await expect(correct.locator(".badge-card.on")).toHaveText(["✅100 bonnes réponses"]);
+  await expect(correct.locator(".badge-card.locked")).toHaveCount(3);
+  await expect(page.locator(".badge-count").last()).toHaveText("102 bonnes réponses · prochain : 500 bonnes réponses");
+  R.done();
+});

@@ -209,10 +209,29 @@
     return { tier: tier, id: t.id, icon: t.icon, name: t.name, next: next };
   }
 
+  /* ---------- tiered badges ---------- */
+
+  /** The count of each tiered badge family for a state: chapters with a trophy (bronze or better), gold trophies,
+      stars, days in a row, right answers. @param {PlayerState} st @returns {BadgeValues} */
+  function badgeValues(st) {
+    var chapters = 0, gold = 0;
+    Object.keys(st.packs).forEach(function (id) {
+      var t = trophyOf(st, id).tier;
+      if (t >= 1) chapters++;
+      if (t >= 3) gold++;
+    });
+    return { chapters: chapters, gold: gold, stars: starsOf(st), streak: st === E.state ? streak() : 0, correct: st.correct };
+  }
+  /** Award every tier reached by the current player (a badge earned stays earned). @param {Badge[]} nb */
+  function awardTiers(nb) {
+    var v = /** @type {Record<string, number>} */ (/** @type {unknown} */ (badgeValues(E.state)));
+    BADGES.forEach(function (b) { if (b.family && own(v, b.family) && v[b.family] >= /** @type {number} */ (b.goal)) award(b.id, nb); });
+  }
+
   E.PAUSE_KEY = PAUSE_KEY; E.PAUSE_MS = PAUSE_MS; E.readPauses = readPauses; E.settings = settings; E.packId = packId;
   E.worlds = worlds; E.packState = packState; E.levelInfo = levelInfo; E.streak = streak; E.hasBadge = hasBadge;
   E.award = award; E.badgeById = badgeById; E.worldIndex = worldIndex; E.isBoss = isBoss; E.worldProgress = worldProgress;
   E.starsToUnlock = starsToUnlock; E.isUnlocked = isUnlocked; E.worldHasDocument = worldHasDocument;
   E.markDay = markDay; E.markPackPlayed = markPackPlayed; E.addXp = addXp; E.starsOf = starsOf;
-  E.unitInfo = unitInfo; E.trophyOf = trophyOf;
+  E.unitInfo = unitInfo; E.trophyOf = trophyOf; E.badgeValues = badgeValues; E.awardTiers = awardTiers;
 })(window.EngineParts = window.EngineParts || /** @type {EngineParts} */ ({}));
