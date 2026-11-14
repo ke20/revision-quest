@@ -130,6 +130,16 @@ Le **dernier** monde est le **boss** du chapitre (dès 2 mondes) : le contrôle 
 - `\n` → retour à la ligne (dans les documents).
 - Lignes qui commencent par `- ` (après un `\n`) → liste à puces : pour aérer plusieurs exemples dans un point de
   leçon ou une explication (`"Pour montrer qu'on comprend :\n- [[I understand how you feel|je comprends ce que tu ressens]]\n- …"`).
+- **Énumérations en liste à puces, dès 2 éléments** : les plus jeunes lisent mieux une liste qu'une phrase coupée de
+  virgules. Une phrase d'introduction qui finit par `:`, puis un élément par ligne. Plusieurs listes dans un même
+  point : une ligne d'introduction avant chacune.
+
+  ```js
+  "Des **noms** :\n- but\n- navigateur\n- côte"                       // et pas "Des noms : but, navigateur, côte."
+  "On convertit d'abord :\n- 1 m = 100 cm\n- 1 km = 1 000 m"          // et pas "… : 1 m = 100 cm ; 1 km = 1 000 m."
+  ```
+
+  Le validateur signale (en conseil) une énumération restée dans une phrase.
 - Packs de langue (`en`, `es`) : la traduction d'une phrase anglaise ou espagnole se met de préférence en
   `[[phrase|traduction]]` (l'élève réfléchit, puis touche s'il a besoin). Une traduction qui reste entre parenthèses
   `(…)` s'affiche en petit et en gris.
@@ -428,6 +438,7 @@ node tools/validate-pack.js packs/cm2/francais/dictee-statue-de-la-liberte/g1.js
 - [ ] **Consignes simples** : une phrase, un verbe d'action (« Relie », « Touche », « Complète », « Range »).
       Vocabulaire du niveau visé (pour un CM2 : phrases courtes, pas de mots savants sans `[[mot|explication]]`).
 - [ ] **Explications courtes** (1 à 2 phrases) qui disent *pourquoi*, avec le mot-clé en `**gras**`.
+- [ ] **Énumérations en liste à puces** (dès 2 éléments), dans les leçons et les explications.
 - [ ] **Leçon** : 2 à 4 points maximum, 1 à 3 exemples. On doit pouvoir la lire en 30 secondes.
 - [ ] **Progression du plus facile au plus difficile** : reconnaître (QCM, relier) → classer / ordonner →
       produire (texte à trou, trouver l'erreur) → boss en `question` (dernier monde).

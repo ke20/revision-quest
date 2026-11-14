@@ -266,3 +266,18 @@ test("strict format: every pack and fixture pack file of the repo", () => {
   assert.ok(files.length > 20);
   for (const f of files) assert.doesNotThrow(() => parseStrict(fs.readFileSync(f, "utf8")), path.relative(ROOT, f));
 });
+
+test("inlineList: an enumeration left in a sentence is a tip; a bullet list or plain prose is not", () => {
+  const { inlineList } = require("../../js/core/pack-rules.js");
+  assert.ok(inlineList("Des **noms** : but, navigateur, côte, ile."));
+  assert.ok(inlineList("On convertit d'abord : 1 m = 100 cm ; 1 km = 1 000 m."));
+  assert.ok(inlineList("Noms : but, ile · adjectifs : géant, isolé."));
+  assert.ok(inlineList("Deux formes : [[a|verbe avoir]] ; à."), "2 items between « ; »");
+  assert.ok(!inlineList("On peut dire « avait » : c'est le verbe avoir, **a**."), "a reasoning is prose");
+  assert.ok(!inlineList("La capitale : Washington, D.C. (pas New York)."), "2 items between commas: too unsure");
+  assert.ok(!inlineList("Des **noms** :\n- but\n- côte"), "already a bullet list");
+  assert.ok(!inlineList("Le résultat est 3,7 L : on divise par 10."), "a decimal comma is not a separator");
+  assert.ok(!inlineList("Astuce : remplace par « avait », si ça marche, c'est le verbe avoir qui convient ici sans doute."), "long parts are prose");
+  assert.ok(!inlineList("Pas de liste ici, juste une phrase."));
+  assert.ok(!inlineList("Table de 7 : 7, 14, 21, 28…"), "a sequence of numbers stays in line");
+});

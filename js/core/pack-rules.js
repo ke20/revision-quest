@@ -347,12 +347,37 @@
     return stats;
   }
 
+  /** Does a text (probably) list short items in a sentence, after a colon: 3 items or more between commas, or 2 between
+      « ; » or « · »; reasoning (« c'est… », « sinon… ») and parentheses do not count. Best effort, a tip only. (« Des noms : but, côte, ile. »,
+      « 1 m = 100 cm ; 1 km = 1 000 m »)? A bullet list is easier to read for a child ("…:\n- but\n- côte").
+      @param {unknown} s @returns {boolean} */
+  function inlineList(s) {
+    if (typeof s !== "string" || /(^|\n)\s*- /.test(s)) return false;
+    const t = plain(s).replace(/(\d)[,.](?=\d)/g, "$1#");
+    const re = /:\s*([^:.!?\n]+)/g;
+    let m;
+    while ((m = re.exec(t))) {
+      const seg = m[1].replace(/\([^)]*\)/g, "");
+      const items = seg.split(/\s*[,;·]\s*/).map((x) => x.trim()).filter(Boolean);
+      const words = (/** @type {number} */ max) => items.every((x) => x.split(/\s+/).length <= max);
+      const prose = items.some((x) => /^(c'est|donc|alors|sinon|car|mais|puis|on|il|elle|ils|elles|si)\b|→/i.test(x));
+      if (prose || items.every((x) => /^[\d\s#…]+((ou|et) [\d#]+)?$/.test(x))) continue; // a sequence of numbers (7, 14, 21…) reads better in line
+      if (/[;·]/.test(seg) ? items.length >= 2 && words(6) : items.length >= 3 && words(4)) return true;
+    }
+    return false;
+  }
+  /** @param {unknown[]} texts @param {string} where @param {PackReport} warn */
+  function tipLists(texts, where, warn) {
+    if (texts.some(inlineList)) warn(where + " : énumération dans une phrase, écris-la en liste à puces (\"… :\\n- un\\n- deux\")");
+  }
+
   /** @param {any} lesson not checked yet @param {string} W @param {PackReport} err @param {PackReport} warn */
   function validateLesson(lesson, W, err, warn) {
     if (!lesson || typeof lesson !== "object") return warn(W + " : pas de carte leçon (lesson)");
     if (!isArr(lesson.points) || !lesson.points.length) warn(W + " : lesson.points vide");
     else if (lesson.points.length > 5) warn(W + ` : ${lesson.points.length} points dans la leçon (5 max conseillé, reste court)`);
     strings(lesson).forEach((s) => checkMarkup(s, W + " leçon", err));
+    tipLists([lesson.title].concat(isArr(lesson.points) ? lesson.points : [], isArr(lesson.examples) ? lesson.examples : []), W + " leçon", warn);
     if (lesson.figures != null) {
       if (!isArr(lesson.figures)) err(W + " : lesson.figures doit être un tableau");
       else {
@@ -386,6 +411,7 @@
     if (isStr(e.prompt) && plain(e.prompt).length > 160) warn(t + " : consigne longue (" + plain(e.prompt).length + " caractères) — fais simple");
     if (isStr(e.explanation) && plain(e.explanation).length > 300) warn(t + " : explication longue (" + plain(e.explanation).length + " caractères)");
     strings([e.prompt, e.explanation, e.hint]).forEach((s) => checkMarkup(s, t, err));
+    tipLists([e.explanation], t + " explication", warn);
     // text to read: any exercise can show a pack document (docId; letterId was its old name)
     if (e.docId != null && e.letterId != null) err(t + " : utilise docId OU letterId, pas les deux");
     if (e.letterId != null) err(t + " : letterId n'existe plus (utilise docId)");
@@ -495,7 +521,7 @@
     isStr, plain, checkMarkup,
     checkPath, checkLang, validateMeta, catalogEntry, LICENSES,
     validateContent, validateLesson, validateExercise,
-    validateFigure, validateTable
+    validateFigure, validateTable, inlineList
   };
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.PackRules = api;
