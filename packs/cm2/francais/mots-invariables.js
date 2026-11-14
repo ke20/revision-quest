@@ -22,10 +22,10 @@ window.registerPack({
       "lesson": {
         "title": "Des mots qui ne changent jamais",
         "points": [
-          "Un **mot invariable** ne change jamais : pas de féminin, pas de pluriel. Il faut l'apprendre par cœur.",
-          "Liste 1 : ailleurs, ainsi, alors, assez, aujourd'hui, aussitôt, autour, autrefois, beaucoup, bientôt.",
-          "Lettre muette à la fin : ailleur**s**, autrefoi**s**, asse**z**, beaucou**p**.",
-          "Accent circonflexe sur le o : aussit**ô**t, bient**ô**t (comme **tôt**). Une apostrophe : aujourd**'**hui."
+          "Un **mot invariable** ne change jamais :\n- pas de féminin\n- pas de pluriel\nIl faut l'apprendre par cœur.",
+          "Liste 1 :\n- ailleurs\n- ainsi\n- alors\n- assez\n- aujourd'hui\n- aussitôt\n- autour\n- autrefois\n- beaucoup\n- bientôt",
+          "Lettre muette à la fin :\n- ailleur**s**\n- autrefoi**s**\n- asse**z**\n- beaucou**p**",
+          "Accent circonflexe sur le o (comme **tôt**) :\n- aussit**ô**t\n- bient**ô**t\nUne apostrophe : aujourd**'**hui."
         ],
         "examples": [
           "Il y a **beaucoup** de monde **aujourd'hui**.",
@@ -135,7 +135,7 @@ window.registerPack({
               "cat": "quantite"
             }
           ],
-          "explanation": "**Aujourd'hui**, **autrefois**, **bientôt**, **aussitôt** disent quand ; **ailleurs** et **autour** disent où ; **beaucoup** et **assez** disent combien."
+          "explanation": "Pour dire quand :\n- **aujourd'hui**\n- **autrefois**\n- **bientôt**\n- **aussitôt**\nPour dire où :\n- **ailleurs**\n- **autour**\nPour dire combien :\n- **beaucoup**\n- **assez**"
         },
         {
           "type": "fill",
@@ -282,9 +282,9 @@ window.registerPack({
       "lesson": {
         "title": "Liste 2",
         "points": [
-          "Liste 2 : car, chez, combien, comme, d'abord, debout, dedans, dehors, demain, depuis.",
+          "Liste 2 :\n- car\n- chez\n- combien\n- comme\n- d'abord\n- debout\n- dedans\n- dehors\n- demain\n- depuis",
           "**d'abord** s'écrit avec une **apostrophe** ; **debout** en **un seul mot**.",
-          "Lettre muette à la fin : che**z**, debou**t**, deda**ns**, dehor**s**, depui**s**.",
+          "Lettre muette à la fin :\n- che**z**\n- debou**t**\n- deda**ns**\n- dehor**s**\n- depui**s**",
           "**car** annonce une explication : il veut dire « parce que »."
         ],
         "examples": [
@@ -314,7 +314,7 @@ window.registerPack({
               "right": "hier"
             }
           ],
-          "explanation": "**dedans** / **dehors**, **demain** / **hier** : des contraires faciles à retenir ensemble."
+          "explanation": "Des contraires faciles à retenir ensemble :\n- **dedans** / **dehors**\n- **demain** / **hier**"
         },
         {
           "type": "mcq",
@@ -361,7 +361,7 @@ window.registerPack({
             "depuis"
           ],
           "hint": "Le début d'une durée qui continue encore.",
-          "explanation": "**depuis** : pas de **s** ni de **t** à la fin."
+          "explanation": "**depuis** : en un seul mot, avec un **s** muet à la fin."
         },
         {
           "type": "fill",
@@ -420,7 +420,7 @@ window.registerPack({
               "cat": "lieu"
             }
           ],
-          "explanation": "**demain** et **depuis** disent quand ; **dedans**, **dehors** et **chez** disent où."
+          "explanation": "Pour dire quand :\n- **demain**\n- **depuis**\nPour dire où :\n- **dedans**\n- **dehors**\n- **chez**"
         },
         {
           "type": "fill",
@@ -502,10 +502,10 @@ window.registerPack({
       "lesson": {
         "title": "Liste 3",
         "points": [
-          "Liste 3 : devant, donc, enfin, hier, jamais, là-bas, longtemps, maintenant, malgré, mieux.",
+          "Liste 3 :\n- devant\n- donc\n- enfin\n- hier\n- jamais\n- là-bas\n- longtemps\n- maintenant\n- malgré\n- mieux",
           "**là-bas** : un accent grave sur le **à** et un **trait d'union**.",
           "**malgré** : un accent aigu et **jamais de s** à la fin.",
-          "Lettres muettes : devan**t**, jamai**s**, longtem**ps**, maintenan**t**, mieu**x**."
+          "Lettres muettes :\n- devan**t**\n- jamai**s**\n- longtem**ps**\n- maintenan**t**\n- mieu**x**"
         ],
         "examples": [
           "**Hier**, il pleuvait ; **maintenant**, il fait beau.",
@@ -603,7 +603,7 @@ window.registerPack({
               "cat": "lieu"
             }
           ],
-          "explanation": "**hier**, **longtemps**, **maintenant** et **jamais** disent quand ; **devant** et **là-bas** disent où."
+          "explanation": "Pour dire quand :\n- **hier**\n- **longtemps**\n- **maintenant**\n- **jamais**\nPour dire où :\n- **devant**\n- **là-bas**"
         },
         {
           "type": "fill",
@@ -717,7 +717,7 @@ window.registerPack({
       "lesson": {
         "title": "Liste 4",
         "points": [
-          "Liste 4 : parce que, parfois, partout, pendant, peut-être, pourquoi, pourtant, près, presque, quand.",
+          "Liste 4 :\n- parce que\n- parfois\n- partout\n- pendant\n- peut-être\n- pourquoi\n- pourtant\n- près\n- presque\n- quand",
           "**parce que** s'écrit en **deux mots**. **Pourquoi** pose la question, **parce que** donne la réponse.",
           "**peut-être** : un **trait d'union** et un accent circonflexe sur le **ê**.",
           "**près** (accent grave) = à côté de. Ne pas le confondre avec **prêt** (prêt à partir)."
@@ -800,7 +800,7 @@ window.registerPack({
             "peut-être"
           ],
           "hint": "Ce n'est pas sûr.",
-          "explanation": "**peut-être** : un **trait d'union** et un accent circonflexe sur le **e**."
+          "explanation": "**peut-être** : un **trait d'union** et un accent circonflexe : **ê**."
         },
         {
           "type": "fill",
@@ -859,7 +859,7 @@ window.registerPack({
               "cat": "lieu"
             }
           ],
-          "explanation": "**parfois**, **pendant** et **quand** disent quand ; **partout** et **près** disent où."
+          "explanation": "Pour dire quand :\n- **parfois**\n- **pendant**\n- **quand**\nPour dire où :\n- **partout**\n- **près**"
         },
         {
           "type": "fill",
@@ -937,10 +937,10 @@ window.registerPack({
       "lesson": {
         "title": "Liste 5",
         "points": [
-          "Liste 5 : quelquefois, sans, soudain, souvent, surtout, tard, tôt, toujours, trop, vraiment.",
+          "Liste 5 :\n- quelquefois\n- sans\n- soudain\n- souvent\n- surtout\n- tard\n- tôt\n- toujours\n- trop\n- vraiment",
           "**quelquefois** s'écrit en **un seul mot**.",
           "**tôt** prend un accent circonflexe ; **tard** finit par un **d** muet (comme **retard**).",
-          "Lettres muettes : toujour**s**, tro**p**, souven**t**, surtou**t**. Dans **vraiment**, n'oublie pas le **i**."
+          "Lettres muettes :\n- toujour**s**\n- tro**p**\n- souven**t**\n- surtou**t**\nDans **vraiment**, n'oublie pas le **i**."
         ],
         "examples": [
           "Je me lève **tôt** et je me couche **tard**.",
@@ -973,7 +973,7 @@ window.registerPack({
               "right": "pas assez"
             }
           ],
-          "explanation": "**tôt** / **tard**, **toujours** / **jamais** : des contraires à apprendre ensemble."
+          "explanation": "Des contraires à apprendre ensemble :\n- **tôt** / **tard**\n- **toujours** / **jamais**"
         },
         {
           "type": "mcq",
@@ -1042,7 +1042,7 @@ window.registerPack({
             "vraiment"
           ],
           "hint": "Pour de vrai.",
-          "explanation": "**vraiment** : **vrai** + **ment**, avec un **e** muet au milieu."
+          "explanation": "**vraiment** : **vrai** + **ment**, sans **e** au milieu."
         },
         {
           "type": "fill",
@@ -1122,8 +1122,8 @@ window.registerPack({
         "title": "Les 50 mots",
         "points": [
           "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
-          "Pense aux **lettres muettes** (beaucou**p**, longtem**ps**, toujour**s**) et aux **accents** (tôt, près, malgré).",
-          "Pense aux mots **en deux morceaux** : parce que (deux mots), d'abord et aujourd'hui (apostrophe)."
+          "Pense aux **lettres muettes** :\n- beaucou**p**\n- longtem**ps**\n- toujour**s**\nEt aux **accents** :\n- tôt\n- près\n- malgré",
+          "Pense aux mots **en deux morceaux** :\n- parce que (deux mots)\n- d'abord (apostrophe)\n- aujourd'hui (apostrophe)"
         ],
         "examples": [
           "🧠 Un mot invariable ne prend **jamais** de s de pluriel."

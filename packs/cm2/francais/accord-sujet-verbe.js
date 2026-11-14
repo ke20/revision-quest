@@ -107,7 +107,7 @@ window.registerPack({
               "cat": "pl"
             }
           ],
-          "explanation": "On regarde le **sujet** : un seul (il, une abeille) → singulier ; plusieurs (ils, les fleurs) → pluriel."
+          "explanation": "On regarde le **sujet** :\n- un seul (il, une abeille) → singulier\n- plusieurs (ils, les fleurs) → pluriel"
         },
         {
           "type": "match",
@@ -130,7 +130,7 @@ window.registerPack({
               "right": "ont faim."
             }
           ],
-          "explanation": "Singulier : **est**, **a**. Pluriel : **sont**, **ont**."
+          "explanation": "Singulier :\n- **est**\n- **a**\nPluriel :\n- **sont**\n- **ont**"
         },
         {
           "type": "fill",
@@ -201,8 +201,8 @@ window.registerPack({
         "title": "Trouver le nom noyau",
         "points": [
           "Quand le sujet est un **groupe nominal** de plusieurs mots, le verbe s'accorde avec le **nom noyau** : le nom principal du groupe.",
-          "Attention au **piège** : un autre nom peut se glisser entre le noyau et le verbe (« des abeilles », « de la ruche »). Il ne commande pas le verbe !",
-          "Astuce : remplace le groupe sujet par **il**, **elle**, **ils** ou **elles**."
+          "Attention au **piège** : un autre nom peut se glisser entre le noyau et le verbe :\n- « des abeilles »\n- « de la ruche »\nIl ne commande pas le verbe !",
+          "Astuce : remplace le groupe sujet par :\n- **il**\n- **elle**\n- **ils**\n- **elles**"
         ],
         "examples": [
           "**Les ouvrières** de la ruche butinent les fleurs. (= elles butinent)",
@@ -298,7 +298,7 @@ window.registerPack({
               "cat": "pl"
             }
           ],
-          "explanation": "On regarde le **premier nom**, le nom noyau : le chant (il), les pattes (elles)…"
+          "explanation": "On regarde le **premier nom**, le nom noyau :\n- le chant (il)\n- les pattes (elles)…"
         },
         {
           "type": "fill",
@@ -377,7 +377,7 @@ window.registerPack({
         "points": [
           "Quand le sujet est fait de **plusieurs noms au singulier** (reliés par **et**, ou séparés par des virgules), le verbe se met au **pluriel**.",
           "Astuce : un nom + un nom = **ils** ou **elles**.",
-          "Si on parle de **moi et toi**, on dit **nous** ; de **toi et lui**, on dit **vous**."
+          "Si on parle de :\n- **moi et toi**, on dit **nous**\n- **toi et lui**, on dit **vous**"
         ],
         "examples": [
           "**L'apiculteur et son fils** récoltent le miel. (= ils récoltent)",
@@ -572,7 +572,7 @@ window.registerPack({
             "4"
           ],
           "answer": 0,
-          "explanation": "**Courent**, **sautent** et **crient** : les trois verbes ont le même sujet, « les enfants »."
+          "explanation": "Les trois verbes ont le même sujet, « les enfants » :\n- **courent**\n- **sautent**\n- **crient**"
         },
         {
           "type": "mcq",
@@ -712,7 +712,8 @@ window.registerPack({
           "Plusieurs noms → verbe au **pluriel**. Plusieurs verbes → **chacun** s'accorde avec le sujet."
         ],
         "examples": [
-          "Le panier **de** pommes **est** lourd. — Le chien **et** le chat **dorment**."
+          "Le panier **de** pommes **est** lourd.",
+          "Le chien **et** le chat **dorment**."
         ]
       },
       "draw": 12,

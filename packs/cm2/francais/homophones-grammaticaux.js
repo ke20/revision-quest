@@ -23,7 +23,7 @@ window.registerPack({
         "points": [
           "**a** = verbe avoir : on peut dire **avait**. **à** (avec accent) ne se remplace pas : c'est une préposition.",
           "**ou** = on peut dire **ou bien** (un choix). **où** (avec accent) indique le **lieu**.",
-          "**et** = on peut dire **et puis**, **et aussi**. **est** = verbe être : on peut dire **était**."
+          "**et** = on peut dire :\n- **et puis**\n- **et aussi**\n**est** = verbe être : on peut dire **était**."
         ],
         "examples": [
           "Le chat **a** (avait) faim : il court **à** la cuisine.",
@@ -210,7 +210,7 @@ window.registerPack({
           "**son** = déterminant devant un nom, il veut dire **le sien**. **sont** = verbe être : on peut dire **étaient**.",
           "**ont** = verbe avoir : on peut dire **avaient**. **on** = pronom sujet : on peut dire **il** ou **elle**.",
           "**on n'** = on + la négation **n'**, devant un verbe qui commence par une voyelle : on peut dire **il n'** ou **elle n'**.",
-          "🧠 Astuce : s'il y a **pas**, **plus**, **jamais** ou **rien**, il faut le **n'**."
+          "🧠 Astuce : il faut le **n'** s'il y a :\n- **pas**\n- **plus**\n- **jamais**\n- **rien**"
         ],
         "examples": [
           "Les élèves **sont** (étaient) prêts : chacun a **son** cahier.",
@@ -625,8 +625,8 @@ window.registerPack({
       "lesson": {
         "title": "s'est, c'est, leur, leurs",
         "points": [
-          "**s'est** / **s'était** : le verbe se conjugue avec **me, te, se** (je **me** suis perdu → il **s'est** perdu). Souvent suivi d'un **participe passé**.",
-          "**c'est** / **c'était** = **cela est** / **cela était**. Souvent suivi d'un nom, d'un adjectif ou d'un pronom.",
+          "**s'est** / **s'était** : le verbe se conjugue avec :\n- **me**\n- **te**\n- **se**\nJe **me** suis perdu → il **s'est** perdu. Souvent suivi d'un **participe passé**.",
+          "**c'est** / **c'était** = **cela est** / **cela était**. Souvent suivi :\n- d'un nom\n- d'un adjectif\n- d'un pronom",
           "**leur** devant un **verbe** = pronom, pluriel de **lui** : il ne prend **jamais de s**.",
           "**leur** / **leurs** devant un **nom** = déterminant : **leurs** si le nom est au pluriel."
         ],
@@ -887,7 +887,7 @@ window.registerPack({
               "cat": "l-a"
             }
           ],
-          "explanation": "**l'avait** → **l'a** ; **ici** → **là** ; devant un nom → **la**."
+          "explanation": "Pour choisir :\n- **l'avait** → **l'a**\n- **ici** → **là**\n- devant un nom → **la**"
         },
         {
           "type": "fill",
@@ -938,7 +938,7 @@ window.registerPack({
               "right": "on peut dire « l'avais »"
             }
           ],
-          "explanation": "Pour choisir, on essaie **l'avait**, **l'avais** ou **ici**."
+          "explanation": "Pour choisir, on essaie :\n- **l'avait**\n- **l'avais**\n- **ici**"
         },
         {
           "type": "spot",
@@ -1001,7 +1001,7 @@ window.registerPack({
       "lesson": {
         "title": "quelle, qu'elle, quand, quant, qu'en",
         "points": [
-          "**quel**, **quelle**, **quels**, **quelles** s'accordent avec le **nom** : **quelle** histoire ! **quels** beaux chevaux !",
+          "Ces quatre mots s'accordent avec le **nom** :\n- **quel**\n- **quelle**\n- **quels**\n- **quelles**\n**Quelle** histoire ! **Quels** beaux chevaux !",
           "**qu'elle** = **que** + **elle** : on peut dire **qu'il**.",
           "**quand** = le **temps** : on peut dire **lorsque**. **quant** s'écrit devant **à** et **aux** (quant à moi).",
           "**qu'en** = **que** + **en** : je ne sais pas **qu'en** penser."
@@ -1139,7 +1139,7 @@ window.registerPack({
               "cat": "qu-en"
             }
           ],
-          "explanation": "**lorsque** → **quand** ; devant **à** ou **aux** → **quant** ; **que en** → **qu'en**."
+          "explanation": "Pour choisir :\n- **lorsque** → **quand**\n- devant **à** ou **aux** → **quant**\n- **que en** → **qu'en**"
         },
         {
           "type": "fill",
@@ -1204,8 +1204,9 @@ window.registerPack({
       "lesson": {
         "title": "peu, peut, près, prêt, plus tôt, plutôt",
         "points": [
-          "**peu** = une petite quantité (un **peu**, très **peu**). **peux** / **peut** = verbe **pouvoir** : on peut dire **pouvait**. Je, tu **peux** ; il, elle **peut**.",
-          "**près** = **à côté de**. **prêt** = adjectif : **prête** au féminin, **prêts** au pluriel.",
+          "**peu** = une petite quantité (un **peu**, très **peu**).",
+          "**peux** / **peut** = verbe **pouvoir** : on peut dire **pouvait**. On écrit :\n- je, tu **peux**\n- il, elle **peut**",
+          "**près** = **à côté de**. **prêt** = adjectif :\n- **prête** au féminin\n- **prêts** au pluriel",
           "**plus tôt** (en 2 mots) = le contraire de **plus tard**. **plutôt** (en 1 mot) marque une **préférence**, ou veut dire **assez**."
         ],
         "examples": [
@@ -1258,7 +1259,7 @@ window.registerPack({
               "cat": "peut"
             }
           ],
-          "explanation": "Si on peut dire **pouvait**, c'est le verbe pouvoir : **peux** avec je/tu, **peut** avec il/elle. Sinon, **peu**."
+          "explanation": "Si on peut dire **pouvait**, c'est le verbe pouvoir :\n- **peux** avec je/tu\n- **peut** avec il/elle\nSinon, **peu**."
         },
         {
           "type": "fill",
@@ -1431,7 +1432,7 @@ window.registerPack({
         "title": "Le grand mélange",
         "points": [
           "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
-          "Fais le **test de remplacement** : **avait**, **était**, **étaient**, **avaient**, **il**, **lorsque**, **ici**…",
+          "Fais le **test de remplacement** :\n- **avait**\n- **était**\n- **étaient**\n- **avaient**\n- **il**\n- **lorsque**\n- **ici**…",
           "Regarde le mot d'après : un **nom** ou un **verbe** ? S'il y a **pas** ou **jamais**, pense à **on n'**."
         ],
         "examples": [

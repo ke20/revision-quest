@@ -23,7 +23,7 @@ window.registerPack({
         "points": [
           "Né en **1214**, Louis IX devient roi à **12 ans**, en **1226**.",
           "Sa mère, **Blanche de Castille**, gouverne à sa place : c'est la [[régence|gouverner à la place d'un roi trop jeune]].",
-          "Roi très [[pieux|qui croit très fort en Dieu]] : il aide les pauvres, fait bâtir la **Sainte-Chapelle** et part en [[croisade|guerre religieuse des chrétiens contre les musulmans]]."
+          "Roi très [[pieux|qui croit très fort en Dieu]] :\n- il aide les pauvres\n- il fait bâtir la **Sainte-Chapelle**\n- il part en [[croisade|guerre religieuse des chrétiens contre les musulmans]]"
         ],
         "examples": [
           "🧠 Astuce : Louis IX meurt de la peste à **Tunis** en **1270**, pendant sa 2e croisade."
@@ -71,7 +71,7 @@ window.registerPack({
               "right": "Mort de Louis IX à Tunis"
             }
           ],
-          "explanation": "Né en **1214**, roi en **1226**, mort en **1270**."
+          "explanation": "Les dates de Louis IX :\n- né en **1214**\n- roi en **1226**\n- mort en **1270**"
         },
         {
           "type": "mcq",
@@ -120,7 +120,7 @@ window.registerPack({
         "title": "Les croisades changent tout",
         "points": [
           "Les croisés découvrent le **monde musulman**, très avancé. Ils rapportent :",
-          "🔬 des **sciences** (médecine, mathématiques, astronomie) · 🛠️ des **techniques** (boussole, moulin, papier) · 💎 des **produits précieux** (épices, soie, miroirs).",
+          "🔬 des **sciences** :\n- médecine\n- mathématiques\n- astronomie\n🛠️ des **techniques** :\n- boussole\n- moulin\n- papier\n💎 des **produits précieux** :\n- épices\n- soie\n- miroirs",
           "Les seigneurs s'endettent ou meurent au combat. Le roi récupère leurs [[fiefs|terres données à un seigneur]] et devient plus fort."
         ],
         "examples": [
@@ -171,7 +171,7 @@ window.registerPack({
               "cat": "produits"
             }
           ],
-          "explanation": "Sciences : médecine, maths, astronomie. Techniques : boussole, moulin, papier. Produits : épices, soie, miroirs."
+          "explanation": "Sciences :\n- médecine\n- maths\n- astronomie\nTechniques :\n- boussole\n- moulin\n- papier\nProduits :\n- épices\n- soie\n- miroirs"
         },
         {
           "type": "mcq",
@@ -183,7 +183,7 @@ window.registerPack({
             "Sans écriture"
           ],
           "answer": 1,
-          "explanation": "La civilisation musulmane est **très avancée** : sciences, techniques, produits précieux."
+          "explanation": "La civilisation musulmane est **très avancée** :\n- sciences\n- techniques\n- produits précieux"
         },
         {
           "type": "mcq",
@@ -216,7 +216,7 @@ window.registerPack({
           ],
           "wrongIndex": 10,
           "correction": "le papier",
-          "explanation": "La télévision n'existait pas ! Les techniques rapportées : **boussole, moulin, papier**."
+          "explanation": "La télévision n'existait pas ! Les techniques rapportées :\n- **boussole**\n- **moulin**\n- **papier**"
         },
         {
           "type": "match",
@@ -244,7 +244,7 @@ window.registerPack({
           "answers": [
             "soie"
           ],
-          "explanation": "Les produits précieux : **épices, soie, miroirs**.",
+          "explanation": "Les produits précieux :\n- **épices**\n- **soie**\n- **miroirs**",
           "hint": "Ça commence par S."
         }
       ]
@@ -260,11 +260,11 @@ window.registerPack({
         "points": [
           "Sacré roi en **1515**, il gagne la **bataille de Marignan** la même année.",
           "Il adore l'art italien : c'est un [[mécène|personne qui protège et paie les artistes]]. Il accueille **Léonard de Vinci**.",
-          "Fini le château fort pour la guerre ! On construit des **châteaux de plaisance**, lumineux : **Chambord**, **Blois**."
+          "Fini le château fort pour la guerre ! On construit des **châteaux de plaisance**, lumineux :\n- **Chambord**\n- **Blois**"
         ],
         "examples": [
           "🧠 Astuce : **1515 Marignan** → le même nombre deux fois : 15-15 !",
-          "L'[[humanisme|nouvelle façon de penser : l'Homme, les sciences et les arts au centre]] : on s'intéresse à l'Homme, aux sciences et aux arts."
+          "Avec l'[[humanisme|nouvelle façon de penser : l'Homme, les sciences et les arts au centre]], on s'intéresse :\n- à l'Homme\n- aux sciences\n- aux arts"
         ]
       },
       "exercises": [
@@ -437,7 +437,7 @@ window.registerPack({
               "right": "Ordonnance de Villers-Cotterêts"
             }
           ],
-          "explanation": "Marignan **1515**, Cartier **1534**, Villers-Cotterêts **1539**."
+          "explanation": "Dans l'ordre :\n- Marignan **1515**\n- Cartier **1534**\n- Villers-Cotterêts **1539**"
         },
         {
           "type": "fill",
@@ -545,7 +545,7 @@ window.registerPack({
               "right": "Henri IV est assassiné"
             }
           ],
-          "explanation": "Saint-Barthélemy **1572**, Édit de Nantes **1598**, mort d'Henri IV **1610**."
+          "explanation": "Dans l'ordre :\n- Saint-Barthélemy **1572**\n- Édit de Nantes **1598**\n- mort d'Henri IV **1610**"
         },
         {
           "type": "fill",
@@ -599,8 +599,8 @@ window.registerPack({
       "lesson": {
         "title": "Du Moyen Âge aux Temps modernes",
         "points": [
-          "**Moyen Âge** (Louis IX) : pouvoir partagé avec les seigneurs, château fort, monde fermé, pas de tolérance.",
-          "**Temps modernes** (François Ier, Henri IV) : le roi gouverne seul, château de plaisance, monde ouvert, début de la tolérance."
+          "**Moyen Âge** (Louis IX) :\n- pouvoir partagé avec les seigneurs\n- château fort\n- monde fermé\n- pas de tolérance",
+          "**Temps modernes** (François Ier, Henri IV) :\n- le roi gouverne seul\n- château de plaisance\n- monde ouvert\n- début de la tolérance"
         ],
         "examples": [
           "🧠 Ordre des rois : **L**ouis IX → **F**rançois Ier → **H**enri IV (L, F, H).",
@@ -630,7 +630,7 @@ window.registerPack({
             "1610"
           ],
           "translation": "Louis IX roi → Marignan → Villers-Cotterêts → Édit de Nantes → mort d'Henri IV.",
-          "explanation": "Les petits nombres d'abord : **1226**, 1515, 1539, 1598, **1610**."
+          "explanation": "Les petits nombres d'abord :\n- **1226**\n- 1515\n- 1539\n- 1598\n- **1610**"
         },
         {
           "type": "sort",
@@ -716,7 +716,7 @@ window.registerPack({
               "cat": "henri"
             }
           ],
-          "explanation": "Louis IX : Sainte-Chapelle, croisades. François Ier : Marignan, Léonard. Henri IV : Édit de Nantes, poule au pot."
+          "explanation": "Louis IX :\n- Sainte-Chapelle\n- croisades\nFrançois Ier :\n- Marignan\n- Léonard\nHenri IV :\n- Édit de Nantes\n- poule au pot"
         },
         {
           "type": "mcq",
@@ -760,7 +760,7 @@ window.registerPack({
         "points": [
           "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
           "Écris juste un **nom**, un **mot** ou une **date**. Tu n'as qu'**un essai** par question : relis-toi avant de valider.",
-          "Pense aux trois rois dans l'ordre : **Louis IX**, **François Ier**, **Henri IV**."
+          "Pense aux trois rois dans l'ordre :\n- **Louis IX**\n- **François Ier**\n- **Henri IV**"
         ]
       },
       "draw": 12,
@@ -982,7 +982,7 @@ window.registerPack({
             "miroirs",
             "des miroirs"
           ],
-          "explanation": "Les croisés rapportent des **épices**, de la **soie** et des **miroirs**."
+          "explanation": "Les croisés rapportent :\n- des **épices**\n- de la **soie**\n- des **miroirs**"
         },
         {
           "type": "question",

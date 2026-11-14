@@ -183,8 +183,8 @@ window.registerPack({
         "title": "Bien lire une phrase",
         "points": [
           "Lis la phrase **en entier** avant de regarder les réponses.",
-          "Cherche **qui**, **quoi**, **où**, **quand**.",
-          "Attention aux petits mots qui changent tout : **ne… pas**, **de plus que**, **avant**, **puis**.",
+          "Cherche :\n- **qui**\n- **quoi**\n- **où**\n- **quand**",
+          "Attention aux petits mots qui changent tout :\n- **ne… pas**\n- **de plus que**\n- **avant**\n- **puis**",
           "Les pièges reprennent des mots de la phrase : vérifie toujours le **sens**."
         ],
         "examples": [
@@ -299,7 +299,7 @@ window.registerPack({
             0,
             3
           ],
-          "explanation": "Il faut deux conditions : **pair** et **plus petit que 20**. 15 est impair, 24 est plus grand que 20."
+          "explanation": "Il faut deux conditions :\n- **pair**\n- **plus petit que 20**\n15 est impair, 24 est plus grand que 20."
         },
         {
           "type": "mcq",
@@ -335,9 +335,9 @@ window.registerPack({
         "title": "Relier les phrases",
         "points": [
           "La réponse peut être dans **la 2e ou la 3e phrase** : lis tout.",
-          "Les mots **alors**, **mais**, **finalement** relient les idées entre elles.",
+          "Les mots suivants relient les idées entre elles :\n- **alors**\n- **mais**\n- **finalement**",
           "Dans un problème, repère **ce qu'on cherche** et les **informations utiles**.",
-          "Dans une consigne, repère les **verbes** (plie, ouvre, dessine) et leur **ordre**."
+          "Dans une consigne, repère les **verbes** et leur **ordre**, par exemple :\n- plie\n- ouvre\n- dessine"
         ],
         "examples": [
           "« Il pleuvait trop, **alors** il est resté » : **alors** annonce la conséquence."
@@ -396,7 +396,7 @@ window.registerPack({
             "Écrire son prénom en bas"
           ],
           "translation": "Plier la feuille → Ouvrir la feuille → Dessiner un soleil en haut → Écrire son prénom en bas",
-          "explanation": "Les verbes de la consigne donnent l'ordre : **plie**, **ouvre**, **puis dessine**, **écris**."
+          "explanation": "Les verbes de la consigne donnent l'ordre :\n- **plie**\n- **ouvre**\n- **puis dessine**\n- **écris**"
         },
         {
           "type": "mcq",
@@ -655,7 +655,7 @@ window.registerPack({
           "Un personnage ne dit pas toujours **directement** ce qu'il pense : cherche ce qu'il veut dire.",
           "Une **expression** a un sens à elle : « crier famine » = dire qu'on a très faim.",
           "Dans une règle du jeu, chaque phrase est une **condition** : **si** tu fais…, alors…",
-          "Pour remettre des événements dans l'ordre, cherche les mots du temps : **à peine**, **pendant**, **ensuite**."
+          "Pour remettre des événements dans l'ordre, cherche les mots du temps :\n- **à peine**\n- **pendant**\n- **ensuite**"
         ],
         "examples": [
           "« Eh bien ! dansez maintenant » : la Fourmi refuse d'aider, en se moquant."
@@ -810,7 +810,7 @@ window.registerPack({
         "points": [
           "Un **conte** commence souvent par « Il était une fois ».",
           "Pour comprendre un personnage, demande-toi **pourquoi** il agit ainsi.",
-          "Un **itinéraire** se suit étape par étape : gauche, droite, tout droit, jusqu'à…",
+          "Un **itinéraire** se suit étape par étape :\n- gauche\n- droite\n- tout droit\n- jusqu'à…",
           "Désormais, le nombre de bonnes réponses **n'est plus donné** : il peut y en avoir une ou plusieurs."
         ],
         "examples": [
@@ -860,7 +860,7 @@ window.registerPack({
             3,
             4
           ],
-          "explanation": "Trois activités : **noisettes**, **papillons**, **bouquets**. Elle ne touche pas à la galette.",
+          "explanation": "Trois activités :\n- **noisettes**\n- **papillons**\n- **bouquets**\nElle ne touche pas à la galette.",
           "showCount": false
         },
         {
@@ -925,7 +925,7 @@ window.registerPack({
             "Arriver au grand saule"
           ],
           "translation": "Sortir par le grand portail → Tourner à gauche → Marcher jusqu'à la boulangerie → Traverser sur le passage piéton → Longer la rivière → Arriver au grand saule",
-          "explanation": "On suit les phrases dans l'ordre : portail, **à gauche**, boulangerie, passage piéton, rivière, saule."
+          "explanation": "On suit les phrases dans l'ordre :\n- portail\n- **à gauche**\n- boulangerie\n- passage piéton\n- rivière\n- saule"
         },
         {
           "type": "mcq",
@@ -993,7 +993,7 @@ window.registerPack({
       "lesson": {
         "title": "Deviner ce que le texte ne dit pas",
         "points": [
-          "Un texte ne dit pas tout : les **indices** (gestes, paroles, détails) permettent de deviner.",
+          "Un texte ne dit pas tout. Les **indices** permettent de deviner :\n- gestes\n- paroles\n- détails",
           "Pour connaître les **sentiments** d'un personnage, regarde ce qu'il fait et ce qu'il dit.",
           "Quand un personnage raconte une histoire à un autre, demande-toi **pourquoi** il la raconte.",
           "Un perroquet farceur peut **mentir** : compare ce qu'il dit avec ce que dit le texte."
@@ -1043,7 +1043,7 @@ window.registerPack({
             1,
             3
           ],
-          "explanation": "Trois signes : elle est **triste**, elle **maigrit**, elle ne donne **presque plus de lait**. Elle ne casse pas sa corde : elle s'échappe par la fenêtre.",
+          "explanation": "Trois signes :\n- elle est **triste**\n- elle **maigrit**\n- elle ne donne **presque plus de lait**\nElle ne casse pas sa corde : elle s'échappe par la fenêtre.",
           "showCount": false
         },
         {
@@ -1112,7 +1112,7 @@ window.registerPack({
             3,
             4
           ],
-          "explanation": "Les trois tâches de la liste : **tomates**, **graines**, **chambre**. Le gâteau est déjà fait : il ne faut pas y toucher.",
+          "explanation": "Les trois tâches de la liste :\n- **tomates**\n- **graines**\n- **chambre**\nLe gâteau est déjà fait : il ne faut pas y toucher.",
           "showCount": false
         },
         {
@@ -1155,7 +1155,7 @@ window.registerPack({
             2,
             3
           ],
-          "explanation": "Deux indices : le **chat n'existe pas**, et Gros Bec a des **miettes** plein le bec. Personne ne l'a vu manger.",
+          "explanation": "Deux indices :\n- le **chat n'existe pas**\n- Gros Bec a des **miettes** plein le bec\nPersonne ne l'a vu manger.",
           "showCount": false
         },
         {
@@ -1182,7 +1182,7 @@ window.registerPack({
         "title": "Lire un extrait de roman",
         "points": [
           "Un **roman** est une longue histoire : on lit ici le **début** de « Vingt mille lieues sous les mers ».",
-          "Repère les **personnages** et ce qui les distingue (métier, pays, caractère).",
+          "Repère les **personnages** et ce qui les distingue :\n- métier\n- pays\n- caractère",
           "Quand le texte **explique un mot** (« cela signifie… »), retiens-le : il sert pour les questions.",
           "Retiens bien ce texte : il te servira pour le **boss** !"
         ],
@@ -1226,7 +1226,7 @@ window.registerPack({
               "right": "capitaine du Nautilus"
             }
           ],
-          "explanation": "Aronnax est le **savant**, Conseil son **domestique**, Ned Land le **harponneur**, Nemo le **capitaine**."
+          "explanation": "Les personnages :\n- Aronnax, le **savant**\n- Conseil, son **domestique**\n- Ned Land, le **harponneur**\n- Nemo, le **capitaine**"
         },
         {
           "type": "mcq",
@@ -1269,7 +1269,7 @@ window.registerPack({
             1,
             3
           ],
-          "explanation": "Bibliothèque de douze mille livres, salon, orgue. Pas de charbon : le Nautilus fonctionne à l'**électricité**.",
+          "explanation": "On trouve à bord :\n- une bibliothèque de douze mille livres\n- un salon\n- un orgue\nPas de charbon : le Nautilus fonctionne à l'**électricité**.",
           "showCount": false
         },
         {
