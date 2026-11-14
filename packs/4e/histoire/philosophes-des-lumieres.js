@@ -151,10 +151,10 @@ window.registerPack({
       "lesson": {
         "title": "Une société profondément inégalitaire",
         "points": [
-          "La société est divisée en **3 ordres** : le **clergé** (2 %), la **noblesse** (1 %) et le **Tiers état** (97 %).",
+          "La société est divisée en **3 ordres** :\n- le **clergé** (2 %)\n- la **noblesse** (1 %)\n- le **Tiers état** (97 %)",
           "Clergé et noblesse ont des [[privilèges|droits et avantages accordés à un groupe]] : ils ne paient **pas d'impôts**.",
-          "Les nobles peuvent porter des armes et ont le **droit de chasse** et de **colombier** ; le clergé possède des terres.",
-          "Le **Tiers état** (bourgeois, artisans, domestiques et surtout paysans) **paie tous les impôts**."
+          "Les nobles :\n- peuvent porter des armes\n- ont le **droit de chasse** et de **colombier**\nLe clergé possède des terres.",
+          "Le **Tiers état** **paie tous les impôts**. Il réunit :\n- les bourgeois\n- les artisans\n- les domestiques\n- et surtout les paysans"
         ],
         "examples": [
           "🧠 Astuce : sur une gravure de l'époque, un paysan porte sur son dos un noble et un prêtre : le Tiers état « porte » les privilégiés."
@@ -219,7 +219,7 @@ window.registerPack({
               "cat": "tiers"
             }
           ],
-          "explanation": "Clergé (évêque, curé) et noblesse sont **privilégiés** ; le bourgeois fait partie du **Tiers état**."
+          "explanation": "**Privilégiés** :\n- clergé (évêque, curé)\n- noblesse\nLe bourgeois fait partie du **Tiers état**."
         },
         {
           "type": "mcq",
@@ -258,7 +258,7 @@ window.registerPack({
               "right": "le pouvoir judiciaire"
             }
           ],
-          "explanation": "L'**épée** pour la guerre, la **robe** des juges pour la justice."
+          "explanation": "Les deux noblesses :\n- l'**épée** pour la guerre\n- la **robe** des juges pour la justice"
         },
         {
           "type": "spot",
@@ -302,7 +302,7 @@ window.registerPack({
         "points": [
           "On appelle le **XVIIIe siècle** le **siècle des Lumières**.",
           "Des penseurs et des savants veulent placer la **raison** au centre : il faut cesser de croire sans réfléchir le discours du **clergé** et du **roi**.",
-          "Ils remettent en cause la **société d'ordres** et l'**absolutisme** royal : ils dénoncent les inégalités et veulent une autre organisation politique."
+          "Ils remettent en cause :\n- la **société d'ordres**\n- l'**absolutisme** royal\nIls dénoncent les inégalités et veulent une autre organisation politique."
         ],
         "examples": [
           "🧠 Astuce : les « lumières » de la **raison** chassent l'obscurité de l'ignorance."
@@ -343,7 +343,7 @@ window.registerPack({
             "Les écoles et les livres"
           ],
           "answer": 0,
-          "explanation": "Ils critiquent la **société d'ordres** (société) et l'**absolutisme** (politique)."
+          "explanation": "Ils critiquent :\n- la **société d'ordres** (société)\n- l'**absolutisme** (politique)"
         },
         {
           "type": "fill",
@@ -397,7 +397,7 @@ window.registerPack({
         "title": "Voltaire (1694-1778)",
         "points": [
           "De son vrai nom **François-Marie Arouet**, Voltaire critique l'Église catholique, qu'il juge **intolérante** et **fanatique**.",
-          "Il dénonce la société d'ordres, défend l'**égalité fiscale** (tout le monde paie l'impôt) et le pouvoir trop [[arbitraire|qui dépend du seul caprice du roi]] du roi (les **lettres de cachet**).",
+          "Il **dénonce** :\n- la société d'ordres\n- le pouvoir trop [[arbitraire|qui dépend du seul caprice du roi]] du roi (les **lettres de cachet**)\nIl **défend** l'**égalité fiscale** (tout le monde paie l'impôt).",
           "Exilé en **Angleterre**, il est influencé par **John Locke**. Ses idées l'envoient plusieurs mois à la **Bastille**.",
           "**Affaire Calas** : en 1762, à Toulouse, le protestant **Jean Calas**, accusé à tort d'avoir tué son fils, est exécuté par le **supplice de la roue**. Voltaire défend la **tolérance**."
         ],
@@ -517,12 +517,12 @@ window.registerPack({
       "lesson": {
         "title": "Trois philosophes, trois idées",
         "points": [
-          "**Montesquieu** (*De l'esprit des lois*, 1748) veut une monarchie tempérée avec la **séparation des pouvoirs** : [[législatif|rédiger les lois]], [[exécutif|exécuter les lois]], [[judiciaire|juger et sanctionner]].",
+          "**Montesquieu** (*De l'esprit des lois*, 1748) veut une monarchie tempérée avec la **séparation des pouvoirs** :\n- [[législatif|rédiger les lois]]\n- [[exécutif|exécuter les lois]]\n- [[judiciaire|juger et sanctionner]]",
           "**Diderot** dirige l'**Encyclopédie** avec **d'Alembert** : elle rassemble toutes les connaissances. Il défend la **liberté d'expression**.",
           "**Rousseau** (*Le Contrat social*, 1762) est le seul à vouloir une **démocratie** : le peuple participe aux lois."
         ],
         "examples": [
-          "🧠 Astuce : **M**ontesquieu = **M**orceaux de pouvoir (séparation) · **D**iderot = **D**ictionnaire · **R**ousseau = **R**ègne du peuple."
+          "🧠 Astuce :\n- **M**ontesquieu = **M**orceaux de pouvoir (séparation)\n- **D**iderot = **D**ictionnaire\n- **R**ousseau = **R**ègne du peuple"
         ]
       },
       "exercises": [
@@ -646,13 +646,13 @@ window.registerPack({
       "lesson": {
         "title": "Comment les idées se répandent",
         "points": [
-          "Malgré la [[censure|interdiction de publier ou de lire un texte]] — **mise à l'Index** par l'Église, interdictions du roi **Louis XV** — les philosophes publient leurs livres.",
-          "L'**Encyclopédie** (1751-1772), tirée à environ **4 000 exemplaires**, est l'outil décisif. Les **académies** prêtent les livres ; la **presse**, les **gazettes** et les **voyages** font circuler les idées.",
-          "On discute : dans les **salons** (aristocratie et haute bourgeoisie), dans les **cafés** comme le **Procope** à Paris et dans les **jardins** (bourgeois, Tiers état).",
-          "Les philosophes s'écrivent des **lettres** (Hume en Angleterre, Kant en Allemagne) ; certains conseillent des **despotes éclairés** (Voltaire et Frédéric II de Prusse)."
+          "Les philosophes publient leurs livres malgré la [[censure|interdiction de publier ou de lire un texte]] :\n- **mise à l'Index** par l'Église\n- interdictions du roi **Louis XV**",
+          "L'**Encyclopédie** (1751-1772), tirée à environ **4 000 exemplaires**, est l'outil décisif. Les **académies** prêtent les livres. Font circuler les idées :\n- la **presse**\n- les **gazettes**\n- les **voyages**",
+          "On discute :\n- dans les **salons** (aristocratie et haute bourgeoisie)\n- dans les **cafés** comme le **Procope** à Paris\n- dans les **jardins** (bourgeois, Tiers état)",
+          "Les philosophes s'écrivent des **lettres** :\n- Hume en Angleterre\n- Kant en Allemagne\nCertains conseillent des **despotes éclairés** (Voltaire et Frédéric II de Prusse)."
         ],
         "examples": [
-          "🧠 Astuce : 4 façons de diffuser : **lire** (livres, Encyclopédie, presse) · **discuter** (salons, cafés) · **écrire** (lettres) · **conseiller** (despotes éclairés)."
+          "🧠 Astuce : 4 façons de diffuser :\n- **lire** (livres, Encyclopédie, presse)\n- **discuter** (salons, cafés)\n- **écrire** (lettres)\n- **conseiller** (despotes éclairés)"
         ]
       },
       "exercises": [
@@ -723,7 +723,7 @@ window.registerPack({
               "cat": "cafe"
             }
           ],
-          "explanation": "**Salons** pour l'aristocratie et la haute bourgeoisie ; **cafés** et **jardins** pour le Tiers état."
+          "explanation": "Où on discute :\n- **salons** pour l'aristocratie et la haute bourgeoisie\n- **cafés** et **jardins** pour le Tiers état"
         },
         {
           "type": "fill",
@@ -756,7 +756,7 @@ window.registerPack({
               "right": "lire les nouvelles"
             }
           ],
-          "explanation": "**Lire**, **écrire** et **discuter** : les idées circulent partout."
+          "explanation": "Les idées circulent partout :\n- **lire**\n- **écrire**\n- **discuter**"
         },
         {
           "type": "mcq",
@@ -830,7 +830,7 @@ window.registerPack({
       "lesson": {
         "title": "Les difficultés de la monarchie avant 1789",
         "points": [
-          "Le royaume a de grandes **difficultés financières** : les **dettes** s'accumulent, l'État a dépensé pour la **guerre d'Amérique** et la **cour** coûte de plus en plus cher.",
+          "Le royaume a de grandes **difficultés financières** :\n- les **dettes** s'accumulent\n- l'État a dépensé pour la **guerre d'Amérique**\n- la **cour** coûte de plus en plus cher",
           "De **mauvaises récoltes** font monter les **prix** du pain.",
           "La **hausse des prix** et des **impôts** rend le peuple **mécontent** : il réclame plus d'**égalité**.",
           "La **révolution américaine** (les [[Insurgés|colons américains révoltés contre les Britanniques]], aidés par la France) et sa **constitution** inspirent la partie cultivée du Tiers état. En **1789**, la **Révolution française** commence."
@@ -991,7 +991,7 @@ window.registerPack({
         "title": "Prêt pour le contrôle ?",
         "points": [
           "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
-          "Réponds par un **nom**, un **mot**, une **date** ou une expression courte. Un seul essai par question : relis-toi.",
+          "Réponds par :\n- un **nom**\n- un **mot**\n- une **date**\n- une expression courte\nUn seul essai par question : relis-toi.",
           "Pour chaque philosophe, pense à son **œuvre** et à son **idée** principale."
         ]
       },
@@ -1014,7 +1014,7 @@ window.registerPack({
             "le Tiers état",
             "Tiers état"
           ],
-          "explanation": "Le **Tiers état** (paysans, artisans, bourgeois…) est presque toute la population, et il paie tous les impôts."
+          "explanation": "Le **Tiers état** est presque toute la population, et il paie tous les impôts. Il réunit :\n- paysans\n- artisans\n- bourgeois…"
         },
         {
           "type": "question",
@@ -1083,7 +1083,7 @@ window.registerPack({
             "le pouvoir judiciaire",
             "pouvoir judiciaire"
           ],
-          "explanation": "Le pouvoir **judiciaire** juge et sanctionne ; le législatif fait les lois, l'exécutif les applique."
+          "explanation": "Les trois pouvoirs :\n- le pouvoir **judiciaire** juge et sanctionne\n- le législatif fait les lois\n- l'exécutif les applique"
         },
         {
           "type": "question",
@@ -1191,7 +1191,7 @@ window.registerPack({
             "les nobles",
             "nobles"
           ],
-          "explanation": "La **noblesse** (1 %) a des privilèges : pas d'impôts, droit de chasse et de colombier, port des armes."
+          "explanation": "La **noblesse** (1 %) a des privilèges :\n- pas d'impôts\n- droit de chasse et de colombier\n- port des armes"
         },
         {
           "type": "question",

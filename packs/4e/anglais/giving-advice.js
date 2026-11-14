@@ -21,9 +21,9 @@ window.registerPack({
       "lesson": {
         "title": "[[The words of the letters|Les mots des lettres]]",
         "points": [
-          "Les 6 lettres parlent de problèmes d'ados : **amis en ligne**, **harcèlement**, **stress**, **vêtements**, **téléphone**, **école**.",
+          "Les 6 lettres parlent de problèmes d'ados :\n- **amis en ligne**\n- **harcèlement**\n- **stress**\n- **vêtements**\n- **téléphone**\n- **école**",
           "Touche les mots soulignés en pointillés pour voir la **traduction** 👀.",
-          "Certains verbes vont avec un petit mot : [[give up|abandonner]], [[meet up|se retrouver]], [[stay up|veiller tard]], [[join in|participer]], [[fit in|s'intégrer]]."
+          "Certains verbes vont avec un petit mot :\n- [[give up|abandonner]]\n- [[meet up|se retrouver]]\n- [[stay up|veiller tard]]\n- [[join in|participer]]\n- [[fit in|s'intégrer]]"
         ],
         "examples": [
           "[[My friend is **bullied** at school.|Mon ami(e) est harcelé(e) à l'école.]]",
@@ -53,7 +53,7 @@ window.registerPack({
               "right": "se retrouver"
             }
           ],
-          "explanation": "✅ **online** = en ligne, **safe** = sans danger, **to meet up** = se retrouver. Lily veut voir son ami, mais elle a peur."
+          "explanation": "✅ Les mots :\n- **online** = en ligne\n- **safe** = sans danger\n- **to meet up** = se retrouver\nLily veut voir son ami, mais elle a peur."
         },
         {
           "type": "mcq",
@@ -89,7 +89,7 @@ window.registerPack({
               "right": "bouleversé(e), triste"
             }
           ],
-          "explanation": "✅ **calling her names** = l'insulter, **a joke** = une blague, **joined in** = a participé, **upset** = triste."
+          "explanation": "✅ Les mots :\n- **calling her names** = l'insulter\n- **a joke** = une blague\n- **joined in** = a participé\n- **upset** = triste"
         },
         {
           "type": "mcq",
@@ -101,7 +101,7 @@ window.registerPack({
             "j'ai mal au ventre"
           ],
           "answer": 3,
-          "explanation": "✅ J'ai mal au ventre. **stomach** = le ventre, **it hurts** = ça fait mal."
+          "explanation": "✅ J'ai mal au ventre. Les mots :\n- **stomach** = le ventre\n- **it hurts** = ça fait mal"
         },
         {
           "type": "match",
@@ -128,7 +128,7 @@ window.registerPack({
               "right": "assez"
             }
           ],
-          "explanation": "✅ **stressed** = stressé, **marks** = notes, **to disappoint** = décevoir, **pressure** = pression, **enough** = assez."
+          "explanation": "✅ Les mots :\n- **stressed** = stressé\n- **marks** = notes\n- **to disappoint** = décevoir\n- **pressure** = pression\n- **enough** = assez"
         },
         {
           "type": "mcq",
@@ -194,7 +194,7 @@ window.registerPack({
               "right": "mes notes baissent"
             }
           ],
-          "explanation": "✅ **addicted** = accro, **offline** = hors ligne, **anxious** = anxieux. Abby est accro à son téléphone."
+          "explanation": "✅ Les mots :\n- **addicted** = accro\n- **offline** = hors ligne\n- **anxious** = anxieux\nAbby est accro à son téléphone."
         },
         {
           "type": "match",
@@ -221,7 +221,7 @@ window.registerPack({
               "right": "régulièrement"
             }
           ],
-          "explanation": "✅ **to give up** = abandonner, **stuck** = bloqué, **hopeless** = désespéré. Mark a envie d'abandonner l'école."
+          "explanation": "✅ Les mots :\n- **to give up** = abandonner\n- **stuck** = bloqué\n- **hopeless** = désespéré\nMark a envie d'abandonner l'école."
         },
         {
           "type": "mcq",
@@ -537,10 +537,10 @@ window.registerPack({
       "lesson": {
         "title": "Verbe tout simple ou verbe + ing ?",
         "points": [
-          "Le **verbe de base (BV)**, c'est le verbe tout simple : **sans to**, sans -s, sans -ing. Exemples :\n- [[talk|parler]]\n- [[ask|demander]]\n- [[go|aller]]",
-          "Après **You should / shouldn't**, **I would / I'd** et **Why don't you** → le verbe tout simple. Jamais *to* !",
-          "Après **How about** → le verbe + **ing** : talking, asking. Attention :\n- [[make|faire]] → making\n- [[stop|arrêter]] → stopping",
-          "Piège : on dit **If I were you** (pas *was*) et **I would** (pas *I will*)."
+          "Le **verbe de base (BV)**, c'est le verbe tout simple :\n- **sans to**\n- sans -s\n- sans -ing\nExemples :\n- [[talk|parler]]\n- [[ask|demander]]\n- [[go|aller]]",
+          "Après ces mots → le verbe tout simple :\n- **You should / shouldn't**\n- **I would / I'd**\n- **Why don't you**\nJamais *to* !",
+          "Après **How about** → le verbe + **ing** :\n- talking\n- asking\nAttention :\n- [[make|faire]] → making\n- [[stop|arrêter]] → stopping",
+          "Piège :\n- on dit **If I were you** (pas *was*)\n- on dit **I would** (pas *I will*)"
         ],
         "examples": [
           "[[You should **talk** to a teacher.|Tu devrais parler à un professeur.]] ✅ (pas \"to talk\")",
@@ -695,9 +695,9 @@ window.registerPack({
         "title": "[[Build your sentences|Construis tes phrases]]",
         "points": [
           "Conseil : **You + should + verbe** → [[You should talk to a teacher.|Tu devrais parler à un professeur.]]",
-          "Les questions **Why don't you...?** et **How about...?** finissent par un **?**",
+          "Ces questions finissent par un **?** :\n- **Why don't you...?**\n- **How about...?**",
           "**If I were you, I would...** → la virgule vient juste après **you**.",
-          "Attention : il y a parfois des **mots pièges** en trop (to, was, will...). Ne les utilise pas !"
+          "Attention : il y a parfois des **mots pièges** en trop. Ne les utilise pas !\n- to\n- was\n- will..."
         ],
         "examples": [
           "[[Why don't you ask for help?|Pourquoi tu ne demandes pas de l'aide ?]]",
@@ -917,7 +917,7 @@ window.registerPack({
               "."
             ]
           ],
-          "explanation": "✅ **If I were you, I'd talk to a teacher.** Les pièges : *was* (on dit **were**) et *will* (on dit **would** ou **I'd**).",
+          "explanation": "✅ **If I were you, I'd talk to a teacher.** Les pièges :\n- *was* (on dit **were**)\n- *will* (on dit **would** ou **I'd**)",
           "translation": "Si j'étais toi, je parlerais à un professeur."
         },
         {
@@ -978,7 +978,7 @@ window.registerPack({
           "Conseil + le verbe tout simple :\n- [[**You should**|tu devrais]]\n- [[**You shouldn't**|tu ne devrais pas]]",
           "Les autres conseils :\n- [[**If I were you, I would**|si j'étais toi, je…]] (= **I'd**) + verbe\n- [[**Why don't you**|pourquoi tu ne… pas]] + verbe ?\n- [[**How about**|et si tu…]] + verbe + **ing** ?",
           "Empathie 💗 :\n- [[**I understand why you feel upset.**|Je comprends pourquoi tu es contrarié(e).]]\n- [[**I understand how you feel.**|Je comprends ce que tu ressens.]]\n- [[**That sounds like a really difficult situation.**|Ça a l'air d'être une situation vraiment difficile.]]",
-          "N'oublie pas l'apostrophe : **shouldn't**, **don't**, **I'd**."
+          "N'oublie pas l'apostrophe :\n- **shouldn't**\n- **don't**\n- **I'd**"
         ],
         "examples": [
           "[[You **shouldn't** meet this person alone.|Tu ne devrais pas rencontrer cette personne seul(e).]]",
@@ -1346,7 +1346,7 @@ window.registerPack({
       "lesson": {
         "title": "[[Be a good Agony Aunt|Sois une bonne « Agony Aunt »]]",
         "points": [
-          "Lis bien la lettre : qui écrit ? quel est le problème ? comment se sent la personne ?",
+          "Lis bien la lettre :\n- qui écrit ?\n- quel est le problème ?\n- comment se sent la personne ?",
           "La bonne réponse doit être **sans faute** ET **gentille et utile** (et sans danger).",
           "Commence par l'**empathie** 💗, puis donne des **conseils** 💡."
         ],
@@ -1385,7 +1385,7 @@ window.registerPack({
               "right": "difficulties at school"
             }
           ],
-          "explanation": "✅ Lily = ami en ligne, Sarah = harcèlement, Sam = stress des examens, Susan = vêtements, Abby = téléphone, Mark = difficultés à l'école."
+          "explanation": "✅ Les problèmes :\n- Lily = ami en ligne\n- Sarah = harcèlement\n- Sam = stress des examens\n- Susan = vêtements\n- Abby = téléphone\n- Mark = difficultés à l'école"
         },
         {
           "type": "mcq",
@@ -1434,7 +1434,7 @@ window.registerPack({
             "I understand why you feel upset."
           ],
           "answer": 3,
-          "explanation": "✅ [[**I understand why you feel upset.**|Je comprends pourquoi tu es contrariée.]] Attention : *you feels* est faux, et *funny* (drôle) n'est pas gentil."
+          "explanation": "✅ [[**I understand why you feel upset.**|Je comprends pourquoi tu es contrariée.]] Attention :\n- *you feels* est faux\n- *funny* (drôle) n'est pas gentil"
         },
         {
           "type": "mcq",
@@ -1470,7 +1470,7 @@ window.registerPack({
             "How about asking for help?"
           ],
           "answer": 2,
-          "explanation": "✅ [[**That sounds like a really difficult situation.**|Ça a l'air d'être une situation vraiment difficile.]] Attention : *That sound* oublie le -s, et *How about asking...* est un conseil, pas de l'empathie."
+          "explanation": "✅ [[**That sounds like a really difficult situation.**|Ça a l'air d'être une situation vraiment difficile.]] Attention :\n- *That sound* oublie le -s\n- *How about asking...* est un conseil, pas de l'empathie"
         },
         {
           "type": "match",
@@ -1540,7 +1540,7 @@ window.registerPack({
         "title": "[[Boss: translate!|Boss : traduis !]]",
         "points": [
           "Avec ce que tu as appris, traduis correctement les phrases ci-dessous en anglais. Une seule chance par phrase !",
-          "Après **You should / shouldn't**, **I would / I'd** et **Why don't you** : le verbe tout simple. Après **How about** : le verbe + **ing**.",
+          "Après ces mots, le verbe tout simple :\n- **You should / shouldn't**\n- **I would / I'd**\n- **Why don't you**\nAprès **How about** : le verbe + **ing**.",
           "Toujours [[**If I were you**|si j'étais toi]], jamais *If I was you*."
         ],
         "examples": [
@@ -1611,7 +1611,7 @@ window.registerPack({
             "I understand why you feel upset.",
             "I understand why you are upset."
           ],
-          "explanation": "« pourquoi » = **why**, « bouleversé(e) » = **upset** : [[I understand why you feel upset.|Je comprends pourquoi tu es bouleversée.]]"
+          "explanation": "Les mots :\n- « pourquoi » = **why**\n- « bouleversé(e) » = **upset**\n[[I understand why you feel upset.|Je comprends pourquoi tu es bouleversée.]]"
         },
         {
           "type": "question",

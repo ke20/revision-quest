@@ -174,7 +174,7 @@ window.registerPack({
             "to talk"
           ],
           "answer": 2,
-          "explanation": "✅ Après **should**, la base verbale : **talk**, sans **to** et sans **-ing**."
+          "explanation": "✅ Après **should**, la base verbale **talk** :\n- sans **to**\n- sans **-ing**"
         },
         {
           "type": "mcq",
@@ -439,7 +439,7 @@ window.registerPack({
             "harcelé(e)"
           ],
           "answer": 3,
-          "explanation": "✅ **bullied** = harcelé(e). Le harcèlement = **bullying** ; la personne qui harcèle = **a bully**."
+          "explanation": "✅ **bullied** = harcelé(e). Et aussi :\n- le harcèlement = **bullying**\n- la personne qui harcèle = **a bully**"
         },
         {
           "type": "match",
@@ -462,7 +462,7 @@ window.registerPack({
               "right": "bouleversé(e)"
             }
           ],
-          "explanation": "✅ [[**to call someone names**|insulter quelqu'un]] ; [[**upset**|bouleversé·e, très triste]]."
+          "explanation": "✅ Les mots :\n- [[**to call someone names**|insulter quelqu'un]]\n- [[**upset**|bouleversé·e, très triste]]"
         },
         {
           "type": "mcq",
@@ -582,7 +582,7 @@ window.registerPack({
               "cat": "clothes"
             }
           ],
-          "explanation": "✅ Lettre de Sarah = harcèlement ; lettre de Susan = vêtements (mais elle aussi subit des moqueries)."
+          "explanation": "✅ Les deux lettres :\n- lettre de Sarah = harcèlement\n- lettre de Susan = vêtements (mais elle aussi subit des moqueries)"
         }
       ]
     },
@@ -596,7 +596,7 @@ window.registerPack({
       "lesson": {
         "title": "[[Words about school|Les mots de l'école]]",
         "points": [
-          "Les notes et les matières :\n- [[**a mark**|une note]] ou [[**a grade**|une note]] : deux mots pour la même chose\n- [[**a bad mark**|une mauvaise note]]\n- [[**final exams**|les examens de fin d'année]]\n- [[**a subject**|une matière]]\n- Faux amis : **mark** n'est pas une marque, **subject** n'est pas un sujet.",
+          "Les notes et les matières :\n- [[**a mark**|une note]] ou [[**a grade**|une note]] : deux mots pour la même chose\n- [[**a bad mark**|une mauvaise note]]\n- [[**final exams**|les examens de fin d'année]]\n- [[**a subject**|une matière]]\nFaux amis :\n- **mark** n'est pas une marque\n- **subject** n'est pas un sujet",
           "La pression :\n- [[**pressure**|la pression]]\n- [[**to expect**|attendre de quelqu'un]]\n- [[**to disappoint**|décevoir]]\n- [[**enough**|assez]]",
           "Abandonner ou s'accrocher :\n- [[**to quit**|arrêter]]\n- [[**to give up**|abandonner]]\n- [[**to ask for help**|demander de l'aide]]\n- [[**regularly**|régulièrement]]",
           "Ce qu'on ressent :\n- [[**my stomach hurts**|j'ai mal au ventre]]\n- [[**stuck**|bloqué·e]]\n- [[**hopeless**|désespéré·e]]"
@@ -665,7 +665,7 @@ window.registerPack({
             "il a mal au ventre"
           ],
           "answer": 3,
-          "explanation": "✅ [[**stomach**|ventre]] ; [[**it hurts**|ça fait mal]]."
+          "explanation": "✅ Les mots :\n- [[**stomach**|ventre]]\n- [[**it hurts**|ça fait mal]]"
         },
         {
           "type": "fill",
@@ -772,7 +772,7 @@ window.registerPack({
               "right": "désespéré"
             }
           ],
-          "explanation": "✅ **anxious** et **furious** ressemblent au français. [[**upset**|bouleversé·e]] et [[**hopeless**|désespéré·e]] sont à apprendre par cœur."
+          "explanation": "✅ Ils ressemblent au français :\n- **anxious**\n- **furious**\nÀ apprendre par cœur :\n- [[**upset**|bouleversé·e]]\n- [[**hopeless**|désespéré·e]]"
         },
         {
           "type": "mcq",
@@ -831,7 +831,7 @@ window.registerPack({
               "right": "good mark"
             }
           ],
-          "explanation": "✅ [[**cheap**|pas cher]] ; [[**dangerous**|dangereux]]."
+          "explanation": "✅ Les mots :\n- [[**cheap**|pas cher]]\n- [[**dangerous**|dangereux]]"
         },
         {
           "type": "sort",
@@ -885,7 +885,7 @@ window.registerPack({
           "answers": [
             "stressed"
           ],
-          "explanation": "✅ **stressed** : deux **s** au milieu, et **-ed** à la fin."
+          "explanation": "✅ **stressed** :\n- deux **s** au milieu\n- **-ed** à la fin"
         },
         {
           "type": "spot",
@@ -980,7 +980,7 @@ window.registerPack({
               "cat": "in"
             }
           ],
-          "explanation": "✅ Avec **up** : meet, wake, give, stay. Avec **in** : join, fit."
+          "explanation": "✅ Avec **up** :\n- meet\n- wake\n- give\n- stay\nAvec **in** :\n- join\n- fit"
         },
         {
           "type": "match",
@@ -1042,7 +1042,7 @@ window.registerPack({
             "I want to give back."
           ],
           "answer": 1,
-          "explanation": "✅ [[**give up**|abandonner]]. [[**wake up**|se réveiller]]."
+          "explanation": "✅ Les mots :\n- [[**give up**|abandonner]]\n- [[**wake up**|se réveiller]]"
         },
         {
           "type": "spot",
@@ -1117,7 +1117,7 @@ window.registerPack({
         "points": [
           "Lis chaque lettre en entier, puis réponds aux questions.",
           "Touche les mots en pointillés si tu as oublié leur sens 👀. Mot de liaison à connaître : [[**However**|cependant]].",
-          "Cherche d'abord **le problème** : en ligne, harcèlement, stress, vêtements, téléphone ou école."
+          "Cherche d'abord **le problème** :\n- en ligne\n- harcèlement\n- stress\n- vêtements\n- téléphone\n- école"
         ],
         "examples": [
           "[[What should I do?|Que dois-je faire ?]]"
@@ -1256,8 +1256,8 @@ window.registerPack({
         "title": "[[Boss: translate!|Boss : traduis !]]",
         "points": [
           "Avec ce que tu as appris, traduis correctement les phrases ci-dessous en anglais. Une seule chance par phrase !",
-          "Faux amis : [[**a mark**|une note]] (pas une marque), [[**a subject**|une matière]] (pas un sujet).",
-          "N'oublie pas les petits mots :\n- [[**give up**|abandonner]], [[**fit in**|s'intégrer]]\n- [[**make fun of**|se moquer de]], [[**ask for help**|demander de l'aide]], [[**addicted to**|accro à]]"
+          "Faux amis :\n- [[**a mark**|une note]] (pas une marque)\n- [[**a subject**|une matière]] (pas un sujet)",
+          "N'oublie pas les petits mots :\n- [[**give up**|abandonner]]\n- [[**fit in**|s'intégrer]]\n- [[**make fun of**|se moquer de]]\n- [[**ask for help**|demander de l'aide]]\n- [[**addicted to**|accro à]]"
         ],
         "examples": [
           "[[I feel **stuck** and **hopeless**.|Je me sens bloqué et désespéré.]]"
@@ -1322,7 +1322,7 @@ window.registerPack({
           "answers": [
             "My family cannot afford expensive clothes."
           ],
-          "explanation": "« ne pas avoir les moyens d'acheter » = **cannot afford** ; « cher » = **expensive** : [[My family cannot afford expensive clothes.|Ma famille n'a pas les moyens d'acheter des vêtements chers.]]"
+          "explanation": "Les mots :\n- « ne pas avoir les moyens d'acheter » = **cannot afford**\n- « cher » = **expensive**\n[[My family cannot afford expensive clothes.|Ma famille n'a pas les moyens d'acheter des vêtements chers.]]"
         },
         {
           "type": "question",
@@ -1330,7 +1330,7 @@ window.registerPack({
           "answers": [
             "I want to quit and give up."
           ],
-          "explanation": "« arrêter » = **quit**, « abandonner » = **give up** : [[I want to quit and give up.|Je veux arrêter et abandonner.]]"
+          "explanation": "Les mots :\n- « arrêter » = **quit**\n- « abandonner » = **give up**\n[[I want to quit and give up.|Je veux arrêter et abandonner.]]"
         },
         {
           "type": "question",
@@ -1338,7 +1338,7 @@ window.registerPack({
           "answers": [
             "I feel stuck and hopeless."
           ],
-          "explanation": "« bloqué » = **stuck**, « désespéré » = **hopeless** : [[I feel stuck and hopeless.|Je me sens bloqué et désespéré.]]"
+          "explanation": "Les mots :\n- « bloqué » = **stuck**\n- « désespéré » = **hopeless**\n[[I feel stuck and hopeless.|Je me sens bloqué et désespéré.]]"
         },
         {
           "type": "question",
@@ -1406,7 +1406,7 @@ window.registerPack({
             "I am too tired to concentrate in class."
           ],
           "multiline": true,
-          "explanation": "« fatigué(e) » = **tired**, « se concentrer » = **focus** : [[I am too tired to focus in class.|Je suis trop fatiguée pour me concentrer en classe.]]"
+          "explanation": "Les mots :\n- « fatigué(e) » = **tired**\n- « se concentrer » = **focus**\n[[I am too tired to focus in class.|Je suis trop fatiguée pour me concentrer en classe.]]"
         },
         {
           "type": "question",
@@ -1416,7 +1416,7 @@ window.registerPack({
             "I check social media as soon as I wake up."
           ],
           "multiline": true,
-          "explanation": "« dès que » = **as soon as**, « se réveiller » = **wake up** : [[As soon as I wake up, I check social media.|Dès que je me réveille, je consulte les réseaux sociaux.]]"
+          "explanation": "Les mots :\n- « dès que » = **as soon as**\n- « se réveiller » = **wake up**\n[[As soon as I wake up, I check social media.|Dès que je me réveille, je consulte les réseaux sociaux.]]"
         },
         {
           "type": "question",
@@ -1428,7 +1428,7 @@ window.registerPack({
             "My friend is being bullied. She feels upset."
           ],
           "multiline": true,
-          "explanation": "« être harcelé(e) » = **to be bullied**, « bouleversé(e) » = **upset** : [[My friend is being bullied. She is upset.|Mon amie est harcelée. Elle est bouleversée.]]"
+          "explanation": "Les mots :\n- « être harcelé(e) » = **to be bullied**\n- « bouleversé(e) » = **upset**\n[[My friend is being bullied. She is upset.|Mon amie est harcelée. Elle est bouleversée.]]"
         },
         {
           "type": "question",
@@ -1446,7 +1446,7 @@ window.registerPack({
           "answers": [
             "I feel sad and anxious."
           ],
-          "explanation": "**I feel** + adjectifs : « triste » = **sad**, « anxieuse » = **anxious** : [[I feel sad and anxious.|Je me sens triste et anxieuse.]]"
+          "explanation": "**I feel** + adjectifs :\n- « triste » = **sad**\n- « anxieuse » = **anxious**\n[[I feel sad and anxious.|Je me sens triste et anxieuse.]]"
         },
         {
           "type": "question",
@@ -1470,7 +1470,7 @@ window.registerPack({
           "answers": [
             "Trendy clothes are expensive."
           ],
-          "explanation": "« à la mode » = **trendy**, placé **avant** le nom ; « cher » = **expensive** : [[Trendy clothes are expensive.|Les vêtements à la mode sont chers.]]"
+          "explanation": "Les mots :\n- « à la mode » = **trendy**, placé **avant** le nom\n- « cher » = **expensive**\n[[Trendy clothes are expensive.|Les vêtements à la mode sont chers.]]"
         },
         {
           "type": "question",
@@ -1510,7 +1510,7 @@ window.registerPack({
           "answers": [
             "Being offline makes me anxious."
           ],
-          "explanation": "« hors ligne » = **offline** ; « me rend » = **makes me** : [[Being offline makes me anxious.|Être hors ligne me rend anxieuse.]]"
+          "explanation": "Les mots :\n- « hors ligne » = **offline**\n- « me rend » = **makes me**\n[[Being offline makes me anxious.|Être hors ligne me rend anxieuse.]]"
         },
         {
           "type": "question",
@@ -1522,7 +1522,7 @@ window.registerPack({
             "I study regularly. However, my grades are not good enough."
           ],
           "multiline": true,
-          "explanation": "« régulièrement » = **regularly**, « cependant » = **However** ; **enough** se place **après** l'adjectif : [[However, my marks are not good enough.|Cependant, mes notes ne sont pas assez bonnes.]]"
+          "explanation": "Les mots :\n- « régulièrement » = **regularly**\n- « cependant » = **However**\n**enough** se place **après** l'adjectif : [[However, my marks are not good enough.|Cependant, mes notes ne sont pas assez bonnes.]]"
         },
         {
           "type": "question",
@@ -1536,7 +1536,7 @@ window.registerPack({
             "I don't fit in. Pupils call me names."
           ],
           "multiline": true,
-          "explanation": "« s'intégrer » = **fit in**, « insulter » = **call someone names** : [[I don't fit in. Some kids call me names.|Je ne m'intègre pas. Des élèves m'insultent.]]"
+          "explanation": "Les mots :\n- « s'intégrer » = **fit in**\n- « insulter » = **call someone names**\n[[I don't fit in. Some kids call me names.|Je ne m'intègre pas. Des élèves m'insultent.]]"
         }
       ]
     }

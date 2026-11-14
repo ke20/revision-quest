@@ -21,7 +21,7 @@ window.registerPack({
           "Le **carré** d'un nombre, c'est ce nombre **multiplié par lui-même** : 7² = 7 × 7 = **49**.",
           "On lit 7² « 7 **au carré** ». Le petit 2 est un [[exposant|petit nombre en haut à droite qui dit combien de fois on multiplie le nombre par lui-même]].",
           "⚠️ 7² n'est **pas** 7 × 2 : 7² = 49, alors que 7 × 2 = 14.",
-          "Un **carré parfait** est le carré d'un nombre entier : 1, 4, 9, 16, 25… sont des carrés parfaits."
+          "Un **carré parfait** est le carré d'un nombre entier. Des carrés parfaits :\n- 1\n- 4\n- 9\n- 16\n- 25…"
         ],
         "examples": [
           "3² = 3 × 3 = 9",
@@ -96,7 +96,7 @@ window.registerPack({
               "right": "49"
             }
           ],
-          "explanation": "2² = 4, 3² = 9, 5² = 25, 7² = 49."
+          "explanation": "Les carrés :\n- 2² = 4\n- 3² = 9\n- 5² = 25\n- 7² = 49"
         },
         {
           "type": "spot",
@@ -129,7 +129,7 @@ window.registerPack({
             "15"
           ],
           "answer": 1,
-          "explanation": "**25** = 5². 10, 15 et 20 ne sont le carré d'aucun nombre entier.",
+          "explanation": "**25** = 5². Ces nombres ne sont le carré d'aucun nombre entier :\n- 10\n- 15\n- 20",
           "hint": "Cherche un nombre égal à n × n."
         },
         {
@@ -179,7 +179,7 @@ window.registerPack({
               "cat": "non"
             }
           ],
-          "explanation": "4 = 2², 9 = 3², 36 = 6², 1 = 1². 8, 12, 20 et 50 sont entre deux carrés parfaits."
+          "explanation": "Les carrés parfaits :\n- 4 = 2²\n- 9 = 3²\n- 36 = 6²\n- 1 = 1²\nEntre deux carrés parfaits :\n- 8\n- 12\n- 20\n- 50"
         }
       ]
     },
@@ -193,8 +193,8 @@ window.registerPack({
         "title": "Les 12 carrés à connaître",
         "points": [
           "Au collège, on connaît **par cœur** les carrés de 1 à 12 : ils servent pour la racine carrée et le théorème de Pythagore.",
-          "Astuce : on passe d'un carré au suivant en ajoutant des **nombres impairs** : 1, +3 = 4, +5 = 9, +7 = 16, +9 = 25…",
-          "Bonus utile : 13² = 169, 14² = 196, 15² = 225, 20² = 400."
+          "Astuce : on passe d'un carré au suivant en ajoutant des **nombres impairs** :\n- 1\n- +3 = 4\n- +5 = 9\n- +7 = 16\n- +9 = 25…",
+          "Bonus utile :\n- 13² = 169\n- 14² = 196\n- 15² = 225\n- 20² = 400"
         ],
         "examples": [
           "11² = 121",
@@ -358,7 +358,7 @@ window.registerPack({
               "right": "144"
             }
           ],
-          "explanation": "6² = 36, 7² = 49, 8² = 64, 9² = 81, 11² = 121, 12² = 144."
+          "explanation": "Les carrés :\n- 6² = 36\n- 7² = 49\n- 8² = 64\n- 9² = 81\n- 11² = 121\n- 12² = 144"
         },
         {
           "type": "order",
@@ -372,7 +372,7 @@ window.registerPack({
             "81"
           ],
           "translation": "16 = 4², 25 = 5², 36 = 6², 49 = 7², 64 = 8², 81 = 9².",
-          "explanation": "Les carrés grandissent de plus en plus vite : +9, +11, +13, +15, +17 (des nombres impairs)."
+          "explanation": "Les carrés grandissent de plus en plus vite :\n- +9\n- +11\n- +13\n- +15\n- +17\n(des nombres impairs)"
         },
         {
           "type": "fill",
@@ -445,15 +445,15 @@ window.registerPack({
       "lesson": {
         "title": "Les indices d'un carré parfait",
         "points": [
-          "Le chiffre des unités d'un carré parfait ne peut être que **0, 1, 4, 5, 6 ou 9**.",
-          "Un nombre qui se termine par **2, 3, 7 ou 8** n'est **jamais** un carré parfait.",
+          "Le chiffre des unités d'un carré parfait ne peut être que :\n- **0**\n- **1**\n- **4**\n- **5**\n- **6**\n- **9**",
+          "Un nombre n'est **jamais** un carré parfait s'il se termine par :\n- **2**\n- **3**\n- **7**\n- **8**",
           "⚠️ Finir par 0, 1, 4, 5, 6 ou 9 ne suffit pas : 26 se termine par 6, mais ce n'est pas un carré parfait (il est entre 25 et 36).",
           "Pour être sûr : on cherche un entier n tel que n × n donne le nombre."
         ],
         "examples": [
           "Le chiffre des unités de 13² est celui de 3 × 3 = 9 : 13² = 169.",
           "47 se termine par 7 : ce n'est pas un carré parfait.",
-          "400 = 20², 900 = 30², 2 500 = 50²."
+          "Des carrés parfaits :\n- 400 = 20²\n- 900 = 30²\n- 2 500 = 50²"
         ]
       },
       "exercises": [
@@ -467,7 +467,7 @@ window.registerPack({
             "1 369"
           ],
           "answer": 2,
-          "explanation": "Un carré parfait ne se termine jamais par **7**. (Les trois autres sont des carrés : 37², 36² et 35².)",
+          "explanation": "Un carré parfait ne se termine jamais par **7**. Les trois autres sont des carrés :\n- 37²\n- 36²\n- 35²",
           "hint": "Regarde seulement le chiffre des unités."
         },
         {
@@ -517,7 +517,7 @@ window.registerPack({
               "cat": "non"
             }
           ],
-          "explanation": "Les carrés se terminent par 0, 1, 4, 5, 6 ou 9 ; jamais par 2, 3, 7 ou 8."
+          "explanation": "Les carrés se terminent par :\n- 0\n- 1\n- 4\n- 5\n- 6\n- 9\nJamais par :\n- 2\n- 3\n- 7\n- 8"
         },
         {
           "type": "fill",
@@ -641,7 +641,7 @@ window.registerPack({
               "cat": "non"
             }
           ],
-          "explanation": "49 = 7², 100 = 10², 121 = 11², 169 = 13². 48 et 90 sont entre deux carrés ; 125 et 147 aussi (121 < 125 < 144 < 147 < 169)."
+          "explanation": "Les carrés parfaits :\n- 49 = 7²\n- 100 = 10²\n- 121 = 11²\n- 169 = 13²\nEntre deux carrés :\n- 48\n- 90\n- 125 et 147 (121 < 125 < 144 < 147 < 169)"
         }
       ]
     },
@@ -744,7 +744,7 @@ window.registerPack({
               "right": "0,0036"
             }
           ],
-          "explanation": "(−6)² = 36 ; −6² = −36 ; 0,6² = 0,36 ; 0,06² = 0,0036 (deux fois deux chiffres après la virgule)."
+          "explanation": "Les carrés :\n- (−6)² = 36\n- −6² = −36\n- 0,6² = 0,36\n- 0,06² = 0,0036 (deux fois deux chiffres après la virgule)"
         },
         {
           "type": "spot",
@@ -784,7 +784,7 @@ window.registerPack({
             "Non, un carré est toujours positif ou nul"
           ],
           "answer": 3,
-          "explanation": "Positif × positif et négatif × négatif donnent tous les deux un nombre positif ; 0² = 0."
+          "explanation": "Tous les deux donnent un nombre positif :\n- positif × positif\n- négatif × négatif\nEt 0² = 0."
         }
       ]
     },
@@ -1229,7 +1229,7 @@ window.registerPack({
               "right": "121 cm²"
             }
           ],
-          "explanation": "Aire = côté² : 4, 25, 100 et 121 cm²."
+          "explanation": "Aire = côté² :\n- 4 cm²\n- 25 cm²\n- 100 cm²\n- 121 cm²"
         },
         {
           "type": "mcq",
@@ -1289,7 +1289,7 @@ window.registerPack({
         "points": [
           "La **racine carrée** d'un nombre positif a, notée **√a**, est le nombre **positif** dont le carré est a.",
           "√49 = 7, car 7 ≥ 0 et 7² = 49. On ne dit pas −7 : une racine carrée est toujours positive.",
-          "La racine carrée d'un carré parfait est un nombre entier : √1 = 1, √4 = 2, … √144 = 12.",
+          "La racine carrée d'un carré parfait est un nombre entier :\n- √1 = 1\n- √4 = 2\n- …\n- √144 = 12",
           "√ d'un nombre **négatif** n'existe pas : aucun carré n'est négatif.",
           "L'équation x² = 25 a **deux** solutions : x = 5 ou x = −5. L'équation x² = −4 n'en a **aucune**."
         ],
@@ -1450,7 +1450,7 @@ window.registerPack({
               "right": "1"
             }
           ],
-          "explanation": "√4 = 2, √25 = 5, √81 = 9, √144 = 12, √1 = 1."
+          "explanation": "Les racines :\n- √4 = 2\n- √25 = 5\n- √81 = 9\n- √144 = 12\n- √1 = 1"
         },
         {
           "type": "mcq",
@@ -1524,7 +1524,7 @@ window.registerPack({
           "√50 n'est pas un nombre entier, car 50 n'est pas un carré parfait.",
           "On l'**encadre** entre deux carrés parfaits qui se suivent : 49 < 50 < 64, donc **7 < √50 < 8**.",
           "50 est tout près de 49 : √50 est tout près de 7 (√50 ≈ 7,07).",
-          "Méthode : 1. chercher le carré parfait juste en dessous et juste au-dessus ; 2. prendre leurs racines."
+          "Méthode :\n- 1. chercher le carré parfait juste en dessous et juste au-dessus\n- 2. prendre leurs racines"
         ],
         "examples": [
           "9 < 10 < 16, donc 3 < √10 < 4",
@@ -1587,7 +1587,7 @@ window.registerPack({
             "8"
           ],
           "translation": "6 < √40 < 7 < √50 < 8",
-          "explanation": "√40 est entre 6 et 7 (36 < 40 < 49) ; √50 entre 7 et 8 (49 < 50 < 64)."
+          "explanation": "Les encadrements :\n- √40 est entre 6 et 7 (36 < 40 < 49)\n- √50 entre 7 et 8 (49 < 50 < 64)"
         },
         {
           "type": "sort",
@@ -1636,7 +1636,7 @@ window.registerPack({
               "cat": "non"
             }
           ],
-          "explanation": "√n est entier seulement si n est un carré parfait : 49, 100, 1 et 144."
+          "explanation": "√n est entier seulement si n est un carré parfait :\n- 49\n- 100\n- 1\n- 144"
         },
         {
           "type": "spot",
@@ -1912,7 +1912,7 @@ window.registerPack({
             "2 solutions",
             "deux solutions"
           ],
-          "explanation": "7² = 49 et (−7)² = 49 : **deux** solutions, 7 et −7."
+          "explanation": "7² = 49 et (−7)² = 49 : **deux** solutions :\n- 7\n- −7"
         },
         {
           "type": "question",

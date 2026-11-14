@@ -22,7 +22,7 @@ window.registerPack({
         "points": [
           "Les pronoms :\n- [[**yo**|je]]\n- [[**tú**|tu]]\n- [[**él / ella / usted**|il / elle / vous de politesse]]\n- [[**nosotros**|nous]]\n- [[**vosotros**|vous]]\n- [[**ellos / ellas / ustedes**|ils / elles / vous de politesse]]",
           "En espagnol, on dit souvent le verbe **sans le pronom** : [[**hablo**|je parle]]. La terminaison suffit.",
-          "1er groupe = verbes en **-AR** : on enlève **-ar** et on ajoute **-o, -as, -a, -amos, -áis, -an**."
+          "1er groupe = verbes en **-AR** : on enlève **-ar** et on ajoute :\n- **-o**\n- **-as**\n- **-a**\n- **-amos**\n- **-áis**\n- **-an**"
         ],
         "examples": [
           "[[Yo **hablo** español.|Je parle espagnol.]]",
@@ -211,7 +211,7 @@ window.registerPack({
               "cat": "ella"
             }
           ],
-          "explanation": "✅ **yo** → **-o** ; **él / ella** → **-a**."
+          "explanation": "✅ Les terminaisons :\n- **yo** → **-o**\n- **él / ella** → **-a**"
         },
         {
           "type": "spot",
@@ -252,7 +252,7 @@ window.registerPack({
         "title": "[[Segundo grupo: comer|2e groupe : manger]]",
         "points": [
           "2e groupe = verbes en **-ER** :\n- [[**comer**|manger]]\n- [[**aprender**|apprendre]]\n- [[**beber**|boire]]\n- [[**leer**|lire]]",
-          "On enlève **-er** et on ajoute **-o, -es, -e, -emos, -éis, -en**.",
+          "On enlève **-er** et on ajoute :\n- **-o**\n- **-es**\n- **-e**\n- **-emos**\n- **-éis**\n- **-en**",
           "Seul **yo** est pareil qu'en -AR (**-o**) ; ailleurs le **a** devient **e**."
         ],
         "examples": [
@@ -436,7 +436,7 @@ window.registerPack({
               "cat": "er"
             }
           ],
-          "explanation": "✅ En -AR on garde le **a** (habl**as**) ; en -ER on a un **e** (com**es**)."
+          "explanation": "✅ La différence :\n- en -AR on garde le **a** (habl**as**)\n- en -ER on a un **e** (com**es**)"
         },
         {
           "type": "spot",
@@ -478,8 +478,8 @@ window.registerPack({
         "title": "[[Tercer grupo: vivir|3e groupe : vivre]]",
         "points": [
           "3e groupe = verbes en **-IR** :\n- [[**vivir**|vivre, habiter]]\n- [[**escribir**|écrire]]\n- [[**abrir**|ouvrir]]\n- [[**subir**|monter]]",
-          "Terminaisons : **-o, -es, -e, -imos, -ís, -en**.",
-          "Astuce : -IR se conjugue comme -ER, **sauf** avec nosotros (**-imos**) et vosotros (**-ís**)."
+          "Terminaisons :\n- **-o**\n- **-es**\n- **-e**\n- **-imos**\n- **-ís**\n- **-en**",
+          "Astuce : -IR se conjugue comme -ER, **sauf** :\n- avec nosotros (**-imos**)\n- avec vosotros (**-ís**)"
         ],
         "examples": [
           "[[Yo **vivo** en Francia.|J'habite en France.]]",
@@ -708,8 +708,8 @@ window.registerPack({
         "title": "[[Ser y estar|être et être]]",
         "points": [
           "« Être » se dit de deux façons, et les deux sont **irréguliers**.",
-          "**ser** : qui on est, ce qui ne change pas : identité, nationalité, métier, caractère.\n- [[**Soy francés.**|Je suis français.]]",
-          "**estar** : où on est et comment on va maintenant : lieu, état passager.\n- [[**Estoy en clase.**|Je suis en classe.]]\n- [[**Estoy cansado.**|Je suis fatigué.]]"
+          "**ser** : qui on est, ce qui ne change pas :\n- identité\n- nationalité\n- métier\n- caractère\nExemple :\n- [[**Soy francés.**|Je suis français.]]",
+          "**estar** : où on est et comment on va maintenant :\n- lieu\n- état passager\nExemples :\n- [[**Estoy en clase.**|Je suis en classe.]]\n- [[**Estoy cansado.**|Je suis fatigué.]]"
         ],
         "examples": [
           "[[Cuba **es** una isla.|Cuba est une île.]]",
@@ -822,7 +822,7 @@ window.registerPack({
               "right": "ellos"
             }
           ],
-          "explanation": "✅ **ser** : soy, eres, es, somos, sois, son."
+          "explanation": "✅ **ser** :\n- soy\n- eres\n- es\n- somos\n- sois\n- son"
         },
         {
           "type": "match",
@@ -849,7 +849,7 @@ window.registerPack({
               "right": "ellos"
             }
           ],
-          "explanation": "✅ **estar** : estoy, estás, está, estamos, estáis, están (accents sur toutes sauf estoy et estamos)."
+          "explanation": "✅ **estar** :\n- estoy\n- estás\n- está\n- estamos\n- estáis\n- están\n(accents sur toutes sauf estoy et estamos)"
         },
         {
           "type": "mcq",
@@ -914,7 +914,7 @@ window.registerPack({
               "cat": "estar"
             }
           ],
-          "explanation": "✅ **ser** : identité, métier, nationalité. **estar** : lieu, état du moment."
+          "explanation": "✅ **ser** :\n- identité\n- métier\n- nationalité\n**estar** :\n- lieu\n- état du moment"
         },
         {
           "type": "fill",
@@ -973,9 +973,9 @@ window.registerPack({
       "lesson": {
         "title": "[[Tener y haber|avoir et avoir]]",
         "points": [
-          "**tener** = avoir, posséder : [[**Tengo un hermano.**|J'ai un frère.]] Il est irrégulier :\n- yo **tengo**\n- **e → ie** : tienes, tiene, tienen",
+          "**tener** = avoir, posséder : [[**Tengo un hermano.**|J'ai un frère.]] Il est irrégulier :\n- yo **tengo**\n**e → ie** :\n- tienes\n- tiene\n- tienen",
           "**tener que** + infinitif = devoir, être obligé de : [[**Tengo que estudiar.**|Je dois étudier.]]",
-          "**haber** sert d'auxiliaire : he, has, ha, hemos, habéis, han. Au présent, retiens surtout [[**hay**|il y a]]."
+          "**haber** sert d'auxiliaire :\n- he\n- has\n- ha\n- hemos\n- habéis\n- han\nAu présent, retiens surtout [[**hay**|il y a]]."
         ],
         "examples": [
           "[[Los alumnos **tienen que** cantar el himno.|Les élèves doivent chanter l'hymne.]]",
@@ -1070,7 +1070,7 @@ window.registerPack({
               "right": "ellos"
             }
           ],
-          "explanation": "✅ **tener** : tengo, tienes, tiene, tenemos, tenéis, tienen."
+          "explanation": "✅ **tener** :\n- tengo\n- tienes\n- tiene\n- tenemos\n- tenéis\n- tienen"
         },
         {
           "type": "mcq",
@@ -1094,7 +1094,7 @@ window.registerPack({
             "le e devient ie quand il est accentué"
           ],
           "answer": 3,
-          "explanation": "✅ **e → ie** : tienes, tiene, tienen. Pas avec nosotros et vosotros (**tenemos**, **tenéis**)."
+          "explanation": "✅ **e → ie** :\n- tienes\n- tiene\n- tienen\nPas avec nosotros et vosotros :\n- **tenemos**\n- **tenéis**"
         },
         {
           "type": "fill",
@@ -1163,7 +1163,7 @@ window.registerPack({
               "right": "ellos"
             }
           ],
-          "explanation": "✅ **haber** : he, has, ha, hemos, habéis, han. Il sert surtout d'auxiliaire."
+          "explanation": "✅ **haber** :\n- he\n- has\n- ha\n- hemos\n- habéis\n- han\nIl sert surtout d'auxiliaire."
         },
         {
           "type": "spot",
@@ -1204,7 +1204,7 @@ window.registerPack({
       "lesson": {
         "title": "[[Tres verbos irregulares|trois verbes irréguliers]]",
         "points": [
-          "[[**hacer**|faire]] : seul **yo** change → **hago**. Le reste est régulier : haces, hace…",
+          "[[**hacer**|faire]] : seul **yo** change → **hago**. Le reste est régulier :\n- haces\n- hace…",
           "[[**defender**|défendre]] : **e → ie**, sauf avec nosotros et vosotros :\n- yo **defiendo**\n- nosotros **defendemos**",
           "[[**poder**|pouvoir]] : **o → ue**, sauf avec nosotros et vosotros :\n- yo **puedo**\n- nosotros **podemos**"
         ],
@@ -1407,9 +1407,9 @@ window.registerPack({
       "lesson": {
         "title": "[[¿Qué grupo?|Quel groupe ?]]",
         "points": [
-          "1. Regarde la fin de l'infinitif : **-AR**, **-ER** ou **-IR**.",
+          "1. Regarde la fin de l'infinitif :\n- **-AR**\n- **-ER**\n- **-IR**",
           "2. Trouve le pronom, ou devine-le grâce à la terminaison :\n- yo **-o**\n- tú **-s**\n- nosotros **-mos**\n- ellos **-n**",
-          "3. Pense aux irréguliers : **ser, estar, tener, hacer, defender, poder**."
+          "3. Pense aux irréguliers :\n- **ser**\n- **estar**\n- **tener**\n- **hacer**\n- **defender**\n- **poder**"
         ],
         "examples": [
           "[[Yo **soy** alumno y **vivo** en Lyon.|Je suis élève et j'habite à Lyon.]]",
@@ -1585,8 +1585,8 @@ window.registerPack({
         "title": "[[¡Traduce!|Traduis !]]",
         "points": [
           "Avec ce que tu as appris, traduis correctement les phrases ci-dessous en espagnol, au présent. Une seule chance par phrase !",
-          "Trouve le groupe (-AR, -ER, -IR) et la personne. Le pronom (yo, tú…) n'est pas obligatoire.",
-          "Pense aux irréguliers (**soy, estoy, tengo, hago, puedo**) et aux **accents** : habláis, estás, están."
+          "Trouve :\n- le groupe (-AR, -ER, -IR)\n- la personne\nLe pronom (yo, tú…) n'est pas obligatoire.",
+          "Pense aux irréguliers :\n- **soy**\n- **estoy**\n- **tengo**\n- **hago**\n- **puedo**\nEt aux **accents** :\n- habláis\n- estás\n- están"
         ],
         "examples": [
           "[[Me llamo Lucas, **tengo** catorce años y **vivo** en Francia.|Je m'appelle Lucas, j'ai quatorze ans et j'habite en France.]]"
@@ -1826,7 +1826,7 @@ window.registerPack({
             "¿Vives en Lyon?",
             "¿Tú vives en Lyon?"
           ],
-          "explanation": "**vivir** avec tú : **vives** ; en espagnol, la question s'ouvre avec **¿** : [[¿Vives en Lyon?|Tu habites à Lyon ?]]"
+          "explanation": "À retenir :\n- **vivir** avec tú : **vives**\n- en espagnol, la question s'ouvre avec **¿**\n[[¿Vives en Lyon?|Tu habites à Lyon ?]]"
         },
         {
           "type": "question",
@@ -1856,7 +1856,7 @@ window.registerPack({
             "Mi hermana es simpática. Ella aprende el español."
           ],
           "multiline": true,
-          "explanation": "Le caractère → **ser** : **es** ; **aprender** avec ella : **aprende** : [[Mi hermana es simpática. Aprende español.|Ma sœur est sympathique. Elle apprend l'espagnol.]]"
+          "explanation": "À retenir :\n- le caractère → **ser** : **es**\n- **aprender** avec ella : **aprende**\n[[Mi hermana es simpática. Aprende español.|Ma sœur est sympathique. Elle apprend l'espagnol.]]"
         },
         {
           "type": "question",

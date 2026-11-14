@@ -30,8 +30,8 @@ window.registerPack({
       "lesson": {
         "title": "Solide, liquide, gaz",
         "points": [
-          "La matière existe sous trois **états** : solide, liquide et gaz.",
-          "Solide → liquide : **fusion**. Liquide → solide : **solidification**. Liquide → gaz : **vaporisation**. Gaz → liquide : **liquéfaction**.",
+          "La matière existe sous trois **états** :\n- solide\n- liquide\n- gaz",
+          "Les changements d'état :\n- solide → liquide : **fusion**\n- liquide → solide : **solidification**\n- liquide → gaz : **vaporisation**\n- gaz → liquide : **liquéfaction**",
           "Pendant un changement d'état, la **masse se conserve** mais le **volume change** : l'eau qui gèle prend plus de place."
         ],
         "examples": [
@@ -73,7 +73,7 @@ window.registerPack({
               "right": "gaz → liquide"
             }
           ],
-          "explanation": "**Fusion** et **solidification** sont inverses ; **vaporisation** et **liquéfaction** aussi."
+          "explanation": "Sont inverses :\n- **fusion** et **solidification**\n- **vaporisation** et **liquéfaction**"
         },
         {
           "type": "sort",
@@ -191,10 +191,10 @@ window.registerPack({
       "lesson": {
         "title": "Changer d'unité",
         "points": [
-          "Volumes : 1 L = 10 dL = 100 cL = **1 000 mL**. Masses : 1 kg = **1 000 g** et 1 t = 1 000 kg.",
-          "Volumes en cubes : **3 colonnes** par unité (1 m³ = 1 000 dm³ et 1 dm³ = 1 000 cm³).",
-          "Dans le tableau, le L est sous la dernière colonne des dm³ : **1 L = 1 dm³** et **1 mL = 1 cm³**.",
-          "💡 **Astuce** : apprends ces tableaux **par cœur** et redessine-les au brouillon à chaque conversion. Place le chiffre des unités dans la colonne de départ, complète avec des 0, puis lis le résultat dans la colonne d'arrivée."
+          "Volumes :\n- 1 L = 10 dL = 100 cL = **1 000 mL**\nMasses :\n- 1 kg = **1 000 g**\n- 1 t = 1 000 kg",
+          "Volumes en cubes : **3 colonnes** par unité :\n- 1 m³ = 1 000 dm³\n- 1 dm³ = 1 000 cm³",
+          "Dans le tableau, le L est sous la dernière colonne des dm³ :\n- **1 L = 1 dm³**\n- **1 mL = 1 cm³**",
+          "💡 **Astuce** : apprends ces tableaux **par cœur** et redessine-les au brouillon à chaque conversion. Méthode :\n- place le chiffre des unités dans la colonne de départ\n- complète avec des 0\n- puis lis le résultat dans la colonne d'arrivée"
         ],
         "examples": [
           "2,5 L = 2 500 mL",
@@ -321,7 +321,7 @@ window.registerPack({
               "right": "10 mL"
             }
           ],
-          "explanation": "Retiens le pont : **1 L = 1 dm³** et **1 mL = 1 cm³**."
+          "explanation": "Retiens le pont :\n- **1 L = 1 dm³**\n- **1 mL = 1 cm³**"
         },
         {
           "type": "fill",
@@ -2113,7 +2113,7 @@ window.registerPack({
         "points": [
           "La **masse volumique** ρ (« rhô ») est la masse d'un matériau (solide, liquide ou gaz) par unité de volume.",
           "On la calcule ainsi : **ρ = m ÷ V**.",
-          "Unité officielle : **kg/m³**. On utilise aussi kg/L, g/mL ou g/cm³.",
+          "Unité officielle : **kg/m³**. On utilise aussi :\n- kg/L\n- g/mL\n- g/cm³",
           "Pour l'eau : ρ = **1 g/mL = 1 g/cm³ = 1 kg/L = 1 000 kg/m³**."
         ],
         "examples": [
@@ -2303,9 +2303,9 @@ window.registerPack({
       "lesson": {
         "title": "Retourner la formule",
         "points": [
-          "Le **triangle** : m en haut, ρ et V en bas. On cache ce qu'on cherche.",
-          "**m = ρ × V** et **V = m ÷ ρ**.",
-          "Mettre d'abord les **unités d'accord** : g/cm³ avec g et cm³ ; kg/L avec kg et L ; kg/m³ avec kg et m³."
+          "Le **triangle** :\n- m en haut\n- ρ et V en bas\nOn cache ce qu'on cherche.",
+          "On retourne la formule :\n- **m = ρ × V**\n- **V = m ÷ ρ**",
+          "Mettre d'abord les **unités d'accord** :\n- g/cm³ avec g et cm³\n- kg/L avec kg et L\n- kg/m³ avec kg et m³"
         ],
         "examples": [
           "Huile à 0,9 g/mL : 200 mL ont une masse de 0,9 × 200 = 180 g.",
@@ -2736,7 +2736,7 @@ window.registerPack({
             "kilogrammes par mètre cube",
             "kg par m³"
           ],
-          "explanation": "L'unité officielle est le **kg/m³**. On utilise aussi g/cm³, g/mL ou kg/L."
+          "explanation": "L'unité officielle est le **kg/m³**. On utilise aussi :\n- g/cm³\n- g/mL\n- kg/L"
         },
         {
           "type": "question",

@@ -83,7 +83,7 @@ window.registerPack({
             "faire le salut révolutionnaire"
           ],
           "answer": 3,
-          "explanation": "✅ **hacer** = faire ; **el saludo** = le salut (un geste)."
+          "explanation": "✅ Les mots :\n- **hacer** = faire\n- **el saludo** = le salut (un geste)"
         },
         {
           "type": "mcq",
@@ -95,7 +95,7 @@ window.registerPack({
             "enseigner la révolution"
           ],
           "answer": 1,
-          "explanation": "✅ **aprender** = apprendre ; **la historia** = l'histoire."
+          "explanation": "✅ Les mots :\n- **aprender** = apprendre\n- **la historia** = l'histoire"
         },
         {
           "type": "fill",
@@ -217,7 +217,7 @@ window.registerPack({
             "demain"
           ],
           "answer": 2,
-          "explanation": "✅ **cada** = chaque ; **la mañana** = le matin. Attention : **mañana** seul veut aussi dire « demain »."
+          "explanation": "✅ Les mots :\n- **cada** = chaque\n- **la mañana** = le matin\nAttention : **mañana** seul veut aussi dire « demain »."
         },
         {
           "type": "mcq",
@@ -335,9 +335,9 @@ window.registerPack({
       "lesson": {
         "title": "[[¿Qué hacen los alumnos?|Que font les élèves ?]]",
         "points": [
-          "Verbes en -AR, [[**llevar**|porter]] et [[**cantar**|chanter]] : llev**o**, llev**as**, llev**a**, llev**amos**, llev**áis**, llev**an**.",
-          "Verbe en -ER, [[**aprender**|apprendre]] : aprend**o**, aprend**es**, aprend**e**, aprend**emos**, aprend**éis**, aprend**en**.",
-          "Irréguliers :\n- [[**hacer**|faire]] → yo **hago**\n- [[**defender**|défendre]] → **defiendo**, defiendes, defiende, defendemos, defendéis, **defienden**"
+          "Deux verbes en -AR :\n- [[**llevar**|porter]]\n- [[**cantar**|chanter]]\nOn conjugue :\n- llev**o**\n- llev**as**\n- llev**a**\n- llev**amos**\n- llev**áis**\n- llev**an**",
+          "Verbe en -ER, [[**aprender**|apprendre]] :\n- aprend**o**\n- aprend**es**\n- aprend**e**\n- aprend**emos**\n- aprend**éis**\n- aprend**en**",
+          "Irréguliers :\n- [[**hacer**|faire]] → yo **hago**\n[[**defender**|défendre]] :\n- **defiendo**\n- defiendes\n- defiende\n- defendemos\n- defendéis\n- **defienden**"
         ],
         "examples": [
           "[[Los alumnos **hacen** el saludo.|Les élèves font le salut.]]",
@@ -1037,7 +1037,7 @@ window.registerPack({
             "."
           ],
           "translation": "À Cuba, chaque matin, les élèves doivent chanter l'hymne révolutionnaire.",
-          "explanation": "✅ Lieu, moment, sujet, **tienen que** + infinitif, complément.",
+          "explanation": "✅ L'ordre :\n- lieu\n- moment\n- sujet\n- **tienen que** + infinitif\n- complément",
           "alternatives": [
             [
               "Cada",
@@ -1191,8 +1191,8 @@ window.registerPack({
         "title": "[[¡Traduce!|Traduis !]]",
         "points": [
           "Avec ce que tu as appris, traduis correctement les phrases ci-dessous en espagnol. Une seule chance par phrase, et les **accents** comptent !",
-          "[[**tener que** + infinitif|devoir]] : tengo, tienes, tiene, tenemos, tenéis, **tienen que**.",
-          "[[**tanto** + nom + **como**|autant de… que]] s'accorde : tanta libertad, tantos alumnos. Avec un adjectif : [[**tan** grande **como**|aussi grand que]]."
+          "[[**tener que** + infinitif|devoir]] :\n- tengo\n- tienes\n- tiene\n- tenemos\n- tenéis\n- **tienen que**",
+          "[[**tanto** + nom + **como**|autant de… que]] s'accorde :\n- tanta libertad\n- tantos alumnos\nAvec un adjectif : [[**tan** grande **como**|aussi grand que]]."
         ],
         "examples": [
           "[[Los alumnos **tienen que llevar** un uniforme.|Les élèves doivent porter un uniforme.]]"
@@ -1243,7 +1243,7 @@ window.registerPack({
             "Nosotros aprendemos la historia de la revolución.",
             "Nosotras aprendemos la historia de la revolución."
           ],
-          "explanation": "**aprender** avec nosotros : **aprendemos** ; et l'accent de **revolución** : [[Aprendemos la historia de la revolución.|Nous apprenons l'histoire de la révolution.]]"
+          "explanation": "À retenir :\n- **aprender** avec nosotros : **aprendemos**\n- l'accent de **revolución**\n[[Aprendemos la historia de la revolución.|Nous apprenons l'histoire de la révolution.]]"
         },
         {
           "type": "question",
@@ -1299,7 +1299,7 @@ window.registerPack({
           "answers": [
             "Cuba no es tan grande como Francia."
           ],
-          "explanation": "Avec un adjectif : **tan** + adjectif + **como** ; et pas d'article devant **Francia** : [[Cuba no es tan grande como Francia.|Cuba n'est pas aussi grande que la France.]]"
+          "explanation": "À retenir :\n- avec un adjectif : **tan** + adjectif + **como**\n- pas d'article devant **Francia**\n[[Cuba no es tan grande como Francia.|Cuba n'est pas aussi grande que la France.]]"
         },
         {
           "type": "question",
@@ -1362,7 +1362,7 @@ window.registerPack({
             "Los alumnos cantan el himno revolucionario.",
             "Los estudiantes cantan el himno revolucionario."
           ],
-          "explanation": "**cantar** avec los alumnos : **cantan** ; l'adjectif se place après le nom : [[Los alumnos cantan el himno revolucionario.|Les élèves chantent l'hymne révolutionnaire.]]"
+          "explanation": "À retenir :\n- **cantar** avec los alumnos : **cantan**\n- l'adjectif se place après le nom\n[[Los alumnos cantan el himno revolucionario.|Les élèves chantent l'hymne révolutionnaire.]]"
         },
         {
           "type": "question",
