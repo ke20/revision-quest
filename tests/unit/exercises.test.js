@@ -23,6 +23,12 @@ test("rich: **bold**, [[word|translation]] bubbles and line breaks", () => {
   assert.strictEqual(X.rich("**[[fit in|s'intégrer]]**"),
     '<strong><span class="tr" tabindex="0" role="button" data-tr="s&#39;intégrer">fit in</span></strong>');
   assert.strictEqual(X.rich("line 1\nline 2"), "line 1<br>line 2");
+  assert.strictEqual(X.rich("Des noms :\n- but\n- côte\nFin"),           'Des noms :<ul class="rich-list rich-more"><li>but</li><li>côte</li></ul>Fin', "text after a list: gap below the list");
+  assert.strictEqual(X.rich("Mots :\n- but\n- **côte**\n- [[ile|terre]]\n- navigateur"),
+    'Mots :<ul class="rich-list rich-cols"><li>but</li><li><strong>côte</strong></li><li><span class="tr" tabindex="0" role="button" data-tr="terre">ile</span></li><li>navigateur</li></ul>',
+    "4 short items: 2 columns (markup does not count in the length)");
+  assert.ok(!X.rich("- un\n- deux\n- trois\n- un élément bien plus long").includes("rich-cols"), "one long item: 1 column");
+  assert.ok(!X.rich("- un\n- deux\n- trois").includes("rich-cols"), "3 items: 1 column");
   assert.strictEqual(X.rich(null), "");
   assert.strictEqual(X.rich("a ** b"), "a ** b", "a lone ** stays as text");
 });
@@ -205,6 +211,6 @@ test("rich: in a language pack (en / es), a French \"(…)\" gloss is wrapped sm
 test("rich: lines starting with \"- \" become a bullet list; other line breaks stay <br>", () => {
   assert.strictEqual(X.rich("Intro :\n- **a**\n- b"), 'Intro :<ul class="rich-list"><li><strong>a</strong></li><li>b</li></ul>');
   assert.strictEqual(X.rich("a\nb"), "a<br>b");
-  assert.strictEqual(X.rich("- a\n- b\nfin"), '<ul class="rich-list"><li>a</li><li>b</li></ul>fin');
+  assert.strictEqual(X.rich("- a\n- b\nfin"), '<ul class="rich-list rich-more"><li>a</li><li>b</li></ul>fin');
   assert.strictEqual(X.rich("a -b\nc - d"), "a -b<br>c - d", "a dash inside a line is not a bullet");
 });

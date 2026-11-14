@@ -416,6 +416,9 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
 .rich-list { margin: 6px 0 0; padding: 0; list-style: none; }
 .rich-list li, .lesson-points .rich-list li { background: none; border-radius: 0; padding: 3px 0 3px 18px; position: relative; font-size: inherit; }
 .rich-list li::before, .lesson-points .rich-list li::before { content: "•"; position: absolute; left: 4px; top: 3px; color: var(--c); }
+.rich-list.rich-cols { columns: 2; column-gap: 12px; }
+.rich-list.rich-more { margin-bottom: 10px; }
+.rich-cols li { break-inside: avoid; }
 
 /* ---------- result screens ---------- */
 .complete, .gameover, .error { display: flex; flex-direction: column; gap: 14px; padding-top: 8px; }

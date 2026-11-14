@@ -44,23 +44,31 @@
     return lines(s);
   }
 
+  var COLS_MIN_ITEMS = 4, COLS_MAX_CHARS = 14;
   /** Line breaks → <br>; consecutive lines starting with "- " → a bullet list (to air out several examples).
+      A list of 4 short items or more (words, units) goes on 2 columns, filled top to bottom. A list followed by more
+      text gets a gap below it (rich-more), so the next line does not read as one more item.
       @param {string} s @returns {string} */
   function lines(s) {
-    var out = "", inList = false;
+    var out = "", items = /** @type {string[]} */ ([]);
+    /** @param {string} it */
+    function textLength(it) { return it.replace(/<[^>]*>/g, "").replace(/&[a-z]+;|&#\d+;/g, "x").length; }
+    /** @param {boolean} more */
+    function flush(more) {
+      if (!items.length) return;
+      var cols = items.length >= COLS_MIN_ITEMS && items.every(function (it) { return textLength(it) <= COLS_MAX_CHARS; });
+      out += '<ul class="rich-list' + (cols ? " rich-cols" : "") + (more ? " rich-more" : "") + '">' + items.map(function (it) { return "<li>" + it + "</li>"; }).join("") + "</ul>";
+      items = [];
+    }
     s.split("\n").forEach(function (line, i) {
       var m = /^\s*- (.*)$/.exec(line);
-      if (m) {
-        out += (inList ? "" : '<ul class="rich-list">') + "<li>" + m[1] + "</li>";
-        inList = true;
-        return;
-      }
-      if (inList) out += "</ul>";
+      if (m) { items.push(m[1]); return; }
+      if (items.length) flush(true);
       else if (i > 0) out += "<br>";
-      inList = false;
       out += line;
     });
-    return out + (inList ? "</ul>" : "");
+    flush(false);
+    return out;
   }
 
   /** Plain text version (strip markup) — used for comparisons. @param {string} text @returns {string} */
