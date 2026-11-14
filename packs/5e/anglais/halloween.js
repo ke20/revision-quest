@@ -60,7 +60,7 @@ window.registerPack({
               "right": "un squelette"
             }
           ],
-          "explanation": "✅ [[ghost|fantôme]], [[witch|sorcière]], [[bat|chauve-souris]], [[owl|hibou]], [[skeleton|squelette]]."
+          "explanation": "✅ Les mots :\n- [[ghost|fantôme]]\n- [[witch|sorcière]]\n- [[bat|chauve-souris]]\n- [[owl|hibou]]\n- [[skeleton|squelette]]"
         },
         {
           "type": "mcq",
@@ -87,7 +87,7 @@ window.registerPack({
             "nouvelle lune"
           ],
           "answer": 2,
-          "explanation": "✅ **full** = plein, **moon** = lune."
+          "explanation": "✅ Les mots :\n- **full** = plein\n- **moon** = lune"
         },
         {
           "type": "fill",
@@ -177,7 +177,7 @@ window.registerPack({
         "points": [
           "- **a pumpkin** = une citrouille\n- **a Jack-o'-lantern** = une citrouille creusée avec une bougie\n- **a spider** = une araignée\n- **a skull** = un crâne",
           "- **a vampire** = un vampire\n- **a broom** = un balai\n- **a haunted house** = une maison hantée",
-          "**spooky**, **creepy**, **frightening** = qui fait peur."
+          "Qui fait peur :\n- **spooky**\n- **creepy**\n- **frightening**"
         ],
         "examples": [
           "[[A witch has got a long hat and a broom.|Une sorcière a un grand chapeau et un balai.]]",
@@ -206,7 +206,7 @@ window.registerPack({
               "right": "un balai"
             }
           ],
-          "explanation": "✅ [[pumpkin|citrouille]], [[spider|araignée]], [[skull|crâne]], [[broom|balai]]."
+          "explanation": "✅ Les mots :\n- [[pumpkin|citrouille]]\n- [[spider|araignée]]\n- [[skull|crâne]]\n- [[broom|balai]]"
         },
         {
           "type": "fill",
@@ -248,7 +248,7 @@ window.registerPack({
             "frightening"
           ],
           "answer": 1,
-          "explanation": "✅ **funny** = drôle. **spooky, creepy, frightening** = qui fait peur."
+          "explanation": "✅ **funny** = drôle. Qui fait peur :\n- **spooky**\n- **creepy**\n- **frightening**"
         },
         {
           "type": "fill",
@@ -298,7 +298,7 @@ window.registerPack({
               "cat": "person"
             }
           ],
-          "explanation": "✅ Animaux : bat, owl, spider. Personnages : witch, vampire, ghost."
+          "explanation": "✅ Animaux :\n- bat\n- owl\n- spider\nPersonnages :\n- witch\n- vampire\n- ghost"
         },
         {
           "type": "mcq",
@@ -335,7 +335,7 @@ window.registerPack({
         "points": [
           "Halloween, c'est le **31 octobre** : [[October 31st|le 31 octobre]].",
           "- **dress up as** = se déguiser en\n- **knock at the door** = frapper à la porte\n- **ask for** = demander",
-          "Les bonbons : **candies** aux États-Unis 🇺🇸, **sweets** au Royaume-Uni 🇬🇧. Les enfants disent **« Trick or treat! »** (une farce ou une friandise !)."
+          "Les bonbons :\n- **candies** aux États-Unis 🇺🇸\n- **sweets** au Royaume-Uni 🇬🇧\nLes enfants disent **« Trick or treat! »** (une farce ou une friandise !)."
         ],
         "examples": [
           "[[Children dress up as witches.|Les enfants se déguisent en sorcières.]]"
@@ -404,7 +404,7 @@ window.registerPack({
             "treats"
           ],
           "answer": 1,
-          "explanation": "✅ **candies** aux États-Unis 🇺🇸, **sweets** au Royaume-Uni 🇬🇧."
+          "explanation": "✅ Les bonbons :\n- **candies** aux États-Unis 🇺🇸\n- **sweets** au Royaume-Uni 🇬🇧"
         },
         {
           "type": "fill",
@@ -560,8 +560,8 @@ window.registerPack({
         "title": "[[Final test|Le contrôle final]]",
         "points": [
           "Avec ce que tu as appris, traduis correctement les phrases ci-dessous.",
-          "Au cimetière : graveyard, ghost, witch, skeleton, bat, owl, full moon. Et : pumpkin, spider, skull, broom.",
-          "October 31st, dress up as, knock at the door, Trick or treat!"
+          "Au cimetière :\n- graveyard\n- ghost\n- witch\n- skeleton\n- bat\n- owl\n- full moon\nEt aussi :\n- pumpkin\n- spider\n- skull\n- broom",
+          "À retenir :\n- October 31st\n- dress up as\n- knock at the door\n- Trick or treat!"
         ]
       },
       "exercises": [
@@ -607,7 +607,7 @@ window.registerPack({
             "The scene takes place in a graveyard.",
             "The scene takes place in a cemetery."
           ],
-          "explanation": "✅ **takes place** = se passe ; **graveyard** ou **cemetery**."
+          "explanation": "✅ Les mots :\n- **takes place** = se passe\n- **graveyard** ou **cemetery**"
         },
         {
           "type": "question",
@@ -624,7 +624,7 @@ window.registerPack({
             "A witch is flying on her broom.",
             "A witch flies on her broom."
           ],
-          "explanation": "✅ **witch** (sorcière), **broom** (balai)."
+          "explanation": "✅ Les mots :\n- **witch** (sorcière)\n- **broom** (balai)"
         },
         {
           "type": "question",
@@ -642,7 +642,7 @@ window.registerPack({
             "A spider makes webs.",
             "Spiders make webs."
           ],
-          "explanation": "✅ **spider** (araignée), **webs** (toiles)."
+          "explanation": "✅ Les mots :\n- **spider** (araignée)\n- **webs** (toiles)"
         },
         {
           "type": "question",
@@ -772,7 +772,7 @@ window.registerPack({
             "They ask for sweets.",
             "They ask for candy."
           ],
-          "explanation": "✅ **ask for** = demander ; candies (US), sweets (UK)."
+          "explanation": "✅ Les mots :\n- **ask for** = demander\n- candies (US)\n- sweets (UK)"
         },
         {
           "type": "question",
@@ -792,7 +792,7 @@ window.registerPack({
             "A haunted house is frightening.",
             "A haunted house is creepy."
           ],
-          "explanation": "✅ **haunted house** ; **spooky / creepy / frightening / scary** = qui fait peur."
+          "explanation": "✅ Les mots :\n- **haunted house**\n- **spooky / creepy / frightening / scary** = qui fait peur"
         },
         {
           "type": "question",
@@ -802,7 +802,7 @@ window.registerPack({
             "There is a pumpkin on the table and there is a spider on the wall."
           ],
           "multiline": true,
-          "explanation": "✅ [[pumpkin|citrouille]], [[spider|araignée]], [[wall|mur]]."
+          "explanation": "✅ Les mots :\n- [[pumpkin|citrouille]]\n- [[spider|araignée]]\n- [[wall|mur]]"
         }
       ],
       "draw": 12

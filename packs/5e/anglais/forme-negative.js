@@ -173,7 +173,7 @@ window.registerPack({
               "cat": "arent"
             }
           ],
-          "explanation": "✅ **isn't** avec he, she, it et un nom au singulier ; **aren't** avec you, we, they et un nom au pluriel."
+          "explanation": "✅ Deux formes :\n- **isn't** avec he, she, it et un nom au singulier\n- **aren't** avec you, we, they et un nom au pluriel"
         }
       ]
     },
@@ -362,7 +362,7 @@ window.registerPack({
               "cat": "doesnt"
             }
           ],
-          "explanation": "✅ **doesn't** avec he, she, it et un nom au singulier ; **don't** avec tous les autres."
+          "explanation": "✅ Deux formes :\n- **doesn't** avec he, she, it et un nom au singulier\n- **don't** avec tous les autres"
         },
         {
           "type": "fill",
@@ -372,7 +372,7 @@ window.registerPack({
             "doesn't",
             "does not"
           ],
-          "explanation": "✅ **He doesn't like** spinach : doesn't, et **like** sans -s."
+          "explanation": "✅ **He doesn't like** spinach :\n- doesn't\n- et **like** sans -s"
         },
         {
           "type": "mcq",
@@ -571,7 +571,7 @@ window.registerPack({
               "right": "Nous ne devons pas crier."
             }
           ],
-          "explanation": "✅ **can't** = ne pas pouvoir, ne pas savoir. **mustn't** = ne pas devoir (c'est interdit)."
+          "explanation": "✅ Deux négations :\n- **can't** = ne pas pouvoir, ne pas savoir\n- **mustn't** = ne pas devoir (c'est interdit)"
         },
         {
           "type": "fill",
@@ -757,8 +757,8 @@ window.registerPack({
         "title": "[[Final test|Le contrôle final]]",
         "points": [
           "Avec ce que tu as appris, traduis correctement les phrases ci-dessous.",
-          "**be** : am not, isn't, aren't. Autres verbes : **don't** ; avec he, she, it : **doesn't** + verbe sans -s.",
-          "**can't**, **mustn't** sans do. **have** : don't / doesn't have, ou haven't / hasn't got."
+          "**be** :\n- am not\n- isn't\n- aren't\nAutres verbes :\n- **don't**\n- avec he, she, it : **doesn't** + verbe sans -s",
+          "Sans do :\n- **can't**\n- **mustn't**\n**have** :\n- don't / doesn't have\n- ou haven't / hasn't got"
         ]
       },
       "exercises": [
@@ -878,7 +878,7 @@ window.registerPack({
             "I don't like mushrooms and I am not tall."
           ],
           "multiline": true,
-          "explanation": "✅ Deux négations : **don't** devant like, **not** après am."
+          "explanation": "✅ Deux négations :\n- **don't** devant like\n- **not** après am"
         },
         {
           "type": "question",
@@ -987,7 +987,7 @@ window.registerPack({
             "I am not tired and I don't want to sleep."
           ],
           "multiline": true,
-          "explanation": "✅ **not** après am, **don't** devant want."
+          "explanation": "✅ Deux négations :\n- **not** après am\n- **don't** devant want"
         }
       ],
       "draw": 12

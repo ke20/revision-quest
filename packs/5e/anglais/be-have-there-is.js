@@ -20,8 +20,8 @@ window.registerPack({
         "title": "[[The verb to be|Le verbe être]]",
         "points": [
           "**be** = être. Au présent, il change avec le sujet :\n- [[I **am**|je suis]]\n- [[you **are**|tu es, vous êtes]]\n- [[he / she / it **is**|il / elle est]]\n- [[we / they **are**|nous sommes, ils / elles sont]]",
-          "**it** = un objet ou un animal. Un nom au singulier (my cat, Tom) prend **is**, un nom au pluriel (my parents, the cats) prend **are**.",
-          "Formes courtes : **I'm**, **you're**, **he's**, **she's**, **it's**, **we're**, **they're**."
+          "**it** = un objet ou un animal. Avec un nom :\n- un nom au singulier (my cat, Tom) prend **is**\n- un nom au pluriel (my parents, the cats) prend **are**",
+          "Formes courtes :\n- **I'm**\n- **you're**\n- **he's**\n- **she's**\n- **it's**\n- **we're**\n- **they're**"
         ],
         "examples": [
           "[[My cat is grey.|Mon chat est gris.]]",
@@ -81,7 +81,7 @@ window.registerPack({
               "cat": "are"
             }
           ],
-          "explanation": "✅ **I am**, **he / she / it is** (et un nom au singulier), **you / we / they are** (et un nom au pluriel)."
+          "explanation": "✅ Le verbe **be** :\n- **I am**\n- **he / she / it is** (et un nom au singulier)\n- **you / we / they are** (et un nom au pluriel)"
         },
         {
           "type": "mcq",
@@ -189,7 +189,7 @@ window.registerPack({
         "points": [
           "**have** = avoir. Au présent :\n- [[I / you / we / they **have**|j'ai, tu as, nous avons, ils ont]]\n- [[he / she / it **has**|il / elle a]]",
           "⚠️ À la **3e personne du singulier** (he, she, it, my sister, Tom…), **have** devient **has**.",
-          "On dit aussi **have got** / **has got**, avec le même sens (très utilisé en Grande-Bretagne). Formes courtes : **I've got**, **she's got**.\n- [[I **have got** a cat.|J'ai un chat.]]\n- [[She **has got** blue eyes.|Elle a les yeux bleus.]]"
+          "On dit aussi **have got** / **has got**, avec le même sens (très utilisé en Grande-Bretagne). Formes courtes :\n- **I've got**\n- **she's got**\nExemples :\n- [[I **have got** a cat.|J'ai un chat.]]\n- [[She **has got** blue eyes.|Elle a les yeux bleus.]]"
         ],
         "examples": [
           "[[I have a cat.|J'ai un chat.]] = [[I've got a cat.|J'ai un chat.]]",
@@ -245,7 +245,7 @@ window.registerPack({
               "cat": "has"
             }
           ],
-          "explanation": "✅ **has** avec he, she, it et un nom au singulier (Tom, my sister). **have** avec tous les autres."
+          "explanation": "✅ Deux formes :\n- **has** avec he, she, it et un nom au singulier (Tom, my sister)\n- **have** avec tous les autres"
         },
         {
           "type": "mcq",
@@ -323,7 +323,7 @@ window.registerPack({
               "right": "Ils ont une voiture."
             }
           ],
-          "explanation": "✅ [[pet|animal de compagnie]], [[sister|sœur]], [[dog|chien]], [[car|voiture]]."
+          "explanation": "✅ Les mots :\n- [[pet|animal de compagnie]]\n- [[sister|sœur]]\n- [[dog|chien]]\n- [[car|voiture]]"
         },
         {
           "type": "order",
@@ -404,8 +404,8 @@ window.registerPack({
       "lesson": {
         "title": "[[Be or have?|Être ou avoir ?]]",
         "points": [
-          "**be** (am, is, are) dit **comment est** quelqu'un ou quelque chose : sa couleur, sa taille, son caractère, où il est.",
-          "**have** (have, has, ou **have got**, **has got**) dit **ce qu'on a** : un animal, un objet, et aussi les **yeux** et les **cheveux**.",
+          "**be** (am, is, are) dit **comment est** quelqu'un ou quelque chose :\n- sa couleur\n- sa taille\n- son caractère\n- où il est",
+          "**have** (have, has, ou **have got**, **has got**) dit **ce qu'on a** :\n- un animal\n- un objet\n- et aussi les **yeux** et les **cheveux**",
           "⚠️ Comme en français : [[She has blonde hair.|Elle a les cheveux blonds.]] Mais : [[She is very tall.|Elle est très grande.]]"
         ],
         "examples": [
@@ -492,7 +492,7 @@ window.registerPack({
               "cat": "be"
             }
           ],
-          "explanation": "✅ **have** : les cheveux, les yeux, un animal. **be** : comment on est, où on est."
+          "explanation": "✅ **have** :\n- les cheveux\n- les yeux\n- un animal\n**be** :\n- comment on est\n- où on est"
         },
         {
           "type": "fill",
@@ -694,7 +694,7 @@ window.registerPack({
         "title": "[[There is / there are|Il y a]]",
         "points": [
           "« Il y a » se dit :\n- **there is** + un nom au singulier\n- **there are** + un nom au pluriel",
-          "Pour poser la question, on inverse : [[**Is there** a problem?|Y a-t-il un problème ?]] [[**Are there** many trees?|Y a-t-il beaucoup d'arbres ?]]",
+          "Pour poser la question, on inverse :\n- [[**Is there** a problem?|Y a-t-il un problème ?]]\n- [[**Are there** many trees?|Y a-t-il beaucoup d'arbres ?]]",
           "⚠️ Ne traduis pas mot à mot : « il y a » n'est jamais « it has »."
         ],
         "examples": [
@@ -742,7 +742,7 @@ window.registerPack({
               "cat": "is"
             }
           ],
-          "explanation": "✅ **there is** + singulier (a problem, an apple), **there are** + pluriel (two cats, a lot of trees)."
+          "explanation": "✅ Deux formes :\n- **there is** + singulier (a problem, an apple)\n- **there are** + pluriel (two cats, a lot of trees)"
         },
         {
           "type": "fill",
@@ -851,8 +851,8 @@ window.registerPack({
         "title": "[[Final test|Le contrôle final]]",
         "points": [
           "Avec ce que tu as appris, traduis correctement les phrases ci-dessous.",
-          "**be** : am, is, are (comment on est, où on est, l'**âge**). **have** / **has** (ou **have got** / **has got**) : ce qu'on a, les yeux, les cheveux.",
-          "**there is** + singulier, **there are** + pluriel."
+          "**be** (am, is, are) :\n- comment on est\n- où on est\n- l'**âge**\n**have** / **has** (ou **have got** / **has got**) :\n- ce qu'on a\n- les yeux\n- les cheveux",
+          "Il y a :\n- **there is** + singulier\n- **there are** + pluriel"
         ]
       },
       "exercises": [
@@ -1101,7 +1101,7 @@ window.registerPack({
             "My sister is very nice and she has got a cat."
           ],
           "multiline": true,
-          "explanation": "✅ **is** pour le caractère, **has** pour ce qu'on a."
+          "explanation": "✅ Deux verbes :\n- **is** pour le caractère\n- **has** pour ce qu'on a"
         }
       ],
       "draw": 12

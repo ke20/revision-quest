@@ -77,7 +77,7 @@ window.registerPack({
               "right": "au milieu"
             }
           ],
-          "explanation": "✅ **at** the top / bottom, **on** the left / right, **in** the middle."
+          "explanation": "✅ Trois prépositions :\n- **at** the top / bottom\n- **on** the left / right\n- **in** the middle"
         },
         {
           "type": "mcq",
@@ -117,7 +117,7 @@ window.registerPack({
           "answers": [
             "on"
           ],
-          "explanation": "✅ **on** the left, **on** the right."
+          "explanation": "✅ Avec **on** :\n- **on** the left\n- **on** the right"
         },
         {
           "type": "spot",
@@ -133,7 +133,7 @@ window.registerPack({
           ],
           "wrongIndex": 3,
           "correction": "at",
-          "explanation": "✅ **at** the bottom (en bas), **at** the top (en haut)."
+          "explanation": "✅ Avec **at** :\n- **at** the bottom (en bas)\n- **at** the top (en haut)"
         },
         {
           "type": "sort",
@@ -178,7 +178,7 @@ window.registerPack({
               "cat": "in"
             }
           ],
-          "explanation": "✅ **at** the top / bottom, **on** the left / right, **in** the middle / background."
+          "explanation": "✅ Trois prépositions :\n- **at** the top / bottom\n- **on** the left / right\n- **in** the middle / background"
         },
         {
           "type": "order",
@@ -207,7 +207,7 @@ window.registerPack({
             "The cat is in the middle."
           ],
           "answer": 2,
-          "explanation": "✅ en bas = **at the bottom**, à gauche = **on the left**."
+          "explanation": "✅ Les traductions :\n- en bas = **at the bottom**\n- à gauche = **on the left**"
         }
       ]
     },
@@ -222,8 +222,8 @@ window.registerPack({
         "title": "[[Shapes and colours|Formes et couleurs]]",
         "points": [
           "Formes :\n- **round** = rond\n- **square** = carré\n- **oval** = ovale\n- **rectangular** = rectangulaire",
-          "⚠️ En anglais, l'adjectif se place **avant** le nom et ne prend jamais de -s : [[a **yellow round** character|un personnage jaune et rond]], [[**green** shoes|des chaussures vertes]].",
-          "Taille : **tall** (grand), **small** (petit), **tiny** (minuscule), **thin** (mince), **big** (gros, grand)."
+          "⚠️ En anglais, l'adjectif se place **avant** le nom et ne prend jamais de -s :\n- [[a **yellow round** character|un personnage jaune et rond]]\n- [[**green** shoes|des chaussures vertes]]",
+          "Taille :\n- **tall** (grand)\n- **small** (petit)\n- **tiny** (minuscule)\n- **thin** (mince)\n- **big** (gros, grand)"
         ],
         "examples": [
           "[[He is blue and rectangular.|Il est bleu et rectangulaire.]]",
@@ -252,7 +252,7 @@ window.registerPack({
               "right": "rectangulaire"
             }
           ],
-          "explanation": "✅ **round, square, oval, rectangular**."
+          "explanation": "✅ Les formes :\n- **round**\n- **square**\n- **oval**\n- **rectangular**"
         },
         {
           "type": "mcq",
@@ -305,7 +305,7 @@ window.registerPack({
             "minuscule"
           ],
           "answer": 3,
-          "explanation": "✅ **tiny** = minuscule. Attention : timide = shy, mince = thin."
+          "explanation": "✅ **tiny** = minuscule. Attention :\n- timide = shy\n- mince = thin"
         },
         {
           "type": "fill",
@@ -364,7 +364,7 @@ window.registerPack({
               "cat": "shape"
             }
           ],
-          "explanation": "✅ Couleurs : yellow, pink, orange. Formes : round, oval, rectangular."
+          "explanation": "✅ Couleurs :\n- yellow\n- pink\n- orange\nFormes :\n- round\n- oval\n- rectangular"
         },
         {
           "type": "mcq",
@@ -376,7 +376,7 @@ window.registerPack({
             "He is big and round."
           ],
           "answer": 1,
-          "explanation": "✅ **tall** = grand (taille), **thin** = mince."
+          "explanation": "✅ Les mots :\n- **tall** = grand (taille)\n- **thin** = mince"
         }
       ]
     },
@@ -425,7 +425,7 @@ window.registerPack({
               "right": "intelligent"
             }
           ],
-          "explanation": "✅ [[shy|timide]], [[grumpy|grincheux]], [[lazy|paresseux]], [[funny|drôle]], [[clever|intelligent]]."
+          "explanation": "✅ Les mots :\n- [[shy|timide]]\n- [[grumpy|grincheux]]\n- [[lazy|paresseux]]\n- [[funny|drôle]]\n- [[clever|intelligent]]"
         },
         {
           "type": "mcq",
@@ -502,7 +502,7 @@ window.registerPack({
               "cat": "good"
             }
           ],
-          "explanation": "✅ Défauts : **grumpy**, **lazy**. Qualités : nice, helpful, funny, clever."
+          "explanation": "✅ Défauts :\n- **grumpy**\n- **lazy**\nQualités :\n- nice\n- helpful\n- funny\n- clever"
         },
         {
           "type": "fill",
@@ -592,7 +592,7 @@ window.registerPack({
               "right": "humeur"
             }
           ],
-          "explanation": "✅ **always, often, never** disent combien de fois."
+          "explanation": "✅ Ces mots disent combien de fois :\n- **always**\n- **often**\n- **never**"
         },
         {
           "type": "mcq",
@@ -604,7 +604,7 @@ window.registerPack({
             "He's always in a bad mood."
           ],
           "answer": 3,
-          "explanation": "✅ **always** (toujours) se place **après be** ; **bad mood** = mauvaise humeur."
+          "explanation": "✅ À retenir :\n- **always** (toujours) se place **après be**\n- **bad mood** = mauvaise humeur"
         },
         {
           "type": "order",
@@ -776,7 +776,7 @@ window.registerPack({
               "cat": "like"
             }
           ],
-          "explanation": "✅ Un adjectif (happy, tired) → **looks**. Un nom (a bear, his father) → **looks like**."
+          "explanation": "✅ On choisit :\n- un adjectif (happy, tired) → **looks**\n- un nom (a bear, his father) → **looks like**"
         },
         {
           "type": "fill",
@@ -850,9 +850,9 @@ window.registerPack({
       "lesson": {
         "title": "[[Read a description|Lire une description]]",
         "points": [
-          "Où : **at the top / bottom, on the left / right, in the middle, in the background**.",
-          "Comment : couleur et forme **avant** le nom ; caractère (shy, grumpy, lazy…) ; **always / never** ; **in a good / bad mood**.",
-          "**looks** + adjectif, **looks like** + nom."
+          "Où :\n- **at the top / bottom**\n- **on the left / right**\n- **in the middle**\n- **in the background**",
+          "Comment :\n- couleur et forme **avant** le nom\n- caractère (shy, grumpy, lazy…)\n- **always / never**\n- **in a good / bad mood**",
+          "Deux tournures :\n- **looks** + adjectif\n- **looks like** + nom"
         ],
         "examples": [
           "[[On the left, there is a tall character. He looks like a banana!|À gauche, il y a un grand personnage. Il ressemble à une banane !]]"
@@ -977,8 +977,8 @@ window.registerPack({
         "title": "[[Final test|Le contrôle final]]",
         "points": [
           "Avec ce que tu as appris, traduis correctement les phrases ci-dessous.",
-          "Où : at the top / bottom, on the left / right, in the middle, in the background. Couleur et forme **avant** le nom.",
-          "**looks** + adjectif (a l'air), **looks like** + nom (ressemble à)."
+          "Où :\n- at the top / bottom\n- on the left / right\n- in the middle\n- in the background\nCouleur et forme **avant** le nom.",
+          "Deux tournures :\n- **looks** + adjectif (a l'air)\n- **looks like** + nom (ressemble à)"
         ]
       },
       "draw": 12,
@@ -1010,7 +1010,7 @@ window.registerPack({
             "He is yellow and round.",
             "It is yellow and round."
           ],
-          "explanation": "✅ **yellow** (jaune), **round** (rond)."
+          "explanation": "✅ Les mots :\n- **yellow** (jaune)\n- **round** (rond)"
         },
         {
           "type": "question",
@@ -1026,7 +1026,7 @@ window.registerPack({
           "answers": [
             "He is always in a bad mood."
           ],
-          "explanation": "✅ **always** après be ; **in a bad mood**."
+          "explanation": "✅ À retenir :\n- **always** après be\n- **in a bad mood**"
         },
         {
           "type": "question",
@@ -1088,7 +1088,7 @@ window.registerPack({
           "answers": [
             "She is tall and thin."
           ],
-          "explanation": "✅ **tall** (grande), **thin** (mince)."
+          "explanation": "✅ Les mots :\n- **tall** (grande)\n- **thin** (mince)"
         },
         {
           "type": "question",
@@ -1109,7 +1109,7 @@ window.registerPack({
             "He is often in a good mood. He is very funny."
           ],
           "multiline": true,
-          "explanation": "✅ **often** après be ; **in a good mood** ; **funny** = drôle."
+          "explanation": "✅ À retenir :\n- **often** après be\n- **in a good mood**\n- **funny** = drôle"
         },
         {
           "type": "question",
@@ -1129,7 +1129,7 @@ window.registerPack({
             "At the bottom, there are some flowers.",
             "There are some flowers at the bottom."
           ],
-          "explanation": "✅ **at the bottom** = en bas ; **flowers** : pluriel → there are."
+          "explanation": "✅ À retenir :\n- **at the bottom** = en bas\n- **flowers** : pluriel → there are"
         },
         {
           "type": "question",
@@ -1190,7 +1190,7 @@ window.registerPack({
           "answers": [
             "He is funny and helpful."
           ],
-          "explanation": "✅ **funny** (drôle), **helpful** (serviable)."
+          "explanation": "✅ Les mots :\n- **funny** (drôle)\n- **helpful** (serviable)"
         },
         {
           "type": "question",
@@ -1198,7 +1198,7 @@ window.registerPack({
           "answers": [
             "She is never in a bad mood."
           ],
-          "explanation": "✅ **never** après be ; **in a bad mood**."
+          "explanation": "✅ À retenir :\n- **never** après be\n- **in a bad mood**"
         },
         {
           "type": "question",

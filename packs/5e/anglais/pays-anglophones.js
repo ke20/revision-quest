@@ -21,7 +21,7 @@ window.registerPack({
         "points": [
           "Le **Royaume-Uni** (**the UK**) = 4 nations :\n- **England** (capitale **London**)\n- **Scotland** (**Edinburgh**)\n- **Wales** (le pays de Galles, **Cardiff**)\n- **Northern Ireland** (**Belfast**)",
           "L'**Irlande** (**Ireland**, capitale **Dublin**) est un autre pays. Son symbole : le **trèfle**, **the shamrock** ☘️. Sa fête : **St Patrick's Day**, le **17 mars**.",
-          "À Londres : le roi a son palais officiel, **Buckingham Palace** ; les bus et les cabines téléphoniques sont **rouges**."
+          "À Londres :\n- le roi a son palais officiel, **Buckingham Palace**\n- les bus et les cabines téléphoniques sont **rouges**"
         ],
         "examples": [
           "[[The capital city of Northern Ireland is Belfast.|La capitale de l'Irlande du Nord est Belfast.]]"
@@ -109,7 +109,7 @@ window.registerPack({
               "right": "Belfast"
             }
           ],
-          "explanation": "✅ Le Royaume-Uni : England, Scotland, Wales et Northern Ireland."
+          "explanation": "✅ Le Royaume-Uni :\n- England\n- Scotland\n- Wales\n- Northern Ireland"
         },
         {
           "type": "sort",
@@ -295,7 +295,7 @@ window.registerPack({
               "cat": "ca"
             }
           ],
-          "explanation": "✅ Canada : Ottawa, Toronto, Montreal. États-Unis : New York, Washington, Sacramento."
+          "explanation": "✅ Canada :\n- Ottawa\n- Toronto\n- Montreal\nÉtats-Unis :\n- New York\n- Washington\n- Sacramento"
         },
         {
           "type": "spot",
@@ -325,9 +325,9 @@ window.registerPack({
       "lesson": {
         "title": "[[English-speaking countries|Les pays anglophones]]",
         "points": [
-          "**Australia** : la capitale est **Canberra** ; les grandes villes sont **Sydney**, **Melbourne**, **Brisbane** et **Perth**.",
+          "**Australia** : la capitale est **Canberra** ; les grandes villes sont :\n- **Sydney**\n- **Melbourne**\n- **Brisbane**\n- **Perth**",
           "**New Zealand** (Nouvelle-Zélande) : capitale **Wellington**. Un oiseau qui ne vit que là-bas : le **kiwi**.",
-          "On parle aussi anglais en **Ireland**, en **South Africa** (Afrique du Sud), en **India** (Inde), en **Jamaica** (Jamaïque)…"
+          "On parle aussi anglais :\n- en **Ireland**\n- en **South Africa** (Afrique du Sud)\n- en **India** (Inde)\n- en **Jamaica** (Jamaïque)…"
         ],
         "examples": [
           "[[Sydney, Melbourne and Canberra are Australian cities.|Sydney, Melbourne et Canberra sont des villes australiennes.]]"
@@ -348,7 +348,7 @@ window.registerPack({
             1,
             2
           ],
-          "explanation": "✅ **Sydney**, **Melbourne**, **Canberra** (la capitale). Wellington est en Nouvelle-Zélande."
+          "explanation": "✅ Des villes australiennes :\n- **Sydney**\n- **Melbourne**\n- **Canberra** (la capitale)\nWellington est en Nouvelle-Zélande."
         },
         {
           "type": "mcq",
@@ -401,7 +401,7 @@ window.registerPack({
             2
           ],
           "showCount": false,
-          "explanation": "✅ On parle anglais en **South Africa**, en **Jamaica** et en **New Zealand**. En **Spain** (Espagne), on parle espagnol."
+          "explanation": "✅ On parle anglais :\n- en **South Africa**\n- en **Jamaica**\n- en **New Zealand**\nEn **Spain** (Espagne), on parle espagnol."
         },
         {
           "type": "match",
@@ -424,7 +424,7 @@ window.registerPack({
               "right": "Ottawa"
             }
           ],
-          "explanation": "✅ Canberra, Wellington, Dublin, Ottawa : des capitales qui ne sont pas les plus grandes villes (sauf Dublin)."
+          "explanation": "✅ Des capitales qui ne sont pas les plus grandes villes (sauf Dublin) :\n- Canberra\n- Wellington\n- Dublin\n- Ottawa"
         },
         {
           "type": "fill",
@@ -448,8 +448,8 @@ window.registerPack({
         "title": "[[Final test|Le contrôle final]]",
         "points": [
           "Avec ce que tu as appris, réponds correctement aux questions ci-dessous. Réponds en anglais, en quelques mots.",
-          "UK : London, Edinburgh, Cardiff, Belfast. Ireland : Dublin, le trèfle (shamrock), St Patrick's Day (March 17th).",
-          "USA : Washington, D.C., Sacramento. Canada : Ottawa. Australia : Canberra. New Zealand : Wellington, le kiwi."
+          "UK :\n- London\n- Edinburgh\n- Cardiff\n- Belfast\nIreland :\n- Dublin\n- le trèfle (shamrock)\n- St Patrick's Day (March 17th)",
+          "USA :\n- Washington, D.C.\n- Sacramento\nCanada : Ottawa. Australia : Canberra.\nNew Zealand :\n- Wellington\n- le kiwi"
         ]
       },
       "exercises": [
@@ -638,7 +638,7 @@ window.registerPack({
             "Adelaide",
             "Canberra"
           ],
-          "explanation": "✅ Par exemple **Sydney**, **Melbourne** ou **Canberra**."
+          "explanation": "✅ Par exemple :\n- **Sydney**\n- **Melbourne**\n- **Canberra**"
         },
         {
           "type": "question",
@@ -691,7 +691,7 @@ window.registerPack({
             "4",
             "four"
           ],
-          "explanation": "✅ **4** : England, Scotland, Wales, Northern Ireland."
+          "explanation": "✅ **4** :\n- England\n- Scotland\n- Wales\n- Northern Ireland"
         },
         {
           "type": "question",

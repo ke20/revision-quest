@@ -20,7 +20,7 @@ window.registerPack({
         "title": "[[Question words|Les mots interrogatifs]]",
         "points": [
           "- **What** = quoi, que, quel(le)\n- **Who** = qui\n- **When** = quand\n- **Where** = où\n- **Why** = pourquoi\n- **How** = comment",
-          "On choisit le mot d'après la **réponse** attendue : une personne → who, un lieu → where, un moment → when, une raison (because…) → why."
+          "On choisit le mot d'après la **réponse** attendue :\n- une personne → who\n- un lieu → where\n- un moment → when\n- une raison (because…) → why"
         ],
         "examples": [
           "[[Where are they going? To the country.|Où vont-ils ? À la campagne.]]",
@@ -57,7 +57,7 @@ window.registerPack({
               "right": "comment"
             }
           ],
-          "explanation": "✅ Six mots à connaître par cœur : **what, who, when, where, why, how**."
+          "explanation": "✅ Six mots à connaître par cœur :\n- **what**\n- **who**\n- **when**\n- **where**\n- **why**\n- **how**"
         },
         {
           "type": "fill",
@@ -150,7 +150,7 @@ window.registerPack({
               "cat": "when"
             }
           ],
-          "explanation": "✅ Une personne → **who**, un lieu → **where**, un moment → **when**."
+          "explanation": "✅ On choisit :\n- une personne → **who**\n- un lieu → **where**\n- un moment → **when**"
         },
         {
           "type": "fill",
@@ -269,7 +269,7 @@ window.registerPack({
               "cat": "many"
             }
           ],
-          "explanation": "✅ **many** + un pluriel qu'on compte ; **much** + ce qui ne se compte pas, ou un prix."
+          "explanation": "✅ Deux mots :\n- **many** + un pluriel qu'on compte\n- **much** + ce qui ne se compte pas, ou un prix"
         },
         {
           "type": "mcq",
@@ -427,7 +427,7 @@ window.registerPack({
               "right": "Tomorrow."
             }
           ],
-          "explanation": "✅ **Whose** → à qui ; **Who** → qui ; **Where** → où ; **When** → quand."
+          "explanation": "✅ Les mots interrogatifs :\n- **Whose** → à qui\n- **Who** → qui\n- **Where** → où\n- **When** → quand"
         },
         {
           "type": "fill",
@@ -451,7 +451,7 @@ window.registerPack({
         "title": "[[How to build a question|Construire une question]]",
         "points": [
           "Structure : **(mot interrogatif) + auxiliaire + sujet + verbe + (complément)**.",
-          "L'auxiliaire : **be** (is, are), **can**, **must**… ou **do / does** pour les autres verbes.\n- [[Where **does** your sister live?|Où habite ta sœur ?]]\n- [[What **can** you buy with 2 pounds?|Que peux-tu acheter avec 2 livres ?]]",
+          "L'auxiliaire :\n- **be** (is, are)\n- **can**\n- **must**…\n- ou **do / does** pour les autres verbes\nExemples :\n- [[Where **does** your sister live?|Où habite ta sœur ?]]\n- [[What **can** you buy with 2 pounds?|Que peux-tu acheter avec 2 livres ?]]",
           "Sans mot interrogatif, on répond **yes** ou **no** : [[**Does** she play the piano? Yes, she does.|Est-ce qu'elle joue du piano ? Oui.]]",
           "⚠️ Avec **does**, le verbe perd son -s : Does she **play**…?",
           "Avec **have got**, pas de do : on inverse **have / has** et le sujet.\n- [[**Have** you **got** a pet?|As-tu un animal ?]]\n- [[How many brothers **has** he **got**?|Combien de frères a-t-il ?]]"
@@ -802,7 +802,7 @@ window.registerPack({
       "lesson": {
         "title": "[[Ask a question about a word|Poser une question sur un mot]]",
         "points": [
-          "1. Regarde ce que le mot en gras **représente** : une personne, un lieu, un moment, une raison, une chose…\n2. Choisis le mot interrogatif.\n3. Garde l'auxiliaire et le verbe de la phrase.",
+          "1. Regarde ce que le mot en gras **représente** :\n- une personne\n- un lieu\n- un moment\n- une raison\n- une chose…\n2. Choisis le mot interrogatif.\n3. Garde l'auxiliaire et le verbe de la phrase.",
           "[[He's eating **an apple**.|Il mange une pomme.]] → [[**What** is he eating?|Que mange-t-il ?]]"
         ],
         "examples": [
@@ -913,7 +913,7 @@ window.registerPack({
         "points": [
           "Avec ce que tu as appris, traduis correctement les phrases ci-dessous.",
           "(mot interrogatif) + **auxiliaire** + **sujet** + **verbe** ? Avec does, le verbe perd son -s.",
-          "**how old, how much, how many, whose, what colour, what kind of**."
+          "À retenir :\n- **how old**\n- **how much**\n- **how many**\n- **whose**\n- **what colour**\n- **what kind of**"
         ]
       },
       "exercises": [
@@ -1024,7 +1024,7 @@ window.registerPack({
             "What colour is his umbrella?",
             "What color is his umbrella?"
           ],
-          "explanation": "✅ **What colour** ; à lui → **his**."
+          "explanation": "✅ À retenir :\n- **What colour**\n- à lui → **his**"
         },
         {
           "type": "question",
