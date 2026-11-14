@@ -43,10 +43,19 @@
     return d.getFullYear() + "-" + (m < 10 ? "0" : "") + m + "-" + (day < 10 ? "0" : "") + day;
   }
 
+  /* Endless levels: after the last level of LEVELS (Légende), "Légende 2", "Légende 3"… every LEGEND_STEP XP. */
+  var LEGEND_STEP = 500;
+  /** Level of index i (0-based), beyond LEVELS too. @param {number} i @returns {Level} */
+  function levelAt(i) {
+    var last = LEVELS.length - 1;
+    if (i <= last) return LEVELS[i];
+    return { icon: LEVELS[last].icon, name: LEVELS[last].name + " " + (i - last + 1), xp: LEVELS[last].xp + (i - last) * LEGEND_STEP };
+  }
   /** @param {number} xp */
   function levelIndexFor(xp) {
-    var idx = 0;
+    var idx = 0, last = LEVELS.length - 1;
     for (var i = 0; i < LEVELS.length; i++) if (xp >= LEVELS[i].xp) idx = i;
+    if (idx === last) idx += Math.floor((xp - LEVELS[last].xp) / LEGEND_STEP);
     return idx;
   }
 
@@ -54,16 +63,16 @@
   function levelInfo(xp) {
     if (xp === undefined) xp = E.state.xp;
     var i = levelIndexFor(xp);
-    var cur = LEVELS[i], next = LEVELS[i + 1] || null;
-    var progress = next ? (xp - cur.xp) / (next.xp - cur.xp) : 1;
+    var cur = levelAt(i), next = levelAt(i + 1);
+    var progress = (xp - cur.xp) / (next.xp - cur.xp);
     return {
       level: i + 1,
       name: cur.name,
       icon: cur.icon,
       xp: xp,
       floor: cur.xp,
-      next: next ? next.xp : null,
-      nextName: next ? next.name : null,
+      next: next.xp,
+      nextName: next.name,
       progress: Math.max(0, Math.min(1, progress))
     };
   }

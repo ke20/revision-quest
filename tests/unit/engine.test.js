@@ -217,20 +217,27 @@ test("hint costs 3 XP, never below 0", () => {
   assert.strictEqual(E.state.xp, 0);
 });
 
-test("levels: thresholds and levelInfo", () => {
+test("levels: thresholds and levelInfo; endless after Légende (Légende 2, 3… every 500 XP)", () => {
   const { E } = setup();
-  const t = [[0, 1, "Débutant"], [99, 1, "Débutant"], [100, 2, "Apprenti"], [250, 3, "Malin"], [450, 4, "Expert"], [700, 5, "As"], [1000, 6, "Champion"], [1400, 7, "Légende"], [99999, 7, "Légende"]];
+  const t = [[0, 1, "Débutant"], [99, 1, "Débutant"], [100, 2, "Apprenti"], [250, 3, "Malin"], [450, 4, "Expert"], [700, 5, "As"], [1000, 6, "Champion"],
+    [1400, 7, "Légende"], [1899, 7, "Légende"], [1900, 8, "Légende 2"], [2400, 9, "Légende 3"], [99999, 204, "Légende 198"]];
   for (const [xp, level, name] of t) {
     const li = E.levelInfo(xp);
     assert.strictEqual(li.level, level, "xp " + xp);
     assert.strictEqual(li.name, name);
   }
   assert.strictEqual(E.levelInfo(175).progress, 0.5);
-  assert.strictEqual(E.levelInfo(1400).next, null);
-  assert.strictEqual(E.levelInfo(1500).progress, 1);
+  assert.strictEqual(E.levelInfo(1000).next, 1400);
+  assert.strictEqual(E.levelInfo(1400).next, 1900);
+  assert.strictEqual(E.levelInfo(1400).nextName, "Légende 2");
+  assert.strictEqual(E.levelInfo(1650).progress, 0.5);
+  assert.strictEqual(E.levelInfo(2400).icon, "🏆");
+  assert.strictEqual(E.levelInfo(2400).floor, 2400);
   E.startWorld(1);
   E.state.xp = 95;
   assert.strictEqual(E.answer({ correct: true, attempts: 1 }).levelUp.name, "Apprenti");
+  E.state.xp = 1895;
+  assert.strictEqual(E.answer({ correct: true, attempts: 1 }).levelUp.name, "Légende 2", "a level up after Légende too");
 });
 
 /* ---------- badges ---------- */

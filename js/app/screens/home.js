@@ -97,7 +97,7 @@ export function showHome() {
           '<div class="lvl-badge"><span>NIV.</span><b>' + li.level + "</b></div>" +
           '<div class="player-info"><div class="rank">' + E(li.icon) + " " + E(li.name) + '</div>' +
             '<div class="xpbar"><div class="xpbar-fill" style="width:' + Math.round(li.progress * 100) + '%"></div></div>' +
-            '<div class="xp-text">' + (li.next ? li.xp + " / " + li.next + " XP → <b>" + E(li.nextName) + "</b>" : li.xp + " XP — niveau max ! 👑") + "</div>" +
+            '<div class="xp-text">' + li.xp + " / " + li.next + " XP → <b>" + E(li.nextName) + "</b>" + "</div>" +
           "</div>" +
         "</div>" +
         '<div class="player-stats">' +

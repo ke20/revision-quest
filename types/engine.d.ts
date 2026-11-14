@@ -95,8 +95,9 @@ interface LevelInfo {
   icon: string;
   xp: number;
   floor: number;
-  next: number | null;
-  nextName: string | null;
+  /** XP and name of the next level (levels never end: "Légende 2", "Légende 3"… after Légende). */
+  next: number;
+  nextName: string;
   /** 0 to 1 towards the next level. */
   progress: number;
 }
