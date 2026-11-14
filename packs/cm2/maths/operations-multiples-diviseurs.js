@@ -73,7 +73,7 @@ window.registerPack({
               "right": "quotient et reste"
             }
           ],
-          "explanation": "Somme (+), différence (−), produit (×), quotient et reste (÷)."
+          "explanation": "Le nom du résultat :\n- somme (+)\n- différence (−)\n- produit (×)\n- quotient et reste (÷)"
         },
         {
           "type": "sort",
@@ -130,7 +130,7 @@ window.registerPack({
               "cat": "q"
             }
           ],
-          "explanation": "Le signe de l'opération donne le nom du résultat : + somme, − différence, × produit, ÷ quotient."
+          "explanation": "Le signe de l'opération donne le nom du résultat :\n- + somme\n- − différence\n- × produit\n- ÷ quotient"
         },
         {
           "type": "fill",
@@ -215,8 +215,8 @@ window.registerPack({
         "title": "Calculer « à peu près »",
         "points": [
           "Avant de calculer, on cherche un **ordre de grandeur** : on arrondit les nombres pour faire un calcul facile.",
-          "802 + 99 → 800 + 100 = **900** ; 908 − 792 → 900 − 800 = **100**.",
-          "51 × 29 → 50 × 30 = **1 500** ; 587 ÷ 9 → 600 ÷ 10 = **60**.",
+          "Pour + et − :\n- 802 + 99 → 800 + 100 = **900**\n- 908 − 792 → 900 − 800 = **100**",
+          "Pour × et ÷ :\n- 51 × 29 → 50 × 30 = **1 500**\n- 587 ÷ 9 → 600 ÷ 10 = **60**",
           "Si ton résultat est très loin de l'ordre de grandeur, il y a une **erreur** : refais le calcul."
         ]
       },
@@ -266,7 +266,7 @@ window.registerPack({
               "right": "200"
             }
           ],
-          "explanation": "On arrondit : 400 + 200, 600 − 200, 50 × 20, 800 ÷ 4."
+          "explanation": "On arrondit :\n- 400 + 200\n- 600 − 200\n- 50 × 20\n- 800 ÷ 4"
         },
         {
           "type": "mcq",
@@ -327,7 +327,7 @@ window.registerPack({
               "cat": "ok"
             }
           ],
-          "explanation": "Ordres de grandeur : 1 500 pour 51 × 29, 900 pour 802 + 99, 60 pour 587 ÷ 9, 100 pour 908 − 792."
+          "explanation": "Ordres de grandeur :\n- 1 500 pour 51 × 29\n- 900 pour 802 + 99\n- 60 pour 587 ÷ 9\n- 100 pour 908 − 792"
         },
         {
           "type": "fill",
@@ -403,7 +403,7 @@ window.registerPack({
           "On pose les chiffres en colonnes : **unités sous unités**, dizaines sous dizaines…",
           "Si une colonne dépasse 9 (2 + 9 = 11), on écrit 1 et on **retient 1** dans la colonne suivante.",
           "Soustraction : 0 − 9 est impossible, alors on ajoute 10 en haut (10 − 9 = 1) et on ajoute 1 en bas, dans la colonne suivante.",
-          "Multiplication en deux lignes : 51 × 9 = 459, puis 51 × 20 = 1 020 (avec un **0** aux unités), puis on additionne : 1 479."
+          "Multiplication en deux lignes :\n- 51 × 9 = 459\n- puis 51 × 20 = 1 020 (avec un **0** aux unités)\n- puis on additionne : 1 479"
         ],
         "tables": [
           {
@@ -553,7 +553,7 @@ window.registerPack({
             "head": 1,
             "alt": "Addition posée : 3 ? 6 plus 248 égale 604."
           },
-          "explanation": "Unités : 6 + 8 = 14, je retiens 1. Dizaines : ? + 4 + 1 doit finir par 0, donc ? = **5** (5 + 4 + 1 = 10)."
+          "explanation": "Colonne par colonne :\n- unités : 6 + 8 = 14, je retiens 1\n- dizaines : ? + 4 + 1 doit finir par 0, donc ? = **5** (5 + 4 + 1 = 10)"
         },
         {
           "type": "fill",
@@ -709,7 +709,7 @@ window.registerPack({
             "459 + 1 020 = 1 479"
           ],
           "translation": "51 × 29 = 51 × 9 + 51 × 20",
-          "explanation": "On multiplie par les **unités**, puis par les **dizaines**, puis on **additionne** les deux lignes."
+          "explanation": "Les étapes :\n- on multiplie par les **unités**\n- puis par les **dizaines**\n- puis on **additionne** les deux lignes"
         },
         {
           "type": "fill",
@@ -762,7 +762,7 @@ window.registerPack({
       "lesson": {
         "title": "Partager en parts égales",
         "points": [
-          "Diviser, c'est **partager en parts égales**. 587 ÷ 9 : le **quotient** est 65, le **reste** est 2.",
+          "Diviser, c'est **partager en parts égales**. 587 ÷ 9 :\n- le **quotient** est 65\n- le **reste** est 2",
           "Le **reste** est toujours **plus petit que le diviseur** (ici 2 < 9).",
           "On vérifie : diviseur × quotient + reste = le nombre de départ → 9 × 65 + 2 = 587."
         ],
@@ -976,7 +976,7 @@ window.registerPack({
             "9"
           ],
           "answer": 2,
-          "explanation": "58 ÷ 6 : quotient 9, reste 4. 9 tables pleines ne suffisent pas : les **4** élèves qui restent ont besoin d'une table de plus. Il faut **10** tables."
+          "explanation": "58 ÷ 6 :\n- quotient 9\n- reste 4\n9 tables pleines ne suffisent pas : les **4** élèves qui restent ont besoin d'une table de plus. Il faut **10** tables."
         },
         {
           "type": "question",
@@ -1052,7 +1052,7 @@ window.registerPack({
           "answers": [
             "diviseur"
           ],
-          "explanation": "42 ÷ 7 : quotient 6, **reste 0**. On dit que 7 est un **diviseur** de 42."
+          "explanation": "42 ÷ 7 :\n- quotient 6\n- **reste 0**\nOn dit que 7 est un **diviseur** de 42."
         },
         {
           "type": "sort",
@@ -1124,7 +1124,7 @@ window.registerPack({
               "right": "5"
             }
           ],
-          "explanation": "49 = 7 × 7, 81 = 9 × 9, 64 = 8 × 8, 25 = 5 × 5 : la division tombe juste."
+          "explanation": "La division tombe juste :\n- 49 = 7 × 7\n- 81 = 9 × 9\n- 64 = 8 × 8\n- 25 = 5 × 5"
         },
         {
           "type": "mcq",
@@ -1189,7 +1189,7 @@ window.registerPack({
           "**Divisible par 2** : le chiffre des unités est 0, 2, 4, 6 ou 8. Le nombre est **pair** (116). Sinon, il est **impair**.",
           "**Divisible par 5** : le chiffre des unités est 0 ou 5 (115).",
           "**Divisible par 10** : le chiffre des unités est 0 (110).",
-          "Un nombre qui finit par 0 est divisible par 2, par 5 et par 10."
+          "Un nombre qui finit par 0 est divisible :\n- par 2\n- par 5\n- par 10"
         ]
       },
       "exercises": [
@@ -1394,7 +1394,7 @@ window.registerPack({
               "right": "ni par 2, ni par 5, ni par 10"
             }
           ],
-          "explanation": "230 finit par 0, 235 par 5, 232 par 2, 233 par 3."
+          "explanation": "Le chiffre des unités :\n- 230 finit par 0\n- 235 finit par 5\n- 232 finit par 2\n- 233 finit par 3"
         },
         {
           "type": "spot",
@@ -1600,7 +1600,7 @@ window.registerPack({
             "0",
             "zéro"
           ],
-          "explanation": "42 = 6 × 7 : le quotient est 6, le reste est **0**."
+          "explanation": "42 = 6 × 7 :\n- le quotient est 6\n- le reste est **0**"
         },
         {
           "type": "question",

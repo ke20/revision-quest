@@ -137,7 +137,7 @@ window.registerPack({
               "right": "35"
             }
           ],
-          "explanation": "3 × 2 = 6 ; 6 × 5 = 30 ; 4 × 10 = 40 ; 9 × 2 = 18 ; 7 × 5 = 35."
+          "explanation": "Les résultats :\n- 3 × 2 = 6\n- 6 × 5 = 30\n- 4 × 10 = 40\n- 9 × 2 = 18\n- 7 × 5 = 35"
         },
         {
           "type": "mcq",
@@ -377,7 +377,7 @@ window.registerPack({
               "right": "36"
             }
           ],
-          "explanation": "3 × 3 = 9 ; 6 × 3 = 18 ; 8 × 3 = 24 ; 7 × 4 = 28 ; 9 × 4 = 36."
+          "explanation": "Les résultats :\n- 3 × 3 = 9\n- 6 × 3 = 18\n- 8 × 3 = 24\n- 7 × 4 = 28\n- 9 × 4 = 36"
         },
         {
           "type": "order",
@@ -447,7 +447,7 @@ window.registerPack({
               "cat": "t4"
             }
           ],
-          "explanation": "Table de 3 : 9, 15, 21, 27. Table de 4 : 8, 16, 28, 32. (12, 24 et 36 sont dans les deux.)"
+          "explanation": "Table de 3 :\n- 9\n- 15\n- 21\n- 27\nTable de 4 :\n- 8\n- 16\n- 28\n- 32\n(12, 24 et 36 sont dans les deux.)"
         },
         {
           "type": "spot",
@@ -630,7 +630,7 @@ window.registerPack({
               "right": "63"
             }
           ],
-          "explanation": "4 × 6 = 24 ; 8 × 6 = 48 ; 9 × 6 = 54 ; 3 × 7 = 21 ; 6 × 7 = 42 ; 9 × 7 = 63."
+          "explanation": "Les résultats :\n- 4 × 6 = 24\n- 8 × 6 = 48\n- 9 × 6 = 54\n- 3 × 7 = 21\n- 6 × 7 = 42\n- 9 × 7 = 63"
         },
         {
           "type": "sort",
@@ -679,7 +679,7 @@ window.registerPack({
               "cat": "t7"
             }
           ],
-          "explanation": "Table de 6 : 18, 36, 48, 54. Table de 7 : 21, 35, 49, 63. (42 est dans les deux.)"
+          "explanation": "Table de 6 :\n- 18\n- 36\n- 48\n- 54\nTable de 7 :\n- 21\n- 35\n- 49\n- 63\n(42 est dans les deux.)"
         },
         {
           "type": "fill",
@@ -868,7 +868,7 @@ window.registerPack({
               "right": "72"
             }
           ],
-          "explanation": "3 × 8 = 24 ; 6 × 8 = 48 ; 7 × 8 = 56 ; 4 × 9 = 36 ; 8 × 9 = 72."
+          "explanation": "Les résultats :\n- 3 × 8 = 24\n- 6 × 8 = 48\n- 7 × 8 = 56\n- 4 × 9 = 36\n- 8 × 9 = 72"
         },
         {
           "type": "fill",
@@ -1252,7 +1252,7 @@ window.registerPack({
               "cat": "non"
             }
           ],
-          "explanation": "Carrés : 16 = 4 × 4, 49 = 7 × 7, 81 = 9 × 9, 100 = 10 × 10."
+          "explanation": "Carrés :\n- 16 = 4 × 4\n- 49 = 7 × 7\n- 81 = 9 × 9\n- 100 = 10 × 10"
         },
         {
           "type": "question",
@@ -1708,7 +1708,7 @@ window.registerPack({
               "right": "4 × 10"
             }
           ],
-          "explanation": "3 × 8 = 4 × 6 = 24 ; 2 × 9 = 3 × 6 = 18 ; 4 × 9 = 6 × 6 = 36 ; 2 × 10 = 4 × 5 = 20 ; 5 × 8 = 4 × 10 = 40."
+          "explanation": "Les mêmes résultats :\n- 3 × 8 = 4 × 6 = 24\n- 2 × 9 = 3 × 6 = 18\n- 4 × 9 = 6 × 6 = 36\n- 2 × 10 = 4 × 5 = 20\n- 5 × 8 = 4 × 10 = 40"
         },
         {
           "type": "sort",
@@ -1797,7 +1797,7 @@ window.registerPack({
             "4",
             "quatre"
           ],
-          "explanation": "**4** fois : 3 × 8, 4 × 6, 6 × 4 et 8 × 3."
+          "explanation": "**4** fois :\n- 3 × 8\n- 4 × 6\n- 6 × 4\n- 8 × 3"
         },
         {
           "type": "mcq",

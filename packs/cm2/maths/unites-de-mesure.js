@@ -20,13 +20,14 @@ window.registerPack({
       "lesson": {
         "title": "Un préfixe dit combien de fois l'unité",
         "points": [
-          "Un [[préfixe|petit morceau placé au début d'un mot]] se colle devant l'unité : **kilo**mètre, **centi**litre, **milli**gramme.",
-          "**kilo** = 1 000, **hecto** = 100, **déca** = 10 : l'unité est plus **grande**.",
-          "**déci** = 0,1, **centi** = 0,01, **milli** = 0,001 : l'unité est plus **petite**.",
-          "Les symboles : **k**, **h**, **da**, **d**, **c**, **m**. Attention : **da** (déca) n'est pas **d** (déci)."
+          "Un [[préfixe|petit morceau placé au début d'un mot]] se colle devant l'unité :\n- **kilo**mètre\n- **centi**litre\n- **milli**gramme",
+          "L'unité est plus **grande** avec :\n- **kilo** = 1 000\n- **hecto** = 100\n- **déca** = 10",
+          "L'unité est plus **petite** avec :\n- **déci** = 0,1\n- **centi** = 0,01\n- **milli** = 0,001",
+          "Les symboles :\n- **k**\n- **h**\n- **da**\n- **d**\n- **c**\n- **m**\nAttention : **da** (déca) n'est pas **d** (déci)."
         ],
         "examples": [
-          "1 kilomètre = 1 000 mètres ; 1 centimètre = 0,01 mètre."
+          "1 kilomètre = 1 000 mètres",
+          "1 centimètre = 0,01 mètre"
         ],
         "tables": [
           {
@@ -115,7 +116,7 @@ window.registerPack({
               "right": "0,001"
             }
           ],
-          "explanation": "kilo **1 000**, hecto **100**, déca **10**, déci **0,1**, centi **0,01**, milli **0,001**."
+          "explanation": "Les préfixes :\n- kilo **1 000**\n- hecto **100**\n- déca **10**\n- déci **0,1**\n- centi **0,01**\n- milli **0,001**"
         },
         {
           "type": "sort",
@@ -156,7 +157,7 @@ window.registerPack({
               "cat": "petit"
             }
           ],
-          "explanation": "**kilo, hecto, déca** multiplient l'unité. **déci, centi, milli** la partagent."
+          "explanation": "Ils multiplient l'unité :\n- **kilo**\n- **hecto**\n- **déca**\nIls la partagent :\n- **déci**\n- **centi**\n- **milli**"
         },
         {
           "type": "mcq",
@@ -282,7 +283,7 @@ window.registerPack({
         "title": "Convertir une longueur",
         "points": [
           "L'unité de référence pour mesurer une longueur est le **mètre** (m).",
-          "Dans le tableau, chaque unité vaut **10 fois** celle de droite : 1 dm = 10 cm et 1 cm = 0,1 dm.",
+          "Dans le tableau, chaque unité vaut **10 fois** celle de droite :\n- 1 dm = 10 cm\n- 1 cm = 0,1 dm",
           "Pour convertir, je place le chiffre des unités dans la colonne de l'unité de départ, puis je lis le nombre dans la nouvelle unité (j'ajoute des **0** si besoin)."
         ],
         "examples": [
@@ -354,7 +355,7 @@ window.registerPack({
             "mm"
           ],
           "translation": "km > hm > dam > m > dm > cm > mm",
-          "explanation": "On retrouve les préfixes : **kilo, hecto, déca**, puis le **mètre**, puis **déci, centi, milli**."
+          "explanation": "On retrouve les préfixes :\n- **kilo**\n- **hecto**\n- **déca**\n- puis le **mètre**\n- puis **déci**\n- **centi**\n- **milli**"
         },
         {
           "type": "mcq",
@@ -423,7 +424,7 @@ window.registerPack({
               "right": "0,001 m"
             }
           ],
-          "explanation": "Chaque unité a la valeur de son **préfixe** : 1 **k**m = 1 000 m, 1 **c**m = 0,01 m."
+          "explanation": "Chaque unité a la valeur de son **préfixe** :\n- 1 **k**m = 1 000 m\n- 1 **c**m = 0,01 m"
         },
         {
           "type": "fill",
@@ -658,8 +659,8 @@ window.registerPack({
         "title": "Convertir une masse",
         "points": [
           "L'unité de référence pour mesurer une masse est le **gramme** (g).",
-          "Le tableau marche comme celui des longueurs : 1 kg = 10 hg et 1 hg = 0,1 kg.",
-          "Pour les grosses masses : 1 **tonne** (t) = **1 000 kg** et 1 **quintal** (q) = **100 kg**."
+          "Le tableau marche comme celui des longueurs :\n- 1 kg = 10 hg\n- 1 hg = 0,1 kg",
+          "Pour les grosses masses :\n- 1 **tonne** (t) = **1 000 kg**\n- 1 **quintal** (q) = **100 kg**"
         ],
         "examples": [
           "98,6 hg = 9 860 g (× 100)",
@@ -839,7 +840,7 @@ window.registerPack({
               "right": "1 000 mg"
             }
           ],
-          "explanation": "1 tonne = **1 000 kg**, 1 quintal = **100 kg**, 1 kg = **1 000 g**, 1 g = **1 000 mg**."
+          "explanation": "Les masses égales :\n- 1 tonne = **1 000 kg**\n- 1 quintal = **100 kg**\n- 1 kg = **1 000 g**\n- 1 g = **1 000 mg**"
         },
         {
           "type": "fill",
@@ -1084,7 +1085,7 @@ window.registerPack({
               "cat": "moins"
             }
           ],
-          "explanation": "1 kg = 1 000 g. 9 hg = 900 g et 80 dag = 800 g : **moins** de 1 kg. 12 hg = 1 200 g : **plus**."
+          "explanation": "1 kg = 1 000 g.\n**Moins** de 1 kg :\n- 9 hg = 900 g\n- 80 dag = 800 g\n**Plus** de 1 kg :\n- 12 hg = 1 200 g"
         },
         {
           "type": "spot",
@@ -1156,7 +1157,7 @@ window.registerPack({
         "title": "Convertir une contenance",
         "points": [
           "L'unité de référence pour mesurer une contenance est le **litre** (L).",
-          "Même tableau, mêmes préfixes : 1 cL = 10 mL et 1 mL = 0,1 cL.",
+          "Même tableau, mêmes préfixes :\n- 1 cL = 10 mL\n- 1 mL = 0,1 cL",
           "Une bouteille d'eau contient souvent 1,5 L = 150 cL ; une canette 33 cL."
         ],
         "examples": [
@@ -1352,7 +1353,7 @@ window.registerPack({
               "right": "10 mL"
             }
           ],
-          "explanation": "1 hL = **100 L**, 1 daL = **10 L**, 1 L = **1 000 mL**, 1 dL = **10 cL**, 1 cL = **10 mL**."
+          "explanation": "Les contenances égales :\n- 1 hL = **100 L**\n- 1 daL = **10 L**\n- 1 L = **1 000 mL**\n- 1 dL = **10 cL**\n- 1 cL = **10 mL**"
         },
         {
           "type": "mcq",
@@ -1495,7 +1496,7 @@ window.registerPack({
               "cat": "plus"
             }
           ],
-          "explanation": "1 L = 100 cL = 10 dL = 1 000 mL. 75 cL, 9 dL et 800 mL font **moins** de 1 L."
+          "explanation": "1 L = 100 cL = 10 dL = 1 000 mL.\n**Moins** de 1 L :\n- 75 cL\n- 9 dL\n- 800 mL"
         },
         {
           "type": "spot",
@@ -1566,9 +1567,9 @@ window.registerPack({
       "lesson": {
         "title": "Imaginer avant d'écrire",
         "points": [
-          "Avant de choisir, j'imagine l'objet : **mm** ou **cm** pour un petit objet, **m** pour une pièce ou un bâtiment, **km** pour un trajet.",
-          "Repères : un doigt fait environ 1 cm de large ; une grande enjambée, environ 1 m ; 1 km, c'est environ 15 minutes de marche.",
-          "Pour les masses : **g** pour une pomme, **kg** pour un enfant, **t** pour un camion."
+          "Avant de choisir, j'imagine l'objet :\n- **mm** ou **cm** pour un petit objet\n- **m** pour une pièce ou un bâtiment\n- **km** pour un trajet",
+          "Repères :\n- un doigt fait environ 1 cm de large\n- une grande enjambée, environ 1 m\n- 1 km, c'est environ 15 minutes de marche",
+          "Pour les masses :\n- **g** pour une pomme\n- **kg** pour un enfant\n- **t** pour un camion"
         ],
         "examples": [
           "Le diamètre d'une casserole : 22 cm.",
@@ -1693,7 +1694,7 @@ window.registerPack({
               "cat": "km"
             }
           ],
-          "explanation": "Petit objet → **cm** ; pièce, bâtiment, piscine → **m** ; trajet → **km**."
+          "explanation": "On choisit :\n- petit objet → **cm**\n- pièce, bâtiment, piscine → **m**\n- trajet → **km**"
         },
         {
           "type": "match",
@@ -1720,7 +1721,7 @@ window.registerPack({
               "right": "200 L"
             }
           ],
-          "explanation": "Un éléphant pèse plusieurs **tonnes**, une pomme une centaine de **grammes** ; une cuillère contient quelques **mL**."
+          "explanation": "Des repères :\n- un éléphant pèse plusieurs **tonnes**\n- une pomme, une centaine de **grammes**\n- une cuillère contient quelques **mL**"
         },
         {
           "type": "mcq",
@@ -1762,7 +1763,7 @@ window.registerPack({
           "1 m 33, c'est 1 m et 33 cm, donc **133 cm**."
         ],
         "examples": [
-          "15 hm = 1 500 m ; 170 dam = 1 700 m ; 2 km = 2 000 m. Donc 15 hm < 170 dam < 2 km < 2 500 m.",
+          "En mètres :\n- 15 hm = 1 500 m\n- 170 dam = 1 700 m\n- 2 km = 2 000 m\nDonc 15 hm < 170 dam < 2 km < 2 500 m.",
           "400 m + 10 km + 2,5 km = 0,4 km + 10 km + 2,5 km = 12,9 km."
         ]
       },
@@ -1777,7 +1778,7 @@ window.registerPack({
             "2 500 m"
           ],
           "translation": "1 500 m < 1 700 m < 2 000 m < 2 500 m",
-          "explanation": "En mètres : 15 hm = 1 500 m, 170 dam = 1 700 m, 2 km = 2 000 m. Donc **15 hm < 170 dam < 2 km < 2 500 m**."
+          "explanation": "En mètres :\n- 15 hm = 1 500 m\n- 170 dam = 1 700 m\n- 2 km = 2 000 m\nDonc **15 hm < 170 dam < 2 km < 2 500 m**."
         },
         {
           "type": "mcq",
@@ -1789,7 +1790,7 @@ window.registerPack({
             "3 km"
           ],
           "answer": 1,
-          "explanation": "En mètres : 3 km = 3 000 m, 2 900 m, 31 hm = **3 100 m**, 305 dam = 3 050 m."
+          "explanation": "En mètres :\n- 3 km = 3 000 m\n- 2 900 m\n- 31 hm = **3 100 m**\n- 305 dam = 3 050 m"
         },
         {
           "type": "fill",
@@ -1867,7 +1868,7 @@ window.registerPack({
               "cat": "plus"
             }
           ],
-          "explanation": "1 km = 1 000 m. 95 dam = 950 m et 9 hm = 900 m : **moins**. 12 hm = 1 200 m et 110 dam = 1 100 m : **plus**."
+          "explanation": "1 km = 1 000 m.\n**Moins** :\n- 95 dam = 950 m\n- 9 hm = 900 m\n**Plus** :\n- 12 hm = 1 200 m\n- 110 dam = 1 100 m"
         },
         {
           "type": "spot",
@@ -1982,7 +1983,7 @@ window.registerPack({
               "right": "103 km"
             }
           ],
-          "explanation": "Natation en km d'abord : XS **12,9 km**, S **25,75 km**, M **51,5 km**, L **103 km**."
+          "explanation": "Natation en km d'abord :\n- XS **12,9 km**\n- S **25,75 km**\n- M **51,5 km**\n- L **103 km**"
         }
       ]
     },
@@ -2262,7 +2263,7 @@ window.registerPack({
             "2500 mètres",
             "2500"
           ],
-          "explanation": "En mètres : 1 500, 2 000, **2 500** et 1 700."
+          "explanation": "En mètres :\n- 1 500\n- 2 000\n- **2 500**\n- 1 700"
         },
         {
           "type": "question",
@@ -2272,7 +2273,7 @@ window.registerPack({
             "15hm",
             "15 hectomètres"
           ],
-          "explanation": "En mètres : **1 500**, 2 000, 2 500 et 1 700."
+          "explanation": "En mètres :\n- **1 500**\n- 2 000\n- 2 500\n- 1 700"
         },
         {
           "type": "question",

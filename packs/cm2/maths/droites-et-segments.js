@@ -451,7 +451,7 @@ window.registerPack({
               "right": "commence à un point, ne finit pas"
             }
           ],
-          "explanation": "Le **segment** a deux bouts, la **demi-droite** un seul, la **droite** aucun."
+          "explanation": "Le nombre de bouts :\n- le **segment** en a deux\n- la **demi-droite** un seul\n- la **droite** aucun"
         },
         {
           "type": "fill",
@@ -475,7 +475,7 @@ window.registerPack({
       "lesson": {
         "title": "Écrire comme un géomètre",
         "points": [
-          "**[AB]** se lit « segment [AB] ». **(AB)** se lit « droite (AB) ». **[AB)** se lit « demi-droite [AB) » : elle commence en A.",
+          "Les notations :\n- **[AB]** se lit « segment [AB] »\n- **(AB)** se lit « droite (AB) »\n- **[AB)** se lit « demi-droite [AB) » : elle commence en A",
           "Le **crochet** [ ] montre où le trait s'arrête. La **parenthèse** ( ) montre qu'il continue.",
           "**A ∈ (d)** : le point A **appartient** à la droite (d). **B ∉ (d)** : B **n'appartient pas** à (d).",
           "**AB = 4 cm** : le segment [AB] mesure 4 cm."
@@ -644,7 +644,7 @@ window.registerPack({
               "cat": "out"
             }
           ],
-          "explanation": "A et C **appartiennent** à (d) : A ∈ (d), C ∈ (d). B et D **n'appartiennent pas** à (d)."
+          "explanation": "A et C **appartiennent** à (d) :\n- A ∈ (d)\n- C ∈ (d)\nB et D **n'appartiennent pas** à (d)."
         },
         {
           "type": "spot",
@@ -2301,7 +2301,7 @@ window.registerPack({
             "Je fais glisser l'équerre le long de la règle jusqu'à (b)."
           ],
           "translation": "Équerre sur (a), règle contre l'équerre, on glisse jusqu'à (b).",
-          "explanation": "On pose l'**équerre** sur (a), on bloque avec la **règle**, puis on fait **glisser** l'équerre : si elle arrive bien sur (b), les droites sont parallèles."
+          "explanation": "Les étapes :\n- on pose l'**équerre** sur (a)\n- on bloque avec la **règle**\n- puis on fait **glisser** l'équerre\nSi elle arrive bien sur (b), les droites sont parallèles."
         },
         {
           "type": "spot",
@@ -2335,8 +2335,8 @@ window.registerPack({
       "lesson": {
         "title": "Observer avant de répondre",
         "points": [
-          "Un **petit carré** = un angle droit. Des **petits traits pareils** = des longueurs égales.",
-          "Sans codage, on ne devine pas : on **vérifie** avec la règle, l'équerre ou le compas.",
+          "Le codage :\n- un **petit carré** = un angle droit\n- des **petits traits pareils** = des longueurs égales",
+          "Sans codage, on ne devine pas. On **vérifie** avec :\n- la règle\n- l'équerre\n- le compas",
           "Un **sommet** est un point où deux côtés d'une figure se rejoignent."
         ]
       },
@@ -2696,7 +2696,7 @@ window.registerPack({
               "cat": "sec"
             }
           ],
-          "explanation": "**Parallèles** : jamais de rencontre. **Perpendiculaires** : elles se coupent avec un angle droit. **Sécantes** : elles se coupent, avec ou sans angle droit."
+          "explanation": "Deux droites sont :\n- **parallèles** : jamais de rencontre\n- **perpendiculaires** : elles se coupent avec un angle droit\n- **sécantes** : elles se coupent, avec ou sans angle droit"
         },
         {
           "type": "mcq",
@@ -2820,7 +2820,7 @@ window.registerPack({
             "6"
           ],
           "answer": 3,
-          "explanation": "Une figure nommée avec 6 lettres a **6 sommets** et **6 côtés** : [AB], [BC], [CD], [DE], [EF], [FA]."
+          "explanation": "Une figure nommée avec 6 lettres a **6 sommets** et **6 côtés** :\n- [AB]\n- [BC]\n- [CD]\n- [DE]\n- [EF]\n- [FA]"
         },
         {
           "type": "mcq",
@@ -3083,7 +3083,7 @@ window.registerPack({
         "points": [
           "Un **programme de construction** donne les étapes d'une figure, **dans l'ordre**.",
           "On lit **une étape à la fois**, on la trace, puis on passe à la suivante.",
-          "On choisit le bon outil : **règle** (tracer, mesurer, aligner), **équerre** (angle droit), **compas** (reporter une longueur, vérifier un milieu)."
+          "On choisit le bon outil :\n- **règle** (tracer, mesurer, aligner)\n- **équerre** (angle droit)\n- **compas** (reporter une longueur, vérifier un milieu)"
         ],
         "figures": [
           {
@@ -3486,7 +3486,7 @@ window.registerPack({
               "cat": "compas"
             }
           ],
-          "explanation": "**Règle** : tracer et aligner. **Équerre** : angle droit. **Compas** : cercles et longueurs à reporter."
+          "explanation": "Les outils :\n- **règle** : tracer et aligner\n- **équerre** : angle droit\n- **compas** : cercles et longueurs à reporter"
         },
         {
           "type": "mcq",

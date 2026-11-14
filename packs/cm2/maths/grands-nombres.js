@@ -26,8 +26,8 @@ window.registerPack({
           "Le **nombre de** dizaines : on prend **tous les chiffres jusqu'à** la colonne des dizaines. Dans 53 267, c'est **5 326**."
         ],
         "examples": [
-          "Dans 53 267 : le chiffre des centaines est **2**, le nombre de centaines est **532**.",
-          "Dans 53 267 : le chiffre des unités de mille est **3**, le nombre de milliers est **53**."
+          "Dans 53 267 :\n- le chiffre des centaines est **2**\n- le nombre de centaines est **532**",
+          "Dans 53 267 :\n- le chiffre des unités de mille est **3**\n- le nombre de milliers est **53**"
         ],
         "tables": [
           {
@@ -320,8 +320,8 @@ window.registerPack({
       "lesson": {
         "title": "Lire un grand nombre",
         "points": [
-          "On regroupe les chiffres **par classes de 3**, en partant de la droite : la classe des **unités**, la classe des **mille**, puis la classe des **millions**.",
-          "Chaque classe a ses **centaines**, ses **dizaines** et ses **unités**.",
+          "On regroupe les chiffres **par classes de 3**, en partant de la droite :\n- la classe des **unités**\n- la classe des **mille**\n- la classe des **millions**",
+          "Chaque classe a :\n- ses **centaines**\n- ses **dizaines**\n- ses **unités**",
           "On laisse **un espace** entre deux classes : on écrit 507 426, pas 507426.",
           "Pour lire, on lit chaque classe suivie de son nom : 250 108 069 se lit « 250 millions 108 mille 69 »."
         ],
@@ -399,7 +399,7 @@ window.registerPack({
             "015"
           ],
           "answer": 2,
-          "explanation": "En partant de la droite : 015 (unités), **382** (mille), 4 (millions)."
+          "explanation": "En partant de la droite :\n- 015 (unités)\n- **382** (mille)\n- 4 (millions)"
         },
         {
           "type": "match",
@@ -418,7 +418,7 @@ window.registerPack({
               "right": "896"
             }
           ],
-          "explanation": "De droite à gauche : unités (896), mille (254), millions (**731**)."
+          "explanation": "De droite à gauche :\n- unités (896)\n- mille (254)\n- millions (**731**)"
         },
         {
           "type": "sort",
@@ -471,7 +471,7 @@ window.registerPack({
             "classe des unités"
           ],
           "translation": "250 108 069 : 250 millions, 108 mille, 69 unités.",
-          "explanation": "On écrit d'abord les **millions**, puis les **mille**, puis les **unités** (à droite)."
+          "explanation": "On écrit dans l'ordre :\n- les **millions**\n- les **mille**\n- les **unités** (à droite)"
         },
         {
           "type": "fill",
@@ -481,7 +481,7 @@ window.registerPack({
             "6250300",
             "6 250 300"
           ],
-          "explanation": "Classe des millions : 6 ; classe des mille : 250 ; classe des unités : 300. **6 250 300**."
+          "explanation": "Les classes :\n- classe des millions : 6\n- classe des mille : 250\n- classe des unités : 300\nDonc **6 250 300**."
         },
         {
           "type": "fill",
@@ -490,7 +490,7 @@ window.registerPack({
           "answers": [
             "917"
           ],
-          "explanation": "En partant de la droite : 400 (unités), **917** (mille), 85 (millions)."
+          "explanation": "En partant de la droite :\n- 400 (unités)\n- **917** (mille)\n- 85 (millions)"
         },
         {
           "type": "spot",
@@ -549,7 +549,7 @@ window.registerPack({
           "On met un **trait d'union** entre tous les mots du nombre : deux-cent-cinquante-millions-cent-huit-mille-soixante-neuf. L'ancienne écriture, sans traits d'union autour de cent, mille et million, est juste aussi.",
           "**mille** ne prend **jamais** de s : trois-mille.",
           "**million** prend un **s** au pluriel : deux-millions.",
-          "**vingt** et **cent** prennent un s quand ils sont multipliés et **terminent** le nombre : quatre-vingts, trois-cents. Mais : quatre-vingt-deux, trois-cent-dix, deux-cent-mille."
+          "**vingt** et **cent** prennent un s quand ils sont multipliés et **terminent** le nombre :\n- quatre-vingts\n- trois-cents\nMais :\n- quatre-vingt-deux\n- trois-cent-dix\n- deux-cent-mille"
         ],
         "examples": [
           "507 426 : cinq-cent-sept-mille-quatre-cent-vingt-six.",
@@ -644,7 +644,7 @@ window.registerPack({
               "cat": "faux"
             }
           ],
-          "explanation": "**mille** ne prend jamais de s. **cent** et **vingt** perdent leur s quand un nombre les suit (trois, mille). **million** prend un s.",
+          "explanation": "Les règles :\n- **mille** ne prend jamais de s\n- **cent** et **vingt** perdent leur s quand un nombre les suit (trois, mille)\n- **million** prend un s",
           "hint": "Mille est invariable ; vingt et cent prennent un s seulement à la fin du nombre."
         },
         {
@@ -745,7 +745,7 @@ window.registerPack({
             "500 000 + 7 000 + 400 + 20 + 6"
           ],
           "answer": 3,
-          "explanation": "5 centaines de mille, 7 unités de mille, 4 centaines, 2 dizaines et 6 unités."
+          "explanation": "507 426, c'est :\n- 5 centaines de mille\n- 7 unités de mille\n- 4 centaines\n- 2 dizaines\n- 6 unités"
         },
         {
           "type": "mcq",
@@ -790,7 +790,7 @@ window.registerPack({
             "840907",
             "840 907"
           ],
-          "explanation": "8 centaines de mille, 4 dizaines de mille, 0 millier, 9 centaines, 0 dizaine, 7 unités : **840 907**."
+          "explanation": "Colonne par colonne :\n- 8 centaines de mille\n- 4 dizaines de mille\n- 0 millier\n- 9 centaines\n- 0 dizaine\n- 7 unités\nDonc **840 907**."
         },
         {
           "type": "fill",
@@ -832,7 +832,7 @@ window.registerPack({
             "(9 × 1 000)"
           ],
           "translation": "3 409 000 = 3 000 000 + 400 000 + 9 000",
-          "explanation": "3 millions, 4 centaines de mille, 9 unités de mille."
+          "explanation": "3 409 000, c'est :\n- 3 millions\n- 4 centaines de mille\n- 9 unités de mille"
         },
         {
           "type": "spot",
@@ -867,7 +867,7 @@ window.registerPack({
             "25 030 400"
           ],
           "answer": 1,
-          "explanation": "Millions : 25 ; mille : **030** ; unités : **004**. On complète chaque classe avec des 0."
+          "explanation": "Les classes :\n- millions : 25\n- mille : **030**\n- unités : **004**\nOn complète chaque classe avec des 0."
         }
       ]
     },
@@ -1450,7 +1450,7 @@ window.registerPack({
         "points": [
           "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
           "Écris juste **un nombre** ou **des mots**. Tu n'as qu'**un essai** par question : relis-toi avant de valider.",
-          "Pour un nombre en lettres, les deux écritures sont acceptées : avec des traits d'union partout, ou l'ancienne."
+          "Pour un nombre en lettres, les deux écritures sont acceptées :\n- avec des traits d'union partout\n- l'ancienne"
         ]
       },
       "draw": 12,
@@ -1590,7 +1590,7 @@ window.registerPack({
           "answers": [
             "254"
           ],
-          "explanation": "De droite à gauche : 896 (unités), **254** (mille), 731 (millions)."
+          "explanation": "De droite à gauche :\n- 896 (unités)\n- **254** (mille)\n- 731 (millions)"
         },
         {
           "type": "question",

@@ -22,7 +22,7 @@ window.registerPack({
         "title": "Le tour d'une figure",
         "points": [
           "Le **périmètre** d'une figure est la **longueur de son contour** : la distance quand on en fait le tour.",
-          "Il se mesure avec une **unité de longueur** : mm, cm, m, km.",
+          "Il se mesure avec une **unité de longueur** :\n- mm\n- cm\n- m\n- km",
           "Le périmètre n'est **pas l'aire** : l'[[aire|la place occupée à l'intérieur de la figure]] est la surface à l'intérieur, le périmètre est le tour."
         ],
         "examples": [
@@ -247,7 +247,7 @@ window.registerPack({
             "la minute (min)"
           ],
           "answer": 1,
-          "explanation": "Un périmètre est une **longueur** : il se mesure en mm, cm, m ou km."
+          "explanation": "Un périmètre est une **longueur**. Il se mesure en :\n- mm\n- cm\n- m\n- km"
         },
         {
           "type": "sort",
@@ -640,7 +640,7 @@ window.registerPack({
             "J'écris le résultat avec l'unité"
           ],
           "translation": "Tous les côtés, même unité, addition, unité.",
-          "explanation": "On repère les côtés, on vérifie l'unité, on **additionne**, puis on écrit l'**unité**."
+          "explanation": "Les étapes :\n- on repère les côtés\n- on vérifie l'unité\n- on **additionne**\n- puis on écrit l'**unité**"
         },
         {
           "type": "mcq",
@@ -745,7 +745,7 @@ window.registerPack({
               "right": "15 cm"
             }
           ],
-          "explanation": "On additionne tous les côtés : 2 + 2 + 3 = 7 ; 6 + 4 + 6 + 4 = 20 ; 3 + 4 + 5 = 12 ; 1 + 2 + 3 + 4 + 5 = 15."
+          "explanation": "On additionne tous les côtés :\n- 2 + 2 + 3 = 7\n- 6 + 4 + 6 + 4 = 20\n- 3 + 4 + 5 = 12\n- 1 + 2 + 3 + 4 + 5 = 15"
         },
         {
           "type": "spot",
@@ -880,7 +880,7 @@ window.registerPack({
         "title": "Convertir, puis additionner",
         "points": [
           "On n'additionne que des longueurs **dans la même unité**.",
-          "Si les unités sont différentes, on **convertit d'abord** : 1 m = 100 cm ; 1 km = 1 000 m ; 1 cm = 10 mm.",
+          "Si les unités sont différentes, on **convertit d'abord** :\n- 1 m = 100 cm\n- 1 km = 1 000 m\n- 1 cm = 10 mm",
           "Choisis l'unité la plus petite : tu évites les virgules."
         ],
         "examples": [
@@ -1030,7 +1030,7 @@ window.registerPack({
               "right": "3 000 m"
             }
           ],
-          "explanation": "1 m = **100 cm**, 1 km = **1 000 m**, 1 cm = **10 mm**."
+          "explanation": "Les longueurs égales :\n- 1 m = **100 cm**\n- 1 km = **1 000 m**\n- 1 cm = **10 mm**"
         },
         {
           "type": "sort",
@@ -1219,7 +1219,7 @@ window.registerPack({
         "title": "Côtés égaux : on multiplie",
         "points": [
           "Des **petits traits** pareils sur des côtés veulent dire : ces côtés ont **la même longueur**.",
-          "Si tous les côtés sont égaux : périmètre = **nombre de côtés × côté**. Carré : 4 × côté ; triangle équilatéral : 3 × côté ; pentagone régulier : 5 × côté ; hexagone régulier : 6 × côté.",
+          "Si tous les côtés sont égaux, périmètre = **nombre de côtés × côté** :\n- carré : 4 × côté\n- triangle équilatéral : 3 × côté\n- pentagone régulier : 5 × côté\n- hexagone régulier : 6 × côté",
           "**Rectangle** : 2 longueurs et 2 largeurs, donc périmètre = **2 × (L + l)**."
         ],
         "examples": [
@@ -2216,7 +2216,7 @@ window.registerPack({
         "title": "Retrouver un côté",
         "points": [
           "On connaît le périmètre et tous les côtés sauf un : on **additionne** les côtés connus, puis on **soustrait** cette somme du périmètre.",
-          "**Carré** : côté = périmètre ÷ 4. **Triangle équilatéral** : côté = périmètre ÷ 3.",
+          "Pour retrouver le côté :\n- **carré** : côté = périmètre ÷ 4\n- **triangle équilatéral** : côté = périmètre ÷ 3",
           "**Rectangle** : L + l = périmètre ÷ 2, puis on enlève le côté connu."
         ],
         "examples": [
@@ -2685,8 +2685,8 @@ window.registerPack({
       "lesson": {
         "title": "Le périmètre dans la vie",
         "points": [
-          "Clôture d'un jardin, bordure, ruban autour d'un cadre, tour de piste : on cherche un **périmètre**.",
-          "Calcule le périmètre, puis **réponds à la question** : plusieurs tours (×), un portail sans grillage (−), un prix (×)."
+          "Dans ces cas, on cherche un **périmètre** :\n- clôture d'un jardin\n- bordure\n- ruban autour d'un cadre\n- tour de piste",
+          "Calcule le périmètre, puis **réponds à la question** :\n- plusieurs tours (×)\n- un portail sans grillage (−)\n- un prix (×)"
         ],
         "examples": [
           "Jardin de 15 m sur 10 m : 2 × (15 + 10) = 50 m de clôture.",
@@ -3094,7 +3094,7 @@ window.registerPack({
             "un carré de 7 m de côté"
           ],
           "translation": "20 m < 22 m < 24 m < 28 m",
-          "explanation": "Périmètres : 4 × 5 = 20 m ; 2 × (8 + 3) = 22 m ; 9 + 7 + 8 = 24 m ; 4 × 7 = 28 m."
+          "explanation": "Périmètres :\n- 4 × 5 = 20 m\n- 2 × (8 + 3) = 22 m\n- 9 + 7 + 8 = 24 m\n- 4 × 7 = 28 m"
         },
         {
           "type": "question",
@@ -3119,7 +3119,7 @@ window.registerPack({
         "title": "Le contrôle",
         "points": [
           "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
-          "Périmètre = somme des côtés, **dans la même unité**. Carré : 4 × côté ; rectangle : 2 × (L + l).",
+          "Périmètre = somme des côtés, **dans la même unité**. Les formules :\n- carré : 4 × côté\n- rectangle : 2 × (L + l)",
           "Côté manquant : périmètre − côtés connus. Écris l'**unité** si tu veux, le nombre seul suffit."
         ]
       },
