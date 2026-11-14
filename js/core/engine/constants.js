@@ -34,7 +34,7 @@
     tiers("gold", "🥇", [1, 3, 5, 10], function (n) { return [n > 1 ? n + " trophées d'or" : "Trophée d'or", n > 1 ? "Gagne " + n + " trophées 🥇" : "Gagne un trophée 🥇 : 5★ partout et boss à 90 %"]; }),
     tiers("stars", "⭐", [50, 100, 250, 500, 1000], function (n) { return [n + " étoiles", "Gagne " + n + " étoiles en tout"]; }),
     tiers("streak", "📅", [7, 14, 30], function (n) { return ["Série de " + n + " jours", "Joue " + n + " jours de suite"]; }),
-    tiers("correct", "✅", [100, 500, 1000, 5000], function (n) { return [n + " bonnes réponses", "Donne " + n + " bonnes réponses en tout"]; }),
+    tiers("correct", "✏️", [100, 500, 1000, 5000], function (n) { return [n + " bonnes réponses", "Donne " + n + " bonnes réponses en tout"]; }),
     tiers("daily", "🎯", [1, 7, 30], function (n) { return [n > 1 ? n + " défis du jour" : "Défi du jour", n > 1 ? "Réussis " + n + " défis du jour" : "Réussis un défi du jour (les 3 objectifs)"]; })
   );
   /** Badges of a tiered family, one per goal (ids family + goal, e.g. "stars50").
@@ -151,7 +151,7 @@
     { id: "worlds2", kind: "worlds", icon: "🗺️", text: "Termine 2 mondes", target: 2 },
     { id: "worlds3", kind: "worlds", icon: "🗺️", text: "Termine 3 mondes", target: 3 },
     { id: "combo10", kind: "combo", icon: "🔥", text: "10 bonnes réponses d'affilée", target: 10 },
-    { id: "correct20", kind: "correct", icon: "✅", text: "20 bonnes réponses", target: 20 },
+    { id: "correct20", kind: "correct", icon: "✏️", text: "20 bonnes réponses", target: 20 },
     { id: "boss", kind: "boss", icon: "👑", text: "Joue un boss jusqu'au bout", target: 1 },
     { id: "star", kind: "star", icon: "⭐", text: "Gagne une étoile de plus sur un monde déjà fait", target: 1 },
     { id: "review", kind: "review", icon: "🔁", text: "Révise un chapitre « à réviser »", target: 1 }

@@ -74,9 +74,9 @@ test("tiered badges: earned while playing (right answers counter), shown family 
   expect(await page.evaluate(() => Engine.state.correct)).toBe(102);
   await page.evaluate(() => App.showHome());
   await H.tap(page, "[data-act=badges]");
-  await expect(page.locator(".screen.badges .cat-section")).toHaveText(["🎖️ Exploits", "🏆 Chapitres terminés", "🥇 Trophées d'or", "⭐ Étoiles", "📅 Jours de suite", "✅ Bonnes réponses", "🎯 Défis du jour"]);
+  await expect(page.locator(".screen.badges .cat-section")).toHaveText(["🎖️ Exploits", "🏆 Chapitres terminés", "🥇 Trophées d'or", "⭐ Étoiles", "📅 Jours de suite", "✏️ Bonnes réponses", "🎯 Défis du jour"]);
   const correct = page.locator(".badge-grid.tiers").nth(4);
-  await expect(correct.locator(".badge-card.on")).toHaveText(["✅100 bonnes réponses"]);
+  await expect(correct.locator(".badge-card.on")).toHaveText(["✏️100 bonnes réponses"]);
   await expect(correct.locator(".badge-card.locked")).toHaveCount(3);
   await expect(page.locator(".badge-count").nth(4)).toHaveText("102 bonnes réponses · prochain : 500 bonnes réponses");
   R.done();
