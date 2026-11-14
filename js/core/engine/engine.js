@@ -15,7 +15,7 @@
     parseDb = E.parseDb, save = E.save, changeListeners = E.changeListeners, packId = E.packId, worlds = E.worlds,
     packState = E.packState, levelInfo = E.levelInfo, streak = E.streak, hasBadge = E.hasBadge, award = E.award,
     badgeById = E.badgeById, worldProgress = E.worldProgress, starsToUnlock = E.starsToUnlock,
-    isUnlocked = E.isUnlocked, starsOf = E.starsOf, isBoss = E.isBoss, medalFor = E.medalFor;
+    isUnlocked = E.isUnlocked, starsOf = E.starsOf, isBoss = E.isBoss, medalFor = E.medalFor, trophyOf = E.trophyOf;
 
   /** @type {Omit<EngineApi, EnginePlayKeys | EngineProfileKeys | EngineShareKeys>} */
   var base = {
@@ -48,6 +48,9 @@
     BOSS_PASS: E.BOSS_PASS,
     MEDALS: E.MEDALS,
     medalFor: medalFor,
+    TROPHIES: E.TROPHIES,
+    /** Trophy of a playable pack (a chapter, or a group of a chapter "par groupes"), computed from the progress. */
+    trophy: function (id) { return trophyOf(E.state, id); },
     /** Is this world the boss of the current pack (its last world)? */
     isBoss: isBoss,
     /** Best medal on the boss of the current pack, or null while it is not played. */

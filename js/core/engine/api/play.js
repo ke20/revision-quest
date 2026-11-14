@@ -9,7 +9,7 @@
     streak = E.streak, award = E.award, worldIndex = E.worldIndex, worldProgress = E.worldProgress,
     starsToUnlock = E.starsToUnlock, isUnlocked = E.isUnlocked, worldHasDocument = E.worldHasDocument,
     markDay = E.markDay, markPackPlayed = E.markPackPlayed, addXp = E.addXp, isBoss = E.isBoss, BOSS_PASS = E.BOSS_PASS,
-    medalFor = E.medalFor;
+    medalFor = E.medalFor, trophyOf = E.trophyOf, TROPHIES = E.TROPHIES;
 
   /** Indexes of the exercises played in this run. A boss draws `draw` questions from its pool (all of them when
       draw is missing), in a new random order each time; other worlds play every exercise in order.
@@ -164,6 +164,7 @@
       var w = worlds(), i = worldIndex(s.worldId);
       var wasUnlockedNext = w[i + 1] ? isUnlocked(w[i + 1].id) : true;
       var ps = packState(E.state, s.packId, true);
+      var trophyBefore = trophyOf(E.state, s.packId).tier;
       var entry = {
         stars: Math.max(prev.stars || 0, stars),
         accuracy: Math.max(prev.accuracy || 0, accuracy),
@@ -178,6 +179,10 @@
       if (passed || (w.length === 1 && i === 0)) award("boss", nb); // chapter validated (a 1-world course: finished)
       if (w.length && w.every(function (x) { return worldProgress(x.id).stars >= MAX_STARS; })) award("stars", nb);
       if (streak() >= 3) award("streak3", nb);
+      // a new trophy tier (or several at once): its bonus XP, given only now (the trophy itself is computed)
+      var trophy = trophyOf(E.state, s.packId), trophyXp = 0, levelUp = null;
+      for (var t = trophyBefore + 1; t <= trophy.tier; t++) trophyXp += TROPHIES[t].xp;
+      if (trophyXp) levelUp = addXp(trophyXp);
       save();
       E.worldsInARow++;
       var pe = settings().pauseEvery;
@@ -198,7 +203,11 @@
         boss: boss,
         passed: passed,
         medal: boss ? medalFor(accuracy) : null,
-        bestMedal: boss ? medalFor(entry.accuracy) : null
+        bestMedal: boss ? medalFor(entry.accuracy) : null,
+        trophy: trophy,
+        newTrophy: trophy.tier > trophyBefore,
+        trophyXp: trophyXp,
+        levelUp: levelUp
       };
       E.session = null;
       return summary;

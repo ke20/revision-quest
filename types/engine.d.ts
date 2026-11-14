@@ -81,6 +81,13 @@ interface WorldSession {
   boss?: boolean;
 }
 
+/** A tier of the chapter trophy (index 0 = none, 1 bronze, 2 silver, 3 gold) and its bonus XP. */
+interface TrophyTier { id: "none" | "bronze" | "silver" | "gold"; icon: string; name: string; xp: number }
+/** What the next tier still needs: worlds still missing `stars` ★, and the boss score (%) still to reach (0 = done). */
+interface TrophyNext { tier: number; worlds: number; stars: number; boss: number }
+/** Trophy of a pack, computed from the progress (next: null at gold, or for an unknown pack). */
+interface Trophy { tier: number; id: TrophyTier["id"]; icon: string; name: string; next: TrophyNext | null }
+
 /** A medal of the boss, from its score (accuracy). */
 interface Medal { id: string; icon: string; name: string; min: number }
 
@@ -160,6 +167,11 @@ interface WorldSummary {
   passed: boolean;
   medal: Medal | null;
   bestMedal: Medal | null;
+  /** Trophy of the pack after this world; newTrophy: a tier was just reached (bonus trophyXp, maybe a level up). */
+  trophy: Trophy;
+  newTrophy: boolean;
+  trophyXp: number;
+  levelUp: LevelInfo | null;
   [more: string]: unknown;
 }
 
@@ -197,6 +209,8 @@ interface EngineApi {
   BOSS_PASS: number;
   MEDALS: Medal[];
   medalFor(accuracy: number): Medal;
+  TROPHIES: TrophyTier[];
+  trophy(packId: string): Trophy;
   isBoss(worldId: number | string): boolean;
   bossMedal(): Medal | null;
   starsToUnlock(): number;

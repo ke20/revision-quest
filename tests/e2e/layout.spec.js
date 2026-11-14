@@ -52,6 +52,8 @@ test("main screens have no horizontal scroll", async ({ page }) => {
   await tap(page, "[data-act=back]");
   await tap(page, "[data-act=badges]"); await expect(page.locator(".badge-grid")).toBeVisible(); await check("badges");
   await tap(page, "[data-act=back]");
+  await tap(page, "[data-act=trophies]"); await expect(page.locator(".trophy-counts")).toBeVisible(); await check("trophies");
+  await tap(page, "[data-act=back]");
   await tap(page, "[data-act=ranking]"); await expect(page.locator(".lb-list")).toBeVisible(); await check("leaderboard");
   R.done();
 });

@@ -270,7 +270,15 @@
     if (m.color != null) entry.color = m.color;
     entry.lang = pack.lang;
     entry.worldCount = isArr(pack.worlds) ? pack.worlds.length : 0;
+    const boss = bossOf(pack);
+    if (boss != null) entry.boss = boss;
     return entry;
+  }
+  /** Id of the last world (the boss), as a string: the game computes a chapter's trophy without loading it.
+      Null when the pack has no world with an id. @param {any} pack @returns {string | null} */
+  function bossOf(pack) {
+    const last = isArr(pack.worlds) && pack.worlds.length ? pack.worlds[pack.worlds.length - 1] : null;
+    return last && (typeof last.id === "number" || typeof last.id === "string") ? String(last.id) : null;
   }
 
   /* ---------- pack content: documents, worlds, lessons, exercises ---------- */
@@ -519,7 +527,7 @@
     MAX_ROWS, MAX_COLS, MAX_CELL, MAX_PACK_SIZE, BOSS_MIN, BOSS_MAX, BOSS_POOL,
     parseStrict, formatStrict,
     isStr, plain, checkMarkup,
-    checkPath, checkLang, validateMeta, catalogEntry, LICENSES,
+    checkPath, checkLang, validateMeta, catalogEntry, bossOf, LICENSES,
     validateContent, validateLesson, validateExercise,
     validateFigure, validateTable, inlineList
   };

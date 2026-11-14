@@ -65,6 +65,9 @@ interface EngineParts {
   BOSS_PASS: number;
   MEDALS: Medal[];
   medalFor(accuracy: number): Medal;
+  TROPHIES: TrophyTier[];
+  TROPHY_SILVER_STARS: number;
+  TROPHY_GOLD_BOSS: number;
   ALLOWED_AVATARS: string[];
   SAFE_ID: RegExp;
 
@@ -142,6 +145,8 @@ interface EngineParts {
   markPackPlayed(nb: Badge[]): void;
   addXp(n: number): LevelInfo | null;
   starsOf(st: PlayerState, id?: string): number;
+  unitInfo(id: string): { ids: string[] | null; count: number; boss: string } | null;
+  trophyOf(st: PlayerState, id: string): Trophy;
 
   /* ---------- api/profiles.js ---------- */
   sameName(name: string): Profile | null;

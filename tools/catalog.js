@@ -24,7 +24,7 @@ const BASE_FILE = "packs/levels-subjects.json";
 const CATALOG_FILE = "packs/catalog.js";
 const CHAPTER_FILE = "chapter.json";
 /** A group of a chapter "par groupes" (id, label, difficulty come from its chapter.json, not checked here). */
-/** @typedef {{ id: any, label: any, difficulty?: any, worldCount: number }} CatalogGroup */
+/** @typedef {{ id: any, label: any, difficulty?: any, worldCount: number, boss?: string }} CatalogGroup */
 /** A chapter "par groupes": the fields of its chapter.json, with groups instead of worldCount. */
 /** @typedef {{ path: string, title: any, description: any, icon: any, color?: any, lang: Pack["lang"], groups: CatalogGroup[] }} ChapterEntry */
 /** A catalogue entry: one pack (no groups) or a chapter "par groupes". */
@@ -101,6 +101,8 @@ function buildCatalog(root = ROOT, opts = {}) {
           const p = pack(`packs/${id}/${out.id}.js`, id + "/" + out.id);
           if (p) langs.add(p.lang);
           out.worldCount = p ? worldCount(p) : 0;
+          const boss = p ? Rules.bossOf(p) : null;
+          if (boss != null) out.boss = boss;
           return out;
         });
         if (langs.size > 1) errors.push(`packs/${id}/ : tous les groupes doivent avoir la même lang (${[...langs].join(", ")})`);

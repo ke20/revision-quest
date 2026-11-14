@@ -246,6 +246,8 @@ export function showComplete(w) {
       "</div>" +
       '<div class="xp-line">Niveau ' + li.level + " · " + E(li.icon) + " " + E(li.name) + '<div class="xpbar"><div class="xpbar-fill" style="width:' + Math.round(li.progress * 100) + '%"></div></div></div>' +
       badges +
+      (sum.newTrophy ? '<div class="trophy-won pop trophy-' + E(sum.trophy.id) + '"><span class="trophy-won-icon">' + E(sum.trophy.icon) + "</span>" +
+        "<span><b>" + T("trophyWon") + "</b><br>" + T("trophyTitle", T("trophyNames")[sum.trophy.tier]) + ' <span class="fb-xp">+' + sum.trophyXp + " XP</span></span></div>" : "") +
       (sum.unlockedWorld ? '<div class="unlocked pop">' + T("unlocked") + " <b>" + E(sum.unlockedWorld.icon || "") + " " + E(sum.unlockedWorld.title) + "</b></div>" : "") +
     "</div>" +
     (sum.pauseSuggested
@@ -262,7 +264,9 @@ export function showComplete(w) {
   Confetti.burst(big ? 260 : 160);
   var here = function () { return document.body.contains(node); }; // no late confetti on another screen (e.g. the pause)
   setTimeout(function () { if (here()) Confetti.burst(big ? 160 : 80, { center: true }); }, 900);
-  if (big) setTimeout(function () { if (here()) Confetti.burst(160); }, 1700);
+  if (big || sum.newTrophy) setTimeout(function () { if (here()) Confetti.burst(160); }, 1700);
+  if (sum.newTrophy) setTimeout(function () { if (here()) Sound.levelUp(); }, 600);
+  if (sum.levelUp) setTimeout(function () { if (here()) levelUpPopup(/** @type {LevelInfo} */ (sum.levelUp)); }, 1200);
 }
 
 /* ================= Pause (suggested after N worlds in a row) =================

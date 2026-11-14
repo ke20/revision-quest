@@ -58,6 +58,9 @@ interface CatalogPack {
   color: string;
   lang: UiLang;
   worldCount: number;
+  /** Id of the last world (the boss) as a string, "" when unknown (a chapter "par groupes": each group has its own).
+      The trophy of a chapter is computed from it without loading the pack. */
+  boss: string;
   /** File to load ("packs/….js"); null for a chapter "par groupes" (only its groups are loaded). */
   file: string | null;
   /** A chapter "par groupes": its groups (each one is a playable pack). */

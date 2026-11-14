@@ -137,6 +137,8 @@ interface CatalogEntry {
   color?: string;
   lang: Pack["lang"];
   worldCount: number;
+  /** Id of the last world (the boss), as a string. */
+  boss?: string;
 }
 
 /** Reports one problem found by a check of js/core/pack-rules.js (err: blocking, warn: advice). Messages in French. */

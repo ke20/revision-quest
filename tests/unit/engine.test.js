@@ -339,6 +339,62 @@ test("boss draw: a run plays `draw` questions of the pool, all different, in a r
   assert.strictEqual(E.resumeWorld(w1).total, 30, "an older saved run of a normal world (no order) still resumes");
 });
 
+/* ---------- trophies (computed from the progress) ---------- */
+
+const ok10 = (n) => Array(10).fill({ correct: true, attempts: 1 }).map((r, i) => (i < n ? r : { correct: false }));
+
+test("trophy: bronze = boss ≥ 80 %, silver = + 3★ everywhere, gold = 5★ everywhere and boss ≥ 90 %; bonus XP once per tier", () => {
+  const { E } = setup({ pack: makePack(3, 10) }); // worlds 1, 2 and the boss 3
+  E.setSettings({ freeMistakes: 3 });
+  assert.deepStrictEqual(j(E.trophy(PACK)), { tier: 0, id: "none", icon: "", name: "", next: { tier: 1, worlds: 0, stars: 0, boss: 80 } });
+  playWorld(E, 1, ok10(6)); // 60 % → 2★
+  playWorld(E, 2);
+  let sum = playWorld(E, 3, ok10(7)); // boss 70 %: not passed
+  assert.strictEqual(sum.trophy.tier, 0);
+  assert.strictEqual(sum.newTrophy, false);
+  const xp = E.state.xp;
+  sum = playWorld(E, 3, ok10(8)); // boss 80 % → bronze
+  assert.deepStrictEqual([sum.trophy.id, sum.newTrophy, sum.trophyXp], ["bronze", true, 50]);
+  assert.strictEqual(E.state.xp, xp + sum.xpEarned + 50, "bonus added to the XP");
+  assert.deepStrictEqual(j(sum.trophy.next), { tier: 2, worlds: 1, stars: 3, boss: 0 }, "world 1 still needs 3★");
+  sum = playWorld(E, 3, ok10(8));
+  assert.deepStrictEqual([sum.newTrophy, sum.trophyXp], [false, 0], "no bonus twice");
+  sum = playWorld(E, 1); // 3★ everywhere → silver
+  assert.deepStrictEqual([sum.trophy.id, sum.trophyXp], ["silver", 100]);
+  assert.deepStrictEqual(j(sum.trophy.next), { tier: 3, worlds: 1, stars: 5, boss: 90 }, "the boss: 4★ and 80 %");
+  sum = playWorld(E, 3, ok10(9)); // 90 %: still 4★
+  assert.deepStrictEqual(j(sum.trophy.next), { tier: 3, worlds: 1, stars: 5, boss: 0 });
+  sum = playWorld(E, 3); // 100 % → gold
+  assert.deepStrictEqual([sum.trophy.id, sum.trophy.icon, sum.trophyXp, sum.trophy.next], ["gold", "🥇", 200, null]);
+  E.resetPack(PACK);
+  assert.strictEqual(E.trophy(PACK).tier, 0, "computed: a reset chapter has no trophy");
+});
+
+test("trophy: several tiers at once give every bonus; a level up is reported", () => {
+  const { E } = setup({ pack: makePack(3, 10) });
+  playWorld(E, 1); playWorld(E, 2);
+  E.state.xp = 990;
+  const sum = playWorld(E, 3);
+  assert.deepStrictEqual([sum.trophy.id, sum.trophyXp], ["gold", 350]);
+  assert.ok(sum.levelUp && sum.levelUp.level >= 7, "level up from the bonus");
+});
+
+test("trophy: computed for packs that are not loaded (catalogue boss id), and for existing saves", () => {
+  const { env, E } = setup();
+  const unit = env.window.Packs.units().find((u) => u.worldCount >= 2 && u.boss);
+  assert.ok(unit, "the catalogue gives the boss id of each playable pack");
+  const worlds = {};
+  for (let i = 0; i < unit.worldCount; i++) worlds["w" + i] = { stars: 3, accuracy: 0.7, completed: true };
+  worlds[unit.boss] = { stars: 4, accuracy: 0.85, completed: true };
+  E.state.packs[unit.id] = { worlds, lastPlayed: 1 };
+  assert.strictEqual(E.trophy(unit.id).id, "silver", "boss passed and 3★ everywhere");
+  worlds[unit.boss].accuracy = 0.79;
+  assert.strictEqual(E.trophy(unit.id).tier, 0, "boss under 80 %");
+  assert.deepStrictEqual(j(E.trophy("4e/anglais/nope")), { tier: 0, id: "none", icon: "", name: "", next: null }, "unknown pack: no trophy");
+  const group = env.window.Packs.list().find((c) => c.groups);
+  if (group) assert.strictEqual(E.trophy(group.id).next, null, "a chapter par groupes has no trophy of its own (each group has one)");
+});
+
 test("badges: stars needs 3★ on every world of the chapter", () => {
   const { E } = setup({ pack: { worlds: [{ id: 1, exercises: [{}, {}] }, { id: 2, exercises: [{}, {}] }] } });
   playWorld(E, 1);

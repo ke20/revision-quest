@@ -110,8 +110,8 @@ test("the e2e test packs (tests/fixtures/packs) are valid packs for their catalo
 test("catalogue groups: one card per chapter, each group is a playable pack <cours>/<groupe> with its own file", () => {
   const P = withCatalog({ subjects: SUBJECTS, levels: LEVELS, packs: [
     entry({ path: "cm2/histoire/dictee", title: "Dictée", lang: "fr", worldCount: 99, groups: [
-      { id: "g1", label: "Groupe 1", difficulty: 1, worldCount: 3 },
-      { id: "g2", label: "Groupe 2", difficulty: 9, worldCount: 5 },
+      { id: "g1", label: "Groupe 1", difficulty: 1, worldCount: 3, boss: "<img>" },
+      { id: "g2", label: "Groupe 2", difficulty: 9, worldCount: 5, boss: "final" },
       { id: "G 3", label: "bad id" }, { id: "g1", label: "duplicate" }, { id: "../x" }, null
     ] }),
     entry({ path: "cm2/histoire/empty", groups: [] }),
@@ -127,6 +127,9 @@ test("catalogue groups: one card per chapter, each group is a playable pack <cou
   assert.strictEqual(g2.parent, "cm2/histoire/dictee");
   assert.strictEqual(g2.title, "Dictée · Groupe 2");
   assert.strictEqual(g2.difficulty, 5, "difficulty clamped to 1-5");
+  assert.strictEqual(g2.boss, "final", "boss: id of the group's last world (trophy)");
+  assert.strictEqual(j(P.get("cm2/histoire/dictee/g1")).boss, "", "a boss id in another format is dropped");
+  assert.strictEqual(ch.boss, "", "a grouped chapter has no boss of its own");
   assert.strictEqual(g2.lang, "fr");
   assert.deepStrictEqual(j(P.units().map((u) => u.id)), ["cm2/histoire/dictee/g1", "cm2/histoire/dictee/g2", "4e/anglais/plain"]);
 });

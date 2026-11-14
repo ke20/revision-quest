@@ -145,6 +145,7 @@
     return {
       id: p.path, level: seg[0], subject: seg[1], title: m.title, description: m.description, icon: m.icon,
       color: m.color || subject.color, lang: /** @type {UiLang} */ (p.lang), worldCount: p.worlds.length,
+      boss: p.worlds.length ? String(p.worlds[p.worlds.length - 1].id) : "",
       file: null, mine: true, saved: item.saved, official: official,
       modified: !item.sent || item.sent !== hash(JSON.stringify(p))
     };

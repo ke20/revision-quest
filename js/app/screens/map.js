@@ -39,6 +39,7 @@ export function showMap() {
     '<header class="screen-head"><button class="btn-icon" data-act="back" aria-label="Chapitres">←</button>' +
     "<h2>" + T("mapTitle") + '</h2><span class="head-right">⭐ ' + Engine.totalStars(S.pack.id) + "/" + S.data.worlds.length * Engine.MAX_STARS + "</span></header>" +
     '<p class="map-pack"><span>' + E(S.pack.icon) + "</span> " + E(S.pack.title) + "</p>" +
+    trophyLineHtml(Engine.trophy(S.pack.id)) +
     '<div class="map-path"><svg class="map-svg" aria-hidden="true"></svg>' + nodes + "</div>" +
     (Engine.packSummary(S.pack.id, S.data.worlds.length).worldsDone > 0
       ? '<div class="map-foot"><button class="btn btn-white btn-small" data-act="reset-pack">↺ Recommencer ce chapitre</button></div>' : "") +
@@ -72,6 +73,14 @@ export function showMap() {
   if (curNode && curNode.getBoundingClientRect().top > window.innerHeight * 0.7) {
     setTimeout(function () { curNode.scrollIntoView({ behavior: scrollBehavior(), block: "center" }); }, 250);
   }
+}
+
+/** The chapter trophy on the map, and what the next tier still needs (texts in the pack language). @param {Trophy} t */
+export function trophyLineHtml(t) {
+  var names = T("trophyNames"), n = t.next;
+  var has = t.tier ? '<b class="trophy-has">' + E(t.icon) + " " + T("trophyTitle", names[t.tier]) + "</b>" : '<b class="trophy-has none">' + T("trophyNone") + "</b>";
+  var next = n ? T("trophyNext", Engine.TROPHIES[n.tier].icon, n.worlds, n.stars, n.boss) : t.tier ? T("trophyMax") : "";
+  return '<div class="map-trophy trophy-' + E(t.id) + '">' + has + (next ? '<span class="trophy-next">' + next + "</span>" : "") + "</div>";
 }
 
 /** @param {HTMLElement} node */

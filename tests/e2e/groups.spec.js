@@ -9,8 +9,8 @@ const CH = "cm2/histoire/test-groupes";
 const ENTRY = {
   path: CH, title: "Groupes (test)", description: "Chapitre de test par groupes.", icon: "🗽", color: "#7C3AED", lang: "fr",
   groups: [
-    { id: "g1", label: "Groupe 1", difficulty: 1, worldCount: 2 },
-    { id: "g2", label: "Groupe 2", difficulty: 2, worldCount: 2 }
+    { id: "g1", label: "Groupe 1", difficulty: 1, worldCount: 2, boss: "2" },
+    { id: "g2", label: "Groupe 2", difficulty: 2, worldCount: 2, boss: "2" }
   ]
 };
 const BODY = H.fixture("packs/cm2/histoire/test-revolution.js");
@@ -80,6 +80,15 @@ for (const width of [390, 1280]) {
     await page.goBack(); await wait(page, 200);
     await expect(page.locator(".screen.catalog")).toBeVisible();
     ok(/⭐ 5\/20/.test(await page.locator(`.pack-card[data-pack="${CH}"]`).innerText()), "chapter card adds up the groups: ⭐ 5/20");
+
+    // a trophy per group; the chapter card shows the best one
+    await page.evaluate((id) => { Engine.state.packs[id].worlds["2"] = { stars: 4, accuracy: 0.85, completed: true }; App.showCatalog(); }, `${CH}/g2`);
+    await expect(page.locator(`.pack-card[data-pack="${CH}"] .pack-trophy`)).toHaveText("🥈"); // world 1 5★, boss 4★ at 85 %
+    await tap(page, `.pack-card[data-pack="${CH}"]`);
+    await expect(page.locator(`.pack-card[data-pack="${CH}/g2"] .pack-trophy`)).toHaveText("🥈");
+    await expect(page.locator(`.pack-card[data-pack="${CH}/g1"] .pack-trophy`)).toHaveCount(0);
+    await page.goBack(); await wait(page, 200);
+    await expect(page.locator(".screen.catalog")).toBeVisible();
 
     // home "Continuer" opens the last group directly; its map ← returns to the group choice
     await page.evaluate(() => App.showHome());

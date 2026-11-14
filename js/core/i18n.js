@@ -17,6 +17,15 @@
     sourceUrl: "https://github.com/ke20/revision-quest"   // lien « Code source » en bas de l'accueil ("" pour le masquer)
   };
 
+  /** What the next trophy still needs, in French (also the small help of the en / es texts).
+      @param {string} icon @param {number} worlds @param {number} stars @param {number} boss */
+  function trophyNextFr(icon, worlds, stars, boss) {
+    var parts = [];
+    if (worlds > 0) parts.push("encore " + worlds + " monde" + (worlds > 1 ? "s" : "") + " à " + stars + "★");
+    if (boss > 0) parts.push("le boss à " + boss + " %");
+    return "Pour " + icon + " : " + parts.join(" et ");
+  }
+
   /** @type {Record<UiLang, Record<string, unknown>>} */
   var I18N = {
     en: {
@@ -100,7 +109,18 @@
       listenSlow: "🐢 Slower <small>(plus lentement)</small>",
       noVoice: "No voice on this device to read the word. <small>(pas de voix sur cet appareil)</small>",
       skipNoVoice: "Skip <small>(passer)</small>",
-      skippedNoVoice: "Listening exercise skipped (no XP). <small>(exercice d'écoute passé)</small>"
+      skippedNoVoice: "Listening exercise skipped (no XP). <small>(exercice d'écoute passé)</small>",
+      trophyNames: ["", "Bronze", "Silver", "Gold"],
+      trophyTitle: /** @param {string} name */ function (name) { return "Trophy: " + name; },
+      trophyNone: "No trophy yet <small>(pas encore de trophée)</small>",
+      trophyNext: /** @param {string} icon @param {number} worlds @param {number} stars @param {number} boss */ function (icon, worlds, stars, boss) {
+        var parts = [];
+        if (worlds > 0) parts.push(worlds + " more world" + (worlds > 1 ? "s" : "") + " with " + stars + "★");
+        if (boss > 0) parts.push("the boss at " + boss + " %");
+        return "For " + icon + ": " + parts.join(" and ") + " <small>(" + trophyNextFr(icon, worlds, stars, boss) + ")</small>";
+      },
+      trophyMax: "Perfect chapter! 🎉 <small>(chapitre parfait)</small>",
+      trophyWon: "New trophy! <small>(nouveau trophée)</small>"
     },
     es: {
       check: "Comprobar <small>(Vérifier)</small>",
@@ -183,7 +203,18 @@
       listenSlow: "🐢 Más despacio <small>(plus lentement)</small>",
       noVoice: "No hay voz en este aparato para leer la palabra. <small>(pas de voix sur cet appareil)</small>",
       skipNoVoice: "Pasar <small>(passer)</small>",
-      skippedNoVoice: "Ejercicio de escucha pasado (sin XP). <small>(exercice d'écoute passé)</small>"
+      skippedNoVoice: "Ejercicio de escucha pasado (sin XP). <small>(exercice d'écoute passé)</small>",
+      trophyNames: ["", "Bronce", "Plata", "Oro"],
+      trophyTitle: /** @param {string} name */ function (name) { return "Trofeo: " + name; },
+      trophyNone: "Aún no hay trofeo <small>(pas encore de trophée)</small>",
+      trophyNext: /** @param {string} icon @param {number} worlds @param {number} stars @param {number} boss */ function (icon, worlds, stars, boss) {
+        var parts = [];
+        if (worlds > 0) parts.push(worlds + " mundo" + (worlds > 1 ? "s" : "") + " más con " + stars + "★");
+        if (boss > 0) parts.push("el jefe al " + boss + " %");
+        return "Para " + icon + ": " + parts.join(" y ") + " <small>(" + trophyNextFr(icon, worlds, stars, boss) + ")</small>";
+      },
+      trophyMax: "¡Capítulo perfecto! 🎉 <small>(chapitre parfait)</small>",
+      trophyWon: "¡Nuevo trofeo! <small>(nouveau trophée)</small>"
     },
     fr: {
       check: "Vérifier",
@@ -266,7 +297,13 @@
       listenSlow: "🐢 Plus lentement",
       noVoice: "Pas de voix sur cet appareil pour lire le mot.",
       skipNoVoice: "Passer",
-      skippedNoVoice: "Exercice d'écoute passé (pas d'XP)."
+      skippedNoVoice: "Exercice d'écoute passé (pas d'XP).",
+      trophyNames: ["", "Bronze", "Argent", "Or"],
+      trophyTitle: /** @param {string} name */ function (name) { return "Trophée " + name; },
+      trophyNone: "Pas encore de trophée",
+      trophyNext: trophyNextFr,
+      trophyMax: "Chapitre parfait ! 🎉",
+      trophyWon: "Nouveau trophée !"
     }
   };
 

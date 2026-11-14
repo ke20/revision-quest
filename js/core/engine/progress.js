@@ -5,7 +5,9 @@
 
   var LEVELS = E.LEVELS, BADGES = E.BADGES, PACK_ID = E.PACK_ID, MAX_PACKS = E.MAX_PACKS,
     STARS_TO_UNLOCK = E.STARS_TO_UNLOCK, own = E.own, isObj = E.isObj, safeJsonParse = E.safeJsonParse,
-    normalizeSettings = E.normalizeSettings, lsGet = E.lsGet, current = E.current;
+    normalizeSettings = E.normalizeSettings, lsGet = E.lsGet, current = E.current, MAX_STARS = E.MAX_STARS,
+    BOSS_PASS = E.BOSS_PASS, TROPHIES = E.TROPHIES, TROPHY_SILVER_STARS = E.TROPHY_SILVER_STARS,
+    TROPHY_GOLD_BOSS = E.TROPHY_GOLD_BOSS;
 
   /* ---------- current pack ---------- */
 
@@ -167,9 +169,50 @@
     return total;
   }
 
+  /* ---------- trophies (computed, never stored) ---------- */
+
+  /** Worlds of a playable pack: the loaded one (its world ids), else its catalogue entry (count and boss id only).
+      Null when the pack is unknown (not in the catalogue, nor in « Mes cours »).
+      @param {string} id @returns {{ ids: string[] | null, count: number, boss: string } | null} */
+  function unitInfo(id) {
+    if (E.pack && E.pack.id === id) {
+      var w = worlds();
+      return w.length ? { ids: w.map(function (x) { return String(x.id); }), count: w.length, boss: String(w[w.length - 1].id) } : null;
+    }
+    var P = window.Packs, p = P && P.get ? P.get(id) : null;
+    return p && !p.groups && p.boss && p.worldCount > 0 ? { ids: null, count: p.worldCount, boss: p.boss } : null;
+  }
+
+  /** Trophy of a playable pack for a state, and what the next tier still needs.
+      @param {PlayerState} st @param {string} id @returns {Trophy} */
+  function trophyOf(st, id) {
+    var info = unitInfo(id), ps = own(st.packs, id) ? st.packs[id] : null;
+    var silver3 = 0, gold5 = 0, bossAcc = -1, count = info ? info.count : 0;
+    if (info && ps) {
+      var w = ps.worlds;
+      (info.ids || Object.keys(w)).forEach(function (k) {
+        if (!own(w, k)) return;
+        if (w[k].stars >= TROPHY_SILVER_STARS) silver3++;
+        if (w[k].stars >= MAX_STARS) gold5++;
+      });
+      if (own(w, info.boss) && w[info.boss].completed) bossAcc = w[info.boss].accuracy;
+      silver3 = Math.min(silver3, count); gold5 = Math.min(gold5, count);
+    }
+    var bronze = !!info && bossAcc + 1e-9 >= BOSS_PASS;
+    var tier = !bronze ? 0 : gold5 >= count && bossAcc + 1e-9 >= TROPHY_GOLD_BOSS ? 3 : silver3 >= count ? 2 : 1;
+    /** @type {TrophyNext | null} */
+    var next = !info || tier === 3 ? null
+      : tier === 0 ? { tier: 1, worlds: 0, stars: 0, boss: Math.round(BOSS_PASS * 100) }
+      : tier === 1 ? { tier: 2, worlds: count - silver3, stars: TROPHY_SILVER_STARS, boss: 0 }
+      : { tier: 3, worlds: count - gold5, stars: MAX_STARS, boss: bossAcc + 1e-9 >= TROPHY_GOLD_BOSS ? 0 : Math.round(TROPHY_GOLD_BOSS * 100) };
+    var t = TROPHIES[tier];
+    return { tier: tier, id: t.id, icon: t.icon, name: t.name, next: next };
+  }
+
   E.PAUSE_KEY = PAUSE_KEY; E.PAUSE_MS = PAUSE_MS; E.readPauses = readPauses; E.settings = settings; E.packId = packId;
   E.worlds = worlds; E.packState = packState; E.levelInfo = levelInfo; E.streak = streak; E.hasBadge = hasBadge;
   E.award = award; E.badgeById = badgeById; E.worldIndex = worldIndex; E.isBoss = isBoss; E.worldProgress = worldProgress;
   E.starsToUnlock = starsToUnlock; E.isUnlocked = isUnlocked; E.worldHasDocument = worldHasDocument;
   E.markDay = markDay; E.markPackPlayed = markPackPlayed; E.addXp = addXp; E.starsOf = starsOf;
+  E.unitInfo = unitInfo; E.trophyOf = trophyOf;
 })(window.EngineParts = window.EngineParts || /** @type {EngineParts} */ ({}));

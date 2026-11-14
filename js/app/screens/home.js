@@ -8,6 +8,7 @@ import { pauseGuard } from "./play.js";
 import { showLeaderboard, showProfiles } from "./profiles.js";
 import { showSavePanel } from "./save.js";
 import { showSettings } from "./settings.js";
+import { showTrophies } from "./trophies.js";
 import { Sound } from "../ui/sound.js";
 import { each, h, leavePack, on, show, toast } from "../ui/ui.js";
 import { APP_ICON, APP_NAME, E, must, safeColor } from "../ui/util.js";
@@ -114,7 +115,8 @@ export function showHome() {
         : '<button class="btn btn-primary btn-big btn-play" data-act="catalog">📚 Choisir un chapitre</button>') +
       '<div class="home-row">' +
         '<button class="btn btn-white" data-act="badges">🏅 Badges</button>' +
-        '<button class="btn btn-white" data-act="ranking">🏆 Classement</button>' +
+        '<button class="btn btn-white" data-act="trophies">🏆 Trophées</button>' +
+        '<button class="btn btn-white" data-act="ranking">📊 Classement</button>' +
         '<button class="btn btn-white" data-act="save">💾 Ma sauvegarde</button>' +
         '<button class="btn btn-white" data-act="settings">⚙️ Réglages</button>' +
       "</div>" +
@@ -126,6 +128,7 @@ export function showHome() {
   on(node, "continue", function () { Sound.unlock(); Sound.tap(); openPack(must(last).id); });
   on(node, "catalog", function () { Sound.unlock(); Sound.tap(); showCatalog(); });
   on(node, "badges", function () { Sound.tap(); showBadges(); });
+  on(node, "trophies", function () { Sound.tap(); showTrophies(); });
   on(node, "settings", function () { Sound.tap(); showSettings(); });
   on(node, "switch", function () { Sound.tap(); showProfiles(); });
   on(node, "fullscreen", function () { Sound.tap(); fsToggle(); });

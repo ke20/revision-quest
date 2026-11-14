@@ -9,7 +9,7 @@
    the official catalogue: it is JSON kept in the browser, never a script.
    Exposes window.Packs and window.registerPack. */
 // @ts-check
-/** @typedef {{ id: string, label: string, difficulty: number, worldCount: number }} PkGroup A validated group of a catalogue entry. */
+/** @typedef {{ id: string, label: string, difficulty: number, worldCount: number, boss: string }} PkGroup A validated group of a catalogue entry. */
 /** @typedef {(err: PackLoadError | null, data?: LoadedPack | null) => void} PkLoadCallback */
 (function () {
   "use strict";
@@ -49,6 +49,8 @@
 
   /** @param {any} v raw number */
   function count(v) { var n = Math.round(+v); return isFinite(n) && n > 0 ? Math.min(n, 100) : 0; }
+  /** Id of the last world (the boss), used for the trophy of a chapter that is not loaded. @param {any} v raw */
+  function bossId(v) { return typeof v === "string" && /^[a-z0-9-]{1,40}$/.test(v) ? v : ""; }
   /** @param {any} v raw number */
   function difficulty(v) { var n = Math.round(+v); return isFinite(n) && n >= 1 ? Math.min(n, 5) : 0; }
 
@@ -64,7 +66,7 @@
       ids[g.id] = true;
       return true;
     }).slice(0, 20).map(/** @param {any} g */ function (g) {
-      return { id: g.id, label: str(g.label, 40) || g.id, difficulty: difficulty(g.difficulty), worldCount: count(g.worldCount) };
+      return { id: g.id, label: str(g.label, 40) || g.id, difficulty: difficulty(g.difficulty), worldCount: count(g.worldCount), boss: bossId(g.boss) };
     });
   }
 
@@ -86,16 +88,17 @@
       id: p.path, level: seg[0], subject: seg[1], // the path is the pack id
       title: str(p.title, 80) || p.path, description: str(p.description, 240), icon: str(p.icon, 16) || "📘",
       color: color(p.color, /** @type {CatalogSubject} */ (find(subjects, seg[1])).color), lang: p.lang === "en" || p.lang === "es" ? p.lang : "fr",
-      worldCount: count(p.worldCount), file: "packs/" + p.path + ".js"
+      worldCount: count(p.worldCount), boss: bossId(p.boss), file: "packs/" + p.path + ".js"
     };
     if (!groups) { packs.push(chapter); units.push(chapter); return; }
     chapter.file = null;
+    chapter.boss = ""; // each group has its own boss
     chapter.groups = groups.map(function (g) {
       var id = p.path + "/" + g.id;
       return {
         id: id, level: chapter.level, subject: chapter.subject, parent: chapter.id, label: g.label, difficulty: g.difficulty,
         title: chapter.title + " · " + g.label, description: chapter.description, icon: chapter.icon, color: chapter.color,
-        lang: chapter.lang, worldCount: g.worldCount, file: "packs/" + id + ".js"
+        lang: chapter.lang, worldCount: g.worldCount, boss: g.boss, file: "packs/" + id + ".js"
       };
     });
     chapter.worldCount = chapter.groups.reduce(function (n, g) { return n + g.worldCount; }, 0);

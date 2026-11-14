@@ -33,7 +33,7 @@ export function showProfiles() {
       : '<div class="card empty-card"><div class="logo">' + E(APP_ICON) + '</div><h3>Bienvenue dans ' + E(APP_NAME) + ' !</h3><p>Crée ton joueur pour commencer.</p></div>') +
     '<button class="btn btn-primary btn-big" data-act="new">➕ Nouveau joueur</button>' +
     '<div class="home-row">' +
-      (list.length ? '<button class="btn btn-white" data-act="ranking">🏆 Classement</button>' : "") +
+      (list.length ? '<button class="btn btn-white" data-act="ranking">📊 Classement</button>' : "") +
       '<button class="btn btn-white" data-act="save">💾 Ma sauvegarde</button>' +
     "</div>" +
     "</section>");
@@ -179,7 +179,7 @@ export function showLeaderboard(back, subjectId, unitId) {
     : subject ? "Le plus d'étoiles en " + E(subject.label) + " gagne (tous ses chapitres). En cas d'égalité : le plus d'XP."
     : "Le plus d'XP gagne. En cas d'égalité : le plus d'étoiles.";
   var node = h('<section class="screen leaderboard">' +
-    '<header class="screen-head"><button class="btn-icon" data-act="back" aria-label="Retour">←</button><h2>🏆 Classement</h2><span class="head-right">' + rows.length + " joueur" + (rows.length > 1 ? "s" : "") + "</span></header>" +
+    '<header class="screen-head"><button class="btn-icon" data-act="back" aria-label="Retour">←</button><h2>📊 Classement</h2><span class="head-right">' + rows.length + " joueur" + (rows.length > 1 ? "s" : "") + "</span></header>" +
     filters + menu +
     '<p class="screen-help">' + help + "</p>" +
     '<div class="lb-list">' + (body || '<div class="card">Aucun joueur pour l\'instant.</div>') + "</div>" +

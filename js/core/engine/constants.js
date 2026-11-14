@@ -109,6 +109,19 @@
     return m;
   }
 
+  /* Trophy of a chapter (of each group for a chapter "par groupes"), computed from the progress, never stored:
+     bronze = boss passed (BOSS_PASS), silver = bronze and 3★ on every world, gold = 5★ on every world and the boss at
+     TROPHY_GOLD_BOSS. Reaching a tier gives its xp once, when the world that earns it is finished. Index = tier. */
+  /** @type {TrophyTier[]} */
+  var TROPHIES = [
+    { id: "none", icon: "", name: "", xp: 0 },
+    { id: "bronze", icon: "🥉", name: "Bronze", xp: 50 },
+    { id: "silver", icon: "🥈", name: "Argent", xp: 100 },
+    { id: "gold", icon: "🥇", name: "Or", xp: 200 }
+  ];
+  var TROPHY_SILVER_STARS = 3;
+  var TROPHY_GOLD_BOSS = 0.9;
+
   var ALLOWED_AVATARS = AVATARS.concat(["🙂"]);
   var SAFE_ID = /^p[a-z0-9]{4,24}$/;
 
@@ -121,5 +134,6 @@
   E.MAX_PROFILES = MAX_PROFILES; E.MAX_TIME = MAX_TIME; E.COMFORT = COMFORT; E.COMFORT_NO = COMFORT_NO;
   E.COMFORT_YES = COMFORT_YES; E.validGrade = validGrade; E.MAX_STARS = MAX_STARS;
   E.STARS_TO_UNLOCK = STARS_TO_UNLOCK; E.starsFor = starsFor; E.BOSS_PASS = BOSS_PASS; E.MEDALS = MEDALS; E.medalFor = medalFor; E.ALLOWED_AVATARS = ALLOWED_AVATARS;
+  E.TROPHIES = TROPHIES; E.TROPHY_SILVER_STARS = TROPHY_SILVER_STARS; E.TROPHY_GOLD_BOSS = TROPHY_GOLD_BOSS;
   E.SAFE_ID = SAFE_ID;
 })(window.EngineParts = window.EngineParts || /** @type {EngineParts} */ ({}));

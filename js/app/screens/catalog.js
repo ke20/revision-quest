@@ -48,6 +48,18 @@ export function chapterSummary(p) {
   return { stars: stars, maxStars: max, worldsDone: done, progress: n ? Math.min(1, done / n) : 0 };
 }
 
+/** Trophy shown on a card: the pack's own, or the best of its groups for a chapter "par groupes".
+    @param {CatalogPack} p @returns {Trophy} */
+export function cardTrophy(p) {
+  if (!p.groups) return Engine.trophy(p.id);
+  return p.groups.map(function (g) { return Engine.trophy(g.id); })
+    .reduce(function (best, t) { return t.tier > best.tier ? t : best; });
+}
+/** Small trophy icon of a card (nothing before bronze). @param {Trophy} t */
+export function trophyIconHtml(t) {
+  return t.tier ? '<span class="pack-trophy trophy-' + E(t.id) + '" title="Trophée ' + E(t.name) + '" aria-label="Trophée ' + E(t.name) + '">' + E(t.icon) + "</span>" : "";
+}
+
 /** A pack card (catalogue or group choice). tagsHtml must be trusted or already escaped.
  * @param {CatalogPack} p @param {string | undefined} title @param {string} tagsHtml @param {string} desc @param {CardSummary} sum */
 export function packCard(p, title, tagsHtml, desc, sum) {
@@ -58,7 +70,7 @@ export function packCard(p, title, tagsHtml, desc, sum) {
       '<b class="pack-title">' + E(title) + "</b>" +
       (desc ? '<span class="pack-desc">' + E(desc) + "</span>" : "") +
       '<span class="pack-progress"><span class="pack-bar"><span class="pack-bar-fill" style="width:' + Math.round(sum.progress * 100) + '%"></span></span>' +
-      '<span class="pack-stars">⭐ ' + sum.stars + "/" + sum.maxStars + "</span></span>" +
+      '<span class="pack-stars">⭐ ' + sum.stars + "/" + sum.maxStars + "</span>" + trophyIconHtml(cardTrophy(p)) + "</span>" +
     "</span>" +
   "</button>";
 }

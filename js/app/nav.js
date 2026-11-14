@@ -10,11 +10,12 @@ import { showLesson, showMap } from "./screens/map.js";
 import { startWorld } from "./screens/play.js";
 import { showLeaderboard, showProfiles } from "./screens/profiles.js";
 import { importShared, takeSharedCode } from "./screens/save.js";
+import { showTrophies } from "./screens/trophies.js";
 import { openModals, toast } from "./ui/ui.js";
 import { T } from "./ui/util.js";
 
 /* ---------- routing: the address follows the screen, so a reload comes back to it ----------
-   #/catalogue, #/badges, #/classement, #/joueurs, #/groupes/<chapitre>, #/chapitre/<pack>,
+   #/catalogue, #/badges, #/trophees, #/classement, #/joueurs, #/groupes/<chapitre>, #/chapitre/<pack>,
    #/chapitre/<pack>/monde/<n> (lesson), …/monde/<n>/jeu (world being played), …/monde/<n>/exercice/<k> (ghost mode).
    The address is replaced, never pushed: the back button keeps working as below. A world being played is kept per
    tab (sessionStorage) and resumed at the same exercise, with the same hearts. */
@@ -28,14 +29,14 @@ export function route(path) {
 }
 /** @param {World} w */
 export function worldPath(w) { return "chapitre/" + S.pack.id + "/monde/" + (S.data.worlds.indexOf(w) + 1); }
-/** @typedef {{ screen: "catalogue" } | { screen: "badges" } | { screen: "classement" } | { screen: "joueurs" }
+/** @typedef {{ screen: "catalogue" } | { screen: "badges" } | { screen: "trophees" } | { screen: "classement" } | { screen: "joueurs" }
       | { screen: "groupes", id: string }
       | { screen: "chapitre", id: string, world: number | null, play: boolean, ex: number | null }} Route */
 /** The screen named by the address, or null. @returns {Route | null} */
 export function parseRoute() {
   var p = String(location.hash || "").replace(/^#\/?/, ""), m;
   if (!p || /^partie=/.test(p)) return null;
-  if (p === "catalogue" || p === "badges" || p === "classement" || p === "joueurs") return { screen: p };
+  if (p === "catalogue" || p === "badges" || p === "trophees" || p === "classement" || p === "joueurs") return { screen: p };
   if ((m = /^groupes\/([a-z0-9/-]+)$/.exec(p))) return { screen: "groupes", id: m[1] };
   m = /^chapitre\/([a-z0-9/-]+?)(?:\/monde\/(\d+)(?:\/(jeu|exercice\/(\d+)))?)?$/.exec(p);
   if (m) return { screen: "chapitre", id: m[1], world: m[2] ? +m[2] - 1 : null, play: m[3] === "jeu", ex: m[4] ? +m[4] - 1 : null };
@@ -45,6 +46,7 @@ export function parseRoute() {
 export function goRoute(r) {
   if (r.screen === "catalogue") return showCatalog();
   if (r.screen === "badges") return showBadges();
+  if (r.screen === "trophees") return showTrophies();
   if (r.screen === "classement") return showLeaderboard(showHome);
   if (r.screen === "joueurs") return showProfiles();
   if (r.screen === "groupes") return showGroups(r.id);

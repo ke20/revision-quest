@@ -24,3 +24,41 @@ test("levels never end: Légende 2 after Légende, with the next level shown on 
   await expect(page.locator(".player-card .xp-text")).toContainText("2000 / 2400 XP → Légende 3");
 });
 
+
+test("trophies: on the catalogue card, on the map with what is missing, a party and a bonus when earned, « Mes trophées »", async ({ page }) => {
+  const R = H.makeReporter();
+  R.watch(page, "trophies");
+  const HISTORY = H.HISTORY;
+  await withPlayer(page, { xp: 0, lastPack: HISTORY, packs: { [HISTORY]: { lastPlayed: Date.now(), worlds: {
+    1: { stars: 2, accuracy: 0.55, completed: true }, 2: { stars: 4, accuracy: 0.85, completed: true } } } } }, { history: true });
+  // bronze: boss at 85 %
+  await H.tap(page, "[data-act=catalog]");
+  await expect(page.locator(`.pack-card[data-pack="${HISTORY}"] .pack-trophy`)).toHaveText("🥉");
+  await expect(page.locator(`.pack-card[data-pack="${H.EN}"] .pack-trophy`)).toHaveCount(0);
+  await H.tap(page, `.pack-card[data-pack="${HISTORY}"]`);
+  await expect(page.locator(".map-trophy")).toContainText("Trophée Bronze");
+  await expect(page.locator(".map-trophy .trophy-next")).toHaveText("Pour 🥈 : encore 1 monde à 3★");
+  // replay world 1 perfectly: silver, +100 XP, a party
+  await H.startWorld(page, 0);
+  await H.playWorld(page, 0);
+  const result = page.locator(".screen.complete");
+  await expect(result.locator(".trophy-won")).toContainText("Nouveau trophée !");
+  await expect(result.locator(".trophy-won")).toContainText("Trophée Argent");
+  await expect(result.locator(".trophy-won")).toContainText("+100 XP");
+  expect(await page.evaluate((id) => Engine.trophy(id).id, HISTORY)).toBe("silver");
+  await H.tap(page, "[data-act=next]"); await H.closeModals(page);
+  await expect(page.locator(".map-trophy .trophy-next")).toHaveText("Pour 🥇 : encore 1 monde à 5★ et le boss à 90 %");
+  // « Mes trophées »: from the home screen, kept by the address
+  await page.evaluate(() => App.showHome());
+  await H.tap(page, "[data-act=trophies]");
+  await expect(page.locator(".screen.trophies")).toBeVisible();
+  const n = await page.evaluate(() => Packs.units().length);
+  await expect(page.locator(".screen.trophies .head-right")).toHaveText("1/" + n);
+  await expect(page.locator(".trophy-count.trophy-silver b")).toHaveText("1");
+  await expect(page.locator(`.trophy-row[data-pack="${HISTORY}"] .trophy-row-cup`)).toHaveText("🥈");
+  await page.reload();
+  await expect(page.locator(".screen.trophies")).toBeVisible();
+  await H.tap(page, `.trophy-row[data-pack="${HISTORY}"]`);
+  await expect(page.locator(".screen.map")).toBeVisible();
+  R.done();
+});
