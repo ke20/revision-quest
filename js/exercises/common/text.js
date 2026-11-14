@@ -52,7 +52,18 @@
   function lines(s) {
     var out = "", items = /** @type {string[]} */ ([]);
     /** @param {string} it */
-    function textLength(it) { return it.replace(/<[^>]*>/g, "").replace(/&[a-z]+;|&#\d+;/g, "x").length; }
+    function textLength(it) { // visible characters only: tags skipped, an entity (&amp;) counts as one; only measures
+      var n = 0, inTag = false, inEntity = false;
+      for (var i = 0; i < it.length; i++) {
+        var c = it.charAt(i);
+        if (inTag) { if (c === ">") inTag = false; continue; }
+        if (inEntity) { if (c === ";") inEntity = false; continue; }
+        if (c === "<") { inTag = true; continue; }
+        if (c === "&") { inEntity = true; n++; continue; }
+        n++;
+      }
+      return n;
+    }
     /** @param {boolean} more */
     function flush(more) {
       if (!items.length) return;

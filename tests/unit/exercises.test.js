@@ -29,6 +29,8 @@ test("rich: **bold**, [[word|translation]] bubbles and line breaks", () => {
     "4 short items: 2 columns (markup does not count in the length)");
   assert.ok(!X.rich("- un\n- deux\n- trois\n- un élément bien plus long").includes("rich-cols"), "one long item: 1 column");
   assert.ok(!X.rich("- un\n- deux\n- trois").includes("rich-cols"), "3 items: 1 column");
+  assert.ok(X.rich("- a & b & c\n- l'île\n- « oui »\n- 12345678901234").includes("rich-cols"), "an escaped character counts as one");
+  assert.ok(!X.rich("- a\n- b\n- c\n- 123456789012345").includes("rich-cols"), "15 characters: too long for 2 columns");
   assert.strictEqual(X.rich(null), "");
   assert.strictEqual(X.rich("a ** b"), "a ** b", "a lone ** stays as text");
 });
