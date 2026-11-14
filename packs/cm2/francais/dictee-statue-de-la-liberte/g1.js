@@ -18,9 +18,9 @@ window.registerPack({
       "lesson": {
         "title": "Les 16 mots de la dictée",
         "points": [
-          "Des **noms** : liberté, déclaration, peuple, socle, port, centenaire, intérieur, tête.",
-          "Des **adjectifs** : français, américain. Un mot qui ne change jamais : **environ**.",
-          "Des **verbes** : se trouver, mesurer, offrir, peser, pouvoir."
+          "Des **noms** :\n- liberté\n- déclaration\n- peuple\n- socle\n- port\n- centenaire\n- intérieur\n- tête",
+          "Des **adjectifs** :\n- français\n- américain\nUn mot qui ne change jamais : **environ**.",
+          "Des **verbes** :\n- se trouver\n- mesurer\n- offrir\n- peser\n- pouvoir"
         ],
         "examples": [
           "🧠 Astuce : le **socle**, c'est le gros bloc sur lequel la statue est posée."
@@ -48,7 +48,7 @@ window.registerPack({
               "right": "les habitants d'un pays"
             }
           ],
-          "explanation": "Le **socle** porte la statue ; le **port** accueille les bateaux ; **environ** = à peu près."
+          "explanation": "Le sens des mots :\n- le **socle** porte la statue\n- le **port** accueille les bateaux\n- **environ** = à peu près"
         },
         {
           "type": "mcq",
@@ -114,7 +114,7 @@ window.registerPack({
               "cat": "verbe"
             }
           ],
-          "explanation": "Un **verbe** se termine souvent par -er, -ir, -oir à l'infinitif : mesurer, offrir, pouvoir."
+          "explanation": "À l'infinitif, un **verbe** se termine souvent par :\n- -er : mesurer\n- -ir : offrir\n- -oir : pouvoir"
         },
         {
           "type": "mcq",
@@ -162,8 +162,8 @@ window.registerPack({
       "lesson": {
         "title": "Bien écrire les 16 mots",
         "points": [
-          "Attention aux **accents** : liberté, déclaration, intérieur, américain.",
-          "**tête** prend un accent circonflexe ; **français** prend une cédille.",
+          "Attention aux **accents** :\n- liberté\n- déclaration\n- intérieur\n- américain",
+          "À retenir :\n- **tête** prend un accent circonflexe\n- **français** prend une cédille",
           "**environ** ne change jamais : jamais de **s** à la fin."
         ],
         "examples": [
@@ -179,7 +179,7 @@ window.registerPack({
           "answers": [
             "Liberté"
           ],
-          "explanation": "La statue de la **Liberté** : un accent aigu à la fin, et une majuscule car c'est son nom.",
+          "explanation": "La statue de la **Liberté** :\n- un accent aigu à la fin\n- une majuscule car c'est son nom",
           "hint": "Le mot commence par L."
         },
         {
@@ -232,7 +232,7 @@ window.registerPack({
             "declaration"
           ],
           "answer": 0,
-          "explanation": "**Déclaration** : un accent sur le é, et la fin **-tion**."
+          "explanation": "**Déclaration** :\n- un accent sur le é\n- la fin **-tion**"
         },
         {
           "type": "fill",
@@ -242,7 +242,7 @@ window.registerPack({
           "answers": [
             "intérieur"
           ],
-          "explanation": "**Intérieur** : un accent aigu sur le é, et **-eur** à la fin.",
+          "explanation": "**Intérieur** :\n- un accent aigu sur le é\n- **-eur** à la fin",
           "hint": "Le contraire d'« extérieur »."
         }
       ]
@@ -447,7 +447,7 @@ window.registerPack({
               "cat": "ocean"
             }
           ],
-          "explanation": "Continents : Europe, Asie, Afrique… Océans : **Indien**, **Pacifique**, **Atlantique**…"
+          "explanation": "Des continents :\n- Europe\n- Asie\n- Afrique\n- …\nDes océans :\n- **Indien**\n- **Pacifique**\n- **Atlantique**\n- …"
         },
         {
           "type": "mcq",
@@ -482,8 +482,8 @@ window.registerPack({
         "title": "Le test de fin de groupe",
         "points": [
           "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
-          "Relis chaque mot : **accents** (liberté, déclaration, intérieur, américain), **tête** (^), **français** (ç).",
-          "**environ** ne prend jamais de s ; **tonnes** prend deux n."
+          "Relis chaque mot. Les **accents** :\n- liberté\n- déclaration\n- intérieur\n- américain\nEt aussi :\n- **tête** (^)\n- **français** (ç)",
+          "À retenir :\n- **environ** ne prend jamais de s\n- **tonnes** prend deux n"
         ]
       },
       "draw": 12,
@@ -520,7 +520,7 @@ window.registerPack({
             "déclaration",
             "la déclaration"
           ],
-          "explanation": "**Déclaration** : un accent sur le é, et la fin **-tion** qui se lit « sion »."
+          "explanation": "**Déclaration** :\n- un accent sur le é\n- la fin **-tion**, qui se lit « sion »"
         },
         {
           "type": "question",
@@ -529,7 +529,7 @@ window.registerPack({
             "intérieur",
             "l'intérieur"
           ],
-          "explanation": "**Intérieur** : un accent aigu sur le é, et **-eur** à la fin."
+          "explanation": "**Intérieur** :\n- un accent aigu sur le é\n- **-eur** à la fin"
         },
         {
           "type": "question",
@@ -573,7 +573,7 @@ window.registerPack({
           "answers": [
             "Liberté"
           ],
-          "explanation": "La statue de la **Liberté** : un accent aigu à la fin, et une majuscule car c'est son nom."
+          "explanation": "La statue de la **Liberté** :\n- un accent aigu à la fin\n- une majuscule car c'est son nom"
         },
         {
           "type": "question",

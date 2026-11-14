@@ -25,9 +25,9 @@ window.registerPack({
       "lesson": {
         "title": "Les 16 mots de la dictée",
         "points": [
-          "Noms : liberté, déclaration, peuple, socle, port, centenaire, intérieur, tête.",
-          "Adjectifs : français, américain · invariable : **environ** · verbes : se trouver, mesurer, offrir, peser, pouvoir.",
-          "Pièges : **tête** (^), **français** (ç), **environ** (jamais de s), décla**ration** (-tion)."
+          "Des **noms** :\n- liberté\n- déclaration\n- peuple\n- socle\n- port\n- centenaire\n- intérieur\n- tête",
+          "Des **adjectifs** :\n- français\n- américain\nUn mot invariable : **environ**\nDes **verbes** :\n- se trouver\n- mesurer\n- offrir\n- peser\n- pouvoir",
+          "Les **pièges** :\n- **tête** (^)\n- **français** (ç)\n- **environ** (jamais de s)\n- décla**ration** (-tion)"
         ],
         "examples": [
           "🧠 Astuce : **cent**enaire = 100 ans."
@@ -55,7 +55,7 @@ window.registerPack({
               "right": "les habitants d'un pays"
             }
           ],
-          "explanation": "**Socle**, **centenaire**, **environ**, **peuple** : 4 mots de la dictée."
+          "explanation": "4 mots de la dictée :\n- **socle**\n- **centenaire**\n- **environ**\n- **peuple**"
         },
         {
           "type": "mcq",
@@ -107,7 +107,7 @@ window.registerPack({
             "declaration"
           ],
           "answer": 0,
-          "explanation": "**Déclaration** : accent sur le é et fin en -tion."
+          "explanation": "**Déclaration** :\n- accent sur le é\n- fin en -tion"
         },
         {
           "type": "fill",
@@ -117,7 +117,7 @@ window.registerPack({
           "answers": [
             "intérieur"
           ],
-          "explanation": "**Intérieur** : accent aigu et fin en -eur.",
+          "explanation": "**Intérieur** :\n- accent aigu\n- fin en -eur",
           "hint": "Le contraire d'« extérieur »."
         }
       ]
@@ -131,8 +131,8 @@ window.registerPack({
       "lesson": {
         "title": "Des mots qui se prononcent pareil",
         "points": [
-          "**a** : on peut dire « avait ». **est** : on peut dire « était ». Sinon : **à**, **et**.",
-          "**sont** : on peut dire « étaient » ; **ont** : on peut dire « avaient ». Sinon : **son**, **on**.",
+          "**a** : on peut dire « avait ». **est** : on peut dire « était ». Sinon :\n- **à**\n- **et**",
+          "**sont** : on peut dire « étaient » ; **ont** : on peut dire « avaient ». Sinon :\n- **son**\n- **on**",
           "**se** devant un verbe (se trouver, se visiter) ; **ce** devant un nom (ce port)."
         ],
         "examples": [
@@ -253,8 +253,8 @@ window.registerPack({
       "lesson": {
         "title": "Le verbe et son sujet",
         "points": [
-          "Le verbe s'accorde avec son **sujet** : elle **pèse**, quarante personnes **peuvent**.",
-          "Passé composé = **avoir** ou **être** au présent + participe passé : elle **a été**, ils **ont été**.",
+          "Le verbe s'accorde avec son **sujet** :\n- elle **pèse**\n- quarante personnes **peuvent**",
+          "Passé composé = **avoir** ou **être** au présent + participe passé :\n- elle **a été**\n- ils **ont été**",
           "Deux sujets au singulier = verbe au pluriel : le socle **et** le piédestal **ont** été construits."
         ],
         "examples": [
@@ -358,7 +358,7 @@ window.registerPack({
       "lesson": {
         "title": "Accorder le participe passé et l'adjectif",
         "points": [
-          "Avec **être**, le participe passé s'accorde avec le sujet : elle a été **créée**, **démontée**, **transportée**.",
+          "Avec **être**, le participe passé s'accorde avec le sujet :\n- elle a été **créée**\n- elle a été **démontée**\n- elle a été **transportée**",
           "Masculin pluriel : le socle et le piédestal ont été **construits**.",
           "L'adjectif s'accorde aussi : la Déclaration d'indépendance **américaine**."
         ],
@@ -462,7 +462,7 @@ window.registerPack({
         "points": [
           "Dans la dictée, on met des **traits d'union** entre tous les mots du nombre : deux-cent-vingt-cinq.",
           "**vingt** et **cent** prennent un **s** seulement quand ils sont multipliés et à la fin : deux-cent**s**… mais deux-cent-vingt-cinq.",
-          "40 = **quarante** · 93 = **quatre-vingt-treize** · 225 = **deux-cent-vingt-cinq**."
+          "Les nombres de la dictée :\n- 40 = **quarante**\n- 93 = **quatre-vingt-treize**\n- 225 = **deux-cent-vingt-cinq**"
         ],
         "examples": [
           "🧠 Astuce : 93 = 4 × 20 + 13 → quatre-vingt-treize."
@@ -651,7 +651,7 @@ window.registerPack({
               "cat": "ocean"
             }
           ],
-          "explanation": "Continents : Europe, Asie, Afrique… Océans : **Indien**, **Pacifique**, **Atlantique**…"
+          "explanation": "Des continents :\n- Europe\n- Asie\n- Afrique\n- …\nDes océans :\n- **Indien**\n- **Pacifique**\n- **Atlantique**\n- …"
         },
         {
           "type": "mcq",
@@ -783,7 +783,7 @@ window.registerPack({
             "ce / peut"
           ],
           "answer": 0,
-          "explanation": "**Se** devant le verbe visiter ; **peuvent** car le sujet « quarante personnes » est au pluriel."
+          "explanation": "Dans cette phrase :\n- **se** devant le verbe visiter\n- **peuvent** car le sujet « quarante personnes » est au pluriel"
         },
         {
           "type": "spot",
@@ -827,7 +827,7 @@ window.registerPack({
             "."
           ],
           "translation": "Elle se trouve à l'entrée du port de New York.",
-          "explanation": "**Se** trouve (verbe) et **à** l'entrée (on ne peut pas dire « avait »)."
+          "explanation": "Dans cette phrase :\n- **se** trouve (verbe)\n- **à** l'entrée (on ne peut pas dire « avait »)"
         }
       ]
     },
@@ -841,8 +841,8 @@ window.registerPack({
         "title": "Le test de fin de groupe",
         "points": [
           "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
-          "Avec **être**, le participe passé s'accorde avec le sujet : elle a été **créée**, le socle et le piédestal ont été **construits**.",
-          "Homophones : **a**/à, **est**/et, **ont**/on ; nombres avec des traits d'union ; **œuvre** avec œ."
+          "Avec **être**, le participe passé s'accorde avec le sujet :\n- elle a été **créée**\n- le socle et le piédestal ont été **construits**",
+          "Les homophones :\n- **a**/à\n- **est**/et\n- **ont**/on\nÀ retenir aussi :\n- les nombres avec des traits d'union\n- **œuvre** avec œ"
         ]
       },
       "draw": 12,
@@ -1050,7 +1050,7 @@ window.registerPack({
           "answers": [
             "deux-cent-quatre-vingts"
           ],
-          "explanation": "**vingt** est multiplié (4 × 20) et à la fin : quatre-vingt**s** ; **cent** n'est pas à la fin : pas de s."
+          "explanation": "Dans ce nombre :\n- **vingt** est multiplié (4 × 20) et à la fin : quatre-vingt**s**\n- **cent** n'est pas à la fin : pas de s"
         },
         {
           "type": "question",
@@ -1058,7 +1058,7 @@ window.registerPack({
           "answers": [
             "La statue a été créée en France, puis elle a été démontée et transportée par bateau."
           ],
-          "explanation": "Elle = féminin : **créée**, **démontée** ; on peut dire « et puis transportée » : c'est **et**.",
+          "explanation": "Dans cette phrase :\n- elle = féminin : **créée** et **démontée**\n- on peut dire « et puis transportée » : c'est **et**",
           "multiline": true
         },
         {
@@ -1067,7 +1067,7 @@ window.registerPack({
           "answers": [
             "Le socle et le piédestal ont été construits sur place."
           ],
-          "explanation": "On peut dire « avaient été » : **ont** ; deux noms masculins : **construits**.",
+          "explanation": "Dans cette phrase :\n- on peut dire « avaient été » : **ont**\n- deux noms masculins : **construits**",
           "multiline": true
         },
         {
@@ -1076,7 +1076,7 @@ window.registerPack({
           "answers": [
             "La tour Eiffel a été construite de 1887 à 1889."
           ],
-          "explanation": "Avec **être**, accord avec « la tour » : **construite** ; on ne peut pas dire « avait 1889 » : **à**.",
+          "explanation": "Dans cette phrase :\n- avec **être**, accord avec « la tour » : **construite**\n- on ne peut pas dire « avait 1889 » : **à**",
           "multiline": true
         },
         {
@@ -1085,7 +1085,7 @@ window.registerPack({
           "answers": [
             "Les Français ont offert la statue, qui a été remontée à New York."
           ],
-          "explanation": "On peut dire « avaient offert » : **ont** ; avec **être**, accord avec « la statue » : **remontée**.",
+          "explanation": "Dans cette phrase :\n- on peut dire « avaient offert » : **ont**\n- avec **être**, accord avec « la statue » : **remontée**",
           "multiline": true
         }
       ]

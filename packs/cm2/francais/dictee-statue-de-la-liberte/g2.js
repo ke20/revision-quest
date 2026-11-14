@@ -25,9 +25,9 @@ window.registerPack({
       "lesson": {
         "title": "Les 16 mots de la dictée",
         "points": [
-          "Des **noms** : liberté, déclaration, peuple, socle, port, centenaire, intérieur, tête.",
-          "Des **adjectifs** : français, américain. Un mot qui ne change jamais : **environ**.",
-          "Des **verbes** : se trouver, mesurer, offrir, peser, pouvoir."
+          "Des **noms** :\n- liberté\n- déclaration\n- peuple\n- socle\n- port\n- centenaire\n- intérieur\n- tête",
+          "Des **adjectifs** :\n- français\n- américain\nUn mot qui ne change jamais : **environ**.",
+          "Des **verbes** :\n- se trouver\n- mesurer\n- offrir\n- peser\n- pouvoir"
         ],
         "examples": [
           "🧠 Astuce : le **socle**, c'est le gros bloc sur lequel la statue est posée."
@@ -55,7 +55,7 @@ window.registerPack({
               "right": "les habitants d'un pays"
             }
           ],
-          "explanation": "Le **socle** porte la statue ; le **port** accueille les bateaux ; **environ** = à peu près."
+          "explanation": "Le sens des mots :\n- le **socle** porte la statue\n- le **port** accueille les bateaux\n- **environ** = à peu près"
         },
         {
           "type": "mcq",
@@ -121,7 +121,7 @@ window.registerPack({
               "cat": "verbe"
             }
           ],
-          "explanation": "Un **verbe** se termine souvent par -er, -ir, -oir à l'infinitif : mesurer, offrir, pouvoir."
+          "explanation": "À l'infinitif, un **verbe** se termine souvent par :\n- -er : mesurer\n- -ir : offrir\n- -oir : pouvoir"
         },
         {
           "type": "mcq",
@@ -169,8 +169,8 @@ window.registerPack({
       "lesson": {
         "title": "Bien écrire les 16 mots",
         "points": [
-          "Attention aux **accents** : liberté, déclaration, intérieur, américain.",
-          "**tête** prend un accent circonflexe ; **français** prend une cédille.",
+          "Attention aux **accents** :\n- liberté\n- déclaration\n- intérieur\n- américain",
+          "À retenir :\n- **tête** prend un accent circonflexe\n- **français** prend une cédille",
           "**environ** ne change jamais : jamais de **s** à la fin."
         ],
         "examples": [
@@ -186,7 +186,7 @@ window.registerPack({
           "answers": [
             "Liberté"
           ],
-          "explanation": "La statue de la **Liberté** : un accent aigu à la fin, et une majuscule car c'est son nom.",
+          "explanation": "La statue de la **Liberté** :\n- un accent aigu à la fin\n- une majuscule car c'est son nom",
           "hint": "Le mot commence par L."
         },
         {
@@ -239,7 +239,7 @@ window.registerPack({
             "declaration"
           ],
           "answer": 0,
-          "explanation": "**Déclaration** : un accent sur le é, et la fin **-tion**."
+          "explanation": "**Déclaration** :\n- un accent sur le é\n- la fin **-tion**"
         },
         {
           "type": "fill",
@@ -249,7 +249,7 @@ window.registerPack({
           "answers": [
             "intérieur"
           ],
-          "explanation": "**Intérieur** : un accent aigu sur le é, et **-eur** à la fin.",
+          "explanation": "**Intérieur** :\n- un accent aigu sur le é\n- **-eur** à la fin",
           "hint": "Le contraire d'« extérieur »."
         }
       ]
@@ -377,9 +377,9 @@ window.registerPack({
       "lesson": {
         "title": "Accorder les mots",
         "points": [
-          "Le verbe s'accorde avec son **sujet** : la statue **pèse**, quarante personnes **peuvent**.",
+          "Le verbe s'accorde avec son **sujet** :\n- la statue **pèse**\n- quarante personnes **peuvent**",
           "Au passé composé : le peuple **a offert** (avoir + participe passé).",
-          "L'adjectif s'accorde avec le nom : une déclaration **américaine**, une **petite** ile."
+          "L'adjectif s'accorde avec le nom :\n- une déclaration **américaine**\n- une **petite** ile"
         ],
         "examples": [
           "🧠 Astuce : pour trouver le sujet, demande « Qui est-ce qui… ? » → Qui est-ce qui peut tenir ? **quarante personnes** → peuvent."
@@ -475,7 +475,7 @@ window.registerPack({
         "points": [
           "Dans la dictée, on met des **traits d'union** entre tous les mots du nombre : deux-cent-vingt-cinq.",
           "**vingt** et **cent** prennent un **s** seulement quand ils sont multipliés et à la fin : deux-cent**s**… mais deux-cent-vingt-cinq.",
-          "40 = **quarante** · 93 = **quatre-vingt-treize** · 225 = **deux-cent-vingt-cinq**."
+          "Les nombres de la dictée :\n- 40 = **quarante**\n- 93 = **quatre-vingt-treize**\n- 225 = **deux-cent-vingt-cinq**"
         ],
         "examples": [
           "🧠 Astuce : 93 = 4 × 20 + 13 → quatre-vingt-treize."
@@ -664,7 +664,7 @@ window.registerPack({
               "cat": "ocean"
             }
           ],
-          "explanation": "Continents : Europe, Asie, Afrique… Océans : **Indien**, **Pacifique**, **Atlantique**…"
+          "explanation": "Des continents :\n- Europe\n- Asie\n- Afrique\n- …\nDes océans :\n- **Indien**\n- **Pacifique**\n- **Atlantique**\n- …"
         },
         {
           "type": "mcq",
@@ -709,7 +709,7 @@ window.registerPack({
         "title": "Le test de fin de groupe",
         "points": [
           "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
-          "Homophones : remplace pour vérifier (**a** → avait, **et** → et puis, **son** → mon, **se** devant un verbe).",
+          "Pour les homophones, remplace pour vérifier :\n- **a** → avait\n- **et** → et puis\n- **son** → mon\n- **se** devant un verbe",
           "Accorde le verbe avec son sujet, et écris les nombres avec des **traits d'union**."
         ]
       },
@@ -931,7 +931,7 @@ window.registerPack({
           "answers": [
             "Quarante personnes peuvent tenir à l'intérieur de sa tête !"
           ],
-          "explanation": "Sujet pluriel : **peuvent** ; **à** l'intérieur (pas « avait ») ; **tête** avec un accent circonflexe.",
+          "explanation": "Dans cette phrase :\n- sujet pluriel : **peuvent**\n- **à** l'intérieur (pas « avait »)\n- **tête** avec un accent circonflexe",
           "multiline": true
         },
         {
@@ -940,7 +940,7 @@ window.registerPack({
           "answers": [
             "La statue de la Liberté se visite et elle est très grande."
           ],
-          "explanation": "**se** devant un verbe (se visiter) ; on peut dire « elle était grande » : **est**.",
+          "explanation": "Dans cette phrase :\n- **se** devant un verbe (se visiter)\n- on peut dire « elle était grande » : **est**",
           "multiline": true
         }
       ]

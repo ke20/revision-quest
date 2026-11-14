@@ -25,9 +25,9 @@ window.registerPack({
       "lesson": {
         "title": "Les 16 mots de la dictée",
         "points": [
-          "Noms : but, navigateur, côte, ile · adjectifs : européen, humain, géant, isolé, aligné, mystérieux.",
-          "Verbes : demeurer, tourner, trouver, réaliser, exister · invariable : **parfois**.",
-          "Pièges : **côte** (^), **mystérieux** (y, -eux), **parfois** (s), **but** (t muet)."
+          "Des **noms** :\n- but\n- navigateur\n- côte\n- ile\nDes **adjectifs** :\n- européen\n- humain\n- géant\n- isolé\n- aligné\n- mystérieux",
+          "Des **verbes** :\n- demeurer\n- tourner\n- trouver\n- réaliser\n- exister\nUn mot invariable : **parfois**.",
+          "Les **pièges** :\n- **côte** (^)\n- **mystérieux** (y, -eux)\n- **parfois** (s)\n- **but** (t muet)"
         ],
         "examples": [
           "🧠 Astuce : **demeurer** = rester."
@@ -55,7 +55,7 @@ window.registerPack({
               "right": "de temps en temps"
             }
           ],
-          "explanation": "**But**, **demeurer**, **isolé**, **parfois** : 4 mots de la dictée."
+          "explanation": "4 mots de la dictée :\n- **but**\n- **demeurer**\n- **isolé**\n- **parfois**"
         },
         {
           "type": "mcq",
@@ -144,7 +144,7 @@ window.registerPack({
               "right": "très grand"
             }
           ],
-          "explanation": "Un **navigateur** navigue ; des statues **alignées** sont placées en ligne."
+          "explanation": "Le sens des mots :\n- un **navigateur** navigue\n- des statues **alignées** sont placées en ligne"
         }
       ]
     },
@@ -304,9 +304,9 @@ window.registerPack({
       "lesson": {
         "title": "Le verbe et son sujet",
         "points": [
-          "Le verbe s'accorde avec son **sujet** : les chercheurs **pensent**, des découvertes **montrent**.",
-          "Imparfait avec « elles » : elles **avaient**, elles **étaient**, elles **servaient** (-aient).",
-          "Passé composé : ces statues **ont fait** ; qui **a réalisé** ? (avoir + participe passé)."
+          "Le verbe s'accorde avec son **sujet** :\n- les chercheurs **pensent**\n- des découvertes **montrent**",
+          "Imparfait avec « elles » (-aient) :\n- elles **avaient**\n- elles **étaient**\n- elles **servaient**",
+          "Passé composé (avoir + participe passé) :\n- ces statues **ont fait**\n- qui **a réalisé** ?"
         ],
         "examples": [
           "🧠 Astuce : demande « Qui est-ce qui… ? » : qui est-ce qui montre ? **des découvertes** → montrent."
@@ -435,12 +435,12 @@ window.registerPack({
       "lesson": {
         "title": "Accorder le nom, l'adjectif et le participe passé",
         "points": [
-          "Le nom et l'adjectif s'accordent : de **nombreuses** études, des découvertes **récentes**, des navigateurs **européens**.",
+          "Le nom et l'adjectif s'accordent :\n- de **nombreuses** études\n- des découvertes **récentes**\n- des navigateurs **européens**",
           "Avec **être**, le participe passé s'accorde avec le sujet : elles étaient **dédiées**.",
-          "Pluriel des noms : les chercheur**s**, les ancêtre**s**, les sol**s**, les côte**s**."
+          "Pluriel des noms :\n- les chercheur**s**\n- les ancêtre**s**\n- les sol**s**\n- les côte**s**"
         ],
         "examples": [
-          "🧠 Astuce : « elles » = féminin pluriel → **-ées** : dédi**ées**, align**ées**, isol**ées**."
+          "🧠 Astuce : « elles » = féminin pluriel → **-ées** :\n- dédi**ées**\n- align**ées**\n- isol**ées**"
         ]
       },
       "exercises": [
@@ -592,8 +592,8 @@ window.registerPack({
       "lesson": {
         "title": "Écrire les nombres",
         "points": [
-          "Dans la dictée : jusqu'à **neuf** mètres, plus de **mille**.",
-          "**mille** ne prend **jamais de s** : deux-mille, trois-mille.",
+          "Dans la dictée :\n- jusqu'à **neuf** mètres\n- plus de **mille**",
+          "**mille** ne prend **jamais de s** :\n- deux-mille\n- trois-mille",
           "Avec l'orthographe rectifiée, des **traits d'union** entre tous les mots : 1722 = **mille-sept-cent-vingt-deux**."
         ],
         "examples": [
@@ -678,7 +678,7 @@ window.registerPack({
             "mille-sept-cent-vingts-deux"
           ],
           "answer": 2,
-          "explanation": "**Mille** ne prend jamais de s ; **cent** et **vingt** sont suivis d'un autre nombre : pas de s."
+          "explanation": "Dans ce nombre :\n- **mille** ne prend jamais de s\n- **cent** et **vingt** sont suivis d'un autre nombre : pas de s"
         },
         {
           "type": "match",
@@ -726,7 +726,7 @@ window.registerPack({
         "points": [
           "L'**ile de Pâques** est dans l'**océan Pacifique** : c'est le lieu habité le plus éloigné de toute autre terre.",
           "Le navigateur néerlandais **Jakob Roggeveen** l'a découverte le **jour de Pâques**, le **5 avril 1722** : d'où son nom.",
-          "À l'origine, les statues étaient **colorées** : chapeau en **roche rouge**, yeux en **corail blanc**, iris en **obsidienne** (roche noire)."
+          "À l'origine, les statues étaient **colorées** :\n- chapeau en **roche rouge**\n- yeux en **corail blanc**\n- iris en **obsidienne** (roche noire)"
         ],
         "examples": [
           "🧠 Astuce : **Pâques** prend un accent circonflexe et un s, même pour une seule fête."
@@ -786,7 +786,7 @@ window.registerPack({
               "right": "en obsidienne"
             }
           ],
-          "explanation": "Un **chapeau** en roche rouge, des **yeux** en corail blanc, un **iris** en obsidienne (roche noire)."
+          "explanation": "Les matières :\n- un **chapeau** en roche rouge\n- des **yeux** en corail blanc\n- un **iris** en obsidienne (roche noire)"
         },
         {
           "type": "mcq",
@@ -798,7 +798,7 @@ window.registerPack({
             "toutes blanches"
           ],
           "answer": 2,
-          "explanation": "À l'origine, les statues étaient **colorées** : chapeau rouge, yeux blancs, iris noir."
+          "explanation": "À l'origine, les statues étaient **colorées** :\n- chapeau rouge\n- yeux blancs\n- iris noir"
         },
         {
           "type": "mcq",
@@ -924,7 +924,7 @@ window.registerPack({
             "pense / avait"
           ],
           "answer": 0,
-          "explanation": "Les chercheurs → **pensent** ; elles → **avaient**."
+          "explanation": "Dans cette phrase :\n- les chercheurs → **pensent**\n- elles → **avaient**"
         },
         {
           "type": "fill",
@@ -1005,8 +1005,8 @@ window.registerPack({
         "title": "Le test de fin de groupe",
         "points": [
           "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
-          "Homophones : **a**/à, **est**/et, **ont**/on, **ces**/ses, **mais**/mes ; **peut-être** avec un trait d'union.",
-          "Accorde verbes, noms, adjectifs et participes (elles étaient **dédiées**) ; **mille** ne prend jamais de s."
+          "Les homophones :\n- **a**/à\n- **est**/et\n- **ont**/on\n- **ces**/ses\n- **mais**/mes\nÀ retenir aussi : **peut-être** avec un trait d'union.",
+          "À retenir :\n- accorde verbes, noms, adjectifs et participes (elles étaient **dédiées**)\n- **mille** ne prend jamais de s"
         ]
       },
       "draw": 12,
@@ -1212,7 +1212,7 @@ window.registerPack({
             "mil sept cent vingt-deux",
             "mil-sept-cent-vingt-deux"
           ],
-          "explanation": "**Mille** sans s ; cent et vingt suivis d'un autre nombre : pas de s → **mille-sept-cent-vingt-deux**."
+          "explanation": "Dans ce nombre :\n- **mille** sans s\n- cent et vingt suivis d'un autre nombre : pas de s\nDonc : **mille-sept-cent-vingt-deux**."
         },
         {
           "type": "question",
@@ -1237,7 +1237,7 @@ window.registerPack({
           "answers": [
             "Ces statues ont fait l'objet de nombreuses études."
           ],
-          "explanation": "On peut dire « avaient fait » : **ont** ; études est féminin pluriel : **nombreuses**.",
+          "explanation": "Dans cette phrase :\n- on peut dire « avaient fait » : **ont**\n- études est féminin pluriel : **nombreuses**",
           "multiline": true
         },
         {
@@ -1246,7 +1246,7 @@ window.registerPack({
           "answers": [
             "Les chercheurs pensent qu'elles avaient un caractère sacré et qu'elles étaient dédiées au culte des ancêtres."
           ],
-          "explanation": "Sujet pluriel : **pensent** ; on peut dire « et puis » : **et**.",
+          "explanation": "Dans cette phrase :\n- sujet pluriel : **pensent**\n- on peut dire « et puis » : **et**",
           "multiline": true
         },
         {
@@ -1255,7 +1255,7 @@ window.registerPack({
           "answers": [
             "Mais des découvertes récentes montrent qu'elles servaient peut-être à favoriser la fertilité des sols."
           ],
-          "explanation": "**Mais** (opposition) ; elles **servaient** ; **peut-être** avec un trait d'union ; **à** favoriser.",
+          "explanation": "Dans cette phrase :\n- **mais** (opposition)\n- elles **servaient**\n- **peut-être** avec un trait d'union\n- **à** favoriser",
           "multiline": true
         }
       ]

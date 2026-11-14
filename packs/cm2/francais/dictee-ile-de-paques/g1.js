@@ -25,9 +25,9 @@ window.registerPack({
       "lesson": {
         "title": "Les 16 mots de la dictée",
         "points": [
-          "Des **noms** : but, navigateur, côte, ile.",
-          "Des **adjectifs** : européen, humain, géant, isolé, aligné, mystérieux. Un mot qui ne change jamais : **parfois**.",
-          "Des **verbes** : demeurer, tourner, trouver, réaliser, exister."
+          "Des **noms** :\n- but\n- navigateur\n- côte\n- ile",
+          "Des **adjectifs** :\n- européen\n- humain\n- géant\n- isolé\n- aligné\n- mystérieux\nUn mot qui ne change jamais : **parfois**.",
+          "Des **verbes** :\n- demeurer\n- tourner\n- trouver\n- réaliser\n- exister"
         ],
         "examples": [
           "🧠 Astuce : **demeurer**, c'est rester : « le mystère demeure » = le mystère reste."
@@ -55,7 +55,7 @@ window.registerPack({
               "right": "de temps en temps"
             }
           ],
-          "explanation": "Le **but**, c'est ce qu'on veut obtenir ; la **côte** borde la mer ; **isolé** = seul ; **parfois** = de temps en temps."
+          "explanation": "Le sens des mots :\n- le **but**, c'est ce qu'on veut obtenir\n- la **côte** borde la mer\n- **isolé** = seul\n- **parfois** = de temps en temps"
         },
         {
           "type": "mcq",
@@ -125,7 +125,7 @@ window.registerPack({
               "cat": "verbe"
             }
           ],
-          "explanation": "Un **adjectif** décrit un nom (une statue géante) ; un **verbe** se termine par -er à l'infinitif : réaliser, exister."
+          "explanation": "Un **adjectif** décrit un nom (une statue géante).\nLes **verbes** de la liste se terminent par -er à l'infinitif :\n- réaliser\n- exister"
         },
         {
           "type": "mcq",
@@ -160,7 +160,7 @@ window.registerPack({
               "right": "qui vient d'Europe"
             }
           ],
-          "explanation": "Des statues **alignées** sont placées en ligne ; un mystère est **mystérieux** : on ne le comprend pas."
+          "explanation": "Le sens des mots :\n- des statues **alignées** sont placées en ligne\n- un mystère est **mystérieux** : on ne le comprend pas"
         },
         {
           "type": "mcq",
@@ -185,8 +185,8 @@ window.registerPack({
       "lesson": {
         "title": "Bien écrire les 16 mots",
         "points": [
-          "Attention aux **accents** : côte (^), européen, géant, isolé, aligné, réaliser, mystérieux.",
-          "**mystérieux** : un **y** et la fin **-eux** ; **parfois** finit toujours par un **s**.",
+          "Attention aux **accents** :\n- côte (^)\n- européen\n- géant\n- isolé\n- aligné\n- réaliser\n- mystérieux",
+          "À retenir :\n- **mystérieux** : un **y** et la fin **-eux**\n- **parfois** finit toujours par un **s**",
           "**but** finit par un **t** muet ; **navigateur** finit par **-eur**."
         ],
         "examples": [
@@ -202,7 +202,7 @@ window.registerPack({
           "answers": [
             "navigateurs"
           ],
-          "explanation": "Des **navigateurs** : la fin **-eur**, et un **s** car ils sont plusieurs.",
+          "explanation": "Des **navigateurs** :\n- la fin **-eur**\n- un **s** car ils sont plusieurs",
           "hint": "Des marins qui voyagent en bateau."
         },
         {
@@ -215,7 +215,7 @@ window.registerPack({
             "mistérieux"
           ],
           "answer": 2,
-          "explanation": "**Mystérieux** : un **y**, un accent aigu, et **-eux** à la fin (comme mystère)."
+          "explanation": "**Mystérieux** :\n- un **y**\n- un accent aigu\n- **-eux** à la fin (comme mystère)"
         },
         {
           "type": "fill",
@@ -258,7 +258,7 @@ window.registerPack({
             "éuropéen"
           ],
           "answer": 1,
-          "explanation": "**Européen** : un seul accent, sur le é du milieu, et la fin **-éen**."
+          "explanation": "**Européen** :\n- un seul accent, sur le é du milieu\n- la fin **-éen**"
         },
         {
           "type": "fill",
@@ -374,7 +374,7 @@ window.registerPack({
           "answers": [
             "européens"
           ],
-          "explanation": "Des navigateurs **européens** : un accent sur le é du milieu, et un **s** au pluriel.",
+          "explanation": "Des navigateurs **européens** :\n- un accent sur le é du milieu\n- un **s** au pluriel",
           "hint": "Un mot qui veut dire « qui viennent d'Europe »."
         },
         {
@@ -420,7 +420,7 @@ window.registerPack({
         "points": [
           "L'**ile de Pâques** est dans l'**océan Pacifique** : c'est le lieu habité le plus éloigné de toute autre terre.",
           "Le navigateur néerlandais **Jakob Roggeveen** l'a découverte le **jour de Pâques**, le **5 avril 1722** : d'où son nom.",
-          "À l'origine, les statues étaient **colorées** : chapeau en **roche rouge**, yeux en **corail blanc**, iris en **obsidienne** (roche noire)."
+          "À l'origine, les statues étaient **colorées** :\n- chapeau en **roche rouge**\n- yeux en **corail blanc**\n- iris en **obsidienne** (roche noire)"
         ],
         "examples": [
           "🧠 Astuce : **Pâques** prend un accent circonflexe et un s, même pour une seule fête."
@@ -480,7 +480,7 @@ window.registerPack({
               "right": "en obsidienne"
             }
           ],
-          "explanation": "Un **chapeau** en roche rouge, des **yeux** en corail blanc, un **iris** en obsidienne (roche noire)."
+          "explanation": "Les matières :\n- un **chapeau** en roche rouge\n- des **yeux** en corail blanc\n- un **iris** en obsidienne (roche noire)"
         },
         {
           "type": "mcq",
@@ -492,7 +492,7 @@ window.registerPack({
             "toutes blanches"
           ],
           "answer": 0,
-          "explanation": "À l'origine, les statues étaient **colorées** : chapeau rouge, yeux blancs, iris noir."
+          "explanation": "À l'origine, les statues étaient **colorées** :\n- chapeau rouge\n- yeux blancs\n- iris noir"
         },
         {
           "type": "mcq",
@@ -540,8 +540,8 @@ window.registerPack({
         "title": "Le test de fin de groupe",
         "points": [
           "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
-          "Relis chaque mot : **accents** (côte, européen, géant, isolé, aligné, réaliser, mystérieux).",
-          "**parfois** finit toujours par un s ; **mystérieux** prend un y ; **ile** peut aussi s'écrire île."
+          "Relis chaque mot. Les **accents** :\n- côte\n- européen\n- géant\n- isolé\n- aligné\n- réaliser\n- mystérieux",
+          "À retenir :\n- **parfois** finit toujours par un s\n- **mystérieux** prend un y\n- **ile** peut aussi s'écrire île"
         ]
       },
       "draw": 12,
@@ -619,7 +619,7 @@ window.registerPack({
           "answers": [
             "réaliser"
           ],
-          "explanation": "**Réaliser** : un accent aigu sur le premier e, et un **s** qui chante « z »."
+          "explanation": "**Réaliser** :\n- un accent aigu sur le premier e\n- un **s** qui chante « z »"
         },
         {
           "type": "question",
@@ -731,7 +731,7 @@ window.registerPack({
           "answers": [
             "mystérieux"
           ],
-          "explanation": "**Mystérieux** : comme mystère, avec un **y**, et **-eux** à la fin."
+          "explanation": "**Mystérieux** :\n- comme mystère, avec un **y**\n- **-eux** à la fin"
         },
         {
           "type": "question",

@@ -25,9 +25,9 @@ window.registerPack({
       "lesson": {
         "title": "Les 16 mots de la dictée",
         "points": [
-          "Des **noms** : but, navigateur, côte, ile.",
-          "Des **adjectifs** : européen, humain, géant, isolé, aligné, mystérieux. Un mot qui ne change jamais : **parfois**.",
-          "Des **verbes** : demeurer, tourner, trouver, réaliser, exister."
+          "Des **noms** :\n- but\n- navigateur\n- côte\n- ile",
+          "Des **adjectifs** :\n- européen\n- humain\n- géant\n- isolé\n- aligné\n- mystérieux\nUn mot qui ne change jamais : **parfois**.",
+          "Des **verbes** :\n- demeurer\n- tourner\n- trouver\n- réaliser\n- exister"
         ],
         "examples": [
           "🧠 Astuce : **demeurer**, c'est rester : « le mystère demeure » = le mystère reste."
@@ -55,7 +55,7 @@ window.registerPack({
               "right": "de temps en temps"
             }
           ],
-          "explanation": "Le **but**, c'est ce qu'on veut obtenir ; la **côte** borde la mer ; **isolé** = seul ; **parfois** = de temps en temps."
+          "explanation": "Le sens des mots :\n- le **but**, c'est ce qu'on veut obtenir\n- la **côte** borde la mer\n- **isolé** = seul\n- **parfois** = de temps en temps"
         },
         {
           "type": "mcq",
@@ -125,7 +125,7 @@ window.registerPack({
               "cat": "verbe"
             }
           ],
-          "explanation": "Un **adjectif** décrit un nom (une statue géante) ; un **verbe** se termine par -er à l'infinitif : réaliser, exister."
+          "explanation": "Un **adjectif** décrit un nom (une statue géante).\nLes **verbes** de la liste se terminent par -er à l'infinitif :\n- réaliser\n- exister"
         },
         {
           "type": "mcq",
@@ -160,7 +160,7 @@ window.registerPack({
               "right": "qui vient d'Europe"
             }
           ],
-          "explanation": "Des statues **alignées** sont placées en ligne ; un mystère est **mystérieux** : on ne le comprend pas."
+          "explanation": "Le sens des mots :\n- des statues **alignées** sont placées en ligne\n- un mystère est **mystérieux** : on ne le comprend pas"
         },
         {
           "type": "mcq",
@@ -185,8 +185,8 @@ window.registerPack({
       "lesson": {
         "title": "Bien écrire les 16 mots",
         "points": [
-          "Attention aux **accents** : côte (^), européen, géant, isolé, aligné, réaliser, mystérieux.",
-          "**mystérieux** : un **y** et la fin **-eux** ; **parfois** finit toujours par un **s**.",
+          "Attention aux **accents** :\n- côte (^)\n- européen\n- géant\n- isolé\n- aligné\n- réaliser\n- mystérieux",
+          "À retenir :\n- **mystérieux** : un **y** et la fin **-eux**\n- **parfois** finit toujours par un **s**",
           "**but** finit par un **t** muet ; **navigateur** finit par **-eur**."
         ],
         "examples": [
@@ -202,7 +202,7 @@ window.registerPack({
           "answers": [
             "navigateurs"
           ],
-          "explanation": "Des **navigateurs** : la fin **-eur**, et un **s** car ils sont plusieurs.",
+          "explanation": "Des **navigateurs** :\n- la fin **-eur**\n- un **s** car ils sont plusieurs",
           "hint": "Des marins qui voyagent en bateau."
         },
         {
@@ -215,7 +215,7 @@ window.registerPack({
             "mystérieu"
           ],
           "answer": 1,
-          "explanation": "**Mystérieux** : un **y**, un accent aigu, et **-eux** à la fin (comme mystère)."
+          "explanation": "**Mystérieux** :\n- un **y**\n- un accent aigu\n- **-eux** à la fin (comme mystère)"
         },
         {
           "type": "fill",
@@ -258,7 +258,7 @@ window.registerPack({
             "europeen"
           ],
           "answer": 2,
-          "explanation": "**Européen** : un seul accent, sur le é du milieu, et la fin **-éen**."
+          "explanation": "**Européen** :\n- un seul accent, sur le é du milieu\n- la fin **-éen**"
         },
         {
           "type": "fill",
@@ -430,12 +430,12 @@ window.registerPack({
       "lesson": {
         "title": "Accorder les mots",
         "points": [
-          "Le verbe s'accorde avec son **sujet** : des navigateurs **découvrent**, le mystère **demeure**.",
+          "Le verbe s'accorde avec son **sujet** :\n- des navigateurs **découvrent**\n- le mystère **demeure**",
           "Passé composé : qui **a réalisé** ces statues ? (avoir + participe passé).",
-          "Le nom et l'adjectif s'accordent : des navigateurs **européens**, de **mystérieuses** statues, des statues **géantes**."
+          "Le nom et l'adjectif s'accordent :\n- des navigateurs **européens**\n- de **mystérieuses** statues\n- des statues **géantes**"
         ],
         "examples": [
-          "🧠 Astuce : statues est féminin pluriel → ajoute **-es** : géant**es**, align**ées**, isol**ées**."
+          "🧠 Astuce : statues est féminin pluriel → ajoute **-es** :\n- géant**es**\n- align**ées**\n- isol**ées**"
         ]
       },
       "exercises": [
@@ -567,9 +567,9 @@ window.registerPack({
       "lesson": {
         "title": "Écrire les nombres",
         "points": [
-          "Dans la dictée : jusqu'à **neuf** mètres, plus de **mille**.",
-          "**mille** ne prend **jamais de s** : deux-mille, trois-mille.",
-          "**neuf** (9) ne change pas : **neuf** mètres, **neuf** statues."
+          "Dans la dictée :\n- jusqu'à **neuf** mètres\n- plus de **mille**",
+          "**mille** ne prend **jamais de s** :\n- deux-mille\n- trois-mille",
+          "**neuf** (9) ne change pas :\n- **neuf** mètres\n- **neuf** statues"
         ],
         "examples": [
           "🧠 Astuce : **mille** est invariable, comme **parfois** : jamais de s ajouté."
@@ -690,7 +690,7 @@ window.registerPack({
         "points": [
           "L'**ile de Pâques** est dans l'**océan Pacifique** : c'est le lieu habité le plus éloigné de toute autre terre.",
           "Le navigateur néerlandais **Jakob Roggeveen** l'a découverte le **jour de Pâques**, le **5 avril 1722** : d'où son nom.",
-          "À l'origine, les statues étaient **colorées** : chapeau en **roche rouge**, yeux en **corail blanc**, iris en **obsidienne** (roche noire)."
+          "À l'origine, les statues étaient **colorées** :\n- chapeau en **roche rouge**\n- yeux en **corail blanc**\n- iris en **obsidienne** (roche noire)"
         ],
         "examples": [
           "🧠 Astuce : **Pâques** prend un accent circonflexe et un s, même pour une seule fête."
@@ -750,7 +750,7 @@ window.registerPack({
               "right": "en obsidienne"
             }
           ],
-          "explanation": "Un **chapeau** en roche rouge, des **yeux** en corail blanc, un **iris** en obsidienne (roche noire)."
+          "explanation": "Les matières :\n- un **chapeau** en roche rouge\n- des **yeux** en corail blanc\n- un **iris** en obsidienne (roche noire)"
         },
         {
           "type": "mcq",
@@ -762,7 +762,7 @@ window.registerPack({
             "couvertes d'or"
           ],
           "answer": 2,
-          "explanation": "À l'origine, les statues étaient **colorées** : chapeau rouge, yeux blancs, iris noir."
+          "explanation": "À l'origine, les statues étaient **colorées** :\n- chapeau rouge\n- yeux blancs\n- iris noir"
         },
         {
           "type": "mcq",
@@ -810,8 +810,8 @@ window.registerPack({
         "title": "Le test de fin de groupe",
         "points": [
           "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
-          "Homophones : remplace pour vérifier (**a** → avait, **ces** → cette, **est** → était).",
-          "Accorde le verbe avec son sujet, l'adjectif avec son nom ; **mille** ne prend jamais de s."
+          "Pour les homophones, remplace pour vérifier :\n- **a** → avait\n- **ces** → cette\n- **est** → était",
+          "À retenir :\n- accorde le verbe avec son sujet\n- accorde l'adjectif avec son nom\n- **mille** ne prend jamais de s"
         ]
       },
       "draw": 12,
@@ -1024,7 +1024,7 @@ window.registerPack({
             "Des navigateurs européens découvrent l'ile de Pâques.",
             "Des navigateurs européens découvrent l'île de Pâques."
           ],
-          "explanation": "Sujet pluriel : **découvrent** ; navigateurs au masculin pluriel : **européens**.",
+          "explanation": "Dans cette phrase :\n- sujet pluriel : **découvrent**\n- navigateurs au masculin pluriel : **européens**",
           "multiline": true
         },
         {
@@ -1033,7 +1033,7 @@ window.registerPack({
           "answers": [
             "Ces statues géantes mesurent jusqu'à neuf mètres."
           ],
-          "explanation": "Pluriel : **statues géantes mesurent** ; on ne peut pas dire « jusqu'avait » : **à**.",
+          "explanation": "Dans cette phrase :\n- pluriel : **statues géantes mesurent**\n- on ne peut pas dire « jusqu'avait » : **à**",
           "multiline": true
         },
         {
@@ -1042,7 +1042,7 @@ window.registerPack({
           "answers": [
             "Qui a réalisé ces statues ?"
           ],
-          "explanation": "On peut dire « avait réalisé » : **a** ; ces annonce un pluriel : **statues**.",
+          "explanation": "Dans cette phrase :\n- on peut dire « avait réalisé » : **a**\n- ces annonce un pluriel : **statues**",
           "multiline": true
         },
         {
@@ -1051,7 +1051,7 @@ window.registerPack({
           "answers": [
             "Elles tournent le dos à la mer, parfois alignées, parfois isolées."
           ],
-          "explanation": "On ne peut pas dire « avait la mer » : **à** ; elles = féminin pluriel : **alignées**.",
+          "explanation": "Dans cette phrase :\n- on ne peut pas dire « avait la mer » : **à**\n- elles = féminin pluriel : **alignées**",
           "multiline": true
         }
       ]
