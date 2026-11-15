@@ -103,7 +103,7 @@ window.registerPack({
               "right": "Et si tu…"
             }
           ],
-          "explanation": "✅ Ce sont les cinq façons de donner un conseil vues dans la fiche."
+          "explanation": "✅ Ce sont les cinq façons de donner un conseil vues dans la leçon."
         },
         {
           "type": "sort",
