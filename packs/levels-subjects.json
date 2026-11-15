@@ -37,6 +37,12 @@
       "color": "#059669"
     },
     {
+      "id": "emc",
+      "label": "EMC",
+      "icon": "⚖️",
+      "color": "#4F46E5"
+    },
+    {
       "id": "sciences",
       "label": "Sciences",
       "icon": "🔬",
