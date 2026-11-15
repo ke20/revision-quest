@@ -210,3 +210,11 @@ button.ed-chip:hover { border-color: var(--purple); }
 /* « 📤 Envoyer »: the link and the buttons */
 .ed-link { width: 100%; margin: 6px 0 10px; font-size: .85rem; }
 .ed-send { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* « 🌍 Proposer à tous »: the 4 boxes and the guide */
+.ed-propose { max-width: 560px; }
+.ed-checks { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
+.ed-check { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; line-height: 1.35; }
+.ed-check input { flex: none; width: 20px; height: 20px; margin-top: 1px; accent-color: var(--purple); }
+.ed-steps { margin: 8px 0 14px; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; line-height: 1.4; }
+.ed-github { display: inline-flex; margin-bottom: 12px; text-decoration: none; }

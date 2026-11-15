@@ -130,7 +130,7 @@ interface MyCoursesApi {
   /** What the game plays: a fresh copy, never executed. */
   data(id: string): LoadedPack | null;
   /** Adds a course, or replaces the one with the same id. */
-  save(data: unknown): MyCourseSave;
+  save(data: unknown, opts?: { sent?: boolean }): MyCourseSave;
   remove(id: string): boolean;
 }
 

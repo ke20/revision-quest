@@ -213,3 +213,17 @@ test("texts to read: add with a free id, count and delete (the exercises lose th
   const letters = { worlds: [], letters: [{ id: 1, text: "Dear…" }] };
   assert.strictEqual(D.docsOf(letters), letters.letters, "an old file keeps its letters");
 });
+
+test("privacy: e-mail addresses, phone numbers and web links are found in every text of a course, with their place", async () => {
+  const { findContacts } = await load("privacy.js");
+  const found = (s) => findContacts({ meta: { title: s } }).map((c) => c.kind + ":" + c.found);
+  assert.deepStrictEqual(found("écris à jean.dupont@gmail.com"), ["email:jean.dupont@gmail.com"]);
+  for (const p of ["06 12 34 56 78", "06.12.34.56.78", "+33 6 12 34 56 78", "+44 20 7946 0958"]) assert.deepStrictEqual(found("appelle le " + p), ["phone:" + p]);
+  for (const l of ["https://exemple.org/x", "www.monecole.fr", "monecole.fr/page", "ecole.ac-lyon.fr"]) assert.deepStrictEqual(found("va sur " + l), ["link:" + l]);
+  // school texts are not contacts
+  for (const s of ["3.5 + 2.25 = 5.75", "le nombre 1 234 567", "p.ex. un chat", "0,5 et 0.25", "Paris est en France.Lyon aussi", "le 14 juillet 1789"]) assert.deepStrictEqual(found(s), [], s);
+  // the place, for the author
+  const pack = { path: "cm2/francais/x", meta: { title: "T", basedOn: "cm2/francais/y" }, documents: [{ id: "d", text: "écrire à a@b.fr" }],
+    worlds: [{ id: "w", lesson: { points: ["voir www.site.com"] }, exercises: [{ type: "mcq", prompt: "Q", explanation: "appelle 0612345678" }] }] };
+  assert.deepStrictEqual(findContacts(pack).map((c) => c.kind + " @ " + c.where), ["email @ texte à lire 1", "link @ monde 1, leçon", "phone @ monde 1, exercice 1"]);
+});

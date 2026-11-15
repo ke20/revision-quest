@@ -112,9 +112,27 @@ Le jeu est un simple dossier de fichiers (HTML, CSS, JavaScript) : pas de serveu
 
    Sans mise : installer [Node.js](https://nodejs.org) (version 20 ou plus), puis `npm start`.
 
-**Créer ses propres chapitres** : voir le guide [`packs/README.md`](packs/README.md), puis vérifier le chapitre avec
+## Créer ses propres cours
+
+Parents et enseignants peuvent écrire un cours sans code avec l'**éditeur** (lien « ✏️ Créer un cours » en bas de
+l'accueil, sur un ordinateur ou une tablette). Le menu **📤 Partager** de l'éditeur propose :
+
+- **➕ Ajouter à Mes cours** : le cours apparaît dans « ✏️ Mes cours », en haut de la liste des chapitres, pour tous
+  les joueurs de l'appareil. Il est gardé dans le navigateur et n'est jamais exécuté (c'est du JSON vérifié).
+- **📲 Envoyer vers un autre appareil** : un lien ou un fichier `.cours`. L'autre appareil montre le cours et demande
+  avant de l'ajouter (« 📥 Ouvrir un cours reçu » en bas de la liste des chapitres pour un fichier).
+- **⬇️ Télécharger le fichier** : le chapitre au format du jeu (`.js`), à ajouter à son propre jeu avec
+  `mise run pack:add <fichier>`.
+- **🌍 Proposer à tous** : pour que le cours rejoigne le jeu de tout le monde. L'éditeur vérifie le cours (aucune
+  erreur, aucune adresse e-mail, aucun numéro de téléphone ni lien web), demande de cocher 4 cases (aucun prénom
+  d'enfant ni nom d'enseignant ou d'école, aucun texte recopié, réponses vérifiées, accord sur la licence), télécharge
+  le fichier puis ouvre la page GitHub où le déposer : GitHub crée la proposition (pull request), le responsable du
+  projet la relit. Pas de compte GitHub ? Gardez le fichier et contactez le responsable du projet.
+  Une copie d'un chapitre officiel (« 📚 Dupliquer un chapitre officiel ») reste pour un usage personnel : elle ne peut
+  pas être proposée.
+
+Écrire un chapitre à la main : voir le guide [`packs/README.md`](packs/README.md), puis vérifier le chapitre avec
 `mise run validate`.
-Un outil d'aide à la création de chapitres, directement dans le navigateur, est prévu prochainement.
 
 ## Pour les développeurs
 
@@ -136,3 +154,8 @@ Le code (`js/`, `css/`, `tools/`, `tests/`, `index.html`) est sous licence [MIT]
 Les textes pédagogiques des packs (`packs/`) reprennent en partie des fiches de cours et des dictées : ils restent la
 propriété de leurs auteurs et sont partagés ici pour un usage éducatif personnel. La police Fredoka est sous licence
 [SIL Open Font License](fonts/OFL.txt).
+
+Les **cours proposés par la communauté** (avec l'éditeur, « 🌍 Proposer à tous ») sont sous licence
+[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.fr), inscrite dans le pack (`meta.license`) :
+chacun peut les copier, les modifier et les partager, même pour un usage commercial, en citant le cours et sous la même
+licence. Les packs officiels gardent le statut décrit ci-dessus.

@@ -7,6 +7,7 @@ import { refreshMessages, renderForm } from "./forms/form.js";
 import { showDrafts } from "./drafts.js";
 import { tryWorld } from "./trial.js";
 import { canRedo, canUndo, redo, startHistory, undo } from "./history.js";
+import { proposeCourse } from "./propose.js";
 import { addToMyCourses, download, duplicateOfficial, newCourse, openFile, readChosenFile, sendCourse } from "./io.js";
 import { renderPreview } from "./preview.js";
 import { isBlank } from "./model/draft.js";
@@ -65,7 +66,8 @@ function boot() {
   actions.appendChild(menu("share", "btn-primary", "📤 Partager", [
     { act: "mine", text: "➕ Ajouter à Mes cours", hint: "pour jouer sur cet appareil", fn: addToMyCourses },
     { act: "send", text: "📲 Envoyer vers un autre appareil", hint: "lien ou fichier .cours", fn: sendCourse },
-    { act: "download", text: "⬇️ Télécharger le fichier", hint: "fichier .js du cours", fn: download }
+    { act: "download", text: "⬇️ Télécharger le fichier", hint: "fichier .js du cours", fn: download },
+    { act: "propose", text: "🌍 Proposer à tous", hint: "pour l'ajouter au jeu de tout le monde", fn: proposeCourse }
   ]));
   var undoBtn = button("btn btn-small btn-white", "↶", function () { step(undo); }, "Annuler (Ctrl+Z ou ⌘Z)");
   undoBtn.setAttribute("data-act", "undo");

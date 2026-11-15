@@ -8,7 +8,7 @@ import { exportPack } from "./model/export.js";
 import { slugify } from "./model/text.js";
 import { addDraft, countDrafts, MAX_DRAFTS, restructured, saveNow, store } from "./state.js";
 
-var HEADER = "Révision Quest — cours écrit avec l'éditeur (editeur.html). Format strict : window.registerPack( + JSON pur + );";
+export var HEADER = "Révision Quest — cours écrit avec l'éditeur (editeur.html). Format strict : window.registerPack( + JSON pur + );";
 
 /** @returns {PackRulesApi} */
 function rules() { return /** @type {PackRulesApi} */ (window.PackRules); }
@@ -218,9 +218,9 @@ function copyLink(link, input) {
   } catch (e) { fallback(); }
 }
 
-/** @param {string} name @param {string} code */
-function saveFile(name, code) {
-  var url = URL.createObjectURL(new Blob([code], { type: "application/octet-stream" }));
+/** Saves a text as a file (the browser's download). @param {string} name @param {string} text @param {string} type */
+export function downloadFile(name, text, type) {
+  var url = URL.createObjectURL(new Blob([text], { type: type }));
   var a = el("a");
   a.href = url;
   a.download = name;
@@ -228,6 +228,11 @@ function saveFile(name, code) {
   document.body.appendChild(a);
   a.click();
   setTimeout(function () { URL.revokeObjectURL(url); a.remove(); }, 1000);
+}
+
+/** @param {string} name @param {string} code */
+function saveFile(name, code) {
+  downloadFile(name, code, "application/octet-stream");
   toast("⬇️ « " + name + " » téléchargé : sur l'autre appareil, ouvre-le dans le jeu avec « 📥 Ouvrir un cours reçu ».");
 }
 
@@ -244,16 +249,8 @@ export function download() {
 }
 
 function save() {
-  var text = rules().formatStrict(exportPack(store.draft), HEADER);
   var name = fileName();
-  var url = URL.createObjectURL(new Blob([text], { type: "text/javascript" }));
-  var a = el("a");
-  a.href = url;
-  a.download = name;
-  a.hidden = true;
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(function () { URL.revokeObjectURL(url); a.remove(); }, 1000);
+  downloadFile(name, rules().formatStrict(exportPack(store.draft), HEADER), "text/javascript");
   if (!store.draft.locked) { store.draft.locked = true; restructured(); }
   saveNow();
   toast("⬇️ « " + name + " » téléchargé. Pour l'ajouter au jeu : mise run pack:add " + name);

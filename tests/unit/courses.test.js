@@ -290,3 +290,14 @@ test("a received course is never executed: code in its texts stays text, prototy
   assert.strictEqual({}.polluted, undefined);
   assert.strictEqual(Object.prototype.hasOwnProperty.call(r.pack, "__proto__"), false);
 });
+
+test("save with sent (« Proposer à tous »): the hash of the course is kept, and it hides itself once official", () => {
+  const { window: w, localStorage: ls } = env();
+  const official = "cm2/francais/mots-invariables";
+  assert.strictEqual(j(w.MyCourses.save(course({ path: official }), { sent: true })).ok, true);
+  const item = JSON.parse(ls.getItem(KEY)).courses[0];
+  assert.strictEqual(item.sent, w.MyCourses.hash(JSON.stringify(item.pack)));
+  assert.deepStrictEqual(j(w.MyCourses.shown()), [], "same id official, not modified: hidden");
+  w.MyCourses.save(course({ path: official, meta: { title: "Changé", description: "x", icon: "✏️" } }));
+  assert.strictEqual(w.MyCourses.shown().length, 1, "changed since: back as « version modifiée »");
+});

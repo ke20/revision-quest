@@ -43,6 +43,14 @@ fichier est téléchargé au format strict (`PackRules.formatStrict`) ; un fichi
 tableaux d'un pack ouvert sont gardés tels quels. Annuler / rétablir (↶ ↷, Ctrl+Z / ⌘Z) garde en mémoire 100 étapes du
 brouillon ouvert (`history.js`). « ▶ Essayer » joue un monde du brouillon par-dessus l'éditeur (`trial.js`) :
 leçon, écran de lecture, chaque exercice avec sa correction ; rien n'est enregistré (ni joueur, ni XP, ni progression).
+« 📲 Envoyer » donne un code `c.<deflate-raw, base64url>.<empreinte>` (`MyCourses.encode`) dans un lien `#cours=…` ou un
+fichier `.cours` ; le jeu le lit avec `MyCourses.decode` (taille et décompression limitées, empreinte, mêmes contrôles
+qu'un cours enregistré) et demande avant de l'ajouter (`js/app/screens/receive.js`). « 🌍 Proposer à tous »
+(`propose.js`) refuse un cours avec des erreurs, une copie d'un chapitre officiel (`meta.basedOn`) ou un texte avec une
+adresse e-mail, un numéro de téléphone ou un lien web (`model/privacy.js`) ; après les 4 cases, il écrit
+`meta.license` (`CC-BY-SA-4.0`) et `meta.author`, télécharge le fichier, garde le cours dans « Mes cours » avec son
+empreinte (`sent` : la copie se cache quand le même cours devient officiel) et ouvre la page « Upload files » de
+`packs/<niveau>/<matiere>/` sur GitHub (`APP_CONFIG.sourceUrl`). Aucun appel réseau depuis le site.
 Les modules purs de `js/editor/model/` n'utilisent ni le DOM ni les globales du navigateur : les tests unitaires les
 importent (`js/editor/package.json` : `"type": "module"` pour Node).
 
@@ -78,7 +86,7 @@ revision-quest/
 │   ├── editor/             l'éditeur de cours (modules ES, point d'entrée main.js)
 │   │   ├── model/          données pures, testées dans Node : brouillon et plan, modèles d'exercice, export, contrôles
 │   │   ├── forms/          un formulaire par nœud (cours, monde, leçon, exercice) et types/ : un par type d'exercice
-│   │   └── …               state (brouillons + enregistrement), history (annuler), trial (essayer un monde), tree (plan), preview, checks, io (ouvrir, télécharger)
+│   │   └── …               state (brouillons + enregistrement), history (annuler), trial (essayer un monde), tree (plan), preview, checks, io (ouvrir, télécharger, envoyer), propose (proposer à tous)
 │   ├── pages/voix.js       page voix.html (voix disponibles)
 │   ├── vendor/             bibliothèque tierce (QR code), jamais modifiée
 │   └── nomodule.js         message pour un navigateur trop ancien

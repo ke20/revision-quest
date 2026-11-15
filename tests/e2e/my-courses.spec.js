@@ -115,3 +115,58 @@ test("Mes cours: sent from the editor by link and by .cours file, received in th
   await other.close();
   R.done();
 });
+
+test("Proposer à tous: refused for an error, a contact or a copy of an official chapter; 4 boxes, licence, GitHub guide", async ({ page }) => {
+  const R = H.makeReporter(); R.watch(page, "propose");
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto(H.BASE + "editeur.html");
+  /** opens a course file in the editor */
+  const open = async (pack) => {
+    const [chooser] = await Promise.all([page.waitForEvent("filechooser"), H.edAct(page, "open")]);
+    await chooser.setFiles({ name: pack.path.split("/")[2] + ".js", mimeType: "text/javascript", buffer: Buffer.from(Rules.formatStrict(pack)) });
+    await expect(page.locator(".toast").last()).toContainText("ouvert");
+  };
+  // a new course has errors
+  await H.edAct(page, "propose");
+  await expect(page.locator(".modal-backdrop:not(.out) .ed-modal h3")).toHaveText("🌍 Pas encore prêt à être proposé");
+  await expect(page.locator(".modal-backdrop:not(.out) .ed-modal")).toContainText("Corrige d'abord");
+  await page.click(".modal-backdrop:not(.out) .ed-modal [data-act=yes]");
+  // an e-mail address and a phone number in its texts
+  const withContact = course();
+  withContact.meta.description = "Questions : maitresse.lou@ecole.fr ou 06 12 34 56 78";
+  await open(withContact);
+  await H.edAct(page, "propose");
+  await expect(page.locator(".modal-backdrop:not(.out) .ed-modal")).toContainText("Adresse e-mail « maitresse.lou@ecole.fr » (infos du cours)");
+  await expect(page.locator(".modal-backdrop:not(.out) .ed-modal")).toContainText("Numéro de téléphone « 06 12 34 56 78 »");
+  await page.click(".modal-backdrop:not(.out) .ed-modal [data-act=yes]");
+  // a copy of an official chapter stays private
+  await open(Object.assign(course(), { meta: { title: "Copie", description: "x", icon: "📋", basedOn: "cm2/francais/mots-invariables" } }));
+  await H.edAct(page, "propose");
+  await expect(page.locator(".modal-backdrop:not(.out) .ed-modal")).toContainText("copie du chapitre officiel");
+  await page.click(".modal-backdrop:not(.out) .ed-modal [data-act=yes]");
+
+  // a good course: the 4 boxes, then the file (licence, author), the GitHub page of its folder, Mes cours with its hash
+  await open(course());
+  await H.edAct(page, "propose");
+  await expect(page.locator(".modal-backdrop:not(.out) .ed-modal h3")).toHaveText("🌍 Proposer ce cours à tous");
+  const go = page.locator(".modal-backdrop:not(.out) .ed-modal [data-act=yes]");
+  await expect(go).toBeDisabled();
+  await page.fill("[data-f=propose-author]", "Mamie Lou");
+  for (const b of ["names", "copy", "checked"]) await page.check(`[data-f=ok-${b}]`);
+  await expect(go).toBeDisabled();
+  await page.check("[data-f=ok-license]");
+  const [dl] = await Promise.all([page.waitForEvent("download"), go.click()]);
+  expect(dl.suggestedFilename()).toBe("mon-cours-maison.js");
+  const sent = Rules.parseStrict(fs.readFileSync(await dl.path(), "utf8"));
+  expect(sent.meta).toMatchObject({ license: "CC-BY-SA-4.0", author: "Mamie Lou", title: "Mon cours maison" });
+  await expect(page.locator(".modal-backdrop:not(.out) .ed-modal h3")).toHaveText("🌍 Envoyer le cours sur GitHub");
+  const gh = page.locator(".modal-backdrop:not(.out) .ed-modal [data-act=github]");
+  await expect(gh).toHaveAttribute("href", "https://github.com/ke20/revision-quest/upload/main/packs/cm2/francais");
+  await expect(gh).toHaveAttribute("rel", "noopener noreferrer");
+  await expect(page.locator(".modal-backdrop:not(.out) .ed-modal")).toContainText("Pas de compte GitHub ?");
+  await expect(page.locator("[data-f=author]")).toHaveValue("Mamie Lou");
+  const kept = await page.evaluate(() => JSON.parse(localStorage.getItem("revisionQuest.courses")).courses[0]);
+  expect(kept.pack.meta.license).toBe("CC-BY-SA-4.0");
+  expect(kept.sent).toBe(await page.evaluate((p) => window.MyCourses.hash(JSON.stringify(p)), kept.pack));
+  R.done();
+});

@@ -276,15 +276,17 @@
       const p = packOf(id);
       return p ? { id: p.path, lang: p.lang, documents: p.documents || [], worlds: p.worlds } : null;
     },
-    /** Adds a course, or replaces the one with the same id. */
-    save: function (data) {
+    /** Adds a course, or replaces the one with the same id. opts.sent: the course is being proposed to everyone
+        (« 🌍 Proposer à tous »): its hash is kept, so the copy hides itself once the same course becomes official. */
+    save: function (data, opts) {
       const c = check(data);
       if (!c.pack) return { ok: false, errors: c.errors };
       const list = read().slice();
       const i = indexOf(c.pack.path);
       /** @type {MyCourseItem} */
       const item = { pack: c.pack, saved: Date.now() };
-      if (i >= 0 && read()[i].sent) item.sent = read()[i].sent; // still proposed: tells later whether it changed
+      if (opts && opts.sent) item.sent = hash(JSON.stringify(c.pack));
+      else if (i >= 0 && read()[i].sent) item.sent = read()[i].sent; // still proposed: tells later whether it changed
       if (i < 0 && list.length >= MAX_COURSES) return { ok: false, errors: [`${MAX_COURSES} cours au plus sur cet appareil : supprimes-en un d'abord`] };
       if (i < 0) list.push(item); else list[i] = item;
       if (!write(list)) return { ok: false, errors: ["plus de place dans ce navigateur pour ce cours : supprime un cours d'abord"] };
