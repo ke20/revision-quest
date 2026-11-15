@@ -18,6 +18,7 @@
   var PATH_RE = /^[a-z0-9-]{1,30}\/[a-z0-9-]{1,30}\/[a-z0-9-]{1,60}$/; // <niveau>/<matiere>/<cours>
   var COLOR_RE = /^#[0-9a-fA-F]{3,8}$/;
   var LOAD_TIMEOUT = 15000;
+  var BUILD = ""; // set at deploy by tools/stamp.js (commit id): "?v=<id>" on each pack file, so a new deploy never reuses an old cached pack
 
   /** @param {object} o @param {string} k */
   function own(o, k) { return Object.prototype.hasOwnProperty.call(o, k); }
@@ -174,7 +175,7 @@
     }
     s.onload = function () { finish(null); };
     s.onerror = function () { finish("network"); };
-    s.src = /** @type {string} */ (entry.file); // "packs/" + path [+ "/" + group] + ".js", relative; path and group checked above
+    s.src = /** @type {string} */ (entry.file) + (BUILD ? "?v=" + BUILD : ""); // "packs/" + path [+ "/" + group] + ".js", relative; path and group checked above
     document.head.appendChild(s);
   }
 

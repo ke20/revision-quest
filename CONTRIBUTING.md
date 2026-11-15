@@ -93,6 +93,7 @@ revision-quest/
 ├── tools/validate-pack.js  vérifie un chapitre ou tout le catalogue (--all), avec js/core/pack-rules.js
 ├── tools/pack-add.js      vérifie un chapitre et le met à sa place dans packs/
 ├── tools/catalog.js       construit le catalogue depuis les fichiers de packs
+├── tools/stamp.js         CI : ajoute ?v=<commit> aux fichiers publiés (cache)
 ├── tools/ci-proposed-packs.sh  CI : contrôle les cours proposés depuis un fork
 ├── tests/
 │   ├── unit/               tests node:test
@@ -199,6 +200,9 @@ npm run qa            # = npm run lint && npm run typecheck && npm test
 - **Publication** (même workflow) : sur un push de `main`, une fois tous les tests verts, les jobs `pages-build` et
   `pages-deploy` publient les fichiers du jeu sur GitHub Pages. Seul `pages-deploy` a le droit d'écrire
   (`pages: write`, `id-token: write`) ; les pull requests ne publient jamais rien.
+  Avant la publication, `tools/stamp.js` ajoute `?v=<commit>` à chaque fichier local (scripts, modules, styles,
+  packs, polices) : un navigateur ne mélange jamais une page neuve et un script ancien encore en cache. La
+  progression des élèves ne change pas : elle est rangée dans le navigateur, pas aux adresses des fichiers.
 
 ## Mises à jour des dépendances
 

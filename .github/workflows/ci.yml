@@ -80,6 +80,11 @@ jobs:
           cp -R index.html voix.html editeur.html js css fonts packs _site/
           touch _site/.nojekyll
 
+      # every local file gets "?v=<commit>": a phone never mixes a new page with an old cached script (Pages caches
+      # 10 min). Saves stay: they live in the browser storage of the site, not at the files' addresses.
+      - name: Stamp the files with the version
+        run: node tools/stamp.js _site "${GITHUB_SHA::12}"
+
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
