@@ -52,7 +52,7 @@ test("share: QR code + link; the link imports the game on another device, after 
   await expect(pb.locator(".modal-backdrop:not(.out) .modal")).toContainText("640 XP");
   ok(!/#/.test(pb.url()), "code removed from the address right away: " + pb.url());
   await pb.locator(".modal-backdrop:not(.out) .modal [data-act=yes]").click();
-  await expect(pb.locator(".toast").last()).toContainText("importée");
+  await expect(pb.locator(".toast", { hasText: "importée" })).toBeVisible();
   const got = await pb.evaluate((EN) => ({ name: Engine.currentProfile().name, xp: Engine.state.xp, w: Engine.state.packs[EN].worlds[2].stars }), EN);
   ok(got.name === "Nina" && got.xp === 640 && got.w === 3, "progress imported: " + JSON.stringify(got));
 
@@ -87,7 +87,7 @@ test("share: copy the link when the device has no share sheet", async ({ browser
   await expect(page.locator("svg.share-qr")).toBeVisible();
   ok((await page.locator("[data-act=sendlink]").count()) === (await page.evaluate(() => navigator.share ? 1 : 0)), "send button only with a share sheet");
   await tap(page, "[data-act=copylink]");
-  await expect(page.locator(".toast").last()).toContainText("copié");
+  await expect(page.locator(".toast", { hasText: "copié" })).toBeVisible();
   ok(/#partie=z\./.test(await page.evaluate(() => navigator.clipboard.readText())), "link in the clipboard");
   await ctx.close();
   R.done();
@@ -122,7 +122,7 @@ test("scan: the camera reads the QR code (browser detector), then the same confi
   await expect(page.locator(".modal-backdrop:not(.out) .modal")).toContainText("Lou");
   ok((await page.evaluate(() => window.__tracksStopped)) >= 1, "camera stopped once the code is read");
   await page.locator(".modal-backdrop:not(.out) .modal [data-act=yes]").click();
-  await expect(page.locator(".toast").last()).toContainText("importée");
+  await expect(page.locator(".toast", { hasText: "importée" })).toBeVisible();
   await b.close();
   R.done();
 });
