@@ -224,7 +224,7 @@ test("course editor: a course with the 7 exercise types, live preview and checks
   ok(before === after, "trying a world writes nothing outside the editor drafts");
 
   // download: strict format, valid pack, named after the course id
-  const [dl] = await Promise.all([page.waitForEvent("download"), page.click("[data-act=download]")]);
+  const [dl] = await Promise.all([page.waitForEvent("download"), H.edAct(page, "download")]);
   ok(dl.suggestedFilename() === "mon-cours-d-essai.js", "file name: " + dl.suggestedFilename());
   const text = fs.readFileSync(await dl.path(), "utf8");
   const { pack, errors } = packErrors(text);
@@ -247,22 +247,22 @@ test("course editor: a course with the 7 exercise types, live preview and checks
   await expect(page.locator(".ed-tree .badge.err")).toHaveCount(0);
 
   // a new course (the first one stays in the drafts), then the downloaded file opened again (read as text, never executed)
-  await page.click("[data-act=new]");
+  await H.edAct(page, "new");
   await expect(page.locator('.tn[data-key^="e:0:"]')).toHaveCount(0);
   await expect(page.locator('.ed-form [data-f="title"]')).toHaveValue("");
-  const [chooser] = await Promise.all([page.waitForEvent("filechooser"), page.click("[data-act=open]")]);
+  const [chooser] = await Promise.all([page.waitForEvent("filechooser"), H.edAct(page, "open")]);
   await chooser.setFiles({ name: "mon-cours-d-essai.js", mimeType: "text/javascript", buffer: Buffer.from(text) }); // the download is saved without its name
   await expect(page.locator('.tn[data-key^="e:0:"]')).toHaveCount(7);
   await expect(page.locator('.ed-form [data-f="title"]')).toHaveValue("Mon cours d'essai");
   await expect(page.locator('.ed-form [data-f="slug"]')).toBeDisabled();
   // a file that is not in the strict format is refused
-  const [chooser2] = await Promise.all([page.waitForEvent("filechooser"), page.click("[data-act=open]")]);
+  const [chooser2] = await Promise.all([page.waitForEvent("filechooser"), H.edAct(page, "open")]);
   await chooser2.setFiles({ name: "piege.js", mimeType: "text/javascript", buffer: Buffer.from("window.registerPack({path: 1}); alert(1);") });
   await expect(page.locator(".toast").last()).toContainText("pas un cours au bon format");
   await expect(page.locator('.ed-form [data-f="title"]')).toHaveValue("Mon cours d'essai");
 
   // copy of an official chapter: private (meta.basedOn), new id
-  await page.click("[data-act=duplicate]");
+  await H.edAct(page, "duplicate");
   const official = await page.locator('.modal [data-f="official"]').inputValue();
   await page.click(".modal [data-act=yes]");
   await expect(page.locator('.ed-form [data-f="title"]')).toHaveValue(/\(ma version\)$/);
@@ -270,7 +270,7 @@ test("course editor: a course with the 7 exercise types, live preview and checks
   ok(await page.locator('.tn[data-key^="e:"]').count() > 0, "the exercises of the official chapter are copied");
 
   // « Mes brouillons »: the first course, the file opened again (it took the empty draft), the copy (current)
-  await page.click("[data-act=drafts]");
+  await H.edAct(page, "drafts");
   await expect(page.locator(".ed-draft")).toHaveCount(3);
   await expect(page.locator(".ed-draft.is-current .ed-draft-title")).toContainText("(ma version)");
   await expect(page.locator(".ed-draft").nth(1)).toContainText("Prêt à publier");
@@ -278,12 +278,12 @@ test("course editor: a course with the 7 exercise types, live preview and checks
   await expect(page.locator('.ed-form [data-f="title"]')).toHaveValue("Mon cours d'essai");
   await expect(page.locator('.tn[data-key^="e:0:"]')).toHaveCount(7);
   // delete the copy (confirmed); after a reload the course opened last is back, with 2 drafts left
-  await page.click("[data-act=drafts]");
+  await H.edAct(page, "drafts");
   await page.locator(".ed-draft", { hasText: "(ma version)" }).locator("[data-act=delete-draft]").click();
   await page.click(".modal [data-act=yes]");
   await page.reload();
   await expect(page.locator('.ed-form [data-f="title"]')).toHaveValue("Mon cours d'essai");
-  await page.click("[data-act=drafts]");
+  await H.edAct(page, "drafts");
   await expect(page.locator(".ed-draft")).toHaveCount(2);
   await expect(page.locator(".ed-draft", { hasText: "(ma version)" })).toHaveCount(0);
 

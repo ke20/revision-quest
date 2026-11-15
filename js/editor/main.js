@@ -52,33 +52,34 @@ function boot() {
   file.hidden = true;
   file.setAttribute("data-f", "file");
   file.addEventListener("change", function () { readChosenFile(file); });
-  /** @type {Array<{ act: string, text: string, fn: () => void }>} */
-  var buttons = [
+  /* Two menus (start or open a course; share it) and « ▶ Essayer » between them: a short bar, one line. */
+  actions.appendChild(menu("course", "btn-white", "📁 Cours", [
     { act: "drafts", text: "🗂️ Mes brouillons", fn: showDrafts },
     { act: "new", text: "📄 Nouveau cours", fn: newCourse },
     { act: "duplicate", text: "📚 Dupliquer un chapitre officiel", fn: duplicateOfficial },
-    { act: "open", text: "📂 Ouvrir un fichier", fn: function () { openFile(file); } },
-    { act: "try", text: "▶ Essayer", fn: tryWorld },
-    { act: "mine", text: "➕ Ajouter à Mes cours", fn: addToMyCourses },
-    { act: "send", text: "📤 Envoyer", fn: sendCourse },
-    { act: "download", text: "⬇️ Télécharger", fn: download }
-  ];
-  buttons.forEach(function (a) {
-    var b = button("btn btn-small " + (a.act === "download" ? "btn-primary" : "btn-white"), a.text, a.fn);
-    b.setAttribute("data-act", a.act);
-    actions.appendChild(b);
-  });
+    { act: "open", text: "📂 Ouvrir un fichier", hint: ".js ou .cours", fn: function () { openFile(file); } }
+  ]));
+  var tryBtn = button("btn btn-small btn-white", "▶ Essayer", tryWorld);
+  tryBtn.setAttribute("data-act", "try");
+  actions.appendChild(tryBtn);
+  actions.appendChild(menu("share", "btn-primary", "📤 Partager", [
+    { act: "mine", text: "➕ Ajouter à Mes cours", hint: "pour jouer sur cet appareil", fn: addToMyCourses },
+    { act: "send", text: "📲 Envoyer vers un autre appareil", hint: "lien ou fichier .cours", fn: sendCourse },
+    { act: "download", text: "⬇️ Télécharger le fichier", hint: "fichier .js du cours", fn: download }
+  ]));
   var undoBtn = button("btn btn-small btn-white", "↶", function () { step(undo); }, "Annuler (Ctrl+Z ou ⌘Z)");
   undoBtn.setAttribute("data-act", "undo");
   var redoBtn = button("btn btn-small btn-white", "↷", function () { step(redo); }, "Rétablir (Ctrl+Maj+Z ou ⌘⇧Z)");
   redoBtn.setAttribute("data-act", "redo");
-  actions.insertBefore(redoBtn, actions.firstChild);
-  actions.insertBefore(undoBtn, actions.firstChild);
+  var undoBox = el("div", "ed-undo");
+  undoBox.appendChild(undoBtn);
+  undoBox.appendChild(redoBtn);
+  actions.insertBefore(undoBox, actions.firstChild);
   actions.appendChild(file);
-  top.appendChild(actions);
   var status = el("p", "ed-status");
   status.setAttribute("aria-live", "polite");
   top.appendChild(status);
+  top.appendChild(actions);
   var back = el("a", "ed-back", "← Jeu");
   back.href = "./";
   back.title = "Retour au jeu";
@@ -161,3 +162,39 @@ function boot() {
 
 if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
 else boot();
+
+/** A menu of the top bar (<details>: keyboard and screen readers for free). Closes after a choice, on a click
+    elsewhere and with Échap; only one menu open at a time.
+    @param {string} name @param {string} cls @param {string} text
+    @param {Array<{ act: string, text: string, hint?: string, fn: () => void }>} items */
+function menu(name, cls, text, items) {
+  var d = /** @type {HTMLDetailsElement} */ (el("details", "ed-menu"));
+  d.setAttribute("data-menu", name);
+  var s = el("summary", "btn btn-small " + cls, text);
+  d.appendChild(s);
+  var list = el("div", "ed-menu-list");
+  items.forEach(function (it) {
+    var b = button("ed-menu-item", it.text, function () { d.open = false; it.fn(); });
+    b.setAttribute("data-act", it.act);
+    if (it.hint) b.appendChild(el("small", "", it.hint));
+    list.appendChild(b);
+  });
+  d.appendChild(list);
+  d.addEventListener("toggle", function () {
+    if (!d.open) return;
+    document.querySelectorAll("details.ed-menu[open]").forEach(function (o) { if (o !== d) /** @type {HTMLDetailsElement} */ (o).open = false; });
+  });
+  return d;
+}
+document.addEventListener("click", function (e) {
+  document.querySelectorAll("details.ed-menu[open]").forEach(function (d) {
+    if (!d.contains(/** @type {Node} */ (e.target))) /** @type {HTMLDetailsElement} */ (d).open = false;
+  });
+});
+document.addEventListener("keydown", function (e) {
+  if (e.key !== "Escape") return;
+  document.querySelectorAll("details.ed-menu[open]").forEach(function (d) {
+    /** @type {HTMLDetailsElement} */ (d).open = false;
+    /** @type {HTMLElement} */ (d.querySelector("summary")).focus();
+  });
+});

@@ -18,14 +18,14 @@ test("Mes cours: added from the editor, shown in the catalogue, played without <
   // the editor: a course with errors is refused, a valid one is added
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto(H.BASE + "editeur.html");
-  await page.click("[data-act=mine]");
+  await H.edAct(page, "mine");
   await expect(page.locator(".toast").last()).toContainText("Corrige d'abord");
-  const [chooser] = await Promise.all([page.waitForEvent("filechooser"), page.click("[data-act=open]")]);
+  const [chooser] = await Promise.all([page.waitForEvent("filechooser"), H.edAct(page, "open")]);
   await chooser.setFiles({ name: "mon-cours-maison.js", mimeType: "text/javascript", buffer: Buffer.from(Rules.formatStrict(course())) });
   await expect(page.locator(".ed-tree .badge.err")).toHaveCount(0);
-  await page.click("[data-act=mine]");
+  await H.edAct(page, "mine");
   await expect(page.locator(".toast").last()).toContainText("Ajouté à « Mes cours »");
-  await page.click("[data-act=mine]");
+  await H.edAct(page, "mine");
   await expect(page.locator(".toast").last()).toContainText("mis à jour");
 
   // the game: « Mes cours » above the official chapters
@@ -64,12 +64,12 @@ test("Mes cours: sent from the editor by link and by .cours file, received in th
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto(H.BASE + "editeur.html");
   // a course with errors is not sent
-  await page.click("[data-act=send]");
+  await H.edAct(page, "send");
   await expect(page.locator(".toast").last()).toContainText("Corrige d'abord");
-  const [chooser] = await Promise.all([page.waitForEvent("filechooser"), page.click("[data-act=open]")]);
+  const [chooser] = await Promise.all([page.waitForEvent("filechooser"), H.edAct(page, "open")]);
   await chooser.setFiles({ name: "mon-cours-maison.js", mimeType: "text/javascript", buffer: Buffer.from(Rules.formatStrict(course())) });
   await expect(page.locator(".ed-tree .badge.err")).toHaveCount(0);
-  await page.click("[data-act=send]");
+  await H.edAct(page, "send");
   const link = await page.locator("[data-f=link]").inputValue();
   expect(link).toMatch(/\/#cours=c\.[A-Za-z0-9_-]+\.[a-z0-9]+$/);
   const [dl] = await Promise.all([page.waitForEvent("download"), page.click(".ed-modal [data-act=file]")]);
@@ -79,7 +79,7 @@ test("Mes cours: sent from the editor by link and by .cours file, received in th
 
   // the editor opens a .cours file as a new draft
   await page.click(".ed-modal [data-act=close]");
-  const [chooser2] = await Promise.all([page.waitForEvent("filechooser"), page.click("[data-act=open]")]);
+  const [chooser2] = await Promise.all([page.waitForEvent("filechooser"), H.edAct(page, "open")]);
   await chooser2.setFiles({ name: "mon-cours-maison.cours", mimeType: "application/octet-stream", buffer: Buffer.from(file) });
   await expect(page.locator(".toast").last()).toContainText("« mon-cours-maison.cours » ouvert");
 

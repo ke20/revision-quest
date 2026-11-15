@@ -25,10 +25,33 @@ body.editor-page::before, body.editor-page::after { display: none; }
   padding: 10px 16px; background: #fff; border-bottom: 2px solid var(--line); box-shadow: var(--shadow-sm);
 }
 .ed-title { margin: 0; font-size: 1.3rem; color: var(--purple); white-space: nowrap; }
-.ed-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.ed-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-left: auto; }
+.ed-undo { display: flex; gap: 4px; margin-right: 6px; }
+.ed-undo .btn { min-width: 40px; padding-left: 10px; padding-right: 10px; }
+.ed-menu { position: relative; }
+.ed-menu > summary { list-style: none; cursor: pointer; }
+.ed-menu > summary::-webkit-details-marker { display: none; }
+.ed-menu > summary { display: inline-flex; align-items: center; }
+/* the chevron: drawn with two borders (a font arrow is tiny in the rounded font), turned up when the menu is open */
+.ed-menu > summary::after {
+  content: ""; flex: none; box-sizing: content-box; width: 7px; height: 7px; margin: -4px 2px 0 10px; border: solid currentColor; border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg); transition: transform .15s;
+}
+.ed-menu[open] > summary::after { margin-top: 4px; transform: rotate(-135deg); }
+.ed-menu-list {
+  position: absolute; right: 0; top: calc(100% + 6px); z-index: 20; min-width: 270px; width: max-content; display: flex; flex-direction: column;
+  padding: 6px; background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow-sm);
+}
+.ed-menu[data-menu="course"] .ed-menu-list { left: 0; right: auto; }
+.ed-menu-item {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 1px; padding: 9px 12px; border: 0; border-radius: 10px;
+  background: none; font: inherit; font-weight: 600; color: var(--ink); text-align: left; cursor: pointer;
+}
+.ed-menu-item small { font-weight: 400; font-size: .8rem; color: var(--ink-soft); }
+.ed-menu-item:hover, .ed-menu-item:focus-visible { background: #F3ECFC; outline: none; }
 .ed-actions .btn { box-shadow: 0 3px 0 #D9C8EC; border: 1px solid var(--line); }
 .ed-actions .btn-primary { box-shadow: 0 3px 0 #C9790A; border-color: transparent; }
-.ed-status { margin: 0; font-size: .92rem; color: var(--ink-soft); flex: 1 1 260px; }
+.ed-status { margin: 0; font-size: .92rem; color: var(--ink-soft); flex: 0 1 auto; }
 .ed-status.has-err { color: var(--red-dark); }
 .ed-status.ok { color: var(--green-dark); }
 .ed-back { color: var(--purple); font-weight: 600; white-space: nowrap; }

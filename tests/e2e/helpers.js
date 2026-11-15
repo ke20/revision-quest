@@ -213,4 +213,11 @@ function saveFile(prefix, obj) {
   return prefix + "." + Buffer.from(inner, "utf8").toString("base64") + "." + hash(inner);
 }
 
-module.exports = { BASE, EN, SAMPLE, HISTORY, ROOT, makeReporter, wait, tap, settle, hscroll, shot, cookie, fixture, editPack, findExercise, withTestPacks, newPlayer, closeModals, gotoPack, mapSettled, openLesson, startWorld, curEx, solve, playWorld, hash, saveFile };
+/** Clicks an action of the editor's top bar (editeur.html): opens its menu first when it is in one. */
+async function edAct(page, act) {
+  const menu = page.locator(`details.ed-menu:has([data-act=${act}])`);
+  if ((await menu.count()) && !(await menu.evaluate((d) => d.open))) await menu.locator("summary").click();
+  await page.click(`[data-act=${act}]`);
+}
+
+module.exports = { edAct, BASE, EN, SAMPLE, HISTORY, ROOT, makeReporter, wait, tap, settle, hscroll, shot, cookie, fixture, editPack, findExercise, withTestPacks, newPlayer, closeModals, gotoPack, mapSettled, openLesson, startWorld, curEx, solve, playWorld, hash, saveFile };
