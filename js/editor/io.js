@@ -96,12 +96,14 @@ export function openFile(input) {
   adding(function () { input.value = ""; input.click(); });
 }
 
-/** The file chosen in the file input. @param {HTMLInputElement} input */
+/** The file chosen in the file input: a pack (.js, strict format) or a course sent from another device (.cours).
+    @param {HTMLInputElement} input */
 export function readChosenFile(input) {
   const file = input.files && input.files[0];
   input.value = "";
   if (!file) return;
-  if (!/\.js$/i.test(file.name || "")) { toast("😕 Choisis un fichier de cours qui finit par .js"); return; }
+  if (/\.cours$/i.test(file.name || "")) { readCourseFile(file); return; }
+  if (!/\.js$/i.test(file.name || "")) { toast("😕 Choisis un fichier de cours qui finit par .js ou .cours"); return; }
   if (file.size > rules().MAX_PACK_SIZE) { toast("😕 Ce fichier est trop gros pour être un cours."); return; }
   var reader = new FileReader();
   reader.onload = function () {
@@ -121,6 +123,23 @@ export function readChosenFile(input) {
   reader.readAsText(file);
 }
 
+/** A .cours file (MyCourses.decode: JSON checked, never executed), opened as a new draft. @param {File} file */
+function readCourseFile(file) {
+  const MC = window.MyCourses;
+  if (!MC) { toast("😕 Impossible d'ouvrir un fichier .cours ici."); return; }
+  if (file.size > MC.MAX_CODE_CHARS + 100) { toast("😕 Ce fichier est trop gros pour être un cours."); return; }
+  var reader = new FileReader();
+  reader.onload = function () {
+    MC.decode(String(reader.result || "")).then(function (res) {
+      if (!res.ok) { toast("😕 " + res.error); return; }
+      addDraft(draftFromPack(res.pack));
+      toast("📂 « " + (file.name || "") + " » ouvert");
+    });
+  };
+  reader.onerror = function () { toast("😕 Impossible de lire ce fichier."); };
+  reader.readAsText(file);
+}
+
 /** The file name: <id>.js. */
 export function fileName() { return (store.draft.slug || "mon-cours") + ".js"; }
 
@@ -134,6 +153,82 @@ export function addToMyCourses() {
   var r = window.MyCourses.save(exportPack(store.draft));
   if (!r.ok) { toast("😕 " + r.errors[0]); return; }
   toast(r.replaced ? "✅ Cours mis à jour dans « Mes cours »." : "✅ Ajouté à « Mes cours » : ouvre le jeu, il est en haut de la liste des chapitres.");
+}
+
+/* ---------- « 📤 Envoyer »: the course to another device, as a link to the game (#cours=…) or a .cours file ----------
+   The game shows the received course and asks before adding it to « Mes cours » (js/app/screens/receive.js). */
+export var LINK_MAX = 16000; // beyond, only the file (a short course gives a link of a few thousand characters)
+
+/** The link that opens the game with the course. @param {string} code */
+export function courseLink(code) { return new URL("./", location.href).href.split("#")[0] + "#cours=" + code; }
+
+export function sendCourse() {
+  var report = runChecks(store.draft);
+  var errors = report.list.filter(function (m) { return m.level === "err"; }).length;
+  if (errors) { toast("😕 Corrige d'abord " + (errors > 1 ? "les " + errors + " erreurs" : "l'erreur") + " du cours."); return; }
+  const MC = window.MyCourses;
+  if (!MC) { toast("😕 L'envoi n'est pas disponible ici."); return; }
+  var name = (store.draft.slug || "mon-cours") + ".cours";
+  MC.encode(exportPack(store.draft)).then(function (res) {
+    if (!res.ok) { toast("😕 " + res.errors[0]); return; }
+    var code = res.code, link = courseLink(code);
+    modal(function (box, close) {
+      box.appendChild(el("h3", "", "📤 Envoyer le cours vers un autre appareil"));
+      box.appendChild(el("p", "", "Sur l'autre appareil (tablette, téléphone), le jeu montre le cours et demande avant de l'ajouter à « ✏️ Mes cours »."));
+      var actions = el("div", "ed-send");
+      if (link.length <= LINK_MAX) {
+        var input = /** @type {HTMLInputElement} */ (el("input", "ed-input ed-link"));
+        input.readOnly = true;
+        input.value = link;
+        input.setAttribute("aria-label", "Lien du cours");
+        input.setAttribute("data-f", "link");
+        box.appendChild(input);
+        var copy = button("btn btn-primary", "🔗 Copier le lien", function () { copyLink(link, input); });
+        copy.setAttribute("data-act", "copy");
+        actions.appendChild(copy);
+        if (navigator.share) {
+          var share = button("btn btn-white", "📤 Partager le lien", function () {
+            navigator.share({ title: "Révision Quest", text: "Un cours Révision Quest : touche le lien pour l'ajouter.", url: link }).catch(function () { /* cancelled */ });
+          });
+          share.setAttribute("data-act", "share");
+          actions.appendChild(share);
+        }
+      } else {
+        box.appendChild(el("p", "", "Ce cours est trop grand pour un lien : envoie le fichier (e-mail, messagerie, clé USB), puis ouvre-le dans le jeu avec « 📥 Ouvrir un cours reçu » (page des chapitres)."));
+      }
+      var file = button("btn btn-white", "⬇️ Fichier « " + name + " »", function () { saveFile(name, code); });
+      file.setAttribute("data-act", "file");
+      actions.appendChild(file);
+      box.appendChild(actions);
+      var row = el("div", "modal-actions");
+      var shut = button("btn btn-ghost", "Fermer", close);
+      shut.setAttribute("data-act", "close");
+      row.appendChild(shut);
+      box.appendChild(row);
+    });
+  });
+}
+
+/** @param {string} link @param {HTMLInputElement} input */
+function copyLink(link, input) {
+  function fallback() { input.focus(); input.select(); toast("Lien sélectionné : copie-le 📋"); }
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(link).then(function () { toast("🔗 Lien copié !"); }, fallback);
+    else fallback();
+  } catch (e) { fallback(); }
+}
+
+/** @param {string} name @param {string} code */
+function saveFile(name, code) {
+  var url = URL.createObjectURL(new Blob([code], { type: "application/octet-stream" }));
+  var a = el("a");
+  a.href = url;
+  a.download = name;
+  a.hidden = true;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function () { URL.revokeObjectURL(url); a.remove(); }, 1000);
+  toast("⬇️ « " + name + " » téléchargé : sur l'autre appareil, ouvre-le dans le jeu avec « 📥 Ouvrir un cours reçu ».");
 }
 
 /** Download the course in the strict format. With errors: a warning that lists them first (the download stays possible). */

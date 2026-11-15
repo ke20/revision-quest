@@ -215,3 +215,78 @@ test("Mes cours: a copy that became official is hidden unless modified since it 
   w.MyCourses.list();
   assert.strictEqual(j(w.MyCourses.get(raw2.courses[0].pack.path)).modified, true);
 });
+
+/* ---------- sending a course to another device: #cours=<code> or a .cours file ---------- */
+
+const zlib = require("zlib");
+const url64 = (buf) => Buffer.from(buf).toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+
+test("encode then decode: the same course, compressed (c.), read as JSON and checked", async () => {
+  const { window: w } = env();
+  const e = j(await w.MyCourses.encode(course()));
+  assert.ok(e.ok);
+  assert.match(e.code, /^c\.[A-Za-z0-9_-]+\.[a-z0-9]+$/);
+  assert.ok(e.code.length < 16000, "a real chapter fits in a link (" + e.code.length + " characters)");
+  const r = j(await w.MyCourses.decode(e.code));
+  assert.strictEqual(r.ok, true);
+  assert.deepStrictEqual(r.pack, j(w.MyCourses.check(course()).pack));
+  assert.deepStrictEqual([r.existing, r.full], [null, false]);
+  // already on the device: existing is its card; a full device says so
+  w.MyCourses.save(course());
+  assert.strictEqual(j(await w.MyCourses.decode(e.code)).existing.id, "cm2/francais/mon-cours");
+  // an invalid course is not encoded
+  const bad = j(await w.MyCourses.encode(course({ path: "cm2/inconnue/x" })));
+  assert.strictEqual(bad.ok, false);
+  assert.match(bad.errors[0], /matière "inconnue"/);
+});
+
+test("decode: no room for one more course on this device", async () => {
+  const { window: w } = env();
+  for (let i = 0; i < w.MyCourses.MAX_COURSES; i++) w.MyCourses.save(course({ path: "cm2/francais/cours-" + i }));
+  const code = j(await w.MyCourses.encode(course())).code;
+  assert.strictEqual(j(await w.MyCourses.decode(code)).full, true);
+  const again = j(await w.MyCourses.decode(j(await w.MyCourses.encode(course({ path: "cm2/francais/cours-3" }))).code));
+  assert.deepStrictEqual([again.full, again.existing.id], [false, "cm2/francais/cours-3"], "replacing one needs no room");
+});
+
+test("without compression in the browser: a plain code (k.), still read", async () => {
+  const { window: w } = load({ scripts: SCRIPTS, localStorage: storage(), globals: { CompressionStream: undefined, DecompressionStream: undefined } });
+  const e = j(await w.MyCourses.encode(course()));
+  assert.match(e.code, /^k\./);
+  assert.strictEqual(j(await w.MyCourses.decode(e.code)).ok, true);
+  const zipped = j(await env().window.MyCourses.encode(course())).code;
+  assert.match(j(await w.MyCourses.decode(zipped)).error, /trop ancien/);
+});
+
+test("decode refuses: not a course, damaged, changed, too big, a zip bomb, an invalid course", async () => {
+  const { window: w } = env();
+  const code = j(await w.MyCourses.encode(course())).code;
+  const err = async (c) => j(await w.MyCourses.decode(c)).error;
+  assert.match(await err("bonjour"), /n'est pas un cours/);
+  assert.match(await err("z.abc.def"), /n'est pas un cours/, "a game code is not a course");
+  assert.match(await err(code.slice(0, code.length - 40) + code.slice(-8)), /abîmé/, "cut");
+  const parts = code.split(".");
+  assert.match(await err(parts[0] + "." + parts[1] + ".zzzz"), /abîmé/, "wrong hash");
+  assert.match(await err("c." + "A".repeat(w.MyCourses.MAX_CODE_CHARS) + ".abc"), /trop gros/);
+  // a zip bomb: a small code that would expand to millions of bytes stops at the limit
+  const bomb = "c." + url64(zlib.deflateRawSync(Buffer.alloc(5000000, 32))) + ".abc";
+  assert.ok(bomb.length < 20000);
+  assert.match(await err(bomb), /abîmé/);
+  // valid JSON with the right hash, but not a valid course
+  const text = JSON.stringify({ path: "cm2/francais/x", lang: "fr", worlds: [] });
+  assert.match(await err("c." + url64(zlib.deflateRawSync(Buffer.from(text))) + "." + w.MyCourses.hash(text)), /ne peut pas être ajouté/);
+});
+
+test("a received course is never executed: code in its texts stays text, prototype keys are dropped", async () => {
+  const { window: w } = env();
+  const evil = course();
+  evil.meta.title = "<script>window.PWNED = 1</script>";
+  const text = JSON.stringify(evil).replace(/^\{/, '{"__proto__":{"polluted":1},');
+  const code = "c." + url64(zlib.deflateRawSync(Buffer.from(text))) + "." + w.MyCourses.hash(text);
+  const r = await w.MyCourses.decode(code);
+  assert.strictEqual(r.ok, true);
+  assert.strictEqual(r.pack.meta.title, "<script>window.PWNED = 1</script>", "kept as text (escaped when shown)");
+  assert.strictEqual(w.PWNED, undefined);
+  assert.strictEqual({}.polluted, undefined);
+  assert.strictEqual(Object.prototype.hasOwnProperty.call(r.pack, "__proto__"), false);
+});

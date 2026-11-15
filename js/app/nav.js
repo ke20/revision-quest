@@ -9,6 +9,7 @@ import { showHome } from "./screens/home.js";
 import { showLesson, showMap } from "./screens/map.js";
 import { startWorld } from "./screens/play.js";
 import { showLeaderboard, showProfiles } from "./screens/profiles.js";
+import { importCourse, takeCourseCode } from "./screens/receive.js";
 import { importShared, takeSharedCode } from "./screens/save.js";
 import { showTrophies } from "./screens/trophies.js";
 import { openModals, toast } from "./ui/ui.js";
@@ -35,7 +36,7 @@ export function worldPath(w) { return "chapitre/" + S.pack.id + "/monde/" + (S.d
 /** The screen named by the address, or null. @returns {Route | null} */
 export function parseRoute() {
   var p = String(location.hash || "").replace(/^#\/?/, ""), m;
-  if (!p || /^partie=/.test(p)) return null;
+  if (!p || /^(partie|cours)=/.test(p)) return null;
   if (p === "catalogue" || p === "badges" || p === "trophees" || p === "classement" || p === "joueurs") return { screen: p };
   if ((m = /^groupes\/([a-z0-9/-]+)$/.exec(p))) return { screen: "groupes", id: m[1] };
   m = /^chapitre\/([a-z0-9/-]+?)(?:\/monde\/(\d+)(?:\/(jeu|exercice\/(\d+)))?)?$/.exec(p);
@@ -99,6 +100,8 @@ window.addEventListener("popstate", function () {
   // a game link (#partie=…) opened in this tab is not a "back": import it (takeSharedCode cleans the address)
   var shared = typeof takeSharedCode === "function" ? takeSharedCode() : null;
   if (shared) { pushTrap(); importShared(shared); return; }
+  var course = takeCourseCode(); // same for a course link (#cours=…)
+  if (course) { pushTrap(); importCourse(course); return; }
   if (openModals.length) { openModals[openModals.length - 1](); pushTrap(); return; }
   if (backAction) { var f = backAction; pushTrap(); f(); }
   // on the root screen the next "back" leaves the app, as expected

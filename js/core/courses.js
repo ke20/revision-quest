@@ -157,10 +157,105 @@
     return i < 0 ? null : parse(JSON.stringify(read()[i].pack));
   }
 
+  /* ---------- sending a course to another device: a code for a link (#cours=<code>) or a .cours file ----------
+     "c.<deflate-raw, base64url>.<hash>" ("k.<base64url>.<hash>" when the browser cannot compress). The code holds the
+     course as JSON: it is read back with JSON.parse, checked like a saved course, and never executed. */
+  const CODE_RE = /^([ck])\.([A-Za-z0-9_-]{1,800000})\.([a-z0-9]{1,16})$/;
+  const MAX_CODE_CHARS = 800020;          // a .cours file or a link: a full course compresses to far less
+  const MAX_JSON_BYTES = MAX_COURSE_CHARS * 3; // UTF-8 of a course at its size limit: a "zip bomb" stops there
+  const canZip = (function () {
+    try { return typeof CompressionStream === "function" && typeof DecompressionStream === "function" && !!new CompressionStream("deflate-raw"); } catch (e) { return false; }
+  })();
+  /** @param {Uint8Array} bytes */
+  function toUrl64(bytes) {
+    let bin = "";
+    for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  }
+  /** @param {string} s @returns {Uint8Array<ArrayBuffer>} */
+  function fromUrl64(s) {
+    let b = s.replace(/-/g, "+").replace(/_/g, "/");
+    while (b.length % 4) b += "=";
+    const bin = atob(b), bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return bytes;
+  }
+  /** Bytes through a (de)compression stream; rejects beyond max bytes.
+      @param {CompressionStream | DecompressionStream} stream @param {Uint8Array<ArrayBuffer>} bytes @param {number} max
+      @returns {Promise<Uint8Array>} */
+  function pipe(stream, bytes, max) {
+    const writer = stream.writable.getWriter();
+    writer.write(bytes).catch(() => {});
+    writer.close().catch(() => {});
+    const reader = stream.readable.getReader(), parts = /** @type {Uint8Array[]} */ ([]);
+    let total = 0;
+    /** @returns {Promise<Uint8Array>} */
+    function next() {
+      return reader.read().then((r) => {
+        if (r.done) {
+          const out = new Uint8Array(total);
+          let at = 0;
+          parts.forEach((p) => { out.set(p, at); at += p.length; });
+          return out;
+        }
+        total += r.value.length;
+        if (total > max) { reader.cancel().catch(() => {}); throw new Error("too big"); }
+        parts.push(r.value);
+        return next();
+      });
+    }
+    return next();
+  }
+
+  /** The code of a course (checked first). @param {unknown} data @returns {Promise<{ ok: true, code: string } | { ok: false, errors: string[] }>} */
+  function encode(data) {
+    const c = check(data);
+    if (!c.pack) return Promise.resolve({ ok: false, errors: c.errors });
+    const text = JSON.stringify(c.pack), tail = "." + hash(text), bytes = new TextEncoder().encode(text);
+    const plain = () => ({ ok: /** @type {const} */ (true), code: "k." + toUrl64(bytes) + tail });
+    if (!canZip) return Promise.resolve(plain());
+    return pipe(new CompressionStream("deflate-raw"), bytes, MAX_JSON_BYTES)
+      .then((z) => ({ ok: /** @type {const} */ (true), code: "c." + toUrl64(z) + tail }), plain);
+  }
+
+  /** Reads a code (link or .cours file): format, size, hash, then the same checks as a saved course.
+      existing: the card of the course with the same id already on this device; full: no room for one more.
+      @param {string} code @returns {Promise<MyCourseReceived>} */
+  function decode(code) {
+    const bad = { ok: /** @type {const} */ (false), error: "Ce lien ou ce fichier n'est pas un cours Révision Quest." };
+    const broken = { ok: /** @type {const} */ (false), error: "Ce cours est incomplet ou abîmé : demande à le renvoyer." };
+    code = String(code || "").trim();
+    if (code.length > MAX_CODE_CHARS) return Promise.resolve({ ok: false, error: "Ce cours est trop gros." });
+    const m = CODE_RE.exec(code);
+    if (!m) return Promise.resolve(/^[ck]\./.test(code) ? broken : bad);
+    if (m[1] === "c" && !canZip) return Promise.resolve({ ok: false, error: "Ce navigateur est trop ancien pour lire ce cours. Mets-le à jour, ou utilise un autre navigateur." });
+    /** @type {Promise<Uint8Array>} */
+    let reading;
+    try {
+      const bytes = fromUrl64(m[2]);
+      reading = m[1] === "k" ? (bytes.length > MAX_JSON_BYTES ? Promise.reject(new Error("too big")) : Promise.resolve(bytes))
+        : pipe(new DecompressionStream("deflate-raw"), bytes, MAX_JSON_BYTES);
+    } catch (e) { return Promise.resolve(broken); }
+    const expected = m[3];
+    return reading.then((bytes) => {
+      const text = new TextDecoder().decode(bytes);
+      if (hash(text) !== expected) return broken;
+      let data;
+      try { data = parse(text); } catch (e) { return broken; }
+      const c = check(data);
+      if (!c.pack) return { ok: /** @type {const} */ (false), error: "Ce cours ne peut pas être ajouté : " + c.errors[0] };
+      const i = indexOf(c.pack.path);
+      return { ok: /** @type {const} */ (true), pack: c.pack, existing: i < 0 ? null : entryOf(read()[i]), full: i < 0 && read().length >= MAX_COURSES };
+    }, () => broken);
+  }
+
   window.MyCourses = {
     MAX_COURSES: MAX_COURSES, MAX_COURSE_CHARS: MAX_COURSE_CHARS, MAX_TOTAL_CHARS: MAX_TOTAL_CHARS,
+    MAX_CODE_CHARS: MAX_CODE_CHARS,
     check: check,
     hash: hash,
+    encode: encode,
+    decode: decode,
     /** Catalogue cards of the private courses, most recently saved first. */
     list: function () {
       return read().slice().sort((a, b) => b.saved - a.saved).map(entryOf);

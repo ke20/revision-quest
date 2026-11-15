@@ -104,12 +104,19 @@ interface PacksApi {
 
 /* ---------- js/core/courses.js (window.MyCourses) ---------- */
 
+type MyCourseReceived = { ok: true; pack: Pack; existing: CatalogPack | null; full: boolean } | { ok: false; error: string };
+
 type MyCourseSave = { ok: true; replaced: boolean; id: string } | { ok: false; errors: string[] };
 
 interface MyCoursesApi {
   MAX_COURSES: number;
   MAX_COURSE_CHARS: number;
   MAX_TOTAL_CHARS: number;
+  MAX_CODE_CHARS: number;
+  /** The code of a course for a link (#cours=…) or a .cours file: "c.<deflate-raw base64url>.<hash>". */
+  encode(data: unknown): Promise<{ ok: true; code: string } | { ok: false; errors: string[] }>;
+  /** Reads a code: checked like a saved course, never executed. */
+  decode(code: string): Promise<MyCourseReceived>;
   /** A clean copy of a course (known keys, plain JSON), or the errors in French. */
   check(data: unknown): { pack: Pack; errors: [] } | { pack: null; errors: string[] };
   /** Catalogue cards of the private courses, most recently saved first. */

@@ -183,3 +183,7 @@ button.ed-chip:hover { border-color: var(--purple); }
 .ed-try .ex-container { max-width: 760px; margin: 0 auto; }
 .ed-try .checkbar { z-index: 61; }
 .ed-try-end { text-align: center; padding: 24px; }
+
+/* « 📤 Envoyer »: the link and the buttons */
+.ed-link { width: 100%; margin: 6px 0 10px; font-size: .85rem; }
+.ed-send { display: flex; flex-wrap: wrap; gap: 8px; }

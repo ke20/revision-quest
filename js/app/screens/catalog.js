@@ -5,6 +5,7 @@ import { showHome } from "./home.js";
 import { showMap } from "./map.js";
 import { route, setNav } from "../nav.js";
 import { pauseGuard } from "./play.js";
+import { chooseCourseFile } from "./receive.js";
 import { showProfiles } from "./profiles.js";
 import { Sound } from "../ui/sound.js";
 import { confirmBox, each, h, leavePack, on, show, toast } from "../ui/ui.js";
@@ -173,12 +174,14 @@ export function showCatalog() {
     '<div class="pack-list">' + (cards || (onlyMine
       ? '<div class="card empty-card"><p>Pas encore de chapitre pour la classe ' + E(grade.label) + '. Touche « Voir toutes les classes » pour réviser autre chose.</p></div>'
       : '<div class="card empty-card"><p>Aucun chapitre pour ce choix. Essaie un autre filtre !</p></div>')) + "</div>" +
+    '<p class="cat-receive"><button class="btn btn-white btn-small" data-act="receive-course">📥 Ouvrir un cours reçu<small> (fichier .cours)</small></button></p>' +
     "</section>");
   on(node, "back", function () { Sound.tap(); showHome(); });
   each(node, "[data-level]", function (b) {
     b.onclick = function () { Sound.tap(); S.catFilter.level = /** @type {string} */ (b.getAttribute("data-level")); showCatalog(); };
   });
   on(node, "all-grades", function () { Sound.tap(); S.catAllGrades = true; S.catFilter.level = ""; showCatalog(); });
+  on(node, "receive-course", function () { Sound.tap(); chooseCourseFile(); });
   on(node, "my-grade", function () { Sound.tap(); S.catAllGrades = false; showCatalog(); });
   each(node, "[data-subject]", function (b) {
     b.onclick = function () { Sound.tap(); S.catFilter.subject = /** @type {string} */ (b.getAttribute("data-subject")); showCatalog(); };

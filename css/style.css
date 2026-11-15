@@ -882,6 +882,8 @@ body.theme-hiver::after { background: #E0F2FE; opacity: .22; }
 .mine-item .pack-card { width: 100%; padding-right: 52px; }
 .mine-del { position: absolute; top: 8px; right: 8px; }
 .tag-mine { background: #FEF3C7; color: #92400E; }
+.cat-receive { margin: 18px 4px 4px; text-align: center; }
+.cat-receive small { font-weight: 600; opacity: .75; }
 .tag-modified { background: #E0E7FF; color: #3730A3; }
 
 /* ---------- rewards: trophies (catalogue card, map, result, « Mes trophées ») ---------- */

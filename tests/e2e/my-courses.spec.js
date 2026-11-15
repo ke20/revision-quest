@@ -58,3 +58,60 @@ test("Mes cours: added from the editor, shown in the catalogue, played without <
   expect(await page.evaluate(() => Engine.packSummary("cm2/francais/mon-cours-maison", 6).stars)).toBeGreaterThan(0);
   R.done();
 });
+
+test("Mes cours: sent from the editor by link and by .cours file, received in the game after a confirmation", async ({ page, context }) => {
+  const R = H.makeReporter(); R.watch(page, "send");
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto(H.BASE + "editeur.html");
+  // a course with errors is not sent
+  await page.click("[data-act=send]");
+  await expect(page.locator(".toast").last()).toContainText("Corrige d'abord");
+  const [chooser] = await Promise.all([page.waitForEvent("filechooser"), page.click("[data-act=open]")]);
+  await chooser.setFiles({ name: "mon-cours-maison.js", mimeType: "text/javascript", buffer: Buffer.from(Rules.formatStrict(course())) });
+  await expect(page.locator(".ed-tree .badge.err")).toHaveCount(0);
+  await page.click("[data-act=send]");
+  const link = await page.locator("[data-f=link]").inputValue();
+  expect(link).toMatch(/\/#cours=c\.[A-Za-z0-9_-]+\.[a-z0-9]+$/);
+  const [dl] = await Promise.all([page.waitForEvent("download"), page.click(".ed-modal [data-act=file]")]);
+  expect(dl.suggestedFilename()).toBe("mon-cours-maison.cours");
+  const file = fs.readFileSync(await dl.path(), "utf8");
+  expect(link.endsWith("#cours=" + file)).toBe(true);
+
+  // the editor opens a .cours file as a new draft
+  await page.click(".ed-modal [data-act=close]");
+  const [chooser2] = await Promise.all([page.waitForEvent("filechooser"), page.click("[data-act=open]")]);
+  await chooser2.setFiles({ name: "mon-cours-maison.cours", mimeType: "application/octet-stream", buffer: Buffer.from(file) });
+  await expect(page.locator(".toast").last()).toContainText("« mon-cours-maison.cours » ouvert");
+
+  // another device (a new browser context): the link shows the course and asks first; the address is cleaned
+  const other = await context.browser().newContext();
+  const game = await other.newPage();
+  R.watch(game, "receive");
+  await game.goto(H.BASE);
+  await H.newPlayer(game, "Reçoit");
+  await game.goto(link);
+  await expect(game.locator(".modal h3")).toHaveText("📥 Recevoir un cours");
+  await expect(game.locator(".modal")).toContainText("Mon cours maison");
+  expect(game.url()).not.toContain("#cours=");
+  await H.tap(game, ".modal [data-act=no]");
+  expect(await game.evaluate(() => window.MyCourses.list().length)).toBe(0);
+  await game.goto(link);
+  await H.tap(game, ".modal [data-act=yes]");
+  await expect(game.locator(".toast").last()).toContainText("est dans « ✏️ Mes cours »");
+  await expect(game.locator('.mine-list .pack-card[data-pack="cm2/francais/mon-cours-maison"]')).toBeVisible();
+
+  // the .cours file, from the catalogue: the same course again → « Remplacer »
+  const [chooser3] = await Promise.all([game.waitForEvent("filechooser"), H.tap(game, "[data-act=receive-course]")]);
+  await chooser3.setFiles({ name: "mon-cours-maison.cours", mimeType: "application/octet-stream", buffer: Buffer.from(file) });
+  await expect(game.locator(".modal [data-act=yes]")).toHaveText("♻️ Remplacer");
+  await H.tap(game, ".modal [data-act=yes]");
+  expect(await game.evaluate(() => window.MyCourses.list().length)).toBe(1);
+
+  // a damaged link: an error, nothing added
+  await game.goto(link.slice(0, -30) + "x");
+  await expect(game.locator(".modal h3").last()).toHaveText("😕 Import impossible");
+  await H.tap(game, ".modal [data-act=ok]");
+  expect(await game.evaluate(() => window.MyCourses.list().length)).toBe(1);
+  await other.close();
+  R.done();
+});

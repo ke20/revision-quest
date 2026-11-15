@@ -7,7 +7,7 @@ import { refreshMessages, renderForm } from "./forms/form.js";
 import { showDrafts } from "./drafts.js";
 import { tryWorld } from "./trial.js";
 import { canRedo, canUndo, redo, startHistory, undo } from "./history.js";
-import { addToMyCourses, download, duplicateOfficial, newCourse, openFile, readChosenFile } from "./io.js";
+import { addToMyCourses, download, duplicateOfficial, newCourse, openFile, readChosenFile, sendCourse } from "./io.js";
 import { renderPreview } from "./preview.js";
 import { isBlank } from "./model/draft.js";
 import { countDrafts, followOtherTabs, loadSaved, saveNow, storageWorks, store, subscribe } from "./state.js";
@@ -48,7 +48,7 @@ function boot() {
   var actions = el("div", "ed-actions");
   var file = el("input");
   file.type = "file";
-  file.accept = ".js,text/javascript";
+  file.accept = ".js,.cours,text/javascript";
   file.hidden = true;
   file.setAttribute("data-f", "file");
   file.addEventListener("change", function () { readChosenFile(file); });
@@ -60,6 +60,7 @@ function boot() {
     { act: "open", text: "📂 Ouvrir un fichier", fn: function () { openFile(file); } },
     { act: "try", text: "▶ Essayer", fn: tryWorld },
     { act: "mine", text: "➕ Ajouter à Mes cours", fn: addToMyCourses },
+    { act: "send", text: "📤 Envoyer", fn: sendCourse },
     { act: "download", text: "⬇️ Télécharger", fn: download }
   ];
   buttons.forEach(function (a) {

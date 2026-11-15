@@ -8,6 +8,7 @@ import { showMap } from "./screens/map.js";
 import { goRoute, parseRoute, rerender } from "./nav.js";
 import { pauseGuard, showPause } from "./screens/play.js";
 import { showProfiles } from "./screens/profiles.js";
+import { importCourse, takeCourseCode } from "./screens/receive.js";
 import { importShared, takeSharedCode } from "./screens/save.js";
 import { Sound } from "./ui/sound.js";
 import { badgeToasts, openModals } from "./ui/ui.js";
@@ -54,12 +55,16 @@ export function boot() {
     if (rerender) rerender();
   });
   document.addEventListener("pointerdown", function once() { Sound.unlock(); document.removeEventListener("pointerdown", once); });
-  var shared = takeSharedCode();
+  var shared = takeSharedCode(), course = takeCourseCode();
   var start = parseRoute();
   if (start && Engine.currentProfile() && !pauseGuard()) goRoute(start); else showHome();
   if (shared) importShared(shared);
+  if (course) importCourse(course);
   // a link opened while the game is already open in this tab
-  window.addEventListener("hashchange", function () { var c = takeSharedCode(); if (c) importShared(c); });
+  window.addEventListener("hashchange", function () {
+    var c = takeSharedCode(); if (c) importShared(c);
+    var k = takeCourseCode(); if (k) importCourse(k);
+  });
 }
 
 window.App = {
