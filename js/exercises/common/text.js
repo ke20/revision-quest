@@ -113,9 +113,13 @@
       .replace(/\*\*(.+?)\*\*/g, "$1");
   }
 
+  /** "x^2" typed on a phone keyboard = "x²" (and ^3 = ³). @param {string} s */
+  function powers(s) { return s.replace(/\s*\^\s*2(?!\d|[.,]\d)/g, "²").replace(/\s*\^\s*3(?!\d|[.,]\d)/g, "³"); }
+
   /** @param {string} s @returns {string} */
   function normalize(s) {
-    return plain(s).toLowerCase()
+    return powers(plain(s)).toLowerCase()
+      .replace(/(^|[\s(=<>≤≥;:])[-−–—]\s*(?=\d)/g, "$1-") // a minus before a number, any dash, with or without a space: "− 15" = "-15"
       .replace(/[’‘ʼ`´]/g, "'")
       .replace(/[“”]/g, '"')
       .replace(/\s+/g, " ")
@@ -129,4 +133,5 @@
   X.rich = rich;
   X.plain = plain;
   X.normalize = normalize;
+  X.powers = powers;
 })(window.ExercisesParts = window.ExercisesParts || /** @type {ExercisesParts} */ ({}));

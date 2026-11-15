@@ -25,7 +25,7 @@ const common = {
 };
 
 module.exports = [
-  { ignores: ["node_modules/**", "test-results/**", "playwright-report/**", "js/vendor/**"] }, // vendored: checked by its SHA-256, never edited
+  { ignores: ["node_modules/**", "test-results/**", "playwright-report/**", "js/vendor/**", "specs/**"] }, // vendored: checked by its SHA-256, never edited
 
   js.configs.recommended,
   { rules: common },

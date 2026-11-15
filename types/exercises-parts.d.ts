@@ -21,6 +21,8 @@ interface ExercisesParts {
   rich: ExercisesApi["rich"];
   plain: ExercisesApi["plain"];
   normalize: ExercisesApi["normalize"];
+  /** "x^2" typed on a phone keyboard → "x²" (and ^3 → ³); shared with checks.js. */
+  powers(s: string): string;
   // common/checks.js
   fillAccepted: ExercisesApi["fillAccepted"];
   orderAccepted: ExercisesApi["orderAccepted"];

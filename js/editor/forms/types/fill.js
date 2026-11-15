@@ -19,7 +19,7 @@ export function fillForm(root, ex) {
     sentence.setSelectionRange(at + 3, at + 3);
     edited();
   }));
-  textList(root, { label: "Réponses acceptées", f: "answers", list: ex.answers, min: 1, max: 10, addLabel: "＋ Ajouter une réponse acceptée",
+  textList(root, { label: "Réponses acceptées", f: "answers", list: ex.answers, min: 1, max: 15, addLabel: "＋ Ajouter une réponse acceptée",
     check: "^answers", help: "Majuscules, espaces et apostrophes ne comptent pas ; les accents comptent.", onChange: edited });
   text(root, { label: "Écoute et écris (facultatif) : texte lu à voix haute", f: "listen", value: ex.listen, maxLength: 300, check: "^listen",
     help: "Lu par une voix de l'appareil, dans la langue du cours. Ne pas écrire ce mot dans la phrase ; un indice aide si la voix est mal comprise.",

@@ -4,7 +4,7 @@
 (/** @param {ExercisesParts} X */ function (X) {
   "use strict";
 
-  var plain = X.plain, normalize = X.normalize;
+  var plain = X.plain, normalize = X.normalize, powers = X.powers;
 
   /** fill: is the typed value one of the accepted answers (case, spaces, apostrophes and final punctuation ignored)?
       @param {FillExercise} ex @param {string} value */
@@ -52,22 +52,29 @@
   /** Punctuation out, spaces collapsed. Kept: a decimal comma or point between two digits (3,7 = 3.7, but 2,500 is
       not 2 500); hyphens inside a word (« vingt-cinq » is not « vingt cinq »; spaces
       around them ignored); a minus sign before a number (−36 is not 36); numbers written with spaces between
-      thousands are joined (3 000 = 3000). @param {string} t */
+      thousands are joined (3 000 = 3000); √ is kept (√149 is not 149); a minus between two terms is a hyphen, whatever its sign and spaces
+      (7x − 98 = 7x - 98 = 7x–98). @param {string} t */
   function words(t) {
-    return t.replace(/#/g, " ").replace(/(\d)[,.](?=\d)/g, "$1#").replace(/[‐‑]/g, "-").replace(/(^|[\s(])[-−–](?=\d)/g, "$1−")
-      .replace(/[^a-zA-Z0-9À-ÖØ-öø-ÿŒœÆæ'\s−#-]/g, " ").replace(/(^|\s)'|'(\s|$)/g, " ")
+    return t.replace(/#/g, " ").replace(/^\s*[-−–]\s+(?=\d)/, "−").replace(/([=<>≤≥])\s*[-−–—]\s*(?=\d)/g, "$1 −").replace(/(\d)[,.](?=\d)/g, "$1#").replace(/[‐‑]/g, "-").replace(/(^|[\s(=<>≤≥;:])[-−–—](?=\d)/g, "$1−")
+      .replace(/([a-z0-9²³)])\s*[−–—]\s*(?=[a-z0-9(])/gi, "$1-")
+      .replace(/[^a-zA-Z0-9À-ÖØ-öø-ÿŒœÆæ'\s−#√-]/g, " ").replace(/(^|\s)'|'(\s|$)/g, " ")
       .replace(/\s*-+\s*/g, "-").replace(/(^|\s)-+|-+(?=\s|$)/g, "$1").replace(/\s+/g, " ").trim()
-      .replace(/(\d) (?=\d{3}(?!\d))/g, "$1");
+      .replace(/√ /g, "√").replace(/(\d) (?=\d{3}(?!\d))/g, "$1");
   }
   /** The comparable form of an answer (lower case, accents kept). @param {string} s @param {string} [lang] */
   function answerKey(s, lang) {
-    var t = plain(s).normalize("NFKC").replace(/[’‘ʼ`´]/g, "'").toLowerCase();
+    var t = powers(plain(s)).normalize("NFKC").replace(/[’‘ʼ`´]/g, "'").toLowerCase();
     if (lang === "en") {
       t = t.replace(/(\d),(?=\d{3}(?!\d))/g, "$1"); // English thousands: 1,000 = 1000
       EN_FORMS.forEach(function (r) { t = t.replace(r[0], r[1]); });
     }
     return words(t);
   }
+  /** A maths expression (a sum, an equality, k(…), (…)×…): its signs must match, not only its numbers and letters.
+      words() drops + × = ( ), so without this « 3 × x + 3 » would pass for « 3(x + 3) » and « 7x – 98 » for « 7x + 98 ». */
+  var EXPR = /[+=]|\d\s*\(\s*[\dx-z(−-]|\)\s*[×*\d(]|[\w²)]\s*−\s*[\w(]|[\w²)]\s+[-–]\s+[\w(]/; // a minus between two terms too (9x − 36), not a hyphen (1643-1715)
+  /** The signs of an expression, in order (× ignored: 3(x+6) = 3×(x+6)). @param {string} s */
+  function signs(s) { return powers(plain(String(s))).normalize("NFKC").replace(/[-‐‑–—]/g, "−").replace(/[^()+=−]/g, ""); }
   /** @param {string} c */
   function bare(c) { return c.normalize("NFD").replace(/[̀-ͯ]/g, ""); }
   /** Is the typed answer one of the accepted answers? @param {QuestionExercise} ex @param {string} value @param {string} [lang] */
@@ -79,6 +86,7 @@
     var raw = lang === "en" ? "" : words(plain(value).normalize("NFKC").replace(/[’‘ʼ`´]/g, "'"));
     var aligned = raw.length === v.length;
     return (ex.answers || []).some(function (a) {
+      if (EXPR.test(a) && signs(a) !== signs(value)) return false;
       var want = answerKey(a, lang);
       if (want === v) return true;
       if (!aligned || want.length !== v.length) return false;

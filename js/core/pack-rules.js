@@ -514,7 +514,7 @@
     },
     question(e, t, err) {
       if (!isArr(e.answers) || !e.answers.length) return err(t + " : answers doit contenir au moins une réponse");
-      if (e.answers.length > 10) err(t + " : 10 réponses acceptées au plus");
+      if (e.answers.length > 15) err(t + " : 15 réponses acceptées au plus");
       if (!e.answers.every(isStr)) err(t + " : answers ne contient que du texte non vide");
       if (hasDup(e.answers)) err(t + " : answers en double");
       noTr(e.answers, t + " answers", err);

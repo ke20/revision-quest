@@ -17,6 +17,7 @@
     var p = el("div", "fill-sentence");
     var input = el("input", "fill-input");
     input.type = "text";
+    input.maxLength = 300; // an answer is short; also bounds the cost of comparing it
     input.autocomplete = "off";
     input.setAttribute("autocapitalize", "off");
     input.setAttribute("autocorrect", "off");

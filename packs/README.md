@@ -275,12 +275,16 @@ compréhension orale). Deux boutons s'affichent sous la consigne : « 🔊 Écou
 
 Un seul essai : juste ou faux, la bonne réponse (`answers[0]`) s'affiche après une erreur.
 
-- `answers` : **toutes** les bonnes réponses (10 au plus), texte simple. Une traduction peut souvent s'écrire de
+- `answers` : **toutes** les bonnes réponses (15 au plus), texte simple. Une traduction peut souvent s'écrire de
   plusieurs façons : les lister.
 - Ne comptent pas : majuscules, espaces, ponctuation, et l'accent d'une **majuscule tapée par
   l'élève** (« A la maison » = « à la maison », « Edit » = « Édit » ; mais « Ou » n'est pas « où »). Les autres accents
   comptent, les **traits d'union** aussi (« peut être » n'est pas « peut-être » ; pour un nombre en
-  lettres, lister l'orthographe traditionnelle et la rectifiée si les deux sont admises). « 3 000 » = « 3000 », « 3,7 » = « 3.7 » (mais « 2,500 » n'est pas « 2 500 » ; en anglais « 1,000 » = « 1000 »), « cm³ » = « cm3 » ; le signe moins compte (−4 n'est pas 4).
+  lettres, lister l'orthographe traditionnelle et la rectifiée si les deux sont admises). « 3 000 » = « 3000 », « 3,7 » = « 3.7 » (mais « 2,500 » n'est pas « 2 500 » ; en anglais « 1,000 » = « 1000 »), « cm³ » = « cm3 » = « cm^3 » ; le signe moins compte (−4 n'est pas 4), quelle que soit sa forme (−, -, –) et avec ou sans espace.
+- **Expressions de maths** (une réponse avec `+`, `=`, `k(…)`, ou un moins « − » entre deux termes) : les signes et les
+  parenthèses **comptent** ; « × » reste facultatif. « 3 × x + 3 » n'est pas « 3(x + 3) », « 5 + (+8) » n'est pas
+  « 5 + 8 » : lister chaque écriture admise. Écrire le moins d'une expression avec « − » (U+2212) ; un trait d'union
+  sans espaces (« 1643-1715 ») reste un trait d'union.
 - Packs `en` : formes courtes et longues équivalentes, inutile de les lister (I'm = I am, don't = do not,
   can't = cannot = can not, he's = he is, 's got = has got, 're, 've, 'll). « I'd » n'est pas automatique.
 - Langues : une phrase en français à traduire, avec **seulement** le vocabulaire et les tournures du chapitre.

@@ -16,6 +16,7 @@
     var input = /** @type {HTMLInputElement | HTMLTextAreaElement} */ (ex.multiline ? el("textarea", "question-input multi") : el("input", "question-input"));
     if (input instanceof HTMLInputElement) input.type = "text";
     else input.rows = 3;
+    input.maxLength = ex.multiline ? 2000 : 300; // an answer is short; also bounds the cost of comparing it
     input.autocomplete = "off";
     input.setAttribute("autocapitalize", "off");
     input.setAttribute("autocorrect", "off");

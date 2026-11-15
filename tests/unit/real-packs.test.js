@@ -32,8 +32,13 @@ function problems(ex, lang) {
       break;
     case "question": {
       ex.answers.forEach((a) => { if (!X.questionAccepted(ex, a, lang)) out.push(`answer "${a}" refused`); });
+      // useless: same key as an earlier answer, which already accepts it (a maths expression also needs the same signs:
+      // 5 + (+8) is not 5 + 8). "conseil d'etat" is kept next to "Conseil d'État": a key keeps its accents.
       const keys = ex.answers.map((a) => X.answerKey(a, lang));
-      keys.forEach((k, i) => { if (keys.indexOf(k) !== i) out.push(`answer "${ex.answers[i]}" is the same as "${ex.answers[keys.indexOf(k)]}" once compared`); });
+      ex.answers.forEach((a, i) => {
+        const j = ex.answers.findIndex((b, k) => k < i && keys[k] === keys[i] && X.questionAccepted({ answers: [b] }, a, lang));
+        if (j >= 0) out.push(`answer "${a}" is the same as "${ex.answers[j]}" once compared`);
+      });
       break;
     }
     case "spot":

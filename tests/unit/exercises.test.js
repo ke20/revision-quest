@@ -120,6 +120,34 @@ test("question: case, spaces and punctuation ignored; hyphens and accents count,
   assert.ok(!ok(["chat"], "chats"), "spelling counts");
 });
 
+test("question: a maths expression must keep its signs; x^2 = x²; a space after a leading minus is ignored", () => {
+  const ok = (answers, value) => X.questionAccepted({ answers }, value, "fr");
+  assert.ok(ok(["3(x + 3)"], "3(x+3)") && ok(["3(x + 3)"], "3 × (x + 3)"), "× may be typed or not");
+  assert.ok(!ok(["3(x + 3)"], "3 × x + 3") && !ok(["3(x + 3)"], "3 x 3"), "forgotten brackets");
+  assert.ok(ok(["7x + 98"], "7x+98") && !ok(["7x + 98"], "7x × 98") && !ok(["7x + 98"], "7x – 98"), "+ is not × nor –");
+  assert.ok(ok(["7x − 98"], "7x - 98") && ok(["7x − 98"], "7x–98") && !ok(["7x − 98"], "7x + 98"), "any minus sign");
+  assert.ok(!ok(["7x + 98"], "7(x + 98)"), "a product is not a sum");
+  assert.ok(!ok(["9x − 36"], "9(x − 36)") && !ok(["9x − 36"], "9(x-36)") && ok(["9x − 36"], "9x-36"), "brackets added to a difference");
+  assert.ok(ok(["peut-être"], "peut - être") && ok(["1914-1918"], "1914 – 1918"), "a hyphenated word is still one word");
+  assert.ok(ok(["5 + 8"], "5+8") && !ok(["5 + 8"], "5 × 8"));
+  assert.ok(ok(["kg/m³"], "kg/m3") || ok(["kg/m³"], "kg/m³"), "a unit is not an expression");
+  assert.ok(ok(["A appartient à (d)"], "A appartient à (d)"), "brackets around a letter are not a product");
+  assert.ok(ok(["FG²"], "FG^2") && ok(["81 cm²"], "81 cm^2") && ok(["27 m³"], "27 m^3"), "^2 and ^3 typed on a phone");
+  assert.ok(ok(["−15"], "- 15") && ok(["−15"], " − 15") && !ok(["15"], "- 15"), "a space after a leading minus");
+  assert.ok(X.fillAccepted({ answers: ["-15"] }, "- 15") && X.fillAccepted({ answers: ["9 cm²"] }, "9 cm^2"), "fill too");
+  assert.ok(ok(["x = −6"], "x=-6") && ok(["x = −6"], "x =-6") && ok(["x = −6"], "x = - 6") && !ok(["x = −6"], "x = 6"), "a minus right after =");
+  assert.ok(ok(["x²"], "x ^ 2") && ok(["x²"], "x ^2"), "spaces around ^");
+  assert.ok(ok(["1515 (Marignan)"], "1515 Marignan"), "a date with words in brackets is not an expression");
+  assert.ok(ok(["9x − 36"], "9x－36"), "a full-width minus");
+  assert.ok(!ok(["149"], "√149") && ok(["√149"], "√149") && !ok(["√149"], "149"), "√ counts");
+  assert.ok(ok(["√40 ≈ 6,3"], "√ 40 ≈ 6,3"), "a space after √");
+  assert.ok(ok(["9x − 36"], "9x — 36") && ok(["x < −6"], "x<-6") && ok(["−3 ; −1"], "-3;-1"), "em dash, minus after < or ;");
+  assert.ok(ok(["Louis XIV (1643-1715)"], "Louis XIV 1643-1715"), "a hyphen between dates is not a minus");
+  assert.ok(ok(["x²"], "x^2.") && X.fillAccepted({ answers: ["NP²"] }, "NP^2.") && !ok(["x²"], "x^2.5"), "^2 before a final point");
+  assert.ok(X.fillAccepted({ answers: ["−4"] }, "-4") && X.fillAccepted({ answers: ["-4"] }, "–4") && X.fillAccepted({ answers: ["x = -4"] }, "x = −4"), "fill: any minus before a number");
+  assert.ok(X.fillAccepted({ answers: ["Jean-Jacques"] }, "Jean-Jacques") && !X.fillAccepted({ answers: ["4"] }, "-4"), "fill: a hyphen in a word stays, a minus still counts");
+});
+
 test("question: English short and long forms are the same answer", () => {
   const ok = (answers, value) => X.questionAccepted({ answers }, value, "en");
   assert.ok(ok(["I am not tall."], "I'm not tall"));
