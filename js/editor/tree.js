@@ -1,7 +1,9 @@
 // @ts-check
 /* Révision Quest — course editor: the plan on the left (course › worlds › lesson / exercises), with the counts of the
-   checks on each node and the actions: add, duplicate, delete (confirmed), move up / down, add an exercise by type. */
+   checks on each node and the actions: add, duplicate, delete (confirmed), move up / down or by drag and drop
+   (drag.js), add an exercise by type. */
 import { button, confirmBox, el } from "./dom.js";
+import { docGrip, grip } from "./drag.js";
 import { addDocument, addExercise, addWorld, DEFAULT_COLOR, deleteDocument, deleteExercise, deleteWorld, docUses, duplicateExercise,
   duplicateWorld, move } from "./model/draft.js";
 import { worldTotals } from "./model/export.js";
@@ -36,9 +38,10 @@ function badges(n, what) {
 
 /** One line of the plan: the node button, its counts and its actions.
     @param {string} key @param {string} icon @param {string} label @param {{ err: number, warn: number } | undefined} counts
-    @param {EdSel} sel @param {HTMLElement[]} [actions] @param {string} [what] */
-function row(key, icon, label, counts, sel, actions, what) {
+    @param {EdSel} sel @param {HTMLElement[]} [actions] @param {string} [what] @param {HTMLElement} [handle] drag handle (drag.js) */
+function row(key, icon, label, counts, sel, actions, what, handle) {
   var r = el("div", "tn-row" + (keyOf(store.sel) === key ? " on" : ""));
+  if (handle) r.appendChild(handle);
   var b = button("tn", "", function () { select(sel); });
   b.setAttribute("data-key", key);
   if (keyOf(store.sel) === key) b.setAttribute("aria-current", "true");
@@ -73,7 +76,11 @@ function docRows(pack, r) {
     docs.forEach(function (doc, di) {
       var name = excerpt(doc.title || doc.from || "", 40) || "Texte sans titre";
       var li = el("li");
+      li.setAttribute("data-doc", "");
+      var nd = docs.length;
       li.appendChild(row("d:" + di, "📄", name, r.byKey["d:" + di], { kind: "doc", d: di }, [
+        act("↑", "Monter le texte « " + name + " »", "up", function () { restructured({ kind: "doc", d: move(docs, di, -1) }); }, di === 0),
+        act("↓", "Descendre le texte « " + name + " »", "down", function () { restructured({ kind: "doc", d: move(docs, di, 1) }); }, di === nd - 1),
         act("🗑", "Supprimer le texte « " + name + " »", "del", function () {
           var n = docUses(pack, doc.id);
           confirmBox("Supprimer le texte « " + name + " » ?", n ? n + " exercice(s) l'affichent : ils n'afficheront plus de texte." : "",
@@ -82,7 +89,7 @@ function docRows(pack, r) {
               restructured(j < 0 ? { kind: "course" } : { kind: "doc", d: j });
             }, { danger: true });
         })
-      ]));
+      ], "", nd > 1 ? docGrip(di) : undefined));
       list.appendChild(li);
     });
     wrap.appendChild(list);
@@ -118,14 +125,18 @@ export function renderTree(box) {
             restructured(j < 0 ? { kind: "course" } : { kind: "world", w: j });
           }, { danger: true });
       })
-    ], " dans ce monde (leçon et exercices compris)"));
+    ], " dans ce monde (leçon et exercices compris)", grip(wi, -1)));
     var sub = el("ol", "tn-items");
     var lessonLi = el("li");
-    lessonLi.appendChild(row("l:" + wi, "📖", "Leçon", r.byKey["l:" + wi], { kind: "lesson", w: wi }));
+    lessonLi.setAttribute("data-lesson", "");
+    var space = el("span", "tn-grip tn-grip-none"); // the lesson stays first: no handle, same indent as the exercises
+    space.setAttribute("aria-hidden", "true");
+    lessonLi.appendChild(row("l:" + wi, "📖", "Leçon", r.byKey["l:" + wi], { kind: "lesson", w: wi }, [], "", space));
     sub.appendChild(lessonLi);
     w.exercises.forEach(function (ex, ei) {
       var m = w.exercises.length;
       var item = el("li");
+      item.setAttribute("data-ex", "");
       item.appendChild(row("e:" + wi + ":" + ei, String(ei + 1) + ".", typeLabel(ex.type) + " · " + (excerpt(ex.prompt, 34) || "…"), r.byKey["e:" + wi + ":" + ei], { kind: "exercise", w: wi, e: ei }, [
         act("↑", "Monter l'exercice " + (ei + 1), "up", function () { var j = move(w.exercises, ei, -1); restructured({ kind: "exercise", w: wi, e: j }); }, ei === 0),
         act("↓", "Descendre l'exercice " + (ei + 1), "down", function () { var j = move(w.exercises, ei, 1); restructured({ kind: "exercise", w: wi, e: j }); }, ei === m - 1),
@@ -136,7 +147,7 @@ export function renderTree(box) {
             restructured(j < 0 ? { kind: "lesson", w: wi } : { kind: "exercise", w: wi, e: j });
           }, { danger: true });
         })
-      ]));
+      ], "", grip(wi, ei)));
       sub.appendChild(item);
     });
     var addLi = el("li", "tn-add");

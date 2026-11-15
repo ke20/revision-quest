@@ -318,3 +318,60 @@ test("course editor: refuses to run inside a frame", async ({ browser }) => {
   await expect(frame.locator(".ed-tree")).toHaveCount(0);
   await ctx.close();
 });
+
+test("course editor: drag and drop in the plan (texts to read, worlds, exercises within and between worlds, Échap cancels)", async ({ page }) => {
+  const R = H.makeReporter(); R.watch(page, "drag");
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto(EDITOR);
+  const pack = Rules.parseStrict(fs.readFileSync(require("path").join(H.ROOT, "packs/cm2/francais/mots-invariables.js"), "utf8"));
+  pack.path = "cm2/francais/glisser";
+  pack.worlds = pack.worlds.slice(0, 3).map((w) => Object.assign(w, { exercises: w.exercises.slice(0, 3) })); // the whole plan on screen
+  pack.documents = ["Premier", "Deuxième", "Troisième"].map((t, i) => ({ id: "t" + i, title: t, text: "Un texte à lire." }));
+  const [chooser] = await Promise.all([page.waitForEvent("filechooser"), H.edAct(page, "open")]);
+  await chooser.setFiles({ name: "glisser.js", mimeType: "text/javascript", buffer: Buffer.from(Rules.formatStrict(pack)) });
+  await expect(page.locator(".tn-world")).toHaveCount(3);
+  // the plan as shown: world titles, exercise labels (numbers removed)
+  const ids = () => page.$$eval(".tn-world > .tn-row .tn-label", (l) => l.map((x) => x.textContent.replace(/^\d+ · /, "")));
+  const exs = (w) => page.$$eval(`.tn-world:nth-child(${w + 1}) li[data-ex] .tn-label`, (l) => l.map((x) => x.textContent));
+  /** drags the handle sel to the point (x, y) of the target, step by step like a hand */
+  const drag = async (sel, target, where, opts = {}) => {
+    const g = await page.locator(`[data-grip="${sel}"]`).boundingBox();
+    const t = await page.locator(target).first().boundingBox();
+    await page.mouse.move(g.x + g.width / 2, g.y + g.height / 2);
+    await page.mouse.down();
+    await page.mouse.move(g.x + g.width / 2, g.y + 20, { steps: 3 });
+    await page.mouse.move(t.x + 40, where === "top" ? t.y + 3 : t.y + t.height - 3, { steps: 8 });
+    await expect(page.locator(".tn-drop")).toBeVisible();
+    if (opts.escape) await page.keyboard.press("Escape");
+    await page.mouse.up();
+  };
+  const before = await ids();
+  // world 1 dropped at the end
+  await drag("w:0", ".tn-world >> nth=2", "bottom");
+  expect(await ids()).toEqual([before[1], before[2], before[0]]);
+  await expect(page.locator(".tn-row.on [data-key='w:2']")).toHaveCount(1);
+  // Échap: nothing moves
+  await drag("w:2", ".tn-world >> nth=0", "top", { escape: true });
+  expect(await ids()).toEqual([before[1], before[2], before[0]]);
+  await expect(page.locator(".tn-drop")).toHaveCount(0);
+  // exercise 1 of world 1 to the end of its world, then into world 2, first place
+  const w0 = await exs(0), w1 = await exs(1);
+  await drag("e:0:0", ".tn-world >> nth=0 >> li[data-ex] >> nth=-1", "bottom");
+  expect(await exs(0)).toEqual([...w0.slice(1), w0[0]]);
+  await drag("e:0:0", ".tn-world >> nth=1 >> li[data-lesson]", "bottom");
+  expect(await exs(0)).toEqual([...w0.slice(2), w0[0]]);
+  expect(await exs(1)).toEqual([w0[1], ...w1]);
+  await expect(page.locator(".tn-row.on [data-key='e:1:0']")).toHaveCount(1);
+  // the texts to read: the third one dropped first, then ↓ moves it back down
+  const docs = () => page.$$eval("li[data-doc] .tn-label", (l) => l.map((x) => x.textContent));
+  expect(await docs()).toEqual(["Premier", "Deuxième", "Troisième"]);
+  await drag("d:2", "li[data-doc] >> nth=0", "top");
+  expect(await docs()).toEqual(["Troisième", "Premier", "Deuxième"]);
+  await expect(page.locator(".tn-row.on [data-key='d:0']")).toHaveCount(1);
+  await page.click("li[data-doc] >> nth=0 >> [data-act=down]");
+  expect(await docs()).toEqual(["Premier", "Troisième", "Deuxième"]);
+  // a simple click on the handle moves nothing
+  await page.click('[data-grip="e:1:0"]');
+  expect(await exs(1)).toEqual([w0[1], ...w1]);
+  R.done();
+});

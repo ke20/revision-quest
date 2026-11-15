@@ -218,3 +218,14 @@ button.ed-chip:hover { border-color: var(--purple); }
 .ed-check input { flex: none; width: 20px; height: 20px; margin-top: 1px; accent-color: var(--purple); }
 .ed-steps { margin: 8px 0 14px; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; line-height: 1.4; }
 .ed-github { display: inline-flex; margin-bottom: 12px; text-decoration: none; }
+
+/* drag and drop in the plan (drag.js): the handle ⠿, the dragged node, the line where it goes */
+.tn-grip {
+  flex: none; width: 16px; text-align: center; color: var(--ink-soft); opacity: .45; cursor: grab;
+  touch-action: none; user-select: none; -webkit-user-select: none; font-size: .9rem;
+}
+.tn-row:hover .tn-grip, .tn-row.on .tn-grip { opacity: .9; }
+.ed-dragging, .ed-dragging * { cursor: grabbing !important; user-select: none; -webkit-user-select: none; }
+.tn-dragging { opacity: .45; }
+.tn-drop { position: absolute; left: 12px; right: 12px; height: 3px; margin-top: -1px; border-radius: 2px; background: var(--purple); pointer-events: none; z-index: 5; }
+.tn-grip-none { visibility: hidden; cursor: default; pointer-events: none; }

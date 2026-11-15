@@ -227,3 +227,21 @@ test("privacy: e-mail addresses, phone numbers and web links are found in every 
     worlds: [{ id: "w", lesson: { points: ["voir www.site.com"] }, exercises: [{ type: "mcq", prompt: "Q", explanation: "appelle 0612345678" }] }] };
   assert.deepStrictEqual(findContacts(pack).map((c) => c.kind + " @ " + c.where), ["email @ texte à lire 1", "link @ monde 1, leçon", "phone @ monde 1, exercice 1"]);
 });
+
+test("drag and drop in the plan: a world or an exercise goes before the node it is dropped on, also in another world", async () => {
+  const { moveTo, moveExercise } = await load("draft.js");
+  const l = ["a", "b", "c", "d"];
+  assert.strictEqual(moveTo(l, 0, 2), 1); assert.deepStrictEqual(l, ["b", "a", "c", "d"]);
+  assert.strictEqual(moveTo(l, 3, 0), 0); assert.deepStrictEqual(l, ["d", "b", "a", "c"]);
+  assert.strictEqual(moveTo(l, 1, 4), 3); assert.deepStrictEqual(l, ["d", "a", "c", "b"]);
+  assert.strictEqual(moveTo(l, 1, 1), 1); assert.strictEqual(moveTo(l, 1, 2), 1, "dropped on its own place: unchanged");
+  assert.strictEqual(moveTo(l, 7, 0), 7); assert.deepStrictEqual(l, ["d", "a", "c", "b"], "out of range: unchanged");
+  const pack = { worlds: [{ exercises: ["x1", "x2", "x3"] }, { exercises: ["y1"] }] };
+  assert.deepStrictEqual(moveExercise(pack, 0, 0, 0, 3), { w: 0, e: 2 });
+  assert.deepStrictEqual(pack.worlds[0].exercises, ["x2", "x3", "x1"]);
+  assert.deepStrictEqual(moveExercise(pack, 0, 1, 1, 0), { w: 1, e: 0 });
+  assert.deepStrictEqual(pack.worlds.map((w) => w.exercises), [["x2", "x1"], ["x3", "y1"]]);
+  assert.deepStrictEqual(moveExercise(pack, 1, 1, 0, 2), { w: 0, e: 2 });
+  assert.deepStrictEqual(pack.worlds.map((w) => w.exercises), [["x2", "x1", "y1"], ["x3"]]);
+  assert.deepStrictEqual(moveExercise(pack, 0, 0, 5, 0), { w: 0, e: 0 }, "unknown world: unchanged");
+});

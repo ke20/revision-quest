@@ -129,6 +129,28 @@ export function move(list, i, d) {
   return j;
 }
 
+/** Drag and drop in the plan: list[from] goes to the place before list[at] (at = list.length: at the end).
+    Returns its new index. @param {unknown[]} list @param {number} from @param {number} at */
+export function moveTo(list, from, at) {
+  if (from < 0 || from >= list.length || at < 0 || at > list.length) return from;
+  var x = list.splice(from, 1)[0];
+  var to = at > from ? at - 1 : at;
+  list.splice(to, 0, x);
+  return to;
+}
+
+/** An exercise dropped in the plan, in its world or in another one: worlds[w].exercises[e] goes before
+    worlds[w2].exercises[at] (at = its length: at the end). Returns where it is now.
+    @param {EdPack} pack @param {number} w @param {number} e @param {number} w2 @param {number} at @returns {{ w: number, e: number }} */
+export function moveExercise(pack, w, e, w2, at) {
+  var from = pack.worlds[w], into = pack.worlds[w2];
+  if (!from || !into || e < 0 || e >= from.exercises.length || at < 0 || at > into.exercises.length) return { w: w, e: e };
+  if (w === w2) return { w: w, e: moveTo(from.exercises, e, at) };
+  var x = from.exercises.splice(e, 1)[0];
+  into.exercises.splice(at, 0, x);
+  return { w: w2, e: at };
+}
+
 /** @param {EdPack} pack */
 export function addWorld(pack) {
   pack.worlds.push(newWorld(pack.worlds));
