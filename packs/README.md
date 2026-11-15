@@ -130,6 +130,9 @@ Le **dernier** monde est le **boss** du chapitre (dès 2 mondes) : le contrôle 
 - `\n` → retour à la ligne (dans les documents).
 - Lignes qui commencent par `- ` (après un `\n`) → liste à puces : pour aérer plusieurs exemples dans un point de
   leçon ou une explication (`"Pour montrer qu'on comprend :\n- [[I understand how you feel|je comprends ce que tu ressens]]\n- …"`).
+- Lignes qui commencent par `1. `, `2. `… → étapes numérotées, dès 2 étapes (une ligne `1. …` seule reste telle
+  quelle). Une ligne `- ` sous une étape devient une liste à puces dans cette étape :
+  `"1. Regarde la fin du verbe :\n- -AR\n- -ER\n2. Trouve le pronom."`.
 - **Énumérations en liste à puces, dès 2 éléments** : les plus jeunes lisent mieux une liste qu'une phrase coupée de
   virgules. Une phrase d'introduction qui finit par `:`, puis un élément par ligne. Plusieurs listes dans un même
   point : une ligne d'introduction avant chacune.

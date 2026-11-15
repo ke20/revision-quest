@@ -418,6 +418,9 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
 .rich-list li::before, .lesson-points .rich-list li::before { content: "•"; position: absolute; left: 4px; top: 3px; color: var(--c); }
 .rich-list.rich-cols { columns: 2; column-gap: 12px; }
 .rich-list.rich-more { margin-bottom: 10px; }
+.rich-steps > li, .lesson-points .rich-steps > li { padding-left: 24px; }
+.rich-steps > li::before, .lesson-points .rich-steps > li::before { content: none; }
+.rich-num { position: absolute; left: 2px; top: 3px; font-weight: 700; color: var(--c); }
 .rich-cols li { break-inside: avoid; }
 
 /* ---------- result screens ---------- */

@@ -44,13 +44,16 @@
     return lines(s);
   }
 
-  var COLS_MIN_ITEMS = 4, COLS_MAX_CHARS = 14;
+  var COLS_MIN_ITEMS = 4, COLS_MAX_CHARS = 14, BULLET = /^\s*- (.*)$/, STEP = /^\s*(\d{1,2}[.)]) (.*)$/;
+  /** @typedef {{ mark: string, text: string, items: string[] }} RichStep */
+  /** @typedef {{ text?: string, items?: string[], steps?: RichStep[] }} RichBlock */
   /** Line breaks → <br>; consecutive lines starting with "- " → a bullet list (to air out several examples).
       A list of 4 short items or more (words, units) goes on 2 columns, filled top to bottom. A list followed by more
       text gets a gap below it (rich-more), so the next line does not read as one more item.
+      Consecutive lines starting with "1. ", "2. "… → numbered steps (from 2 steps; a lone "1. …" line stays as written).
+      A "- " line under a step is a bullet list inside that step.
       @param {string} s @returns {string} */
   function lines(s) {
-    var out = "", items = /** @type {string[]} */ ([]);
     /** @param {string} it */
     function textLength(it) { // visible characters only: tags skipped, an entity (&amp;) counts as one; only measures
       var n = 0, inTag = false, inEntity = false;
@@ -64,21 +67,42 @@
       }
       return n;
     }
-    /** @param {boolean} more */
-    function flush(more) {
-      if (!items.length) return;
+    /** @param {string[]} items @param {boolean} more */
+    function bullets(items, more) {
       var cols = items.length >= COLS_MIN_ITEMS && items.every(function (it) { return textLength(it) <= COLS_MAX_CHARS; });
-      out += '<ul class="rich-list' + (cols ? " rich-cols" : "") + (more ? " rich-more" : "") + '">' + items.map(function (it) { return "<li>" + it + "</li>"; }).join("") + "</ul>";
-      items = [];
+      return '<ul class="rich-list' + (cols ? " rich-cols" : "") + (more ? " rich-more" : "") + '">' + items.map(function (it) { return "<li>" + it + "</li>"; }).join("") + "</ul>";
     }
-    s.split("\n").forEach(function (line, i) {
-      var m = /^\s*- (.*)$/.exec(line);
-      if (m) { items.push(m[1]); return; }
-      if (items.length) flush(true);
-      else if (i > 0) out += "<br>";
-      out += line;
+    /** @param {RichStep[]} steps @param {boolean} more */
+    function numbered(steps, more) {
+      return '<ol class="rich-list rich-steps' + (more ? " rich-more" : "") + '">' + steps.map(function (st) {
+        return '<li><span class="rich-num">' + st.mark + "</span>" + st.text + (st.items.length ? bullets(st.items, false) : "") + "</li>";
+      }).join("") + "</ol>";
+    }
+    var blocks = /** @type {RichBlock[]} */ ([]);
+    s.split("\n").forEach(function (line) {
+      var last = blocks[blocks.length - 1], b = BULLET.exec(line), n = STEP.exec(line);
+      if (b && last && last.steps) last.steps[last.steps.length - 1].items.push(b[1]);
+      else if (b && last && last.items) last.items.push(b[1]);
+      else if (b) blocks.push({ items: [b[1]] });
+      else if (n && last && last.steps) last.steps.push({ mark: n[1], text: n[2], items: [] });
+      else if (n) blocks.push({ steps: [{ mark: n[1], text: n[2], items: [] }] });
+      else blocks.push({ text: line });
     });
-    flush(false);
+    blocks = blocks.reduce(function (acc, bl) { // a lone step: its line as written, then its bullets
+      if (bl.steps && bl.steps.length < 2) {
+        var st = bl.steps[0];
+        acc.push({ text: st.mark + " " + st.text });
+        if (st.items.length) acc.push({ items: st.items });
+      } else acc.push(bl);
+      return acc;
+    }, /** @type {RichBlock[]} */ ([]));
+    var out = "";
+    blocks.forEach(function (bl, i) {
+      var prev = blocks[i - 1], next = blocks[i + 1], more = !!next && next.text != null;
+      if (bl.text != null) out += (prev && prev.text != null ? "<br>" : "") + bl.text;
+      else if (bl.steps) out += numbered(bl.steps, more);
+      else out += bullets(bl.items || [], more);
+    });
     return out;
   }
 

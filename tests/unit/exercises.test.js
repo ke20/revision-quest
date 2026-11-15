@@ -216,3 +216,15 @@ test("rich: lines starting with \"- \" become a bullet list; other line breaks s
   assert.strictEqual(X.rich("- a\n- b\nfin"), '<ul class="rich-list rich-more"><li>a</li><li>b</li></ul>fin');
   assert.strictEqual(X.rich("a -b\nc - d"), "a -b<br>c - d", "a dash inside a line is not a bullet");
 });
+
+test("rich: lines \"1. \", \"2. \"… become numbered steps; a \"- \" line under a step is a list inside it", () => {
+  assert.strictEqual(X.rich("Ordre :\n1. le **mot**\n2. le sujet"),
+    'Ordre :<ol class="rich-list rich-steps"><li><span class="rich-num">1.</span>le <strong>mot</strong></li><li><span class="rich-num">2.</span>le sujet</li></ol>');
+  assert.strictEqual(X.rich("1. Regarde :\n- un lieu\n- une raison\n2) Choisis.\nFin"),
+    '<ol class="rich-list rich-steps rich-more"><li><span class="rich-num">1.</span>Regarde :<ul class="rich-list"><li>un lieu</li><li>une raison</li></ul></li>' +
+    '<li><span class="rich-num">2)</span>Choisis.</li></ol>Fin', "bullets nest in the step; text after: gap below");
+  assert.strictEqual(X.rich("2. Trouve le pronom :\n- yo\n- tú"), '2. Trouve le pronom :<ul class="rich-list"><li>yo</li><li>tú</li></ul>',
+    "a lone step stays as written, its bullets stay a list");
+  assert.strictEqual(X.rich("1. segment · 2. milieu"), "1. segment · 2. milieu", "steps inside one line: untouched");
+  assert.strictEqual(X.rich("En 1789.\n2024 fut"), "En 1789.<br>2024 fut", "a year is not a step");
+});
