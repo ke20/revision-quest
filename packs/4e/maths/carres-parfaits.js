@@ -1,10 +1,10 @@
-/* Pack « Les carrés parfaits » — maths 4e. Écrit d'après le programme du cycle 4 (carrés parfaits de 1 à 144, racine carrée d'un nombre positif, encadrement entre deux entiers, équations x² = a), sans document de cours. Format : voir packs/README.md */
+/* Pack « Les carrés parfaits » — maths 4e. Écrit d'après le programme du cycle 4 (carrés parfaits, racine carrée d'un nombre positif, encadrement entre deux entiers, équations x² = a), puis complété d'après le cahier de 4e (la racine carrée : carrés parfaits de 1 à 225 par cœur, (√x)² = x, encadrer puis arrondir au dixième à la calculatrice). Format : voir packs/README.md */
 window.registerPack({
   "path": "4e/maths/carres-parfaits",
   "lang": "fr",
   "meta": {
     "title": "Les carrés parfaits",
-    "description": "Carrés de 1 à 144, carré d'un négatif ou d'un décimal, reconnaître un carré parfait, aire d'un carré, racine carrée et encadrement, sans calculatrice.",
+    "description": "Carrés de 1 à 225 par cœur, carré d'un négatif ou d'un décimal, reconnaître un carré parfait, aire d'un carré, racine carrée, encadrement et arrondi au dixième.",
     "icon": "🟦",
     "color": "#2563EB"
   },
@@ -19,7 +19,7 @@ window.registerPack({
         "title": "Multiplier un nombre par lui-même",
         "points": [
           "Le **carré** d'un nombre, c'est ce nombre **multiplié par lui-même** : 7² = 7 × 7 = **49**.",
-          "On lit 7² « 7 **au carré** ». Le petit 2 est un [[exposant|petit nombre en haut à droite qui dit combien de fois on multiplie le nombre par lui-même]].",
+          "On lit 7² « 7 **au carré** ». Le petit 2 est un [[exposant|petit nombre qui dit combien de fois le nombre est écrit dans la multiplication]].",
           "⚠️ 7² n'est **pas** 7 × 2 : 7² = 49, alors que 7 × 2 = 14.",
           "Un **carré parfait** est le carré d'un nombre entier. Des carrés parfaits :\n- 1\n- 4\n- 9\n- 16\n- 25…"
         ],
@@ -186,20 +186,22 @@ window.registerPack({
     {
       "id": 2,
       "title": "La table des carrés",
-      "subtitle": "De 1 à 144, par cœur",
+      "subtitle": "De 1 à 225, par cœur",
       "icon": "🧮",
       "color": "#7C3AED",
       "lesson": {
-        "title": "Les 12 carrés à connaître",
+        "title": "Les 15 carrés à connaître",
         "points": [
-          "Au collège, on connaît **par cœur** les carrés de 1 à 12 : ils servent pour la racine carrée et le théorème de Pythagore.",
+          "Au collège, on connaît **par cœur** les carrés de 1 à 15, c'est-à-dire les carrés parfaits de **1 à 225** : ils servent pour la racine carrée et le théorème de Pythagore.",
           "Astuce : on passe d'un carré au suivant en ajoutant des **nombres impairs** :\n- 1\n- +3 = 4\n- +5 = 9\n- +7 = 16\n- +9 = 25…",
-          "Bonus utile :\n- 13² = 169\n- 14² = 196\n- 15² = 225\n- 20² = 400"
+          "Les trois derniers de la liste, à bien retenir :\n- 13² = **169**\n- 14² = **196**\n- 15² = **225**",
+          "Bonus utile :\n- 20² = 400\n- 30² = 900"
         ],
         "examples": [
           "11² = 121",
           "12² = 144",
-          "Pour 11² : 11 × 11 = 110 + 11 = 121."
+          "Pour 13² : 13 × 13 = 130 + 39 = 169.",
+          "Pour 15² : 15 × 15 = 150 + 75 = 225."
         ],
         "tables": [
           {
@@ -210,8 +212,7 @@ window.registerPack({
                 "2",
                 "3",
                 "4",
-                "5",
-                "6"
+                "5"
               ],
               [
                 {
@@ -237,31 +238,30 @@ window.registerPack({
                 {
                   "text": "25",
                   "hl": true
-                },
-                {
-                  "text": "36",
-                  "hl": true
                 }
               ]
             ],
             "head": 1,
-            "caption": "Les carrés de 1 à 6",
-            "alt": "Carrés de 1 à 6 : 1² = 1, 2² = 4, 3² = 9, 4² = 16, 5² = 25, 6² = 36."
+            "caption": "Les carrés de 1 à 5",
+            "alt": "Carrés de 1 à 5 : 1² = 1, 2² = 4, 3² = 9, 4² = 16, 5² = 25."
           },
           {
             "rows": [
               [
                 "n",
+                "6",
                 "7",
                 "8",
                 "9",
-                "10",
-                "11",
-                "12"
+                "10"
               ],
               [
                 {
                   "text": "n²",
+                  "hl": true
+                },
+                {
+                  "text": "36",
                   "hl": true
                 },
                 {
@@ -279,6 +279,27 @@ window.registerPack({
                 {
                   "text": "100",
                   "hl": true
+                }
+              ]
+            ],
+            "head": 1,
+            "caption": "Les carrés de 6 à 10",
+            "alt": "Carrés de 6 à 10 : 6² = 36, 7² = 49, 8² = 64, 9² = 81, 10² = 100."
+          },
+          {
+            "rows": [
+              [
+                "n",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15"
+              ],
+              [
+                {
+                  "text": "n²",
+                  "hl": true
                 },
                 {
                   "text": "121",
@@ -287,12 +308,24 @@ window.registerPack({
                 {
                   "text": "144",
                   "hl": true
+                },
+                {
+                  "text": "169",
+                  "hl": true
+                },
+                {
+                  "text": "196",
+                  "hl": true
+                },
+                {
+                  "text": "225",
+                  "hl": true
                 }
               ]
             ],
             "head": 1,
-            "caption": "Les carrés de 7 à 12",
-            "alt": "Carrés de 7 à 12 : 7² = 49, 8² = 64, 9² = 81, 10² = 100, 11² = 121, 12² = 144."
+            "caption": "Les carrés de 11 à 15",
+            "alt": "Carrés de 11 à 15 : 11² = 121, 12² = 144, 13² = 169, 14² = 196, 15² = 225."
           }
         ]
       },
@@ -319,24 +352,21 @@ window.registerPack({
         },
         {
           "type": "mcq",
-          "prompt": "Que vaut 8² ?",
+          "prompt": "Que vaut 13² ?",
           "options": [
-            "72",
-            "56",
-            "64",
-            "16"
+            "26",
+            "196",
+            "169",
+            "139"
           ],
           "answer": 2,
-          "explanation": "8² = 8 × 8 = **64**. (56 = 7 × 8 et 72 = 8 × 9.)"
+          "explanation": "13² = 13 × 13 = 130 + 39 = **169**. (26, c'est 13 × 2 ; 196, c'est 14².)",
+          "hint": "13 × 10 = 130, puis 13 × 3 = 39."
         },
         {
           "type": "match",
           "prompt": "Relie chaque nombre à son carré.",
           "pairs": [
-            {
-              "left": "6",
-              "right": "36"
-            },
             {
               "left": "7",
               "right": "49"
@@ -350,38 +380,43 @@ window.registerPack({
               "right": "81"
             },
             {
-              "left": "11",
-              "right": "121"
+              "left": "13",
+              "right": "169"
             },
             {
-              "left": "12",
-              "right": "144"
+              "left": "14",
+              "right": "196"
+            },
+            {
+              "left": "15",
+              "right": "225"
             }
           ],
-          "explanation": "Les carrés :\n- 6² = 36\n- 7² = 49\n- 8² = 64\n- 9² = 81\n- 11² = 121\n- 12² = 144"
+          "explanation": "Les carrés :\n- 7² = 49\n- 8² = 64\n- 9² = 81\n- 13² = 169\n- 14² = 196\n- 15² = 225"
         },
         {
           "type": "order",
           "prompt": "Range ces carrés parfaits du plus petit au plus grand.",
           "words": [
-            "16",
-            "25",
-            "36",
-            "49",
-            "64",
-            "81"
+            "100",
+            "121",
+            "144",
+            "169",
+            "196",
+            "225"
           ],
-          "translation": "16 = 4², 25 = 5², 36 = 6², 49 = 7², 64 = 8², 81 = 9².",
-          "explanation": "Les carrés grandissent de plus en plus vite :\n- +9\n- +11\n- +13\n- +15\n- +17\n(des nombres impairs)"
+          "translation": "100 = 10², 121 = 11², 144 = 12², 169 = 13², 196 = 14², 225 = 15².",
+          "explanation": "Les carrés grandissent de plus en plus vite :\n- +21\n- +23\n- +25\n- +27\n- +29\n(des nombres impairs)"
         },
         {
           "type": "fill",
-          "prompt": "De quel nombre 81 est-il le carré ?",
-          "sentence": "81 = ___²",
+          "prompt": "De quel nombre 196 est-il le carré ?",
+          "sentence": "196 = ___²",
           "answers": [
-            "9"
+            "14"
           ],
-          "explanation": "9 × 9 = **81**, donc 81 = **9²**."
+          "explanation": "14 × 14 = 140 + 56 = 196, donc 196 = **14²**.",
+          "hint": "C'est un des trois derniers carrés de la table."
         },
         {
           "type": "fill",
@@ -426,7 +461,7 @@ window.registerPack({
         },
         {
           "type": "fill",
-          "prompt": "Calcule de tête.",
+          "prompt": "Complète la table.",
           "sentence": "15² = ___",
           "answers": [
             "225"
@@ -467,7 +502,7 @@ window.registerPack({
             "1 369"
           ],
           "answer": 2,
-          "explanation": "Un carré parfait ne se termine jamais par **7**. Les trois autres sont des carrés :\n- 37²\n- 36²\n- 35²",
+          "explanation": "Un carré parfait ne se termine jamais par **7**. Les trois autres sont des carrés :\n- 1 296 = 36²\n- 1 225 = 35²\n- 1 369 = 37²",
           "hint": "Regarde seulement le chiffre des unités."
         },
         {
@@ -574,25 +609,19 @@ window.registerPack({
         },
         {
           "type": "spot",
-          "prompt": "Touche le mot faux.",
+          "prompt": "Un nombre se termine par 8. Touche le mot faux.",
           "tokens": [
-            "Un",
-            "nombre",
-            "qui",
-            "se",
-            "termine",
-            "par",
-            "8",
-            "est",
-            "toujours",
+            "Il",
+            "peut",
+            "être",
             "un",
             "carré",
             "parfait",
             "."
           ],
-          "wrongIndex": 8,
-          "correction": "jamais",
-          "explanation": "Un nombre qui se termine par 8 n'est **jamais** un carré parfait."
+          "wrongIndex": 1,
+          "correction": "ne peut pas",
+          "explanation": "Un nombre qui se termine par 8 **ne peut pas** être un carré parfait : un carré ne se termine jamais par 2, 3, 7 ou 8."
         },
         {
           "type": "sort",
@@ -905,7 +934,11 @@ window.registerPack({
           "prompt": "Quelle est l'aire de ce carré, en cm² ?",
           "sentence": "Aire = ___ cm²",
           "answers": [
-            "36"
+            "36",
+            "36 cm²",
+            "36cm²",
+            "36 cm2",
+            "36cm2"
           ],
           "explanation": "6 × 6 = **36 cm²**.",
           "hint": "Aire = côté × côté",
@@ -1004,7 +1037,9 @@ window.registerPack({
           "prompt": "Quelle est la longueur du côté de ce carré, en cm ?",
           "sentence": "Côté = ___ cm",
           "answers": [
-            "7"
+            "7",
+            "7 cm",
+            "7cm"
           ],
           "explanation": "7 × 7 = 49, donc le côté mesure **7 cm**.",
           "hint": "Quel nombre multiplié par lui-même donne 49 ?",
@@ -1204,7 +1239,11 @@ window.registerPack({
           "prompt": "Un carré a un côté de 12 cm. Quelle est son aire ?",
           "sentence": "Aire = ___ cm²",
           "answers": [
-            "144"
+            "144",
+            "144 cm²",
+            "144cm²",
+            "144 cm2",
+            "144cm2"
           ],
           "explanation": "12² = **144 cm²**."
         },
@@ -1271,7 +1310,11 @@ window.registerPack({
           "prompt": "On double le côté d'un carré de 3 cm. Quelle est la nouvelle aire ?",
           "sentence": "Aire = ___ cm²",
           "answers": [
-            "36"
+            "36",
+            "36 cm²",
+            "36cm²",
+            "36 cm2",
+            "36cm2"
           ],
           "explanation": "Le nouveau côté mesure 6 cm : 6² = **36 cm²**, soit **4 fois** l'aire de départ (9 cm²).",
           "hint": "Nouveau côté : 6 cm."
@@ -1287,17 +1330,19 @@ window.registerPack({
       "lesson": {
         "title": "Défaire un carré",
         "points": [
-          "La **racine carrée** d'un nombre positif a, notée **√a**, est le nombre **positif** dont le carré est a.",
-          "√49 = 7, car 7 ≥ 0 et 7² = 49. On ne dit pas −7 : une racine carrée est toujours positive.",
-          "La racine carrée d'un carré parfait est un nombre entier :\n- √1 = 1\n- √4 = 2\n- …\n- √144 = 12",
-          "√ d'un nombre **négatif** n'existe pas : aucun carré n'est négatif.",
-          "L'équation x² = 25 a **deux** solutions : x = 5 ou x = −5. L'équation x² = −4 n'en a **aucune**."
+          "La **racine carrée** d'un nombre positif x, notée **√x**, est le nombre **positif** dont le carré vaut x.",
+          "Pour tout nombre **positif** x : **(√x)² = x**. Le carré de √x « défait » la racine : (√30)² = 30.",
+          "La racine carrée d'un carré parfait est un nombre entier :\n- √1 = 1\n- √4 = 2\n- …\n- √225 = 15",
+          "√ d'un nombre **négatif** n'existe pas : aucun carré n'est négatif."
         ],
         "examples": [
+          "√225 = 15, car 15² = 225 (et pas −15 : une racine carrée est positive)",
           "√9 = 3",
-          "√100 = 10",
+          "√169 = 13",
           "√0 = 0",
-          "(√7)² = 7"
+          "(√7)² = 7",
+          "L'équation x² = 25 a **deux** solutions : x = 5 ou x = −5.",
+          "L'équation x² = −4 n'a **aucune** solution."
         ],
         "tables": [
           {
@@ -1308,8 +1353,7 @@ window.registerPack({
                 "2",
                 "3",
                 "4",
-                "5",
-                "6"
+                "5"
               ],
               [
                 {
@@ -1335,31 +1379,30 @@ window.registerPack({
                 {
                   "text": "25",
                   "hl": true
-                },
-                {
-                  "text": "36",
-                  "hl": true
                 }
               ]
             ],
             "head": 1,
-            "caption": "Les carrés de 1 à 6",
-            "alt": "Carrés de 1 à 6 : 1² = 1, 2² = 4, 3² = 9, 4² = 16, 5² = 25, 6² = 36."
+            "caption": "Les carrés de 1 à 5",
+            "alt": "Carrés de 1 à 5 : 1² = 1, 2² = 4, 3² = 9, 4² = 16, 5² = 25."
           },
           {
             "rows": [
               [
                 "n",
+                "6",
                 "7",
                 "8",
                 "9",
-                "10",
-                "11",
-                "12"
+                "10"
               ],
               [
                 {
                   "text": "n²",
+                  "hl": true
+                },
+                {
+                  "text": "36",
                   "hl": true
                 },
                 {
@@ -1377,6 +1420,27 @@ window.registerPack({
                 {
                   "text": "100",
                   "hl": true
+                }
+              ]
+            ],
+            "head": 1,
+            "caption": "Les carrés de 6 à 10",
+            "alt": "Carrés de 6 à 10 : 6² = 36, 7² = 49, 8² = 64, 9² = 81, 10² = 100."
+          },
+          {
+            "rows": [
+              [
+                "n",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15"
+              ],
+              [
+                {
+                  "text": "n²",
+                  "hl": true
                 },
                 {
                   "text": "121",
@@ -1385,12 +1449,24 @@ window.registerPack({
                 {
                   "text": "144",
                   "hl": true
+                },
+                {
+                  "text": "169",
+                  "hl": true
+                },
+                {
+                  "text": "196",
+                  "hl": true
+                },
+                {
+                  "text": "225",
+                  "hl": true
                 }
               ]
             ],
             "head": 1,
-            "caption": "Les carrés de 7 à 12",
-            "alt": "Carrés de 7 à 12 : 7² = 49, 8² = 64, 9² = 81, 10² = 100, 11² = 121, 12² = 144."
+            "caption": "Les carrés de 11 à 15",
+            "alt": "Carrés de 11 à 15 : 11² = 121, 12² = 144, 13² = 169, 14² = 196, 15² = 225."
           }
         ]
       },
@@ -1446,11 +1522,11 @@ window.registerPack({
               "right": "12"
             },
             {
-              "left": "√1",
-              "right": "1"
+              "left": "√196",
+              "right": "14"
             }
           ],
-          "explanation": "Les racines :\n- √4 = 2\n- √25 = 5\n- √81 = 9\n- √144 = 12\n- √1 = 1"
+          "explanation": "Les racines :\n- √4 = 2 (car 2² = 4)\n- √25 = 5 (car 5² = 25)\n- √81 = 9 (car 9² = 81)\n- √144 = 12 (car 12² = 144)\n- √196 = 14 (car 14² = 196)"
         },
         {
           "type": "mcq",
@@ -1481,9 +1557,7 @@ window.registerPack({
           "prompt": "Résous l'équation x² = 16.",
           "sentence": "x = 4 ou x = ___",
           "answers": [
-            "-4",
-            "−4",
-            "–4"
+            "-4"
           ],
           "explanation": "4² = 16 et (−4)² = 16 : les solutions sont **4 et −4**.",
           "hint": "Il y a une solution positive et une négative."
@@ -1509,6 +1583,19 @@ window.registerPack({
           ],
           "explanation": "Par définition, le carré de √13 est **13**.",
           "hint": "√13 est le nombre dont le carré est 13."
+        },
+        {
+          "type": "mcq",
+          "prompt": "Que vaut (√20)² ?",
+          "options": [
+            "400",
+            "√20",
+            "10",
+            "20"
+          ],
+          "answer": 3,
+          "explanation": "Pour x positif, (√x)² = x : (√20)² = **20**. (400, c'est 20² ; 10, c'est 20 ÷ 2.)",
+          "hint": "Le carré « défait » la racine carrée."
         }
       ]
     },
@@ -1524,7 +1611,7 @@ window.registerPack({
           "√50 n'est pas un nombre entier, car 50 n'est pas un carré parfait.",
           "On l'**encadre** entre deux carrés parfaits qui se suivent : 49 < 50 < 64, donc **7 < √50 < 8**.",
           "50 est tout près de 49 : √50 est tout près de 7 (√50 ≈ 7,07).",
-          "Méthode :\n- 1. chercher le carré parfait juste en dessous et juste au-dessus\n- 2. prendre leurs racines"
+          "Méthode :\n1. chercher le carré parfait juste en dessous et juste au-dessus\n2. prendre leurs racines"
         ],
         "examples": [
           "9 < 10 < 16, donc 3 < √10 < 4",
@@ -1646,14 +1733,17 @@ window.registerPack({
             "est",
             "compris",
             "entre",
-            "4",
+            "les",
+            "entiers",
+            "consécutifs",
+            "5",
             "et",
-            "6",
+            "7",
             "."
           ],
-          "wrongIndex": 4,
-          "correction": "5",
-          "explanation": "25 < 30 < 36, donc √30 est entre **5** et 6."
+          "wrongIndex": 9,
+          "correction": "6",
+          "explanation": "25 < 30 < 36, donc √30 est entre 5 et **6** (7² = 49, c'est trop grand)."
         },
         {
           "type": "mcq",
@@ -1670,16 +1760,211 @@ window.registerPack({
       ]
     },
     {
+      "id": 9,
+      "title": "Arrondir au dixième",
+      "subtitle": "Encadrer, puis lire la calculatrice",
+      "icon": "🎯",
+      "color": "#0D9488",
+      "lesson": {
+        "title": "Une valeur approchée de √x",
+        "points": [
+          "Si x n'est **pas** un carré parfait, √x n'est pas un nombre entier. On donne alors une **valeur arrondie**.",
+          "Méthode du cours, pour √30 :\n1. 30 n'est pas un carré parfait : on **encadre** √30 entre deux entiers consécutifs. 25 < 30 < 36, donc **5 < √30 < 6**.\n2. On lit la **calculatrice** : √30 = 5,477225575…\n3. On **arrondit au dixième** : √30 ≈ **5,5** (le signe ≈ se lit « environ égal à »).",
+          "Arrondir au dixième, c'est garder **un seul** chiffre après la virgule. On regarde le chiffre d'après, celui des **centièmes** :\n- 0, 1, 2, 3 ou 4 : on garde le chiffre des dixièmes\n- 5, 6, 7, 8 ou 9 : on ajoute 1 au chiffre des dixièmes (on arrondit **au-dessus**)",
+          "Contrôle : l'arrondi est entre les deux entiers de l'encadrement, ou égal à l'un d'eux (5 < 5,5 < 6)."
+        ],
+        "examples": [
+          "√30 = 5,477… : le chiffre des centièmes est 7, on arrondit au-dessus → √30 ≈ 5,5",
+          "√20 = 4,472135955 ≈ 4,5",
+          "√50 = 7,071067812 ≈ 7,1",
+          "√12 = 3,464101615 ≈ 3,5"
+        ]
+      },
+      "exercises": [
+        {
+          "type": "fill",
+          "prompt": "La calculatrice affiche √12 = 3,464101615. Arrondis au dixième.",
+          "sentence": "√12 ≈ ___",
+          "answers": [
+            "3,5",
+            "3.5"
+          ],
+          "explanation": "Le chiffre des centièmes est 6 : on arrondit au-dessus. √12 ≈ **3,5**.",
+          "hint": "Regarde le 2e chiffre après la virgule."
+        },
+        {
+          "type": "mcq",
+          "prompt": "La calculatrice affiche √20 = 4,472135955. Quel est l'arrondi au dixième ?",
+          "options": [
+            "4,4",
+            "4,5",
+            "4,47",
+            "5"
+          ],
+          "answer": 1,
+          "explanation": "Le chiffre des centièmes est 7 : on arrondit au-dessus, √20 ≈ **4,5**. (4,47 est l'arrondi au centième ; 4,4 oublie d'arrondir.)"
+        },
+        {
+          "type": "mcq",
+          "prompt": "On cherche √60. Quel encadrement écrit-on avant de prendre la calculatrice ?",
+          "options": [
+            "30 < √60 < 31",
+            "6 < √60 < 7",
+            "7 < √60 < 8",
+            "8 < √60 < 9"
+          ],
+          "answer": 2,
+          "explanation": "49 < 60 < 64, donc **7 < √60 < 8**. (30, c'est 60 ÷ 2.)",
+          "hint": "Quels carrés parfaits entourent 60 ?"
+        },
+        {
+          "type": "fill",
+          "prompt": "Encadre √45 entre deux entiers consécutifs.",
+          "sentence": "___ < √45 < 7",
+          "answers": [
+            "6"
+          ],
+          "explanation": "36 < 45 < 49, donc **6** < √45 < 7. La calculatrice confirme : √45 = 6,708203932."
+        },
+        {
+          "type": "sort",
+          "prompt": "Pour arrondir au dixième, on garde le chiffre des dixièmes ou on arrondit au-dessus ?",
+          "categories": [
+            {
+              "id": "garde",
+              "label": "Je garde le dixième"
+            },
+            {
+              "id": "dessus",
+              "label": "J'arrondis au-dessus"
+            }
+          ],
+          "items": [
+            {
+              "text": "√2 = 1,414213562",
+              "cat": "garde"
+            },
+            {
+              "text": "√10 = 3,16227766",
+              "cat": "dessus"
+            },
+            {
+              "text": "√3 = 1,732050808",
+              "cat": "garde"
+            },
+            {
+              "text": "√15 = 3,872983346",
+              "cat": "dessus"
+            },
+            {
+              "text": "√5 = 2,236067977",
+              "cat": "garde"
+            },
+            {
+              "text": "√19 = 4,358898944",
+              "cat": "dessus"
+            },
+            {
+              "text": "√6 = 2,449489743",
+              "cat": "garde"
+            },
+            {
+              "text": "√21 = 4,582575695",
+              "cat": "dessus"
+            }
+          ],
+          "explanation": "On regarde le chiffre des centièmes :\n- √2 : 1 → 1,4\n- √3 : 3 → 1,7\n- √5 : 3 → 2,2\n- √6 : 4 → 2,4\n- √10 : 6 → 3,2\n- √15 : 7 → 3,9\n- √19 : 5 → 4,4\n- √21 : 8 → 4,6"
+        },
+        {
+          "type": "spot",
+          "prompt": "Touche le nombre faux (arrondi au dixième).",
+          "tokens": [
+            "√50",
+            "=",
+            "7,071067812",
+            "donc",
+            "√50",
+            "≈",
+            "7,0"
+          ],
+          "wrongIndex": 6,
+          "correction": "7,1",
+          "explanation": "Le chiffre des centièmes est 7 : on arrondit au-dessus, √50 ≈ **7,1**."
+        },
+        {
+          "type": "match",
+          "prompt": "Relie chaque affichage de la calculatrice à son arrondi au dixième.",
+          "pairs": [
+            {
+              "left": "√5 = 2,236067977",
+              "right": "2,2"
+            },
+            {
+              "left": "√15 = 3,872983346",
+              "right": "3,9"
+            },
+            {
+              "left": "√46 = 6,782329983",
+              "right": "6,8"
+            },
+            {
+              "left": "√70 = 8,366600265",
+              "right": "8,4"
+            }
+          ],
+          "explanation": "On regarde le chiffre des centièmes :\n- √5 ≈ 2,2 (centièmes : 3)\n- √15 ≈ 3,9 (centièmes : 7)\n- √46 ≈ 6,8 (centièmes : 8)\n- √70 ≈ 8,4 (centièmes : 6)"
+        },
+        {
+          "type": "order",
+          "prompt": "Range du plus petit au plus grand.",
+          "words": [
+            "5",
+            "√30",
+            "5,5",
+            "6"
+          ],
+          "translation": "5 < √30 < 5,5 < 6 (√30 = 5,477225575)",
+          "explanation": "√30 = 5,477… est un peu **plus petit** que son arrondi 5,5, et reste entre 5 et 6."
+        },
+        {
+          "type": "mcq",
+          "prompt": "Pour arrondir au dixième, quel chiffre regarde-t-on pour décider ?",
+          "options": [
+            "Le chiffre des unités",
+            "Le chiffre des centièmes",
+            "Le chiffre des dixièmes",
+            "Le dernier chiffre affiché"
+          ],
+          "answer": 1,
+          "explanation": "On garde le chiffre des dixièmes, et c'est le chiffre **des centièmes** (juste après) qui décide : 5 ou plus, on arrondit au-dessus."
+        },
+        {
+          "type": "fill",
+          "prompt": "Un carré a une aire de 90 cm². La calculatrice affiche √90 = 9,486832981. Donne son côté arrondi au dixième.",
+          "sentence": "Côté ≈ ___ cm",
+          "answers": [
+            "9,5",
+            "9.5",
+            "9,5 cm",
+            "9,5cm",
+            "9.5 cm",
+            "9.5cm"
+          ],
+          "explanation": "Côté = √90. Le chiffre des centièmes est 8 : côté ≈ **9,5 cm** (et 9 < √90 < 10)."
+        }
+      ]
+    },
+    {
       "id": 8,
       "title": "Le grand défi des carrés",
-      "subtitle": "Tout le chapitre, sans calculatrice",
+      "subtitle": "Tout le chapitre",
       "icon": "🏆",
       "color": "#B45309",
       "lesson": {
         "title": "Prêt pour le contrôle ?",
         "points": [
           "Avec ce que tu as appris, réponds correctement aux questions ci-dessous.",
-          "Sans calculatrice. Écris seulement le **nombre** (l'unité est acceptée). Un seul essai par question : vérifie ton calcul.",
+          "Sans calculatrice : quand il en faut une, son affichage est donné. Écris seulement le **nombre** (l'unité est acceptée). Un seul essai par question : vérifie ton calcul.",
           "Rappel : n² = n × n, et **pas** n × 2."
         ]
       },
@@ -1916,35 +2201,11 @@ window.registerPack({
         },
         {
           "type": "question",
-          "prompt": "Calcule **7²**.",
-          "answers": [
-            "49"
-          ],
-          "explanation": "7² = 7 × 7 = **49** (et non 7 × 2 = 14)."
-        },
-        {
-          "type": "question",
           "prompt": "Calcule **14²**.",
           "answers": [
             "196"
           ],
           "explanation": "14² = 14 × 14 = 140 + 56 = **196**."
-        },
-        {
-          "type": "question",
-          "prompt": "Calcule **20²**.",
-          "answers": [
-            "400"
-          ],
-          "explanation": "20² = 20 × 20 = **400**."
-        },
-        {
-          "type": "question",
-          "prompt": "Calcule **√64**.",
-          "answers": [
-            "8"
-          ],
-          "explanation": "8² = 64 et 8 est positif : √64 = **8**."
         },
         {
           "type": "question",
@@ -1961,14 +2222,6 @@ window.registerPack({
             "−16"
           ],
           "explanation": "Sans parenthèses, le carré ne concerne que le 4 : −4² = −(4 × 4) = **−16**."
-        },
-        {
-          "type": "question",
-          "prompt": "Calcule **0,4²**.",
-          "answers": [
-            "0,16"
-          ],
-          "explanation": "4 × 4 = 16, et deux chiffres après la virgule : 0,4² = **0,16**."
         },
         {
           "type": "question",
@@ -2106,7 +2359,9 @@ window.registerPack({
             "aucune",
             "zéro",
             "aucune solution",
-            "0 solution"
+            "0 solution",
+            "zero",
+            "pas de solution"
           ],
           "explanation": "Un carré n'est jamais négatif : l'équation n'a **aucune** solution."
         },
@@ -2118,6 +2373,40 @@ window.registerPack({
             "x = −6"
           ],
           "explanation": "6² = 36 et (−6)² = 36 ; la solution négative est **−6**."
+        },
+        {
+          "type": "question",
+          "prompt": "Calcule **√225**.",
+          "answers": [
+            "15"
+          ],
+          "explanation": "15² = 225 et 15 est positif : √225 = **15**."
+        },
+        {
+          "type": "question",
+          "prompt": "Calcule **(√45)²**.",
+          "answers": [
+            "45"
+          ],
+          "explanation": "Pour x positif, (√x)² = x : (√45)² = **45**."
+        },
+        {
+          "type": "question",
+          "prompt": "La calculatrice affiche √40 = 6,32455532. Arrondis **√40** au dixième.",
+          "answers": [
+            "6,3",
+            "√40 ≈ 6,3"
+          ],
+          "explanation": "Le chiffre des centièmes est 2 : on garde le dixième, √40 ≈ **6,3**."
+        },
+        {
+          "type": "question",
+          "prompt": "La calculatrice affiche √75 = 8,660254038. Arrondis **√75** au dixième.",
+          "answers": [
+            "8,7",
+            "√75 ≈ 8,7"
+          ],
+          "explanation": "Le chiffre des centièmes est 6 : on arrondit au-dessus, √75 ≈ **8,7**."
         }
       ]
     }
