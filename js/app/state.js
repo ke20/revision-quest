@@ -19,7 +19,19 @@ export const S = {
   catAllGrades: false
 };
 
-/* Ghost mode (?fantome in the URL, for whoever writes or checks a pack): every world of every chapter is open,
+/* Developer mode: only on the local server started with DEV_MODE=true (js/core/dev.js), never on the published site. */
+export const DEV = window.DEV_MODE === true;
+
+/* Ghost mode (developer mode only, for whoever writes or checks a pack): every world of every chapter is open,
    and "C'est parti" opens a free walk through the exercises with their answers shown. Nothing is saved (no XP,
-   no stars, no hearts) and nothing in the interface leads to it, so it cannot be found while playing. */
-export const GHOST = /[?&]fantome(=[^&]*)?(&|$)/.test(location.search || "");
+   no stars, no hearts). Switched on and off by the 👻 button of the map; kept in this browser (localStorage). */
+const GHOST_KEY = "revisionQuest.ghost";
+/** @returns {boolean} */
+export function isGhost() {
+  if (!DEV) return false;
+  try { return localStorage.getItem(GHOST_KEY) === "1"; } catch (e) { return false; }
+}
+/** @param {boolean} on */
+export function setGhost(on) {
+  try { if (on) localStorage.setItem(GHOST_KEY, "1"); else localStorage.removeItem(GHOST_KEY); } catch (e) { /* ignore */ }
+}

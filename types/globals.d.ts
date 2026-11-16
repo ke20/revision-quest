@@ -10,6 +10,8 @@ interface AppConfig {
 
 interface Window {
   APP_CONFIG?: AppConfig;
+  /** js/core/dev.js: true only on the local server started with DEV_MODE=true */
+  DEV_MODE?: boolean;
   /** js/app/main.js (used by the end-to-end tests) */
   App: unknown;
   Exercises: ExercisesApi;

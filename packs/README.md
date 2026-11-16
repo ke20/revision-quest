@@ -34,6 +34,8 @@ Chaque pack est **un seul fichier** `packs/<niveau>/<matiere>/<cours>.js`, charg
    (par exemple téléchargé) se met en place avec `mise run pack:add <fichier.js>`, qui le vérifie avant de le copier.
 2. Vérifier : `mise run validate` (ou `node tools/validate-pack.js packs/<niveau>/<matiere>/<cours>.js`).
 3. Tester dans le navigateur : `mise run dev` (ou `npm start`) → « Choisir un chapitre ».
+   Pour relire tout un chapitre : `DEV_MODE=true` dans `.env.local` (hors git ; ou `DEV_MODE=true mise run dev`), puis le bouton 👻 sur la carte (mode fantôme : tous
+   les mondes ouverts, chaque exercice avec sa réponse attendue, rien n'est enregistré). Jamais sur le site en ligne.
 
 ## 1. Le fichier du pack
 

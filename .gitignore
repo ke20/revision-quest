@@ -5,6 +5,8 @@ blob-report/
 .DS_Store
 *.save
 .env*
+# .env holds the shared defaults (no secrets); .env.local, for this computer only, stays out of git
+!.env
 
 # Local notes and plans (specs/TODO.md, specs/PLAN.md, specs/<projet>/*.md)
 specs/

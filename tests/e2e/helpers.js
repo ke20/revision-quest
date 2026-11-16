@@ -76,6 +76,12 @@ const TEST_PACKS = {
 const HISTORY = TEST_PACKS.history.entry.path;
 /** opts: { sample = true, history = false, entry(e) → e (edit a catalogue entry), body(path, src) → src (edit a pack file) }.
     Can be called again on the same page: the newest routes win. */
+/** Developer mode (js/core/dev.js) as the local server serves it with DEV_MODE=true, or forced off. */
+async function withDevMode(page, on = true) {
+  await page.route("**/js/core/dev.js", (route) => route.fulfill({ status: 200, contentType: "text/javascript",
+    body: "window.DEV_MODE = " + !!on + ";\n" }));
+}
+
 async function withTestPacks(page, { sample = true, history = false, entry = (e) => e, body = (p, src) => src } = {}) {
   const used = [history && TEST_PACKS.history, sample && TEST_PACKS.sample].filter(Boolean);
   const inject = used.map((t) => JSON.stringify(entry({ ...t.entry })) + ",\n").join("");
@@ -220,4 +226,4 @@ async function edAct(page, act) {
   await page.click(`[data-act=${act}]`);
 }
 
-module.exports = { edAct, BASE, EN, SAMPLE, HISTORY, ROOT, makeReporter, wait, tap, settle, hscroll, shot, cookie, fixture, editPack, findExercise, withTestPacks, newPlayer, closeModals, gotoPack, mapSettled, openLesson, startWorld, curEx, solve, playWorld, hash, saveFile };
+module.exports = { withDevMode, edAct, BASE, EN, SAMPLE, HISTORY, ROOT, makeReporter, wait, tap, settle, hscroll, shot, cookie, fixture, editPack, findExercise, withTestPacks, newPlayer, closeModals, gotoPack, mapSettled, openLesson, startWorld, curEx, solve, playWorld, hash, saveFile };

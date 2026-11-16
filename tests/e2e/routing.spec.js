@@ -67,7 +67,10 @@ test("routing: a link to a locked world shows the map; the back button still wor
   await page.goBack();
   await expect(page.locator(".screen.map")).toBeVisible();
 
-  await page.goto(H.BASE + "?fantome#/chapitre/" + H.SAMPLE + "/monde/3/exercice/2");
+  await H.withDevMode(page);
+  await page.evaluate(() => localStorage.setItem("revisionQuest.ghost", "1"));
+  await page.goto("about:blank"); // a new load: developer mode is read when the page loads
+  await page.goto(H.BASE + "#/chapitre/" + H.SAMPLE + "/monde/3/exercice/2");
   await page.reload();
   await expect(page.locator(".screen.ghost")).toBeVisible();
   await expect(page.locator(".ghost-tag")).toContainText("2 /");

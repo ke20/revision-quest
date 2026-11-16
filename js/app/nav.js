@@ -1,7 +1,7 @@
 // @ts-check
 /* Révision Quest — Routing (the address follows the screen) and the in-app history (back button). */
 import { S } from "./state.js";
-import { GHOST } from "./state.js";
+import { isGhost } from "./state.js";
 import { showBadges } from "./screens/badges.js";
 import { openPack, showCatalog, showGroups } from "./screens/catalog.js";
 import { showGhost } from "./screens/ghost.js";
@@ -54,9 +54,10 @@ export function goRoute(r) {
   openPack(r.id, function () {
     var w = r.world != null ? S.data.worlds[r.world] : null;
     if (!w) return showMap();
-    if (!GHOST && !Engine.isUnlocked(w.id)) { showMap(); toast(T("locked", Engine.starsToUnlock())); return; }
-    if (GHOST && r.ex != null) return showGhost(w, r.ex);
-    var saved = r.play && !GHOST ? takeRun(w) : null;
+    var ghost = isGhost();
+    if (!ghost && !Engine.isUnlocked(w.id)) { showMap(); toast(T("locked", Engine.starsToUnlock())); return; }
+    if (ghost && r.ex != null) return showGhost(w, r.ex);
+    var saved = r.play && !ghost ? takeRun(w) : null;
     if (saved) return startWorld(w, saved);
     showLesson(w);
   });

@@ -32,7 +32,7 @@ module.exports = defineConfig({
   webServer: {
     command: "node tests/server.js",
     url: BASE_URL,
-    env: { PORT: String(PORT) },
+    env: { PORT: String(PORT), DEV_MODE: "false" }, // as on the published site, whatever .env.local says
     reuseExistingServer: !process.env.CI,
     timeout: 30000
   }

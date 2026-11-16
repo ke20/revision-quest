@@ -12,6 +12,20 @@ const path = require("path");
 const { buildCatalog, formatCatalog } = require("../tools/catalog.js");
 
 const ROOT = path.resolve(__dirname, "..");
+
+/* Settings of the local server: .env (in git, the defaults), then .env.local (not in git, this computer only)
+   overrides it, and a variable already set in the environment wins over both (DEV_MODE=true mise run dev).
+   Lines KEY=value; empty lines and # comments ignored; quotes around the value removed. */
+const FROM_ENV = new Set(Object.keys(process.env));
+for (const name of [".env", ".env.local"]) {
+  let text;
+  try { text = fs.readFileSync(path.join(ROOT, name), "utf8"); } catch (e) { continue; }
+  for (const line of text.split(/\r?\n/)) {
+    const m = /^\s*(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/.exec(line);
+    if (!m || FROM_ENV.has(m[1])) continue;
+    process.env[m[1]] = m[2].replace(/^(["'])(.*)\1$/, "$2");
+  }
+}
 const PORT = Number(process.env.PORT) || 4173;
 const HOST = process.env.HOST || "127.0.0.1";
 /** @type {Record<string, string>} */
@@ -47,6 +61,11 @@ const server = http.createServer((req, res) => {
     const { catalog, errors } = buildCatalog(ROOT);
     errors.forEach((e) => console.error("catalogue : " + e));
     return send(res, 200, req.method === "HEAD" ? "" : formatCatalog(catalog), TYPES[".js"]);
+  }
+  // developer mode (js/core/dev.js): false in the file, true here when the server runs with DEV_MODE=true
+  if (rel === "js/core/dev.js" && process.env.DEV_MODE === "true") {
+    const src = fs.readFileSync(file, "utf8").replace("window.DEV_MODE = false;", "window.DEV_MODE = true;");
+    return send(res, 200, req.method === "HEAD" ? "" : src, TYPES[".js"]);
   }
   fs.stat(file, (err, st) => {
     if (err || !st.isFile()) return send(res, 404, "Not Found");

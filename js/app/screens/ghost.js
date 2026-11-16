@@ -1,5 +1,5 @@
 // @ts-check
-/* Révision Quest — Ghost mode (?fantome): free walk through a world's exercises, answers shown. */
+/* Révision Quest — Ghost mode (developer mode, see state.js): free walk through a world's exercises, answers shown. */
 import { S } from "../state.js";
 import { showMap } from "./map.js";
 import { route, setNav, worldPath } from "../nav.js";

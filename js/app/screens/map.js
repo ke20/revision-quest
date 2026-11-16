@@ -1,7 +1,7 @@
 // @ts-check
 /* Révision Quest — World map of the current pack, and the lesson of a world. */
 import { S } from "../state.js";
-import { GHOST } from "../state.js";
+import { DEV, isGhost, setGhost } from "../state.js";
 import { backFromPack, showCatalog } from "./catalog.js";
 import { scrollBehavior } from "../ui/comfort.js";
 import { showGhost } from "./ghost.js";
@@ -20,9 +20,9 @@ export function showMap() {
   var back = backFromPack(S.pack);
   route("chapitre/" + S.pack.id);
   setNav(back, showMap);
-  var cur = Engine.currentWorldId();
+  var cur = Engine.currentWorldId(), ghost = isGhost();
   var nodes = S.data.worlds.map(function (w, i) {
-    var p = Engine.worldProgress(w.id), unlocked = GHOST || Engine.isUnlocked(w.id);
+    var p = Engine.worldProgress(w.id), unlocked = ghost || Engine.isUnlocked(w.id);
     return '<div class="map-node ' + (unlocked ? "" : "locked ") + (p.stars ? "done " : "") + (w.id === cur ? "current" : "") +
       '" style="--c:' + safeColor(w.color) + '" data-i="' + i + '">' +
       (w.id === cur ? '<div class="here">' + T("here") + "</div>" : "") +
@@ -37,7 +37,9 @@ export function showMap() {
   }).join("");
   var node = h('<section class="screen map">' +
     '<header class="screen-head"><button class="btn-icon" data-act="back" aria-label="Chapitres">←</button>' +
-    "<h2>" + T("mapTitle") + '</h2><span class="head-right">⭐ ' + Engine.totalStars(S.pack.id) + "/" + S.data.worlds.length * Engine.MAX_STARS + "</span></header>" +
+    "<h2>" + T("mapTitle") + "</h2>" +
+    (DEV ? '<button class="btn-icon ghost-toggle" data-act="ghost" aria-pressed="' + ghost + '" aria-label="Mode fantôme" title="Mode fantôme">👻</button>' : "") +
+    '<span class="head-right">⭐ ' + Engine.totalStars(S.pack.id) + "/" + S.data.worlds.length * Engine.MAX_STARS + "</span></header>" +
     '<p class="map-pack"><span>' + E(S.pack.icon) + "</span> " + E(S.pack.title) + "</p>" +
     trophyLineHtml(Engine.trophy(S.pack.id)) +
     (Engine.needsReview(S.pack.id) ? '<p class="map-review">' + T("reviewTag") + "</p>" : "") +
@@ -46,6 +48,10 @@ export function showMap() {
       ? '<div class="map-foot"><button class="btn btn-white btn-small" data-act="reset-pack">↺ Recommencer ce chapitre</button></div>' : "") +
     "</section>");
   on(node, "back", function () { Sound.tap(); back(); });
+  on(node, "ghost", function () {
+    Sound.tap(); setGhost(!ghost); showMap();
+    toast(ghost ? "Mode fantôme désactivé" : "👻 Mode fantôme : tous les mondes ouverts, réponses affichées, rien n'est enregistré");
+  });
   on(node, "reset-pack", function () {
     Sound.tap();
     typedConfirmBox("Recommencer « " + E(S.pack.title) + " »\u00A0?",
@@ -56,7 +62,7 @@ export function showMap() {
     qs(n, ".node-btn").onclick = function () {
       var w = S.data.worlds[+must(n.getAttribute("data-i"))];
       if (!w) return;
-      if (!GHOST && !Engine.isUnlocked(w.id)) {
+      if (!ghost && !Engine.isUnlocked(w.id)) {
         Sound.wrong();
         n.classList.remove("shake"); void n.offsetWidth; n.classList.add("shake");
         toast(T("locked", Engine.starsToUnlock()));
@@ -153,6 +159,6 @@ export function showLesson(w) {
     try { figBox.appendChild(window.Figures.buildTable(t)); } catch (e) { console.error("Table failed", e); }
   });
   on(node, "back", showMap);
-  on(node, "go", function () { Sound.unlock(); Sound.tap(); if (GHOST) showGhost(w, 0); else startWorld(w); });
+  on(node, "go", function () { Sound.unlock(); Sound.tap(); if (isGhost()) showGhost(w, 0); else startWorld(w); });
   show(node);
 }
