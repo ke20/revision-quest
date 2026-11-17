@@ -223,7 +223,6 @@
     svg.setAttribute("class", "fig-svg");
     svg.setAttribute("role", "img");
     svg.setAttribute("aria-label", L.alt || L.caption || "Figure");
-    svg.style.maxWidth = Math.round(vw * 32) + "px";
     /** @param {string} tag @param {Record<string, string | number>} attrs */
     function node(tag, attrs) {
       var e = /** @type {Document} */ (doc).createElementNS(NS, tag); // doc is set above
@@ -242,13 +241,86 @@
       else if (s.kind === "path") node("path", { d: s.d, "class": s.cls });
       else if (s.kind === "text") node("text", { x: s.x, y: s.y, "text-anchor": s.anchor, "class": s.cls }).textContent = s.text;
     });
-    wrap.appendChild(svg);
+    // A tap on the figure (or its 🔍 button) shows it full screen: small labels become easy to read.
+    var box = doc.createElement("div");
+    box.className = "fig-box";
+    box.style.maxWidth = Math.round(vw * 32) + "px";
+    box.appendChild(svg);
+    var zoom = doc.createElement("button");
+    zoom.type = "button";
+    zoom.className = "fig-zoom-btn";
+    zoom.setAttribute("aria-label", "Agrandir le schéma");
+    zoom.textContent = "🔍";
+    box.appendChild(zoom);
+    wrap.appendChild(box);
     if (L.caption) {
       var cap = doc.createElement("figcaption");
       cap.textContent = L.caption;
       wrap.appendChild(cap);
     }
+    var open = function () { openZoom(svg, L.caption, L.alt || L.caption || "Figure", zoom, vw / vh); };
+    svg.addEventListener("click", open);
+    zoom.addEventListener("click", open);
     return wrap;
+  }
+
+  /** @type {(() => void) | null} */
+  var closeZoom = null;
+
+  /**
+   * Full-screen copy of a figure, over everything; a tap, Escape, the ✕ button or a navigation closes it.
+   * A wide figure on a portrait screen is turned a quarter turn (CSS): it then uses the height of the screen.
+   * @param {SVGSVGElement} svg @param {string} caption @param {string} label @param {HTMLElement} back focus target on close
+   * @param {number} ratio width / height of the figure
+   */
+  function openZoom(svg, caption, label, back, ratio) {
+    if (closeZoom) closeZoom();
+    var doc = svg.ownerDocument;
+    var layer = doc.createElement("div");
+    layer.className = "fig-zoom" + (ratio > 1.2 ? " fig-zoom-wide" : "") + (caption ? " has-cap" : "");
+    layer.style.setProperty("--ar", String(round(ratio)));
+    // the layer sits in <body>: keep the world colour of the figure (highlighted segments)
+    var win0 = doc.defaultView;
+    var c = win0 ? win0.getComputedStyle(svg).getPropertyValue("--c").trim() : "";
+    if (c) layer.style.setProperty("--c", c);
+    layer.setAttribute("role", "dialog");
+    layer.setAttribute("aria-modal", "true");
+    layer.setAttribute("aria-label", label);
+    var close = doc.createElement("button");
+    close.type = "button";
+    close.className = "fig-zoom-close";
+    close.setAttribute("aria-label", "Fermer");
+    close.textContent = "✕";
+    var big = /** @type {SVGSVGElement} */ (svg.cloneNode(true));
+    big.setAttribute("class", "fig-svg fig-svg-big");
+    var body = doc.createElement("div");
+    body.className = "fig-zoom-body";
+    body.appendChild(big);
+    if (caption) {
+      var cap = doc.createElement("p");
+      cap.className = "fig-zoom-caption";
+      cap.textContent = caption;
+      body.appendChild(cap);
+    }
+    layer.appendChild(close);
+    layer.appendChild(body);
+    var win = doc.defaultView;
+    /** @param {KeyboardEvent} e */
+    function onKey(e) { if (e.key === "Escape") { e.stopPropagation(); done(); } }
+    function done() {
+      if (closeZoom !== done) return;
+      closeZoom = null;
+      doc.removeEventListener("keydown", onKey, true);
+      if (win) { win.removeEventListener("popstate", done); win.removeEventListener("hashchange", done); }
+      layer.remove();
+      try { back.focus({ preventScroll: true }); } catch (e) { /* the opener may be gone */ }
+    }
+    closeZoom = done;
+    layer.addEventListener("click", done);
+    doc.addEventListener("keydown", onKey, true);
+    if (win) { win.addEventListener("popstate", done); win.addEventListener("hashchange", done); }
+    /** @type {HTMLElement} */ (doc.body).appendChild(layer);
+    try { close.focus({ preventScroll: true }); } catch (e) { /* */ }
   }
 
   /* ---------- tables (conversion tables, place-value tables…) ----------

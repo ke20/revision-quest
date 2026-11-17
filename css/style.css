@@ -211,8 +211,25 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
 .fig-label { font-size: .62px; font-weight: 600; fill: var(--ink); font-family: inherit; }
 .fig-name { font-style: italic; fill: color-mix(in srgb, var(--c) 70%, #000); }
 .fig-small { font-size: .5px; fill: var(--ink-soft); }
+.fig-box { position: relative; width: 100%; display: flex; justify-content: center; }
+.fig-svg { cursor: zoom-in; }
+.fig-zoom-btn { position: absolute; right: 6px; bottom: 6px; width: 36px; height: 36px; border: 2px solid #EEE7F8; border-radius: 50%; background: #fff; font-size: 1rem; line-height: 1; cursor: zoom-in; display: grid; place-items: center; padding: 0; }
+.fig-zoom-btn:hover { background: #F5F0FC; }
+.fig-zoom { position: fixed; inset: 0; z-index: 60; overflow: hidden; background: rgba(30, 10, 50, .75); display: flex; align-items: center; justify-content: center; padding: 12px 8px calc(12px + env(safe-area-inset-bottom)); animation: fade .2s ease; cursor: zoom-out; --room: 32px; }
+.fig-zoom.has-cap { --room: 76px; }
+/* --ar = width / height of the figure: the box hugs the drawing, as big as the screen allows */
+.fig-zoom-body { width: min(100%, 1100px, calc((100dvh - var(--room)) * var(--ar, 1.6))); display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0; }
+.fig-zoom .fig-svg-big { width: 100%; max-height: calc(100dvh - var(--room)); cursor: zoom-out; }
+.fig-zoom-caption { margin: 0; color: #fff; font-weight: 700; text-align: center; font-size: 1.05rem; max-width: 720px; }
+/* a wide figure on a portrait screen: a quarter turn, so it takes the height of the screen (turn the phone to read it) */
+@media (orientation: portrait) {
+  .fig-zoom-wide .fig-zoom-body { width: min(calc(100dvh - 24px), calc((100vw - var(--room)) * var(--ar, 1.6))); transform: rotate(90deg); }
+  .fig-zoom-wide .fig-svg-big { max-height: calc(100vw - var(--room)); }
+}
+.fig-zoom-close { position: absolute; z-index: 1; top: 8px; right: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, .25); width: 44px; height: 44px; border: 0; border-radius: 50%; background: #fff; font-size: 1.3rem; font-weight: 700; cursor: pointer; }
 .lesson-figs { margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
-.lesson-figs .fig-svg { max-height: 150px; }
+.lesson-figs .fig-svg { max-height: 240px; }
+.lesson-figs:has(> .fig + .fig) .fig-svg { max-height: 150px; }
 .lesson-figs .fig-table { grid-column: 1 / -1; }
 /* tables (conversion tables…): drawn from pack data by js/exercises/figures.js (buildTable) */
 .conv-table { width: 100%; border-collapse: collapse; table-layout: fixed; background: #fff; border: 2px solid var(--ink); font-size: .85rem; font-weight: 700; }

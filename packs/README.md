@@ -328,6 +328,8 @@ figure: {
 Le validateur vérifie les noms, les coordonnées (dans la figure), les points cités et les champs inconnus.
 Pour des points alignés ou des droites perpendiculaires, calculer les coordonnées (les vérifier à l'œil ne suffit pas).
 Une figure haute pousse les réponses vers le bas : sur téléphone, garder `h` raisonnable (≤ 10).
+Dans le jeu, toucher une figure (ou son bouton 🔍) l'affiche en plein écran ; une figure large y est tournée d'un
+quart de tour sur un téléphone en portrait, pour prendre toute la hauteur de l'écran.
 
 **Droite graduée** (`axis`) : graduations de `from` à `to` tous les `step` (40 au plus ; `to − from` multiple de
 `step`), nombres écrits à la française (« 1 250 », « 0,5 ») sous les graduations, flèches (`marks`) au-dessus. Les
