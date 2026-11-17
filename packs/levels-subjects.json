@@ -53,6 +53,12 @@
       "label": "Physique-chimie",
       "icon": "⚗️",
       "color": "#0D9488"
+    },
+    {
+      "id": "technologie",
+      "label": "Technologie",
+      "icon": "⚙️",
+      "color": "#475569"
     }
   ],
   "levels": [
