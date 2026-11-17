@@ -1,0 +1,23 @@
+{
+  "title": "Dictée · Le mont Rushmore",
+  "description": "Mots à apprendre, homophones, accords et nombres en lettres de la dictée 10. Groupe 1, 2 ou 3 au choix.",
+  "icon": "🗻",
+  "color": "#9A3412",
+  "groups": [
+    {
+      "id": "g1",
+      "label": "Groupe 1",
+      "difficulty": 1
+    },
+    {
+      "id": "g2",
+      "label": "Groupe 2",
+      "difficulty": 2
+    },
+    {
+      "id": "g3",
+      "label": "Groupe 3 (+ bonus)",
+      "difficulty": 3
+    }
+  ]
+}
