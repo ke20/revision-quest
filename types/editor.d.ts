@@ -14,7 +14,7 @@ interface PackRulesApi {
   checkPath(p: unknown, err: PackReport): boolean;
   checkLang(lang: unknown, err: PackReport): void;
   validateMeta(meta: unknown, err: PackReport): boolean;
-  validateContent(pack: unknown, err: PackReport, warn: PackReport): unknown;
+  validateContent(pack: unknown, err: PackReport, warn: PackReport, opts?: { requireIds?: boolean }): unknown;
   validateExercise(e: unknown, where: string, ctx: { err: PackReport; warn: PackReport; docIds?: Set<unknown>; stats?: { types: Record<string, number> } }): void;
 }
 

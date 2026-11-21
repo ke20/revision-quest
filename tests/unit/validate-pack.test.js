@@ -281,3 +281,69 @@ test("inlineList: an enumeration left in a sentence is a tip; a bullet list or p
   assert.ok(!inlineList("Pas de liste ici, juste une phrase."));
   assert.ok(!inlineList("Table de 7 : 7, 14, 21, 28…"), "a sequence of numbers stays in line");
 });
+
+const Rules = require("../../js/core/pack-rules.js");
+
+test("exercise ids: UUID v4, unique in the pack, required in the repo packs only", () => {
+  const A = "0b8c5a1e-3f2d-4c6b-9a7e-1d2c3b4a5f60", B = "6f1e2d3c-4b5a-4968-8776-5a4b3c2d1e0f";
+  const q = (id) => (id === undefined ? { type: "question", prompt: "p", explanation: "e", answers: ["a"] } : { id, type: "question", prompt: "p", explanation: "e", answers: ["a"] });
+  const run = (exercises, opts) => {
+    const errors = [];
+    Rules.validateContent({ worlds: [{ id: 1, title: "A", icon: "x", color: "#123456", lesson: { points: ["p"] }, exercises }] }, (m) => errors.push(m), () => {}, opts);
+    return errors;
+  };
+  assert.deepStrictEqual(run([q(A), q(B)]), []);
+  assert.deepStrictEqual(run([q(), q()]), [], "a private course may have no id");
+  assert.ok(run([q(A), q()], { requireIds: true }).some((m) => /id manquant/.test(m)));
+  assert.ok(run([q(A), q(A)]).some((m) => /en double dans le pack/.test(m)));
+  assert.ok(run([q("phases-03")]).some((m) => /UUID v4/.test(m)));
+  assert.ok(run([q(A.toUpperCase())]).some((m) => /UUID v4/.test(m)), "lower case only");
+  assert.ok(run([q(42)]).some((m) => /UUID v4/.test(m)));
+});
+
+test("exercise ids: an id used in two packs is reported", () => {
+  const fs = require("fs");
+  const os = require("os");
+  const { duplicateIds } = require("../../tools/validate-pack.js");
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "rq-ids-"));
+  const A = "0b8c5a1e-3f2d-4c6b-9a7e-1d2c3b4a5f60";
+  const write = (name, id) => {
+    const f = path.join(dir, name);
+    fs.writeFileSync(f, Rules.formatStrict({ path: "cm2/histoire/" + name.replace(".js", ""), lang: "fr", worlds: [{ id: 1, exercises: [{ id, type: "question" }] }] }));
+    return f;
+  };
+  const a = write("a.js", A), b = write("b.js", A), c = write("c.js", "6f1e2d3c-4b5a-4968-8776-5a4b3c2d1e0f");
+  assert.strictEqual(duplicateIds([a, b, c]).length, 1);
+  assert.deepStrictEqual(duplicateIds([a, c]), []);
+  fs.rmSync(dir, { recursive: true });
+});
+
+test("pack:ids adds missing ids, keeps the existing ones and the header, reuses the ids of the git version", () => {
+  const { addIds, processText } = require("../../tools/pack-ids.js");
+  const A = "0b8c5a1e-3f2d-4c6b-9a7e-1d2c3b4a5f60", B = "6f1e2d3c-4b5a-4968-8776-5a4b3c2d1e0f";
+  const ex = (prompt, extra = {}) => ({ type: "question", prompt, explanation: "e", answers: ["a"], ...extra });
+  // header kept, id first, an existing id never changed
+  const src = "/* Source : cahier */\n" + Rules.formatStrict({ path: "cm2/histoire/x", lang: "fr", worlds: [{ id: 1, exercises: [ex("p1", { id: A }), ex("p2")] }] });
+  const r = processText(src, null);
+  assert.ok(r.text.startsWith("/* Source : cahier */\nwindow.registerPack("));
+  const pack = Rules.parseStrict(r.text);
+  assert.strictEqual(pack.worlds[0].exercises[0].id, A);
+  assert.match(pack.worlds[0].exercises[1].id, Rules.UUID_RE);
+  assert.strictEqual(Object.keys(pack.worlds[0].exercises[1])[0], "id");
+  assert.deepStrictEqual([r.reused, r.created], [0, 1]);
+  assert.strictEqual(processText(r.text, null).text, r.text, "nothing to add: the file is not rewritten");
+  // a generator wrote the pack again without ids: same content → same id; same unique prompt → same id
+  const old = { worlds: [{ id: 1, exercises: [ex("p1", { id: A }), ex("p2", { id: B }), ex("twice", { id: "11111111-1111-4111-8111-111111111111" }), ex("twice", { id: "22222222-2222-4222-8222-222222222222" })] }] };
+  const regen = { worlds: [{ id: 1, exercises: [ex("p1"), ex("p2", { explanation: "corrigée" }), ex("twice"), ex("new")] }] };
+  const counts = addIds(regen, old);
+  const ids = regen.worlds[0].exercises.map((e) => e.id);
+  assert.strictEqual(ids[0], A, "same content");
+  assert.strictEqual(ids[1], B, "same prompt, used once");
+  assert.ok(![A, B].includes(ids[3]) && Rules.UUID_RE.test(ids[3]), "a new exercise gets a new id");
+  assert.strictEqual(new Set(ids).size, 4);
+  assert.deepStrictEqual(counts, { reused: 3, created: 1 }, "the first « twice » matches by content");
+  // an exercise moved to another world is a new one there
+  const moved = { worlds: [{ id: 2, exercises: [ex("p1")] }] };
+  addIds(moved, old);
+  assert.notStrictEqual(moved.worlds[0].exercises[0].id, A);
+});

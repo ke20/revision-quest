@@ -35,6 +35,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "b02e1fb5-4171-4bc6-afc2-26454943a5bc",
           "type": "match",
           "prompt": "Relie chaque mot à son sens.",
           "pairs": [
@@ -58,6 +59,7 @@ window.registerPack({
           "explanation": "Le sens des mots :\n- le **sommet** est le haut d'une montagne\n- un **mont** est une montagne\n- une **œuvre** est créée par un artiste\n- **commémorer**, c'est rappeler un souvenir"
         },
         {
+          "id": "b0ed5c57-1e59-4a9a-9ff2-b2d1e0ed5207",
           "type": "mcq",
           "prompt": "Que veut dire « monumental » ?",
           "options": [
@@ -70,6 +72,7 @@ window.registerPack({
           "explanation": "**Monumental** veut dire très grand, énorme, comme un monument."
         },
         {
+          "id": "a1da27c2-e1cb-4b2b-a7aa-eba4b554678e",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -88,6 +91,7 @@ window.registerPack({
           "explanation": "**Directement** finit par **-ement**, comme direct + ement."
         },
         {
+          "id": "1807d265-9f80-4c54-91d5-862e1a6be784",
           "type": "fill",
           "prompt": "Écoute et écris le mot qui manque.",
           "listen": "Le mont Rushmore est un sommet américain.",
@@ -99,6 +103,7 @@ window.registerPack({
           "hint": "Le haut d'une montagne."
         },
         {
+          "id": "e4244ad8-7c09-4ead-9cf8-bb7974e431e4",
           "type": "mcq",
           "prompt": "Quelle est la bonne orthographe ?",
           "options": [
@@ -111,6 +116,7 @@ window.registerPack({
           "explanation": "**Commémorer** :\n- deux **m** au début\n- un seul m ensuite\n- deux accents aigus"
         },
         {
+          "id": "cbaa06a2-ee19-4f3d-97c4-ee2f3436bf86",
           "type": "fill",
           "prompt": "Écoute et écris le mot qui manque.",
           "listen": "C'est l'œuvre du sculpteur Gutzon Borglum.",
@@ -123,6 +129,7 @@ window.registerPack({
           "hint": "Ce qu'un artiste a créé."
         },
         {
+          "id": "077cd62d-1b83-4033-9ead-06959c2b2161",
           "type": "match",
           "prompt": "Relie chaque mot à son sens.",
           "pairs": [
@@ -166,6 +173,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "a307b8f8-5607-44ff-9fbe-4b259341bb41",
           "type": "mcq",
           "prompt": "« Le mont Rushmore ___ présent dans de nombreux films. »",
           "options": [
@@ -176,6 +184,7 @@ window.registerPack({
           "explanation": "On peut dire « était présent » : c'est **est** (être)."
         },
         {
+          "id": "86bc5edf-e5a9-4169-980b-76f8fbe86636",
           "type": "mcq",
           "prompt": "« Les méchants n'hésitent pas ___ remplacer le visage des présidents. »",
           "options": [
@@ -186,6 +195,7 @@ window.registerPack({
           "explanation": "On ne peut pas dire « avait remplacer » : c'est **à**."
         },
         {
+          "id": "be429bb6-4af8-4ddc-a00e-a2392e9d33d5",
           "type": "mcq",
           "prompt": "« Ils remplacent le visage des présidents par ___ propres visages. »",
           "options": [
@@ -196,6 +206,7 @@ window.registerPack({
           "explanation": "Visages est au pluriel : **leurs** propres visages."
         },
         {
+          "id": "f0350d43-de91-440b-9e00-8d2c962100a0",
           "type": "mcq",
           "prompt": "« L'aspect spectaculaire et la dimension symbolique du lieu l'___ fait entrer dans la culture populaire. »",
           "options": [
@@ -206,6 +217,7 @@ window.registerPack({
           "explanation": "On peut dire « l'avaient fait entrer » : c'est **ont** (avoir)."
         },
         {
+          "id": "e424d780-f9c8-4937-85ca-cc11d7c9e0b7",
           "type": "fill",
           "prompt": "Complète avec et ou est.",
           "sentence": "L'aspect spectaculaire ___ la dimension symbolique du lieu l'ont rendu célèbre.",
@@ -216,6 +228,7 @@ window.registerPack({
           "hint": "Essaie de dire « était »."
         },
         {
+          "id": "ffebf8a9-ce3c-4f5b-a9b4-06f8351752cf",
           "type": "mcq",
           "prompt": "« ___ sculptures représentent quatre présidents. »",
           "options": [
@@ -226,6 +239,7 @@ window.registerPack({
           "explanation": "On montre les sculptures (cette sculpture) : **Ces**."
         },
         {
+          "id": "8a183c5e-f0b1-44ab-9fa7-b4b09c005218",
           "type": "sort",
           "prompt": "Range chaque phrase : leur ou leurs ?",
           "categories": [
@@ -259,6 +273,7 @@ window.registerPack({
           "explanation": "Ce qu'il faut retenir :\n- devant un nom au pluriel : **leurs**\n- devant un nom au singulier : **leur**\n- devant un verbe : **leur**, jamais de s"
         },
         {
+          "id": "21f3bd5f-0db9-4608-b92a-367b0e4f6e08",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -279,6 +294,7 @@ window.registerPack({
           "explanation": "On ne peut pas dire « avait remplacer » : c'est **à**."
         },
         {
+          "id": "5d9d278b-72e5-483a-8851-99cc7fe867b3",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -315,6 +331,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "9bbd2c16-e95e-4f57-9884-2dd64fd117be",
           "type": "mcq",
           "prompt": "« Les méchants n'___ pas à remplacer le visage des présidents. »",
           "options": [
@@ -327,6 +344,7 @@ window.registerPack({
           "explanation": "Le sujet « les méchants » est au pluriel : **hésitent**."
         },
         {
+          "id": "cfeb07d7-8fd2-4eb3-9c38-f3b4756732d5",
           "type": "mcq",
           "prompt": "« Ces sculptures ___ quatre présidents américains. »",
           "options": [
@@ -339,6 +357,7 @@ window.registerPack({
           "explanation": "Le sujet « ces sculptures » est au pluriel : **représentent**."
         },
         {
+          "id": "03f82602-e4f4-4179-8bf1-5c4c5eab43f4",
           "type": "fill",
           "prompt": "Écris le verbe commémorer au présent.",
           "sentence": "Elles ___ ainsi cent-cinquante ans de l'histoire des États-Unis.",
@@ -349,6 +368,7 @@ window.registerPack({
           "hint": "Elles chantent."
         },
         {
+          "id": "9ecf7074-5608-4e26-8e07-a19e26bdc3ff",
           "type": "fill",
           "prompt": "Écris le participe passé de travailler.",
           "sentence": "Il n'a pas ___ seul.",
@@ -359,6 +379,7 @@ window.registerPack({
           "hint": "On peut dire « il n'a pas vendu »."
         },
         {
+          "id": "1a79632e-2eac-4809-a9c8-e58ec59da82d",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -376,6 +397,7 @@ window.registerPack({
           "explanation": "Le sujet « quatre-cents ouvriers » est au pluriel : **ont** participé."
         },
         {
+          "id": "ef0a13b4-e238-4a29-a0cd-1c7804f6bf5f",
           "type": "mcq",
           "prompt": "« L'aspect spectaculaire et la dimension symbolique du lieu l'___ fait entrer dans la culture populaire. »",
           "options": [
@@ -387,6 +409,7 @@ window.registerPack({
           "explanation": "Deux sujets (l'aspect et la dimension) = un sujet pluriel : **ont** fait."
         },
         {
+          "id": "dc5261a0-5841-4b2b-a715-cdefcaf7715f",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -406,6 +429,7 @@ window.registerPack({
           "explanation": "Le sujet « le mont Rushmore » est au singulier : **est**."
         },
         {
+          "id": "2ccd8331-627f-4b99-9121-f64bc6c3df46",
           "type": "mcq",
           "prompt": "« Sa réalisation ___ quatorze ans. »",
           "options": [
@@ -418,6 +442,7 @@ window.registerPack({
           "explanation": "Le sujet est singulier, et avec avoir le participe ne s'accorde pas : **a duré**."
         },
         {
+          "id": "1fe62a87-33a3-43df-a2ee-9a358dd9411a",
           "type": "fill",
           "prompt": "Écris le verbe être au présent.",
           "sentence": "Le mont Rushmore ___ un sommet américain célèbre.",
@@ -448,6 +473,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "9e52f317-1bd0-46ed-912d-6bc08065614c",
           "type": "mcq",
           "prompt": "Choisis le bon mot : « dans de ___ films »",
           "options": [
@@ -460,6 +486,7 @@ window.registerPack({
           "explanation": "Films est masculin pluriel : **nombreux** (avec un x)."
         },
         {
+          "id": "bacc09b0-218c-48d7-a3a3-f8d5465a1d85",
           "type": "fill",
           "prompt": "Accorde le mot monumental.",
           "sentence": "Le mont Rushmore est célèbre pour ses sculptures ___.",
@@ -470,6 +497,7 @@ window.registerPack({
           "hint": "Sculptures : féminin pluriel."
         },
         {
+          "id": "cde2e88b-a64f-468f-93e4-a8fd3a8239de",
           "type": "mcq",
           "prompt": "Choisis le bon mot : « par leurs ___ visages »",
           "options": [
@@ -480,6 +508,7 @@ window.registerPack({
           "explanation": "Visages est au pluriel : **propres**."
         },
         {
+          "id": "2a38f9bc-faa5-4aba-93d4-aba91c9d2c9d",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -498,6 +527,7 @@ window.registerPack({
           "explanation": "Il s'accorde avec « ces sculptures » (féminin pluriel) : **taillées**."
         },
         {
+          "id": "1dff29cb-a8b7-4a3b-a370-2735ee6e8cd3",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -519,6 +549,7 @@ window.registerPack({
           "explanation": "**Des** présidents : pluriel, donc **présidents** avec un s."
         },
         {
+          "id": "7a1ee811-f6fc-4884-90de-a8d19cec17be",
           "type": "fill",
           "prompt": "Accorde le mot réalisé.",
           "sentence": "Ces sculptures, ___ entre 1927 et 1941, représentent quatre présidents.",
@@ -529,6 +560,7 @@ window.registerPack({
           "hint": "Les sculptures : féminin pluriel."
         },
         {
+          "id": "004463fe-eecc-4e9e-90d6-f8d95e92a09e",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -544,6 +576,7 @@ window.registerPack({
           "explanation": "Présidents est masculin pluriel : **américains**."
         },
         {
+          "id": "840a736a-ddbc-48c7-a2e8-f14352bee44b",
           "type": "sort",
           "prompt": "Range chaque groupe : féminin pluriel ou masculin pluriel ?",
           "categories": [
@@ -605,6 +638,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "3b754e8d-76e1-4ec2-9188-a98af2d21ddb",
           "type": "fill",
           "prompt": "Écris 4 en lettres.",
           "sentence": "On y a sculpté le visage de ___ présidents.",
@@ -614,6 +648,7 @@ window.registerPack({
           "explanation": "4 = **quatre** : il ne prend jamais de s."
         },
         {
+          "id": "7d40c3f7-b906-4a7b-b331-5a7570951c3b",
           "type": "mcq",
           "prompt": "Comment écrit-on 400 ?",
           "options": [
@@ -626,6 +661,7 @@ window.registerPack({
           "explanation": "**Quatre-cents** : cent est multiplié par quatre et finit le nombre, il prend un **s** (on peut aussi écrire quatre cents)."
         },
         {
+          "id": "c6eadebd-08a6-4195-aa7e-7d3ee377f6fb",
           "type": "mcq",
           "prompt": "Comment écrit-on 14 ?",
           "options": [
@@ -638,6 +674,7 @@ window.registerPack({
           "explanation": "14 = **quatorze**, avec **qu** et un **z**."
         },
         {
+          "id": "359e2d54-b0c3-4785-98a9-e5705b3f481b",
           "type": "fill",
           "prompt": "Écris 150 en lettres.",
           "sentence": "Elles commémorent ___ ans de l'histoire des États-Unis.",
@@ -648,6 +685,7 @@ window.registerPack({
           "explanation": "150 = **cent-cinquante** (on peut aussi écrire cent cinquante) : cent n'est pas multiplié, pas de s."
         },
         {
+          "id": "c21ab541-fc4c-4c89-ae2a-981a135fbe6f",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -665,6 +703,7 @@ window.registerPack({
           "explanation": "Cent est multiplié par quatre et finit le nombre : **quatre-cents**."
         },
         {
+          "id": "cdac8dcd-cbb4-4708-ad00-bc54fad1ccf4",
           "type": "fill",
           "prompt": "Écris 14 en lettres.",
           "sentence": "Sa réalisation a duré ___ ans.",
@@ -674,6 +713,7 @@ window.registerPack({
           "explanation": "14 = **quatorze**."
         },
         {
+          "id": "55aaee11-af34-47e1-ae42-0d6f9cd17941",
           "type": "mcq",
           "prompt": "Pourquoi « quatre-cents » prend-il un s ?",
           "options": [
@@ -686,6 +726,7 @@ window.registerPack({
           "explanation": "**Cent** prend un s quand il est multiplié (quatre fois cent) et qu'aucun nombre ne le suit."
         },
         {
+          "id": "5569a62f-66fd-4efe-afde-8f082e7d657a",
           "type": "match",
           "prompt": "Relie chaque nombre à son écriture en lettres.",
           "pairs": [
@@ -709,6 +750,7 @@ window.registerPack({
           "explanation": "Les nombres de la dictée :\n- 4 = quatre\n- 14 = quatorze\n- 150 = cent-cinquante\n- 400 = quatre-cents"
         },
         {
+          "id": "3be49dc9-f8cb-4cb5-9a4c-5ad80fa6dbf1",
           "type": "mcq",
           "prompt": "Pourquoi n'y a-t-il pas de s à « cent » dans « cent-cinquante » ?",
           "options": [
@@ -739,6 +781,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "61f0c24c-79c2-4735-aa9a-612a75b2bf2c",
           "type": "mcq",
           "prompt": "Quel président voit-on au premier plan ?",
           "options": [
@@ -751,6 +794,7 @@ window.registerPack({
           "explanation": "Au premier plan, on voit **George Washington**, le premier président des États-Unis."
         },
         {
+          "id": "9b9bcfb4-b9a8-49f7-b457-0dea7c9d6e50",
           "type": "mcq",
           "prompt": "George Washington a été…",
           "options": [
@@ -763,6 +807,7 @@ window.registerPack({
           "explanation": "**George Washington** a été le **premier président** des États-Unis."
         },
         {
+          "id": "0b441b84-a11b-4863-bc3e-5471c33611b9",
           "type": "mcq",
           "prompt": "De quand à quand Washington a-t-il été président ?",
           "options": [
@@ -775,6 +820,7 @@ window.registerPack({
           "explanation": "Washington a été président de **1789** à **1797**. (De 1927 à 1941, c'est le chantier des sculptures.)"
         },
         {
+          "id": "1f5d68e9-e962-4692-afa7-ef0f7eaa1c21",
           "type": "match",
           "prompt": "Relie chaque nom ou nombre à ce qu'il désigne.",
           "pairs": [
@@ -798,6 +844,7 @@ window.registerPack({
           "explanation": "Ce qu'il faut retenir :\n- **Gutzon Borglum** a sculpté le mont\n- **Washington** est le premier président\n- le chantier a duré de **1927** à **1941**\n- environ **400** ouvriers y ont participé"
         },
         {
+          "id": "fc27723e-fbb5-416f-9826-5cd10453a364",
           "type": "mcq",
           "prompt": "À quel moment de la journée le soleil éclaire-t-il les visages ?",
           "options": [
@@ -810,6 +857,7 @@ window.registerPack({
           "explanation": "Les visages regardent vers l'est : ils sont éclairés **chaque matin** par le soleil levant."
         },
         {
+          "id": "70f622d4-f825-44f7-aad5-f2b122aa926e",
           "type": "mcq",
           "prompt": "Vers où regardent les visages ?",
           "options": [
@@ -822,6 +870,7 @@ window.registerPack({
           "explanation": "Les visages regardent vers l'**est** (plus exactement le sud-est), du côté où le soleil se lève."
         },
         {
+          "id": "7ea4d20e-e4ed-405f-9ba3-dccd87517c4a",
           "type": "mcq",
           "prompt": "Dans quel pays se trouve le mont Rushmore ?",
           "options": [
@@ -834,6 +883,7 @@ window.registerPack({
           "explanation": "Le mont Rushmore se trouve aux **États-Unis**, dans l'État du Dakota du Sud."
         },
         {
+          "id": "640497c3-0a72-4c64-bfcb-9bffe140e104",
           "type": "fill",
           "prompt": "Lis le texte, puis complète la phrase.",
           "docId": "a-lire",
@@ -862,6 +912,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "b86d0669-7f45-4e37-a2e7-d4d318c737f1",
           "type": "fill",
           "prompt": "Complète avec et ou est.",
           "sentence": "Le mont Rushmore ___ présent dans de nombreux films.",
@@ -871,6 +922,7 @@ window.registerPack({
           "explanation": "On peut dire « était présent » : c'est **est**."
         },
         {
+          "id": "ead7ae61-35fc-44b6-9f7e-d6c9c43eed98",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -891,6 +943,7 @@ window.registerPack({
           "explanation": "Le sujet « les méchants » est au pluriel : **n'hésitent**."
         },
         {
+          "id": "5f6fbac6-0d1a-489e-bfd1-5ae2d6062d68",
           "type": "fill",
           "prompt": "Complète avec leur ou leurs.",
           "sentence": "Ils remplacent le visage des présidents par ___ propres visages.",
@@ -900,6 +953,7 @@ window.registerPack({
           "explanation": "Visages est au pluriel : **leurs**."
         },
         {
+          "id": "94ace9bd-77a4-49b6-af90-9d5f747c3c66",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -918,6 +972,7 @@ window.registerPack({
           "explanation": "**Création** est féminin : **Cette** création."
         },
         {
+          "id": "4d440387-7ddf-4a40-a0f4-8c4e3d372e4a",
           "type": "mcq",
           "prompt": "Choisis les bons mots : « L'aspect ___ et la dimension ___ du lieu »",
           "options": [
@@ -930,6 +985,7 @@ window.registerPack({
           "explanation": "Chaque adjectif s'accorde avec un seul nom au singulier :\n- l'aspect **spectaculaire**\n- la dimension **symbolique**"
         },
         {
+          "id": "b3d5095a-398e-4be2-9128-478ff2a90642",
           "type": "fill",
           "prompt": "Écris le participe passé de durer.",
           "sentence": "Quatre-cents ouvriers ont participé à sa réalisation, qui a ___ quatorze ans.",
@@ -939,6 +995,7 @@ window.registerPack({
           "explanation": "Après **a** (avoir) : **duré**."
         },
         {
+          "id": "368a6fce-7c9a-4b10-abc0-1a5e543738dc",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -964,6 +1021,7 @@ window.registerPack({
           "explanation": "Le sujet « ces sculptures » est au pluriel : **représentent**."
         },
         {
+          "id": "ece737f1-c946-411e-ba7f-b6ddd8720977",
           "type": "fill",
           "prompt": "Complète avec on ou ont.",
           "sentence": "L'aspect spectaculaire et la dimension symbolique du lieu l'___ fait entrer dans la culture populaire.",
@@ -973,6 +1031,7 @@ window.registerPack({
           "explanation": "On peut dire « l'avaient fait » : c'est **ont**, avec un sujet pluriel."
         },
         {
+          "id": "09919083-b11c-4ddd-ab92-1796b992eebf",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -988,6 +1047,7 @@ window.registerPack({
           "explanation": "**Mais** il n'**a** pas **travaillé** seul."
         },
         {
+          "id": "09969ac7-bd62-4d9c-8acb-401f99e01032",
           "type": "fill",
           "prompt": "Écris 150 en lettres.",
           "sentence": "Elles commémorent ainsi ___ ans de l'histoire des États-Unis.",
@@ -1016,6 +1076,7 @@ window.registerPack({
       "draw": 12,
       "exercises": [
         {
+          "id": "e323102e-0042-455b-bd44-504a34154842",
           "type": "question",
           "prompt": "Complète avec est ou et : « Le mont Rushmore ___ présent dans de nombreux films. »",
           "answers": [
@@ -1024,6 +1085,7 @@ window.registerPack({
           "explanation": "On peut dire « était » : **est**."
         },
         {
+          "id": "dc9832c5-5fec-406a-a6a4-f4671b5b31d9",
           "type": "question",
           "prompt": "Complète avec a ou à : « Les méchants n'hésitent pas ___ remplacer le visage des présidents. »",
           "answers": [
@@ -1032,6 +1094,7 @@ window.registerPack({
           "explanation": "On ne peut pas dire « avait remplacer » : **à**."
         },
         {
+          "id": "d2b2d627-d1d7-40c8-af75-5cfdff897df6",
           "type": "question",
           "prompt": "Complète avec leur ou leurs : « …par ___ propres visages. »",
           "answers": [
@@ -1040,6 +1103,7 @@ window.registerPack({
           "explanation": "Visages est au pluriel : **leurs**."
         },
         {
+          "id": "bafe3d70-a2aa-4979-b4c4-7f32ab44bddb",
           "type": "question",
           "prompt": "Complète avec ont ou on : « L'aspect spectaculaire et la dimension symbolique du lieu l'___ fait entrer dans la culture populaire. »",
           "answers": [
@@ -1048,6 +1112,7 @@ window.registerPack({
           "explanation": "On peut dire « l'avaient fait » : **ont**."
         },
         {
+          "id": "93d07803-4f7d-46ae-92ff-b1ae2d529efa",
           "type": "question",
           "prompt": "Complète avec est ou et : « L'aspect spectaculaire ___ la dimension symbolique du lieu… »",
           "answers": [
@@ -1056,6 +1121,7 @@ window.registerPack({
           "explanation": "On peut dire « et puis » : **et**."
         },
         {
+          "id": "011f2a5e-bc07-4dc3-ae49-e687585888af",
           "type": "question",
           "prompt": "Complète avec ces ou ses : « Le mont est célèbre pour ___ sculptures monumentales. »",
           "answers": [
@@ -1064,6 +1130,7 @@ window.registerPack({
           "explanation": "Les sculptures du mont (sa sculpture) : **ses**."
         },
         {
+          "id": "fd19003a-2326-43c8-8672-9797ff7d97ed",
           "type": "question",
           "prompt": "Complète avec mais ou mes : « ___ il n'a pas travaillé seul. »",
           "answers": [
@@ -1072,6 +1139,7 @@ window.registerPack({
           "explanation": "Une opposition (pourtant) : **mais**."
         },
         {
+          "id": "9fbf6f3a-2501-431c-82aa-f6c4dd5d55ee",
           "type": "question",
           "prompt": "Complète avec cette ou cet : « ___ création est l'œuvre de Gutzon Borglum. »",
           "answers": [
@@ -1080,6 +1148,7 @@ window.registerPack({
           "explanation": "Création est féminin : **cette**."
         },
         {
+          "id": "37eb7acc-67f2-477a-9a0b-c47cfcb91ee9",
           "type": "question",
           "prompt": "Complète avec a ou à : « Sa réalisation ___ duré quatorze ans. »",
           "answers": [
@@ -1088,6 +1157,7 @@ window.registerPack({
           "explanation": "On peut dire « avait duré » : **a**."
         },
         {
+          "id": "6058121b-99ee-407f-874e-287afcaa800b",
           "type": "question",
           "prompt": "Complète avec on ou ont : « ___ y a sculpté le visage de quatre présidents. »",
           "answers": [
@@ -1096,6 +1166,7 @@ window.registerPack({
           "explanation": "On peut dire « il y a sculpté » : **on**."
         },
         {
+          "id": "144bcecf-227b-48f6-9cfa-323f5d001f7c",
           "type": "question",
           "prompt": "Accorde le verbe hésiter au présent : « Les méchants n'… pas à remplacer le visage des présidents. »",
           "answers": [
@@ -1104,6 +1175,7 @@ window.registerPack({
           "explanation": "Sujet pluriel « les méchants » : **hésitent**."
         },
         {
+          "id": "1dc61914-cf27-453b-bac0-f3c55b6e5d65",
           "type": "question",
           "prompt": "Accorde le verbe représenter au présent : « Ces sculptures … quatre présidents. »",
           "answers": [
@@ -1112,6 +1184,7 @@ window.registerPack({
           "explanation": "Sujet pluriel « ces sculptures » : **représentent**."
         },
         {
+          "id": "cbee1c68-2353-4e87-a31f-213d2768ea32",
           "type": "question",
           "prompt": "Accorde le verbe commémorer au présent : « Elles … ainsi cent-cinquante ans d'histoire. »",
           "answers": [
@@ -1120,6 +1193,7 @@ window.registerPack({
           "explanation": "Sujet pluriel « elles » : **commémorent**."
         },
         {
+          "id": "81d5a443-2f32-46a2-acbd-b217dbae64cd",
           "type": "question",
           "prompt": "Écris le verbe faire au passé composé : « L'aspect spectaculaire et la dimension symbolique du lieu l'… entrer dans la culture populaire. »",
           "answers": [
@@ -1128,6 +1202,7 @@ window.registerPack({
           "explanation": "Deux sujets = pluriel : **ont** + **fait**."
         },
         {
+          "id": "02255084-cae7-4057-9e9c-a8cea34981c6",
           "type": "question",
           "prompt": "Écris le verbe participer au passé composé : « Quatre-cents ouvriers … à sa réalisation. »",
           "answers": [
@@ -1136,6 +1211,7 @@ window.registerPack({
           "explanation": "Passé composé = **ont** + **participé**."
         },
         {
+          "id": "7dcf1c9f-e3f2-4e5f-babe-a943626acc2b",
           "type": "question",
           "prompt": "Écris le participe passé de travailler : « Il n'a pas … seul. »",
           "answers": [
@@ -1144,6 +1220,7 @@ window.registerPack({
           "explanation": "Après **a** (avoir) : **travaillé**."
         },
         {
+          "id": "1ccfe476-52bc-466a-8663-0dd55bfbcf7a",
           "type": "question",
           "prompt": "Écris le verbe être au présent : « Le mont Rushmore … présent dans de nombreux films. »",
           "answers": [
@@ -1152,6 +1229,7 @@ window.registerPack({
           "explanation": "Sujet singulier : **est**."
         },
         {
+          "id": "972e5117-f293-4595-9508-2a4d9016990d",
           "type": "question",
           "prompt": "Accorde le mot : « les (méchant) n'hésitent pas »",
           "answers": [
@@ -1160,6 +1238,7 @@ window.registerPack({
           "explanation": "Les méchants : pluriel, donc **méchants** avec un s."
         },
         {
+          "id": "16809db1-fb77-42f5-83f0-38570f0fb831",
           "type": "question",
           "prompt": "Accorde l'adjectif : « ses sculptures (monumental) »",
           "answers": [
@@ -1168,6 +1247,7 @@ window.registerPack({
           "explanation": "Sculptures est féminin pluriel : **monumentales**."
         },
         {
+          "id": "fdb045ec-c158-432d-8532-fbead2ea1962",
           "type": "question",
           "prompt": "Accorde le mot : « des sculptures (taillé) directement dans la roche »",
           "answers": [
@@ -1176,6 +1256,7 @@ window.registerPack({
           "explanation": "Sculptures est féminin pluriel : **taillées**."
         },
         {
+          "id": "2f024999-b6d6-424f-a195-1b00f1c191f3",
           "type": "question",
           "prompt": "Accorde le mot : « Ces sculptures, (réalisé) entre 1927 et 1941… »",
           "answers": [
@@ -1184,6 +1265,7 @@ window.registerPack({
           "explanation": "Sculptures est féminin pluriel : **réalisées**."
         },
         {
+          "id": "baca08aa-4e30-41d5-8113-ca569a944900",
           "type": "question",
           "prompt": "Accorde l'adjectif : « par leurs (propre) visages »",
           "answers": [
@@ -1192,6 +1274,7 @@ window.registerPack({
           "explanation": "Visages est au pluriel : **propres**."
         },
         {
+          "id": "5ff738f5-2058-4875-a3ff-5e8b5db06efb",
           "type": "question",
           "prompt": "Écris 400 en lettres.",
           "answers": [
@@ -1201,6 +1284,7 @@ window.registerPack({
           "explanation": "**Quatre-cents** : cent prend un s car il est multiplié et finit le nombre."
         },
         {
+          "id": "dbbbaa24-4df5-49c7-b8f4-6cb2ada15f45",
           "type": "question",
           "prompt": "Écris 150 en lettres.",
           "answers": [
@@ -1210,6 +1294,7 @@ window.registerPack({
           "explanation": "**Cent-cinquante** : cent n'est pas multiplié."
         },
         {
+          "id": "4a3f1ad4-768d-40c8-ae13-d517712c45f5",
           "type": "question",
           "prompt": "Écris 14 en lettres.",
           "answers": [
@@ -1218,6 +1303,7 @@ window.registerPack({
           "explanation": "14 = **quatorze**."
         },
         {
+          "id": "502c09e8-a04f-41b0-9c0e-8726e880b8fd",
           "type": "question",
           "prompt": "Écris 4 en lettres.",
           "answers": [
@@ -1226,6 +1312,7 @@ window.registerPack({
           "explanation": "4 = **quatre**, jamais de s."
         },
         {
+          "id": "9df4c8ae-bfce-4e68-84a7-fb7698ef526a",
           "type": "question",
           "prompt": "Ce mot est mal écrit : « un somet américain ». Écris-le correctement.",
           "answers": [
@@ -1235,6 +1322,7 @@ window.registerPack({
           "explanation": "**Sommet** : deux m et un t muet."
         },
         {
+          "id": "b504cdd7-63a8-4a48-939d-2fcbe6ac984c",
           "type": "question",
           "prompt": "Ce mot est mal écrit : « une sculture ». Écris-le correctement.",
           "answers": [
@@ -1244,6 +1332,7 @@ window.registerPack({
           "explanation": "**Sculpture** : un p muet."
         },
         {
+          "id": "51d87c29-ecd9-449a-a468-aca40a3923eb",
           "type": "question",
           "prompt": "Ce mot est mal écrit : « comémorer ». Écris-le correctement.",
           "answers": [
@@ -1252,6 +1341,7 @@ window.registerPack({
           "explanation": "**Commémorer** : deux m au début."
         },
         {
+          "id": "ce587c27-de06-4cbd-b76c-ed7575a25296",
           "type": "question",
           "prompt": "Ce mot est mal écrit : « l'euvre du sculpteur ». Écris correctement le mot qui veut dire « ce qu'un artiste a créé ».",
           "answers": [

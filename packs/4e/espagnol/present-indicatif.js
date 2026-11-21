@@ -94,6 +94,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "baaaf057-9573-441a-adf5-ae40d37a59ad",
           "type": "match",
           "prompt": "Relie chaque pronom espagnol à sa traduction.",
           "pairs": [
@@ -121,6 +122,7 @@ window.registerPack({
           "explanation": "✅ **usted / ustedes** = vous de politesse : ils se conjuguent comme **él** et **ellos**."
         },
         {
+          "id": "1e583e3a-1ae7-4a1b-8aba-2ff1d19b5059",
           "type": "mcq",
           "prompt": "Quelle est la terminaison de **yo** pour un verbe en -AR ?",
           "options": [
@@ -133,6 +135,7 @@ window.registerPack({
           "explanation": "✅ **yo habl-o**. Attention : **-a** est la terminaison de él / ella."
         },
         {
+          "id": "61ad6b83-a076-4e70-b2c5-31aebda3d72f",
           "type": "fill",
           "prompt": "Conjugue [[**hablar**|parler]] avec **tú**.",
           "sentence": "Tú ___ español muy bien.",
@@ -142,6 +145,7 @@ window.registerPack({
           "explanation": "✅ **tú hablas** : terminaison **-as**. [[Tú hablas español muy bien.|Tu parles très bien espagnol.]]"
         },
         {
+          "id": "f64f3ed3-61b8-408e-ad31-dec417bb94c6",
           "type": "fill",
           "prompt": "Conjugue [[**cantar**|chanter]] avec **nosotros**.",
           "sentence": "Nosotros ___ el himno cada mañana.",
@@ -151,6 +155,7 @@ window.registerPack({
           "explanation": "✅ **nosotros cantamos** : terminaison **-amos**."
         },
         {
+          "id": "f0bc12be-32ca-4176-8a5c-96e1cc8668cd",
           "type": "fill",
           "prompt": "Conjugue [[**llevar**|porter]] avec **ellos**.",
           "sentence": "Ellos ___ un uniforme.",
@@ -160,6 +165,7 @@ window.registerPack({
           "explanation": "✅ **ellos llevan** : terminaison **-an**."
         },
         {
+          "id": "72f2931a-4cc3-4913-aa63-ad6cce0cc9d2",
           "type": "mcq",
           "prompt": "\"Vosotros ___ mucho.\" Verbe : [[hablar|parler]].",
           "options": [
@@ -173,6 +179,7 @@ window.registerPack({
           "hint": "vosotros = vous (plusieurs)."
         },
         {
+          "id": "d1c3d1d8-d327-41f8-b533-b306adc49d57",
           "type": "sort",
           "prompt": "Range chaque forme selon son pronom.",
           "categories": [
@@ -214,6 +221,7 @@ window.registerPack({
           "explanation": "✅ Les terminaisons :\n- **yo** → **-o**\n- **él / ella** → **-a**"
         },
         {
+          "id": "0cfca397-2ef6-40ed-9559-a3849a326054",
           "type": "spot",
           "prompt": "Touche le verbe mal conjugué.",
           "tokens": [
@@ -229,6 +237,7 @@ window.registerPack({
           "explanation": "✅ Avec **yo**, la terminaison est **-o** : [[Yo **hablo** con mis amigos.|Je parle avec mes amis.]]"
         },
         {
+          "id": "a9a53707-95ba-4e56-a55c-236f32faf029",
           "type": "fill",
           "prompt": "Écoute et écris le verbe.",
           "sentence": "Nosotros ___ español.",
@@ -324,6 +333,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "86915893-ebbb-437f-a59b-62ed056e2b30",
           "type": "match",
           "prompt": "Relie chaque verbe à sa traduction.",
           "pairs": [
@@ -347,6 +357,7 @@ window.registerPack({
           "explanation": "✅ Ces quatre verbes se terminent par **-er** : ils suivent le modèle de **comer**."
         },
         {
+          "id": "ecf4263c-6afe-49d6-a693-b584265a743c",
           "type": "mcq",
           "prompt": "\"Ella ___ en casa.\" Verbe : [[comer|manger]].",
           "options": [
@@ -359,6 +370,7 @@ window.registerPack({
           "explanation": "✅ **ella come** : terminaison **-e** pour un verbe en -ER."
         },
         {
+          "id": "673560f3-b3cb-49b4-86c6-eb1ab4682ea4",
           "type": "fill",
           "prompt": "Conjugue [[**aprender**|apprendre]] avec **los alumnos**, c'est-à-dire ellos.",
           "sentence": "Los alumnos ___ la historia.",
@@ -368,6 +380,7 @@ window.registerPack({
           "explanation": "✅ **ellos aprenden** : terminaison **-en**."
         },
         {
+          "id": "6bbfac54-d957-4222-a115-c792e1d11c0c",
           "type": "fill",
           "prompt": "Conjugue [[**beber**|boire]] avec **yo**.",
           "sentence": "Yo ___ agua.",
@@ -377,6 +390,7 @@ window.registerPack({
           "explanation": "✅ **yo bebo** : terminaison **-o**, comme en -AR."
         },
         {
+          "id": "0f00647f-26b6-4e7f-a8f3-d431cb62c37f",
           "type": "fill",
           "prompt": "Conjugue [[**leer**|lire]] avec **nosotros**.",
           "sentence": "Nosotros ___ un libro.",
@@ -386,6 +400,7 @@ window.registerPack({
           "explanation": "✅ **nosotros leemos** : **le-** + **-emos** (deux **e**)."
         },
         {
+          "id": "07fa4ded-69c8-4c9e-b4b2-06960dc28628",
           "type": "mcq",
           "prompt": "\"Vosotros ___ mucho.\" Verbe : [[comer|manger]].",
           "options": [
@@ -398,6 +413,7 @@ window.registerPack({
           "explanation": "✅ **vosotros coméis** : **-éis**, avec un accent sur le **é**."
         },
         {
+          "id": "2d2c380f-2677-4807-a1aa-e776d8c7d835",
           "type": "sort",
           "prompt": "Range chaque forme : verbe en -AR ou en -ER ?",
           "categories": [
@@ -439,6 +455,7 @@ window.registerPack({
           "explanation": "✅ La différence :\n- en -AR on garde le **a** (habl**as**)\n- en -ER on a un **e** (com**es**)"
         },
         {
+          "id": "1df73431-e19c-4e34-8c82-b05737079699",
           "type": "spot",
           "prompt": "Touche le verbe mal conjugué.",
           "tokens": [
@@ -455,6 +472,7 @@ window.registerPack({
           "explanation": "✅ **aprender** est en -ER : [[Tú **aprendes** español en el colegio.|Tu apprends l'espagnol au collège.]]"
         },
         {
+          "id": "a63cbe67-b684-43c1-9d9b-6fd24335c6c2",
           "type": "fill",
           "prompt": "Écoute et écris le verbe.",
           "sentence": "Ellos ___ en el comedor.",
@@ -550,6 +568,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "bf9060a7-a96d-4581-87be-1be0752a4579",
           "type": "match",
           "prompt": "Relie chaque verbe à sa traduction.",
           "pairs": [
@@ -573,6 +592,7 @@ window.registerPack({
           "explanation": "✅ Ces verbes se terminent par **-ir** : ils suivent le modèle de **vivir**."
         },
         {
+          "id": "47301ea3-89e3-4908-bf36-d369df3a20a4",
           "type": "fill",
           "prompt": "Conjugue [[**vivir**|vivre, habiter]] avec **yo**.",
           "sentence": "Yo ___ en Francia.",
@@ -582,6 +602,7 @@ window.registerPack({
           "explanation": "✅ **yo vivo** : **-o**."
         },
         {
+          "id": "fa9a59aa-3ebb-4522-a96a-120851ec8157",
           "type": "fill",
           "prompt": "Conjugue [[**escribir**|écrire]] avec **nosotros**.",
           "sentence": "Nosotros ___ una carta.",
@@ -591,6 +612,7 @@ window.registerPack({
           "explanation": "✅ **nosotros escribimos** : **-imos**, et pas -emos."
         },
         {
+          "id": "30a28bf0-cee1-4f21-bc29-1f7c4df67190",
           "type": "mcq",
           "prompt": "\"Vosotros ___ en Madrid.\" Verbe : [[vivir|habiter]].",
           "options": [
@@ -603,6 +625,7 @@ window.registerPack({
           "explanation": "✅ **vosotros vivís** : **-ís**, avec un accent sur le **í**."
         },
         {
+          "id": "f98df9a2-3b55-4115-b3af-d1d421a0c1fe",
           "type": "fill",
           "prompt": "Conjugue [[**abrir**|ouvrir]] avec **ella**.",
           "sentence": "Ella ___ la puerta.",
@@ -612,6 +635,7 @@ window.registerPack({
           "explanation": "✅ **ella abre** : **-e**, comme en -ER."
         },
         {
+          "id": "ef1158e6-afdf-4eb5-a28e-7b7c23d294a2",
           "type": "mcq",
           "prompt": "Quelle forme est celle de **nosotros** pour **vivir** ?",
           "options": [
@@ -624,6 +648,7 @@ window.registerPack({
           "explanation": "✅ **vivimos** : avec **-IR**, nosotros prend **-imos**."
         },
         {
+          "id": "3615ef27-7a3a-4d41-81f4-a7b64dab29ce",
           "type": "sort",
           "prompt": "Range chaque forme de nosotros selon le groupe du verbe.",
           "categories": [
@@ -669,6 +694,7 @@ window.registerPack({
           "explanation": "✅ Avec nosotros :\n- **-amos** pour -AR\n- **-emos** pour -ER\n- **-imos** pour -IR"
         },
         {
+          "id": "c5eb8f9d-0946-4d05-950d-d58e33d57a77",
           "type": "spot",
           "prompt": "Touche le verbe mal conjugué.",
           "tokens": [
@@ -685,6 +711,7 @@ window.registerPack({
           "explanation": "✅ **vivir** est en -IR : [[Nosotros **vivimos** en una ciudad grande.|Nous habitons dans une grande ville.]]"
         },
         {
+          "id": "591c9d13-1907-48d8-b7fe-7e964a6548fb",
           "type": "fill",
           "prompt": "Écoute et écris le verbe.",
           "sentence": "Tú ___ muy bien.",
@@ -798,6 +825,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "5647e17a-8ed6-4548-b42c-3c180125cefb",
           "type": "match",
           "prompt": "Relie chaque forme de **ser** à son pronom.",
           "pairs": [
@@ -825,6 +853,7 @@ window.registerPack({
           "explanation": "✅ **ser** :\n- soy\n- eres\n- es\n- somos\n- sois\n- son"
         },
         {
+          "id": "38cffbc4-0931-4cab-8cc4-668eec2a7b06",
           "type": "match",
           "prompt": "Relie chaque forme de **estar** à son pronom.",
           "pairs": [
@@ -852,6 +881,7 @@ window.registerPack({
           "explanation": "✅ **estar** :\n- estoy\n- estás\n- está\n- estamos\n- estáis\n- están\n(accents sur toutes sauf estoy et estamos)"
         },
         {
+          "id": "63721aee-bc3f-4ca8-aec0-a4a67de7fbad",
           "type": "mcq",
           "prompt": "\"Yo ___ francés.\" C'est une nationalité.",
           "options": [
@@ -864,6 +894,7 @@ window.registerPack({
           "explanation": "✅ La nationalité ne change pas : **ser** → **soy**. [[Yo soy francés.|Je suis français.]]"
         },
         {
+          "id": "026b435c-42f4-4487-91cd-bc86dc6852bd",
           "type": "mcq",
           "prompt": "\"Los alumnos ___ en el patio.\" C'est un lieu.",
           "options": [
@@ -876,6 +907,7 @@ window.registerPack({
           "explanation": "✅ Un lieu : **estar** → [[Los alumnos **están** en el patio.|Les élèves sont dans la cour.]]"
         },
         {
+          "id": "6eeec381-0013-4daf-8868-3571657db6aa",
           "type": "sort",
           "prompt": "Ser ou estar ?",
           "categories": [
@@ -917,6 +949,7 @@ window.registerPack({
           "explanation": "✅ **ser** :\n- identité\n- métier\n- nationalité\n**estar** :\n- lieu\n- état du moment"
         },
         {
+          "id": "5ac20cdf-2c63-4e99-8a67-59907a7ff0f5",
           "type": "fill",
           "prompt": "Complète avec **ser**.",
           "sentence": "Tú ___ muy simpático.",
@@ -926,6 +959,7 @@ window.registerPack({
           "explanation": "✅ **tú eres** : le caractère → **ser**."
         },
         {
+          "id": "35e05fa3-2172-40b3-82ec-41ffcb5524c2",
           "type": "fill",
           "prompt": "Complète avec **estar**.",
           "sentence": "Nosotros ___ en clase.",
@@ -935,6 +969,7 @@ window.registerPack({
           "explanation": "✅ **nosotros estamos** : un lieu → **estar**."
         },
         {
+          "id": "fce4d884-2c16-47d9-a877-dc47867715db",
           "type": "spot",
           "prompt": "Touche le verbe faux.",
           "tokens": [
@@ -951,6 +986,7 @@ window.registerPack({
           "explanation": "✅ Pour dire **où** on est : **estar** → [[Mi hermano **está** en la escuela.|Mon frère est à l'école.]]"
         },
         {
+          "id": "9ab4392f-536a-46b7-90b9-a8675c1f8e35",
           "type": "fill",
           "prompt": "Écoute et écris le verbe.",
           "sentence": "Hoy ___ muy contenta.",
@@ -1046,6 +1082,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "1a5ee9b9-fca6-40e1-a9f1-d23d592510ff",
           "type": "match",
           "prompt": "Relie chaque forme de **tener** à son pronom.",
           "pairs": [
@@ -1073,6 +1110,7 @@ window.registerPack({
           "explanation": "✅ **tener** :\n- tengo\n- tienes\n- tiene\n- tenemos\n- tenéis\n- tienen"
         },
         {
+          "id": "64fa279b-efa3-4d63-b086-d70cc9db377f",
           "type": "mcq",
           "prompt": "\"Yo ___ catorce años.\" Verbe : [[tener|avoir]].",
           "options": [
@@ -1085,6 +1123,7 @@ window.registerPack({
           "explanation": "✅ **yo tengo** : forme irrégulière avec un **g**. En espagnol, on **a** son âge, comme en français."
         },
         {
+          "id": "c8076031-ed49-4eb6-892d-63ab19c1b5bf",
           "type": "mcq",
           "prompt": "Pourquoi dit-on **tienen** et pas « tenen » ?",
           "options": [
@@ -1097,6 +1136,7 @@ window.registerPack({
           "explanation": "✅ **e → ie** :\n- tienes\n- tiene\n- tienen\nPas avec nosotros et vosotros :\n- **tenemos**\n- **tenéis**"
         },
         {
+          "id": "0f8062c3-86b0-41c1-b3ed-a930d0d06d95",
           "type": "fill",
           "prompt": "Complète avec **tener**.",
           "sentence": "Nosotros ___ un examen mañana.",
@@ -1106,6 +1146,7 @@ window.registerPack({
           "explanation": "✅ **nosotros tenemos** : pas de **ie** avec nosotros."
         },
         {
+          "id": "ce4af20b-6c87-4dbf-b54c-0abf370e56b2",
           "type": "mcq",
           "prompt": "Que veut dire **tener que** + infinitif ?",
           "options": [
@@ -1118,6 +1159,7 @@ window.registerPack({
           "explanation": "✅ [[**Tengo que estudiar.**|Je dois étudier.]]"
         },
         {
+          "id": "19344b8e-cc45-43d4-9ff1-2cc9b4869f9f",
           "type": "fill",
           "prompt": "Complète : « Les élèves doivent chanter l'hymne. »",
           "sentence": "Los alumnos ___ que cantar el himno.",
@@ -1127,6 +1169,7 @@ window.registerPack({
           "explanation": "✅ **tienen que** + infinitif = ils doivent."
         },
         {
+          "id": "34200a73-a5d7-45d6-aa9e-bd7611cb92a7",
           "type": "mcq",
           "prompt": "Comment dit-on « il y a » ?",
           "options": [
@@ -1139,6 +1182,7 @@ window.registerPack({
           "explanation": "✅ **hay** vient de **haber** : [[Hay treinta alumnos.|Il y a trente élèves.]]"
         },
         {
+          "id": "c7d1614d-10bd-4735-8e9b-6db9f578254f",
           "type": "match",
           "prompt": "Relie chaque forme de **haber** à son pronom.",
           "pairs": [
@@ -1166,6 +1210,7 @@ window.registerPack({
           "explanation": "✅ **haber** :\n- he\n- has\n- ha\n- hemos\n- habéis\n- han\nIl sert surtout d'auxiliaire."
         },
         {
+          "id": "31f0ae1f-ea7e-48ce-92f1-adcb5a16c292",
           "type": "spot",
           "prompt": "Touche le verbe faux.",
           "tokens": [
@@ -1182,6 +1227,7 @@ window.registerPack({
           "explanation": "✅ **tener** est irrégulier : [[Yo **tengo** que hacer los deberes.|Je dois faire mes devoirs.]]"
         },
         {
+          "id": "96602c77-70ea-451c-a335-553610fa4c49",
           "type": "fill",
           "prompt": "Écoute et écris le verbe.",
           "sentence": "Ella ___ que estudiar.",
@@ -1267,6 +1313,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "e5f0b442-d414-429d-b677-60b12fab32e6",
           "type": "mcq",
           "prompt": "\"Yo ___ los deberes.\" Verbe : [[hacer|faire]].",
           "options": [
@@ -1279,6 +1326,7 @@ window.registerPack({
           "explanation": "✅ **yo hago** : seul yo est irrégulier."
         },
         {
+          "id": "feca3d5a-f457-4735-9aa8-fbbbda0150a8",
           "type": "fill",
           "prompt": "Conjugue [[**hacer**|faire]] avec **ellos**.",
           "sentence": "Ellos ___ el saludo.",
@@ -1288,6 +1336,7 @@ window.registerPack({
           "explanation": "✅ **ellos hacen** : régulier (-en)."
         },
         {
+          "id": "02007c60-34cf-4228-a382-535ce31cab89",
           "type": "mcq",
           "prompt": "\"Nosotros ___ nuestras ideas.\" Verbe : [[defender|défendre]].",
           "options": [
@@ -1300,6 +1349,7 @@ window.registerPack({
           "explanation": "✅ Avec nosotros, pas de **ie** : **defendemos**."
         },
         {
+          "id": "84bb5b20-539b-452d-90d3-2860693631b9",
           "type": "fill",
           "prompt": "Conjugue [[**defender**|défendre]] avec **yo**.",
           "sentence": "Yo ___ a mis amigos.",
@@ -1309,6 +1359,7 @@ window.registerPack({
           "explanation": "✅ **yo defiendo** : e → ie."
         },
         {
+          "id": "2535fc9a-a3ea-4d8c-aa78-b87d0e312bb1",
           "type": "mcq",
           "prompt": "\"Ellos no ___ salir.\" Verbe : [[poder|pouvoir]].",
           "options": [
@@ -1321,6 +1372,7 @@ window.registerPack({
           "explanation": "✅ **ellos pueden** : o → ue."
         },
         {
+          "id": "2d1159b5-1978-47ff-aa03-884818bb08f3",
           "type": "fill",
           "prompt": "Conjugue [[**poder**|pouvoir]] avec **nosotros**.",
           "sentence": "Nosotros ___ hablar.",
@@ -1330,6 +1382,7 @@ window.registerPack({
           "explanation": "✅ **nosotros podemos** : pas de **ue** avec nosotros."
         },
         {
+          "id": "74905f39-2a13-4177-b504-fd64f6585f00",
           "type": "sort",
           "prompt": "La voyelle change-t-elle ?",
           "categories": [
@@ -1371,6 +1424,7 @@ window.registerPack({
           "explanation": "✅ e → ie et o → ue partout **sauf** avec nosotros et vosotros."
         },
         {
+          "id": "1f18bcf2-90b8-423b-a992-23c8c259467b",
           "type": "spot",
           "prompt": "Touche le verbe mal conjugué.",
           "tokens": [
@@ -1385,6 +1439,7 @@ window.registerPack({
           "explanation": "✅ **poder** : o → ue → [[Tú **puedes** venir mañana.|Tu peux venir demain.]]"
         },
         {
+          "id": "163d08f8-b7fb-408d-a81e-1c87b82143a1",
           "type": "fill",
           "prompt": "Écoute et écris le verbe.",
           "sentence": "Ellos ___ el comunismo.",
@@ -1418,6 +1473,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "e486ae30-b8fe-4432-b807-27dfcbcec573",
           "type": "sort",
           "prompt": "Range chaque infinitif dans son groupe.",
           "categories": [
@@ -1463,6 +1519,7 @@ window.registerPack({
           "explanation": "✅ Le groupe se voit à la fin de l'infinitif."
         },
         {
+          "id": "b44c181d-59c4-4f5a-8712-68bbd4f8849b",
           "type": "fill",
           "prompt": "Conjugue [[**llevar**|porter]] avec **yo**.",
           "sentence": "Yo ___ un uniforme azul.",
@@ -1472,6 +1529,7 @@ window.registerPack({
           "explanation": "✅ **llevo** : -AR, yo → **-o**."
         },
         {
+          "id": "62f233e8-893e-4095-9f65-4359de4c2715",
           "type": "fill",
           "prompt": "Conjugue [[**aprender**|apprendre]] avec **tú**.",
           "sentence": "Tú ___ inglés.",
@@ -1481,6 +1539,7 @@ window.registerPack({
           "explanation": "✅ **aprendes** : -ER, tú → **-es**."
         },
         {
+          "id": "5e16ef49-d524-472c-8147-5ae64220eda4",
           "type": "fill",
           "prompt": "Conjugue [[**escribir**|écrire]] avec **ellas**.",
           "sentence": "Ellas ___ en la pizarra.",
@@ -1490,6 +1549,7 @@ window.registerPack({
           "explanation": "✅ **escriben** : -IR, ellas → **-en**."
         },
         {
+          "id": "c00e4fa9-3af6-425f-977b-66ca9a7eb11d",
           "type": "mcq",
           "prompt": "\"Nosotros ___ en Cuba.\" Verbe : [[vivir|habiter]].",
           "options": [
@@ -1502,6 +1562,7 @@ window.registerPack({
           "explanation": "✅ -IR avec nosotros : **-imos**."
         },
         {
+          "id": "f0a178c9-307f-4eb9-a149-0f48f7040be8",
           "type": "mcq",
           "prompt": "\"Mi profesor ___ muy simpático.\" Verbe : [[ser|être]].",
           "options": [
@@ -1514,6 +1575,7 @@ window.registerPack({
           "explanation": "✅ Le caractère : **ser** → él **es**."
         },
         {
+          "id": "be38c35d-299c-4a8d-bcab-6d4cb7e4f048",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -1530,6 +1592,7 @@ window.registerPack({
           "explanation": "✅ **cantan** : cantar (-AR) avec los alumnos (ellos)."
         },
         {
+          "id": "551401e7-a295-49b1-83d2-bb02d0f8929f",
           "type": "spot",
           "prompt": "Touche le verbe mal conjugué.",
           "tokens": [
@@ -1545,6 +1608,7 @@ window.registerPack({
           "explanation": "✅ **comer** est en -ER : [[Nosotros **comemos** en el comedor.|Nous mangeons à la cantine.]]"
         },
         {
+          "id": "4067c519-250b-45c9-b49e-fbd4b75280a4",
           "type": "spot",
           "prompt": "Touche le verbe mal conjugué.",
           "tokens": [
@@ -1562,6 +1626,7 @@ window.registerPack({
           "explanation": "✅ **los alumnos** = ellos → [[Los alumnos **tienen** que llevar un uniforme.|Les élèves doivent porter un uniforme.]]"
         },
         {
+          "id": "21ae38e8-b799-4eed-b5b1-4691adfd4f1b",
           "type": "fill",
           "prompt": "Écoute et écris le verbe.",
           "sentence": "Vosotros ___ mucho.",
@@ -1595,6 +1660,7 @@ window.registerPack({
       "draw": 12,
       "exercises": [
         {
+          "id": "e598ced6-212c-4e47-a831-10e51629e6ce",
           "type": "question",
           "prompt": "Traduis : « Je parle espagnol. »",
           "answers": [
@@ -1604,6 +1670,7 @@ window.registerPack({
           "explanation": "Verbe en -AR avec yo : **-o** → **hablo** : [[Hablo español.|Je parle espagnol.]]"
         },
         {
+          "id": "20009f66-f223-45cd-8053-991688c49e9b",
           "type": "question",
           "prompt": "Traduis : « J'habite en France. »",
           "answers": [
@@ -1613,6 +1680,7 @@ window.registerPack({
           "explanation": "**vivir** = habiter ; avec yo : **vivo** : [[Vivo en Francia.|J'habite en France.]]"
         },
         {
+          "id": "2be7e3f3-e981-4c32-a784-6dc37616daa7",
           "type": "question",
           "prompt": "Traduis : « Je suis français. »",
           "answers": [
@@ -1622,6 +1690,7 @@ window.registerPack({
           "explanation": "Une nationalité ne change pas → **ser** : **soy** : [[Soy francés.|Je suis français.]]"
         },
         {
+          "id": "430a8b18-e242-4e32-bc4e-5abcd8561f14",
           "type": "question",
           "prompt": "Traduis : « J'ai quatorze ans. »",
           "answers": [
@@ -1631,6 +1700,7 @@ window.registerPack({
           "explanation": "L'âge se dit avec **tener** (jamais *soy*) : [[Tengo catorce años.|J'ai quatorze ans.]]"
         },
         {
+          "id": "0e7dbcca-ff2d-4dcf-a092-74150431c4a1",
           "type": "question",
           "prompt": "Traduis : « Nous mangeons à la cantine. »",
           "answers": [
@@ -1641,6 +1711,7 @@ window.registerPack({
           "explanation": "Verbe en -ER avec nosotros : **-emos** ; « la cantine » = **el comedor** : [[Comemos en el comedor.|Nous mangeons à la cantine.]]"
         },
         {
+          "id": "0c584cc2-0510-4a11-9b36-f648e03ff50a",
           "type": "question",
           "prompt": "Traduis : « Nous écrivons une lettre. »",
           "answers": [
@@ -1651,6 +1722,7 @@ window.registerPack({
           "explanation": "Verbe en -IR avec nosotros : **-imos** (pas *-emos*) : [[Escribimos una carta.|Nous écrivons une lettre.]]"
         },
         {
+          "id": "9ef5e407-c4e5-4317-be0b-8ed7958e1b6f",
           "type": "question",
           "prompt": "Traduis : « Vous parlez beaucoup. » (vous = vosotros)",
           "answers": [
@@ -1661,6 +1733,7 @@ window.registerPack({
           "explanation": "Avec vosotros, -AR → **-áis**, avec l'accent : [[Habláis mucho.|Vous parlez beaucoup.]]"
         },
         {
+          "id": "92af6b8b-425f-4923-9ad9-4850f94cfc2f",
           "type": "question",
           "prompt": "Traduis : « Tu es très sympathique. »",
           "answers": [
@@ -1672,6 +1745,7 @@ window.registerPack({
           "explanation": "Le caractère → **ser** ; avec tú : **eres** : [[Eres muy simpático.|Tu es très sympathique.]]"
         },
         {
+          "id": "a74f15a9-2997-4821-8bb9-714df0089868",
           "type": "question",
           "prompt": "Traduis : « Mon frère est à l'école. »",
           "answers": [
@@ -1681,6 +1755,7 @@ window.registerPack({
           "explanation": "Un lieu → **estar** : **está**, avec l'accent : [[Mi hermano está en la escuela.|Mon frère est à l'école.]]"
         },
         {
+          "id": "d6053be1-2f43-4660-bbb3-d6dd805357f6",
           "type": "question",
           "prompt": "Traduis : « Les élèves sont dans la cour. »",
           "answers": [
@@ -1690,6 +1765,7 @@ window.registerPack({
           "explanation": "Un lieu → **estar** ; avec los alumnos : **están** : [[Los alumnos están en el patio.|Les élèves sont dans la cour.]]"
         },
         {
+          "id": "04645190-4052-4649-bb14-f6585a4e4781",
           "type": "question",
           "prompt": "Traduis : « Aujourd'hui, je suis très contente. »",
           "answers": [
@@ -1701,6 +1777,7 @@ window.registerPack({
           "explanation": "Un état passager → **estar** : **estoy** : [[Hoy estoy muy contenta.|Aujourd'hui, je suis très contente.]]"
         },
         {
+          "id": "f9cb94b3-c239-45a4-85d8-3c986957f60c",
           "type": "question",
           "prompt": "Traduis : « Il y a trente élèves dans la classe. »",
           "answers": [
@@ -1712,6 +1789,7 @@ window.registerPack({
           "explanation": "« il y a » = **hay** (verbe haber) : [[Hay treinta alumnos en la clase.|Il y a trente élèves dans la classe.]]"
         },
         {
+          "id": "d38b68dc-f025-47a0-a50b-d711b6482f2b",
           "type": "question",
           "prompt": "Traduis : « Je fais mes devoirs. »",
           "answers": [
@@ -1723,6 +1801,7 @@ window.registerPack({
           "explanation": "**hacer** : seul yo est irrégulier → **hago** : [[Hago los deberes.|Je fais mes devoirs.]]"
         },
         {
+          "id": "f518cd54-4031-45e7-bd16-b9380b74f712",
           "type": "question",
           "prompt": "Traduis : « Elle doit étudier. »",
           "answers": [
@@ -1732,6 +1811,7 @@ window.registerPack({
           "explanation": "**tener que** + infinitif ; avec ella : **tiene** (e → ie) : [[Ella tiene que estudiar.|Elle doit étudier.]]"
         },
         {
+          "id": "4557b3fb-a0d3-4d44-869c-826dda50bdc6",
           "type": "question",
           "prompt": "Traduis : « Ils ne peuvent pas parler. »",
           "answers": [
@@ -1741,6 +1821,7 @@ window.registerPack({
           "explanation": "**poder** : **o → ue** avec ellos → **pueden**, puis l'infinitif : [[No pueden hablar.|Ils ne peuvent pas parler.]]"
         },
         {
+          "id": "d6e78e89-7c88-4188-9dd0-7a1e04c0a2ab",
           "type": "question",
           "prompt": "Traduis : « Nous sommes en classe. Le professeur ouvre la porte. »",
           "answers": [
@@ -1752,6 +1833,7 @@ window.registerPack({
           "explanation": "Un lieu → **estamos** ; **abrir** avec él : **abre** : [[Estamos en clase. El profesor abre la puerta.|Nous sommes en classe. Le professeur ouvre la porte.]]"
         },
         {
+          "id": "ba814db9-3c2e-42b1-8eaa-68606a7af09c",
           "type": "question",
           "prompt": "Traduis : « Je m'appelle Lucas. J'ai quatorze ans et j'habite à Lyon. »",
           "answers": [
@@ -1764,6 +1846,7 @@ window.registerPack({
           "explanation": "L'âge avec **tengo**, la ville avec **vivo en** : [[Me llamo Lucas. Tengo catorce años y vivo en Lyon.|Je m'appelle Lucas. J'ai quatorze ans et j'habite à Lyon.]]"
         },
         {
+          "id": "4e17811b-e53a-4d69-a6c1-8fc9d87aab4a",
           "type": "question",
           "prompt": "Traduis : « Tu lis la lettre. »",
           "answers": [
@@ -1773,6 +1856,7 @@ window.registerPack({
           "explanation": "**leer** est en -ER ; avec tú : **lees** : [[Lees la carta.|Tu lis la lettre.]]"
         },
         {
+          "id": "b5b77084-5e67-4f8a-8947-081b52777052",
           "type": "question",
           "prompt": "Traduis : « Vous mangez à la maison. » (vous = vosotros)",
           "answers": [
@@ -1783,6 +1867,7 @@ window.registerPack({
           "explanation": "Verbe en -ER avec vosotros : **-éis**, avec l'accent ; « à la maison » = **en casa** : [[Coméis en casa.|Vous mangez à la maison.]]"
         },
         {
+          "id": "273a0626-3263-421b-b190-c2bddf5ea215",
           "type": "question",
           "prompt": "Traduis : « Je suis fatigué. »",
           "answers": [
@@ -1792,6 +1877,7 @@ window.registerPack({
           "explanation": "Un état passager → **estar** : **estoy** : [[Estoy cansado.|Je suis fatigué.]]"
         },
         {
+          "id": "044d02dc-1159-41f6-98f1-d0b9f7ce2f85",
           "type": "question",
           "prompt": "Traduis : « Elle a un chien. »",
           "answers": [
@@ -1801,6 +1887,7 @@ window.registerPack({
           "explanation": "« avoir, posséder » = **tener** ; avec ella : **tiene** (e → ie) : [[Tiene un perro.|Elle a un chien.]]"
         },
         {
+          "id": "5552ed87-9db8-4d54-b0a9-a1a6ba943ec7",
           "type": "question",
           "prompt": "Traduis : « Nous pouvons chanter. »",
           "answers": [
@@ -1811,6 +1898,7 @@ window.registerPack({
           "explanation": "**poder** avec nosotros : pas de **ue** → **podemos**, puis l'infinitif : [[Podemos cantar.|Nous pouvons chanter.]]"
         },
         {
+          "id": "95b122bf-68c4-44f4-8f2c-86d50980ee93",
           "type": "question",
           "prompt": "Traduis : « Ils défendent leurs idées. »",
           "answers": [
@@ -1820,6 +1908,7 @@ window.registerPack({
           "explanation": "**defender** : **e → ie** avec ellos → **defienden** : [[Defienden sus ideas.|Ils défendent leurs idées.]]"
         },
         {
+          "id": "f41686d1-095d-443d-9b28-575c6bb2eb75",
           "type": "question",
           "prompt": "Traduis : « Tu habites à Lyon ? »",
           "answers": [
@@ -1829,6 +1918,7 @@ window.registerPack({
           "explanation": "À retenir :\n- **vivir** avec tú : **vives**\n- en espagnol, la question s'ouvre avec **¿**\n[[¿Vives en Lyon?|Tu habites à Lyon ?]]"
         },
         {
+          "id": "36ff6f97-11ba-4fd5-9d9f-edf2cd0c59d8",
           "type": "question",
           "prompt": "Traduis : « Mon frère est professeur. »",
           "answers": [
@@ -1837,6 +1927,7 @@ window.registerPack({
           "explanation": "Un métier ne change pas → **ser** : **es** (et pas d'article devant le métier) : [[Mi hermano es profesor.|Mon frère est professeur.]]"
         },
         {
+          "id": "258e994c-1f67-4f79-929a-71fec03d96f8",
           "type": "question",
           "prompt": "Traduis : « Vous êtes à la cantine. » (vous = vosotros)",
           "answers": [
@@ -1847,6 +1938,7 @@ window.registerPack({
           "explanation": "Un lieu → **estar** ; avec vosotros : **estáis** ; « la cantine » = **el comedor** : [[Estáis en el comedor.|Vous êtes à la cantine.]]"
         },
         {
+          "id": "fac5140a-c909-4f2e-a795-f2a744dd19a6",
           "type": "question",
           "prompt": "Traduis : « Ma sœur est sympathique. Elle apprend l'espagnol. »",
           "answers": [
@@ -1859,6 +1951,7 @@ window.registerPack({
           "explanation": "À retenir :\n- le caractère → **ser** : **es**\n- **aprender** avec ella : **aprende**\n[[Mi hermana es simpática. Aprende español.|Ma sœur est sympathique. Elle apprend l'espagnol.]]"
         },
         {
+          "id": "e1ed88d4-79ce-4b07-8242-cbb64ed46b49",
           "type": "question",
           "prompt": "Traduis : « Je ne peux pas manger. Je dois faire mes devoirs. »",
           "answers": [

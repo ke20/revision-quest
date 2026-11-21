@@ -69,6 +69,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "121e2619-f84a-48fc-9a1a-558986c454ee",
           "type": "mcq",
           "prompt": "Que veut dire « État de droit » ?",
           "options": [
@@ -81,6 +82,7 @@ window.registerPack({
           "explanation": "Dans un **État de droit**, tout le monde respecte le droit, **l'État aussi**."
         },
         {
+          "id": "999aff3d-3cdc-4a66-8cba-8f5a365ab1bd",
           "type": "fill",
           "prompt": "Complète la phrase du cours.",
           "sentence": "En France, comme dans tout pays démocratique, nous sommes dans un État de ___.",
@@ -91,6 +93,7 @@ window.registerPack({
           "hint": "Les règles et les lois forment le …"
         },
         {
+          "id": "a48f075b-c7ed-405e-bbca-064523366856",
           "type": "mcq",
           "prompt": "Où trouve-t-on un État de droit ?",
           "options": [
@@ -103,6 +106,7 @@ window.registerPack({
           "explanation": "Un État de droit va avec la **démocratie** : le pouvoir y est soumis aux lois."
         },
         {
+          "id": "c704edc7-fa6e-4e8d-97f5-4a5fbeffa928",
           "type": "sort",
           "prompt": "État de droit ou non ? Range chaque situation.",
           "categories": [
@@ -144,6 +148,7 @@ window.registerPack({
           "explanation": "Dans un État de droit, **personne n'est au-dessus des lois**, pas même ceux qui gouvernent."
         },
         {
+          "id": "43c7f0e4-faac-45f4-87fd-ce67095f26e2",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -168,6 +173,7 @@ window.registerPack({
           "explanation": "Personne n'est au-dessus des lois, **même pas l'État**."
         },
         {
+          "id": "501371cd-e32c-49d2-8c2e-6961b346267f",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Dans un État de droit, personne n'est au-dessus des ___.",
@@ -178,6 +184,7 @@ window.registerPack({
           "explanation": "Personne n'est **au-dessus des lois** : ni les habitants, ni les dirigeants."
         },
         {
+          "id": "73bacd71-4f86-4289-a6d6-36be362dd186",
           "type": "match",
           "prompt": "Relie chaque mot à sa définition.",
           "pairs": [
@@ -201,6 +208,7 @@ window.registerPack({
           "explanation": "Dans un **État de droit**, le **droit** s'applique à tous, même à l'administration."
         },
         {
+          "id": "6e5c9037-7ee8-47a3-a1ac-c44aa292e985",
           "type": "mcq",
           "prompt": "Une mairie prend une décision contraire à la loi. Que peut faire un habitant ?",
           "options": [
@@ -213,6 +221,7 @@ window.registerPack({
           "explanation": "Dans un État de droit, l'administration aussi doit respecter la loi : on peut aller devant le **tribunal administratif**."
         },
         {
+          "id": "fa9276f6-6a21-458a-a7be-6d6e74cd8d71",
           "type": "order",
           "prompt": "Remets la phrase dans l'ordre.",
           "words": [
@@ -254,6 +263,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "0f437edf-01bd-43c2-be8b-689d5d3764b1",
           "type": "mcq",
           "prompt": "D'après l'article 18, qui est français ?",
           "options": [
@@ -267,6 +277,7 @@ window.registerPack({
           "docId": "code-civil"
         },
         {
+          "id": "1017bd59-6a1a-4bf7-a5a2-6968f6798380",
           "type": "mcq",
           "prompt": "À partir de quel âge un enfant né en France de parents étrangers peut-il réclamer la nationalité française par déclaration ?",
           "options": [
@@ -280,6 +291,7 @@ window.registerPack({
           "docId": "code-civil"
         },
         {
+          "id": "f83ac1a2-48bc-4d3a-b9cc-b087a2d510e4",
           "type": "fill",
           "prompt": "Complète avec un nombre.",
           "sentence": "Pour réclamer la nationalité à 16 ans, il faut avoir habité en France au moins ___ ans depuis l'âge de 11 ans.",
@@ -291,6 +303,7 @@ window.registerPack({
           "docId": "code-civil"
         },
         {
+          "id": "fa2325e3-5efd-4a8d-b707-2d67ab672da6",
           "type": "mcq",
           "prompt": "Pour réclamer la nationalité à 16 ans (article 21-11), quelles conditions faut-il remplir ?",
           "options": [
@@ -307,6 +320,7 @@ window.registerPack({
           "explanation": "Article 21-11 :\n- **né en France** de parents étrangers\n- **résidence** en France au moment de la déclaration\n- **5 ans** de résidence depuis **11 ans**"
         },
         {
+          "id": "62b24b17-77f3-4894-8689-c54d320f739a",
           "type": "sort",
           "prompt": "Français grâce à quel article ?",
           "categories": [
@@ -348,6 +362,7 @@ window.registerPack({
           "explanation": "Un **parent français** : article 18. **Né en France** de parents étrangers et 5 ans de résidence depuis 11 ans : article 21-11."
         },
         {
+          "id": "b03f21a7-42db-4afd-8c92-073311ba6483",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -373,6 +388,7 @@ window.registerPack({
           "explanation": "C'est **à partir de 16 ans**, et non à 5 ans."
         },
         {
+          "id": "4cadd9bc-86c7-4cc6-856f-a848ab735033",
           "type": "mcq",
           "prompt": "Inès est née en Belgique. Sa mère est française, son père est belge. Est-elle française ?",
           "options": [
@@ -385,6 +401,7 @@ window.registerPack({
           "explanation": "Article 18 : **un des parents au moins** est français. Le lieu de naissance ne compte pas ici."
         },
         {
+          "id": "4ef2547c-6d02-45e6-8cdd-9290814db84f",
           "type": "mcq",
           "prompt": "Un adulte étranger installé en France veut devenir français. Que peut-il demander ?",
           "options": [
@@ -397,6 +414,7 @@ window.registerPack({
           "explanation": "Un adulte étranger peut demander la **naturalisation**. L'article 21-11 concerne les mineurs nés en France."
         },
         {
+          "id": "d67135d0-385e-4e36-9b32-f1f15cc66d81",
           "type": "match",
           "prompt": "Relie chaque cas à la règle.",
           "pairs": [
@@ -420,6 +438,7 @@ window.registerPack({
           "explanation": "Plusieurs chemins mènent à la **nationalité française**."
         },
         {
+          "id": "365cea60-e3d0-420a-9e78-6a3a88c74310",
           "type": "order",
           "prompt": "Remets l'article 18 dans l'ordre.",
           "words": [
@@ -462,6 +481,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "051206ae-7570-4d60-8f88-bef499910490",
           "type": "mcq",
           "prompt": "D'après la Constitution, quelles conditions faut-il remplir pour voter ?",
           "options": [
@@ -479,6 +499,7 @@ window.registerPack({
           "docId": "constitution"
         },
         {
+          "id": "a0500fb1-6d22-466d-be65-c2ef210dc637",
           "type": "fill",
           "prompt": "Complète l'article 3 de la Constitution.",
           "sentence": "Sont électeurs tous les nationaux français ___ des deux sexes.",
@@ -490,6 +511,7 @@ window.registerPack({
           "docId": "constitution"
         },
         {
+          "id": "9849934e-1a72-4b4e-9656-1713414600f5",
           "type": "mcq",
           "prompt": "Quel texte fixe les conditions pour être électeur en France ?",
           "options": [
@@ -502,6 +524,7 @@ window.registerPack({
           "explanation": "C'est la **Constitution** de la Ve République (article 3)."
         },
         {
+          "id": "af474555-8cca-4a5a-b58e-fe9fbad86775",
           "type": "sort",
           "prompt": "Peut voter à l'élection présidentielle ?",
           "categories": [
@@ -543,6 +566,7 @@ window.registerPack({
           "explanation": "Pour l'élection présidentielle, il faut être **français** et **majeur**."
         },
         {
+          "id": "fd3e89d6-eb58-42d3-a9f7-744674f81747",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -566,6 +590,7 @@ window.registerPack({
           "explanation": "Il faut être **majeur** : **18 ans**."
         },
         {
+          "id": "955f7cfd-790b-4df7-a9dc-88f8c2fa2a4f",
           "type": "match",
           "prompt": "Relie chaque mot de la Constitution à son sens.",
           "pairs": [
@@ -589,6 +614,7 @@ window.registerPack({
           "explanation": "Ce sont les conditions de l'**article 3** de la Constitution."
         },
         {
+          "id": "dc2d67b6-11d4-411b-ac07-407b4829ac3c",
           "type": "mcq",
           "prompt": "Pourquoi dit-on que la citoyenneté politique est liée à la nationalité ?",
           "options": [
@@ -601,6 +627,7 @@ window.registerPack({
           "explanation": "Seuls les **nationaux français** sont électeurs : voter dépend de la **nationalité**."
         },
         {
+          "id": "0ab8f01a-7c69-48b1-88a9-5329292f69d2",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Les conditions pour voter sont fixées par la Constitution de la ___ République.",
@@ -619,6 +646,7 @@ window.registerPack({
           "explanation": "La **Ve République** a sa Constitution depuis 1958."
         },
         {
+          "id": "34534a32-d160-4a78-85e4-a614a0c85c3f",
           "type": "order",
           "prompt": "Remets la phrase dans l'ordre.",
           "words": [
@@ -673,6 +701,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "63516d6f-a884-4105-93c4-bd7689259799",
           "type": "mcq",
           "prompt": "Quel traité crée la citoyenneté européenne ?",
           "options": [
@@ -686,6 +715,7 @@ window.registerPack({
           "docId": "vote-etrangers"
         },
         {
+          "id": "9b64286f-b379-42f2-88f6-cb11dca29dc7",
           "type": "mcq",
           "prompt": "Qui est citoyen européen ?",
           "options": [
@@ -699,6 +729,7 @@ window.registerPack({
           "docId": "vote-etrangers"
         },
         {
+          "id": "553460a3-180b-4960-b9f2-f48ec7501be5",
           "type": "fill",
           "prompt": "Complète avec une année.",
           "sentence": "Le traité de Maastricht est signé le 7 février ___.",
@@ -708,6 +739,7 @@ window.registerPack({
           "explanation": "**7 février 1992**."
         },
         {
+          "id": "aa4c5394-c1ad-495d-bc9f-b6b23b813611",
           "type": "mcq",
           "prompt": "À quelles élections un citoyen européen qui vit en France peut-il voter ?",
           "options": [
@@ -722,6 +754,7 @@ window.registerPack({
           "explanation": "Il vote aux **municipales** et aux **européennes**, pas à l'élection présidentielle (réservée aux Français)."
         },
         {
+          "id": "f927eb34-c8ca-48ce-9124-362d5db4d9b7",
           "type": "sort",
           "prompt": "Peut voter aux élections municipales de sa ville, en France ?",
           "categories": [
@@ -763,6 +796,7 @@ window.registerPack({
           "explanation": "Votent aux municipales :\n- les **Français majeurs**\n- les **citoyens européens majeurs**\nPas les étrangers hors UE ni les mineurs."
         },
         {
+          "id": "381d0bca-0fa7-4f71-917f-f34b7c744ddd",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -791,6 +825,7 @@ window.registerPack({
           "explanation": "Ils votent aux élections **municipales** et européennes, pas à la présidentielle."
         },
         {
+          "id": "76f23aad-f2d1-4a58-8d67-58751da50fbc",
           "type": "mcq",
           "prompt": "Qu'a dû faire la France pour appliquer la citoyenneté européenne ?",
           "options": [
@@ -803,6 +838,7 @@ window.registerPack({
           "explanation": "La Constitution réservait le vote aux Français : il a fallu la **modifier**."
         },
         {
+          "id": "5e388bc1-5083-479b-9a87-c4d9f6c8d6ea",
           "type": "match",
           "prompt": "Relie.",
           "pairs": [
@@ -826,6 +862,7 @@ window.registerPack({
           "explanation": "La **citoyenneté européenne** ouvre le vote aux municipales et aux européennes."
         },
         {
+          "id": "06fdb22b-cd7f-42c8-8b09-f03890b1cd8b",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Les citoyens européens peuvent voter et être ___ aux élections municipales.",
@@ -860,6 +897,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "f2e2674a-e4e0-4dd1-943a-b6e711bcac70",
           "type": "mcq",
           "prompt": "Un étranger hors UE qui vit en France peut-il voter aux élections municipales ?",
           "options": [
@@ -873,6 +911,7 @@ window.registerPack({
           "docId": "vote-etrangers"
         },
         {
+          "id": "3a7fefd3-e323-4b2a-84fa-8d6ae2ec0cf6",
           "type": "mcq",
           "prompt": "Les étrangers hors UE sont-ils privés de tout droit de vote ?",
           "options": [
@@ -886,6 +925,7 @@ window.registerPack({
           "docId": "vote-etrangers"
         },
         {
+          "id": "42e8e6cd-eea0-4cfa-ae68-d6f2d573f4a5",
           "type": "mcq",
           "prompt": "Comment un étranger hors UE peut-il participer à la vie de la cité ?",
           "options": [
@@ -903,6 +943,7 @@ window.registerPack({
           "docId": "vote-etrangers"
         },
         {
+          "id": "7e143437-82f3-4f20-a327-913d63a7199c",
           "type": "mcq",
           "prompt": "Pourquoi certains s'opposent-ils au droit de vote des étrangers aux municipales ?",
           "options": [
@@ -916,6 +957,7 @@ window.registerPack({
           "docId": "vote-etrangers"
         },
         {
+          "id": "2f5a497c-b910-4795-93dd-866bbdd64a2a",
           "type": "sort",
           "prompt": "Possible pour un étranger hors UE qui vit en France ?",
           "categories": [
@@ -961,6 +1003,7 @@ window.registerPack({
           "explanation": "Pas de vote aux **élections politiques**, mais beaucoup d'autres façons de **participer**."
         },
         {
+          "id": "a6614dff-0261-4b58-a040-3db60338dd6c",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Un étranger hors UE peut adhérer à un syndicat ou à une ___.",
@@ -970,6 +1013,7 @@ window.registerPack({
           "explanation": "**Association** et **syndicat** sont ouverts à tous."
         },
         {
+          "id": "27eca7cc-0de4-43fb-93fc-54e39cf2d6bc",
           "type": "mcq",
           "prompt": "D'après le texte, que peut-on dire de la politique des pays européens sur le vote des étrangers ?",
           "options": [
@@ -983,6 +1027,7 @@ window.registerPack({
           "docId": "carte"
         },
         {
+          "id": "acdadbbd-09ee-41ee-8952-d12960795638",
           "type": "sort",
           "prompt": "Range ces pays d'après le texte.",
           "categories": [
@@ -1025,6 +1070,7 @@ window.registerPack({
           "docId": "carte"
         },
         {
+          "id": "0066075e-fbb0-4ebf-b6d4-6aa013fbe66e",
           "type": "match",
           "prompt": "Relie chaque personne à ce qu'elle peut faire.",
           "pairs": [
@@ -1068,6 +1114,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "e8958720-55d3-4c86-a2b7-89cf748a70c5",
           "type": "mcq",
           "prompt": "D'après le texte, quels devoirs le citoyen doit-il respecter ?",
           "options": [
@@ -1085,6 +1132,7 @@ window.registerPack({
           "docId": "schnapper"
         },
         {
+          "id": "233f8590-f37b-4c4d-8ef2-4c4439b2f16a",
           "type": "mcq",
           "prompt": "D'après le texte, par quoi l'État et le citoyen sont-ils unis ?",
           "options": [
@@ -1098,6 +1146,7 @@ window.registerPack({
           "docId": "schnapper"
         },
         {
+          "id": "2d1575f7-4c22-4f40-8c51-a7d881bccca0",
           "type": "mcq",
           "prompt": "En échange de ses devoirs, que peut demander le citoyen à l'État ?",
           "options": [
@@ -1111,6 +1160,7 @@ window.registerPack({
           "docId": "schnapper"
         },
         {
+          "id": "d3f100b5-a53b-4c09-b0a6-aecbb0838228",
           "type": "sort",
           "prompt": "Droit ou devoir du citoyen ?",
           "categories": [
@@ -1152,6 +1202,7 @@ window.registerPack({
           "explanation": "Les **devoirs** sont ce que le citoyen doit à la société ; les **droits**, ce que l'État lui garantit."
         },
         {
+          "id": "f6b6e015-09c9-4e30-9680-560e40abc055",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Participer aux dépenses collectives selon ses ressources, c'est payer des ___.",
@@ -1164,6 +1215,7 @@ window.registerPack({
           "explanation": "Chacun paie des **impôts** selon ses **ressources**."
         },
         {
+          "id": "e5d20586-b86f-4e11-beeb-5965913c5e21",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -1183,6 +1235,7 @@ window.registerPack({
           "explanation": "Chacun participe **selon ses ressources** : celui qui gagne plus paie plus."
         },
         {
+          "id": "0a813ea6-d30d-449e-86a1-d7aed0052035",
           "type": "mcq",
           "prompt": "Que veut dire « réciproques » dans « des droits et des devoirs réciproques » ?",
           "options": [
@@ -1195,6 +1248,7 @@ window.registerPack({
           "explanation": "**Réciproque** : l'État et le citoyen ont des obligations **l'un envers l'autre**."
         },
         {
+          "id": "42319256-1ec1-4720-a7dc-edcdef611de9",
           "type": "match",
           "prompt": "Relie chaque devoir ou droit à un exemple.",
           "pairs": [
@@ -1218,6 +1272,7 @@ window.registerPack({
           "explanation": "Des **devoirs** et des **droits** au quotidien."
         },
         {
+          "id": "9642f4b0-a243-42b0-8e5b-0a948b4b21b2",
           "type": "order",
           "prompt": "Remets la phrase dans l'ordre.",
           "words": [
@@ -1270,6 +1325,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "0e3b43c8-65ba-4b24-adcf-fca7c958cc11",
           "type": "question",
           "prompt": "Comment appelle-t-on un État où tout le monde, l'État compris, respecte le droit ?",
           "answers": [
@@ -1281,6 +1337,7 @@ window.registerPack({
           "explanation": "Un **État de droit**."
         },
         {
+          "id": "461f2f3a-1ac3-4bb1-95f3-5d4495e10c6d",
           "type": "question",
           "prompt": "Dans un État de droit, l'État doit-il lui aussi respecter les lois ? (oui ou non)",
           "answers": [
@@ -1289,6 +1346,7 @@ window.registerPack({
           "explanation": "Oui : **personne n'est au-dessus des lois**."
         },
         {
+          "id": "06cffa07-086b-4199-abc8-f04e842be620",
           "type": "question",
           "prompt": "On trouve un État de droit dans une démocratie ou dans une dictature ?",
           "answers": [
@@ -1304,6 +1362,7 @@ window.registerPack({
           "explanation": "Dans une **démocratie**, comme en France."
         },
         {
+          "id": "397729fd-11bc-4efc-aefd-60e814dc4cf7",
           "type": "question",
           "prompt": "Dans un État de droit, peut-on contester une décision de l'administration devant un juge ? (oui ou non)",
           "answers": [
@@ -1312,6 +1371,7 @@ window.registerPack({
           "explanation": "Oui, devant le **tribunal administratif** : l'administration aussi respecte la loi."
         },
         {
+          "id": "b382c01b-576c-4d44-a2aa-17d96ff99455",
           "type": "question",
           "prompt": "D'après le code civil, combien de parents français faut-il au moins pour qu'un enfant soit français ?",
           "answers": [
@@ -1328,6 +1388,7 @@ window.registerPack({
           "explanation": "**Un seul** parent suffit (article 18)."
         },
         {
+          "id": "636f9419-5bee-45aa-ba97-f5848a47a61a",
           "type": "question",
           "prompt": "Quel article du code civil dit qu'est français l'enfant dont un des parents au moins est français ?",
           "answers": [
@@ -1339,6 +1400,7 @@ window.registerPack({
           "explanation": "L'**article 18**."
         },
         {
+          "id": "a72023c9-d730-4099-9ba3-9ad7ef21f538",
           "type": "question",
           "prompt": "À partir de quel âge un enfant né en France de parents étrangers peut-il réclamer la nationalité française par déclaration ?",
           "answers": [
@@ -1355,6 +1417,7 @@ window.registerPack({
           "explanation": "**À partir de 16 ans** (article 21-11)."
         },
         {
+          "id": "3588daa7-56aa-4756-923b-6662968b72fb",
           "type": "question",
           "prompt": "Pour réclamer la nationalité à 16 ans, combien d'années au moins faut-il avoir habité en France depuis l'âge de 11 ans ?",
           "answers": [
@@ -1367,6 +1430,7 @@ window.registerPack({
           "explanation": "Au moins **5 ans** depuis l'âge de 11 ans."
         },
         {
+          "id": "802bcbe4-8560-4fc2-a9b6-4a67f559ad18",
           "type": "question",
           "prompt": "Pour réclamer la nationalité à 16 ans, on compte 5 ans de résidence en France depuis quel âge ?",
           "answers": [
@@ -1379,6 +1443,7 @@ window.registerPack({
           "explanation": "Depuis l'âge de **11 ans** (article 21-11)."
         },
         {
+          "id": "ab3f2641-d0a5-4ae6-9d04-e04a0a06434b",
           "type": "question",
           "prompt": "Quel article du code civil permet à un enfant né en France de parents étrangers de réclamer la nationalité française à 16 ans ?",
           "answers": [
@@ -1389,6 +1454,7 @@ window.registerPack({
           "explanation": "L'**article 21-11**."
         },
         {
+          "id": "e60bb4d1-350d-4110-9062-8ec8271d736b",
           "type": "question",
           "prompt": "Comment s'appelle la démarche par laquelle un adulte étranger demande à l'État de devenir français ?",
           "answers": [
@@ -1399,6 +1465,7 @@ window.registerPack({
           "explanation": "La **naturalisation**."
         },
         {
+          "id": "af2c26f3-dcd7-42de-9e10-937b3becaea2",
           "type": "question",
           "prompt": "Quel texte dit qui est électeur en France ?",
           "answers": [
@@ -1415,6 +1482,7 @@ window.registerPack({
           "explanation": "La **Constitution** de la Ve République (article 3)."
         },
         {
+          "id": "2737d27e-53f3-4058-8eaf-fda508314fb1",
           "type": "question",
           "prompt": "Quelle nationalité faut-il avoir pour voter à l'élection présidentielle ?",
           "answers": [
@@ -1430,6 +1498,7 @@ window.registerPack({
           "explanation": "Il faut être de **nationalité française**."
         },
         {
+          "id": "a1d42d0d-cb5c-44e5-9a75-403976a5fe9a",
           "type": "question",
           "prompt": "À quel âge devient-on majeur, et donc électeur, en France ?",
           "answers": [
@@ -1445,6 +1514,7 @@ window.registerPack({
           "explanation": "À **18 ans**."
         },
         {
+          "id": "3188d063-be62-4f41-8ca7-92cf109036d4",
           "type": "question",
           "prompt": "D'après la Constitution, les électeurs doivent jouir de leurs droits civils et… ?",
           "answers": [
@@ -1455,6 +1525,7 @@ window.registerPack({
           "explanation": "« jouissant de leurs droits **civils et politiques** »."
         },
         {
+          "id": "cb0fc722-045d-47b5-9b07-32e0a360dae0",
           "type": "question",
           "prompt": "Quel traité crée la citoyenneté européenne ?",
           "answers": [
@@ -1468,6 +1539,7 @@ window.registerPack({
           "explanation": "Le **traité de Maastricht**."
         },
         {
+          "id": "f62d9d97-1f68-48fa-a181-e55d0db82421",
           "type": "question",
           "prompt": "En quelle année le traité de Maastricht est-il signé ?",
           "answers": [
@@ -1476,6 +1548,7 @@ window.registerPack({
           "explanation": "Le **7 février 1992**."
         },
         {
+          "id": "0314ea3f-9f95-4397-87ed-f63ff92a8a92",
           "type": "question",
           "prompt": "Est citoyen européen toute personne qui a la nationalité d'un pays de l'… ?",
           "answers": [
@@ -1489,6 +1562,7 @@ window.registerPack({
           "explanation": "De l'**Union européenne** (UE)."
         },
         {
+          "id": "17ca220a-63fb-4327-8f17-1254137b43fb",
           "type": "question",
           "prompt": "Une Espagnole qui vit à Bordeaux peut voter en France aux élections européennes et aux élections… ?",
           "answers": [
@@ -1503,6 +1577,7 @@ window.registerPack({
           "explanation": "Aux **municipales** (et aux européennes)."
         },
         {
+          "id": "d9d4918a-7271-4af0-a3fd-6dabf04320f8",
           "type": "question",
           "prompt": "Un Italien qui vit à Paris peut-il voter à l'élection présidentielle française ? (oui ou non)",
           "answers": [
@@ -1511,6 +1586,7 @@ window.registerPack({
           "explanation": "Non : l'élection présidentielle est réservée aux **Français**."
         },
         {
+          "id": "283a5a6e-6c9a-49f2-86b3-17f588aea9a5",
           "type": "question",
           "prompt": "Qu'a dû modifier la France pour appliquer la citoyenneté européenne ?",
           "answers": [
@@ -1521,6 +1597,7 @@ window.registerPack({
           "explanation": "La **Constitution**."
         },
         {
+          "id": "2685a7df-3401-40d3-b98f-098012129d3d",
           "type": "question",
           "prompt": "Un étranger hors UE qui vit en France peut-il voter aux élections municipales ? (oui ou non)",
           "answers": [
@@ -1529,6 +1606,7 @@ window.registerPack({
           "explanation": "Non : ce droit a été promis, mais il est toujours **débattu**."
         },
         {
+          "id": "5ba249aa-5ef0-4b5c-9d9f-c69484777bf5",
           "type": "question",
           "prompt": "Cite un groupe qu'un étranger vivant en France peut rejoindre pour participer à la vie de la cité.",
           "answers": [
@@ -1546,6 +1624,7 @@ window.registerPack({
           "explanation": "Par exemple :\n- une **association**\n- un **syndicat**\n- un **parti politique**"
         },
         {
+          "id": "98f4324d-b0c4-4e02-80a2-406345324176",
           "type": "question",
           "prompt": "Des parents étrangers peuvent-ils voter aux élections des parents d'élèves ? (oui ou non)",
           "answers": [
@@ -1554,6 +1633,7 @@ window.registerPack({
           "explanation": "Oui : c'est une autre façon de **participer** à la vie de la cité."
         },
         {
+          "id": "81883bcb-202a-4161-ab57-033d3fbb245a",
           "type": "question",
           "prompt": "Les pays européens ont-ils tous la même politique sur le vote des étrangers ? (oui ou non)",
           "answers": [
@@ -1562,6 +1642,7 @@ window.registerPack({
           "explanation": "Non, chaque pays a sa politique :\n- vote local pour tous les étrangers\n- vote **sous conditions**\n- **pas de vote** du tout"
         },
         {
+          "id": "e070697e-0a2b-41fa-a9ed-dd0a45e2b327",
           "type": "question",
           "prompt": "Cite un devoir du citoyen d'après Dominique Schnapper.",
           "answers": [
@@ -1584,6 +1665,7 @@ window.registerPack({
           "explanation": "Les trois devoirs :\n- respecter les **lois**\n- payer ses **impôts**\n- **défendre** la société"
         },
         {
+          "id": "64c68d43-8ff8-48b6-b975-68e142186d64",
           "type": "question",
           "prompt": "Participer aux dépenses collectives selon ses ressources, c'est payer des… ?",
           "answers": [
@@ -1597,6 +1679,7 @@ window.registerPack({
           "explanation": "Des **impôts**."
         },
         {
+          "id": "fa117d0e-608f-405b-9ca5-22e012810163",
           "type": "question",
           "prompt": "L'État et le citoyen sont unis par des droits et des devoirs… ?",
           "answers": [
@@ -1608,6 +1691,7 @@ window.registerPack({
           "explanation": "Des droits et des devoirs **réciproques**."
         },
         {
+          "id": "91d9ba95-ec51-41da-9970-1c9ea0663f7b",
           "type": "question",
           "prompt": "Si la société est menacée, quel est le devoir du citoyen ?",
           "answers": [

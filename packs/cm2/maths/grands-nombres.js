@@ -80,6 +80,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "118ba585-ff2b-4ecc-88c0-c7ff736187fc",
           "type": "mcq",
           "prompt": "Dans 53 267, quel est le **chiffre des dizaines** ?",
           "options": [
@@ -93,6 +94,7 @@ window.registerPack({
           "hint": "Cherche la 2e colonne en partant de la droite."
         },
         {
+          "id": "f4c78ed2-24b1-47d8-9ea4-b1cc914adf16",
           "type": "mcq",
           "prompt": "Dans 61 849, quel est le **nombre de centaines** ?",
           "table": {
@@ -138,6 +140,7 @@ window.registerPack({
           "explanation": "On prend **tous les chiffres jusqu'à** la colonne des centaines : 6, 1 et 8. Le nombre de centaines est **618**."
         },
         {
+          "id": "7ba0d60b-b016-4305-b6c0-631aae1bdf0f",
           "type": "match",
           "prompt": "Dans 507 426, relie chaque question à sa réponse.",
           "pairs": [
@@ -165,6 +168,7 @@ window.registerPack({
           "explanation": "« Chiffre des » : **un seul** chiffre. « Nombre de » : **tous les chiffres** jusqu'à la colonne."
         },
         {
+          "id": "4025ecbe-ee28-4490-8e99-ae1fd6523780",
           "type": "sort",
           "prompt": "Dans 84 529, range chaque réponse : « chiffre des » ou « nombre de » ?",
           "categories": [
@@ -206,6 +210,7 @@ window.registerPack({
           "explanation": "Un « chiffre des » est toujours **un seul chiffre**. Un « nombre de » prend tous les chiffres jusqu'à la colonne."
         },
         {
+          "id": "255e80bd-e848-4c13-b64b-34ccf38ae62a",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Dans 36 418, le chiffre des centaines est ___.",
@@ -215,6 +220,7 @@ window.registerPack({
           "explanation": "Dans la colonne des centaines, il y a **4**."
         },
         {
+          "id": "12751de5-16f8-438c-8086-522d43cd3155",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Dans 36 418, le nombre de centaines est ___.",
@@ -225,6 +231,7 @@ window.registerPack({
           "hint": "Prends tous les chiffres jusqu'à la colonne des centaines."
         },
         {
+          "id": "c5b41eb3-e4c5-4940-b1d8-db212aacd2ee",
           "type": "fill",
           "prompt": "Complète.",
           "table": {
@@ -267,6 +274,7 @@ window.registerPack({
           "explanation": "On prend tous les chiffres jusqu'à la colonne des unités de mille : **92** milliers."
         },
         {
+          "id": "bba692cf-4b65-46a6-9291-b01235b23edd",
           "type": "spot",
           "prompt": "Touche le nombre faux.",
           "tokens": [
@@ -286,6 +294,7 @@ window.registerPack({
           "explanation": "5 est le **chiffre** des centaines. Le **nombre** de centaines est **715**."
         },
         {
+          "id": "177a3066-0aba-4e22-b4c4-695bb45f4260",
           "type": "mcq",
           "prompt": "Dans 2 064 539, quel est le **nombre de milliers** ?",
           "options": [
@@ -298,6 +307,7 @@ window.registerPack({
           "explanation": "On prend tous les chiffres jusqu'aux unités de mille : 2, 0, 6, 4. Il y a **2 064** milliers."
         },
         {
+          "id": "c0fc595d-1076-4d39-92de-44aaa72ea037",
           "type": "mcq",
           "prompt": "Dans 40 217, quel est le **chiffre des centaines** ?",
           "options": [
@@ -378,6 +388,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "4b5a5ef4-6924-4c19-a35b-9595cd6934c8",
           "type": "mcq",
           "prompt": "Quel nombre est bien écrit, avec un espace entre les classes ?",
           "options": [
@@ -390,6 +401,7 @@ window.registerPack({
           "explanation": "On fait des groupes de **3 chiffres en partant de la droite** : 507 426."
         },
         {
+          "id": "935054ae-333a-4ff0-ba74-536b33bb1b48",
           "type": "mcq",
           "prompt": "Dans 4 382 015, quels chiffres forment la **classe des mille** ?",
           "options": [
@@ -402,6 +414,7 @@ window.registerPack({
           "explanation": "En partant de la droite :\n- 015 (unités)\n- **382** (mille)\n- 4 (millions)"
         },
         {
+          "id": "a495ed27-6593-4e53-b777-92a67da40fa3",
           "type": "match",
           "prompt": "Dans 731 254 896, relie chaque classe à ses chiffres.",
           "pairs": [
@@ -421,6 +434,7 @@ window.registerPack({
           "explanation": "De droite à gauche :\n- unités (896)\n- mille (254)\n- millions (**731**)"
         },
         {
+          "id": "4902fdf0-5a72-43d9-8b50-d84e6a083914",
           "type": "sort",
           "prompt": "Range chaque nombre : plus petit qu'un million, ou un million et plus ?",
           "categories": [
@@ -463,6 +477,7 @@ window.registerPack({
           "hint": "Compte les classes : y a-t-il une classe des millions ?"
         },
         {
+          "id": "ff6cedb0-346c-49d6-9eec-f56471a8dc86",
           "type": "order",
           "prompt": "Range les classes de gauche à droite, comme dans un nombre.",
           "words": [
@@ -474,6 +489,7 @@ window.registerPack({
           "explanation": "On écrit dans l'ordre :\n- les **millions**\n- les **mille**\n- les **unités** (à droite)"
         },
         {
+          "id": "909cb48f-bd5a-4c3f-a717-c8cc3a792b96",
           "type": "fill",
           "prompt": "Écris ce nombre en chiffres.",
           "sentence": "6 millions 250 mille 300 = ___",
@@ -484,6 +500,7 @@ window.registerPack({
           "explanation": "Les classes :\n- classe des millions : 6\n- classe des mille : 250\n- classe des unités : 300\nDonc **6 250 300**."
         },
         {
+          "id": "cd624355-ebe3-462c-9f12-b1a3bf9ed3f3",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Dans 85 917 400, la classe des mille est ___.",
@@ -493,6 +510,7 @@ window.registerPack({
           "explanation": "En partant de la droite :\n- 400 (unités)\n- **917** (mille)\n- 85 (millions)"
         },
         {
+          "id": "f145611d-5069-42c5-9ac5-492d4d56dcda",
           "type": "spot",
           "prompt": "Touche le nombre mal lu.",
           "tokens": [
@@ -515,6 +533,7 @@ window.registerPack({
           "explanation": "La classe des mille est **304** : 12 millions **304** mille 500."
         },
         {
+          "id": "3d0da894-efb5-4887-b7d2-b514675e4fd4",
           "type": "mcq",
           "prompt": "Combien vaut **un million** ?",
           "options": [
@@ -527,6 +546,7 @@ window.registerPack({
           "explanation": "Un million s'écrit avec **6 zéros** : 1 000 000. C'est mille milliers."
         },
         {
+          "id": "ad02c6af-29a8-49bc-ba1f-91fa0d126f2c",
           "type": "fill",
           "prompt": "Complète la lecture.",
           "sentence": "3 080 500 se lit « 3 millions ___ mille 500 ».",
@@ -559,6 +579,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "12d1ee91-4ce1-4fa4-815e-e86e249f210f",
           "type": "mcq",
           "prompt": "Comment s'écrit **3 000** ?",
           "options": [
@@ -571,6 +592,7 @@ window.registerPack({
           "explanation": "**mille** est invariable : il ne prend jamais de s. 3 000 = **trois-mille**."
         },
         {
+          "id": "ee0db0b3-b313-4595-a22b-3520b5155726",
           "type": "mcq",
           "prompt": "Quel nombre s'écrit « deux-cent-cinquante-millions-cent-huit-mille-soixante-neuf » ?",
           "options": [
@@ -583,6 +605,7 @@ window.registerPack({
           "explanation": "250 millions, 108 mille, 69 unités : **250 108 069**."
         },
         {
+          "id": "446e4dbf-1374-45ea-8cd1-b8522b8dfc28",
           "type": "match",
           "prompt": "Relie chaque nombre à son écriture en lettres.",
           "pairs": [
@@ -606,6 +629,7 @@ window.registerPack({
           "explanation": "Lis classe par classe : 2 500 = deux-mille + cinq-cents."
         },
         {
+          "id": "f60daf75-0a9c-426a-82b5-8f58d2764545",
           "type": "sort",
           "prompt": "Juste ou faux ? Regarde bien les s.",
           "categories": [
@@ -648,6 +672,7 @@ window.registerPack({
           "hint": "Mille est invariable ; vingt et cent prennent un s seulement à la fin du nombre."
         },
         {
+          "id": "5c399054-5733-4dad-bb5c-3be585850902",
           "type": "mcq",
           "prompt": "Comment s'écrit **200 000 000** ?",
           "options": [
@@ -660,6 +685,7 @@ window.registerPack({
           "explanation": "**million** est un nom : cent garde son s devant lui. 200 000 000 = **deux-cents-millions**."
         },
         {
+          "id": "81b8659d-4b6c-4e87-85fb-6f8956373ff4",
           "type": "order",
           "prompt": "Remets les morceaux dans l'ordre pour écrire 6 080 300.",
           "words": [
@@ -673,6 +699,7 @@ window.registerPack({
           "explanation": "6 millions, 80 mille, 300 unités. Devant **mille**, quatre-vingt n'a pas de s."
         },
         {
+          "id": "d7af60e3-9007-46ad-95d6-b3b5556c1ece",
           "type": "fill",
           "prompt": "Écris le nombre en lettres.",
           "sentence": "1 300 = ___",
@@ -683,6 +710,7 @@ window.registerPack({
           "explanation": "1 300 = **mille-trois-cents** : on ne dit pas « un mille ». Cents prend un s car il termine le nombre."
         },
         {
+          "id": "90017008-0784-4fb2-bf9d-c35fc8802bb7",
           "type": "fill",
           "prompt": "Écris le nombre en lettres.",
           "sentence": "3 000 000 = ___",
@@ -693,6 +721,7 @@ window.registerPack({
           "explanation": "**million** prend un s au pluriel : trois-millions."
         },
         {
+          "id": "2b109ebf-d829-4224-aeeb-cdb7f624c95c",
           "type": "question",
           "prompt": "Écris 507 426 en lettres.",
           "answers": [
@@ -702,6 +731,7 @@ window.registerPack({
           "explanation": "507 426 = **cinq-cent-sept-mille-quatre-cent-vingt-six**."
         },
         {
+          "id": "fcd35065-068d-48b8-9c2a-94868de819e9",
           "type": "spot",
           "prompt": "Touche l'écriture fausse.",
           "tokens": [
@@ -736,6 +766,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "aabf559b-ff4b-4699-bf3c-84553ae8129d",
           "type": "mcq",
           "prompt": "Quelle est la décomposition de 507 426 ?",
           "options": [
@@ -748,6 +779,7 @@ window.registerPack({
           "explanation": "507 426, c'est :\n- 5 centaines de mille\n- 7 unités de mille\n- 4 centaines\n- 2 dizaines\n- 6 unités"
         },
         {
+          "id": "93f93c61-0a2e-4fbc-acd7-8854ab3adb8f",
           "type": "mcq",
           "prompt": "(3 × 100 000) + (4 × 1 000) + (8 × 10) = ?",
           "options": [
@@ -760,6 +792,7 @@ window.registerPack({
           "explanation": "300 000 + 4 000 + 80 = **304 080**. Il n'y a ni dizaines de mille, ni centaines, ni unités : des 0."
         },
         {
+          "id": "9887293e-4f56-495a-8ffc-03de0e6ae71c",
           "type": "match",
           "prompt": "Relie chaque somme au nombre.",
           "pairs": [
@@ -783,6 +816,7 @@ window.registerPack({
           "explanation": "Place chaque morceau dans sa colonne et mets des **0** dans les colonnes vides."
         },
         {
+          "id": "5d6b3ca7-2ea2-49fb-b927-7aafb9334287",
           "type": "fill",
           "prompt": "Calcule.",
           "sentence": "800 000 + 40 000 + 900 + 7 = ___",
@@ -793,6 +827,7 @@ window.registerPack({
           "explanation": "Colonne par colonne :\n- 8 centaines de mille\n- 4 dizaines de mille\n- 0 millier\n- 9 centaines\n- 0 dizaine\n- 7 unités\nDonc **840 907**."
         },
         {
+          "id": "f5e05543-7f7e-45fb-a4c1-09a76498315e",
           "type": "fill",
           "prompt": "Calcule.",
           "sentence": "(2 × 1 000 000) + (6 × 10 000) + (5 × 100) = ___",
@@ -804,6 +839,7 @@ window.registerPack({
           "hint": "Écris chaque produit, puis additionne."
         },
         {
+          "id": "493b9862-4031-4ed0-94ab-ca1b650f4dcc",
           "type": "fill",
           "prompt": "Complète la décomposition.",
           "sentence": "47 302 = 40 000 + 7 000 + ___ + 2",
@@ -813,6 +849,7 @@ window.registerPack({
           "explanation": "Le chiffre des centaines est 3 : il vaut **300**."
         },
         {
+          "id": "80bba333-b773-49ac-80c8-74a8ce46a9d0",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "250 108 069 = 250 millions ___ mille 69 unités",
@@ -822,6 +859,7 @@ window.registerPack({
           "explanation": "La classe des mille de 250 108 069 est **108**."
         },
         {
+          "id": "efff70cb-b756-465e-8dfd-eaf232f8d5db",
           "type": "order",
           "prompt": "Remets dans l'ordre la décomposition de 3 409 000, du plus grand au plus petit.",
           "words": [
@@ -835,6 +873,7 @@ window.registerPack({
           "explanation": "3 409 000, c'est :\n- 3 millions\n- 4 centaines de mille\n- 9 unités de mille"
         },
         {
+          "id": "0acdccf4-20bc-4769-802d-d58798a6e665",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -858,6 +897,7 @@ window.registerPack({
           "explanation": "2 × 100, ce sont 2 **centaines**. 4 × 10 000, ce sont bien 4 dizaines de mille."
         },
         {
+          "id": "2cc83018-fe12-4297-9143-2fc962b9b88a",
           "type": "mcq",
           "prompt": "Quel nombre est égal à 25 millions 30 mille 4 unités ?",
           "options": [
@@ -892,6 +932,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "f80999fa-7b7b-4d8a-8642-0c187e2fa493",
           "type": "mcq",
           "prompt": "Quel signe faut-il ? 204 567 … 240 567",
           "options": [
@@ -903,6 +944,7 @@ window.registerPack({
           "explanation": "Même nombre de chiffres. 2 = 2, puis **0 < 4** : 204 567 **<** 240 567."
         },
         {
+          "id": "8007c9d7-3413-412c-bc54-c3f364405e9b",
           "type": "mcq",
           "prompt": "Quel est le **plus grand** nombre ?",
           "options": [
@@ -915,6 +957,7 @@ window.registerPack({
           "explanation": "Les nombres à 7 chiffres sont les plus grands. Entre les deux, le chiffre des dizaines de mille décide : 2 > 0, donc **1 020 300**."
         },
         {
+          "id": "fe2ed71b-983c-4a9f-b6a6-d970489cd2a1",
           "type": "sort",
           "prompt": "Plus petit ou plus grand que 507 426 ?",
           "categories": [
@@ -957,6 +1000,7 @@ window.registerPack({
           "hint": "Cherche le premier chiffre différent en partant de la gauche."
         },
         {
+          "id": "a7c1c991-f3e1-4c3d-8fea-10b7e93f7132",
           "type": "order",
           "prompt": "Range dans l'ordre **croissant** (du plus petit au plus grand).",
           "words": [
@@ -969,6 +1013,7 @@ window.registerPack({
           "explanation": "Ils commencent presque tous par 45 : on regarde le chiffre des centaines (0, 8, 9). 54 089 est le plus grand."
         },
         {
+          "id": "4173129d-45a0-4ed0-a0c1-297a61f1d862",
           "type": "order",
           "prompt": "Range dans l'ordre **décroissant** (du plus grand au plus petit).",
           "words": [
@@ -981,6 +1026,7 @@ window.registerPack({
           "explanation": "300 100 n'a que 6 chiffres : c'est le plus petit. Les autres se comparent chiffre par chiffre."
         },
         {
+          "id": "eb19fe1e-b9e8-475a-b4a5-e4d243faad99",
           "type": "fill",
           "prompt": "Complète avec < ou >.",
           "sentence": "1 250 300 ___ 1 205 300",
@@ -991,6 +1037,7 @@ window.registerPack({
           "hint": "La pointe du signe montre le plus petit nombre."
         },
         {
+          "id": "cc2644fc-36e8-4fb6-b203-775d8a8e87ae",
           "type": "fill",
           "prompt": "Complète avec < ou >.",
           "sentence": "89 999 ___ 100 000",
@@ -1000,6 +1047,7 @@ window.registerPack({
           "explanation": "89 999 a 5 chiffres, 100 000 en a 6 : 89 999 **<** 100 000."
         },
         {
+          "id": "4d7717bd-4aa2-47c0-9ecc-9bea0991803c",
           "type": "mcq",
           "prompt": "Quel nombre peut-on intercaler ? 452 152 < … < 601 546",
           "options": [
@@ -1012,6 +1060,7 @@ window.registerPack({
           "explanation": "507 426 est plus grand que 452 152 et plus petit que 601 546."
         },
         {
+          "id": "6be1ec10-66dc-4cc4-a964-4035971b6337",
           "type": "spot",
           "prompt": "Touche le signe faux.",
           "tokens": [
@@ -1024,6 +1073,7 @@ window.registerPack({
           "explanation": "8 = 8, 5 = 5, puis **0 < 4** : 8 504 200 **<** 8 540 200."
         },
         {
+          "id": "2ef41ac1-9f1b-4493-8b5f-5f774efc5bc8",
           "type": "mcq",
           "prompt": "Quels nombres sont compris entre 760 000 et 770 000 ?",
           "options": [
@@ -1134,6 +1184,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "8d33c9ca-dea3-4c29-8fab-2a86875c1f55",
           "type": "mcq",
           "prompt": "Quel nombre la flèche montre-t-elle ?",
           "figure": {
@@ -1180,6 +1231,7 @@ window.registerPack({
           "explanation": "La flèche est **au milieu** entre 1 200 et 1 300 : c'est **1 250**."
         },
         {
+          "id": "ccce179a-db9d-43a7-b3e7-edd39f48adf7",
           "type": "mcq",
           "prompt": "Quelle flèche montre **14 450** ?",
           "figure": {
@@ -1234,6 +1286,7 @@ window.registerPack({
           "explanation": "14 450 est entre 14 000 et 15 000, un peu avant 14 500 : c'est la flèche **B**. A montre 13 450."
         },
         {
+          "id": "ad40c5b3-b1a9-446e-ac09-23062e297279",
           "type": "fill",
           "prompt": "Quel nombre la flèche montre-t-elle ?",
           "figure": {
@@ -1280,6 +1333,7 @@ window.registerPack({
           "hint": "Compte de combien augmente chaque petite graduation."
         },
         {
+          "id": "6241a944-7b05-458c-9ffa-f4784ee88d83",
           "type": "mcq",
           "prompt": "Quel nombre la flèche montre-t-elle ?",
           "figure": {
@@ -1327,6 +1381,7 @@ window.registerPack({
           "explanation": "Une graduation = 10 000. 4 graduations après 400 000 : **440 000**."
         },
         {
+          "id": "747fa871-7be3-4b72-b75b-061d414e132a",
           "type": "fill",
           "prompt": "Quel nombre la flèche montre-t-elle ?",
           "figure": {
@@ -1373,6 +1428,7 @@ window.registerPack({
           "hint": "Entre 150 000 000 et 160 000 000, il y a 10 graduations."
         },
         {
+          "id": "c97974aa-b18f-4455-824f-23570e191c93",
           "type": "fill",
           "prompt": "Encadre à la centaine près.",
           "sentence": "___ < 1 250 < 1 300",
@@ -1383,6 +1439,7 @@ window.registerPack({
           "explanation": "À la centaine près : **1 200** < 1 250 < 1 300."
         },
         {
+          "id": "5d595caf-d05f-4e5f-bc7f-a9299ca24ea8",
           "type": "fill",
           "prompt": "Encadre au millier près.",
           "sentence": "14 000 < 14 450 < ___",
@@ -1393,6 +1450,7 @@ window.registerPack({
           "explanation": "Le millier suivant est **15 000**."
         },
         {
+          "id": "db5ba1e1-9263-49eb-beb8-a69fbe9ded30",
           "type": "match",
           "prompt": "Relie chaque encadrement de 765 420 à sa précision.",
           "pairs": [
@@ -1416,6 +1474,7 @@ window.registerPack({
           "explanation": "Plus la précision est fine, plus les deux nombres repères sont proches."
         },
         {
+          "id": "8715b4b7-b299-43d8-a165-528f58697072",
           "type": "mcq",
           "prompt": "Encadre 256 320 540 à l'**unité de million** près.",
           "options": [
@@ -1428,6 +1487,7 @@ window.registerPack({
           "explanation": "Le nombre de millions est 256 : on encadre entre **256** millions et **257** millions."
         },
         {
+          "id": "589f2184-3b05-422e-a700-2c28e227b54f",
           "type": "fill",
           "prompt": "Encadre à la centaine de mille près.",
           "sentence": "400 000 < 440 000 < ___",
@@ -1456,6 +1516,7 @@ window.registerPack({
       "draw": 12,
       "exercises": [
         {
+          "id": "72ad0612-2db9-4b34-9595-54c5eb86e36a",
           "type": "question",
           "prompt": "Dans 53 267, quel est le chiffre des dizaines ?",
           "answers": [
@@ -1465,6 +1526,7 @@ window.registerPack({
           "explanation": "On regarde seulement la colonne des dizaines : **6**."
         },
         {
+          "id": "e8d620ae-06bb-4449-b198-800a2785022b",
           "type": "question",
           "prompt": "Dans 53 267, quel est le nombre de dizaines ?",
           "answers": [
@@ -1473,6 +1535,7 @@ window.registerPack({
           "explanation": "Tous les chiffres jusqu'à la colonne des dizaines : **5 326**."
         },
         {
+          "id": "4872dc2c-6634-4dc4-a248-51f7b466e530",
           "type": "question",
           "prompt": "Dans 507 426, quel est le nombre de milliers ?",
           "answers": [
@@ -1481,6 +1544,7 @@ window.registerPack({
           "explanation": "Tous les chiffres jusqu'aux unités de mille : **507**."
         },
         {
+          "id": "d6179a32-1c13-40cb-aba3-bca455fbe8a7",
           "type": "question",
           "prompt": "Dans 250 108 069, quel est le chiffre des dizaines de millions ?",
           "answers": [
@@ -1490,6 +1554,7 @@ window.registerPack({
           "explanation": "250 millions : le chiffre des dizaines de millions est **5**."
         },
         {
+          "id": "0a7f847a-028b-4133-aeb7-f4bbc90ec15c",
           "type": "question",
           "prompt": "Dans 250 108 069, quel est le nombre de dizaines de millions ?",
           "answers": [
@@ -1498,6 +1563,7 @@ window.registerPack({
           "explanation": "Tous les chiffres jusqu'aux dizaines de millions : **25**."
         },
         {
+          "id": "d3dade67-ec63-4fd3-ad02-3b33319f130d",
           "type": "question",
           "prompt": "Dans 8 403 912, quel est le nombre de centaines ?",
           "answers": [
@@ -1506,6 +1572,7 @@ window.registerPack({
           "explanation": "Tous les chiffres jusqu'à la colonne des centaines : **84 039**."
         },
         {
+          "id": "68ca9cfc-9ac7-4d7b-bebd-82d7571f1b2f",
           "type": "question",
           "prompt": "Dans 6 931 750, quel est le chiffre des centaines de mille ?",
           "answers": [
@@ -1515,6 +1582,7 @@ window.registerPack({
           "explanation": "Classe des mille : 931. Le chiffre des centaines de mille est **9**."
         },
         {
+          "id": "bd078ddb-6f3f-4d3f-bc48-07ce08d31f7e",
           "type": "question",
           "prompt": "Écris en chiffres : quarante-deux-millions-trois-cent-cinq-mille-sept-cent-quatre-vingts.",
           "answers": [
@@ -1523,6 +1591,7 @@ window.registerPack({
           "explanation": "42 millions, 305 mille, 780 : **42 305 780**."
         },
         {
+          "id": "e6355d75-8f35-4ec0-b988-124d75822881",
           "type": "question",
           "prompt": "Écris en chiffres : deux-cent-mille-soixante.",
           "answers": [
@@ -1531,6 +1600,7 @@ window.registerPack({
           "explanation": "200 mille et 60 unités : **200 060**."
         },
         {
+          "id": "08d4f674-7217-49e1-b0ea-29fede24c5da",
           "type": "question",
           "prompt": "Écris en lettres : 3 000.",
           "answers": [
@@ -1540,6 +1610,7 @@ window.registerPack({
           "explanation": "**mille** ne prend jamais de s : **trois-mille**."
         },
         {
+          "id": "32b122ce-c742-4b0f-87d8-473503ffba3b",
           "type": "question",
           "prompt": "Écris en lettres : 2 000 000.",
           "answers": [
@@ -1549,6 +1620,7 @@ window.registerPack({
           "explanation": "**million** prend un s au pluriel : **deux-millions**."
         },
         {
+          "id": "de127e67-cc6a-445c-9647-2906ef2e51a0",
           "type": "question",
           "prompt": "Écris en lettres : 80 000.",
           "answers": [
@@ -1558,6 +1630,7 @@ window.registerPack({
           "explanation": "Devant **mille**, vingt ne prend pas de s : **quatre-vingt-mille**."
         },
         {
+          "id": "36f4a7ac-cd37-44a1-ae72-64265764da67",
           "type": "question",
           "prompt": "Écris en lettres : 1 300.",
           "answers": [
@@ -1567,6 +1640,7 @@ window.registerPack({
           "explanation": "**mille-trois-cents** : cents prend un s car il termine le nombre."
         },
         {
+          "id": "87e4d825-d96a-4400-90d0-afada68abe49",
           "type": "question",
           "prompt": "Écris en lettres : 507 426.",
           "answers": [
@@ -1576,6 +1650,7 @@ window.registerPack({
           "explanation": "**cinq-cent-sept-mille-quatre-cent-vingt-six**."
         },
         {
+          "id": "876e6619-08fa-4cfb-823f-e42d2be39456",
           "type": "question",
           "prompt": "Combien de chiffres a le nombre 250 108 069 ?",
           "answers": [
@@ -1585,6 +1660,7 @@ window.registerPack({
           "explanation": "Trois classes de 3 chiffres : **9** chiffres."
         },
         {
+          "id": "926666a0-5b9d-496a-a9ee-1c896e8e7a6b",
           "type": "question",
           "prompt": "Dans 731 254 896, quels chiffres forment la classe des mille ?",
           "answers": [
@@ -1593,6 +1669,7 @@ window.registerPack({
           "explanation": "De droite à gauche :\n- 896 (unités)\n- **254** (mille)\n- 731 (millions)"
         },
         {
+          "id": "2dfa72e3-0804-4979-8cc3-ab1044f67bf9",
           "type": "question",
           "prompt": "Calcule : (5 × 100 000) + (7 × 1 000) + (4 × 100) + (2 × 10) + 6.",
           "answers": [
@@ -1601,6 +1678,7 @@ window.registerPack({
           "explanation": "500 000 + 7 000 + 400 + 20 + 6 = **507 426**."
         },
         {
+          "id": "38ddd5ea-9184-4c71-9cd3-343c073cfa4c",
           "type": "question",
           "prompt": "Calcule : 300 000 + 9 000 + 50 + 1.",
           "answers": [
@@ -1609,6 +1687,7 @@ window.registerPack({
           "explanation": "On met des 0 dans les colonnes vides : **309 051**."
         },
         {
+          "id": "1278715c-ffd6-417f-a532-42cbbd3fe893",
           "type": "question",
           "prompt": "Écris en chiffres : 25 millions 30 mille 4 unités.",
           "answers": [
@@ -1617,6 +1696,7 @@ window.registerPack({
           "explanation": "Chaque classe a 3 chiffres : 25 | 030 | 004 → **25 030 004**."
         },
         {
+          "id": "0a778556-7475-42da-b1a1-f5d740261f38",
           "type": "question",
           "prompt": "Complète : 47 302 = 40 000 + 7 000 + … + 2.",
           "answers": [
@@ -1625,6 +1705,7 @@ window.registerPack({
           "explanation": "Le chiffre des centaines est 3 : il vaut **300**."
         },
         {
+          "id": "393cd7be-1342-47e4-83f6-4869e6182257",
           "type": "question",
           "prompt": "Quel est le plus grand : 204 567 ou 240 567 ?",
           "answers": [
@@ -1633,6 +1714,7 @@ window.registerPack({
           "explanation": "Depuis la gauche : 2 = 2, puis 4 > 0. Le plus grand est **240 567**."
         },
         {
+          "id": "7f85e0fe-1843-4b53-9475-62cfddca891c",
           "type": "question",
           "prompt": "Quel est le plus petit : 1 002 300, 999 999 ou 1 020 300 ?",
           "answers": [
@@ -1641,6 +1723,7 @@ window.registerPack({
           "explanation": "999 999 n'a que 6 chiffres : c'est le plus petit."
         },
         {
+          "id": "adfbffc1-dae6-4f43-836c-d701431149fa",
           "type": "question",
           "prompt": "Quel nombre vient juste après 99 999 ?",
           "answers": [
@@ -1651,6 +1734,7 @@ window.registerPack({
           "explanation": "99 999 + 1 = **100 000**."
         },
         {
+          "id": "4e9ab328-5d98-430f-b39d-fddf78111057",
           "type": "question",
           "prompt": "Encadre 1 250 à la centaine près : 1 200 < 1 250 < …",
           "answers": [
@@ -1659,6 +1743,7 @@ window.registerPack({
           "explanation": "La centaine suivante est **1 300**."
         },
         {
+          "id": "2952ca1e-7296-45b6-a1ef-c233ae3ac09f",
           "type": "question",
           "prompt": "Encadre 765 420 au millier près : … < 765 420 < 766 000",
           "answers": [
@@ -1667,6 +1752,7 @@ window.registerPack({
           "explanation": "Le millier juste avant est **765 000**."
         },
         {
+          "id": "b7437f0c-f4c0-47e3-ba3f-f38f4d5dafce",
           "type": "question",
           "prompt": "Encadre 454 000 à la dizaine de mille près : 450 000 < 454 000 < …",
           "answers": [
@@ -1675,6 +1761,7 @@ window.registerPack({
           "explanation": "La dizaine de mille suivante est **460 000**."
         },
         {
+          "id": "4379ee69-bbf8-4a8e-aba7-e7dabc1dcee0",
           "type": "question",
           "prompt": "Encadre 256 320 540 à l'unité de million près : … < 256 320 540 < 257 000 000",
           "answers": [
@@ -1683,6 +1770,7 @@ window.registerPack({
           "explanation": "Le nombre de millions est 256 : **256 000 000**."
         },
         {
+          "id": "6dfbc248-b9d8-48d9-aef1-3109cf7535ad",
           "type": "question",
           "prompt": "Quel nombre la flèche montre-t-elle ?",
           "figure": {
@@ -1726,6 +1814,7 @@ window.registerPack({
           "explanation": "Une graduation = 500. La flèche est au milieu entre 13 000 et 14 000 : **13 500**."
         },
         {
+          "id": "3f97481d-3d35-467b-b16b-40370e0e361b",
           "type": "question",
           "prompt": "Quel nombre la flèche montre-t-elle ?",
           "figure": {
@@ -1769,6 +1858,7 @@ window.registerPack({
           "explanation": "Une graduation = 10 000. 3 graduations après 500 000 : **530 000**."
         },
         {
+          "id": "4fa5b5ce-219a-4d32-8f98-37914d0dc581",
           "type": "question",
           "prompt": "Quel nombre la flèche montre-t-elle ?",
           "figure": {

@@ -76,6 +76,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "faaea41c-1a11-4c5c-9477-98d13e08384c",
           "type": "mcq",
           "prompt": "Que veut dire le préfixe « kilo » ?",
           "options": [
@@ -88,6 +89,7 @@ window.registerPack({
           "explanation": "**kilo** veut dire **1 000** : 1 kilomètre = 1 000 mètres."
         },
         {
+          "id": "643a96cb-d9e5-40b6-805b-c098a422be14",
           "type": "match",
           "prompt": "Relie chaque préfixe à sa valeur.",
           "pairs": [
@@ -119,6 +121,7 @@ window.registerPack({
           "explanation": "Les préfixes :\n- kilo **1 000**\n- hecto **100**\n- déca **10**\n- déci **0,1**\n- centi **0,01**\n- milli **0,001**"
         },
         {
+          "id": "c854b26f-c81d-4ab0-b549-2ce01030f392",
           "type": "sort",
           "prompt": "Range chaque préfixe : plus grand ou plus petit que l'unité ?",
           "categories": [
@@ -160,6 +163,7 @@ window.registerPack({
           "explanation": "Ils multiplient l'unité :\n- **kilo**\n- **hecto**\n- **déca**\nIls la partagent :\n- **déci**\n- **centi**\n- **milli**"
         },
         {
+          "id": "906a6f16-d399-4f28-8ac9-b89d767587ba",
           "type": "mcq",
           "prompt": "Quel préfixe veut dire 0,01 (un centième) ?",
           "options": [
@@ -173,6 +177,7 @@ window.registerPack({
           "hint": "Pense à « cent »."
         },
         {
+          "id": "19588d7f-a562-4eef-8c1d-065b55f64a8c",
           "type": "match",
           "prompt": "Relie chaque préfixe à son symbole.",
           "pairs": [
@@ -204,6 +209,7 @@ window.registerPack({
           "explanation": "**da** est le symbole de déca ; **d** celui de déci."
         },
         {
+          "id": "9d5e51b1-9899-4156-8aff-0a301801dc3d",
           "type": "order",
           "prompt": "Range les préfixes du plus grand au plus petit.",
           "words": [
@@ -218,6 +224,7 @@ window.registerPack({
           "explanation": "Chaque préfixe vaut **10 fois** le suivant."
         },
         {
+          "id": "c869b286-761a-4c43-809a-24767ff26afa",
           "type": "mcq",
           "prompt": "Quel est le symbole du préfixe « déca » ?",
           "options": [
@@ -230,6 +237,7 @@ window.registerPack({
           "explanation": "Déca s'écrit **da** (décamètre : **dam**). Le **d** seul, c'est déci."
         },
         {
+          "id": "914d190a-7823-4780-a664-106d25482f0e",
           "type": "spot",
           "prompt": "Touche le nombre faux.",
           "tokens": [
@@ -249,6 +257,7 @@ window.registerPack({
           "explanation": "**déci** = **0,1** : l'unité est partagée en 10. C'est **hecto** qui vaut 100."
         },
         {
+          "id": "bfa82e6a-fcec-49ab-b6ff-260988456976",
           "type": "fill",
           "prompt": "Complète avec un nombre.",
           "sentence": "Le préfixe « milli » veut dire ___.",
@@ -260,6 +269,7 @@ window.registerPack({
           "hint": "Il faut mille millimètres pour faire un mètre."
         },
         {
+          "id": "226270fd-2ca5-4fb8-8aec-ca2bb60f4770",
           "type": "mcq",
           "prompt": "Dans « hectolitre », que veut dire « hecto » ?",
           "options": [
@@ -331,6 +341,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "3b3086d3-8cf6-4ac0-9c50-e907a250171e",
           "type": "mcq",
           "prompt": "Quelle est l'unité de référence pour mesurer une longueur ?",
           "options": [
@@ -343,6 +354,7 @@ window.registerPack({
           "explanation": "L'unité de référence des longueurs est le **mètre**. Le kilomètre vaut 1 000 mètres."
         },
         {
+          "id": "8fb5c979-32b6-4675-ac10-ae0fc7d4e29d",
           "type": "order",
           "prompt": "Range les unités de longueur de la plus grande à la plus petite.",
           "words": [
@@ -358,6 +370,7 @@ window.registerPack({
           "explanation": "On retrouve les préfixes :\n- **kilo**\n- **hecto**\n- **déca**\n- puis le **mètre**\n- puis **déci**\n- **centi**\n- **milli**"
         },
         {
+          "id": "1d19d3c7-aa5c-4c7e-aee9-94d68d3fc635",
           "type": "mcq",
           "prompt": "1 m = ? cm",
           "options": [
@@ -396,6 +409,7 @@ window.registerPack({
           }
         },
         {
+          "id": "e217b774-7e1d-496b-9d0d-37e044921815",
           "type": "match",
           "prompt": "Relie chaque longueur à sa valeur en mètres.",
           "pairs": [
@@ -427,6 +441,7 @@ window.registerPack({
           "explanation": "Chaque unité a la valeur de son **préfixe** :\n- 1 **k**m = 1 000 m\n- 1 **c**m = 0,01 m"
         },
         {
+          "id": "cc3f4dd2-236f-4215-9afc-a087e6fba04d",
           "type": "fill",
           "prompt": "Convertis.",
           "sentence": "12,3 hm = ___ m",
@@ -463,6 +478,7 @@ window.registerPack({
           }
         },
         {
+          "id": "6b6855f8-bd6f-4991-8b0d-4a2b56320968",
           "type": "fill",
           "prompt": "Convertis.",
           "sentence": "45 cm = ___ m",
@@ -499,6 +515,7 @@ window.registerPack({
           }
         },
         {
+          "id": "8eda8aaf-c241-4ff0-b674-97fec6646a93",
           "type": "match",
           "prompt": "Relie : 59 m, c'est…",
           "table": {
@@ -552,6 +569,7 @@ window.registerPack({
           "explanation": "59 m = **590 dm** = **5,9 dam** = **0,59 hm** = **5 900 cm** = **59 000 mm**."
         },
         {
+          "id": "05a8bdab-586f-498b-abef-64ce0f2b09c4",
           "type": "mcq",
           "prompt": "70 mm = ? m",
           "options": [
@@ -590,6 +608,7 @@ window.registerPack({
           }
         },
         {
+          "id": "53bcc85c-8649-42a6-b569-c209b21b0221",
           "type": "spot",
           "prompt": "Touche le nombre faux.",
           "tokens": [
@@ -611,6 +630,7 @@ window.registerPack({
           "explanation": "1 m = **100 cm** : on multiplie par **100** (deux colonnes vers la droite)."
         },
         {
+          "id": "040dcb60-ae06-45b6-8027-4bf013920cd2",
           "type": "question",
           "prompt": "Convertis 70 hm en mètres.",
           "answers": [
@@ -761,6 +781,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "2ddfce8b-c767-400d-81e0-ae7afe8442f2",
           "type": "mcq",
           "prompt": "Quelle est l'unité de référence pour mesurer une masse ?",
           "options": [
@@ -773,6 +794,7 @@ window.registerPack({
           "explanation": "L'unité de référence des masses est le **gramme**."
         },
         {
+          "id": "224e3392-487e-4786-bb63-5b00cc1363f2",
           "type": "order",
           "prompt": "Range les unités de masse de la plus grande à la plus petite.",
           "words": [
@@ -788,6 +810,7 @@ window.registerPack({
           "explanation": "Mêmes préfixes que pour les longueurs, avec le **gramme** au milieu."
         },
         {
+          "id": "b1b0b51b-a257-4908-927b-568b5278e9a3",
           "type": "match",
           "prompt": "Relie les masses égales.",
           "table": {
@@ -843,6 +866,7 @@ window.registerPack({
           "explanation": "Les masses égales :\n- 1 tonne = **1 000 kg**\n- 1 quintal = **100 kg**\n- 1 kg = **1 000 g**\n- 1 g = **1 000 mg**"
         },
         {
+          "id": "c2cd9f6b-5ec3-4752-b162-39b262ed1a87",
           "type": "fill",
           "prompt": "Convertis.",
           "sentence": "98,6 hg = ___ g",
@@ -885,6 +909,7 @@ window.registerPack({
           }
         },
         {
+          "id": "8cb2ed51-4d56-4e7c-b979-ae10bb9c178d",
           "type": "fill",
           "prompt": "Convertis.",
           "sentence": "71 dg = ___ g",
@@ -927,6 +952,7 @@ window.registerPack({
           }
         },
         {
+          "id": "8b0348cd-cf4b-4c4f-b7fe-4e8501315de9",
           "type": "mcq",
           "prompt": "1 tonne = ?",
           "options": [
@@ -971,6 +997,7 @@ window.registerPack({
           }
         },
         {
+          "id": "79178ce2-323c-4b02-9f9b-cdec590f659b",
           "type": "mcq",
           "prompt": "3 quintaux = ?",
           "options": [
@@ -1015,6 +1042,7 @@ window.registerPack({
           }
         },
         {
+          "id": "4a8bcfeb-0a0a-4725-b575-65d01b1d5f97",
           "type": "sort",
           "prompt": "Range chaque masse : moins ou plus de 1 kg ?",
           "table": {
@@ -1088,6 +1116,7 @@ window.registerPack({
           "explanation": "1 kg = 1 000 g.\n**Moins** de 1 kg :\n- 9 hg = 900 g\n- 80 dag = 800 g\n**Plus** de 1 kg :\n- 12 hg = 1 200 g"
         },
         {
+          "id": "0f665836-6387-4b04-908a-6acce2889b4c",
           "type": "spot",
           "prompt": "Touche le nombre faux.",
           "tokens": [
@@ -1103,6 +1132,7 @@ window.registerPack({
           "explanation": "1 quintal = **100 kg**. C'est la tonne qui vaut 1 000 kg."
         },
         {
+          "id": "2cefc46f-01be-48ba-877b-68f05fcca3e2",
           "type": "question",
           "prompt": "Convertis 2,5 kg en grammes.",
           "answers": [
@@ -1205,6 +1235,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "626d4c84-d25c-4502-88c5-1cc1ea02c18a",
           "type": "mcq",
           "prompt": "Quelle est l'unité de référence pour mesurer une contenance ?",
           "options": [
@@ -1217,6 +1248,7 @@ window.registerPack({
           "explanation": "L'unité de référence des contenances est le **litre**."
         },
         {
+          "id": "2c9dc005-8bb8-4927-a6bc-5aa0f27549cc",
           "type": "order",
           "prompt": "Range les unités de contenance de la plus grande à la plus petite.",
           "words": [
@@ -1232,6 +1264,7 @@ window.registerPack({
           "explanation": "Toujours les mêmes préfixes, avec le **litre** au milieu."
         },
         {
+          "id": "23743a03-3319-46b6-a542-99c96cfac16b",
           "type": "fill",
           "prompt": "Convertis.",
           "sentence": "37 dL = ___ L",
@@ -1268,6 +1301,7 @@ window.registerPack({
           }
         },
         {
+          "id": "16c9b933-da35-4166-9e40-ac6068b236c8",
           "type": "fill",
           "prompt": "Convertis.",
           "sentence": "6,4 L = ___ cL",
@@ -1303,6 +1337,7 @@ window.registerPack({
           }
         },
         {
+          "id": "6f4b0533-c68b-4577-8f79-180427fd1706",
           "type": "match",
           "prompt": "Relie les contenances égales.",
           "table": {
@@ -1356,6 +1391,7 @@ window.registerPack({
           "explanation": "Les contenances égales :\n- 1 hL = **100 L**\n- 1 daL = **10 L**\n- 1 L = **1 000 mL**\n- 1 dL = **10 cL**\n- 1 cL = **10 mL**"
         },
         {
+          "id": "42ae75fd-22f2-4bef-83b7-4ab502af110e",
           "type": "mcq",
           "prompt": "Une bouteille d'eau contient 1,5 L. Cela fait…",
           "options": [
@@ -1394,6 +1430,7 @@ window.registerPack({
           }
         },
         {
+          "id": "8821bb32-f90a-479b-a8e1-b80ce750cc30",
           "type": "mcq",
           "prompt": "Une canette contient 33 cL. Cela fait…",
           "options": [
@@ -1432,6 +1469,7 @@ window.registerPack({
           }
         },
         {
+          "id": "f957e6a3-72dd-4005-be71-add6a9b0d561",
           "type": "sort",
           "prompt": "Range chaque contenance : moins ou plus de 1 L ?",
           "table": {
@@ -1499,6 +1537,7 @@ window.registerPack({
           "explanation": "1 L = 100 cL = 10 dL = 1 000 mL.\n**Moins** de 1 L :\n- 75 cL\n- 9 dL\n- 800 mL"
         },
         {
+          "id": "67829e0a-0fa7-44c5-a65c-420507f5f301",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -1520,6 +1559,7 @@ window.registerPack({
           "explanation": "Le décilitre est plus **petit** que le litre : il en faut plus, on **multiplie** par 10 (1 L = 10 dL)."
         },
         {
+          "id": "75d2c723-03af-4edc-a26e-2f6dac8bca6c",
           "type": "question",
           "prompt": "Convertis 25 cL en millilitres.",
           "answers": [
@@ -1578,6 +1618,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "038715e4-4bf8-45ec-9fff-326a43a262da",
           "type": "mcq",
           "prompt": "Coche la longueur qui convient : le record du monde du lancer de poids.",
           "options": [
@@ -1589,6 +1630,7 @@ window.registerPack({
           "explanation": "Un lancer de poids fait une vingtaine de **mètres** : **23,12 m**."
         },
         {
+          "id": "5b3debd1-3418-4eff-b563-2a52961cf2cb",
           "type": "mcq",
           "prompt": "Coche la longueur qui convient : la hauteur de la statue de la Liberté.",
           "options": [
@@ -1600,6 +1642,7 @@ window.registerPack({
           "explanation": "Une très grande statue : **93 m** (avec son socle). 93 cm, c'est la taille d'un petit enfant."
         },
         {
+          "id": "c1c4a937-2d61-4bbe-94e9-a5a6445508af",
           "type": "mcq",
           "prompt": "Coche la longueur qui convient : la distance Paris–Lyon.",
           "options": [
@@ -1611,6 +1654,7 @@ window.registerPack({
           "explanation": "Entre deux villes, on compte en **kilomètres** : **465 km**."
         },
         {
+          "id": "1fcc3873-9777-452f-af95-65dd8dfd7cf9",
           "type": "spot",
           "prompt": "Touche l'unité fausse.",
           "tokens": [
@@ -1629,6 +1673,7 @@ window.registerPack({
           "explanation": "Une casserole tient sur la cuisinière : **22 cm**."
         },
         {
+          "id": "9321ac13-7287-4a73-8eaf-b782cd83525b",
           "type": "fill",
           "prompt": "Complète avec la bonne unité.",
           "sentence": "Un dictionnaire a une épaisseur de 8 ___.",
@@ -1641,6 +1686,7 @@ window.registerPack({
           "hint": "Mesure-le avec ta règle."
         },
         {
+          "id": "0290549f-ecaa-4f12-8a1c-7097e9a15a82",
           "type": "mcq",
           "prompt": "Coche la longueur qui convient : une course à pied.",
           "options": [
@@ -1652,6 +1698,7 @@ window.registerPack({
           "explanation": "Une course à pied dure longtemps : **12 km**. 12 m, c'est quelques pas."
         },
         {
+          "id": "0270aa9e-a991-4b4f-aa53-9d7fbb06bccd",
           "type": "sort",
           "prompt": "Range chaque mesure : en cm, en m ou en km ?",
           "categories": [
@@ -1697,6 +1744,7 @@ window.registerPack({
           "explanation": "On choisit :\n- petit objet → **cm**\n- pièce, bâtiment, piscine → **m**\n- trajet → **km**"
         },
         {
+          "id": "8860aa5b-85c5-4df1-8f79-c2620d5433f1",
           "type": "match",
           "prompt": "Relie chaque chose à sa mesure.",
           "pairs": [
@@ -1724,6 +1772,7 @@ window.registerPack({
           "explanation": "Des repères :\n- un éléphant pèse plusieurs **tonnes**\n- une pomme, une centaine de **grammes**\n- une cuillère contient quelques **mL**"
         },
         {
+          "id": "759ab7a1-0a71-479e-8f62-433a0181b4de",
           "type": "mcq",
           "prompt": "Coche la masse qui convient : un bébé à la naissance.",
           "options": [
@@ -1736,6 +1785,7 @@ window.registerPack({
           "explanation": "Un bébé pèse environ **3 kg**. 3 g, c'est le poids d'une pièce de monnaie."
         },
         {
+          "id": "960a09cc-2a31-4ad0-967c-d42322ec9248",
           "type": "fill",
           "prompt": "Complète avec la bonne unité.",
           "sentence": "Une porte mesure environ 2 ___ de haut.",
@@ -1769,6 +1819,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "90badd0d-194e-4c90-9dc7-52b5d7725a85",
           "type": "order",
           "prompt": "Range ces longueurs dans l'ordre croissant (de la plus petite à la plus grande).",
           "words": [
@@ -1781,6 +1832,7 @@ window.registerPack({
           "explanation": "En mètres :\n- 15 hm = 1 500 m\n- 170 dam = 1 700 m\n- 2 km = 2 000 m\nDonc **15 hm < 170 dam < 2 km < 2 500 m**."
         },
         {
+          "id": "47e5cfba-68f6-42cd-9e7c-98926304a3a3",
           "type": "mcq",
           "prompt": "Quelle est la plus grande longueur ?",
           "options": [
@@ -1793,6 +1845,7 @@ window.registerPack({
           "explanation": "En mètres :\n- 3 km = 3 000 m\n- 2 900 m\n- 31 hm = **3 100 m**\n- 305 dam = 3 050 m"
         },
         {
+          "id": "b31a8c67-c753-4ccb-9e88-675caa828523",
           "type": "fill",
           "prompt": "Convertis.",
           "sentence": "1 m 33 = ___ cm",
@@ -1802,6 +1855,7 @@ window.registerPack({
           "explanation": "1 m = 100 cm, donc 1 m 33 = 100 cm + 33 cm = **133 cm**."
         },
         {
+          "id": "f0e7ff07-49c1-4f94-8b17-68053de9ac69",
           "type": "mcq",
           "prompt": "Au parc d'attractions, il faut mesurer au moins : Trombi 120 cm, Looping 140 cm, Super Viking 130 cm. Lina mesure 1 m 33. Quelles attractions peut-elle faire ?",
           "options": [
@@ -1816,6 +1870,7 @@ window.registerPack({
           "explanation": "1 m 33 = **133 cm**. 133 ≥ 120 et 133 ≥ 130 : **Trombi** et **Super Viking**. Pas Looping (140 cm)."
         },
         {
+          "id": "edaa78c5-2d5c-47d4-8420-93ddfd1b45cc",
           "type": "mcq",
           "prompt": "Il faut mesurer au moins : Trombi 120 cm, Looping 140 cm, Super Viking 130 cm. Zoé mesure 1 m 27. Quelles attractions peut-elle faire ?",
           "options": [
@@ -1830,6 +1885,7 @@ window.registerPack({
           "explanation": "1 m 27 = **127 cm** : assez pour **Trombi** (120 cm), trop petit pour les deux autres."
         },
         {
+          "id": "b81b55cd-61f5-4f1b-9c47-eb30b9eacccb",
           "type": "sort",
           "prompt": "Range chaque longueur : moins ou plus de 1 km ?",
           "categories": [
@@ -1871,6 +1927,7 @@ window.registerPack({
           "explanation": "1 km = 1 000 m.\n**Moins** :\n- 95 dam = 950 m\n- 9 hm = 900 m\n**Plus** :\n- 12 hm = 1 200 m\n- 110 dam = 1 100 m"
         },
         {
+          "id": "003106a0-50d8-4d0e-b1d3-632d90ff8fa7",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -1889,6 +1946,7 @@ window.registerPack({
           "explanation": "15 hm = 1 500 m et 170 dam = 1 700 m : 15 hm est **moins** long."
         },
         {
+          "id": "d8e1fca2-8f41-40ea-9faf-382587e475f1",
           "type": "question",
           "prompt": "Triathlon XS : 400 m de natation, 10 km de vélo et 2,5 km de course. Quelle est la distance totale en km ?",
           "answers": [
@@ -1917,6 +1975,7 @@ window.registerPack({
           }
         },
         {
+          "id": "3f2a03fa-c3e5-4564-9fe4-c9aa282351cf",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Triathlon S : 750 m + 20 km + 5 km = ___ km",
@@ -1928,6 +1987,7 @@ window.registerPack({
           "hint": "Commence par écrire 750 m en km."
         },
         {
+          "id": "072d5e55-e408-43ea-bd51-a50da3e0ec56",
           "type": "match",
           "prompt": "Relie chaque triathlon à sa distance totale.",
           "table": {
@@ -2004,6 +2064,7 @@ window.registerPack({
       "draw": 12,
       "exercises": [
         {
+          "id": "af420406-4115-4c6c-8311-cb84aa5dafcb",
           "type": "question",
           "prompt": "Que veut dire le préfixe « kilo » ? Écris le nombre.",
           "answers": [
@@ -2013,6 +2074,7 @@ window.registerPack({
           "explanation": "**kilo** = **1 000** (1 km = 1 000 m)."
         },
         {
+          "id": "b199dbd5-8025-49ad-8c4c-e5e99aefc921",
           "type": "question",
           "prompt": "Que veut dire le préfixe « milli » ? Écris le nombre.",
           "answers": [
@@ -2022,6 +2084,7 @@ window.registerPack({
           "explanation": "**milli** = **0,001** (1 mm = 0,001 m)."
         },
         {
+          "id": "fd712b5f-c0fa-4f32-9116-999cd00be7f9",
           "type": "question",
           "prompt": "Quel est le symbole du préfixe « déca » ?",
           "answers": [
@@ -2030,6 +2093,7 @@ window.registerPack({
           "explanation": "Déca s'écrit **da** ; **d** est le symbole de déci."
         },
         {
+          "id": "0e27b1a8-ab3f-4a1c-989d-2e1072555681",
           "type": "question",
           "prompt": "Quel préfixe veut dire 100 ?",
           "answers": [
@@ -2038,6 +2102,7 @@ window.registerPack({
           "explanation": "**hecto** = 100 (1 hm = 100 m)."
         },
         {
+          "id": "00939bb9-c917-40f3-b1c7-835b6d5cb6b9",
           "type": "question",
           "prompt": "Quel préfixe veut dire 0,01 ?",
           "answers": [
@@ -2046,6 +2111,7 @@ window.registerPack({
           "explanation": "**centi** = 0,01 (1 cm = 0,01 m)."
         },
         {
+          "id": "99fe76b4-d03c-4cd7-b69d-aa15ef5d0614",
           "type": "question",
           "prompt": "Quelle est l'unité de référence pour mesurer une masse ?",
           "answers": [
@@ -2056,6 +2122,7 @@ window.registerPack({
           "explanation": "L'unité de référence des masses est le **gramme**."
         },
         {
+          "id": "5c550ca0-a4fc-4f43-a0ec-b2fe735feff8",
           "type": "question",
           "prompt": "Quelle est l'unité de référence pour mesurer une contenance ?",
           "answers": [
@@ -2066,6 +2133,7 @@ window.registerPack({
           "explanation": "L'unité de référence des contenances est le **litre**."
         },
         {
+          "id": "cc4d01ff-2520-40e1-a58e-c75e3043d5ef",
           "type": "question",
           "prompt": "Convertis 12,3 hm en mètres.",
           "answers": [
@@ -2077,6 +2145,7 @@ window.registerPack({
           "explanation": "1 hm = 100 m : 12,3 × 100 = **1 230 m**."
         },
         {
+          "id": "989285ce-5e37-485f-bc7b-c6cd3fb2fa73",
           "type": "question",
           "prompt": "Convertis 45 cm en mètres.",
           "answers": [
@@ -2089,6 +2158,7 @@ window.registerPack({
           "explanation": "1 cm = 0,01 m : 45 cm = **0,45 m**."
         },
         {
+          "id": "ceb50671-9d5a-45ec-be33-df1e3d1fb58a",
           "type": "question",
           "prompt": "Convertis 59 m en millimètres.",
           "answers": [
@@ -2100,6 +2170,7 @@ window.registerPack({
           "explanation": "1 m = 1 000 mm : 59 m = **59 000 mm**."
         },
         {
+          "id": "4b3738cc-715e-4762-af4b-2815235ff259",
           "type": "question",
           "prompt": "Convertis 59 m en décamètres.",
           "answers": [
@@ -2111,6 +2182,7 @@ window.registerPack({
           "explanation": "1 dam = 10 m : 59 m = **5,9 dam**."
         },
         {
+          "id": "37611738-0395-4ff2-aaa4-2716d07febbd",
           "type": "question",
           "prompt": "Convertis 70 mm en mètres.",
           "answers": [
@@ -2123,6 +2195,7 @@ window.registerPack({
           "explanation": "1 mm = 0,001 m : 70 mm = **0,07 m**."
         },
         {
+          "id": "77426dbb-2285-48e5-bf32-078e954faea3",
           "type": "question",
           "prompt": "Convertis 450 cm en mètres.",
           "answers": [
@@ -2134,6 +2207,7 @@ window.registerPack({
           "explanation": "100 cm = 1 m : 450 cm = **4,5 m**."
         },
         {
+          "id": "8af2dbb7-ade7-470f-93ea-6dd7b643b504",
           "type": "question",
           "prompt": "Convertis 98,6 dag en grammes.",
           "answers": [
@@ -2145,6 +2219,7 @@ window.registerPack({
           "explanation": "1 dag = 10 g : 98,6 × 10 = **986 g**."
         },
         {
+          "id": "46563a71-0ecd-403a-a8aa-0babc91ca86b",
           "type": "question",
           "prompt": "Convertis 71 dg en grammes.",
           "answers": [
@@ -2156,6 +2231,7 @@ window.registerPack({
           "explanation": "10 dg = 1 g : 71 dg = **7,1 g**."
         },
         {
+          "id": "d08a3f7b-efa7-4a08-bc96-a70bb4917801",
           "type": "question",
           "prompt": "Convertis 3,2 kg en grammes.",
           "answers": [
@@ -2167,6 +2243,7 @@ window.registerPack({
           "explanation": "1 kg = 1 000 g : 3,2 kg = **3 200 g**."
         },
         {
+          "id": "964f128b-fc51-454e-9ef6-0204baf2c605",
           "type": "question",
           "prompt": "Combien de kilogrammes y a-t-il dans 1 tonne ?",
           "answers": [
@@ -2178,6 +2255,7 @@ window.registerPack({
           "explanation": "1 tonne = **1 000 kg**."
         },
         {
+          "id": "97bcac09-1bc6-4b2f-a2ee-ea8c379cee61",
           "type": "question",
           "prompt": "Combien de kilogrammes y a-t-il dans 1 quintal ?",
           "answers": [
@@ -2189,6 +2267,7 @@ window.registerPack({
           "explanation": "1 quintal = **100 kg**."
         },
         {
+          "id": "9150f705-abd1-436f-bfa3-85247713ce3a",
           "type": "question",
           "prompt": "Convertis 4 tonnes en kilogrammes.",
           "answers": [
@@ -2200,6 +2279,7 @@ window.registerPack({
           "explanation": "1 t = 1 000 kg : 4 t = **4 000 kg**."
         },
         {
+          "id": "dbe9193e-6428-42c9-994b-a4955ef78c2a",
           "type": "question",
           "prompt": "Un camion transporte 3 tonnes et 5 quintaux. Combien de kilogrammes cela fait-il ?",
           "answers": [
@@ -2211,6 +2291,7 @@ window.registerPack({
           "explanation": "3 t = 3 000 kg et 5 q = 500 kg : **3 500 kg**."
         },
         {
+          "id": "47d9e659-2216-4450-b03a-14bb54193b35",
           "type": "question",
           "prompt": "Convertis 37 dL en litres.",
           "answers": [
@@ -2222,6 +2303,7 @@ window.registerPack({
           "explanation": "10 dL = 1 L : 37 dL = **3,7 L**."
         },
         {
+          "id": "24b6421d-a427-4a8f-8674-95325a503695",
           "type": "question",
           "prompt": "Convertis 6,4 L en centilitres.",
           "answers": [
@@ -2233,6 +2315,7 @@ window.registerPack({
           "explanation": "1 L = 100 cL : 6,4 L = **640 cL**."
         },
         {
+          "id": "3ddee4e3-2b5a-42ce-8426-e31052ce8033",
           "type": "question",
           "prompt": "Convertis 2,5 L en millilitres.",
           "answers": [
@@ -2244,6 +2327,7 @@ window.registerPack({
           "explanation": "1 L = 1 000 mL : 2,5 L = **2 500 mL**."
         },
         {
+          "id": "6ab0c1d2-b091-4e55-9a30-857114267ccf",
           "type": "question",
           "prompt": "Une bouteille d'eau contient 1,5 L. Combien de centilitres ?",
           "answers": [
@@ -2255,6 +2339,7 @@ window.registerPack({
           "explanation": "1 L = 100 cL : 1,5 L = **150 cL**."
         },
         {
+          "id": "8a6ab38e-af51-4c13-9940-2202f3f11874",
           "type": "question",
           "prompt": "Quelle est la plus grande longueur : 15 hm, 2 km, 2 500 m ou 170 dam ?",
           "answers": [
@@ -2266,6 +2351,7 @@ window.registerPack({
           "explanation": "En mètres :\n- 1 500\n- 2 000\n- **2 500**\n- 1 700"
         },
         {
+          "id": "8d674f91-f34b-4e12-a40a-d7d5698507ed",
           "type": "question",
           "prompt": "Quelle est la plus petite longueur : 15 hm, 2 km, 2 500 m ou 170 dam ?",
           "answers": [
@@ -2276,6 +2362,7 @@ window.registerPack({
           "explanation": "En mètres :\n- **1 500**\n- 2 000\n- 2 500\n- 1 700"
         },
         {
+          "id": "7135ef2d-5e55-4c37-a5aa-3525c94e6704",
           "type": "question",
           "prompt": "Triathlon XS : 400 m de natation, 10 km de vélo et 2,5 km de course. Quelle est la distance totale en km ?",
           "answers": [
@@ -2287,6 +2374,7 @@ window.registerPack({
           "explanation": "400 m = 0,4 km. 0,4 + 10 + 2,5 = **12,9 km**."
         },
         {
+          "id": "fc66eb2d-a1d2-4a10-b329-f55a3e76cada",
           "type": "question",
           "prompt": "Le Looping demande de mesurer au moins 140 cm. Un enfant mesure 1 m 27. Combien de centimètres lui manque-t-il ?",
           "answers": [
@@ -2298,6 +2386,7 @@ window.registerPack({
           "explanation": "1 m 27 = 127 cm. 140 − 127 = **13 cm**."
         },
         {
+          "id": "e5a76d9c-3660-4684-8c0b-289ff943d38f",
           "type": "question",
           "prompt": "Quelle unité de longueur convient : la distance Paris–Lyon est de 465 … ?",
           "answers": [
@@ -2308,6 +2397,7 @@ window.registerPack({
           "explanation": "Entre deux villes, on compte en **kilomètres** : 465 km."
         },
         {
+          "id": "430fd7bc-c086-42a5-acb6-108e10b03309",
           "type": "question",
           "prompt": "Quelle unité de longueur convient : le diamètre d'une casserole est de 22 … ?",
           "answers": [

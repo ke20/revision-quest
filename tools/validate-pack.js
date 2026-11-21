@@ -103,7 +103,7 @@ function validatePack(file, catalog, opts = {}) {
     }
   }
 
-  const stats = Rules.validateContent(pack, err, warn);
+  const stats = Rules.validateContent(pack, err, warn, { requireIds: true });
   return stats ? { file: rel, id: pack.path, errors, warnings, stats } : { file: rel, id: pack.path, errors, warnings };
 }
 
@@ -166,6 +166,29 @@ function validateCatalog(catalog, opts = {}) {
   return errors;
 }
 
+/* ---------- exercise ids across packs ---------- */
+
+/** Exercise ids used in more than one pack (an id is unique in all the packs, not only in its own).
+    Files that cannot be read are skipped (validatePack reports them). @param {string[]} files @returns {string[]} */
+function duplicateIds(files) {
+  /** @type {Map<string, string>} */
+  const seen = new Map();
+  /** @type {string[]} */
+  const out = [];
+  files.forEach((f) => {
+    let pack;
+    try { pack = loadPack(f); } catch (e) { return; }
+    const rel = path.relative(ROOT, path.resolve(f)).split(path.sep).join("/");
+    (isArr(pack.worlds) ? pack.worlds : []).forEach((w) => (w && isArr(w.exercises) ? w.exercises : []).forEach((e) => {
+      if (!e || typeof e.id !== "string") return;
+      const first = seen.get(e.id);
+      if (first && first !== rel) out.push(`${e.id} : ${first} et ${rel}`);
+      else seen.set(e.id, rel);
+    }));
+  });
+  return out;
+}
+
 /* ---------- CLI ---------- */
 
 /** Every .js file under dir (recursive). @param {string} dir @returns {string[]} */
@@ -216,9 +239,13 @@ function main(argv) {
     report(r);
     if (r.errors.length) failed++;
   });
+  if (argv.includes("--all")) {
+    const dup = duplicateIds(files);
+    if (dup.length) { console.log("✗ id d'exercice en double entre packs"); dup.forEach((d) => console.log("   ERREUR  " + d)); failed++; }
+  }
   console.log(failed ? `\n${failed} problème(s) à corriger.` : "\nTout est bon ✅");
   return failed ? 1 : 0;
 }
 
 if (require.main === module) process.exitCode = main(process.argv.slice(2));
-module.exports = { validatePack, validateCatalog, validateFigure, validateTable, catalogUnits, loadCatalog, loadPack, main };
+module.exports = { validatePack, validateCatalog, duplicateIds, validateFigure, validateTable, catalogUnits, loadCatalog, loadPack, main };

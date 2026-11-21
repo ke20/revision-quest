@@ -32,7 +32,8 @@ Chaque pack est **un seul fichier** `packs/<niveau>/<matiere>/<cours>.js`, charg
 1. Écrire `packs/<niveau>/<matiere>/<cours>.js` (format ci-dessous), avec ses infos de catalogue dans `meta`. Le
    catalogue se construit tout seul à partir des fichiers de packs : rien d'autre à modifier. Un fichier écrit ailleurs
    (par exemple téléchargé) se met en place avec `mise run pack:add <fichier.js>`, qui le vérifie avant de le copier.
-2. Vérifier : `mise run validate` (ou `node tools/validate-pack.js packs/<niveau>/<matiere>/<cours>.js`).
+2. Donner un id à chaque exercice : `mise run pack:ids` (voir « L'id d'un exercice » plus bas).
+   Puis vérifier : `mise run validate` (ou `node tools/validate-pack.js packs/<niveau>/<matiere>/<cours>.js`).
 3. Tester dans le navigateur : `mise run dev` (ou `npm start`) → « Choisir un chapitre ».
    Pour relire tout un chapitre : `DEV_MODE=true` dans `.env.local` (hors git ; ou `DEV_MODE=true mise run dev`), puis le bouton 👻 sur la carte (mode fantôme : tous
    les mondes ouverts, chaque exercice avec sa réponse attendue, rien n'est enregistré). Jamais sur le site en ligne.
@@ -153,8 +154,19 @@ Le **dernier** monde est le **boss** du chapitre (dès 2 mondes) : le contrôle 
   `tokens` (spot), `words` / `distractors` / `alternatives` (order), `pairs` (match), `answers` (question).
   Le validateur le signale.
 
-Champs communs à tous les exercices : `type`, `prompt` (consigne), `explanation` (affichée après la réponse),
+Champs communs à tous les exercices : `id`, `type`, `prompt` (consigne), `explanation` (affichée après la réponse),
 `hint` (optionnel, coûte 3 XP).
+
+**L'id d'un exercice** : un UUID v4 en minuscules (`"id": "0b8c5a1e-3f2d-4c6b-9a7e-1d2c3b4a5f60"`), en premier dans
+l'exercice. Il est attribué une fois puis **ne change jamais**, même quand on corrige la question : les erreurs
+détaillées des joueurs pointeront vers lui. Il est unique dans tous les packs (le validateur le vérifie).
+
+- On ne l'écrit pas à la main : `mise run pack:ids` en donne un à chaque exercice qui n'en a pas.
+- Un générateur qui réécrit un pack sans les id ne les fait pas perdre : `pack:ids` reprend l'id de la version du
+  fichier dans git quand il y retrouve l'exercice (même monde et même contenu, ou même monde et même consigne).
+  Lancer `pack:ids` juste après le générateur, avant de commiter.
+- L'éditeur de cours donne un id à chaque exercice créé ou dupliqué, et garde celui d'un exercice existant.
+- Un cours privé (« Mes cours ») peut ne pas en avoir ; un pack du dépôt doit en avoir.
 
 ## 3. La langue du pack (`lang`)
 
@@ -457,6 +469,7 @@ node tools/validate-pack.js packs/cm2/francais/dictee-statue-de-la-liberte/g1.js
 - [ ] Les mauvaises réponses des QCM sont plausibles (pas de réponse absurde), une seule est juste.
 - [ ] Contenu exact et vérifié avec le cours de l'élève (dates, orthographe, accents).
 - [ ] Pas de données personnelles, pas de lien externe, pas d'image distante.
+- [ ] Chaque exercice a son id (`mise run pack:ids`), jamais modifié ensuite.
 - [ ] `node tools/validate-pack.js --all` → « Tout est bon ✅ ».
 - [ ] Revue de code faite : le fichier ne contient que `window.registerPack({...})` avec du JSON pur (format strict).
 - [ ] Testé en vrai sur téléphone (390 px) : tout se lit sans défiler sur le côté.

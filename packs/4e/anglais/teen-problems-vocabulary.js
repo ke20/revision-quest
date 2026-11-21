@@ -79,6 +79,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "a61cd3ec-b48b-4966-8d8f-0b2dfe830338",
           "type": "match",
           "prompt": "Relie chaque début de conseil à sa traduction.",
           "pairs": [
@@ -106,6 +107,7 @@ window.registerPack({
           "explanation": "✅ Ce sont les cinq façons de donner un conseil vues dans la leçon."
         },
         {
+          "id": "17781981-641c-4b2a-9a6c-a7f7f690eb80",
           "type": "sort",
           "prompt": "Range chaque phrase : conseil, ou empathie ?",
           "categories": [
@@ -147,6 +149,7 @@ window.registerPack({
           "explanation": "✅ Un conseil dit **quoi faire** ; l'empathie montre qu'on **comprend** la personne."
         },
         {
+          "id": "ba6c9a6e-2b3f-4628-8387-387c8d2ecdc1",
           "type": "fill",
           "prompt": "Complète : shouldn't est la forme courte de…",
           "sentence": "You shouldn't = You should ___.",
@@ -156,6 +159,7 @@ window.registerPack({
           "explanation": "✅ **shouldn't** est la forme courte de [[**should not**|ne devrait pas]]."
         },
         {
+          "id": "33d7e301-00f8-42c8-baa2-c3e32f3746c2",
           "type": "fill",
           "prompt": "Complète : I'd est la forme courte de…",
           "sentence": "If I were you, I'd talk to a teacher. = If I were you, I ___ talk to a teacher.",
@@ -165,6 +169,7 @@ window.registerPack({
           "explanation": "✅ **I'd** est la forme courte de **I would**."
         },
         {
+          "id": "f63cd2f6-6911-411c-bcdf-b1e0c254f97d",
           "type": "mcq",
           "prompt": "Choisis la bonne forme : \"You should ___ to your parents.\"",
           "options": [
@@ -177,6 +182,7 @@ window.registerPack({
           "explanation": "✅ Après **should**, la base verbale **talk** :\n- sans **to**\n- sans **-ing**"
         },
         {
+          "id": "ffd8c246-9023-44fd-b867-bf80583d6425",
           "type": "mcq",
           "prompt": "Choisis la bonne forme : \"How about ___ to a teacher?\"",
           "options": [
@@ -189,6 +195,7 @@ window.registerPack({
           "explanation": "✅ Après **How about**, le verbe prend **-ing** : **talking**."
         },
         {
+          "id": "22306aee-f52a-4415-9583-31bc1c0f1e2f",
           "type": "mcq",
           "prompt": "Choisis la bonne forme : \"Why don't you ___ to your friend?\"",
           "options": [
@@ -201,6 +208,7 @@ window.registerPack({
           "explanation": "✅ Après **Why don't you**, la base verbale : **talk**."
         },
         {
+          "id": "0f901080-8376-414f-9f52-c093145daf30",
           "type": "match",
           "prompt": "Relie chaque phrase d'empathie à sa traduction.",
           "pairs": [
@@ -220,6 +228,7 @@ window.registerPack({
           "explanation": "✅ On commence souvent une réponse par une phrase d'empathie, avant le conseil."
         },
         {
+          "id": "04b67078-d577-4d8c-a40f-ad7b71c8dbc5",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -236,6 +245,7 @@ window.registerPack({
           "explanation": "✅ Après **should**, jamais de **-s** : [[You should **talk**.|Tu devrais parler.]]"
         },
         {
+          "id": "89077fbb-80fe-4ac7-a99d-41fb40f2fcdf",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -282,6 +292,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "e1789d75-d140-49e5-adc9-7e3fb51fccb8",
           "type": "match",
           "prompt": "Relie chaque mot à sa traduction.",
           "pairs": [
@@ -305,6 +316,7 @@ window.registerPack({
           "explanation": "✅ [[**online**|en ligne]] ≠ [[**offline**|hors ligne]]. **social media** est toujours au pluriel en français : les réseaux sociaux."
         },
         {
+          "id": "d6fc66d5-a549-416a-a2c0-c72790fff940",
           "type": "mcq",
           "prompt": "\"I am completely **addicted to** my smartphone.\" Que veut dire **addicted to** ?",
           "options": [
@@ -318,6 +330,7 @@ window.registerPack({
           "hint": "Abby ne peut pas s'arrêter."
         },
         {
+          "id": "cfc2c5e9-b15c-4ce5-aee6-fe14187c4e54",
           "type": "match",
           "prompt": "Relie chaque verbe à sa traduction.",
           "pairs": [
@@ -341,6 +354,7 @@ window.registerPack({
           "explanation": "✅ Trois verbes avec **up** :\n- [[**wake up**|se réveiller]]\n- [[**stay up**|veiller tard]]\n- [[**meet up**|se retrouver]]\nEt [[**focus**|se concentrer]]."
         },
         {
+          "id": "39757c2d-2956-4ff5-9427-7a99d3bd38da",
           "type": "mcq",
           "prompt": "\"I would like to **meet up** with them.\" Que veut faire Lily ?",
           "options": [
@@ -353,6 +367,7 @@ window.registerPack({
           "explanation": "✅ **to meet up** = se retrouver, se voir en vrai. Lily ne sait pas si c'est sans danger."
         },
         {
+          "id": "52a23764-8438-4801-aaed-97dcc77b5329",
           "type": "fill",
           "prompt": "Complète : le contraire de **online**.",
           "sentence": "Being ___ makes Abby anxious.",
@@ -364,6 +379,7 @@ window.registerPack({
           "hint": "off..."
         },
         {
+          "id": "91b5eb66-b06d-449b-bc4a-0ba620d88736",
           "type": "mcq",
           "prompt": "\"I am too tired to **focus** in class.\" Que veut dire **focus** ?",
           "options": [
@@ -376,6 +392,7 @@ window.registerPack({
           "explanation": "✅ **to focus** = se concentrer. Abby a veillé jusqu'à 3 heures du matin."
         },
         {
+          "id": "246db017-3e2e-4d15-8bfb-182527d7a529",
           "type": "fill",
           "prompt": "Complète avec le mot qui veut dire « fatiguée ».",
           "sentence": "Now, I am too ___ to focus in class.",
@@ -385,6 +402,7 @@ window.registerPack({
           "explanation": "✅ **tired** = fatigué(e). À ne pas confondre avec **tried** (essayé)."
         },
         {
+          "id": "4eaf1b0a-fa5e-4d5a-8d10-0d732cb7c6c5",
           "type": "mcq",
           "prompt": "\"My parents want to **confiscate** my phone.\" Que veulent faire ses parents ?",
           "options": [
@@ -397,6 +415,7 @@ window.registerPack({
           "explanation": "✅ **to confiscate** = confisquer, prendre pour un moment."
         },
         {
+          "id": "b91fb47e-375e-48e6-bcaf-f2dbe3b40fee",
           "type": "fill",
           "prompt": "Écris en anglais : « dès que ».",
           "sentence": "___ I wake up, I check social media.",
@@ -430,6 +449,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "a69b96e5-1ca4-4566-be50-fe65cae4194d",
           "type": "mcq",
           "prompt": "\"I think my friend is being **bullied**.\" Que veut dire **bullied** ?",
           "options": [
@@ -442,6 +462,7 @@ window.registerPack({
           "explanation": "✅ **bullied** = harcelé(e). Et aussi :\n- le harcèlement = **bullying**\n- la personne qui harcèle = **a bully**"
         },
         {
+          "id": "19fa4e80-3cb9-4399-b9fd-c6f15b403a88",
           "type": "match",
           "prompt": "Lettre de Sarah : relie chaque mot à sa traduction.",
           "pairs": [
@@ -465,6 +486,7 @@ window.registerPack({
           "explanation": "✅ Les mots :\n- [[**to call someone names**|insulter quelqu'un]]\n- [[**upset**|bouleversé·e, très triste]]"
         },
         {
+          "id": "8ae3e2e2-6626-4f6b-9435-0cb04ffa48a4",
           "type": "mcq",
           "prompt": "\"A few girls keep **calling her names**.\" Que font ces filles ?",
           "options": [
@@ -478,6 +500,7 @@ window.registerPack({
           "hint": "C'est méchant."
         },
         {
+          "id": "a55304a7-1e5b-4337-bc38-7e25f6533aef",
           "type": "match",
           "prompt": "Lettre de Susan : relie chaque mot à sa traduction.",
           "pairs": [
@@ -501,6 +524,7 @@ window.registerPack({
           "explanation": "✅ **un-** devant un mot = sans / pas : [[**unbranded**|sans marque]] ([[**brand**|marque]])."
         },
         {
+          "id": "e9e37ab4-721d-4993-9d84-cbe5a3183ded",
           "type": "mcq",
           "prompt": "\"My family **cannot afford** these things.\" Que veut dire Susan ?",
           "options": [
@@ -513,6 +537,7 @@ window.registerPack({
           "explanation": "✅ **cannot afford** = ne pas avoir les moyens d'acheter. C'est une question d'argent."
         },
         {
+          "id": "10f63dee-6ca5-45c8-bc40-858a38b50eb2",
           "type": "fill",
           "prompt": "Complète : « se moquer de » = make fun ___.",
           "sentence": "Some kids at school make fun ___ me.",
@@ -522,6 +547,7 @@ window.registerPack({
           "explanation": "✅ **to make fun of** someone = se moquer de quelqu'un. Toujours avec **of**."
         },
         {
+          "id": "3fb0ace8-68a2-4d3d-871d-95e097f7f722",
           "type": "mcq",
           "prompt": "\"I feel so **insecure** about my appearance.\" Que veut dire **insecure** ?",
           "options": [
@@ -535,6 +561,7 @@ window.registerPack({
           "hint": "Susan ne se sent pas bien dans sa peau."
         },
         {
+          "id": "56a8333a-abfb-4496-b224-3cf312900db2",
           "type": "fill",
           "prompt": "Écris en anglais : « s'intégrer » (deux mots).",
           "sentence": "How can I ___ without changing who I am?",
@@ -544,6 +571,7 @@ window.registerPack({
           "explanation": "✅ **to fit in** = s'intégrer, trouver sa place dans un groupe."
         },
         {
+          "id": "8a8c39b7-e8b3-4cf0-b80c-8b2a5a37c0be",
           "type": "sort",
           "prompt": "Range chaque mot : qui harcèle, ou qui parle de vêtements ?",
           "categories": [
@@ -608,6 +636,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "c54d9b8c-873f-4010-8e9c-dd2f8319a0b6",
           "type": "match",
           "prompt": "Relie chaque mot à sa traduction.",
           "pairs": [
@@ -631,6 +660,7 @@ window.registerPack({
           "explanation": "✅ Faux amis :\n- **a mark** = une note (pas une marque)\n- **a subject** = une matière (pas un sujet)"
         },
         {
+          "id": "57548033-3013-495a-90bc-387fc38fe723",
           "type": "mcq",
           "prompt": "\"My **grades** are dropping.\" Quel mot veut dire la même chose que **grades** ?",
           "options": [
@@ -643,6 +673,7 @@ window.registerPack({
           "explanation": "✅ **grades** et **marks** veulent dire la même chose : les notes. Abby a de moins bonnes notes."
         },
         {
+          "id": "e48dacf7-ce55-45a0-a988-0ee0fc4c1d4d",
           "type": "mcq",
           "prompt": "\"I don't want to **disappoint** my family.\" Que veut dire **disappoint** ?",
           "options": [
@@ -656,6 +687,7 @@ window.registerPack({
           "hint": "Pense au mot français « désappointé »."
         },
         {
+          "id": "1f0e1806-5bf0-4766-a471-1047f6da0c4b",
           "type": "mcq",
           "prompt": "\"Every time I think about the exam, **my stomach hurts**.\" Que ressent Sam ?",
           "options": [
@@ -668,6 +700,7 @@ window.registerPack({
           "explanation": "✅ Les mots :\n- [[**stomach**|ventre]]\n- [[**it hurts**|ça fait mal]]"
         },
         {
+          "id": "5801ab25-779c-4a90-bb00-41a057016ea7",
           "type": "fill",
           "prompt": "Complète : « abandonner » = give ___.",
           "sentence": "I want to quit and give ___.",
@@ -677,6 +710,7 @@ window.registerPack({
           "explanation": "✅ **to give up** = abandonner. **to quit** veut presque dire la même chose : arrêter."
         },
         {
+          "id": "75bc33a7-cfa4-4ee9-87dd-a668067d5fd2",
           "type": "match",
           "prompt": "Lettre de Mark : relie chaque mot à sa traduction.",
           "pairs": [
@@ -700,6 +734,7 @@ window.registerPack({
           "explanation": "✅ [[**hopeless**|sans espoir]] : [[**hope**|espoir]] + **-less** (sans)."
         },
         {
+          "id": "7a8f4545-8cf3-4649-89e8-150ccb79903c",
           "type": "fill",
           "prompt": "Écris en anglais : « assez ».",
           "sentence": "I study for five hours, but I feel like it's not ___.",
@@ -709,6 +744,7 @@ window.registerPack({
           "explanation": "✅ **enough** = assez. Il se prononce « inaf »."
         },
         {
+          "id": "c79b8db7-3b62-4c53-b296-1de54bc858c8",
           "type": "fill",
           "prompt": "Complète : « demander de l'aide » = ask ___ help.",
           "sentence": "My teachers say I must ask ___ help.",
@@ -718,6 +754,7 @@ window.registerPack({
           "explanation": "✅ **to ask for help** = demander de l'aide. On dit **ask for**, sans « de »."
         },
         {
+          "id": "8e69b29c-f590-40c8-ad51-b8806dbf1637",
           "type": "mcq",
           "prompt": "\"My parents **expect** me to get perfect marks.\" Que veut dire **expect** ?",
           "options": [
@@ -752,6 +789,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "aae90759-5e53-41df-ae87-0ec0338ce973",
           "type": "match",
           "prompt": "Relie chaque sentiment à sa traduction.",
           "pairs": [
@@ -775,6 +813,7 @@ window.registerPack({
           "explanation": "✅ Ils ressemblent au français :\n- **anxious**\n- **furious**\nÀ apprendre par cœur :\n- [[**upset**|bouleversé·e]]\n- [[**hopeless**|désespéré·e]]"
         },
         {
+          "id": "06133d05-bef8-4fbc-a97c-0924674a68ae",
           "type": "mcq",
           "prompt": "Abby veille jusqu'à 3 h du matin. En classe, elle est…",
           "options": [
@@ -787,6 +826,7 @@ window.registerPack({
           "explanation": "✅ **tired** = fatiguée."
         },
         {
+          "id": "e233b7d9-e2f2-4d97-bed8-74f2ad26bff9",
           "type": "mcq",
           "prompt": "Les parents d'Abby sont très en colère. Ils sont…",
           "options": [
@@ -799,6 +839,7 @@ window.registerPack({
           "explanation": "✅ **furious** = furieux, très en colère."
         },
         {
+          "id": "50a42d38-c3f4-491e-a3dc-a042933b87b0",
           "type": "mcq",
           "prompt": "Mark ne trouve plus aucune solution. Il se sent…",
           "options": [
@@ -811,6 +852,7 @@ window.registerPack({
           "explanation": "✅ **hopeless** = désespéré, sans espoir."
         },
         {
+          "id": "459cee72-b218-404f-8a96-f892870a563c",
           "type": "match",
           "prompt": "Relie chaque mot à son contraire.",
           "pairs": [
@@ -834,6 +876,7 @@ window.registerPack({
           "explanation": "✅ Les mots :\n- [[**cheap**|pas cher]]\n- [[**dangerous**|dangereux]]"
         },
         {
+          "id": "f732bb35-6050-47bf-a9ee-ff28b5822fc9",
           "type": "sort",
           "prompt": "Range chaque mot : sentiment, ou chose ?",
           "categories": [
@@ -879,6 +922,7 @@ window.registerPack({
           "explanation": "✅ Après **I feel**, on met un adjectif de sentiment."
         },
         {
+          "id": "72eba011-8697-444a-9fe8-9ae618794d1c",
           "type": "fill",
           "prompt": "Écris en anglais : « stressé ».",
           "sentence": "I am writing to you because I feel ___.",
@@ -888,6 +932,7 @@ window.registerPack({
           "explanation": "✅ **stressed** :\n- deux **s** au milieu\n- **-ed** à la fin"
         },
         {
+          "id": "a87e95db-2405-40e2-aff9-64067d9a82ec",
           "type": "spot",
           "prompt": "Touche le mot faux : le sens de la phrase ne va pas.",
           "tokens": [
@@ -910,6 +955,7 @@ window.registerPack({
           "explanation": "✅ On se moque des vêtements de Susan parce qu'ils sont [[**unbranded**|sans marque]], pas [[**trendy**|à la mode]]."
         },
         {
+          "id": "ab3682bb-e864-43fe-9125-4ca08f83eb4b",
           "type": "fill",
           "prompt": "Écris en anglais : « bloqué ».",
           "sentence": "I feel completely ___ and hopeless.",
@@ -942,6 +988,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "71ff3898-10a1-4c2e-9226-605022775161",
           "type": "sort",
           "prompt": "Range chaque verbe selon son petit mot.",
           "categories": [
@@ -983,6 +1030,7 @@ window.registerPack({
           "explanation": "✅ Avec **up** :\n- meet\n- wake\n- give\n- stay\nAvec **in** :\n- join\n- fit"
         },
         {
+          "id": "86243316-0c58-4bb4-85df-f197622a8064",
           "type": "match",
           "prompt": "Relie chaque verbe à sa traduction.",
           "pairs": [
@@ -1006,6 +1054,7 @@ window.registerPack({
           "explanation": "✅ Le petit mot change tout : [[**stay**|rester]], mais [[**stay up**|veiller tard]]."
         },
         {
+          "id": "d0fd412d-d50d-438a-8e3a-4facdcb4869d",
           "type": "fill",
           "prompt": "Complète avec le petit mot.",
           "sentence": "Last night, I stayed ___ until 3:00 AM gaming.",
@@ -1015,6 +1064,7 @@ window.registerPack({
           "explanation": "✅ **to stay up** = veiller tard, ne pas aller se coucher."
         },
         {
+          "id": "4d0878fe-5154-4713-a902-841e3622bf15",
           "type": "fill",
           "prompt": "Complète avec le petit mot.",
           "sentence": "We were all laughing so I joined ___ too.",
@@ -1024,6 +1074,7 @@ window.registerPack({
           "explanation": "✅ **to join in** = se joindre aux autres, participer."
         },
         {
+          "id": "36fb461c-9b5b-4bf1-81e6-9891bc16fa77",
           "type": "fill",
           "prompt": "Complète avec le petit mot.",
           "sentence": "I am completely addicted ___ my smartphone.",
@@ -1033,6 +1084,7 @@ window.registerPack({
           "explanation": "✅ **addicted to** = accro à. Toujours avec **to**."
         },
         {
+          "id": "cc3f8b16-f110-445e-98dd-4dba83cd182b",
           "type": "mcq",
           "prompt": "Quelle phrase veut dire « Je veux abandonner » ?",
           "options": [
@@ -1045,6 +1097,7 @@ window.registerPack({
           "explanation": "✅ Les mots :\n- [[**give up**|abandonner]]\n- [[**wake up**|se réveiller]]"
         },
         {
+          "id": "498f9337-51c8-4274-b605-3d4734b186af",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -1063,6 +1116,7 @@ window.registerPack({
           "explanation": "✅ On dit [[**make fun of** someone|se moquer de quelqu'un]]."
         },
         {
+          "id": "8b399873-13af-4054-84b2-c070308272c4",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -1084,6 +1138,7 @@ window.registerPack({
           "explanation": "✅ Se réveiller = **to wake up**."
         },
         {
+          "id": "2176750d-9c77-41b1-bf0c-4d3ca94a1835",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -1125,6 +1180,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "79ac846e-856f-4e98-97b8-6c88e1d05a62",
           "type": "mcq",
           "prompt": "Quel est le problème de Lily ?",
           "options": [
@@ -1138,6 +1194,7 @@ window.registerPack({
           "docId": "lily"
         },
         {
+          "id": "c67869a9-1e04-4cee-819e-7c9d6f3e1687",
           "type": "fill",
           "prompt": "Retrouve dans la lettre le mot qui veut dire « cependant ».",
           "sentence": "___ they keep asking me if I would like to meet up.",
@@ -1148,6 +1205,7 @@ window.registerPack({
           "docId": "lily"
         },
         {
+          "id": "1df012d6-8fdc-4b83-ba7f-1d25d05d4640",
           "type": "mcq",
           "prompt": "Pourquoi Sarah se sent-elle mal ?",
           "options": [
@@ -1161,6 +1219,7 @@ window.registerPack({
           "docId": "sarah"
         },
         {
+          "id": "6ba8b9af-794d-4a53-b4ae-f7ad27fc6ed4",
           "type": "fill",
           "prompt": "Retrouve dans la lettre le mot qui veut dire « pression ».",
           "sentence": "The ___ is ruining my life.",
@@ -1171,6 +1230,7 @@ window.registerPack({
           "docId": "sam"
         },
         {
+          "id": "b50489ba-9b9f-4049-a54d-ebde79c2bf50",
           "type": "mcq",
           "prompt": "D'après Sam, qu'attendent ses parents ?",
           "options": [
@@ -1184,6 +1244,7 @@ window.registerPack({
           "docId": "sam"
         },
         {
+          "id": "900c14fe-a101-4829-b7e9-457f15538fda",
           "type": "mcq",
           "prompt": "Pourquoi des élèves se moquent-ils de Susan ?",
           "options": [
@@ -1197,6 +1258,7 @@ window.registerPack({
           "docId": "susan"
         },
         {
+          "id": "e262a0cc-f82c-4bbe-a317-f3c31c56c158",
           "type": "fill",
           "prompt": "Retrouve dans la lettre le verbe qui veut dire « s'intégrer » (deux mots).",
           "sentence": "How can I ___ without changing who I am?",
@@ -1207,6 +1269,7 @@ window.registerPack({
           "docId": "susan"
         },
         {
+          "id": "d613d22a-87e1-4673-8b7a-ec41c924df2f",
           "type": "mcq",
           "prompt": "Pourquoi Abby est-elle trop fatiguée en classe ?",
           "options": [
@@ -1220,6 +1283,7 @@ window.registerPack({
           "docId": "abby"
         },
         {
+          "id": "3debe04c-d66a-4ff1-b6c0-00c2e3bd4a59",
           "type": "fill",
           "prompt": "Retrouve dans la lettre le mot qui veut dire « hors ligne ».",
           "sentence": "The thought of being ___ makes me anxious.",
@@ -1231,6 +1295,7 @@ window.registerPack({
           "docId": "abby"
         },
         {
+          "id": "3041e5e5-8a1e-4452-95ec-4d15c7678b9f",
           "type": "mcq",
           "prompt": "Que disent les professeurs de Mark ?",
           "options": [
@@ -1266,6 +1331,7 @@ window.registerPack({
       "draw": 12,
       "exercises": [
         {
+          "id": "9e5f2b7a-2527-4d99-8a30-2cc38c7684f9",
           "type": "question",
           "prompt": "Traduis : « Je me sens stressé. »",
           "answers": [
@@ -1274,6 +1340,7 @@ window.registerPack({
           "explanation": "« je me sens » = **I feel**, puis l'adjectif : [[I feel stressed.|Je me sens stressé.]]"
         },
         {
+          "id": "154e396b-c17f-40a8-97d7-5ba6dbb6365e",
           "type": "question",
           "prompt": "Traduis : « Mes parents sont furieux. »",
           "answers": [
@@ -1282,6 +1349,7 @@ window.registerPack({
           "explanation": "**furious** ressemble au français, mais attention : **u** et pas *eu* : [[My parents are furious.|Mes parents sont furieux.]]"
         },
         {
+          "id": "9d5d2665-6b22-4484-861b-036ac7d1bd74",
           "type": "question",
           "prompt": "Traduis : « Je suis accro à mon smartphone. »",
           "answers": [
@@ -1291,6 +1359,7 @@ window.registerPack({
           "explanation": "« être accro à » = **to be addicted to** : [[I am addicted to my smartphone.|Je suis accro à mon smartphone.]]"
         },
         {
+          "id": "54546d75-49d0-4d9d-92a4-c4127c17d6ae",
           "type": "question",
           "prompt": "Traduis : « Mes notes baissent. »",
           "answers": [
@@ -1304,6 +1373,7 @@ window.registerPack({
           "explanation": "« une note » = **a mark** ou **a grade** (faux ami : pas *a brand*) : [[My grades are dropping.|Mes notes baissent.]]"
         },
         {
+          "id": "3bf8ccd8-b610-4c6d-8b14-c8f72899aec6",
           "type": "question",
           "prompt": "Traduis : « Des élèves se moquent de moi. »",
           "answers": [
@@ -1317,6 +1387,7 @@ window.registerPack({
           "explanation": "« se moquer de » = **make fun of** (avec **of**) : [[Some kids make fun of me.|Des élèves se moquent de moi.]]"
         },
         {
+          "id": "3c958885-7ac8-41d4-a8c8-2ecfed7afba9",
           "type": "question",
           "prompt": "Traduis : « Ma famille n'a pas les moyens d'acheter des vêtements chers. »",
           "answers": [
@@ -1325,6 +1396,7 @@ window.registerPack({
           "explanation": "Les mots :\n- « ne pas avoir les moyens d'acheter » = **cannot afford**\n- « cher » = **expensive**\n[[My family cannot afford expensive clothes.|Ma famille n'a pas les moyens d'acheter des vêtements chers.]]"
         },
         {
+          "id": "27ff3d3d-a358-4b77-8282-9a86a6942241",
           "type": "question",
           "prompt": "Traduis : « Je veux arrêter et abandonner. »",
           "answers": [
@@ -1333,6 +1405,7 @@ window.registerPack({
           "explanation": "Les mots :\n- « arrêter » = **quit**\n- « abandonner » = **give up**\n[[I want to quit and give up.|Je veux arrêter et abandonner.]]"
         },
         {
+          "id": "67faca58-23e0-4380-bde3-e2e612b160c8",
           "type": "question",
           "prompt": "Traduis : « Je me sens bloqué et désespéré. »",
           "answers": [
@@ -1341,6 +1414,7 @@ window.registerPack({
           "explanation": "Les mots :\n- « bloqué » = **stuck**\n- « désespéré » = **hopeless**\n[[I feel stuck and hopeless.|Je me sens bloqué et désespéré.]]"
         },
         {
+          "id": "8b2e1082-7fb2-4977-8c64-663c5915f4fb",
           "type": "question",
           "prompt": "Traduis : « Je dois demander de l'aide. »",
           "answers": [
@@ -1351,6 +1425,7 @@ window.registerPack({
           "explanation": "« demander de l'aide » = **ask for help** (avec **for**) : [[I must ask for help.|Je dois demander de l'aide.]]"
         },
         {
+          "id": "3906d7e4-33f9-4865-8a89-2eac27d22645",
           "type": "question",
           "prompt": "Traduis : « Je ne veux pas décevoir ma famille. »",
           "answers": [
@@ -1359,6 +1434,7 @@ window.registerPack({
           "explanation": "« décevoir » = **to disappoint** : [[I don't want to disappoint my family.|Je ne veux pas décevoir ma famille.]]"
         },
         {
+          "id": "4938d908-a91e-4c2f-abbe-9fd98d3549aa",
           "type": "question",
           "prompt": "Traduis : « Comment est-ce que je peux m'intégrer ? »",
           "answers": [
@@ -1367,6 +1443,7 @@ window.registerPack({
           "explanation": "« s'intégrer » = **fit in** (verbe + petit mot) : [[How can I fit in?|Comment est-ce que je peux m'intégrer ?]]"
         },
         {
+          "id": "f96b7e5a-267b-4e1d-9cd7-7589c77f731a",
           "type": "question",
           "prompt": "Traduis : « J'ai de mauvaises notes en maths. »",
           "answers": [
@@ -1380,6 +1457,7 @@ window.registerPack({
           "explanation": "Faux ami : « une note » = **a mark** ou **a grade** : [[I get bad marks in maths.|J'ai de mauvaises notes en maths.]]"
         },
         {
+          "id": "89bda736-10d0-4010-82b6-287937e62888",
           "type": "question",
           "prompt": "Traduis : « Je suis complexée par mon apparence. »",
           "answers": [
@@ -1389,6 +1467,7 @@ window.registerPack({
           "explanation": "« complexé(e) par » = **insecure about** : [[I feel insecure about my appearance.|Je suis complexée par mon apparence.]]"
         },
         {
+          "id": "170fe3bc-da85-4027-9969-aecd8615f680",
           "type": "question",
           "prompt": "Traduis : « Je ne suis pas sûre que ce soit sans danger. »",
           "answers": [
@@ -1399,6 +1478,7 @@ window.registerPack({
           "explanation": "« sans danger » = **safe** (son contraire : **dangerous**) : [[I'm not sure if it's safe.|Je ne suis pas sûre que ce soit sans danger.]]"
         },
         {
+          "id": "de6b5258-eb5d-4719-99eb-0124e2d48cf4",
           "type": "question",
           "prompt": "Traduis : « Je suis trop fatiguée pour me concentrer en classe. »",
           "answers": [
@@ -1409,6 +1489,7 @@ window.registerPack({
           "explanation": "Les mots :\n- « fatigué(e) » = **tired**\n- « se concentrer » = **focus**\n[[I am too tired to focus in class.|Je suis trop fatiguée pour me concentrer en classe.]]"
         },
         {
+          "id": "40d8475a-3817-4ff0-b0d4-442857b9e980",
           "type": "question",
           "prompt": "Traduis : « Dès que je me réveille, je consulte les réseaux sociaux. »",
           "answers": [
@@ -1419,6 +1500,7 @@ window.registerPack({
           "explanation": "Les mots :\n- « dès que » = **as soon as**\n- « se réveiller » = **wake up**\n[[As soon as I wake up, I check social media.|Dès que je me réveille, je consulte les réseaux sociaux.]]"
         },
         {
+          "id": "02036a91-0f7e-4168-8aed-837d7b017ef4",
           "type": "question",
           "prompt": "Traduis : « Mon amie est harcelée. Elle est bouleversée. »",
           "answers": [
@@ -1431,6 +1513,7 @@ window.registerPack({
           "explanation": "Les mots :\n- « être harcelé(e) » = **to be bullied**\n- « bouleversé(e) » = **upset**\n[[My friend is being bullied. She is upset.|Mon amie est harcelée. Elle est bouleversée.]]"
         },
         {
+          "id": "2ae1c504-3e79-4291-9dbb-77ddf435b0b8",
           "type": "question",
           "prompt": "Traduis : « J'ai mal au ventre. »",
           "answers": [
@@ -1441,6 +1524,7 @@ window.registerPack({
           "explanation": "« j'ai mal au ventre » = **my stomach hurts** (mot à mot : mon ventre fait mal) : [[My stomach hurts.|J'ai mal au ventre.]]"
         },
         {
+          "id": "dd0c3a69-7c27-4533-949f-a15f37fac4f1",
           "type": "question",
           "prompt": "Traduis : « Je me sens triste et anxieuse. »",
           "answers": [
@@ -1449,6 +1533,7 @@ window.registerPack({
           "explanation": "**I feel** + adjectifs :\n- « triste » = **sad**\n- « anxieuse » = **anxious**\n[[I feel sad and anxious.|Je me sens triste et anxieuse.]]"
         },
         {
+          "id": "05c9e0b7-5679-4180-a4cb-d6e9bdc65be6",
           "type": "question",
           "prompt": "Traduis : « Ils m'insultent. »",
           "answers": [
@@ -1457,6 +1542,7 @@ window.registerPack({
           "explanation": "« insulter quelqu'un » = **call someone names** : [[They call me names.|Ils m'insultent.]]"
         },
         {
+          "id": "0a290d33-6527-4707-b46f-2ada84df057d",
           "type": "question",
           "prompt": "Traduis : « Mes vêtements sont sans marque. »",
           "answers": [
@@ -1465,6 +1551,7 @@ window.registerPack({
           "explanation": "« sans marque » = **unbranded** ; **clothes** est toujours au pluriel : [[My clothes are unbranded.|Mes vêtements sont sans marque.]]"
         },
         {
+          "id": "42e95e7a-2fd8-4b01-8a56-b4cefad45b46",
           "type": "question",
           "prompt": "Traduis : « Les vêtements à la mode sont chers. »",
           "answers": [
@@ -1473,6 +1560,7 @@ window.registerPack({
           "explanation": "Les mots :\n- « à la mode » = **trendy**, placé **avant** le nom\n- « cher » = **expensive**\n[[Trendy clothes are expensive.|Les vêtements à la mode sont chers.]]"
         },
         {
+          "id": "2404aa3a-db30-4403-bffd-3fe25fc44513",
           "type": "question",
           "prompt": "Traduis : « Mes parents veulent confisquer mon téléphone. »",
           "answers": [
@@ -1483,6 +1571,7 @@ window.registerPack({
           "explanation": "« confisquer » = **to confiscate** : [[My parents want to confiscate my phone.|Mes parents veulent confisquer mon téléphone.]]"
         },
         {
+          "id": "3695db9f-2a2e-45cb-8c6a-966885adce22",
           "type": "question",
           "prompt": "Traduis : « Les maths sont une matière difficile. »",
           "answers": [
@@ -1494,6 +1583,7 @@ window.registerPack({
           "explanation": "Faux ami : « une matière » = **a subject** (pas un sujet). **Maths** prend un verbe au singulier : [[Maths is a difficult subject.|Les maths sont une matière difficile.]]"
         },
         {
+          "id": "363911c0-ee69-48d6-8ecd-c9e0e819d005",
           "type": "question",
           "prompt": "Traduis : « Mes parents attendent de moi des notes parfaites. »",
           "answers": [
@@ -1505,6 +1595,7 @@ window.registerPack({
           "explanation": "« attendre de quelqu'un » = **expect someone to** + verbe : [[My parents expect me to get perfect marks.|Mes parents attendent de moi des notes parfaites.]]"
         },
         {
+          "id": "bc8b8dbf-45bc-478a-9ef4-cadb9d3a6c4e",
           "type": "question",
           "prompt": "Traduis : « Être hors ligne me rend anxieuse. »",
           "answers": [
@@ -1513,6 +1604,7 @@ window.registerPack({
           "explanation": "Les mots :\n- « hors ligne » = **offline**\n- « me rend » = **makes me**\n[[Being offline makes me anxious.|Être hors ligne me rend anxieuse.]]"
         },
         {
+          "id": "43c76f9a-e1a5-4023-80bb-dadf84a0db9c",
           "type": "question",
           "prompt": "Traduis : « Je travaille régulièrement. Cependant, mes notes ne sont pas assez bonnes. »",
           "answers": [
@@ -1525,6 +1617,7 @@ window.registerPack({
           "explanation": "Les mots :\n- « régulièrement » = **regularly**\n- « cependant » = **However**\n**enough** se place **après** l'adjectif : [[However, my marks are not good enough.|Cependant, mes notes ne sont pas assez bonnes.]]"
         },
         {
+          "id": "85c95634-562c-4329-980b-9af1ee1dd87c",
           "type": "question",
           "prompt": "Traduis : « Je ne m'intègre pas. Des élèves m'insultent. »",
           "answers": [

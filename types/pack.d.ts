@@ -52,6 +52,8 @@ interface Lesson {
 
 /** Fields shared by every exercise type. */
 interface ExerciseBase {
+  /** UUID v4 given once and never changed: players' detailed mistakes point to it. Required in the repo packs. */
+  id?: string;
   prompt: RichText;
   explanation?: RichText;
   hint?: RichText;

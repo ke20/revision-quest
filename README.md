@@ -131,8 +131,8 @@ l'accueil, sur un ordinateur ou une tablette). Le menu **📤 Partager** de l'é
   Une copie d'un chapitre officiel (« 📚 Dupliquer un chapitre officiel ») reste pour un usage personnel : elle ne peut
   pas être proposée.
 
-Écrire un chapitre à la main : voir le guide [`packs/README.md`](packs/README.md), puis vérifier le chapitre avec
-`mise run validate`.
+Écrire un chapitre à la main : voir le guide [`packs/README.md`](packs/README.md), puis donner un id à chaque
+exercice avec `mise run pack:ids` et vérifier le chapitre avec `mise run validate`.
 
 ## Pour les développeurs
 

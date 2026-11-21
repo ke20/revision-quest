@@ -29,6 +29,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "5473958e-7812-44cf-aabd-55cd61ec2f1f",
           "type": "match",
           "prompt": "Relie chaque forme longue à sa forme courte.",
           "pairs": [
@@ -52,6 +53,7 @@ window.registerPack({
           "explanation": "✅ On remplace le **o** de not par une apostrophe : is not → **isn't**. Seul **I am not** devient **I'm not**."
         },
         {
+          "id": "d12f1db6-8fec-452d-80b4-0fa3d5c4e4a6",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "I am very tall. → I am ___ very tall.",
@@ -61,6 +63,7 @@ window.registerPack({
           "explanation": "✅ **not** se place juste après **am**. [[I am not very tall.|Je ne suis pas très grand(e).]]"
         },
         {
+          "id": "6aa3b8c7-9db0-44df-95ad-89c02fb748ca",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "It is difficult. → It ___ difficult.",
@@ -71,6 +74,7 @@ window.registerPack({
           "explanation": "✅ **It isn't difficult** (ou It is not). Attention : il faut garder le sujet **It**."
         },
         {
+          "id": "b7d80909-5f0a-4075-bd4d-9b667d322136",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "They are very old. → They ___ very old.",
@@ -81,6 +85,7 @@ window.registerPack({
           "explanation": "✅ **They aren't very old.** [[They aren't very old.|Ils ne sont pas très vieux.]]"
         },
         {
+          "id": "2d6230eb-7ade-4d2f-956c-d536ae6d9671",
           "type": "mcq",
           "prompt": "Quelle phrase est la forme négative de « My clothes are too large » ?",
           "options": [
@@ -93,6 +98,7 @@ window.registerPack({
           "explanation": "✅ Avec **be**, on ajoute **not** après le verbe : **aren't**. Pas de don't avec be."
         },
         {
+          "id": "f5cfcb51-0a48-4409-ab30-509cc71ba26a",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -109,6 +115,7 @@ window.registerPack({
           "explanation": "✅ « amn't » n'existe pas : on dit **I'm not** (ou I am not). [[I'm not very good at Physics.|Je ne suis pas très bon(ne) en physique.]]"
         },
         {
+          "id": "8e4807e9-44ed-4199-97f2-91d499aa7090",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -125,6 +132,7 @@ window.registerPack({
           "explanation": "✅ Sujet + **aren't** + le reste."
         },
         {
+          "id": "c233d109-55c4-4292-be65-64d403f2958b",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "She is my cousin. → She ___ my cousin.",
@@ -135,6 +143,7 @@ window.registerPack({
           "explanation": "✅ **She isn't my cousin.** [[She isn't my cousin.|Ce n'est pas ma cousine.]]"
         },
         {
+          "id": "3e6a1ee1-127a-45c6-9b49-2f303ab529a9",
           "type": "sort",
           "prompt": "Range : on écrit **isn't** ou **aren't** ?",
           "categories": [
@@ -198,6 +207,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "d3a1299c-2ac2-40ae-9d0d-54c3a439e100",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "They like mushrooms. → They ___ like mushrooms.",
@@ -208,6 +218,7 @@ window.registerPack({
           "explanation": "✅ **They don't like mushrooms.** [[mushrooms|champignons]]"
         },
         {
+          "id": "e7c2925d-5d25-48d9-8ac5-6adc3f9b9448",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "I buy a lot of clothes. → I ___ buy a lot of clothes.",
@@ -218,6 +229,7 @@ window.registerPack({
           "explanation": "✅ **I don't buy** a lot of clothes. [[a lot of clothes|beaucoup de vêtements]]"
         },
         {
+          "id": "98d0255e-88d0-49c1-bffc-4c57b5201814",
           "type": "mcq",
           "prompt": "Quelle phrase est juste ?",
           "options": [
@@ -230,6 +242,7 @@ window.registerPack({
           "explanation": "✅ Avec un verbe comme **speak**, il faut **don't** devant le verbe."
         },
         {
+          "id": "3e1dd892-5089-4c89-9028-4a06dc3e3fa5",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -247,6 +260,7 @@ window.registerPack({
           "explanation": "✅ Sujet + **don't** + verbe. [[understand|comprendre]]"
         },
         {
+          "id": "8dc767e1-83d8-43f4-a4ab-ef3a84b60fa4",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -263,6 +277,7 @@ window.registerPack({
           "explanation": "✅ Il manque **do** : [[We don't need them in class.|Nous n'en avons pas besoin en classe.]]"
         },
         {
+          "id": "fc852236-d8c8-4a07-9ea0-1dfbb99473fc",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "You know my cousin. → You ___ know my cousin.",
@@ -273,6 +288,7 @@ window.registerPack({
           "explanation": "✅ **You don't know** my cousin. [[know|connaître]]"
         },
         {
+          "id": "25b50d10-1769-4e1f-b851-2a72f5e95096",
           "type": "mcq",
           "prompt": "Choisis la bonne forme : « My parents ___ like spinach. »",
           "options": [
@@ -285,6 +301,7 @@ window.registerPack({
           "explanation": "✅ **My parents** = they → **don't**. [[spinach|épinards]]"
         },
         {
+          "id": "0c203fde-b4b4-4cf7-a2e5-361dc3a5ea03",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "We play football on Sunday. → We ___ play football on Sunday.",
@@ -316,6 +333,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "50785f8b-2b71-4d0c-b698-7e504ca13766",
           "type": "sort",
           "prompt": "Range chaque sujet : **don't** ou **doesn't** ?",
           "categories": [
@@ -365,6 +383,7 @@ window.registerPack({
           "explanation": "✅ Deux formes :\n- **doesn't** avec he, she, it et un nom au singulier\n- **don't** avec tous les autres"
         },
         {
+          "id": "46bcbb72-f8ec-476b-bff2-4ae56cade05c",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "He likes spinach. → He ___ like spinach.",
@@ -375,6 +394,7 @@ window.registerPack({
           "explanation": "✅ **He doesn't like** spinach :\n- doesn't\n- et **like** sans -s"
         },
         {
+          "id": "010eb81c-724f-4bab-97d9-0d0fc6b5e204",
           "type": "mcq",
           "prompt": "Quelle est la forme négative de « She speaks Greek » ?",
           "options": [
@@ -387,6 +407,7 @@ window.registerPack({
           "explanation": "✅ **doesn't** + verbe **sans -s** : She doesn't **speak**."
         },
         {
+          "id": "f08abe66-3a9a-46f9-90bd-51f21b9599ee",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "My sister buys a lot of clothes. → My sister doesn't ___ a lot of clothes.",
@@ -396,6 +417,7 @@ window.registerPack({
           "explanation": "✅ Après **doesn't**, le verbe perd son **-s** : doesn't **buy**."
         },
         {
+          "id": "e40bd768-2c57-4633-b24d-7341f7486207",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -411,6 +433,7 @@ window.registerPack({
           "explanation": "✅ Après **doesn't**, pas de -s : [[He doesn't know my cousin.|Il ne connaît pas mon cousin.]]"
         },
         {
+          "id": "35f8a43a-829e-47f8-b078-82233f4c7684",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -425,6 +448,7 @@ window.registerPack({
           "explanation": "✅ **Tom** = he → **doesn't**. [[Tom doesn't like football.|Tom n'aime pas le foot.]]"
         },
         {
+          "id": "11e49461-f74c-41fb-9560-c8456adbf693",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -443,6 +467,7 @@ window.registerPack({
           "explanation": "✅ Sujet + **doesn't** + verbe sans -s."
         },
         {
+          "id": "5090e3f3-906a-4d27-a4f0-60398aa315d1",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "It works. → It ___ work.",
@@ -453,6 +478,7 @@ window.registerPack({
           "explanation": "✅ **It doesn't work.** [[It doesn't work.|Ça ne marche pas.]]"
         },
         {
+          "id": "101166da-db1b-4091-86f8-752eca11998e",
           "type": "mcq",
           "prompt": "Choisis la bonne forme : « My brother ___ understand English. »",
           "options": [
@@ -487,6 +513,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "7cb95a06-df99-423a-8508-bad6e42513f4",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "I can swim very well. → I ___ swim very well.",
@@ -498,6 +525,7 @@ window.registerPack({
           "explanation": "✅ **I can't swim very well.** [[swim|nager]]"
         },
         {
+          "id": "1d7165b3-cff6-4e47-9301-20110bcf1662",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "She must go to the supermarket. → She ___ go to the supermarket.",
@@ -508,6 +536,7 @@ window.registerPack({
           "explanation": "✅ **She mustn't go** to the supermarket. Pas de do avec **must**."
         },
         {
+          "id": "55a42674-4067-49a0-a8f0-f72482f1b3ad",
           "type": "mcq",
           "prompt": "Quelle phrase est juste ?",
           "options": [
@@ -520,6 +549,7 @@ window.registerPack({
           "explanation": "✅ **can't** + verbe sans -s. Jamais de do avec can."
         },
         {
+          "id": "85f98684-b593-4e8b-a4a2-51a356e859b1",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -535,6 +565,7 @@ window.registerPack({
           "explanation": "✅ Après **can't**, le verbe ne prend pas de -s : [[She can't swim very well.|Elle ne sait pas très bien nager.]]"
         },
         {
+          "id": "f6899f92-4102-4deb-b52b-fcfeecb13c51",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -551,6 +582,7 @@ window.registerPack({
           "explanation": "✅ Sujet + **can't** + verbe. [[anything|rien (dans une phrase négative)]]"
         },
         {
+          "id": "2d508640-0a5e-42cb-b7a4-bf8fdb67a6b3",
           "type": "match",
           "prompt": "Relie chaque phrase à sa traduction.",
           "pairs": [
@@ -574,6 +606,7 @@ window.registerPack({
           "explanation": "✅ Deux négations :\n- **can't** = ne pas pouvoir, ne pas savoir\n- **mustn't** = ne pas devoir (c'est interdit)"
         },
         {
+          "id": "cbcf2145-7fb2-495e-92a6-53a49d770a9c",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "They can understand. → They ___ understand.",
@@ -585,6 +618,7 @@ window.registerPack({
           "explanation": "✅ **They can't understand.** [[understand|comprendre]]"
         },
         {
+          "id": "9dc95c90-69b8-4e75-ba97-2e600450b0e4",
           "type": "mcq",
           "prompt": "« You mustn't use your phone in class. » Qu'est-ce que ça veut dire ?",
           "options": [
@@ -619,6 +653,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "4dfef20e-50e1-401e-a8b6-4ae015b654fc",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "I have a pet. → I ___ have a pet.",
@@ -629,6 +664,7 @@ window.registerPack({
           "explanation": "✅ **I don't have a pet** (ou I haven't got a pet). [[pet|animal de compagnie]]"
         },
         {
+          "id": "c63ef01d-20ba-4b76-84de-64719acc0fc2",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "Cindy has a sister. → Cindy ___ got a sister.",
@@ -639,6 +675,7 @@ window.registerPack({
           "explanation": "✅ **Cindy hasn't got a sister** (ou Cindy doesn't have a sister)."
         },
         {
+          "id": "903d7ddf-6af4-495f-9e90-f1521bfd8e06",
           "type": "mcq",
           "prompt": "Quelle est la forme négative de « Mary has a red car » ?",
           "options": [
@@ -651,6 +688,7 @@ window.registerPack({
           "explanation": "✅ **doesn't** + **have** (sans -s)."
         },
         {
+          "id": "acf63409-cd7c-415d-943b-97c81272ca7b",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -666,6 +704,7 @@ window.registerPack({
           "explanation": "✅ Après **doesn't**, on écrit **have** : [[He doesn't have a brother.|Il n'a pas de frère.]]"
         },
         {
+          "id": "d3a07b78-2c36-4b98-ae37-143080780c64",
           "type": "sort",
           "prompt": "Range chaque phrase : juste ou fausse ?",
           "categories": [
@@ -707,6 +746,7 @@ window.registerPack({
           "explanation": "✅ Deux façons : **don't / doesn't have** ou **haven't / hasn't got**. On ne mélange pas les deux."
         },
         {
+          "id": "3b3d7fcf-27c7-4337-ad9e-b4eadea90fa6",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -724,6 +764,7 @@ window.registerPack({
           "explanation": "✅ **haven't got** avec they."
         },
         {
+          "id": "12c8c840-3f05-44f0-8b3b-597ab8c323b8",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
           "sentence": "My brother has a phone. → My brother doesn't ___ a phone.",
@@ -733,6 +774,7 @@ window.registerPack({
           "explanation": "✅ **doesn't have** : après doesn't, have ne prend pas de -s."
         },
         {
+          "id": "91121eb7-93a9-4a51-84b2-b8b0a9df23cc",
           "type": "mcq",
           "prompt": "Comment dit-on « Je n'ai pas de frère » ?",
           "options": [
@@ -763,6 +805,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "32c02d37-e979-4e1d-84ac-d760442a30ac",
           "type": "question",
           "prompt": "Traduis : « Je ne suis pas grand. »",
           "answers": [
@@ -771,6 +814,7 @@ window.registerPack({
           "explanation": "✅ [[I'm not tall.|Je ne suis pas grand.]]"
         },
         {
+          "id": "24706a57-bfa6-4fd3-a29f-f72cffe622b7",
           "type": "question",
           "prompt": "Traduis : « Elle n'aime pas les épinards. »",
           "answers": [
@@ -779,6 +823,7 @@ window.registerPack({
           "explanation": "✅ **doesn't** + verbe sans -s : she doesn't **like**."
         },
         {
+          "id": "dd5ad3ca-9d33-4eae-b141-02c4889a385c",
           "type": "question",
           "prompt": "Traduis : « Ils ne sont pas très vieux. »",
           "answers": [
@@ -787,6 +832,7 @@ window.registerPack({
           "explanation": "✅ Avec **be** : **aren't**."
         },
         {
+          "id": "d4af8169-d9a0-4b42-aae2-b7ba084aa157",
           "type": "question",
           "prompt": "Traduis : « Je ne parle pas japonais. »",
           "answers": [
@@ -795,6 +841,7 @@ window.registerPack({
           "explanation": "✅ **I don't** + verbe."
         },
         {
+          "id": "5ddd4530-aea3-40f5-896c-341363477f03",
           "type": "question",
           "prompt": "Traduis : « Il ne connaît pas mon cousin. »",
           "answers": [
@@ -803,6 +850,7 @@ window.registerPack({
           "explanation": "✅ **doesn't know** (sans -s)."
         },
         {
+          "id": "cfb83fec-e62e-4017-a2bb-5d3ded807be0",
           "type": "question",
           "prompt": "Traduis : « Je ne sais pas très bien nager. »",
           "answers": [
@@ -811,6 +859,7 @@ window.registerPack({
           "explanation": "✅ **can't** + verbe, sans do."
         },
         {
+          "id": "6bd4350a-1e07-4f7b-bb1f-0e2b142765d0",
           "type": "question",
           "prompt": "Traduis : « Tu ne dois pas courir. »",
           "answers": [
@@ -819,6 +868,7 @@ window.registerPack({
           "explanation": "✅ **mustn't** = c'est interdit."
         },
         {
+          "id": "deacdb80-4ab4-436c-af13-2ab98fe4d070",
           "type": "question",
           "prompt": "Traduis : « Nous n'avons pas de voiture. »",
           "answers": [
@@ -828,6 +878,7 @@ window.registerPack({
           "explanation": "✅ **We don't have a car** ou **We haven't got a car**."
         },
         {
+          "id": "95ed3c1d-b96f-4595-9d99-e1fd0e887297",
           "type": "question",
           "prompt": "Traduis : « Ce n'est pas difficile. »",
           "answers": [
@@ -836,6 +887,7 @@ window.registerPack({
           "explanation": "✅ **It isn't difficult** (ou it's not)."
         },
         {
+          "id": "20e42237-9236-4403-b2f4-d833579a608f",
           "type": "question",
           "prompt": "Traduis : « Ma sœur n'achète pas beaucoup de vêtements. »",
           "answers": [
@@ -846,6 +898,7 @@ window.registerPack({
           "explanation": "✅ **doesn't buy** : pas de -s après doesn't."
         },
         {
+          "id": "248055c1-0f29-4ee2-b14b-06c4a492f15e",
           "type": "question",
           "prompt": "Traduis : « Cindy n'a pas de sœur. »",
           "answers": [
@@ -855,6 +908,7 @@ window.registerPack({
           "explanation": "✅ **doesn't have** ou **hasn't got**."
         },
         {
+          "id": "414ef02d-5957-43b1-a5eb-909e0f74096d",
           "type": "question",
           "prompt": "Traduis : « Mes vêtements ne sont pas trop grands. »",
           "answers": [
@@ -864,6 +918,7 @@ window.registerPack({
           "explanation": "✅ **clothes** est pluriel → **aren't**."
         },
         {
+          "id": "7ee77555-3281-4d0d-ba59-9ce443b978ce",
           "type": "question",
           "prompt": "Traduis : « Il ne peut pas venir. »",
           "answers": [
@@ -872,6 +927,7 @@ window.registerPack({
           "explanation": "✅ **can't** + verbe sans -s."
         },
         {
+          "id": "3cee5b70-1120-4bed-8826-4c376d8c136f",
           "type": "question",
           "prompt": "Traduis : « Je n'aime pas les champignons et je ne suis pas grand. »",
           "answers": [
@@ -881,6 +937,7 @@ window.registerPack({
           "explanation": "✅ Deux négations :\n- **don't** devant like\n- **not** après am"
         },
         {
+          "id": "9e2643ed-d493-488b-80bf-61ed6c02685b",
           "type": "question",
           "prompt": "Traduis : « Tu n'es pas en retard. »",
           "answers": [
@@ -889,6 +946,7 @@ window.registerPack({
           "explanation": "✅ **aren't** avec you."
         },
         {
+          "id": "3bae340f-64df-4765-b602-30b4f5c66a05",
           "type": "question",
           "prompt": "Traduis : « Il n'aime pas le football. »",
           "answers": [
@@ -898,6 +956,7 @@ window.registerPack({
           "explanation": "✅ **doesn't like** (sans -s)."
         },
         {
+          "id": "a595e320-717a-4d44-b84d-ed6634615b67",
           "type": "question",
           "prompt": "Traduis : « Nous ne parlons pas espagnol. »",
           "answers": [
@@ -906,6 +965,7 @@ window.registerPack({
           "explanation": "✅ **We don't** + verbe."
         },
         {
+          "id": "cfa4b707-92ae-4c23-8a58-c3bd07a5f8d5",
           "type": "question",
           "prompt": "Traduis : « Mon chat n'est pas gris. »",
           "answers": [
@@ -915,6 +975,7 @@ window.registerPack({
           "explanation": "✅ Avec **be** : **isn't**."
         },
         {
+          "id": "232b9b19-2ab2-44a7-a144-afbd206a12cb",
           "type": "question",
           "prompt": "Traduis : « Elle ne sait pas nager. »",
           "answers": [
@@ -923,6 +984,7 @@ window.registerPack({
           "explanation": "✅ **can't** + verbe sans -s."
         },
         {
+          "id": "c88275aa-5771-44d2-a658-55d0c8eba5b5",
           "type": "question",
           "prompt": "Traduis : « Ils ne comprennent pas notre langue. »",
           "answers": [
@@ -931,6 +993,7 @@ window.registerPack({
           "explanation": "✅ **don't understand**."
         },
         {
+          "id": "eabe91ae-1590-4820-9229-cfe9a120ef1a",
           "type": "question",
           "prompt": "Traduis : « Je n'ai pas d'animal. »",
           "answers": [
@@ -942,6 +1005,7 @@ window.registerPack({
           "explanation": "✅ **don't have** ou **haven't got**."
         },
         {
+          "id": "8f83f48e-47f1-4ebb-89aa-4fcec9cd6cec",
           "type": "question",
           "prompt": "Traduis : « Vous ne devez pas crier. »",
           "answers": [
@@ -952,6 +1016,7 @@ window.registerPack({
           "explanation": "✅ **mustn't** = c'est interdit."
         },
         {
+          "id": "6b17a9ec-9346-4e34-a907-f6e0b853589f",
           "type": "question",
           "prompt": "Traduis : « Mon frère n'habite pas à Londres. »",
           "answers": [
@@ -960,6 +1025,7 @@ window.registerPack({
           "explanation": "✅ **doesn't live** (sans -s)."
         },
         {
+          "id": "2a94eea1-7da3-470d-8157-61787e6b5f6c",
           "type": "question",
           "prompt": "Traduis : « Ce n'est pas mon livre. »",
           "answers": [
@@ -970,6 +1036,7 @@ window.registerPack({
           "explanation": "✅ **isn't** + my book."
         },
         {
+          "id": "33080441-19f4-4509-9b94-9b46c7182025",
           "type": "question",
           "prompt": "Traduis : « Tom n'a pas de vélo. »",
           "answers": [
@@ -981,6 +1048,7 @@ window.registerPack({
           "explanation": "✅ **doesn't have** ou **hasn't got**."
         },
         {
+          "id": "80dd57ac-86c7-4a27-a8d0-6dabaf1ea793",
           "type": "question",
           "prompt": "Traduis : « Je ne suis pas fatigué et je ne veux pas dormir. »",
           "answers": [

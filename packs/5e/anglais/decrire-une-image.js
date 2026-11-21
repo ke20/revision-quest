@@ -53,6 +53,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "fd99f1e1-0f8e-4e9a-a539-b558192b36da",
           "type": "match",
           "prompt": "Relie chaque expression à sa traduction.",
           "pairs": [
@@ -80,6 +81,7 @@ window.registerPack({
           "explanation": "✅ Trois prépositions :\n- **at** the top / bottom\n- **on** the left / right\n- **in** the middle"
         },
         {
+          "id": "42655362-783c-41c2-a11c-a7fbce97318c",
           "type": "mcq",
           "prompt": "Comment dit-on « à l'arrière-plan » ?",
           "options": [
@@ -92,6 +94,7 @@ window.registerPack({
           "explanation": "✅ **in the background** = à l'arrière-plan."
         },
         {
+          "id": "5f9a48a0-3bd8-47e9-b028-5e5ba91e75b4",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "There is a bat in the top right-hand ___.",
@@ -102,6 +105,7 @@ window.registerPack({
           "hint": "Un coin se dit… c…"
         },
         {
+          "id": "820b6f6d-26fd-4791-a477-534a96b5d3da",
           "type": "fill",
           "prompt": "Complète avec le bon petit mot.",
           "sentence": "There is a big character ___ the middle of the picture.",
@@ -111,6 +115,7 @@ window.registerPack({
           "explanation": "✅ **in** the middle. [[in the middle of the picture|au milieu de l'image]]"
         },
         {
+          "id": "59cd23ce-116a-4f44-bd92-04d3851da125",
           "type": "fill",
           "prompt": "Complète avec le bon petit mot.",
           "sentence": "The house is ___ the left.",
@@ -120,6 +125,7 @@ window.registerPack({
           "explanation": "✅ Avec **on** :\n- **on** the left\n- **on** the right"
         },
         {
+          "id": "4b1276e0-7c9e-4dba-9223-9d27447f9366",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -136,6 +142,7 @@ window.registerPack({
           "explanation": "✅ Avec **at** :\n- **at** the bottom (en bas)\n- **at** the top (en haut)"
         },
         {
+          "id": "e397c67b-bf28-4e46-971c-ebcceb88e8ea",
           "type": "sort",
           "prompt": "Range chaque expression avec son petit mot.",
           "categories": [
@@ -181,6 +188,7 @@ window.registerPack({
           "explanation": "✅ Trois prépositions :\n- **at** the top / bottom\n- **on** the left / right\n- **in** the middle / background"
         },
         {
+          "id": "7eac905f-6c02-4fce-956b-6ae45b3d1e8c",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -198,6 +206,7 @@ window.registerPack({
           "explanation": "✅ Le lieu, puis **there is** + singulier."
         },
         {
+          "id": "fc98a408-e6e6-4974-ad04-ce37767f7740",
           "type": "mcq",
           "prompt": "Le chat est en bas à gauche de l'image. Quelle phrase va ?",
           "options": [
@@ -232,6 +241,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "68d87171-3727-419b-9fe3-d16be98ee2f4",
           "type": "match",
           "prompt": "Relie chaque forme à sa traduction.",
           "pairs": [
@@ -255,6 +265,7 @@ window.registerPack({
           "explanation": "✅ Les formes :\n- **round**\n- **square**\n- **oval**\n- **rectangular**"
         },
         {
+          "id": "b0a54e79-4fba-49f3-b9e3-d72b8575585f",
           "type": "mcq",
           "prompt": "Comment dit-on « un chapeau rouge » ?",
           "options": [
@@ -267,6 +278,7 @@ window.registerPack({
           "explanation": "✅ L'adjectif se place **avant** le nom : **a red hat**."
         },
         {
+          "id": "29d1bd2d-839b-4661-82c2-e390d0f95a90",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -281,6 +293,7 @@ window.registerPack({
           "explanation": "✅ L'adjectif ne prend jamais de -s : [[She has green shoes.|Elle a des chaussures vertes.]]"
         },
         {
+          "id": "9c782742-c743-40d2-9311-08ad8bd190c0",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -296,6 +309,7 @@ window.registerPack({
           "explanation": "✅ Les adjectifs (big, blue) se placent **avant** le nom (nose)."
         },
         {
+          "id": "46115cb1-1299-43f0-b4b1-a08d50bf46b9",
           "type": "mcq",
           "prompt": "« She's very small, she's tiny. » Que veut dire **tiny** ?",
           "options": [
@@ -308,6 +322,7 @@ window.registerPack({
           "explanation": "✅ **tiny** = minuscule. Attention :\n- timide = shy\n- mince = thin"
         },
         {
+          "id": "8187ba8b-0558-47d6-89e2-f88627c5f9b9",
           "type": "fill",
           "prompt": "Complète avec la forme : ⭕",
           "sentence": "Mr Pip is pink and ___.",
@@ -317,6 +332,7 @@ window.registerPack({
           "explanation": "✅ ⭕ = **round** (rond)."
         },
         {
+          "id": "7e0915a0-68d0-4024-90a4-fbce430867f9",
           "type": "fill",
           "prompt": "Complète avec la forme : 🟦",
           "sentence": "The window is ___.",
@@ -326,6 +342,7 @@ window.registerPack({
           "explanation": "✅ 🟦 = **square** (carré)."
         },
         {
+          "id": "4d20282a-5607-4ff8-b6b7-18bd717a3434",
           "type": "sort",
           "prompt": "Range : couleur ou forme ?",
           "categories": [
@@ -367,6 +384,7 @@ window.registerPack({
           "explanation": "✅ Couleurs :\n- yellow\n- pink\n- orange\nFormes :\n- round\n- oval\n- rectangular"
         },
         {
+          "id": "38e421f2-6753-4852-abcb-0f87ceb365e0",
           "type": "mcq",
           "prompt": "Comment dit-on « Il est grand et mince » ?",
           "options": [
@@ -401,6 +419,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "fa666ddc-c7e7-4e7c-a9a1-9f3002f6ad7d",
           "type": "match",
           "prompt": "Relie chaque adjectif à sa traduction.",
           "pairs": [
@@ -428,6 +447,7 @@ window.registerPack({
           "explanation": "✅ Les mots :\n- [[shy|timide]]\n- [[grumpy|grincheux]]\n- [[lazy|paresseux]]\n- [[funny|drôle]]\n- [[clever|intelligent]]"
         },
         {
+          "id": "2f69c39e-451c-4435-9287-075e32b241b5",
           "type": "mcq",
           "prompt": "« He knows everything about everything. » Il est…",
           "options": [
@@ -440,6 +460,7 @@ window.registerPack({
           "explanation": "✅ Il sait tout sur tout : il est **clever** (intelligent)."
         },
         {
+          "id": "36877bc0-6d46-4ba8-a161-d6479ba67cb7",
           "type": "mcq",
           "prompt": "« He doesn't like working, he loves doing nothing. » Il est…",
           "options": [
@@ -452,6 +473,7 @@ window.registerPack({
           "explanation": "✅ Il n'aime pas travailler : il est **lazy** (paresseux)."
         },
         {
+          "id": "2eff65ad-bfcd-4fd2-9446-8b6697bd3e1d",
           "type": "mcq",
           "prompt": "« She doesn't have many friends, maybe because she's… »",
           "options": [
@@ -464,6 +486,7 @@ window.registerPack({
           "explanation": "✅ **shy** (timide) : elle n'ose pas parler aux autres."
         },
         {
+          "id": "a3d02a0a-08cd-4f3d-b0bc-5b3195bfa3e7",
           "type": "sort",
           "prompt": "Range : qualité ou défaut ?",
           "categories": [
@@ -505,6 +528,7 @@ window.registerPack({
           "explanation": "✅ Défauts :\n- **grumpy**\n- **lazy**\nQualités :\n- nice\n- helpful\n- funny\n- clever"
         },
         {
+          "id": "8150f23c-ded7-4fbb-9212-2c39a5a4155a",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "He can run very fast and he always helps people: he's really ___.",
@@ -515,6 +539,7 @@ window.registerPack({
           "hint": "help = aider"
         },
         {
+          "id": "3685c0a2-4f6d-4964-86cd-c22c849bffea",
           "type": "mcq",
           "prompt": "Que veut dire **self-confident** ?",
           "options": [
@@ -527,6 +552,7 @@ window.registerPack({
           "explanation": "✅ **self-confident** = sûr de soi, qui a confiance en lui."
         },
         {
+          "id": "caaa6ff8-94c2-446a-a51b-0625283d835a",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "Bella has amazing clothes. She's very ___.",
@@ -536,6 +562,7 @@ window.registerPack({
           "explanation": "✅ De beaux vêtements, une coiffure incroyable : **stylish** (qui a du style)."
         },
         {
+          "id": "54196fdf-961c-4777-8791-adc87138ad18",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -572,6 +599,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "60cb2199-35c4-45b0-bf77-ec3ce458139f",
           "type": "match",
           "prompt": "Relie chaque mot à sa traduction.",
           "pairs": [
@@ -595,6 +623,7 @@ window.registerPack({
           "explanation": "✅ Ces mots disent combien de fois :\n- **always**\n- **often**\n- **never**"
         },
         {
+          "id": "5705ce85-4df7-405d-9e01-45fcd654f827",
           "type": "mcq",
           "prompt": "Comment dit-on « Il est toujours de mauvaise humeur » ?",
           "options": [
@@ -607,6 +636,7 @@ window.registerPack({
           "explanation": "✅ À retenir :\n- **always** (toujours) se place **après be**\n- **bad mood** = mauvaise humeur"
         },
         {
+          "id": "4b390b25-38ff-458d-9444-f14743a83dc3",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -623,6 +653,7 @@ window.registerPack({
           "explanation": "✅ **often** après **is**."
         },
         {
+          "id": "781c8df9-baa4-444b-bcc6-ea562e0422f6",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "Mr Grumble is ___ happy: he's always grumpy.",
@@ -632,6 +663,7 @@ window.registerPack({
           "explanation": "✅ Toujours grincheux, donc **never** happy (jamais content)."
         },
         {
+          "id": "72cab759-19e7-42bf-a15a-76aa263bc634",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -653,6 +685,7 @@ window.registerPack({
           "explanation": "✅ Quelqu'un de drôle est de **bonne** humeur : [[always in a good mood|toujours de bonne humeur]]."
         },
         {
+          "id": "200995a6-a082-4f00-a18d-f2e1c0396e37",
           "type": "mcq",
           "prompt": "Où se place **never** ? Choisis la phrase juste.",
           "options": [
@@ -665,6 +698,7 @@ window.registerPack({
           "explanation": "✅ **never** se place **avant** le verbe (sauf be). [[He never comes late.|Il n'arrive jamais en retard.]]"
         },
         {
+          "id": "3739db09-4ac6-4fc0-969d-3583a5d09997",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -683,6 +717,7 @@ window.registerPack({
           "explanation": "✅ **so fast that** = si vite que."
         },
         {
+          "id": "ac02a239-e67f-47d7-bd77-c53d124bcb85",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "Zig is ___ in a bad mood: he's always happy.",
@@ -714,6 +749,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "a2684b06-5c2c-4c98-840c-a957058dce72",
           "type": "mcq",
           "prompt": "Comment dit-on « Il a l'air content » ?",
           "options": [
@@ -726,6 +762,7 @@ window.registerPack({
           "explanation": "✅ **look** + adjectif : **He looks happy**."
         },
         {
+          "id": "32d31715-fa07-493c-a9c2-7e8fd1f2e606",
           "type": "mcq",
           "prompt": "Comment dit-on « Il ressemble à une banane » ?",
           "options": [
@@ -738,6 +775,7 @@ window.registerPack({
           "explanation": "✅ **look like** + nom : **He looks like a banana**."
         },
         {
+          "id": "53537020-8943-4d06-afb2-6cdb58b2fa82",
           "type": "sort",
           "prompt": "Range : **looks** ou **looks like** ?",
           "categories": [
@@ -779,6 +817,7 @@ window.registerPack({
           "explanation": "✅ On choisit :\n- un adjectif (happy, tired) → **looks**\n- un nom (a bear, his father) → **looks like**"
         },
         {
+          "id": "54bbf2b3-1f0a-4cce-b9a6-843c7b0ae78b",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "The tardigrade is a microscopic animal that looks ___ a bear.",
@@ -788,6 +827,7 @@ window.registerPack({
           "explanation": "✅ **looks like** + nom : il ressemble à un ours."
         },
         {
+          "id": "42e3e4c4-cdfd-4a6a-8b30-415e1c6e275e",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -802,6 +842,7 @@ window.registerPack({
           "explanation": "✅ **She** → **looks** (avec un -s). [[She looks happy today.|Elle a l'air contente aujourd'hui.]]"
         },
         {
+          "id": "aabc61f5-5dc7-4fc7-a733-fd14d51c5422",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -818,6 +859,7 @@ window.registerPack({
           "explanation": "✅ **I would like to** + verbe = j'aimerais."
         },
         {
+          "id": "013438cf-c09e-457e-be1b-fcaa9cf84b50",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "I ___ it's in New York.",
@@ -827,6 +869,7 @@ window.registerPack({
           "explanation": "✅ **I think** = je pense que. [[I think it's in New York.|Je pense que c'est à New York.]]"
         },
         {
+          "id": "b9ba787a-090a-4341-88f3-6acfbdffdad3",
           "type": "mcq",
           "prompt": "Que veut dire « ugly » ? « The tardigrade is an ugly animal. »",
           "options": [
@@ -860,6 +903,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "f170cb12-e56d-402d-8d11-d99ba4d7c933",
           "type": "mcq",
           "prompt": "Qu'y a-t-il au milieu de l'image ?",
           "options": [
@@ -873,6 +917,7 @@ window.registerPack({
           "docId": "picture"
         },
         {
+          "id": "e4b1a68a-a0b2-4e98-b4f4-84b3daa445ca",
           "type": "mcq",
           "prompt": "Où est la chauve-souris (bat) ?",
           "options": [
@@ -886,6 +931,7 @@ window.registerPack({
           "docId": "picture"
         },
         {
+          "id": "13bf6dc7-7ebe-4a8c-b398-8ab6391e1f1d",
           "type": "mcq",
           "prompt": "À quoi ressemble le personnage de gauche ?",
           "options": [
@@ -899,6 +945,7 @@ window.registerPack({
           "docId": "picture"
         },
         {
+          "id": "1e2faa4f-95d5-4839-b809-24e94a5405ba",
           "type": "mcq",
           "prompt": "Qu'y a-t-il à l'arrière-plan ?",
           "options": [
@@ -912,6 +959,7 @@ window.registerPack({
           "docId": "picture"
         },
         {
+          "id": "f9b30941-b85d-43b5-8c40-6ba37b077b7a",
           "type": "mcq",
           "prompt": "Pourquoi Zig n'a-t-il pas beaucoup d'amis ?",
           "options": [
@@ -925,6 +973,7 @@ window.registerPack({
           "docId": "zig"
         },
         {
+          "id": "20a11397-df4f-4712-8f89-094037735228",
           "type": "mcq",
           "prompt": "Quels mots décrivent Lola ?",
           "docId": "lola",
@@ -942,6 +991,7 @@ window.registerPack({
           "explanation": "✅ **Lola is tall and thin… She is very stylish and self-confident.** Elle n'est ni shy ni grumpy."
         },
         {
+          "id": "b6e6498f-8be1-459d-8d99-d09fbb8ee56a",
           "type": "fill",
           "prompt": "Complète d'après le portrait de Captain Crumb.",
           "sentence": "Captain Crumb is always ___.",
@@ -952,6 +1002,7 @@ window.registerPack({
           "docId": "crumb"
         },
         {
+          "id": "b663dc68-51e5-4553-a2e2-a6ac6e851ce5",
           "type": "mcq",
           "prompt": "Captain Crumb est…",
           "options": [
@@ -984,6 +1035,7 @@ window.registerPack({
       "draw": 12,
       "exercises": [
         {
+          "id": "8d595607-399b-413b-9953-e79d0539dc30",
           "type": "question",
           "prompt": "Traduis : « À gauche, il y a une maison. »",
           "answers": [
@@ -993,6 +1045,7 @@ window.registerPack({
           "explanation": "✅ **on the left** = à gauche."
         },
         {
+          "id": "dd7dc79d-d99c-41d0-8a49-7eb90c96ab46",
           "type": "question",
           "prompt": "Traduis : « Au milieu de l'image, il y a un grand personnage. »",
           "answers": [
@@ -1004,6 +1057,7 @@ window.registerPack({
           "explanation": "✅ **in the middle of the picture** = au milieu de l'image."
         },
         {
+          "id": "e61835a6-8e39-41fa-a461-d47ea671f97a",
           "type": "question",
           "prompt": "Traduis : « Il est jaune et rond. »",
           "answers": [
@@ -1013,6 +1067,7 @@ window.registerPack({
           "explanation": "✅ Les mots :\n- **yellow** (jaune)\n- **round** (rond)"
         },
         {
+          "id": "d0dab7f4-2031-4baf-ab65-05b600947e6f",
           "type": "question",
           "prompt": "Traduis : « Elle est timide. »",
           "answers": [
@@ -1021,6 +1076,7 @@ window.registerPack({
           "explanation": "✅ **shy** = timide."
         },
         {
+          "id": "a978c2b4-eb75-4e80-94ee-a68d694d0abb",
           "type": "question",
           "prompt": "Traduis : « Il est toujours de mauvaise humeur. »",
           "answers": [
@@ -1029,6 +1085,7 @@ window.registerPack({
           "explanation": "✅ À retenir :\n- **always** après be\n- **in a bad mood**"
         },
         {
+          "id": "5224d8ea-0ef4-452b-b86b-8025ed0b0ffa",
           "type": "question",
           "prompt": "Traduis : « Il a l'air content. »",
           "answers": [
@@ -1037,6 +1094,7 @@ window.registerPack({
           "explanation": "✅ **look** + adjectif = avoir l'air."
         },
         {
+          "id": "eed71c05-eeaf-4b43-bf09-18b37354dc4d",
           "type": "question",
           "prompt": "Traduis : « Il ressemble à une banane. »",
           "answers": [
@@ -1046,6 +1104,7 @@ window.registerPack({
           "explanation": "✅ **look like** + nom = ressembler à."
         },
         {
+          "id": "3f34b2eb-cbde-415e-9f9e-8b6fa53e41da",
           "type": "question",
           "prompt": "Traduis : « À l'arrière-plan, il y a une petite maison. »",
           "answers": [
@@ -1057,6 +1116,7 @@ window.registerPack({
           "explanation": "✅ **in the background** = à l'arrière-plan."
         },
         {
+          "id": "333a5dec-945a-492d-a02a-9536573d96a5",
           "type": "question",
           "prompt": "Traduis : « Elle a des chaussures vertes. »",
           "answers": [
@@ -1066,6 +1126,7 @@ window.registerPack({
           "explanation": "✅ L'adjectif, sans -s, avant le nom : **green shoes**."
         },
         {
+          "id": "683cd789-3842-41c0-b3d9-3a8263f416bc",
           "type": "question",
           "prompt": "Traduis : « Il n'est jamais en retard. »",
           "answers": [
@@ -1074,6 +1135,7 @@ window.registerPack({
           "explanation": "✅ **never** après be."
         },
         {
+          "id": "67c1ca4b-b4eb-456a-b1ce-b49818618aa7",
           "type": "question",
           "prompt": "Traduis : « Il est très paresseux. »",
           "answers": [
@@ -1083,6 +1145,7 @@ window.registerPack({
           "explanation": "✅ **lazy** = paresseux."
         },
         {
+          "id": "5c6b9b86-45a6-42b7-9e6e-a1a2e2ebc09e",
           "type": "question",
           "prompt": "Traduis : « Elle est grande et mince. »",
           "answers": [
@@ -1091,6 +1154,7 @@ window.registerPack({
           "explanation": "✅ Les mots :\n- **tall** (grande)\n- **thin** (mince)"
         },
         {
+          "id": "43a697d4-c27f-4f77-8c43-59ae6785ba6c",
           "type": "question",
           "prompt": "Traduis : « J'aimerais lire le numéro 1. »",
           "answers": [
@@ -1102,6 +1166,7 @@ window.registerPack({
           "explanation": "✅ **I would like to** + verbe = j'aimerais."
         },
         {
+          "id": "59b654e0-63ea-46b1-a1ff-a1baeb716da6",
           "type": "question",
           "prompt": "Traduis : « Il est souvent de bonne humeur. Il est vraiment drôle. »",
           "answers": [
@@ -1112,6 +1177,7 @@ window.registerPack({
           "explanation": "✅ À retenir :\n- **often** après be\n- **in a good mood**\n- **funny** = drôle"
         },
         {
+          "id": "7ba6a8a3-f678-4a2e-ba42-55ab210f2503",
           "type": "question",
           "prompt": "Traduis : « À droite, il y a un arbre. »",
           "answers": [
@@ -1121,6 +1187,7 @@ window.registerPack({
           "explanation": "✅ **on the right** = à droite."
         },
         {
+          "id": "78f7ff14-c316-49b6-a156-36274647c96e",
           "type": "question",
           "prompt": "Traduis : « En bas, il y a des fleurs. »",
           "answers": [
@@ -1132,6 +1199,7 @@ window.registerPack({
           "explanation": "✅ À retenir :\n- **at the bottom** = en bas\n- **flowers** : pluriel → there are"
         },
         {
+          "id": "9fee03ec-3799-41be-af39-4a8dee240b3a",
           "type": "question",
           "prompt": "Traduis : « En haut, il y a une lune. »",
           "answers": [
@@ -1141,6 +1209,7 @@ window.registerPack({
           "explanation": "✅ **at the top** = en haut."
         },
         {
+          "id": "c6e38f64-4498-45b9-b0ec-953353a585db",
           "type": "question",
           "prompt": "Traduis : « La fenêtre est carrée. »",
           "answers": [
@@ -1149,6 +1218,7 @@ window.registerPack({
           "explanation": "✅ **square** = carré."
         },
         {
+          "id": "ad7ad898-6aa4-40e6-91de-28ca7d6574db",
           "type": "question",
           "prompt": "Traduis : « Il est grincheux. »",
           "answers": [
@@ -1157,6 +1227,7 @@ window.registerPack({
           "explanation": "✅ **grumpy** = grincheux."
         },
         {
+          "id": "ace7243e-b97b-4096-99a5-b9ff13b33b4f",
           "type": "question",
           "prompt": "Traduis : « Elle est très intelligente. »",
           "answers": [
@@ -1168,6 +1239,7 @@ window.registerPack({
           "explanation": "✅ **clever** ou **intelligent**."
         },
         {
+          "id": "b87db326-505b-4cca-a349-1ecf9c7360cd",
           "type": "question",
           "prompt": "Traduis : « Il a un chapeau rouge. »",
           "answers": [
@@ -1177,6 +1249,7 @@ window.registerPack({
           "explanation": "✅ L'adjectif avant le nom : a **red hat**."
         },
         {
+          "id": "c2357d21-0ae4-45e0-8e78-ad8151735cd1",
           "type": "question",
           "prompt": "Traduis : « Elle a l'air fatiguée. »",
           "answers": [
@@ -1185,6 +1258,7 @@ window.registerPack({
           "explanation": "✅ **look** + adjectif = avoir l'air."
         },
         {
+          "id": "f13b8f3c-f451-483d-a557-584912469fb4",
           "type": "question",
           "prompt": "Traduis : « Il est drôle et serviable. »",
           "answers": [
@@ -1193,6 +1267,7 @@ window.registerPack({
           "explanation": "✅ Les mots :\n- **funny** (drôle)\n- **helpful** (serviable)"
         },
         {
+          "id": "bf00495b-0fb6-4ad0-9f3f-bb6d4b003ed6",
           "type": "question",
           "prompt": "Traduis : « Elle n'est jamais de mauvaise humeur. »",
           "answers": [
@@ -1201,6 +1276,7 @@ window.registerPack({
           "explanation": "✅ À retenir :\n- **never** après be\n- **in a bad mood**"
         },
         {
+          "id": "89934275-0f12-40a1-8a82-e79288b0f87c",
           "type": "question",
           "prompt": "Traduis : « Le tardigrade ressemble à un ours. »",
           "answers": [
@@ -1209,6 +1285,7 @@ window.registerPack({
           "explanation": "✅ **looks like** + nom = ressemble à."
         },
         {
+          "id": "eb05ce7b-cbb8-4765-ac45-f41e9170959f",
           "type": "question",
           "prompt": "Traduis : « Dans le coin en haut à droite, il y a une chauve-souris. »",
           "answers": [

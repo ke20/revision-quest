@@ -32,12 +32,15 @@ var EMPTY = {
   question: function () { return { answers: [""] }; }
 };
 
-/** A new exercise of this type: type, prompt, the fields of the type, then explanation and hint (the order of the file).
+/** A new exercise id: a UUID v4 (crypto.randomUUID, in the browser and in Node). @returns {string} */
+export function newExerciseId() { return crypto.randomUUID(); }
+
+/** A new exercise of this type: id, type, prompt, the fields of the type, then explanation and hint (the order of the file).
     @param {string} type @returns {any} */
 export function emptyExercise(type) {
   if (!EMPTY[type]) throw new Error("type inconnu : " + type);
   /** @type {Record<string, unknown>} */
-  var ex = { type: type, prompt: "" };
+  var ex = { id: newExerciseId(), type: type, prompt: "" };
   var fields = /** @type {Record<string, unknown>} */ (EMPTY[type]());
   Object.keys(fields).forEach(function (k) { ex[k] = fields[k]; });
   ex.explanation = "";

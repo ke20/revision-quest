@@ -31,6 +31,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "37794234-b758-49b2-b60c-2d1647bb6425",
           "type": "mcq",
           "prompt": "À quel âge Louis IX devient-il roi ?",
           "options": [
@@ -43,6 +44,7 @@ window.registerPack({
           "explanation": "Louis IX devient roi à **12 ans**, en 1226. C'est encore un enfant !"
         },
         {
+          "id": "0208352b-bb10-495f-b42f-d2cb92981ab9",
           "type": "mcq",
           "prompt": "Qui gouverne quand Louis IX est trop jeune ?",
           "options": [
@@ -55,6 +57,7 @@ window.registerPack({
           "explanation": "Sa mère, **Blanche de Castille**, assure la régence. Elle est très ferme."
         },
         {
+          "id": "ee9a192a-e065-46db-adcb-dbd42ffbf39c",
           "type": "match",
           "prompt": "Relie chaque date à ce qui s'est passé.",
           "pairs": [
@@ -74,6 +77,7 @@ window.registerPack({
           "explanation": "Les dates de Louis IX :\n- né en **1214**\n- roi en **1226**\n- mort en **1270**"
         },
         {
+          "id": "1d1d2c5a-c213-46bc-83c0-b7a0cf52d6e5",
           "type": "mcq",
           "prompt": "Quel monument Louis IX fait-il construire ?",
           "options": [
@@ -87,6 +91,7 @@ window.registerPack({
           "hint": "Son nom commence par « Sainte »."
         },
         {
+          "id": "6aa1a20d-2419-48bd-8f53-d5f7c2a2d1cc",
           "type": "fill",
           "prompt": "Complète avec la bonne ville.",
           "sentence": "Louis IX meurt de la peste à ___ en 1270.",
@@ -97,6 +102,7 @@ window.registerPack({
           "hint": "Ça commence par T."
         },
         {
+          "id": "f29974c1-db1d-49df-bf97-c55fedbe6376",
           "type": "mcq",
           "prompt": "Combien de croisades Louis IX a-t-il faites ?",
           "options": [
@@ -129,6 +135,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "4a8e824b-301d-4a3b-9e9a-26720f38850b",
           "type": "sort",
           "prompt": "Range chaque découverte dans la bonne boîte.",
           "categories": [
@@ -174,6 +181,7 @@ window.registerPack({
           "explanation": "Sciences :\n- médecine\n- maths\n- astronomie\nTechniques :\n- boussole\n- moulin\n- papier\nProduits :\n- épices\n- soie\n- miroirs"
         },
         {
+          "id": "cb36c293-33c1-45fd-a634-3d8475127263",
           "type": "mcq",
           "prompt": "Comment est le monde musulman que découvrent les croisés ?",
           "options": [
@@ -186,6 +194,7 @@ window.registerPack({
           "explanation": "La civilisation musulmane est **très avancée** :\n- sciences\n- techniques\n- produits précieux"
         },
         {
+          "id": "bcb00f18-9e03-434e-80a5-af46d2e1e5e1",
           "type": "mcq",
           "prompt": "Qu'arrive-t-il à beaucoup de seigneurs partis en croisade ?",
           "options": [
@@ -198,6 +207,7 @@ window.registerPack({
           "explanation": "Les seigneurs **s'endettent** pour partir ou **meurent** au combat. Ils perdent leur pouvoir."
         },
         {
+          "id": "ebfa8280-e864-4dc6-8219-9d9dbe5a9cb0",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -219,6 +229,7 @@ window.registerPack({
           "explanation": "La télévision n'existait pas ! Les techniques rapportées :\n- **boussole**\n- **moulin**\n- **papier**"
         },
         {
+          "id": "fab1c0b4-a505-4bcd-9e86-2c95daae155c",
           "type": "match",
           "prompt": "Relie pour expliquer comment le roi devient plus fort.",
           "pairs": [
@@ -238,6 +249,7 @@ window.registerPack({
           "explanation": "Fiefs récupérés + **baillis** + **monnaie unique** = un roi plus puissant que les seigneurs."
         },
         {
+          "id": "995540a3-be50-44b6-97f1-123e783fbc1b",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Les croisés rapportent des épices, des miroirs et de la ___.",
@@ -269,6 +281,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "59631a1a-c3a5-4cdc-85ad-bc96db81231e",
           "type": "mcq",
           "prompt": "Quelle bataille François Ier gagne-t-il en 1515 ?",
           "options": [
@@ -281,6 +294,7 @@ window.registerPack({
           "explanation": "**1515 : Marignan**. Le même nombre deux fois, facile à retenir !"
         },
         {
+          "id": "79877958-dd2e-418a-906e-f85dbb8e6e45",
           "type": "mcq",
           "prompt": "Quel grand artiste italien François Ier protège-t-il ?",
           "options": [
@@ -293,6 +307,7 @@ window.registerPack({
           "explanation": "François Ier protège **Léonard de Vinci**, fasciné par la Renaissance italienne."
         },
         {
+          "id": "7086e6ab-7ef5-4b86-8d4e-0cb7df72dfe9",
           "type": "sort",
           "prompt": "Château fort ou château de plaisance ?",
           "categories": [
@@ -330,6 +345,7 @@ window.registerPack({
           "explanation": "Le château fort **défend**. Le château de plaisance est **lumineux et confortable** (Chambord, Blois)."
         },
         {
+          "id": "c2c86eed-b51d-4680-b168-5582429f0b25",
           "type": "match",
           "prompt": "Relie chaque mot à sa définition.",
           "pairs": [
@@ -349,6 +365,7 @@ window.registerPack({
           "explanation": "François Ier est un **mécène** de la **Renaissance**, à l'époque de l'**humanisme**."
         },
         {
+          "id": "a37410a4-a0c2-4ec6-b45b-ac5c215adf16",
           "type": "fill",
           "prompt": "Complète avec la bonne année.",
           "sentence": "François Ier gagne la bataille de Marignan en ___.",
@@ -359,6 +376,7 @@ window.registerPack({
           "hint": "Le même nombre écrit deux fois."
         },
         {
+          "id": "b897b154-5d4a-4d5c-a118-439c11574155",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -397,6 +415,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "38a9d3a3-a0d4-44e8-98b5-dc2839f9eff4",
           "type": "mcq",
           "prompt": "Quelle langue remplace le latin dans les textes officiels en 1539 ?",
           "options": [
@@ -409,6 +428,7 @@ window.registerPack({
           "explanation": "L'ordonnance de Villers-Cotterêts impose le **français** à la place du latin."
         },
         {
+          "id": "efdb42ab-b0e1-4f75-8828-ee2ea1fd4d87",
           "type": "mcq",
           "prompt": "Quel pays Jacques Cartier explore-t-il ?",
           "options": [
@@ -421,6 +441,7 @@ window.registerPack({
           "explanation": "En **1534**, Jacques Cartier explore le **Canada**, payé par François Ier."
         },
         {
+          "id": "5ecfb722-8e28-4090-b1b7-09be3dfb7a50",
           "type": "match",
           "prompt": "Relie chaque date à son événement.",
           "pairs": [
@@ -440,6 +461,7 @@ window.registerPack({
           "explanation": "Dans l'ordre :\n- Marignan **1515**\n- Cartier **1534**\n- Villers-Cotterêts **1539**"
         },
         {
+          "id": "e49bdfa4-ee2f-4c93-87c5-d66835123f39",
           "type": "fill",
           "prompt": "Complète avec le nom de l'explorateur.",
           "sentence": "En 1534, Jacques ___ explore le Canada.",
@@ -450,6 +472,7 @@ window.registerPack({
           "hint": "Ça commence par C."
         },
         {
+          "id": "76793fa0-7e0c-445c-b21e-1c280df52ed9",
           "type": "mcq",
           "prompt": "Que crée aussi l'ordonnance de Villers-Cotterêts ?",
           "options": [
@@ -462,6 +485,7 @@ window.registerPack({
           "explanation": "Elle crée l'**état civil** : on note les baptêmes dans des registres."
         },
         {
+          "id": "7d821bfb-a2b4-41a3-baa5-1506118d063e",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -505,6 +529,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "1309204e-4823-4123-81a1-bb0172cf17f8",
           "type": "mcq",
           "prompt": "Qui s'affronte pendant les guerres de Religion ?",
           "options": [
@@ -517,6 +542,7 @@ window.registerPack({
           "explanation": "Les **catholiques** et les **protestants** s'affrontent violemment."
         },
         {
+          "id": "43338994-2639-4acf-8a6e-a6b4b8396e52",
           "type": "mcq",
           "prompt": "Que fait Henri de Navarre pour devenir roi ?",
           "options": [
@@ -529,6 +555,7 @@ window.registerPack({
           "explanation": "Protestant, il se **convertit au catholicisme** et devient **Henri IV**."
         },
         {
+          "id": "e011b955-8857-4b4c-bfea-67a1403ae290",
           "type": "match",
           "prompt": "Relie chaque date à son événement.",
           "pairs": [
@@ -548,6 +575,7 @@ window.registerPack({
           "explanation": "Dans l'ordre :\n- Saint-Barthélemy **1572**\n- Édit de Nantes **1598**\n- mort d'Henri IV **1610**"
         },
         {
+          "id": "dcbf5b09-2748-469f-97b6-4d1641722d13",
           "type": "fill",
           "prompt": "Complète avec la bonne année.",
           "sentence": "L'Édit de Nantes est signé en ___.",
@@ -558,6 +586,7 @@ window.registerPack({
           "hint": "Deux ans avant 1600."
         },
         {
+          "id": "54047944-78ed-4f10-9472-6851686be379",
           "type": "mcq",
           "prompt": "Que permet l'Édit de Nantes ?",
           "options": [
@@ -570,6 +599,7 @@ window.registerPack({
           "explanation": "L'Édit de Nantes donne la **liberté de culte** aux protestants. On peut être un bon sujet du roi sans être catholique."
         },
         {
+          "id": "5cc13624-ecef-4d3c-97e4-bda1a0b5c76c",
           "type": "match",
           "prompt": "Relie chaque personnage à son rôle.",
           "pairs": [
@@ -609,6 +639,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "651b4d14-dc38-43fe-8ec3-eb75d8a0dab5",
           "type": "order",
           "prompt": "Range les rois du plus ancien au plus récent.",
           "words": [
@@ -620,6 +651,7 @@ window.registerPack({
           "explanation": "**Louis IX** vit au Moyen Âge, **François Ier** puis **Henri IV** aux Temps modernes."
         },
         {
+          "id": "156215b8-afb0-47eb-a648-cd9b1a58c6e9",
           "type": "order",
           "prompt": "Range les dates de la plus ancienne à la plus récente.",
           "words": [
@@ -633,6 +665,7 @@ window.registerPack({
           "explanation": "Les petits nombres d'abord :\n- **1226**\n- 1515\n- 1539\n- 1598\n- **1610**"
         },
         {
+          "id": "45fd065d-9f8f-4802-b612-6da7cd8d6ba6",
           "type": "sort",
           "prompt": "Moyen Âge ou Temps modernes ?",
           "categories": [
@@ -674,6 +707,7 @@ window.registerPack({
           "explanation": "Le Moyen Âge, c'est **Louis IX**. Les Temps modernes, c'est **François Ier** et **Henri IV**."
         },
         {
+          "id": "8f55c0cf-363c-4d3b-93dd-3cbbc8690bae",
           "type": "sort",
           "prompt": "Range chaque événement avec son roi.",
           "categories": [
@@ -719,6 +753,7 @@ window.registerPack({
           "explanation": "Louis IX :\n- Sainte-Chapelle\n- croisades\nFrançois Ier :\n- Marignan\n- Léonard\nHenri IV :\n- Édit de Nantes\n- poule au pot"
         },
         {
+          "id": "7dcd1558-08b4-4893-a7f1-a002d6cb4e79",
           "type": "mcq",
           "prompt": "Au Moyen Âge, avec qui le roi partage-t-il le pouvoir ?",
           "options": [
@@ -731,6 +766,7 @@ window.registerPack({
           "explanation": "Au Moyen Âge, le pouvoir est **féodal** : partagé avec les **seigneurs**."
         },
         {
+          "id": "2af39731-66eb-4b6f-8d9e-4046a1350af7",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -766,6 +802,7 @@ window.registerPack({
       "draw": 12,
       "exercises": [
         {
+          "id": "55323239-f2d7-4dce-a09a-effb9ecafab3",
           "type": "question",
           "prompt": "À quel âge Louis IX devient-il roi ?",
           "answers": [
@@ -779,6 +816,7 @@ window.registerPack({
           "explanation": "Louis IX devient roi à **12 ans**, en 1226 : c'est encore un enfant."
         },
         {
+          "id": "f0f301c6-bb9a-434c-ace4-f5b60f35535f",
           "type": "question",
           "prompt": "Qui gouverne à la place de Louis IX quand il est trop jeune ?",
           "answers": [
@@ -791,6 +829,7 @@ window.registerPack({
           "explanation": "Sa mère, **Blanche de Castille**, gouverne à sa place : c'est la régence."
         },
         {
+          "id": "03455a84-41e4-4a61-b50b-674b172b6b7f",
           "type": "question",
           "prompt": "Quel monument Louis IX fait-il construire ?",
           "answers": [
@@ -801,6 +840,7 @@ window.registerPack({
           "explanation": "Louis IX, roi très pieux, fait bâtir la **Sainte-Chapelle**."
         },
         {
+          "id": "c6bb1a9f-ea55-4d4c-a2f9-752ad4e63ae9",
           "type": "question",
           "prompt": "Dans quelle ville Louis IX meurt-il de la peste, en 1270 ?",
           "answers": [
@@ -810,6 +850,7 @@ window.registerPack({
           "explanation": "Il meurt de la peste à **Tunis**, pendant sa deuxième croisade."
         },
         {
+          "id": "730041da-3c89-4ffb-b00a-dc4563b6679c",
           "type": "question",
           "prompt": "Les croisés rapportent un objet qui montre le nord. Lequel ?",
           "answers": [
@@ -820,6 +861,7 @@ window.registerPack({
           "explanation": "La **boussole** fait partie des techniques découvertes dans le monde musulman, avec le moulin et le papier."
         },
         {
+          "id": "e9826972-3bc4-4584-95f4-e6d1deaeb2f7",
           "type": "question",
           "prompt": "Quelle bataille François Ier gagne-t-il en 1515 ?",
           "answers": [
@@ -831,6 +873,7 @@ window.registerPack({
           "explanation": "**1515 : Marignan**. Le même nombre deux fois, facile à retenir !"
         },
         {
+          "id": "a3a86ccc-fac2-4573-b8eb-50a28abc8a74",
           "type": "question",
           "prompt": "Quel grand artiste italien François Ier accueille-t-il en France ?",
           "answers": [
@@ -842,6 +885,7 @@ window.registerPack({
           "explanation": "François Ier aime l'art italien : il accueille **Léonard de Vinci**."
         },
         {
+          "id": "96b4fa38-1057-4f9b-84ca-7ecf64ff7cb0",
           "type": "question",
           "prompt": "Comment appelle-t-on une personne qui protège et paie les artistes ?",
           "answers": [
@@ -853,6 +897,7 @@ window.registerPack({
           "explanation": "Un **mécène** protège et paie les artistes, comme François Ier."
         },
         {
+          "id": "53588d54-c526-4d94-aa98-5f13019f7bf4",
           "type": "question",
           "prompt": "Donne le nom d'un château de plaisance de la Renaissance.",
           "answers": [
@@ -866,6 +911,7 @@ window.registerPack({
           "explanation": "**Chambord** et **Blois** sont des châteaux de plaisance : lumineux, faits pour la fête et le confort."
         },
         {
+          "id": "8f454cb5-33b2-465d-9618-f9775f304e41",
           "type": "question",
           "prompt": "En 1539, quelle langue remplace le latin dans les textes officiels ?",
           "answers": [
@@ -876,6 +922,7 @@ window.registerPack({
           "explanation": "L'ordonnance de Villers-Cotterêts impose le **français** à la place du latin."
         },
         {
+          "id": "47c6520b-a4a2-4117-876e-e083bd9c2614",
           "type": "question",
           "prompt": "Quel explorateur part au Canada en 1534, payé par François Ier ?",
           "answers": [
@@ -885,6 +932,7 @@ window.registerPack({
           "explanation": "**Jacques Cartier** explore le **Canada** en 1534."
         },
         {
+          "id": "c6d098e8-50ac-4b59-8041-a7678d6f2f68",
           "type": "question",
           "prompt": "Comment s'appellent les guerres entre catholiques et protestants, à la fin du XVIe siècle ?",
           "answers": [
@@ -898,6 +946,7 @@ window.registerPack({
           "explanation": "Les **guerres de Religion** opposent catholiques et protestants (massacre de la Saint-Barthélemy en 1572)."
         },
         {
+          "id": "6b6dd690-bdfd-4aa9-8266-23f8dedc2fce",
           "type": "question",
           "prompt": "Henri de Navarre est protestant. Quelle religion choisit-il pour devenir roi ?",
           "answers": [
@@ -911,6 +960,7 @@ window.registerPack({
           "explanation": "Il devient **catholique** pour être roi : c'est **Henri IV**."
         },
         {
+          "id": "8fd6c56a-6c3c-4ced-821d-be7a493a1bfb",
           "type": "question",
           "prompt": "En quelle année Henri IV signe-t-il l'Édit de Nantes ?",
           "answers": [
@@ -920,6 +970,7 @@ window.registerPack({
           "explanation": "**1598** : l'Édit de Nantes, deux ans avant 1600."
         },
         {
+          "id": "afcb07a3-4e18-417a-911d-da7074fdea5c",
           "type": "question",
           "prompt": "L'Édit de Nantes laisse les protestants prier librement. Comment appelle-t-on le fait d'accepter que les autres pensent autrement ?",
           "answers": [
@@ -929,6 +980,7 @@ window.registerPack({
           "explanation": "C'est la **tolérance** : on peut être un bon sujet du roi sans être catholique."
         },
         {
+          "id": "0cc2993f-8fee-4d73-8184-70c480da6fa9",
           "type": "question",
           "prompt": "Qui assassine Henri IV en 1610 ?",
           "answers": [
@@ -938,6 +990,7 @@ window.registerPack({
           "explanation": "Henri IV est assassiné par **Ravaillac** en 1610."
         },
         {
+          "id": "e942fd13-17c5-4b55-88c6-499966fd616d",
           "type": "question",
           "prompt": "En quelle année Louis IX devient-il roi ?",
           "answers": [
@@ -947,6 +1000,7 @@ window.registerPack({
           "explanation": "Louis IX devient roi en **1226**, à 12 ans."
         },
         {
+          "id": "4385f468-fbc9-4d3a-833e-8ce14be37c25",
           "type": "question",
           "prompt": "Comment appelle-t-on le fait de gouverner à la place d'un roi trop jeune ?",
           "answers": [
@@ -957,6 +1011,7 @@ window.registerPack({
           "explanation": "C'est la **régence** : Blanche de Castille gouverne à la place de son fils."
         },
         {
+          "id": "607fb0be-8a13-4bf4-a6c7-32407d0ce38c",
           "type": "question",
           "prompt": "Comment appelle-t-on une guerre religieuse des chrétiens contre les musulmans ?",
           "answers": [
@@ -969,6 +1024,7 @@ window.registerPack({
           "explanation": "Une **croisade** : Louis IX part en croisade deux fois."
         },
         {
+          "id": "c3395505-2bc6-4b33-b4f2-5c4a7431fbcd",
           "type": "question",
           "prompt": "Donne un produit précieux que les croisés rapportent du monde musulman.",
           "answers": [
@@ -985,6 +1041,7 @@ window.registerPack({
           "explanation": "Les croisés rapportent :\n- des **épices**\n- de la **soie**\n- des **miroirs**"
         },
         {
+          "id": "0822e220-d7e6-4106-90a3-30495aa7c0ac",
           "type": "question",
           "prompt": "Comment appelle-t-on les hommes qui commandent au nom du roi ?",
           "answers": [
@@ -997,6 +1054,7 @@ window.registerPack({
           "explanation": "Le roi nomme des **baillis** pour commander en son nom : il devient plus fort."
         },
         {
+          "id": "0a26aab5-b5ef-43e7-967e-420c8bfbb78c",
           "type": "question",
           "prompt": "Comment s'appelle l'ordonnance de 1539 qui impose le français dans les textes officiels ?",
           "answers": [
@@ -1009,6 +1067,7 @@ window.registerPack({
           "explanation": "L'ordonnance de **Villers-Cotterêts** (1539) remplace le latin par le français."
         },
         {
+          "id": "310dd45b-7920-4c18-a4c5-b75c5122a50f",
           "type": "question",
           "prompt": "Que crée l'ordonnance de 1539 pour noter les baptêmes dans des registres ?",
           "answers": [
@@ -1020,6 +1079,7 @@ window.registerPack({
           "explanation": "Elle crée l'**état civil** : on note les baptêmes (les naissances) dans des registres."
         },
         {
+          "id": "095d90d9-4b37-40a2-90e7-c21b7b886044",
           "type": "question",
           "prompt": "Quel massacre de protestants a lieu en 1572 ?",
           "answers": [
@@ -1031,6 +1091,7 @@ window.registerPack({
           "explanation": "**1572** : le massacre de la **Saint-Barthélemy**, pendant les guerres de Religion."
         },
         {
+          "id": "6f0352ce-2dee-49a5-90f4-c575e6b3b31e",
           "type": "question",
           "prompt": "Quel ministre aide Henri IV à moderniser l'économie et l'agriculture ?",
           "answers": [
@@ -1039,6 +1100,7 @@ window.registerPack({
           "explanation": "**Sully** aide Henri IV à relancer l'économie et l'agriculture (« la poule au pot »)."
         },
         {
+          "id": "e989ad74-1e7e-4b4a-9c10-3aa1f441c32b",
           "type": "question",
           "prompt": "Comment s'appelle la nouvelle façon de penser qui met l'Homme, les sciences et les arts au centre ?",
           "answers": [
@@ -1048,6 +1110,7 @@ window.registerPack({
           "explanation": "L'**humanisme** se développe à la Renaissance, au temps de François Ier."
         },
         {
+          "id": "148e6814-839c-457b-80cb-5c2b18ec846b",
           "type": "question",
           "prompt": "Quel type de château construisait-on au Moyen Âge pour faire la guerre ?",
           "answers": [
@@ -1060,6 +1123,7 @@ window.registerPack({
           "explanation": "Au Moyen Âge, on bâtit des **châteaux forts** ; à la Renaissance, des châteaux de plaisance."
         },
         {
+          "id": "eaa2521d-5d80-4c8a-93dd-2f9513c7b121",
           "type": "question",
           "prompt": "À quelle période de l'histoire appartiennent François Ier et Henri IV ?",
           "answers": [

@@ -193,6 +193,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "22788ca1-fa91-417f-85e9-081c1c953da4",
           "type": "mcq",
           "docId": "m1-1",
           "prompt": "À qui est le bureau ?",
@@ -206,6 +207,7 @@ window.registerPack({
           "explanation": "« le bureau **de Malo** » : le bureau est à Malo. La trousse, elle, est à Nina."
         },
         {
+          "id": "aed5a868-ca87-47c5-93d8-664f5c680ed2",
           "type": "mcq",
           "docId": "m1-2",
           "prompt": "Pourquoi le perroquet s'appelle-t-il Gros Bec ?",
@@ -219,6 +221,7 @@ window.registerPack({
           "explanation": "La phrase donne la raison après **parce que** : « son bec est énorme »."
         },
         {
+          "id": "a60b830b-a0d8-4b95-88f1-aea7b29db09c",
           "type": "mcq",
           "docId": "m1-3",
           "prompt": "Que dois-tu faire ?",
@@ -232,6 +235,7 @@ window.registerPack({
           "explanation": "On colorie **un seul** carré : « **le plus grand** des trois »."
         },
         {
+          "id": "c50df6af-595d-4368-a245-0e68c860e200",
           "type": "mcq",
           "docId": "m1-4",
           "prompt": "Combien de billes Nina a-t-elle ?",
@@ -246,6 +250,7 @@ window.registerPack({
           "hint": "Qui en a le plus : Malo ou Nina ?"
         },
         {
+          "id": "09764b76-1c0e-4577-ad9c-b05b1db9e02a",
           "type": "mcq",
           "docId": "m1-5",
           "prompt": "Que fait Nina en premier ?",
@@ -258,6 +263,7 @@ window.registerPack({
           "explanation": "**Avant** de partir, elle donne des graines, **puis** elle ferme la cage. Elle part à la fin."
         },
         {
+          "id": "7fed0504-2e4e-4762-bf9f-86cb75493c17",
           "type": "mcq",
           "docId": "m1-6",
           "prompt": "Ce matin, Malo a-t-il son cahier ?",
@@ -270,6 +276,7 @@ window.registerPack({
           "explanation": "Il **n'a pas oublié** son cahier : il l'a donc. C'est **hier** qu'il l'avait oublié."
         },
         {
+          "id": "b383eca6-6a08-487d-b869-441c925b14f0",
           "type": "mcq",
           "docId": "m1-7",
           "prompt": "Quelles phrases sont vraies ?",
@@ -286,6 +293,7 @@ window.registerPack({
           "explanation": "Il **ne parle jamais** quand il dort, mais il **ronfle**. « Comme un tracteur » est une comparaison : il ronfle fort."
         },
         {
+          "id": "1b14a1a6-8fb0-4317-8a72-4a7a18970e04",
           "type": "mcq",
           "docId": "m1-8",
           "prompt": "Quels nombres faut-il entourer ?",
@@ -302,6 +310,7 @@ window.registerPack({
           "explanation": "Il faut deux conditions :\n- **pair**\n- **plus petit que 20**\n15 est impair, 24 est plus grand que 20."
         },
         {
+          "id": "26fced92-1a80-4ff8-ba92-85c163726e3e",
           "type": "mcq",
           "docId": "m1-9",
           "prompt": "Que nous apprend le mot « encore » ?",
@@ -315,6 +324,7 @@ window.registerPack({
           "explanation": "**Encore** veut dire que c'est déjà arrivé avant. Et le chat n'est pas à Malo : c'est celui **de la voisine**."
         },
         {
+          "id": "12169797-02a5-418b-8f96-9408b6844b4e",
           "type": "fill",
           "docId": "m1-10",
           "prompt": "Complète d'après la phrase.",
@@ -345,6 +355,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "5e2a1541-f280-49d7-8158-d83dade184db",
           "type": "mcq",
           "docId": "m2-1",
           "prompt": "Qu'a fait Malo cet après-midi-là ?",
@@ -357,6 +368,7 @@ window.registerPack({
           "explanation": "Il **voulait** aller à la rivière, mais il pleuvait, **alors** il a joué aux cartes avec Nina."
         },
         {
+          "id": "764590f0-e9d7-44d1-aa27-9c4cbff0fb88",
           "type": "mcq",
           "docId": "m2-2",
           "prompt": "Pourquoi est-ce un problème ?",
@@ -370,6 +382,7 @@ window.registerPack({
           "explanation": "Crier « Bonjour ! » **à minuit**, ça réveille tout le monde !"
         },
         {
+          "id": "02664449-6cdb-4308-8ddc-3b44d7db3c9b",
           "type": "mcq",
           "docId": "m2-3",
           "prompt": "On veut savoir combien la classe paie en tout. Quelles informations sont utiles ?",
@@ -386,6 +399,7 @@ window.registerPack({
           "explanation": "Pour le prix total, il faut **le nombre d'élèves** et **le prix par élève**. L'heure du bus ne sert à rien ici."
         },
         {
+          "id": "8d5a51a5-3cd2-4862-943e-375141b03e83",
           "type": "order",
           "docId": "m2-4",
           "prompt": "Remets les actions dans l'ordre de la consigne.",
@@ -399,6 +413,7 @@ window.registerPack({
           "explanation": "Les verbes de la consigne donnent l'ordre :\n- **plie**\n- **ouvre**\n- **puis dessine**\n- **écris**"
         },
         {
+          "id": "fe775ac6-a547-48c4-8178-c13082e0282f",
           "type": "mcq",
           "docId": "m2-5",
           "prompt": "Où Nina a-t-elle cherché sa clé ?",
@@ -416,6 +431,7 @@ window.registerPack({
           "explanation": "Elle a cherché dans son sac, sa poche et sous son lit. La clé était dans la cage, mais **Nina n'y a pas cherché** : c'est là qu'elle l'a retrouvée à la fin."
         },
         {
+          "id": "d8dda885-3560-41be-9f76-5ce2ae6a0157",
           "type": "mcq",
           "docId": "m2-5",
           "prompt": "Qui avait caché la clé ?",
@@ -428,6 +444,7 @@ window.registerPack({
           "explanation": "« **Finalement**, c'est Gros Bec qui l'avait cachée dans sa cage. »"
         },
         {
+          "id": "b5a8585b-7e4e-4305-95fa-3b44c2f97068",
           "type": "mcq",
           "docId": "m2-6",
           "prompt": "Qui est le plus petit des trois ?",
@@ -441,6 +458,7 @@ window.registerPack({
           "hint": "Range-les du plus grand au plus petit."
         },
         {
+          "id": "469fde73-b4a8-4452-9555-d222ef48027c",
           "type": "spot",
           "docId": "m2-7",
           "prompt": "Touche le mot qui ne correspond pas au texte.",
@@ -482,6 +500,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "07e07bd5-55e9-45d4-b629-5fed0ad67934",
           "type": "mcq",
           "docId": "m3-corbeau",
           "prompt": "Pourquoi le Renard fait-il des compliments au Corbeau ?",
@@ -495,6 +514,7 @@ window.registerPack({
           "explanation": "Le Renard est **attiré par l'odeur** du fromage. Ses compliments sont un piège : le Corbeau ouvre le bec et le fromage tombe."
         },
         {
+          "id": "4dc96eb6-da8f-4e0e-8cb1-3cace85d840a",
           "type": "mcq",
           "docId": "m3-corbeau",
           "prompt": "Dans la morale, que veut dire « vivre aux dépens de quelqu'un » ?",
@@ -508,6 +528,7 @@ window.registerPack({
           "explanation": "Le flatteur **profite** de celui qui l'écoute : ici, le Renard gagne le fromage du Corbeau."
         },
         {
+          "id": "31895822-2be4-4074-9f84-feb99cb294b4",
           "type": "mcq",
           "docId": "m3-corbeau",
           "prompt": "Quelles phrases sont vraies ?",
@@ -524,6 +545,7 @@ window.registerPack({
           "explanation": "Le Corbeau est sur une branche ; c'est **lui** qui ouvre le bec pour chanter, et le Renard attrape le fromage."
         },
         {
+          "id": "4b7ce3f3-c88b-4d58-b05b-2b69f3d7a268",
           "type": "mcq",
           "docId": "m3-corbeau",
           "prompt": "Que veut dire Gros Bec ?",
@@ -537,6 +559,7 @@ window.registerPack({
           "explanation": "En gardant le bec fermé, on ne lâche pas son fromage : Gros Bec n'aurait pas écouté le flatteur."
         },
         {
+          "id": "310dc5fc-fdd4-4baa-b030-7a551bd98849",
           "type": "mcq",
           "docId": "m3-cabane",
           "prompt": "Qu'a apporté Nina ?",
@@ -553,6 +576,7 @@ window.registerPack({
           "explanation": "« Malo a apporté des planches et une scie, **Nina une corde et des clous**. »"
         },
         {
+          "id": "fafb1a7c-7cfc-472a-9609-eef4b5b10a6c",
           "type": "mcq",
           "docId": "m3-cabane",
           "prompt": "Qu'est-ce qui manque encore à la cabane ?",
@@ -566,6 +590,7 @@ window.registerPack({
           "explanation": "« Il manquait encore **le toit**. »"
         },
         {
+          "id": "7678fe61-90b0-478a-a0b0-576338d951b3",
           "type": "mcq",
           "docId": "m3-cabane",
           "prompt": "Quand pensent-ils finir la cabane ?",
@@ -579,6 +604,7 @@ window.registerPack({
           "explanation": "Nina dit : « On le fera **samedi** ». Mercredi, c'est le jour où ils ont commencé."
         },
         {
+          "id": "ded0753d-2cc1-49ea-bacf-bb17e038e5e0",
           "type": "sort",
           "docId": "m3-crepes",
           "prompt": "Range les informations : servent-elles à répondre à la question ?",
@@ -617,6 +643,7 @@ window.registerPack({
           "explanation": "La question parle de **farine**. L'heure et le lieu de la fête ne servent pas à y répondre."
         },
         {
+          "id": "22c0a37d-ffaa-42da-83c1-8d52e0beb3f6",
           "type": "mcq",
           "docId": "m3-crepes",
           "prompt": "Quelle est la première étape ?",
@@ -630,6 +657,7 @@ window.registerPack({
           "explanation": "36 crêpes, c'est **3 fois** 12 crêpes. Il faudra donc 3 fois 250 g de farine."
         },
         {
+          "id": "6bc5e970-f340-4210-94bd-6136aea89adb",
           "type": "mcq",
           "docId": "m3-crepes",
           "prompt": "Il faut 750 g de farine. Ont-ils assez de farine ?",
@@ -663,6 +691,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "62e7c97e-09f1-4a57-b597-4541b6a5d9ae",
           "type": "mcq",
           "docId": "m4-cigale",
           "prompt": "Pourquoi la Cigale n'a-t-elle rien à manger ?",
@@ -676,6 +705,7 @@ window.registerPack({
           "explanation": "Elle a passé l'été à **chanter** : elle n'a rien gardé pour l'hiver."
         },
         {
+          "id": "97004a0b-0d1c-4481-949c-c56fb4ad317a",
           "type": "mcq",
           "docId": "m4-cigale",
           "prompt": "Que veut dire « crier famine » ?",
@@ -689,6 +719,7 @@ window.registerPack({
           "explanation": "La **famine**, c'est le manque de nourriture. La Cigale va dire qu'elle a faim."
         },
         {
+          "id": "460b3471-52e8-4a0b-9c1f-7c296e0d51c6",
           "type": "mcq",
           "docId": "m4-cigale",
           "prompt": "Que promet la Cigale ?",
@@ -705,6 +736,7 @@ window.registerPack({
           "explanation": "« Je vous rembourserai **avant le mois d'août**, et **même un peu plus**. »"
         },
         {
+          "id": "c72cca68-b61d-441c-b13c-ab02f4dcf292",
           "type": "mcq",
           "docId": "m4-cigale",
           "prompt": "Que veut dire la Fourmi par « Eh bien ! dansez maintenant » ?",
@@ -718,6 +750,7 @@ window.registerPack({
           "explanation": "La Fourmi se moque : la Cigale a chanté tout l'été, elle n'a qu'à danser maintenant. C'est un **refus**."
         },
         {
+          "id": "669a3d59-6b1e-4e53-8f37-88a91405bacc",
           "type": "mcq",
           "docId": "m4-piquenique",
           "prompt": "Qu'est-ce qui est tombé dans la rivière ?",
@@ -731,6 +764,7 @@ window.registerPack({
           "explanation": "« Le **chapeau de paille** de la maman de Nina flottait sur l'eau ! »"
         },
         {
+          "id": "3b7f41b1-86c7-4d42-bf00-2387e3e7a3bd",
           "type": "order",
           "docId": "m4-piquenique",
           "prompt": "Remets les événements dans l'ordre.",
@@ -744,6 +778,7 @@ window.registerPack({
           "explanation": "**À peine installés**, ils entendent le plouf. Malo ramène le chapeau, puis le soleil le sèche **pendant** le repas."
         },
         {
+          "id": "7adc7f23-a265-48e3-b490-a7b9f77cc65d",
           "type": "mcq",
           "docId": "m4-piquenique",
           "prompt": "Pourquoi Gros Bec appelle-t-il Malo « capitaine » ?",
@@ -757,6 +792,7 @@ window.registerPack({
           "explanation": "Malo vient de repêcher le chapeau sur l'eau : Gros Bec le félicite en rigolant, comme un **capitaine** de bateau."
         },
         {
+          "id": "6c53a7bf-f256-4a25-b922-fd0a3b891748",
           "type": "mcq",
           "docId": "m4-regle",
           "prompt": "Tu lances le dé et tu fais 4. Que se passe-t-il ?",
@@ -770,6 +806,7 @@ window.registerPack({
           "explanation": "« Pour les **autres nombres**, il ne se passe rien. » Seuls le 6 et le 1 changent quelque chose."
         },
         {
+          "id": "a337bb72-a8b2-49b4-a0b8-04b67f01deb1",
           "type": "mcq",
           "docId": "m4-regle",
           "prompt": "Quelles phrases respectent la règle ?",
@@ -786,6 +823,7 @@ window.registerPack({
           "explanation": "On joue à **quatre**. Le gagnant n'est pas le premier qui fait 6, mais celui qui a **le plus** de coquillages à la fin."
         },
         {
+          "id": "9714825b-98c1-489c-9cca-6ecfbcc5e388",
           "type": "mcq",
           "docId": "m4-regle",
           "prompt": "Le centre est vide. Nina a 5 coquillages, Malo 7, et les deux autres joueurs 4 chacun. Qui gagne ?",
@@ -819,6 +857,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "b300be1a-5185-433c-ba10-062bfaf598bc",
           "type": "mcq",
           "docId": "m5-chaperon",
           "prompt": "Pourquoi appelle-t-on la fillette « le Petit Chaperon rouge » ?",
@@ -832,6 +871,7 @@ window.registerPack({
           "explanation": "Sa grand-mère lui a fait **un petit chaperon rouge** (une sorte de capuche) : on l'appelle comme ça « si bien que partout »."
         },
         {
+          "id": "28f33ce3-fd09-4f04-ae06-222bd1370dd9",
           "type": "mcq",
           "docId": "m5-chaperon",
           "prompt": "Pourquoi le Loup ne mange-t-il pas la fillette dans le bois ?",
@@ -845,6 +885,7 @@ window.registerPack({
           "explanation": "Il en a **bien envie**, mais il n'ose pas « à cause de quelques **bûcherons** » : on pourrait le voir."
         },
         {
+          "id": "cdcccb9f-bdb0-49a4-9680-3a70b95184bb",
           "type": "mcq",
           "docId": "m5-chaperon",
           "prompt": "Que fait la fillette sur le chemin ?",
@@ -864,6 +905,7 @@ window.registerPack({
           "showCount": false
         },
         {
+          "id": "9a231458-34cf-4d80-afb2-6c0ddb552788",
           "type": "mcq",
           "docId": "m5-chaperon",
           "prompt": "Quelle erreur commet la fillette ?",
@@ -877,6 +919,7 @@ window.registerPack({
           "explanation": "Elle dit tout : « la première maison après le moulin ». Le Loup sait maintenant où aller."
         },
         {
+          "id": "5799577a-80e7-433e-bddd-417c530eb169",
           "type": "mcq",
           "docId": "m5-chaperon",
           "prompt": "Pourquoi le Loup prend-il le chemin le plus court ?",
@@ -890,6 +933,7 @@ window.registerPack({
           "explanation": "Il veut **arriver le premier** chez la grand-mère. La dernière phrase le confirme : il arrive « bien avant elle »."
         },
         {
+          "id": "e46c4b7e-c17e-4306-8350-95a350749e67",
           "type": "spot",
           "docId": "m5-chaperon",
           "prompt": "Touche le mot qui ne correspond pas au texte.",
@@ -913,6 +957,7 @@ window.registerPack({
           "explanation": "La mère dit : « Porte-lui une galette et ce petit pot de **beurre** »."
         },
         {
+          "id": "2b8baf99-dcdd-46b3-bf8c-001190e684ed",
           "type": "order",
           "docId": "m5-chemin",
           "prompt": "Remets les étapes du chemin dans l'ordre.",
@@ -928,6 +973,7 @@ window.registerPack({
           "explanation": "On suit les phrases dans l'ordre :\n- portail\n- **à gauche**\n- boulangerie\n- passage piéton\n- rivière\n- saule"
         },
         {
+          "id": "77fad626-e8f1-478c-9a2a-38627ff052ac",
           "type": "mcq",
           "docId": "m5-chemin",
           "prompt": "Tu arrives devant le pont de pierre. Que fais-tu ?",
@@ -941,6 +987,7 @@ window.registerPack({
           "explanation": "« Ne le traverse **pas** ! Continue jusqu'au grand saule. »"
         },
         {
+          "id": "5e868629-945a-4f6f-b5e4-f391d9c15ae4",
           "type": "mcq",
           "docId": "m5-chemin",
           "prompt": "Sur le petit chemin, où se trouve la rivière ?",
@@ -954,6 +1001,7 @@ window.registerPack({
           "explanation": "« en gardant l'eau **sur ta droite** »."
         },
         {
+          "id": "a1ae7fd8-937b-4591-a84f-66056e71e424",
           "type": "mcq",
           "docId": "m5-chemin",
           "prompt": "Malo veut aller au moulin à vélo, un mercredi à 15 h, avec 5 € en poche. Qu'est-ce qui pose problème ?",
@@ -970,6 +1018,7 @@ window.registerPack({
           "showCount": false
         },
         {
+          "id": "8b2b8227-a304-4b0c-8e2d-1bfd915c2ca8",
           "type": "mcq",
           "docId": "m5-chemin",
           "prompt": "Nina vient avec ses deux petits frères. Combien paient-ils en tout pour entrer ?",
@@ -1004,6 +1053,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "d4e808dc-6496-4062-a64d-404ce2a7034d",
           "type": "fill",
           "docId": "m6-chevre",
           "prompt": "Complète d'après le texte.",
@@ -1015,6 +1065,7 @@ window.registerPack({
           "explanation": "« Après en avoir perdu **six**, il acheta une **septième** chèvre. »"
         },
         {
+          "id": "ade64800-d9ca-4d1a-8f1b-785e0275192d",
           "type": "mcq",
           "docId": "m6-chevre",
           "prompt": "Pourquoi Monsieur Seguin achète-t-il une chèvre toute jeune ?",
@@ -1028,6 +1079,7 @@ window.registerPack({
           "explanation": "Il l'achète jeune « **pour qu'elle s'habitue à rester chez lui** » : il espère qu'elle ne partira pas."
         },
         {
+          "id": "b145bfbe-0d9f-4f6c-8d69-cd76a9f704c2",
           "type": "mcq",
           "docId": "m6-chevre",
           "prompt": "À quoi voit-on que Blanquette n'est plus heureuse ?",
@@ -1047,6 +1099,7 @@ window.registerPack({
           "showCount": false
         },
         {
+          "id": "3347633f-c110-45ea-8566-2001f96d2434",
           "type": "mcq",
           "docId": "m6-chevre",
           "prompt": "Pourquoi Monsieur Seguin parle-t-il de la vieille Renaude ?",
@@ -1060,6 +1113,7 @@ window.registerPack({
           "explanation": "Renaude s'est battue **toute la nuit**, et le loup l'a quand même mangée : se battre ne suffit pas."
         },
         {
+          "id": "61617201-0739-48d5-89b7-e823d1a9b847",
           "type": "mcq",
           "docId": "m6-chevre",
           "prompt": "Quelle erreur commet Monsieur Seguin ?",
@@ -1073,6 +1127,7 @@ window.registerPack({
           "explanation": "Il ferme **la porte** à double tour, mais il oublie **la fenêtre**."
         },
         {
+          "id": "c0465f7a-30f0-4b60-b25c-eca6686a9bcd",
           "type": "match",
           "docId": "m6-chevre",
           "prompt": "Relie chaque personnage à ce qui le décrit.",
@@ -1097,6 +1152,7 @@ window.registerPack({
           "explanation": "Monsieur Seguin protège, Blanquette rêve de liberté, Renaude s'est battue, et le loup les a mangées."
         },
         {
+          "id": "6b37b971-4647-4eb8-ab08-94af6648e8e6",
           "type": "mcq",
           "docId": "m6-gateau",
           "prompt": "Qu'est-ce que la mère de Malo lui a demandé de faire ?",
@@ -1116,6 +1172,7 @@ window.registerPack({
           "showCount": false
         },
         {
+          "id": "ca65c0c5-9953-4931-9a08-8507e8aef03f",
           "type": "order",
           "docId": "m6-gateau",
           "prompt": "Dans quel ordre les choses se sont-elles vraiment passées ?",
@@ -1129,6 +1186,7 @@ window.registerPack({
           "explanation": "Ils **commencent** par la chambre, **puis** arrosent les tomates. En revenant, ils trouvent Gros Bec. Les graines arrivent **enfin**, juste avant midi."
         },
         {
+          "id": "7c98e5d1-4d70-4f4a-8bfc-2cff05fe3f37",
           "type": "mcq",
           "docId": "m6-gateau",
           "prompt": "Pourquoi une cuisine « trop silencieuse » est-elle inquiétante ?",
@@ -1142,6 +1200,7 @@ window.registerPack({
           "explanation": "D'habitude, Gros Bec répète « Le gâteau ! ». S'il se tait, c'est qu'il a le bec… occupé."
         },
         {
+          "id": "0062bcc0-a467-4a06-af6d-7aa7e52837df",
           "type": "mcq",
           "docId": "m6-gateau",
           "prompt": "Comment sait-on que Gros Bec ment ?",
@@ -1159,6 +1218,7 @@ window.registerPack({
           "showCount": false
         },
         {
+          "id": "3f04d60c-af3a-4fb4-9c97-6b35d09330e3",
           "type": "mcq",
           "docId": "m6-gateau",
           "prompt": "Que veut dire Nina par « Un menteur doit avoir bonne mémoire » ?",
@@ -1192,6 +1252,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "de1c57fb-ee5b-4846-9842-3154e54cda4d",
           "type": "mcq",
           "docId": "m7-nautilus",
           "prompt": "Au début de l'histoire, que croient les marins ?",
@@ -1205,6 +1266,7 @@ window.registerPack({
           "explanation": "On parle d'un « étrange **monstre marin** ». Personne ne sait encore que c'est un sous-marin."
         },
         {
+          "id": "4e185da0-b955-4b46-b61f-c92d16da3def",
           "type": "match",
           "docId": "m7-nautilus",
           "prompt": "Relie chaque personnage à ce qui le décrit.",
@@ -1229,6 +1291,7 @@ window.registerPack({
           "explanation": "Les personnages :\n- Aronnax, le **savant**\n- Conseil, son **domestique**\n- Ned Land, le **harponneur**\n- Nemo, le **capitaine**"
         },
         {
+          "id": "279b784c-971b-4afa-b3b0-06d19b395de5",
           "type": "mcq",
           "docId": "m7-nautilus",
           "prompt": "Comment les naufragés comprennent-ils que le « monstre » n'est pas un animal ?",
@@ -1242,6 +1305,7 @@ window.registerPack({
           "explanation": "Sur son dos, ils sentent qu'il est **dur comme du fer** : c'est une machine. Être lumineux et rapide, c'est ce qui faisait croire à un monstre."
         },
         {
+          "id": "54e5a906-dfe0-4592-95e6-17f3905e0d5a",
           "type": "fill",
           "docId": "m7-nautilus",
           "prompt": "Complète d'après le texte (en chiffres ou en lettres).",
@@ -1254,6 +1318,7 @@ window.registerPack({
           "explanation": "« Il mesurait **soixante-dix mètres** de long. »"
         },
         {
+          "id": "9cf77bdc-d3d0-4781-b50e-8fcc38b08970",
           "type": "mcq",
           "docId": "m7-nautilus",
           "prompt": "Que trouve-t-on à bord du Nautilus ?",
@@ -1273,6 +1338,7 @@ window.registerPack({
           "showCount": false
         },
         {
+          "id": "cecb4d14-a58f-413b-aca8-736d17e6ce65",
           "type": "mcq",
           "docId": "m7-nautilus",
           "prompt": "Que veut dire la devise « Mobilis in mobili » ?",
@@ -1286,6 +1352,7 @@ window.registerPack({
           "explanation": "Le texte l'explique : « **mobile dans l'élément mobile** » ; le navire bouge dans l'eau, qui bouge aussi."
         },
         {
+          "id": "b15af4ad-1a18-47e3-bccb-7f5e781b0bb9",
           "type": "mcq",
           "docId": "m7-nautilus",
           "prompt": "Pourquoi le capitaine se fait-il appeler « Nemo » ?",
@@ -1299,6 +1366,7 @@ window.registerPack({
           "explanation": "Il « **se faisait appeler** » Nemo : ce n'est pas son vrai nom. « Personne » : il ne veut pas dire qui il est."
         },
         {
+          "id": "6a138f34-ab0f-4dcb-9fab-eab4ce4b5056",
           "type": "mcq",
           "docId": "m7-nautilus",
           "prompt": "Que représentent les « vingt mille lieues » du titre ?",
@@ -1312,6 +1380,7 @@ window.registerPack({
           "explanation": "Piège classique : ce n'est **pas** une profondeur, c'est la **distance** du voyage, environ 80 000 km."
         },
         {
+          "id": "1cc71b76-0748-457b-a162-c61c752a3035",
           "type": "mcq",
           "docId": "m7-nautilus",
           "prompt": "Quelles phrases sont vraies ?",
@@ -1329,6 +1398,7 @@ window.registerPack({
           "showCount": false
         },
         {
+          "id": "aee5bb04-a88e-42be-9a2e-9a5e2c64bd9e",
           "type": "spot",
           "docId": "m7-nautilus",
           "prompt": "Touche le mot qui ne correspond pas au texte.",
@@ -1370,6 +1440,7 @@ window.registerPack({
       "draw": 12,
       "exercises": [
         {
+          "id": "9f7256f6-e6b0-46a4-8539-13bc9ccdcf2a",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Où Nina et Malo se promènent-ils au début de l'histoire ?",
@@ -1383,6 +1454,7 @@ window.registerPack({
           "explanation": "Ils se promènent « à la **brocante** du village »."
         },
         {
+          "id": "d06e6d1a-d6f0-4425-b507-4320fc4614ad",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Combien Nina paie-t-elle le livre ?",
@@ -1395,6 +1467,7 @@ window.registerPack({
           "explanation": "Le vendeur dit : « **Deux euros** »."
         },
         {
+          "id": "7ed76353-f1c3-4605-a08f-19322ec88ff7",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Quel est le titre du livre que Nina achète ?",
@@ -1405,6 +1478,7 @@ window.registerPack({
           "explanation": "C'est « **Vingt mille lieues sous les mers** », le roman du capitaine Nemo."
         },
         {
+          "id": "8bc118dc-ba67-467c-b2db-3ec1f51e099a",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "À qui le livre appartenait-il avant ?",
@@ -1418,6 +1492,7 @@ window.registerPack({
           "explanation": "« Il appartenait à **Monsieur Marin**, l'ancien maître d'école. »"
         },
         {
+          "id": "71812b1a-ad99-4c14-bf3f-2209465695f4",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Quel était le métier de Monsieur Marin ?",
@@ -1433,6 +1508,7 @@ window.registerPack({
           "explanation": "C'était « l'ancien **maître d'école** »."
         },
         {
+          "id": "dcf036e9-983b-49e9-a80f-4db33f7634d5",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Près de quoi est la petite croix dessinée sur la carte ?",
@@ -1445,6 +1521,7 @@ window.registerPack({
           "explanation": "La carte montre « une petite croix près de la **rivière** »."
         },
         {
+          "id": "08904c69-778b-435f-80ce-dd8530f277df",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Devant quel bâtiment les enfants s'arrêtent-ils, découragés ?",
@@ -1459,6 +1536,7 @@ window.registerPack({
           "explanation": "« Arrivés près du **vieux moulin**, ils s'arrêtèrent, découragés. »"
         },
         {
+          "id": "85d96c5c-00a6-4d5b-b162-20752a0f78d5",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Comment s'appelle l'oiseau perché sur l'épaule de Malo ?",
@@ -1468,6 +1546,7 @@ window.registerPack({
           "explanation": "L'oiseau s'appelle **Gros Bec**."
         },
         {
+          "id": "75bf9e5a-5d7b-4267-aa92-5cc90e581f09",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Quel mot Gros Bec crie-t-il, posé sur la roue du moulin ?",
@@ -1478,6 +1557,7 @@ window.registerPack({
           "explanation": "Il crie « **Mobilis !** », ce qui donne l'idée à Nina."
         },
         {
+          "id": "b3922d1f-544d-4125-8d3e-50b3e6ae9710",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Quelle lettre est gravée sur la pierre du mur ?",
@@ -1489,6 +1569,7 @@ window.registerPack({
           "explanation": "Une pierre « où était gravé un **N** », comme Nemo et Nautilus."
         },
         {
+          "id": "92f40d10-718a-4c32-aebf-cf9e20ce57d3",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Combien de chiffres a le cadenas de la boîte ?",
@@ -1501,6 +1582,7 @@ window.registerPack({
           "explanation": "C'est « un cadenas à **trois** chiffres »."
         },
         {
+          "id": "5ccb8bfc-83ef-47fa-b8ee-0416392e2150",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Quel est le code du cadenas ?",
@@ -1511,6 +1593,7 @@ window.registerPack({
           "explanation": "**70** mètres (la longueur du Nautilus), puis **2** compagnons : **7, 0, 2**."
         },
         {
+          "id": "eb8b653d-cd9d-4f20-9c1c-6d75d73fd886",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Comment s'appellent les deux compagnons d'Aronnax ?",
@@ -1523,6 +1606,7 @@ window.registerPack({
           "explanation": "Nina le dit : « **Conseil** et **Ned Land** »."
         },
         {
+          "id": "e77607ef-e036-4f25-96ec-24c7cea97186",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Dans la boîte, que trouvent-ils à côté des photos et du coquillage ?",
@@ -1535,6 +1619,7 @@ window.registerPack({
           "explanation": "Il y a « de vieilles photos de classe, un petit coquillage et une **lettre** »."
         },
         {
+          "id": "36d47931-5eae-4698-a896-facb3327e3b2",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Quel mot Gros Bec répète-t-il sur le chemin du retour ?",
@@ -1545,6 +1630,7 @@ window.registerPack({
           "explanation": "« **Trésor !** Trésor ! » : pour une fois, il n'avait pas tout à fait tort."
         },
         {
+          "id": "ca222a16-ab53-4709-93ad-ec2385fd9785",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Quel jour de la semaine Nina et Malo vont-ils à la brocante ?",
@@ -1558,6 +1644,7 @@ window.registerPack({
           "explanation": "« Un **dimanche** matin, Nina et Malo se promenaient à la brocante »."
         },
         {
+          "id": "f9b2e20a-bbe0-43e2-8bff-c88a7290a6eb",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "De quelles couleurs est la couverture du livre ?",
@@ -1571,6 +1658,7 @@ window.registerPack({
           "explanation": "Un livre « à la couverture **rouge et dorée** »."
         },
         {
+          "id": "53d2182a-dce9-4b8a-bef6-864bff6071c4",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Le vendeur est « un monsieur à… » quoi ?",
@@ -1582,6 +1670,7 @@ window.registerPack({
           "explanation": "Le vendeur est « un monsieur à **moustache** »."
         },
         {
+          "id": "936ec5b2-a562-462b-90d5-be7989b4ecc6",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Chez qui Monsieur Marin est-il parti vivre ?",
@@ -1594,6 +1683,7 @@ window.registerPack({
           "explanation": "« Il est parti vivre **chez sa fille**, en ville. »"
         },
         {
+          "id": "07643e20-369e-4994-956b-9fe83ce430ad",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Avec quel argent Nina paie-t-elle le livre ?",
@@ -1606,6 +1696,7 @@ window.registerPack({
           "explanation": "« Nina paya avec **ses économies**. »"
         },
         {
+          "id": "cac6c0f9-926b-458c-8e0d-095280ec14c2",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Avec quoi certains mots du livre sont-ils soulignés ?",
@@ -1619,6 +1710,7 @@ window.registerPack({
           "explanation": "Certains mots « étaient soulignés **au crayon** »."
         },
         {
+          "id": "d966a0af-1b43-427a-9030-bab8b0167644",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Sur quelle page du livre la carte est-elle dessinée ?",
@@ -1632,6 +1724,7 @@ window.registerPack({
           "explanation": "« Sur la **dernière page**, quelqu'un avait dessiné une carte du village »."
         },
         {
+          "id": "24618a48-ec9a-497b-98db-c7272035bc30",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "De quel personnage les mots soulignés rappellent-ils la devise ?",
@@ -1643,6 +1736,7 @@ window.registerPack({
           "explanation": "Malo dit : « On dirait la devise du **capitaine Nemo** »."
         },
         {
+          "id": "114ac0b9-5bbf-4da8-9757-aede37305514",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Qu'est-ce qui fait tourner la roue du moulin ?",
@@ -1658,6 +1752,7 @@ window.registerPack({
           "explanation": "La roue « tournait lentement dans le **courant** » : c'est **l'eau** qui la fait tourner."
         },
         {
+          "id": "7501e61c-7aca-4c45-9aad-26e0747e018e",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "En quelle matière est la boîte cachée derrière la pierre ?",
@@ -1669,6 +1764,7 @@ window.registerPack({
           "explanation": "C'est « une boîte en **fer** »."
         },
         {
+          "id": "e6bd085d-94e5-4277-a37b-f4169d55bf7f",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "Qui a écrit la lettre trouvée dans la boîte ?",
@@ -1680,6 +1776,7 @@ window.registerPack({
           "explanation": "La lettre est signée par **Monsieur Marin**, l'ancien maître d'école."
         },
         {
+          "id": "07546961-3e83-4083-a8c1-18eecee7e7bb",
           "type": "question",
           "docId": "m8-secret",
           "prompt": "D'après la lettre, à quoi un livre ressemble-t-il ?",

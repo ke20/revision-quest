@@ -91,6 +91,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "6ce53a76-02fc-4279-b14a-2a006479c3f6",
           "type": "mcq",
           "prompt": "Le périmètre d'une figure, c'est…",
           "options": [
@@ -103,6 +104,7 @@ window.registerPack({
           "explanation": "Le **périmètre** est la longueur du **contour** : on fait tout le tour de la figure."
         },
         {
+          "id": "32d436cc-ec88-4974-bc2b-514a80e5745a",
           "type": "mcq",
           "prompt": "Que montre le trait épais ?",
           "figure": {
@@ -172,6 +174,7 @@ window.registerPack({
           "explanation": "Le trait épais fait **tout le tour** de la figure : c'est son **périmètre**."
         },
         {
+          "id": "20b1f91a-f412-4d5c-82c6-83766d576714",
           "type": "mcq",
           "prompt": "Le trait épais montre-t-il le périmètre ?",
           "figure": {
@@ -238,6 +241,7 @@ window.registerPack({
           "explanation": "Le périmètre fait **tout le tour**. Ici, un **seul côté** est en épais."
         },
         {
+          "id": "f42a58cc-6a2f-4594-918f-78d30ec14715",
           "type": "mcq",
           "prompt": "Avec quelle unité peut-on donner un périmètre ?",
           "options": [
@@ -250,6 +254,7 @@ window.registerPack({
           "explanation": "Un périmètre est une **longueur**. Il se mesure en :\n- mm\n- cm\n- m\n- km"
         },
         {
+          "id": "f60ed238-0def-4a91-a1f9-3f00de4452f8",
           "type": "sort",
           "prompt": "Périmètre (le tour) ou aire (l'intérieur) ?",
           "categories": [
@@ -291,6 +296,7 @@ window.registerPack({
           "explanation": "Ce qui fait **le tour** est un **périmètre** ; ce qui **couvre** l'intérieur est une **aire**."
         },
         {
+          "id": "4d7e2218-faf2-47c0-a04b-71df077c0020",
           "type": "match",
           "prompt": "Relie chaque mot à son sens.",
           "pairs": [
@@ -314,6 +320,7 @@ window.registerPack({
           "explanation": "Le **périmètre** est un tour, l'**aire** une surface. Un **polygone** a des **côtés** droits."
         },
         {
+          "id": "735a264a-a621-4516-b45a-7022a22e0704",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Le périmètre est la longueur du ___ d'une figure.",
@@ -325,6 +332,7 @@ window.registerPack({
           "hint": "On en fait le tour."
         },
         {
+          "id": "5b7c5310-ea96-4e28-a51a-662fff1f36ba",
           "type": "spot",
           "prompt": "Touche l'erreur.",
           "tokens": [
@@ -345,6 +353,7 @@ window.registerPack({
           "explanation": "Le périmètre est la **longueur** du contour, pas une surface."
         },
         {
+          "id": "b92388e4-acad-4fce-b995-047871faf5a3",
           "type": "mcq",
           "prompt": "Une fourmi fait exactement une fois le tour d'un carré. Quelle distance a-t-elle parcourue ?",
           "options": [
@@ -436,6 +445,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "9fc51c6a-32a0-40be-89fa-473cfdd6c8a8",
           "type": "question",
           "prompt": "Calcule le périmètre de cette figure.",
           "figure": {
@@ -505,6 +515,7 @@ window.registerPack({
           "hint": "Additionne les quatre longueurs."
         },
         {
+          "id": "564af7ea-1e3d-4dfa-9302-c0c9c237ee6c",
           "type": "mcq",
           "prompt": "Quel est le périmètre de ce triangle ?",
           "figure": {
@@ -562,6 +573,7 @@ window.registerPack({
           "explanation": "6 + 5 + 4 = **15 cm**. On **additionne** les côtés, on ne les multiplie pas."
         },
         {
+          "id": "24cfe7d2-9a03-4721-ac49-e02f0b490251",
           "type": "fill",
           "prompt": "Complète le calcul du périmètre.",
           "figure": {
@@ -631,6 +643,7 @@ window.registerPack({
           "explanation": "7 + 4 + 6 + 3 = **20 cm**."
         },
         {
+          "id": "bd348efa-7423-449a-b925-e96e5100a953",
           "type": "order",
           "prompt": "Remets les étapes dans l'ordre.",
           "words": [
@@ -643,6 +656,7 @@ window.registerPack({
           "explanation": "Les étapes :\n- on repère les côtés\n- on vérifie l'unité\n- on **additionne**\n- puis on écrit l'**unité**"
         },
         {
+          "id": "d4263925-3ec2-401c-86d3-0294a829b585",
           "type": "mcq",
           "prompt": "Quel est le périmètre de ce pentagone ?",
           "figure": {
@@ -725,6 +739,7 @@ window.registerPack({
           "hint": "Compte bien 5 longueurs."
         },
         {
+          "id": "66d64565-5229-4dc6-8e74-48981e141984",
           "type": "match",
           "prompt": "Relie chaque polygone à son périmètre.",
           "pairs": [
@@ -748,6 +763,7 @@ window.registerPack({
           "explanation": "On additionne tous les côtés :\n- 2 + 2 + 3 = 7\n- 6 + 4 + 6 + 4 = 20\n- 3 + 4 + 5 = 12\n- 1 + 2 + 3 + 4 + 5 = 15"
         },
         {
+          "id": "f4326ccf-f094-47ba-a2f9-7456efda621e",
           "type": "spot",
           "prompt": "Touche l'erreur.",
           "tokens": [
@@ -776,6 +792,7 @@ window.registerPack({
           "explanation": "4 + 5 + 6 = **15 cm**. 120 vient d'une multiplication : pour un périmètre, on **additionne**."
         },
         {
+          "id": "b7d51831-3006-4e75-bf81-68bdd8a257ce",
           "type": "question",
           "prompt": "Un triangle a des côtés de 7 cm, 9 cm et 12 cm. Quel est son périmètre ?",
           "answers": [
@@ -788,6 +805,7 @@ window.registerPack({
           "hint": "Additionne les trois côtés."
         },
         {
+          "id": "200bc03c-b892-42b3-acfa-08931bba9dd9",
           "type": "mcq",
           "prompt": "Combien de longueurs additionne-t-on pour le périmètre d'un hexagone ?",
           "options": [
@@ -800,6 +818,7 @@ window.registerPack({
           "explanation": "Un **hexagone** a **6** côtés : on additionne 6 longueurs."
         },
         {
+          "id": "1239fff7-d476-4cdb-adb9-37250408446b",
           "type": "question",
           "prompt": "Calcule le périmètre de ce champ.",
           "figure": {
@@ -937,6 +956,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "0d567ac3-0a98-46df-a438-d4726a0c0747",
           "type": "mcq",
           "prompt": "Les côtés d'un triangle mesurent 1 m, 80 cm et 60 cm. Que fais-tu d'abord ?",
           "options": [
@@ -949,6 +969,7 @@ window.registerPack({
           "explanation": "On ne mélange pas les unités : **on convertit d'abord** (1 m = 100 cm)."
         },
         {
+          "id": "abf19804-2acb-444e-aff8-6634815d437f",
           "type": "mcq",
           "prompt": "Quel est le périmètre de ce triangle ?",
           "figure": {
@@ -1006,6 +1027,7 @@ window.registerPack({
           "explanation": "1 m = 100 cm, donc 100 + 80 + 60 = **240 cm**. 141 vient d'un oubli de conversion."
         },
         {
+          "id": "bb4bcaf2-bd69-4cd8-9fa9-f7ffd0f8549b",
           "type": "match",
           "prompt": "Relie les longueurs égales.",
           "pairs": [
@@ -1033,6 +1055,7 @@ window.registerPack({
           "explanation": "Les longueurs égales :\n- 1 m = **100 cm**\n- 1 km = **1 000 m**\n- 1 cm = **10 mm**"
         },
         {
+          "id": "1d8580df-a670-40c2-87c5-42f54b3a2430",
           "type": "sort",
           "prompt": "Faut-il convertir avant d'additionner ?",
           "categories": [
@@ -1074,6 +1097,7 @@ window.registerPack({
           "explanation": "Dès que deux unités sont différentes, on **convertit** avant d'additionner."
         },
         {
+          "id": "d2fe9b3a-1e46-47ac-9e65-30cc9d90b645",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Un rectangle a des côtés de 2 m, 75 cm, 2 m et 75 cm : 200 + 75 + 200 + 75 = ___ cm.",
@@ -1086,6 +1110,7 @@ window.registerPack({
           "explanation": "2 m = 200 cm, donc 200 + 75 + 200 + 75 = **550 cm**."
         },
         {
+          "id": "7409cf0b-f152-4dd8-8057-c6be124a06fe",
           "type": "question",
           "prompt": "Calcule le périmètre de ce champ en mètres.",
           "figure": {
@@ -1155,6 +1180,7 @@ window.registerPack({
           "hint": "1 km = 1 000 m."
         },
         {
+          "id": "16f8c3dc-2091-4a3f-ace3-b5c011fd5632",
           "type": "spot",
           "prompt": "Touche l'erreur.",
           "tokens": [
@@ -1172,6 +1198,7 @@ window.registerPack({
           "explanation": "2 m = 200 cm, donc 2 m + 50 cm = **250 cm**. On n'additionne pas 2 et 50 directement."
         },
         {
+          "id": "576db625-f957-4430-a8ff-4d4e855b7710",
           "type": "question",
           "prompt": "Un triangle a des côtés de 1 km, 700 m et 900 m. Quel est son périmètre en mètres ?",
           "answers": [
@@ -1184,6 +1211,7 @@ window.registerPack({
           "hint": "Convertis 1 km en mètres."
         },
         {
+          "id": "0cdd95f4-3824-4e6b-8858-aefb07d89958",
           "type": "mcq",
           "prompt": "Un parcours a trois côtés : 400 m, 1 km et 600 m. Quel est son périmètre ?",
           "options": [
@@ -1196,6 +1224,7 @@ window.registerPack({
           "explanation": "400 + 1 000 + 600 = 2 000 m = **2 km**."
         },
         {
+          "id": "44a5efba-b1f0-41b7-a1a7-896b22dbf55a",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Un côté de 1 m 20 cm mesure ___ cm.",
@@ -1455,6 +1484,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "bec7318f-8750-41cd-9a01-c25202290679",
           "type": "mcq",
           "prompt": "Quel est le périmètre de ce carré ?",
           "figure": {
@@ -1577,6 +1607,7 @@ window.registerPack({
           "explanation": "4 côtés de 6 cm : 4 × 6 = **24 cm**."
         },
         {
+          "id": "fbda095b-2473-4120-9fc7-335a1ed1bbef",
           "type": "mcq",
           "prompt": "Que veulent dire les petits traits rouges sur les côtés ?",
           "figure": {
@@ -1594,7 +1625,7 @@ window.registerPack({
                 "hidden"
               ],
               "p3": [
-                8.0,
+                8,
                 3.9,
                 "hidden"
               ],
@@ -1609,7 +1640,7 @@ window.registerPack({
                 "hidden"
               ],
               "p6": [
-                2.0,
+                2,
                 3.9,
                 "hidden"
               ]
@@ -1707,6 +1738,7 @@ window.registerPack({
           "explanation": "Le **codage** (mêmes petits traits) montre des côtés de **même longueur**."
         },
         {
+          "id": "9e1125c0-840e-43a8-a581-3f4a84d93c7b",
           "type": "question",
           "prompt": "Le Pentagone, à Washington, a la forme d'un pentagone régulier. Calcule son périmètre.",
           "figure": {
@@ -1729,7 +1761,7 @@ window.registerPack({
                 "e"
               ],
               "A": [
-                5.0,
+                5,
                 1.1,
                 "n"
               ],
@@ -1819,6 +1851,7 @@ window.registerPack({
           "hint": "Un pentagone a 5 côtés."
         },
         {
+          "id": "a1853260-7f1e-46a0-92de-ceba2c8a795c",
           "type": "match",
           "prompt": "Relie chaque figure au calcul de son périmètre.",
           "pairs": [
@@ -1846,6 +1879,7 @@ window.registerPack({
           "explanation": "On multiplie par le **nombre de côtés** égaux. Le rectangle a 2 longueurs et 2 largeurs."
         },
         {
+          "id": "d0143d4e-f0aa-41f3-896e-c4c532c22172",
           "type": "mcq",
           "prompt": "Quel est le périmètre de ce rectangle ?",
           "figure": {
@@ -1969,6 +2003,7 @@ window.registerPack({
           "explanation": "2 × (7 + 4) = 2 × 11 = **22 cm**. 11 cm n'est que la moitié du tour, 28 est un produit (7 × 4)."
         },
         {
+          "id": "fa5230f8-6172-473a-820b-d095bf982ec0",
           "type": "fill",
           "prompt": "Complète le calcul.",
           "figure": {
@@ -1981,12 +2016,12 @@ window.registerPack({
                 "hidden"
               ],
               "p2": [
-                8.0,
+                8,
                 6.6,
                 "hidden"
               ],
               "p3": [
-                5.0,
+                5,
                 1.4,
                 "hidden"
               ]
@@ -2045,6 +2080,7 @@ window.registerPack({
           "explanation": "3 côtés de 5 cm : 3 × 5 = **15 cm**."
         },
         {
+          "id": "85af119b-12bd-40a3-869e-61861ddeb797",
           "type": "question",
           "prompt": "Quel est le périmètre de cet hexagone régulier ?",
           "figure": {
@@ -2062,7 +2098,7 @@ window.registerPack({
                 "hidden"
               ],
               "p3": [
-                8.0,
+                8,
                 3.9,
                 "hidden"
               ],
@@ -2077,7 +2113,7 @@ window.registerPack({
                 "hidden"
               ],
               "p6": [
-                2.0,
+                2,
                 3.9,
                 "hidden"
               ]
@@ -2175,6 +2211,7 @@ window.registerPack({
           "hint": "Un hexagone a 6 côtés."
         },
         {
+          "id": "a7037a0a-c26c-4fa7-a584-d6999d5a5997",
           "type": "spot",
           "prompt": "Touche l'erreur.",
           "tokens": [
@@ -2193,6 +2230,7 @@ window.registerPack({
           "explanation": "Un carré a **4** côtés de même longueur : son périmètre est 4 × côté."
         },
         {
+          "id": "c71d126c-c10f-4c34-b8d4-a7ee501a2474",
           "type": "question",
           "prompt": "Un rectangle mesure 12 m de long et 8 m de large. Quel est son périmètre ?",
           "answers": [
@@ -2299,6 +2337,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "645ecbf1-aa7a-4a3e-a314-df9ba5d58cd8",
           "type": "question",
           "prompt": "Le périmètre de ce terrain est 247 m. Combien mesure le côté [AB] ?",
           "figure": {
@@ -2380,6 +2419,7 @@ window.registerPack({
           "hint": "Additionne d'abord les quatre côtés connus."
         },
         {
+          "id": "47d109bb-e76a-489a-bac9-d7f99c420164",
           "type": "order",
           "prompt": "Remets les étapes dans l'ordre pour trouver AB.",
           "words": [
@@ -2392,6 +2432,7 @@ window.registerPack({
           "explanation": "On additionne les côtés connus, puis on **soustrait** du périmètre."
         },
         {
+          "id": "29b7e94f-e848-4c19-9b38-15293e176970",
           "type": "mcq",
           "prompt": "Un carré a un périmètre de 36 cm. Combien mesure un côté ?",
           "options": [
@@ -2404,6 +2445,7 @@ window.registerPack({
           "explanation": "4 côtés égaux : 36 ÷ 4 = **9 cm**. 144 = 36 × 4 : c'est l'inverse."
         },
         {
+          "id": "d137f8fe-e33f-42bf-a5fd-0c32ccfb4f93",
           "type": "fill",
           "prompt": "Le périmètre du triangle est 20 cm. Complète.",
           "figure": {
@@ -2421,7 +2463,7 @@ window.registerPack({
                 "hidden"
               ],
               "p3": [
-                5.0,
+                5,
                 2.72,
                 "hidden"
               ]
@@ -2462,6 +2504,7 @@ window.registerPack({
           "hint": "20 − (8 + 6)"
         },
         {
+          "id": "1e287f3b-cd12-4162-aba0-747c3c437739",
           "type": "mcq",
           "prompt": "Le périmètre de ce rectangle est 30 cm. Combien mesure sa largeur ?",
           "figure": {
@@ -2474,12 +2517,12 @@ window.registerPack({
                 "hidden"
               ],
               "p2": [
-                9.0,
+                9,
                 1.2,
                 "hidden"
               ],
               "p3": [
-                9.0,
+                9,
                 6.2,
                 "hidden"
               ],
@@ -2586,6 +2629,7 @@ window.registerPack({
           "hint": "Une longueur et une largeur font la moitié du tour."
         },
         {
+          "id": "345944bb-efa3-41c9-959a-a3981cda13f0",
           "type": "question",
           "prompt": "Un carré a un périmètre de 48 m. Combien mesure son côté ?",
           "answers": [
@@ -2598,6 +2642,7 @@ window.registerPack({
           "hint": "Un carré a 4 côtés égaux."
         },
         {
+          "id": "e076f4d5-9108-43d6-a19c-eda0b3cca925",
           "type": "spot",
           "prompt": "Touche l'erreur.",
           "tokens": [
@@ -2628,6 +2673,7 @@ window.registerPack({
           "explanation": "On **soustrait** : 50 − 30 = **20 cm** (et non 50 + 30)."
         },
         {
+          "id": "e5db8ba8-91e5-426d-99eb-b5bc91bc2c55",
           "type": "match",
           "prompt": "Relie le périmètre de chaque carré à la longueur de son côté.",
           "pairs": [
@@ -2651,6 +2697,7 @@ window.registerPack({
           "explanation": "Côté d'un carré = périmètre **÷ 4**."
         },
         {
+          "id": "1caa34ea-d78c-4a71-ac6b-16893fbe714f",
           "type": "question",
           "prompt": "Un triangle équilatéral a un périmètre de 27 cm. Combien mesure un côté ?",
           "answers": [
@@ -2663,6 +2710,7 @@ window.registerPack({
           "hint": "Divise par le nombre de côtés."
         },
         {
+          "id": "0764f585-ca16-452d-bdd9-01f26382396d",
           "type": "question",
           "prompt": "Un rectangle a un périmètre de 26 m et une largeur de 5 m. Quelle est sa longueur ?",
           "answers": [
@@ -2809,6 +2857,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "5e432832-c6f2-4e81-bd92-bf82c564df22",
           "type": "question",
           "prompt": "Quelle longueur de clôture faut-il pour faire le tour de ce jardin ?",
           "figure": {
@@ -2932,6 +2981,7 @@ window.registerPack({
           "hint": "C'est le périmètre du rectangle."
         },
         {
+          "id": "88db3239-b8d9-4fa4-a7f3-073372b6265b",
           "type": "mcq",
           "prompt": "Ce jardin de 15 m sur 10 m a un portail de 3 m sans grillage. Quelle longueur de grillage faut-il ?",
           "options": [
@@ -2944,6 +2994,7 @@ window.registerPack({
           "explanation": "Le tour fait 50 m ; on enlève le portail : 50 − 3 = **47 m**."
         },
         {
+          "id": "d5f2acd7-3512-4a03-aa88-f16a6aff1231",
           "type": "question",
           "prompt": "Une piste mesure 400 m. Lina fait 5 tours. Quelle distance parcourt-elle ?",
           "answers": [
@@ -2956,6 +3007,7 @@ window.registerPack({
           "hint": "Un tour = 400 m."
         },
         {
+          "id": "94055181-9a4b-476a-b5a6-8dd7117bc6cc",
           "type": "mcq",
           "prompt": "On colle un ruban tout autour d'un cadre carré de 25 cm de côté. Quelle longueur de ruban faut-il ?",
           "options": [
@@ -2968,6 +3020,7 @@ window.registerPack({
           "explanation": "4 × 25 = **100 cm**. 625 = 25 × 25, c'est l'aire."
         },
         {
+          "id": "2be06695-8044-4454-a221-ad10bf7c3593",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Pour faire le tour d'un cadre de 30 cm sur 20 cm, il faut ___ cm de ruban.",
@@ -2980,6 +3033,7 @@ window.registerPack({
           "explanation": "2 × (30 + 20) = 2 × 50 = **100 cm**."
         },
         {
+          "id": "c6b769b0-c83b-4f6c-93c9-58551e16ac50",
           "type": "question",
           "prompt": "Léa a 2 m de ruban. Elle fait le tour d'un cadre carré de 40 cm de côté. Combien de cm de ruban lui reste-t-il ?",
           "answers": [
@@ -2992,6 +3046,7 @@ window.registerPack({
           "hint": "Convertis 2 m en cm."
         },
         {
+          "id": "03908133-2e51-41df-a5a8-e11c411b176a",
           "type": "mcq",
           "prompt": "Un champ rectangulaire mesure 120 m sur 80 m. Tom en fait 2 fois le tour. Quelle distance parcourt-il ?",
           "options": [
@@ -3004,6 +3059,7 @@ window.registerPack({
           "explanation": "Un tour : 2 × (120 + 80) = 400 m. Deux tours : 2 × 400 = **800 m**."
         },
         {
+          "id": "93327146-4677-49fd-8017-8a4dcf8eef01",
           "type": "question",
           "prompt": "Voici le parcours d'un cross. Jade en fait 3 tours. Combien de mètres parcourt-elle ?",
           "figure": {
@@ -3085,6 +3141,7 @@ window.registerPack({
           "hint": "Calcule d'abord un tour."
         },
         {
+          "id": "f4fff914-ebe9-4857-a064-7eccf9e61f2a",
           "type": "order",
           "prompt": "Range ces enclos du plus petit périmètre au plus grand.",
           "words": [
@@ -3097,6 +3154,7 @@ window.registerPack({
           "explanation": "Périmètres :\n- 4 × 5 = 20 m\n- 2 × (8 + 3) = 22 m\n- 9 + 7 + 8 = 24 m\n- 4 × 7 = 28 m"
         },
         {
+          "id": "fcf7ce05-731e-4fde-ad98-022bdd21e49f",
           "type": "question",
           "prompt": "Un jardin carré a 9 m de côté. Le grillage coûte 5 € le mètre. Combien coûte le grillage pour en faire le tour ?",
           "answers": [
@@ -3125,6 +3183,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "a210c327-6bda-4fa6-9204-4064d553410a",
           "type": "question",
           "prompt": "Calcule le périmètre de cette figure.",
           "figure": {
@@ -3193,6 +3252,7 @@ window.registerPack({
           "explanation": "8 + 2 + 3 + 5 = **18 cm**."
         },
         {
+          "id": "0f2466d7-7fa0-42ba-a2cc-51f7567f00f9",
           "type": "question",
           "prompt": "Calcule le périmètre de ce quadrilatère.",
           "figure": {
@@ -3261,6 +3321,7 @@ window.registerPack({
           "explanation": "9 + 5 + 6 + 4 = **24 cm**."
         },
         {
+          "id": "9fb181a3-405f-47b6-b9fc-51019dffa7fa",
           "type": "question",
           "prompt": "Comment appelle-t-on la longueur du contour d'une figure ?",
           "answers": [
@@ -3271,6 +3332,7 @@ window.registerPack({
           "explanation": "La longueur du contour est le **périmètre**."
         },
         {
+          "id": "ec03faee-f0b2-417c-b093-16b278919770",
           "type": "question",
           "prompt": "Un carré a des côtés de 8 cm. Quel est son périmètre ?",
           "answers": [
@@ -3282,6 +3344,7 @@ window.registerPack({
           "explanation": "4 × 8 = **32 cm**."
         },
         {
+          "id": "e0f6f869-3de0-4169-bf66-6cadae691c7b",
           "type": "question",
           "prompt": "Un rectangle mesure 9 cm de long et 6 cm de large. Quel est son périmètre ?",
           "answers": [
@@ -3293,6 +3356,7 @@ window.registerPack({
           "explanation": "2 × (9 + 6) = **30 cm**."
         },
         {
+          "id": "7aa5f8c3-ea39-4fe2-9f88-cc211d4df172",
           "type": "question",
           "prompt": "Le Pentagone est un pentagone régulier. Calcule son périmètre.",
           "figure": {
@@ -3315,7 +3379,7 @@ window.registerPack({
                 "e"
               ],
               "A": [
-                5.0,
+                5,
                 1.1,
                 "n"
               ],
@@ -3404,6 +3468,7 @@ window.registerPack({
           "explanation": "5 × 281 = **1 405 m**."
         },
         {
+          "id": "231afbd8-9388-403c-9556-5783353b35e1",
           "type": "question",
           "prompt": "Le périmètre de ce terrain est 247 m. Combien mesure le côté [AB] ?",
           "figure": {
@@ -3484,6 +3549,7 @@ window.registerPack({
           "explanation": "30 + 55 + 70 + 25 = 180 ; 247 − 180 = **67 m**."
         },
         {
+          "id": "0564a44b-18c4-4595-90b0-91df8ddcd469",
           "type": "question",
           "prompt": "Un hexagone régulier a des côtés de 5 cm. Quel est son périmètre ?",
           "answers": [
@@ -3495,6 +3561,7 @@ window.registerPack({
           "explanation": "6 × 5 = **30 cm**."
         },
         {
+          "id": "3ab3106a-5a02-4157-ac8b-e74586317546",
           "type": "question",
           "prompt": "Un triangle équilatéral a des côtés de 11 cm. Quel est son périmètre ?",
           "answers": [
@@ -3506,6 +3573,7 @@ window.registerPack({
           "explanation": "3 × 11 = **33 cm**."
         },
         {
+          "id": "e4966109-dcda-4a98-b06c-2b588009032a",
           "type": "question",
           "prompt": "Un triangle a des côtés de 1 m, 70 cm et 50 cm. Quel est son périmètre en centimètres ?",
           "answers": [
@@ -3517,6 +3585,7 @@ window.registerPack({
           "explanation": "1 m = 100 cm : 100 + 70 + 50 = **220 cm**."
         },
         {
+          "id": "5f6ce090-092d-48cc-8757-1fb0bda22cff",
           "type": "question",
           "prompt": "Un champ a des côtés de 2 km, 600 m, 1 km et 900 m. Quel est son périmètre en mètres ?",
           "answers": [
@@ -3528,6 +3597,7 @@ window.registerPack({
           "explanation": "2 000 + 600 + 1 000 + 900 = **4 500 m**."
         },
         {
+          "id": "ce051c3e-eb41-4b5a-bc29-4c3ebab98434",
           "type": "question",
           "prompt": "Un carré a un périmètre de 60 cm. Combien mesure son côté ?",
           "answers": [
@@ -3539,6 +3609,7 @@ window.registerPack({
           "explanation": "60 ÷ 4 = **15 cm**."
         },
         {
+          "id": "47dfc871-9c32-487f-876b-c451c33e43fb",
           "type": "question",
           "prompt": "Un rectangle a un périmètre de 40 m et une longueur de 12 m. Quelle est sa largeur ?",
           "answers": [
@@ -3550,6 +3621,7 @@ window.registerPack({
           "explanation": "40 ÷ 2 = 20, puis 20 − 12 = **8 m**."
         },
         {
+          "id": "f152db4c-c6a5-4794-9372-4872ff580446",
           "type": "question",
           "prompt": "Un triangle a un périmètre de 30 cm. Deux côtés mesurent 9 cm et 13 cm. Combien mesure le troisième ?",
           "answers": [
@@ -3561,6 +3633,7 @@ window.registerPack({
           "explanation": "9 + 13 = 22, puis 30 − 22 = **8 cm**."
         },
         {
+          "id": "cbcf35a1-b5e5-4a63-81f6-f2a064232616",
           "type": "question",
           "prompt": "Une piste mesure 250 m. Hugo en fait 4 fois le tour. Quelle distance parcourt-il en mètres ?",
           "answers": [
@@ -3572,6 +3645,7 @@ window.registerPack({
           "explanation": "4 × 250 = **1 000 m**."
         },
         {
+          "id": "c37d9aef-a802-4567-b25a-8ac2445f3f14",
           "type": "question",
           "prompt": "Un jardin rectangulaire mesure 20 m sur 12 m. Quelle longueur de clôture faut-il pour en faire le tour ?",
           "answers": [
@@ -3583,6 +3657,7 @@ window.registerPack({
           "explanation": "2 × (20 + 12) = 2 × 32 = **64 m**."
         },
         {
+          "id": "4295d5da-9d64-4285-86d6-82fc7db7de40",
           "type": "question",
           "prompt": "Combien de centimètres de ruban faut-il pour faire le tour d'un cadre de 35 cm sur 25 cm ?",
           "answers": [
@@ -3594,6 +3669,7 @@ window.registerPack({
           "explanation": "2 × (35 + 25) = 2 × 60 = **120 cm**."
         },
         {
+          "id": "7bba0f40-77cf-4d7d-8f88-bfd6e02efad1",
           "type": "question",
           "prompt": "Combien de longueurs additionne-t-on pour calculer le périmètre d'un pentagone ?",
           "answers": [
@@ -3603,6 +3679,7 @@ window.registerPack({
           "explanation": "Un pentagone a **5** côtés."
         },
         {
+          "id": "8fb5f488-8d16-422c-a606-20bac7cbed26",
           "type": "question",
           "prompt": "Un octogone régulier a 8 côtés de 3 cm. Quel est son périmètre ?",
           "answers": [
@@ -3614,6 +3691,7 @@ window.registerPack({
           "explanation": "8 × 3 = **24 cm**."
         },
         {
+          "id": "3da48ed7-f479-43e0-aa2b-5d8fc809d8de",
           "type": "question",
           "prompt": "Le périmètre de ce rectangle est 34 cm. Combien mesure sa largeur ?",
           "figure": {
@@ -3736,6 +3814,7 @@ window.registerPack({
           "explanation": "34 ÷ 2 = 17, puis 17 − 11 = **6 cm**."
         },
         {
+          "id": "506e9629-294f-4d2a-a861-ca37d64ff17d",
           "type": "question",
           "prompt": "Quel est le périmètre de ce carré ?",
           "figure": {
@@ -3857,6 +3936,7 @@ window.registerPack({
           "explanation": "4 × 9 = **36 m**."
         },
         {
+          "id": "40899737-0bee-4a96-ac46-1e734a4afdd7",
           "type": "question",
           "prompt": "Un triangle a des côtés de 45 mm, 3 cm et 5 cm. Quel est son périmètre en millimètres ?",
           "answers": [
@@ -3868,6 +3948,7 @@ window.registerPack({
           "explanation": "3 cm = 30 mm et 5 cm = 50 mm : 45 + 30 + 50 = **125 mm**."
         },
         {
+          "id": "23adb6af-43dd-4820-9285-9f043940aa4e",
           "type": "question",
           "prompt": "Une fourmi fait 2 fois le tour d'un rectangle de 6 cm sur 4 cm. Quelle distance parcourt-elle ?",
           "answers": [
@@ -3879,6 +3960,7 @@ window.registerPack({
           "explanation": "Un tour : 2 × (6 + 4) = 20 cm. Deux tours : **40 cm**."
         },
         {
+          "id": "144b9258-e86c-441b-9dce-70a654ae51a0",
           "type": "question",
           "prompt": "Zoé a 3 m de ruban. Elle fait le tour d'un cadre carré de 50 cm de côté. Combien de cm de ruban lui reste-t-il ?",
           "answers": [
@@ -3890,6 +3972,7 @@ window.registerPack({
           "explanation": "4 × 50 = 200 cm ; 3 m = 300 cm ; 300 − 200 = **100 cm**."
         },
         {
+          "id": "ff0a10dd-1de2-4990-b3de-219194a2652d",
           "type": "question",
           "prompt": "Un jardin carré a 12 m de côté. On laisse 2 m pour le portail. Quelle longueur de grillage faut-il ?",
           "answers": [
@@ -3901,6 +3984,7 @@ window.registerPack({
           "explanation": "4 × 12 = 48 m, puis 48 − 2 = **46 m**."
         },
         {
+          "id": "9c4f3d30-46e9-4639-a78f-51d7d3eed8c0",
           "type": "question",
           "prompt": "Un pentagone régulier a un périmètre de 35 cm. Combien mesure un côté ?",
           "answers": [
@@ -3912,6 +3996,7 @@ window.registerPack({
           "explanation": "35 ÷ 5 = **7 cm**."
         },
         {
+          "id": "907447cc-7feb-4fb3-aae6-f417545c10a0",
           "type": "question",
           "prompt": "Quel est le périmètre de ce triangle équilatéral ?",
           "figure": {
@@ -3924,12 +4009,12 @@ window.registerPack({
                 "hidden"
               ],
               "p2": [
-                8.0,
+                8,
                 6.6,
                 "hidden"
               ],
               "p3": [
-                5.0,
+                5,
                 1.4,
                 "hidden"
               ]
@@ -3987,6 +4072,7 @@ window.registerPack({
           "explanation": "3 × 12 = **36 m**."
         },
         {
+          "id": "216a12cd-251d-4dd1-b0ff-7eb6f1cea36f",
           "type": "question",
           "prompt": "Un champ rectangulaire mesure 1 km sur 500 m. Quel est son périmètre en mètres ?",
           "answers": [
@@ -3998,6 +4084,7 @@ window.registerPack({
           "explanation": "1 km = 1 000 m : 2 × (1 000 + 500) = **3 000 m**."
         },
         {
+          "id": "a219bd43-b472-4442-ab4d-4ee34c6d5907",
           "type": "question",
           "prompt": "Le périmètre est-il une longueur ou une surface ?",
           "answers": [

@@ -151,6 +151,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "71e02936-d30d-46df-a4ab-2350314f307c",
           "type": "mcq",
           "prompt": "Comment s'appelle ce tracé ?",
           "figure": {
@@ -188,6 +189,7 @@ window.registerPack({
           "explanation": "Le trait **s'arrête** en A et en B : c'est le **segment [AB]**."
         },
         {
+          "id": "d62f0367-a516-4f66-a700-a1d4497dfae3",
           "type": "mcq",
           "prompt": "Ce trait continue jusqu'au bord des deux côtés. Comment s'appelle-t-il ?",
           "figure": {
@@ -225,6 +227,7 @@ window.registerPack({
           "explanation": "Il ne s'arrête jamais, ni d'un côté ni de l'autre : c'est la **droite (AB)**."
         },
         {
+          "id": "094b4a28-2724-4fee-bbc0-1cfeb913814d",
           "type": "mcq",
           "prompt": "Ce trait commence en A et ne s'arrête pas après B. Comment s'appelle-t-il ?",
           "figure": {
@@ -262,6 +265,7 @@ window.registerPack({
           "explanation": "Il a un début (A) mais pas de fin : c'est la **demi-droite [AB)**, d'origine A."
         },
         {
+          "id": "d20c62d9-8dca-4009-a18a-20877885c6ab",
           "type": "mcq",
           "prompt": "Que représente le point M ?",
           "figure": {
@@ -319,6 +323,7 @@ window.registerPack({
           "hint": "Regarde les petits traits rouges : ils sont pareils des deux côtés de M."
         },
         {
+          "id": "15e404cf-69b3-4aec-a7b6-351d053a3f9b",
           "type": "mcq",
           "prompt": "Que montre ce dessin ?",
           "figure": {
@@ -374,6 +379,7 @@ window.registerPack({
           "explanation": "Deux traits partent du même point A : ils forment un **angle**. On le note Â."
         },
         {
+          "id": "b8ecc0ea-372a-4ede-8759-20927696f275",
           "type": "mcq",
           "prompt": "Comment sont les points F, G, H et I ?",
           "figure": {
@@ -431,6 +437,7 @@ window.registerPack({
           "explanation": "Ils sont tous sur le même trait droit : ils sont **alignés**."
         },
         {
+          "id": "384c65c7-54ac-46d1-bb08-4f8a7789055e",
           "type": "match",
           "prompt": "Relie chaque mot à sa description.",
           "pairs": [
@@ -454,6 +461,7 @@ window.registerPack({
           "explanation": "Le nombre de bouts :\n- le **segment** en a deux\n- la **demi-droite** un seul\n- la **droite** aucun"
         },
         {
+          "id": "c2e85884-84f6-4931-9eb2-eb6b860389ab",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Le milieu d'un segment le partage en deux parties de même ___.",
@@ -486,6 +494,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "65085d79-c833-424c-ab39-a64ff496a0d0",
           "type": "mcq",
           "prompt": "Comment écrit-on « la droite qui passe par A et B » ?",
           "options": [
@@ -498,6 +507,7 @@ window.registerPack({
           "explanation": "Les **parenthèses** des deux côtés : la droite continue des deux côtés. On écrit **(AB)**."
         },
         {
+          "id": "2ad5cedd-a2d4-464f-97ba-29e24987a217",
           "type": "mcq",
           "prompt": "Que veut dire [AB) ?",
           "options": [
@@ -510,6 +520,7 @@ window.registerPack({
           "explanation": "Le crochet est du côté de **A** : la demi-droite commence en A, passe par B et continue."
         },
         {
+          "id": "b5132998-75a0-4aac-b429-a3009e0e055e",
           "type": "mcq",
           "prompt": "Quelle écriture est juste ?",
           "figure": {
@@ -568,6 +579,7 @@ window.registerPack({
           "explanation": "A est sur la droite : **A ∈ (d)**. B et D ne sont pas dessus (∉), C est dessus (∈)."
         },
         {
+          "id": "dcc3c82c-537f-410f-8f08-872eee237313",
           "type": "sort",
           "prompt": "Range chaque point : sur la droite (d) ou pas ?",
           "figure": {
@@ -647,6 +659,7 @@ window.registerPack({
           "explanation": "A et C **appartiennent** à (d) :\n- A ∈ (d)\n- C ∈ (d)\nB et D **n'appartiennent pas** à (d)."
         },
         {
+          "id": "103005fd-a208-4828-add8-aafbe03e056f",
           "type": "spot",
           "prompt": "Touche l'écriture fausse.",
           "tokens": [
@@ -665,6 +678,7 @@ window.registerPack({
           "explanation": "Une droite s'écrit avec des **parenthèses** : la droite **(AB)**. [AB] est un segment."
         },
         {
+          "id": "2938be4a-1fd6-4385-b2bc-8e71707f6491",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "AB = 5 cm veut dire que le segment [AB] mesure 5 ___.",
@@ -676,6 +690,7 @@ window.registerPack({
           "explanation": "**AB** (sans crochet) est la **longueur** du segment [AB] : 5 **cm**."
         },
         {
+          "id": "fcb15e7d-9557-4777-94f4-2687dc428c33",
           "type": "mcq",
           "prompt": "Quelle est l'origine de la demi-droite (AB] ?",
           "options": [
@@ -689,6 +704,7 @@ window.registerPack({
           "hint": "Le crochet montre où le trait commence."
         },
         {
+          "id": "7965be66-ab34-4a24-992d-537f56b00535",
           "type": "order",
           "prompt": "Écris « le point C n'appartient pas à la droite (d) ».",
           "words": [
@@ -724,6 +740,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "2474aa80-9ed0-4c2f-b9a1-7b5c63550a79",
           "type": "mcq",
           "prompt": "Les points E, F et G sont-ils alignés ?",
           "figure": {
@@ -757,6 +774,7 @@ window.registerPack({
           "explanation": "F est plus haut : on ne peut pas tracer **une seule droite** qui passe par E, F et G."
         },
         {
+          "id": "42f09d02-4fd8-4096-8ad8-bd45ec72a815",
           "type": "mcq",
           "prompt": "Les points M, Y et Z sont-ils alignés ?",
           "figure": {
@@ -861,6 +879,7 @@ window.registerPack({
           "hint": "Suis le trait qui part de M et va jusqu'à Z."
         },
         {
+          "id": "358f59c7-eaca-4003-9a9c-1bf5b67bfa58",
           "type": "mcq",
           "prompt": "Les points P, Y et N sont-ils alignés ?",
           "figure": {
@@ -964,6 +983,7 @@ window.registerPack({
           "explanation": "Pose ta règle de P à N : elle ne passe pas par Y. P, Y et N **ne sont pas alignés**."
         },
         {
+          "id": "f9193eee-30af-4d38-a353-1991593539f0",
           "type": "mcq",
           "prompt": "Quel lieu est aligné avec Port et Pic ?",
           "figure": {
@@ -1016,6 +1036,7 @@ window.registerPack({
           "hint": "Pose une règle sur Port et Pic : quel lieu touche la règle ?"
         },
         {
+          "id": "ed37437f-bae9-4805-85e4-8c893ef5ff74",
           "type": "mcq",
           "prompt": "Quel lieu est aligné avec Lac et Mine ?",
           "figure": {
@@ -1067,6 +1088,7 @@ window.registerPack({
           "explanation": "Lac, Fort et Mine sont alignés : de Lac à Fort, puis de Fort à Mine, on fait 3 carreaux à droite et 2 en haut."
         },
         {
+          "id": "c3ef81c0-afa8-4cc7-8178-3663f073c742",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Pour vérifier que des points sont alignés, j'utilise ma ___.",
@@ -1077,6 +1099,7 @@ window.registerPack({
           "explanation": "On pose la **règle** sur deux points et on regarde si les autres touchent le même bord."
         },
         {
+          "id": "e289b332-8afe-48d5-bc63-32c789d4b95e",
           "type": "mcq",
           "prompt": "Combien de droites passent par deux points A et B ?",
           "options": [
@@ -1089,6 +1112,7 @@ window.registerPack({
           "explanation": "Par deux points, il passe **une seule** droite : la droite (AB)."
         },
         {
+          "id": "cea3fc75-a8ac-49ca-ad89-b4972b48d319",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -1167,6 +1191,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "fe578c35-8f62-49a7-a6c0-41e9555b508e",
           "type": "mcq",
           "prompt": "Les droites (d1) et (d2) se coupent en…",
           "figure": {
@@ -1248,6 +1273,7 @@ window.registerPack({
           "explanation": "(d1) et (d2) se croisent au point **A**."
         },
         {
+          "id": "f360af2d-e9cd-46ea-a6da-cc4b09b0e0da",
           "type": "mcq",
           "prompt": "Le point d'intersection de (d1) et (d3) est…",
           "figure": {
@@ -1329,6 +1355,7 @@ window.registerPack({
           "explanation": "(d1) et (d3) se coupent en **F**."
         },
         {
+          "id": "40cb142b-ee5a-4539-8df1-c27e5b8f6d68",
           "type": "mcq",
           "prompt": "C est le point d'intersection de…",
           "figure": {
@@ -1410,6 +1437,7 @@ window.registerPack({
           "explanation": "C est sur **(d2)** et sur **(d3)** : c'est là qu'elles se coupent."
         },
         {
+          "id": "ba012989-4c29-4ad0-aa46-e507d435d954",
           "type": "mcq",
           "prompt": "Le point B est à l'intersection de…",
           "figure": {
@@ -1491,6 +1519,7 @@ window.registerPack({
           "explanation": "B est sur **(d2)** et sur **(d4)**."
         },
         {
+          "id": "46af7bfe-b8a8-4c99-896c-220d56c91a8d",
           "type": "mcq",
           "prompt": "D est le point d'intersection de…",
           "figure": {
@@ -1573,6 +1602,7 @@ window.registerPack({
           "hint": "Suis chaque droite avec ton doigt : lesquelles passent par D ?"
         },
         {
+          "id": "abc7d94b-c6e2-46eb-8e22-ee50476a91d2",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Deux droites qui se coupent sont des droites ___.",
@@ -1583,6 +1613,7 @@ window.registerPack({
           "explanation": "Des droites qui se coupent sont **sécantes** ; elles ont un **point d'intersection**."
         },
         {
+          "id": "d86f40cf-8852-4726-83c2-b1e9132edc80",
           "type": "mcq",
           "prompt": "Les droites (a) et (b) sont-elles sécantes ?",
           "figure": {
@@ -1639,6 +1670,7 @@ window.registerPack({
           "explanation": "(a) et (b) gardent le même écartement : elles ne se coupent jamais. Elles **ne sont pas sécantes**."
         },
         {
+          "id": "fdfa05c1-5ca3-488a-885b-3bd7aeb2d6a1",
           "type": "mcq",
           "prompt": "Ces deux traits sont des morceaux de droites. (a) et (b) sont-elles sécantes ?",
           "figure": {
@@ -1694,6 +1726,7 @@ window.registerPack({
           "hint": "Les traits se rapprochent l'un de l'autre…"
         },
         {
+          "id": "d1092e11-f1c7-4d62-9af7-114319bc1b02",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Le point où deux droites se coupent s'appelle le point d'___.",
@@ -1773,6 +1806,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "16664e0c-0d41-4652-a143-d78e88812096",
           "type": "mcq",
           "prompt": "Comment sont les droites (a) et (b) ?",
           "figure": {
@@ -1836,6 +1870,7 @@ window.registerPack({
           "explanation": "Elles se coupent en formant un **angle droit** (le petit carré) : elles sont **perpendiculaires**."
         },
         {
+          "id": "97353243-e968-49a3-8057-c2fa9139bf1b",
           "type": "mcq",
           "prompt": "Quel outil utilise-t-on pour vérifier un angle droit ?",
           "options": [
@@ -1848,6 +1883,7 @@ window.registerPack({
           "explanation": "L'**équerre** a un angle droit : on la pose dans le coin pour vérifier."
         },
         {
+          "id": "29760bd3-bea0-4ce5-8ca3-d772af365ead",
           "type": "mcq",
           "prompt": "Comment écrit-on « (a) est perpendiculaire à (b) » ?",
           "options": [
@@ -1860,6 +1896,7 @@ window.registerPack({
           "explanation": "Le signe **⊥** ressemble à deux traits qui font un angle droit : **(a) ⊥ (b)**."
         },
         {
+          "id": "a1d171a7-fe51-4707-8946-ae191b514b93",
           "type": "fill",
           "prompt": "Complète avec un nombre.",
           "sentence": "Deux droites perpendiculaires forment ___ angles droits.",
@@ -1870,6 +1907,7 @@ window.registerPack({
           "explanation": "Quand deux droites sont perpendiculaires, les **4** angles autour du point d'intersection sont droits."
         },
         {
+          "id": "c71844e2-6e1e-43f4-a8ce-4b863df0b8ac",
           "type": "mcq",
           "prompt": "Les droites (e) et (f) sont-elles perpendiculaires ?",
           "figure": {
@@ -1919,6 +1957,7 @@ window.registerPack({
           "explanation": "Elles se coupent en O, mais l'angle est trop pointu : pas d'angle droit, donc **pas perpendiculaires**."
         },
         {
+          "id": "97503ae6-f61c-4006-bd8e-891283f8dc77",
           "type": "mcq",
           "prompt": "Les droites (c) et (g) sont penchées. Sont-elles perpendiculaires ?",
           "figure": {
@@ -1975,6 +2014,7 @@ window.registerPack({
           "hint": "Ce qui compte, c'est l'angle entre les deux droites, pas la position de la feuille."
         },
         {
+          "id": "2a960417-6056-42fb-8716-28dc95b4b7dd",
           "type": "mcq",
           "prompt": "Que veut dire le petit carré dessiné à l'intersection ?",
           "options": [
@@ -1987,6 +2027,7 @@ window.registerPack({
           "explanation": "Le **petit carré** est le **codage** de l'angle droit."
         },
         {
+          "id": "76993ecb-08c6-42c1-850b-04fed9718b53",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -2100,6 +2141,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "41944d10-3bc9-43ea-8eb0-506a29def652",
           "type": "mcq",
           "prompt": "Comment sont les droites (a) et (b) ?",
           "figure": {
@@ -2157,6 +2199,7 @@ window.registerPack({
           "explanation": "Elles ne se coupent jamais et gardent le même écartement : elles sont **parallèles**."
         },
         {
+          "id": "18260f7a-00e1-4d73-9016-c281e5fe2af6",
           "type": "mcq",
           "prompt": "Que veut dire (a) // (b) ?",
           "options": [
@@ -2169,6 +2212,7 @@ window.registerPack({
           "explanation": "Le signe **//** (deux traits penchés côte à côte) veut dire **parallèle**."
         },
         {
+          "id": "3b1f14c4-9bd0-4ebf-9733-940699c1576a",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Deux droites parallèles gardent toujours le même ___.",
@@ -2181,6 +2225,7 @@ window.registerPack({
           "explanation": "Elles restent à la même distance : même **écartement** partout."
         },
         {
+          "id": "50f9d73d-c216-4d49-92d4-12a5ea8437d0",
           "type": "mcq",
           "prompt": "Avec quels outils vérifie-t-on que deux droites sont parallèles ?",
           "options": [
@@ -2193,6 +2238,7 @@ window.registerPack({
           "explanation": "On pose l'**équerre** sur une droite et on la fait **glisser** le long de la **règle**."
         },
         {
+          "id": "91739d37-d1b1-40a4-9a8f-0c11d87ab1b7",
           "type": "mcq",
           "prompt": "(f) et (g) sont perpendiculaires à (d). Que peut-on dire de (f) et (g) ?",
           "figure": {
@@ -2279,6 +2325,7 @@ window.registerPack({
           "explanation": "Deux droites **perpendiculaires à une même droite** sont **parallèles** : (f) // (g)."
         },
         {
+          "id": "829fdff1-bb9d-41e0-8ddf-84af3ebd7d26",
           "type": "fill",
           "prompt": "Écris le signe ou le mot qui manque.",
           "sentence": "Si (f) ⊥ (d) et (g) ⊥ (d), alors (f) ___ (g).",
@@ -2293,6 +2340,7 @@ window.registerPack({
           "hint": "Le signe de « parallèle », ce sont deux traits penchés."
         },
         {
+          "id": "61afb7f1-7f59-4666-81fd-8647ed0f3323",
           "type": "order",
           "prompt": "Remets dans l'ordre les étapes pour vérifier que (a) et (b) sont parallèles.",
           "words": [
@@ -2304,6 +2352,7 @@ window.registerPack({
           "explanation": "Les étapes :\n- on pose l'**équerre** sur (a)\n- on bloque avec la **règle**\n- puis on fait **glisser** l'équerre\nSi elle arrive bien sur (b), les droites sont parallèles."
         },
         {
+          "id": "66ddf752-eea3-44c6-8e37-3c54b3cb3167",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -2342,6 +2391,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "8ce8321a-f04d-4118-b575-a69c95b4b197",
           "type": "sort",
           "prompt": "Vrai ou faux ? Observe la figure.",
           "figure": {
@@ -2496,6 +2546,7 @@ window.registerPack({
           "hint": "Compte les lettres de la figure pour trouver le nombre de côtés."
         },
         {
+          "id": "5e943fa5-af1f-4873-a498-e9af11d2dcd4",
           "type": "sort",
           "prompt": "Vrai ou faux ? Observe la figure.",
           "figure": {
@@ -2590,6 +2641,7 @@ window.registerPack({
           "explanation": "(AC) et (DB) se coupent en T avec un angle droit : elles sont **perpendiculaires**, pas parallèles. T est plus près de D que de B, et [TC] est plus long que [AT]. L'angle droit en T fait de BTC un **triangle rectangle**."
         },
         {
+          "id": "946ee346-05b7-40c0-836d-efa0c00e5072",
           "type": "mcq",
           "prompt": "Comment sont les droites (AC) et (DB) ?",
           "figure": {
@@ -2654,6 +2706,7 @@ window.registerPack({
           "explanation": "Elles se coupent en T et le petit carré montre un **angle droit** : **(AC) ⊥ (DB)**."
         },
         {
+          "id": "79c3707f-fb2e-48e8-8101-b43a69049004",
           "type": "sort",
           "prompt": "Range chaque phrase.",
           "categories": [
@@ -2699,6 +2752,7 @@ window.registerPack({
           "explanation": "Deux droites sont :\n- **parallèles** : jamais de rencontre\n- **perpendiculaires** : elles se coupent avec un angle droit\n- **sécantes** : elles se coupent, avec ou sans angle droit"
         },
         {
+          "id": "f25743b6-d53a-4f97-bf42-aea7be3790f2",
           "type": "mcq",
           "prompt": "Combien de côtés a la figure ABCDEF ?",
           "figure": {
@@ -2823,6 +2877,7 @@ window.registerPack({
           "explanation": "Une figure nommée avec 6 lettres a **6 sommets** et **6 côtés** :\n- [AB]\n- [BC]\n- [CD]\n- [DE]\n- [EF]\n- [FA]"
         },
         {
+          "id": "b32c638c-107d-42a1-badd-2b7eb7ac6365",
           "type": "mcq",
           "prompt": "Comment vérifier que G est bien le milieu de [FD] ?",
           "figure": {
@@ -2947,6 +3002,7 @@ window.registerPack({
           "explanation": "On compare [FG] et [GD] avec le **compas** (même écartement) ou on les mesure à la **règle**."
         },
         {
+          "id": "c6b97ae7-e401-48df-933b-aae07de4a9eb",
           "type": "mcq",
           "prompt": "Où y a-t-il un angle droit dans la figure ABCDEF ?",
           "figure": {
@@ -3138,6 +3194,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "8ea7703c-84f5-4c03-9cbd-93c66d13064f",
           "type": "fill",
           "prompt": "Complète le programme du sorcier.",
           "figure": {
@@ -3195,6 +3252,7 @@ window.registerPack({
           "explanation": "[AB] avec des crochets, c'est un **segment** : il s'arrête en A et en B."
         },
         {
+          "id": "6d191464-6469-4b23-89a5-d663ca53d531",
           "type": "fill",
           "prompt": "Complète le programme du sorcier.",
           "figure": {
@@ -3252,6 +3310,7 @@ window.registerPack({
           "explanation": "J coupe [AB] en deux parties de même longueur : c'est le **milieu** de [AB]."
         },
         {
+          "id": "7750eed9-d354-4463-bab4-4a2328a5b603",
           "type": "fill",
           "prompt": "Complète le programme du sorcier.",
           "figure": {
@@ -3309,6 +3368,7 @@ window.registerPack({
           "explanation": "(d) avec des parenthèses et qui ne s'arrête pas : c'est une **droite**."
         },
         {
+          "id": "70e65f5c-dc4d-4b42-a476-fed2fb1f59cb",
           "type": "fill",
           "prompt": "Complète le programme du sorcier.",
           "figure": {
@@ -3366,6 +3426,7 @@ window.registerPack({
           "explanation": "[AB] et (d) se coupent en J : J est leur **point d'intersection**."
         },
         {
+          "id": "e37c8007-9fb0-4d81-bff2-d7c6cc50c31a",
           "type": "fill",
           "prompt": "Complète le programme du sorcier.",
           "figure": {
@@ -3424,6 +3485,7 @@ window.registerPack({
           "explanation": "D, J et C sont sur la même droite (d) : ils sont **alignés**."
         },
         {
+          "id": "6f0f799e-12a3-487f-99bf-3730761097da",
           "type": "order",
           "prompt": "Remets le programme dans l'ordre.",
           "words": [
@@ -3444,6 +3506,7 @@ window.registerPack({
           "explanation": "On ne peut pas placer le **milieu** avant d'avoir tracé le **segment**, ni tracer **(JC)** avant d'avoir placé J et C."
         },
         {
+          "id": "19597652-ce69-4f7b-abb7-ffdde6036a8c",
           "type": "sort",
           "prompt": "Quel outil pour chaque tâche ?",
           "categories": [
@@ -3489,6 +3552,7 @@ window.registerPack({
           "explanation": "Les outils :\n- **règle** : tracer et aligner\n- **équerre** : angle droit\n- **compas** : cercles et longueurs à reporter"
         },
         {
+          "id": "fc36bc01-a3ce-4288-8d35-16ae7e467a84",
           "type": "mcq",
           "prompt": "J'ai tracé (f) ⊥ (d), puis (g) ⊥ (f) en passant par A. Que peut-on dire de (g) et (d) ?",
           "figure": {
@@ -3591,6 +3655,7 @@ window.registerPack({
       "draw": 12,
       "exercises": [
         {
+          "id": "cd05a46e-574c-4b93-aad2-91f781ab8955",
           "type": "question",
           "prompt": "Comment s'appelle un trait droit qui s'arrête à deux points ?",
           "answers": [
@@ -3601,6 +3666,7 @@ window.registerPack({
           "explanation": "Un **segment** a deux extrémités : il s'arrête en ces deux points."
         },
         {
+          "id": "a4a0fe9d-ddf4-45bf-841f-18eb548c32f9",
           "type": "question",
           "prompt": "Comment s'appelle un trait droit qui ne s'arrête jamais, d'aucun côté ?",
           "answers": [
@@ -3611,6 +3677,7 @@ window.registerPack({
           "explanation": "Une **droite** ne s'arrête jamais. La demi-droite, elle, a une origine."
         },
         {
+          "id": "cafbd1d8-eb95-4da4-965f-10b65c42de80",
           "type": "question",
           "prompt": "Comment s'appelle le point qui coupe un segment en deux parties de même longueur ?",
           "answers": [
@@ -3621,6 +3688,7 @@ window.registerPack({
           "explanation": "Le **milieu** est à la même distance des deux extrémités du segment."
         },
         {
+          "id": "ae6def05-c5ff-4d95-ae02-a30d781b40ec",
           "type": "question",
           "prompt": "Sur la figure du sorcier, J est le milieu de [AB] et AB = 6 cm. Combien mesure [AJ] ?",
           "answers": [
@@ -3682,6 +3750,7 @@ window.registerPack({
           "explanation": "J coupe [AB] en deux parties égales : 6 ÷ 2 = **3 cm**."
         },
         {
+          "id": "154911e7-0063-4064-a66e-850e60e3bde4",
           "type": "question",
           "prompt": "Que veut dire le signe ∈ dans « A ∈ (d) » ?",
           "answers": [
@@ -3695,6 +3764,7 @@ window.registerPack({
           "explanation": "**∈** veut dire « **appartient à** » : le point A est sur la droite (d). Le contraire s'écrit ∉."
         },
         {
+          "id": "ad9b06d4-5711-4616-a3c5-4539cdddd7ad",
           "type": "question",
           "prompt": "Des points placés sur une même droite sont… ?",
           "answers": [
@@ -3705,6 +3775,7 @@ window.registerPack({
           "explanation": "Des points sur une **même droite** sont **alignés**."
         },
         {
+          "id": "379ca154-016b-437e-9c42-cec8768383a1",
           "type": "question",
           "prompt": "Avec quel instrument vérifie-t-on que des points sont alignés ?",
           "answers": [
@@ -3717,6 +3788,7 @@ window.registerPack({
           "explanation": "On pose la **règle** : tous les points doivent toucher le même bord."
         },
         {
+          "id": "1ba3ec9a-148c-4ce6-aa5f-28826c4544e1",
           "type": "question",
           "prompt": "Combien de droites passent par deux points A et B ?",
           "answers": [
@@ -3730,6 +3802,7 @@ window.registerPack({
           "explanation": "Par deux points, il passe **une seule** droite : la droite (AB)."
         },
         {
+          "id": "d63bace7-e98b-4c2c-8b36-c107ae68e329",
           "type": "question",
           "prompt": "Comment appelle-t-on deux droites qui se coupent ?",
           "answers": [
@@ -3741,6 +3814,7 @@ window.registerPack({
           "explanation": "Deux droites qui se coupent sont **sécantes**. Elles se coupent au **point d'intersection**."
         },
         {
+          "id": "0ac0f74d-78f1-4478-a5c5-0e19b03350a0",
           "type": "question",
           "prompt": "Quel est le point d'intersection des droites (d1) et (d3) ?",
           "answers": [
@@ -3821,6 +3895,7 @@ window.registerPack({
           "explanation": "(d1) et (d3) se croisent au point **F**."
         },
         {
+          "id": "2a82a3e0-771f-469e-ac7a-9136da156d93",
           "type": "question",
           "prompt": "Comment appelle-t-on deux droites qui se coupent en formant un angle droit ?",
           "answers": [
@@ -3832,6 +3907,7 @@ window.registerPack({
           "explanation": "Deux droites qui se coupent avec un **angle droit** sont **perpendiculaires**."
         },
         {
+          "id": "74d0c1cb-4e0a-45aa-b635-d3da1ca3e5e5",
           "type": "question",
           "prompt": "Combien d'angles droits forment deux droites perpendiculaires ?",
           "answers": [
@@ -3843,6 +3919,7 @@ window.registerPack({
           "explanation": "Autour du point d'intersection, les **4** angles sont droits."
         },
         {
+          "id": "878df55c-4f05-42e1-b0e8-8c9c27feabd4",
           "type": "question",
           "prompt": "Quel instrument utilise-t-on pour tracer un angle droit ?",
           "answers": [
@@ -3855,6 +3932,7 @@ window.registerPack({
           "explanation": "L'**équerre** a un angle droit. Le compas sert pour les cercles et les longueurs."
         },
         {
+          "id": "2b687263-7ac9-404e-b73e-d68b67d41dc4",
           "type": "question",
           "prompt": "Comment appelle-t-on deux droites qui ne se coupent jamais et gardent le même écartement ?",
           "answers": [
@@ -3866,6 +3944,7 @@ window.registerPack({
           "explanation": "Deux droites qui ne se coupent **jamais** sont **parallèles**."
         },
         {
+          "id": "a6c9c6f3-c8e9-4a92-a33d-6b43d1ce6816",
           "type": "question",
           "prompt": "(f) et (g) sont perpendiculaires à la même droite (d). Comment sont les droites (f) et (g) ?",
           "answers": [
@@ -3951,6 +4030,7 @@ window.registerPack({
           "explanation": "Deux droites **perpendiculaires à une même droite** sont **parallèles** : (f) // (g)."
         },
         {
+          "id": "c0bef938-08f7-4966-87ba-519701abfaf4",
           "type": "question",
           "prompt": "Quel instrument sert à tracer un cercle ou à reporter une longueur ?",
           "answers": [
@@ -3963,6 +4043,7 @@ window.registerPack({
           "explanation": "Le **compas** trace les cercles et reporte les longueurs. La règle trace, l'équerre fait l'angle droit."
         },
         {
+          "id": "6ccf933d-36e4-4719-8b3f-f49d0ebb8be6",
           "type": "question",
           "prompt": "Comment s'appelle un trait droit qui a une origine et continue d'un seul côté ?",
           "answers": [
@@ -3973,6 +4054,7 @@ window.registerPack({
           "explanation": "Une **demi-droite** commence à son origine et ne s'arrête jamais de l'autre côté."
         },
         {
+          "id": "09b8b9da-4bf2-4cb5-8d21-b95985b5ebd1",
           "type": "question",
           "prompt": "La notation (AB), avec des parenthèses, désigne-t-elle un segment, une droite ou une demi-droite ?",
           "answers": [
@@ -3985,6 +4067,7 @@ window.registerPack({
           "explanation": "Les **parenthèses** montrent que le trait continue des deux côtés : (AB) est une **droite**."
         },
         {
+          "id": "8433236d-523d-4481-9146-b298b5e351cb",
           "type": "question",
           "prompt": "Dans la notation [AB), en quel point commence la demi-droite ?",
           "answers": [
@@ -3996,6 +4079,7 @@ window.registerPack({
           "explanation": "Le crochet est du côté de **A** : la demi-droite [AB) commence en A."
         },
         {
+          "id": "6279d4ac-8c8a-401f-9832-2b137c2369b3",
           "type": "question",
           "prompt": "Que veut dire le signe ∉ dans « B ∉ (d) » ?",
           "answers": [
@@ -4008,6 +4092,7 @@ window.registerPack({
           "explanation": "**∉** veut dire « **n'appartient pas à** » : le point B n'est pas sur la droite (d)."
         },
         {
+          "id": "491866c5-3b30-4548-b73a-148ac8f5d967",
           "type": "question",
           "prompt": "Comment s'appelle le point où deux droites sécantes se coupent ?",
           "answers": [
@@ -4019,6 +4104,7 @@ window.registerPack({
           "explanation": "Deux droites sécantes se coupent en un **point d'intersection**."
         },
         {
+          "id": "95d2faad-aa45-4283-8eb8-2059e5538071",
           "type": "question",
           "prompt": "Sur une figure, avec quel codage montre-t-on un angle droit ?",
           "answers": [
@@ -4031,6 +4117,7 @@ window.registerPack({
           "explanation": "Un **petit carré** dessiné dans l'angle code un angle droit."
         },
         {
+          "id": "6f508161-0596-4711-8b9c-5c3298a6c6cd",
           "type": "question",
           "prompt": "Sur une figure, que montrent des petits traits pareils sur deux segments ?",
           "answers": [
@@ -4044,6 +4131,7 @@ window.registerPack({
           "explanation": "Des **petits traits pareils** codent des **longueurs égales**."
         },
         {
+          "id": "77820ba9-3bab-439a-96b4-68e6fce2fa41",
           "type": "question",
           "prompt": "Que veut dire le signe // dans « (a) // (b) » ?",
           "answers": [
@@ -4056,6 +4144,7 @@ window.registerPack({
           "explanation": "**//** veut dire que les droites (a) et (b) sont **parallèles** : elles ne se coupent jamais."
         },
         {
+          "id": "75e75f83-a15a-4674-9489-0aeb30a79042",
           "type": "question",
           "prompt": "Comment s'appelle un point où deux côtés d'une figure se rejoignent ?",
           "answers": [
@@ -4066,6 +4155,7 @@ window.registerPack({
           "explanation": "Un **sommet** est le point où deux côtés se rejoignent."
         },
         {
+          "id": "d925505f-94ee-483e-abf6-55326a74cff6",
           "type": "question",
           "prompt": "Quel est le point d'intersection des droites (d2) et (d4) ?",
           "answers": [
@@ -4146,6 +4236,7 @@ window.registerPack({
           "explanation": "(d2) et (d4) se croisent au point **B**."
         },
         {
+          "id": "890cd5d0-b102-44cd-be47-615d8a2e87c5",
           "type": "question",
           "prompt": "M est le milieu de [AB] et AM = 4 cm. Combien mesure AB ?",
           "answers": [
@@ -4159,6 +4250,7 @@ window.registerPack({
           "explanation": "M coupe [AB] en deux parties égales : AB = 4 × 2 = **8 cm**."
         },
         {
+          "id": "45706f2a-3881-4897-a992-4d9ba05b8417",
           "type": "question",
           "prompt": "Pour vérifier que deux droites sont parallèles, on fait glisser l'équerre le long de quel instrument ?",
           "answers": [
@@ -4170,6 +4262,7 @@ window.registerPack({
           "explanation": "On pose l'équerre sur une droite, puis on la fait **glisser** le long de la **règle**."
         },
         {
+          "id": "00c5ead6-fa66-46d3-8ffe-63b9a15d7dd7",
           "type": "question",
           "prompt": "Combien de points d'intersection ont deux droites parallèles ?",
           "answers": [

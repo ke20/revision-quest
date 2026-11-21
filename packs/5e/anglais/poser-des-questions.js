@@ -29,6 +29,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "c33aaa7d-d50a-422c-b522-fe6e4a1d3051",
           "type": "match",
           "prompt": "Relie chaque mot interrogatif à sa traduction.",
           "pairs": [
@@ -60,6 +61,7 @@ window.registerPack({
           "explanation": "✅ Six mots à connaître par cœur :\n- **what**\n- **who**\n- **when**\n- **where**\n- **why**\n- **how**"
         },
         {
+          "id": "55c75917-73f5-435e-aa20-174cd0e2d90b",
           "type": "fill",
           "prompt": "Trouve le mot interrogatif qui manque.",
           "sentence": "___ are they going? They're going to the country.",
@@ -69,6 +71,7 @@ window.registerPack({
           "explanation": "✅ Un lieu → **Where**. [[Where are they going?|Où vont-ils ?]]"
         },
         {
+          "id": "ae5fb9f0-0598-44ae-b495-e90156bab949",
           "type": "fill",
           "prompt": "Trouve le mot interrogatif qui manque.",
           "sentence": "___ is he coming? Tomorrow.",
@@ -78,6 +81,7 @@ window.registerPack({
           "explanation": "✅ Un moment → **When**. [[When is he coming?|Quand vient-il ?]]"
         },
         {
+          "id": "8249706d-21c7-4c8f-bdad-dfdbe21891ff",
           "type": "fill",
           "prompt": "Trouve le mot interrogatif qui manque.",
           "sentence": "___ is your brother doing? He's working.",
@@ -87,6 +91,7 @@ window.registerPack({
           "explanation": "✅ Une action, une chose → **What**. [[What is your brother doing?|Que fait ton frère ?]]"
         },
         {
+          "id": "26cd0934-2adb-449a-ac72-0b61c274d4ae",
           "type": "fill",
           "prompt": "Trouve le mot interrogatif qui manque.",
           "sentence": "___ is it? It's Patrick.",
@@ -96,6 +101,7 @@ window.registerPack({
           "explanation": "✅ Une personne → **Who**. [[Who is it?|Qui est-ce ?]]"
         },
         {
+          "id": "10f5377a-3da8-4f10-8f8a-20da02338792",
           "type": "mcq",
           "prompt": "Quel mot pour une réponse qui commence par « Because… » ?",
           "options": [
@@ -108,6 +114,7 @@ window.registerPack({
           "explanation": "✅ **Because** (parce que) répond à **Why** (pourquoi)."
         },
         {
+          "id": "b75f5e1a-325a-44bc-92e0-ba58410cafe7",
           "type": "sort",
           "prompt": "Range chaque réponse avec le bon mot interrogatif.",
           "categories": [
@@ -153,6 +160,7 @@ window.registerPack({
           "explanation": "✅ On choisit :\n- une personne → **who**\n- un lieu → **where**\n- un moment → **when**"
         },
         {
+          "id": "455d7a2d-6320-4576-8a83-5d47b4c97223",
           "type": "fill",
           "prompt": "Trouve le mot interrogatif qui manque.",
           "sentence": "___ are you? I am fine, thank you.",
@@ -162,6 +170,7 @@ window.registerPack({
           "explanation": "✅ **How are you?** = Comment vas-tu ?"
         },
         {
+          "id": "1d34faf5-2a07-4e08-8760-42b1e4c7cc16",
           "type": "mcq",
           "prompt": "« ___ colour is his umbrella? It's blue. » Quel mot manque ?",
           "options": [
@@ -195,6 +204,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "70d922ae-ca7a-4f50-b650-5d1b6a69ff5a",
           "type": "fill",
           "prompt": "Trouve le mot interrogatif qui manque.",
           "sentence": "How ___ is your sister? She is 15 years old.",
@@ -204,6 +214,7 @@ window.registerPack({
           "explanation": "✅ L'âge → **How old**."
         },
         {
+          "id": "a6676de0-5171-4055-bf96-05c6afc87fa2",
           "type": "fill",
           "prompt": "Trouve le mot interrogatif qui manque.",
           "sentence": "How ___ money has he got? He has got a lot of money.",
@@ -213,6 +224,7 @@ window.registerPack({
           "explanation": "✅ **money** ne se compte pas → **How much**."
         },
         {
+          "id": "532fb420-cb87-4197-9f95-ce8e36e1b738",
           "type": "fill",
           "prompt": "Trouve le mot interrogatif qui manque.",
           "sentence": "How ___ is this pullover? It's 15 pounds.",
@@ -222,6 +234,7 @@ window.registerPack({
           "explanation": "✅ Un prix → **How much**. [[pounds|livres sterling]]"
         },
         {
+          "id": "251972e4-14dd-490a-b371-5407e3edfacf",
           "type": "fill",
           "prompt": "Trouve le mot interrogatif qui manque.",
           "sentence": "How ___ journalists are there at the party? About 20.",
@@ -231,6 +244,7 @@ window.registerPack({
           "explanation": "✅ **journalists** au pluriel, on peut les compter → **How many**."
         },
         {
+          "id": "31d6d892-4011-4b02-bd61-01b343257951",
           "type": "sort",
           "prompt": "Range : **how much** ou **how many** ?",
           "categories": [
@@ -272,6 +286,7 @@ window.registerPack({
           "explanation": "✅ Deux mots :\n- **many** + un pluriel qu'on compte\n- **much** + ce qui ne se compte pas, ou un prix"
         },
         {
+          "id": "8b96f051-b230-42c9-beb2-f453f3e30873",
           "type": "mcq",
           "prompt": "Comment demande-t-on « Combien d'ordinateurs ont-ils besoin ? » ?",
           "options": [
@@ -284,6 +299,7 @@ window.registerPack({
           "explanation": "✅ **computers** au pluriel → **How many**. [[need|avoir besoin de]]"
         },
         {
+          "id": "44414468-89f7-4ebf-a8a8-31c0c3778998",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -301,6 +317,7 @@ window.registerPack({
           "explanation": "✅ **How old** + be + sujet ?"
         },
         {
+          "id": "30d1bb07-c1d2-428d-95ce-afa0f1565574",
           "type": "mcq",
           "prompt": "« How old is Ken? » Quelle réponse va ?",
           "options": [
@@ -335,6 +352,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "8e6d1d2d-bae8-47bf-97a3-562e3d96f052",
           "type": "fill",
           "prompt": "Trouve le mot interrogatif qui manque.",
           "sentence": "___ transistor is it? It's Daniel's.",
@@ -344,6 +362,7 @@ window.registerPack({
           "explanation": "✅ **'s** (Daniel's) = l'appartenance → **Whose**."
         },
         {
+          "id": "cb727aed-2f20-4802-a511-e6578e8e1ffc",
           "type": "mcq",
           "prompt": "Comment dit-on « À qui sont ces chaussures rouges ? » ?",
           "options": [
@@ -356,6 +375,7 @@ window.registerPack({
           "explanation": "✅ **Whose** + **are these** (pluriel). [[shoes|chaussures]]"
         },
         {
+          "id": "67e7fdef-e854-47a1-b2f7-4a9185036512",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -372,6 +392,7 @@ window.registerPack({
           "explanation": "✅ **Whose** + nom + **are these** ?"
         },
         {
+          "id": "71e5f4d6-a951-462a-98c9-e5486931aeaf",
           "type": "fill",
           "prompt": "Trouve le mot interrogatif qui manque.",
           "sentence": "___ dog is it? It's Tom's.",
@@ -381,6 +402,7 @@ window.registerPack({
           "explanation": "✅ **Whose dog is it?** [[Whose dog is it?|À qui est ce chien ?]]"
         },
         {
+          "id": "0ccbe046-6bfe-4381-be5a-6d896815bc06",
           "type": "mcq",
           "prompt": "« Whose racket is it? » Quelle réponse va ?",
           "options": [
@@ -393,6 +415,7 @@ window.registerPack({
           "explanation": "✅ **Whose** demande à qui c'est : [[It's Jane's.|C'est celle de Jane.]]"
         },
         {
+          "id": "201033e4-bae8-46e2-97ae-e8dbb2f3fa8c",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -407,6 +430,7 @@ window.registerPack({
           "explanation": "✅ À qui → **Whose** : [[Whose book is it?|À qui est ce livre ?]]"
         },
         {
+          "id": "00a68449-ef48-43f2-8309-055d0e647d64",
           "type": "match",
           "prompt": "Relie chaque question à sa réponse.",
           "pairs": [
@@ -430,6 +454,7 @@ window.registerPack({
           "explanation": "✅ Les mots interrogatifs :\n- **Whose** → à qui\n- **Who** → qui\n- **Where** → où\n- **When** → quand"
         },
         {
+          "id": "5b7d5c7a-e132-49b3-9f25-a65b48dca8f3",
           "type": "fill",
           "prompt": "Trouve le mot interrogatif qui manque.",
           "sentence": "___ shoes are these? They're my sister's.",
@@ -463,6 +488,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "e210fb99-4b36-4276-b549-351cea1b6117",
           "type": "fill",
           "prompt": "Complète la question.",
           "sentence": "___ you got a pet?",
@@ -472,6 +498,7 @@ window.registerPack({
           "explanation": "✅ Avec **have got**, on inverse : [[Have you got a pet?|As-tu un animal ?]]"
         },
         {
+          "id": "f00c6693-33e1-4250-b129-08c6844aa614",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -490,6 +517,7 @@ window.registerPack({
           "explanation": "✅ **How many sisters** + **has** + she + **got** ?"
         },
         {
+          "id": "3e717202-93b5-4a78-8327-86f650a3b44a",
           "type": "mcq",
           "prompt": "Quel auxiliaire manque ? « ___ she play the piano? »",
           "options": [
@@ -502,6 +530,7 @@ window.registerPack({
           "explanation": "✅ **she** + verbe play → **Does**. [[Does she play the piano?|Est-ce qu'elle joue du piano ?]]"
         },
         {
+          "id": "4c1c565d-d1f9-44aa-9242-cbadebd9bfb7",
           "type": "fill",
           "prompt": "Complète la question.",
           "sentence": "Where ___ your sister live?",
@@ -511,6 +540,7 @@ window.registerPack({
           "explanation": "✅ **your sister** = she → **does**. Puis **live** sans -s."
         },
         {
+          "id": "efe82c94-534d-4a0e-bdea-b806c660dfbe",
           "type": "fill",
           "prompt": "Complète la question.",
           "sentence": "What kind of music ___ you like?",
@@ -520,6 +550,7 @@ window.registerPack({
           "explanation": "✅ **you** → **do**. [[What kind of music do you like?|Quel genre de musique aimes-tu ?]]"
         },
         {
+          "id": "824828b7-32ec-446f-86fa-dcb1139f4ca3",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -536,6 +567,7 @@ window.registerPack({
           "explanation": "✅ Après **does**, le verbe perd son -s : [[Where does she buy her clothes?|Où achète-t-elle ses vêtements ?]]"
         },
         {
+          "id": "62a704e7-89fd-4851-8c60-34b39246616a",
           "type": "sort",
           "prompt": "Range : on répond **yes / no**, ou on donne une information ?",
           "categories": [
@@ -577,6 +609,7 @@ window.registerPack({
           "explanation": "✅ Sans mot interrogatif → **yes** ou **no**. Avec un mot interrogatif (where, why, what…) → une information."
         },
         {
+          "id": "10e3fe66-5d44-4c2c-9bc1-c57f7063999e",
           "type": "mcq",
           "prompt": "Quelle question est bien construite ?",
           "options": [
@@ -589,6 +622,7 @@ window.registerPack({
           "explanation": "✅ Mot interrogatif + nom + **must** + sujet + verbe. Pas de do avec must."
         },
         {
+          "id": "4c1dacee-7798-4222-a752-d63cfd33df93",
           "type": "fill",
           "prompt": "Complète la question.",
           "sentence": "___ you help me, please?",
@@ -598,6 +632,7 @@ window.registerPack({
           "explanation": "✅ **Can you help me, please?** Pas de do avec can."
         },
         {
+          "id": "f787a8a8-fe09-496d-af70-1e0d5891f127",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -612,6 +647,7 @@ window.registerPack({
           "explanation": "✅ **he** → **Does** : [[Does he speak English?|Parle-t-il anglais ?]]"
         },
         {
+          "id": "8eb07ba8-57c4-4784-a1da-23647e3db434",
           "type": "mcq",
           "prompt": "Comment demande-t-on « Où est le téléphone ? » ?",
           "options": [
@@ -645,6 +681,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "87244b91-a32f-41f3-884e-2f9296cd3b6e",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre pour former une question.",
           "words": [
@@ -661,6 +698,7 @@ window.registerPack({
           "explanation": "✅ **What** + **is** + the colour of her eyes ?"
         },
         {
+          "id": "edf5ff89-0127-4134-be97-196784f247bd",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre pour former une question.",
           "words": [
@@ -675,6 +713,7 @@ window.registerPack({
           "explanation": "✅ Pas de mot interrogatif : **Does** + sujet + verbe ?"
         },
         {
+          "id": "e416dee5-5906-4bff-9859-902674db6808",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre pour former une question.",
           "words": [
@@ -699,6 +738,7 @@ window.registerPack({
           "explanation": "✅ **favourite** s'écrit avec **ou** en anglais britannique (favorite aux États-Unis)."
         },
         {
+          "id": "6bb16dce-5576-49b1-bc53-5f4b9f714d70",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre pour former une question.",
           "words": [
@@ -714,6 +754,7 @@ window.registerPack({
           "explanation": "✅ **How many brothers** + **do** + they + have ?"
         },
         {
+          "id": "95b38657-4217-4df5-bc47-d8da7a0720e6",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre pour former une question.",
           "words": [
@@ -729,6 +770,7 @@ window.registerPack({
           "explanation": "✅ **Can** + you + help me ?"
         },
         {
+          "id": "7721657a-cd84-4637-928a-98ea133ef3dc",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre pour former une question.",
           "words": [
@@ -745,6 +787,7 @@ window.registerPack({
           "explanation": "✅ **What** + **can** + you + buy ?"
         },
         {
+          "id": "046cb9d9-5057-403b-a7b4-5b6fcae05435",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre pour former une question.",
           "words": [
@@ -759,6 +802,7 @@ window.registerPack({
           "explanation": "✅ **Where** + **does** + your sister + live ?"
         },
         {
+          "id": "47a56202-a9b5-4181-9f0d-a47514053518",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre pour former une question.",
           "words": [
@@ -775,6 +819,7 @@ window.registerPack({
           "explanation": "✅ **What kind of music** + **do** + you + like ?"
         },
         {
+          "id": "574cd698-fb66-481c-91cc-3a10de3dd28a",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre pour former une question.",
           "words": [
@@ -812,6 +857,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "1fbfa0db-38ad-4e0f-8755-22fe4083544e",
           "type": "fill",
           "prompt": "Pose la question sur le mot en gras : complète. « **Michael**'s in the garden. »",
           "sentence": "___ is in the garden?",
@@ -821,6 +867,7 @@ window.registerPack({
           "explanation": "✅ Une personne → **Who**."
         },
         {
+          "id": "cd1dbba7-0900-4060-a834-916dcfdd7e6c",
           "type": "fill",
           "prompt": "Pose la question sur le mot en gras : complète. « The phone is **on the table**. »",
           "sentence": "___ is the phone?",
@@ -830,6 +877,7 @@ window.registerPack({
           "explanation": "✅ Un lieu → **Where**."
         },
         {
+          "id": "3ae1bb9b-ae0e-40e4-a280-cb7061d69258",
           "type": "fill",
           "prompt": "Pose la question sur le mot en gras : complète. « He's eating **an apple**. »",
           "sentence": "___ is he eating?",
@@ -839,6 +887,7 @@ window.registerPack({
           "explanation": "✅ Une chose → **What**."
         },
         {
+          "id": "5d6ca739-2676-4b67-aa58-297f05696815",
           "type": "fill",
           "prompt": "Pose la question sur le mot en gras : complète. « It's **Jane's** racket. »",
           "sentence": "___ racket is it?",
@@ -848,6 +897,7 @@ window.registerPack({
           "explanation": "✅ L'appartenance → **Whose**."
         },
         {
+          "id": "aaedbc3d-88e6-4bf1-9dd5-a28d3a48c640",
           "type": "fill",
           "prompt": "Pose la question sur le mot en gras : complète. « Bill and Ted are going to the circus **on Sunday**. »",
           "sentence": "___ are they going to the circus?",
@@ -857,6 +907,7 @@ window.registerPack({
           "explanation": "✅ Un moment → **When**."
         },
         {
+          "id": "131da972-737a-40e8-a85c-0e6960eb76e8",
           "type": "fill",
           "prompt": "Pose la question sur le mot en gras : complète. « He's washing his pullover **because it's dirty**. »",
           "sentence": "___ is he washing his pullover?",
@@ -866,6 +917,7 @@ window.registerPack({
           "explanation": "✅ Une raison (because) → **Why**."
         },
         {
+          "id": "98663b51-a2e2-4225-b9f0-f4e9023525e0",
           "type": "fill",
           "prompt": "Pose la question sur le mot en gras : complète. « His umbrella is **blue**. »",
           "sentence": "What ___ is his umbrella?",
@@ -876,6 +928,7 @@ window.registerPack({
           "explanation": "✅ Une couleur → **What colour**."
         },
         {
+          "id": "f443a21e-4190-4235-958c-765ffa6d5588",
           "type": "mcq",
           "prompt": "Pose la question sur le mot en gras : « She's sleeping **in an armchair**. »",
           "options": [
@@ -888,6 +941,7 @@ window.registerPack({
           "explanation": "✅ Un lieu → **Where** + **is** + she + sleeping ? [[armchair|fauteuil]]"
         },
         {
+          "id": "da2adfcb-d4e5-4339-8ea9-8418312136ef",
           "type": "mcq",
           "prompt": "Pose la question sur le mot en gras : « **John** is coming with her. »",
           "options": [
@@ -918,6 +972,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "f5e322a7-b4e7-48f8-aaa7-3665e6368892",
           "type": "question",
           "prompt": "Traduis : « Où habite ta sœur ? »",
           "answers": [
@@ -926,6 +981,7 @@ window.registerPack({
           "explanation": "✅ **Where** + **does** + your sister + **live** ?"
         },
         {
+          "id": "fa90833e-7a78-4ec1-8ad8-37882bf2cd78",
           "type": "question",
           "prompt": "Traduis : « Quel âge as-tu ? »",
           "answers": [
@@ -934,6 +990,7 @@ window.registerPack({
           "explanation": "✅ L'âge : **How old are you?**"
         },
         {
+          "id": "b0713cba-f57f-46eb-9e79-01535afd4b54",
           "type": "question",
           "prompt": "Traduis : « Combien de frères as-tu ? »",
           "answers": [
@@ -943,6 +1000,7 @@ window.registerPack({
           "explanation": "✅ **brothers** au pluriel → **How many**."
         },
         {
+          "id": "46765665-b565-4920-937a-a4b341491191",
           "type": "question",
           "prompt": "Traduis : « À qui est ce livre ? »",
           "answers": [
@@ -953,6 +1011,7 @@ window.registerPack({
           "explanation": "✅ À qui → **Whose**."
         },
         {
+          "id": "084b584c-2537-4142-9480-003ab91bb782",
           "type": "question",
           "prompt": "Traduis : « Qu'est-ce que ton frère est en train de faire ? »",
           "answers": [
@@ -961,6 +1020,7 @@ window.registerPack({
           "explanation": "✅ **What is** your brother **doing**?"
         },
         {
+          "id": "0de8dd2e-a936-47cb-b4c8-c53807a25b0b",
           "type": "question",
           "prompt": "Traduis : « Est-ce qu'elle joue du piano ? »",
           "answers": [
@@ -970,6 +1030,7 @@ window.registerPack({
           "explanation": "✅ Pas de mot interrogatif : **Does** + she + play ?"
         },
         {
+          "id": "f7c55c00-a49b-464d-a919-8233feb20b5b",
           "type": "question",
           "prompt": "Traduis : « Peux-tu m'aider, s'il te plaît ? »",
           "answers": [
@@ -979,6 +1040,7 @@ window.registerPack({
           "explanation": "✅ **Can** + you + help me ?"
         },
         {
+          "id": "129ba49d-93fd-4d5c-bd92-bbcf2216c0e7",
           "type": "question",
           "prompt": "Traduis : « Pourquoi est-il en retard ? »",
           "answers": [
@@ -987,6 +1049,7 @@ window.registerPack({
           "explanation": "✅ **Why** + **is** + he + late ?"
         },
         {
+          "id": "454409fe-a464-4748-8063-62fbc36088b5",
           "type": "question",
           "prompt": "Traduis : « Combien coûte ce pull ? »",
           "answers": [
@@ -1000,6 +1063,7 @@ window.registerPack({
           "explanation": "✅ Un prix → **How much**."
         },
         {
+          "id": "67a11aed-d0df-4b6f-8f6a-6a1370fa84b5",
           "type": "question",
           "prompt": "Traduis : « Quel genre de musique aimes-tu ? »",
           "answers": [
@@ -1009,6 +1073,7 @@ window.registerPack({
           "explanation": "✅ **What kind of music** + **do** + you + like ?"
         },
         {
+          "id": "bf4dcef6-b78d-4e71-90a6-a3b2b0a17178",
           "type": "question",
           "prompt": "Traduis : « À qui sont ces chaussettes ? »",
           "answers": [
@@ -1018,6 +1083,7 @@ window.registerPack({
           "explanation": "✅ **Whose** + **are these** (pluriel)."
         },
         {
+          "id": "8b927600-9c52-485c-8c89-922c6f62291e",
           "type": "question",
           "prompt": "Traduis : « De quelle couleur est son parapluie ? (à lui) »",
           "answers": [
@@ -1027,6 +1093,7 @@ window.registerPack({
           "explanation": "✅ À retenir :\n- **What colour**\n- à lui → **his**"
         },
         {
+          "id": "6475d0b0-b40f-4c9c-9317-22d351d570d4",
           "type": "question",
           "prompt": "Traduis : « Où achète-t-elle ses vêtements ? »",
           "answers": [
@@ -1035,6 +1102,7 @@ window.registerPack({
           "explanation": "✅ **does** + she + **buy** (sans -s)."
         },
         {
+          "id": "f3ec8e9d-d943-40fd-8783-da17f4242111",
           "type": "question",
           "prompt": "Traduis : « De combien d'ordinateurs ont-ils besoin ? »",
           "answers": [
@@ -1043,6 +1111,7 @@ window.registerPack({
           "explanation": "✅ **How many** + computers + **do** + they + need ?"
         },
         {
+          "id": "0099a827-dd8b-4826-8f89-a804ff687cd6",
           "type": "question",
           "prompt": "Traduis : « Quand vient-il ? Demain ? »",
           "answers": [
@@ -1053,6 +1122,7 @@ window.registerPack({
           "explanation": "✅ Un moment → **When**. [[Tomorrow|demain]]"
         },
         {
+          "id": "344b5ba4-5d66-4d78-b859-c315f889af30",
           "type": "question",
           "prompt": "Traduis : « Comment vas-tu ? »",
           "answers": [
@@ -1061,6 +1131,7 @@ window.registerPack({
           "explanation": "✅ **How are you?**"
         },
         {
+          "id": "34e69960-f065-4ec9-88af-1665cddd77ca",
           "type": "question",
           "prompt": "Traduis : « Qui est-ce ? »",
           "answers": [
@@ -1071,6 +1142,7 @@ window.registerPack({
           "explanation": "✅ Une personne → **Who**."
         },
         {
+          "id": "96eed014-aa90-49c5-9b7e-8826cdaa1f0e",
           "type": "question",
           "prompt": "Traduis : « Où sont-ils ? »",
           "answers": [
@@ -1079,6 +1151,7 @@ window.registerPack({
           "explanation": "✅ **Where** + **are** + they ?"
         },
         {
+          "id": "0382ff6a-6158-4387-a687-d7d4621251d7",
           "type": "question",
           "prompt": "Traduis : « Est-ce que tu aimes les chats ? »",
           "answers": [
@@ -1087,6 +1160,7 @@ window.registerPack({
           "explanation": "✅ Pas de mot interrogatif : **Do** + you + like ?"
         },
         {
+          "id": "84894df8-36da-4c94-9085-bb7f5884a821",
           "type": "question",
           "prompt": "Traduis : « Est-ce qu'il parle anglais ? »",
           "answers": [
@@ -1095,6 +1169,7 @@ window.registerPack({
           "explanation": "✅ **Does** + he + **speak** (sans -s) ?"
         },
         {
+          "id": "6aad0519-9c14-4911-bbdb-c10fdc730a11",
           "type": "question",
           "prompt": "Traduis : « Quelle est ta couleur préférée ? »",
           "answers": [
@@ -1106,6 +1181,7 @@ window.registerPack({
           "explanation": "✅ **What is** your favourite colour?"
         },
         {
+          "id": "7459e2b4-3e5a-4e16-b5e4-65e9f3bc1113",
           "type": "question",
           "prompt": "Traduis : « Combien d'argent a-t-il ? »",
           "answers": [
@@ -1115,6 +1191,7 @@ window.registerPack({
           "explanation": "✅ **money** ne se compte pas → **How much**."
         },
         {
+          "id": "c10e0a18-086f-4580-8bb2-c8af4bd3def1",
           "type": "question",
           "prompt": "Traduis : « Pourquoi lave-t-il sa voiture ? »",
           "answers": [
@@ -1124,6 +1201,7 @@ window.registerPack({
           "explanation": "✅ Une raison → **Why**."
         },
         {
+          "id": "632452cf-1419-4463-b4d7-2738a2dc8b62",
           "type": "question",
           "prompt": "Traduis : « À qui est ce chien ? »",
           "answers": [
@@ -1134,6 +1212,7 @@ window.registerPack({
           "explanation": "✅ À qui → **Whose**."
         },
         {
+          "id": "84ec5a6e-4f1b-455c-bf83-e3a29a3b85d7",
           "type": "question",
           "prompt": "Traduis : « Que manges-tu ? »",
           "answers": [
@@ -1143,6 +1222,7 @@ window.registerPack({
           "explanation": "✅ Une chose → **What**."
         },
         {
+          "id": "5bc2ee77-92fd-4a25-86af-cd84dcd5cca9",
           "type": "question",
           "prompt": "Traduis : « Quand est ton anniversaire ? »",
           "answers": [
@@ -1151,6 +1231,7 @@ window.registerPack({
           "explanation": "✅ Un moment → **When**."
         },
         {
+          "id": "eb99d1d2-605b-48bf-aa64-ff9c01b32af5",
           "type": "question",
           "prompt": "Traduis : « Où travaille ta mère ? »",
           "answers": [

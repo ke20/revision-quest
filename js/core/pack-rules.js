@@ -11,6 +11,8 @@
   const PATH_RE = /^([a-z0-9-]{1,30})\/([a-z0-9-]{1,30})\/([a-z0-9-]{1,60})$/; // a catalogue path: <niveau>/<matiere>/<cours>
   const PACK_PATH_RE = /^[a-z0-9-]{1,30}\/[a-z0-9-]{1,30}\/[a-z0-9-]{1,60}(\/[a-z0-9-]{1,30})?$/; // a pack id: the same, plus /<groupe> for a group
   const COLOR_RE = /^#[0-9a-fA-F]{3,8}$/;
+  // id of an exercise: a UUID v4, given once and never changed (players' detailed mistakes point to it)
+  const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
   const TYPES = ["mcq", "sort", "match", "order", "fill", "spot", "question"];
   const BOSS_MIN = 10, BOSS_MAX = 20, BOSS_POOL = 40; // the boss (last world): 10 to 20 questions per run, from a pool of 40 at most
 
@@ -285,8 +287,10 @@
 
   /** Checks everything inside a pack except its identity (path, lang) and its catalogue entry.
       Returns { worlds, exercises, types } or null when there is no world to count.
-      @param {any} pack data not checked yet @param {PackReport} err @param {PackReport} warn */
-  function validateContent(pack, err, warn) {
+      opts.requireIds: every exercise must have its id (packs of the repo; a private course may have none).
+      @param {any} pack data not checked yet @param {PackReport} err @param {PackReport} warn
+      @param {{ requireIds?: boolean }} [opts] */
+  function validateContent(pack, err, warn, opts = {}) {
     // documents (or legacy letters)
     if (pack.documents && pack.letters) err("utilise documents OU letters, pas les deux");
     const docs = pack.documents || pack.letters || [];
@@ -309,7 +313,7 @@
     // worlds
     if (!isArr(pack.worlds) || !pack.worlds.length) { err("worlds doit être un tableau non vide"); return null; }
     if (pack.worlds.length > 100) err("100 mondes maximum");
-    const worldIds = new Set();
+    const worldIds = new Set(), exIds = new Set();
     const stats = { worlds: pack.worlds.length, exercises: 0, types: {} };
     pack.worlds.forEach(/** @param {any} w @param {number} wi */ (w, wi) => {
       const W = `monde ${wi + 1}`;
@@ -325,7 +329,12 @@
       if (!isArr(w.exercises) || !w.exercises.length) return err(W + " : exercises doit être un tableau non vide");
       w.exercises.forEach(/** @param {any} e @param {number} ei */ (e, ei) => {
         stats.exercises++;
-        validateExercise(e, `${W} (${w.title || ""}) ex ${ei + 1}`, { err, warn, docIds, stats });
+        const where = `${W} (${w.title || ""}) ex ${ei + 1}`;
+        validateExercise(e, where, { err, warn, docIds, stats });
+        if (!e || typeof e !== "object") return;
+        if (e.id == null) { if (opts.requireIds) err(where + " : id manquant (mise run pack:ids l'ajoute)"); }
+        else if (exIds.has(e.id)) err(where + ` : id ${e.id} en double dans le pack (chaque exercice a le sien)`);
+        exIds.add(e.id);
       });
     });
     pack.worlds.forEach(/** @param {any} w @param {number} wi */ (w, wi) => {
@@ -412,6 +421,7 @@
     const docIds = ctx.docIds || new Set(), stats = ctx.stats || { types: {} };
     if (!e || typeof e !== "object") return err(where + " : objet attendu");
     const t = where + " [" + e.type + "]";
+    if (e.id != null && (typeof e.id !== "string" || !UUID_RE.test(e.id))) err(where + ` : id ${json(e.id)} invalide (UUID v4 en minuscules, attribué une fois puis jamais changé)`);
     if (!TYPES.includes(e.type)) return err(where + ` : type "${e.type}" inconnu (${TYPES.join(", ")})`);
     stats.types[e.type] = (stats.types[e.type] || 0) + 1;
     if (!isStr(e.prompt)) err(t + " : prompt (consigne) manquant");
@@ -523,7 +533,7 @@
   };
 
   const api = {
-    ID_RE, WORLD_ID_RE, PATH_RE, PACK_PATH_RE, COLOR_RE, TYPES,
+    ID_RE, WORLD_ID_RE, PATH_RE, PACK_PATH_RE, COLOR_RE, UUID_RE, TYPES,
     MAX_ROWS, MAX_COLS, MAX_CELL, MAX_PACK_SIZE, BOSS_MIN, BOSS_MAX, BOSS_POOL,
     parseStrict, formatStrict,
     isStr, plain, checkMarkup,

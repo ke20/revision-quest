@@ -34,6 +34,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "9b827126-be04-4f7f-a0dd-803a06439cd5",
           "type": "mcq",
           "prompt": "En quelle année commence la Révolution française ?",
           "options": [
@@ -46,6 +47,7 @@ window.registerPack({
           "hint": "Fin du XVIIIe siècle."
         },
         {
+          "id": "d2bafda1-66b5-4f19-87d6-33e716226971",
           "type": "sort",
           "prompt": "Range chaque événement dans son siècle.",
           "categories": [
@@ -71,6 +73,7 @@ window.registerPack({
           "explanation": "Bravo."
         },
         {
+          "id": "f7385bbe-2de7-421e-9750-1c0055c249a8",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -99,6 +102,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "0d688ae2-9c24-44f0-9e2d-e9fdd7bf3ee0",
           "type": "question",
           "prompt": "D'après le texte, que veulent donner les députés à la France ?",
           "docId": "d1",
@@ -109,6 +113,7 @@ window.registerPack({
           "explanation": "Très bien."
         },
         {
+          "id": "bd63e06c-2226-4d65-8238-c6d6d6282b89",
           "type": "question",
           "prompt": "En quelle année commence la Révolution française ?",
           "answers": [
@@ -117,6 +122,7 @@ window.registerPack({
           "explanation": "Bonne réponse : **1789**."
         },
         {
+          "id": "6b6649c8-3835-4483-9875-fdc40f117a6c",
           "type": "question",
           "prompt": "Quel jour la Bastille est-elle prise ?",
           "answers": [
@@ -128,6 +134,7 @@ window.registerPack({
           "explanation": "Bonne réponse : **le 14 juillet 1789**."
         },
         {
+          "id": "27154893-8607-4217-9759-8680fe47b665",
           "type": "question",
           "prompt": "Comment appelle-t-on un ensemble de lois qui organise le pays ?",
           "answers": [
@@ -137,6 +144,7 @@ window.registerPack({
           "explanation": "Bonne réponse : **une constitution**."
         },
         {
+          "id": "b737ff37-5b44-4042-a34e-df6ed12b52b0",
           "type": "question",
           "prompt": "Qui est roi de France en 1789 ?",
           "answers": [
@@ -146,6 +154,7 @@ window.registerPack({
           "explanation": "Bonne réponse : **Louis XVI**."
         },
         {
+          "id": "45b8bb40-5c80-4729-aaf7-2818fbc1206d",
           "type": "question",
           "prompt": "Dans quelle salle les députés prêtent-ils serment ?",
           "answers": [
@@ -156,6 +165,7 @@ window.registerPack({
           "explanation": "Bonne réponse : **la salle du Jeu de paume**."
         },
         {
+          "id": "510427ec-baa9-4d89-b556-2cccc6db8546",
           "type": "question",
           "prompt": "Combien y a-t-il d'ordres dans la société avant 1789 ?",
           "answers": [
@@ -165,6 +175,7 @@ window.registerPack({
           "explanation": "Bonne réponse : **3**."
         },
         {
+          "id": "4d41d19d-090f-4977-a722-05fdfdc7138e",
           "type": "question",
           "prompt": "Quel ordre paie les impôts ?",
           "answers": [
@@ -174,6 +185,7 @@ window.registerPack({
           "explanation": "Bonne réponse : **le tiers état**."
         },
         {
+          "id": "e56cd8b0-0f50-4de7-aa65-601a789c44e6",
           "type": "question",
           "prompt": "Quelle forteresse le peuple de Paris prend-il en 1789 ?",
           "answers": [
@@ -183,6 +195,7 @@ window.registerPack({
           "explanation": "Bonne réponse : **la Bastille**."
         },
         {
+          "id": "c2c1ed64-9d8c-4ce7-bd18-35665b79bead",
           "type": "question",
           "prompt": "En quelle année Louis XVI est-il guillotiné ?",
           "answers": [

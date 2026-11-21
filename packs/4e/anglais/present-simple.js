@@ -36,6 +36,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "bebbe68d-7b2d-4eef-aa3c-60cb7caaa88d",
           "type": "match",
           "prompt": "Relie chaque adverbe à sa traduction.",
           "pairs": [
@@ -67,6 +68,7 @@ window.registerPack({
           "explanation": "✅ Les adverbes de fréquence :\n- **always** = toujours\n- **usually** = d'habitude\n- **often** = souvent\n- **sometimes** = parfois\n- **rarely** = rarement\n- **never** = jamais"
         },
         {
+          "id": "a1ce3f75-2667-4d5b-b3cd-47e455206904",
           "type": "mcq",
           "prompt": "Quel adverbe veut dire **le plus souvent** ?",
           "options": [
@@ -79,6 +81,7 @@ window.registerPack({
           "explanation": "✅ **always** = toujours : c'est 100 % du temps. Puis viennent **usually**, **often** et **sometimes**."
         },
         {
+          "id": "bfb4377d-e59c-4041-8b6f-989da76b3df5",
           "type": "match",
           "prompt": "Relie chaque expression à sa traduction.",
           "pairs": [
@@ -106,6 +109,7 @@ window.registerPack({
           "explanation": "✅ Les marqueurs :\n- **once** = une fois\n- **twice** = deux fois\n- **three times** = trois fois\n- **on Mondays** (jour au pluriel) = tous les lundis"
         },
         {
+          "id": "bcb387d4-cf92-4dcf-a434-c10776954c9d",
           "type": "mcq",
           "prompt": "Pourquoi emploie-t-on le présent simple dans : \"I drink a lot of water every day.\" ?",
           "options": [
@@ -118,6 +122,7 @@ window.registerPack({
           "explanation": "✅ **every day** = tous les jours : c'est une **habitude**, donc présent simple. [[I drink a lot of water every day.|Je bois beaucoup d'eau tous les jours.]]"
         },
         {
+          "id": "528837fb-31e2-4588-90af-8c4ea0bcdb52",
           "type": "mcq",
           "prompt": "Comment dit-on « le lundi » (tous les lundis) dans : \"___, I go to the gym.\" ?",
           "options": [
@@ -131,6 +136,7 @@ window.registerPack({
           "hint": "Le jour se met au pluriel pour une habitude."
         },
         {
+          "id": "fd44a063-f870-4e4e-bc47-6afd5f7c47d2",
           "type": "fill",
           "prompt": "Complète avec un mot.",
           "sentence": "She plays tennis ___ a week: on Mondays and on Fridays.",
@@ -141,6 +147,7 @@ window.registerPack({
           "hint": "Le lundi et le vendredi : combien de fois ?"
         },
         {
+          "id": "e2c2a644-9f45-4941-aaad-2f8529320b27",
           "type": "sort",
           "prompt": "Range ces habitudes : bonnes ou mauvaises pour la santé ?",
           "categories": [
@@ -190,6 +197,7 @@ window.registerPack({
           "explanation": "✅ Les habitudes :\n- **healthy** (bon pour la santé) : [[eating balanced meals|manger des repas équilibrés]], [[getting enough sleep|dormir assez]]…\n- **unhealthy** (mauvais pour la santé) : [[skipping meals|sauter des repas]], [[staying up late|veiller tard]]…"
         },
         {
+          "id": "1ffd4fb0-a4c2-473d-b29f-8ea2c1bc37b1",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -206,6 +214,7 @@ window.registerPack({
           "explanation": "✅ L'expression de temps **every week** se met à la fin : [[We go to the gym every week.|Nous allons à la salle de sport toutes les semaines.]]"
         },
         {
+          "id": "189af846-c783-4ef1-8732-7f3d4fc7d115",
           "type": "mcq",
           "prompt": "Comment dit-on « trois fois par mois » ?",
           "options": [
@@ -242,6 +251,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "b68978ef-d0e8-4e6b-99f3-4b846dd07e1e",
           "type": "sort",
           "prompt": "Range chaque phrase : **am**, **is** ou **are** ?",
           "categories": [
@@ -295,6 +305,7 @@ window.registerPack({
           "explanation": "✅ Be :\n- **I** → am\n- **he, she, it** (et un nom au singulier) → is\n- **you, we, they** → are"
         },
         {
+          "id": "423ecdd4-12b9-47b9-95f7-add8e9441972",
           "type": "mcq",
           "prompt": "Complète : \"I ___ not stressed.\"",
           "options": [
@@ -307,6 +318,7 @@ window.registerPack({
           "explanation": "✅ Avec **I**, c'est toujours **am** : [[I am not stressed.|Je ne suis pas stressé.]]"
         },
         {
+          "id": "5ba65de4-535f-422e-870d-89a453d47c29",
           "type": "fill",
           "prompt": "Complète avec la bonne forme de **be**.",
           "sentence": "My brother ___ in good health.",
@@ -317,6 +329,7 @@ window.registerPack({
           "explanation": "✅ **My brother** = he → **is** : [[My brother is in good health.|Mon frère est en bonne santé.]]"
         },
         {
+          "id": "47ea2cf4-2d7d-4cca-a400-6747a238ccdc",
           "type": "fill",
           "prompt": "Complète avec **be** à la forme négative.",
           "sentence": "They ___ fit. They never exercise.",
@@ -328,6 +341,7 @@ window.registerPack({
           "explanation": "✅ **they** → **aren't** (are not) : [[They aren't fit. They never exercise.|Ils ne sont pas en forme. Ils ne font jamais de sport.]]"
         },
         {
+          "id": "2574b09c-ef48-44c0-a6b3-66e042d8ee41",
           "type": "mcq",
           "prompt": "Choisis la bonne question.",
           "options": [
@@ -340,6 +354,7 @@ window.registerPack({
           "explanation": "✅ Avec **be**, on inverse : **Are you** tired? Pas de **do** avec be. [[Are you tired?|Est-ce que tu es fatigué ?]]"
         },
         {
+          "id": "5f7c1819-e3a9-436e-b9f4-ca8b476d8aef",
           "type": "order",
           "prompt": "Remets la question dans l'ordre.",
           "words": [
@@ -356,6 +371,7 @@ window.registerPack({
           "explanation": "✅ **Is** passe devant le sujet : [[Is your coach strict?|Est-ce que ton entraîneur est sévère ?]]"
         },
         {
+          "id": "dcc1789c-9330-4746-8b1e-7582463e6e73",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -371,6 +387,7 @@ window.registerPack({
           "explanation": "✅ **She** → **is** : [[She is a good coach.|C'est une bonne entraîneuse.]]"
         },
         {
+          "id": "6957eca6-e44a-43c1-9a47-2863bc554f0f",
           "type": "fill",
           "prompt": "Complète la question avec **be**.",
           "sentence": "___ I late for the training session?",
@@ -404,6 +421,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "a0cc0e64-3084-4d12-bda3-aa9aa800916c",
           "type": "match",
           "prompt": "Relie chaque verbe à sa forme avec **he / she / it**.",
           "pairs": [
@@ -435,6 +453,7 @@ window.registerPack({
           "explanation": "✅ Les pièges :\n- -o, -ch : **-es** (goes, watches, does)\n- consonne + y : **-ies** (worries)\n- voyelle + y : **-s** (plays)\n- have → **has**"
         },
         {
+          "id": "02bf5b8d-8e8f-4831-ac75-7f3ff8a7248c",
           "type": "sort",
           "prompt": "Comment écrit-on le verbe avec **he** : -s, -es ou -ies ?",
           "categories": [
@@ -488,6 +507,7 @@ window.registerPack({
           "explanation": "✅ Orthographe :\n- **-s** : plays, eats, drinks\n- **-es** : goes, watches, fixes\n- **-ies** : worries, studies"
         },
         {
+          "id": "c64bf7d9-c87d-42fd-8aef-dbad6e23b664",
           "type": "fill",
           "prompt": "Complète avec **eat** au présent simple.",
           "sentence": "My cousin ___ breakfast at seven every morning.",
@@ -497,6 +517,7 @@ window.registerPack({
           "explanation": "✅ **My cousin** = he/she → **eats** : [[My cousin eats breakfast at seven every morning.|Mon cousin prend son petit déjeuner à sept heures tous les matins.]]"
         },
         {
+          "id": "1660f103-6e62-46bb-983b-3e7da752788f",
           "type": "fill",
           "prompt": "Complète avec **worry** au présent simple.",
           "sentence": "She ___ too much about her marks.",
@@ -506,6 +527,7 @@ window.registerPack({
           "explanation": "✅ Consonne + **y** → **-ies** : worry → **worries**. [[She worries too much about her marks.|Elle s'inquiète trop pour ses notes.]]"
         },
         {
+          "id": "3add9d24-2fba-4da5-b328-b442df6b793c",
           "type": "mcq",
           "prompt": "Complète : \"They ___ lots of free time.\"",
           "options": [
@@ -518,6 +540,7 @@ window.registerPack({
           "explanation": "✅ **They** : pas de -s ! **They have**. Seuls he, she, it prennent **has**. [[They have lots of free time.|Ils ont beaucoup de temps libre.]]"
         },
         {
+          "id": "e9a74b01-949c-452f-996d-4d67e7f6e6d9",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -533,6 +556,7 @@ window.registerPack({
           "explanation": "✅ Voyelle + **y** : juste **-s** → **plays**. [[Tom plays tennis on Saturdays.|Tom joue au tennis le samedi.]]"
         },
         {
+          "id": "da1806c2-34e8-4231-857a-ea2652a962fb",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -549,6 +573,7 @@ window.registerPack({
           "explanation": "✅ Après **-ch** : **-es** → **watches**. [[My sister watches TV every evening.|Ma sœur regarde la télé tous les soirs.]]"
         },
         {
+          "id": "d35d9c12-13f0-4d1a-9f7a-4a40d3db737b",
           "type": "fill",
           "prompt": "Complète avec **sing** au présent simple.",
           "sentence": "My mum always ___ in the car.",
@@ -558,6 +583,7 @@ window.registerPack({
           "explanation": "✅ **My mum** = she → **sings** : [[My mum always sings in the car.|Ma mère chante toujours dans la voiture.]]"
         },
         {
+          "id": "715bf048-9339-4574-a2cd-acd769c17769",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -597,6 +623,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "16ca8775-04e3-450a-b4e1-ea287c69277d",
           "type": "sort",
           "prompt": "Range chaque verbe selon le son du **-s**.",
           "categories": [
@@ -650,6 +677,7 @@ window.registerPack({
           "explanation": "✅ Les sons :\n- **[s]** : looks, stops\n- **[z]** : enjoys, listens, carries\n- **[ɪz]** (syllabe en plus) : watches, promises, passes"
         },
         {
+          "id": "3cac130b-f70b-4b4e-a07f-b7e59eaebef0",
           "type": "mcq",
           "prompt": "Comment se prononce le -s de **watches** ?",
           "options": [
@@ -661,6 +689,7 @@ window.registerPack({
           "explanation": "✅ Après le son [tʃ] (-ch) : **[ɪz]**, une syllabe en plus : watch-es."
         },
         {
+          "id": "3c9b6922-dfe9-4f4c-9569-b26829f6e210",
           "type": "mcq",
           "prompt": "Dans quel verbe le -s se prononce-t-il **[s]** ?",
           "options": [
@@ -673,6 +702,7 @@ window.registerPack({
           "explanation": "✅ **works** : après le son [k], le -s se prononce [s]. Les autres :\n- **plays** : [z]\n- **lives** : [z]\n- **passes** : [ɪz]"
         },
         {
+          "id": "ec93d488-9814-4347-be90-516d93045034",
           "type": "mcq",
           "prompt": "Dans quel verbe entend-on une **syllabe en plus** ?",
           "options": [
@@ -685,6 +715,7 @@ window.registerPack({
           "explanation": "✅ **catches** = catch-es [ɪz]. **takes** se dit [s], **arrives** et **listens** se disent [z]."
         },
         {
+          "id": "b362516f-54f4-459d-a730-38ffb7640f63",
           "type": "mcq",
           "prompt": "Comment se prononce le -s de **carries** ?",
           "options": [
@@ -696,6 +727,7 @@ window.registerPack({
           "explanation": "✅ **carries** : [z]. On écrit **-ies**, mais on n'entend pas de syllabe en plus."
         },
         {
+          "id": "072a433d-211d-4489-93c1-97cf34d5bfc2",
           "type": "sort",
           "prompt": "Range chaque verbe selon le son du **-s**.",
           "categories": [
@@ -749,6 +781,7 @@ window.registerPack({
           "explanation": "✅ Les sons :\n- **[s]** : eats, sleeps, drinks\n- **[z]** : goes, swims, reads\n- **[ɪz]** : washes, relaxes"
         },
         {
+          "id": "835bfcde-012f-4471-971d-bb8cf8e2295c",
           "type": "fill",
           "prompt": "Écoute et écris le verbe.",
           "listen": "She watches TV every evening.",
@@ -760,6 +793,7 @@ window.registerPack({
           "hint": "Elle regarde la télé."
         },
         {
+          "id": "f28b9c63-647a-45c9-b335-4623b34572c2",
           "type": "fill",
           "prompt": "Écoute et écris le verbe.",
           "listen": "My dad relaxes on Sundays.",
@@ -794,6 +828,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "1046fbd4-6895-4f16-be76-3f236e3331f1",
           "type": "sort",
           "prompt": "Range chaque sujet : **don't** ou **doesn't** ?",
           "categories": [
@@ -843,6 +878,7 @@ window.registerPack({
           "explanation": "✅ **doesn't** avec he, she, it et un nom au singulier (my brother). **don't** avec I, you, we, they."
         },
         {
+          "id": "2b117e9d-af33-4000-ae02-5d1758b82881",
           "type": "fill",
           "prompt": "Complète avec **don't** ou **doesn't**.",
           "sentence": "My sister ___ eat junk food. She hates it.",
@@ -853,6 +889,7 @@ window.registerPack({
           "explanation": "✅ **My sister** = she → **doesn't** : [[My sister doesn't eat junk food.|Ma sœur ne mange pas de malbouffe.]]"
         },
         {
+          "id": "0685b0c3-8835-4f8f-893f-9de9df5c5ee6",
           "type": "fill",
           "prompt": "Complète avec **don't** ou **doesn't**.",
           "sentence": "I'm sorry, I ___ have time to talk now.",
@@ -863,6 +900,7 @@ window.registerPack({
           "explanation": "✅ **I** → **don't** : [[I'm sorry, I don't have time to talk now.|Désolé, je n'ai pas le temps de parler maintenant.]]"
         },
         {
+          "id": "1d6ae254-3e60-4f97-acf3-6a036636e43c",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -877,6 +915,7 @@ window.registerPack({
           "explanation": "✅ Après **doesn't**, le verbe n'a pas de -s : [[He doesn't drink soda.|Il ne boit pas de soda.]]"
         },
         {
+          "id": "48c5067e-fee6-4b2f-8d9e-c5a7709d1ebd",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -891,6 +930,7 @@ window.registerPack({
           "explanation": "✅ **She** → **doesn't** : [[She doesn't like sport.|Elle n'aime pas le sport.]]"
         },
         {
+          "id": "769917e6-976a-4e91-93de-1c137e3f307e",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -907,6 +947,7 @@ window.registerPack({
           "explanation": "✅ Pour un verbe autre que be, on utilise **does not** : [[Jenny does not work on Sundays.|Jenny ne travaille pas le dimanche.]]"
         },
         {
+          "id": "2a31f7c6-a0af-4f01-b65f-3072e9e33bd3",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -924,6 +965,7 @@ window.registerPack({
           "explanation": "✅ **doesn't** + verbe sans -s : [[My dad doesn't smoke.|Mon père ne fume pas.]]"
         },
         {
+          "id": "1339c6cf-e80c-4458-9fea-51e7f1c371f0",
           "type": "mcq",
           "prompt": "Traduis : « Je ne vais pas à la salle de sport. »",
           "options": [
@@ -959,6 +1001,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "a6fe3bcc-bd29-437d-b2a0-158ec97b190f",
           "type": "sort",
           "prompt": "Range chaque sujet : **Do** ou **Does** ?",
           "categories": [
@@ -1008,6 +1051,7 @@ window.registerPack({
           "explanation": "✅ **Does** avec he, she, it (et un nom au singulier). **Do** avec I, you, we, they (et un nom au pluriel : your parents)."
         },
         {
+          "id": "5d6c2466-c615-4584-a0d7-c943f9b6e50a",
           "type": "fill",
           "prompt": "Complète avec **Do** ou **Does**.",
           "sentence": "___ your brother play football? Yes, he does.",
@@ -1017,6 +1061,7 @@ window.registerPack({
           "explanation": "✅ **your brother** = he → **Does** : [[Does your brother play football?|Est-ce que ton frère joue au foot ?]]"
         },
         {
+          "id": "4cbe18cf-58bf-4574-8edb-d03c0981ae39",
           "type": "fill",
           "prompt": "Complète la réponse courte.",
           "sentence": "Does your mum drink coffee? No, she ___.",
@@ -1027,6 +1072,7 @@ window.registerPack({
           "explanation": "✅ Question avec **Does**, réponse avec **does / doesn't** : [[No, she doesn't.|Non.]]"
         },
         {
+          "id": "fddff4e4-da8a-4f5b-ad9d-dd8b5f1ff00e",
           "type": "fill",
           "prompt": "Complète la réponse courte.",
           "sentence": "Do you get enough sleep? Yes, I ___.",
@@ -1036,6 +1082,7 @@ window.registerPack({
           "explanation": "✅ Question avec **Do**, réponse avec **do** : [[Yes, I do.|Oui.]]"
         },
         {
+          "id": "8c25b560-d3a3-49ec-877b-766f7ca3e9ed",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -1051,6 +1098,7 @@ window.registerPack({
           "explanation": "✅ **they** → **Do** : [[Do they live in London?|Est-ce qu'ils habitent à Londres ?]]"
         },
         {
+          "id": "2cda9c9c-08ee-4ba1-8c8f-430a251ac3eb",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -1066,6 +1114,7 @@ window.registerPack({
           "explanation": "✅ Après **Does**, le verbe reste sans -s : **have**. [[Does Tom have a bike?|Est-ce que Tom a un vélo ?]]"
         },
         {
+          "id": "44060a43-4a96-4b1b-8bfc-9086b5c73e1c",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -1082,6 +1131,7 @@ window.registerPack({
           "explanation": "✅ Au présent simple, pas de -ing : [[Do they usually walk to school?|Est-ce qu'ils vont à l'école à pied d'habitude ?]]"
         },
         {
+          "id": "f8ec11ef-f96a-4187-b013-ab398358f312",
           "type": "order",
           "prompt": "Remets la question dans l'ordre.",
           "words": [
@@ -1102,6 +1152,7 @@ window.registerPack({
           "explanation": "✅ Mot interrogatif + **do** + sujet + verbe : [[How often do you go to the gym?|Combien de fois vas-tu à la salle de sport ?]]"
         },
         {
+          "id": "9ef4987e-1546-44ac-bb00-5ee6b6052224",
           "type": "mcq",
           "prompt": "Choisis la bonne question.",
           "options": [
@@ -1114,6 +1165,7 @@ window.registerPack({
           "explanation": "✅ Why + **do** + you + verbe sans -s : [[Why do you eat junk food?|Pourquoi est-ce que tu manges de la malbouffe ?]]"
         },
         {
+          "id": "7415888d-6ce1-4cd0-a0e2-9327e309e4d6",
           "type": "mcq",
           "prompt": "Choisis la bonne question.",
           "options": [
@@ -1149,6 +1201,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "66b2b13e-038e-475f-bb48-1a91c32eff06",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -1165,6 +1218,7 @@ window.registerPack({
           "explanation": "✅ L'adverbe **often** se met avant le verbe : [[I often play football.|Je joue souvent au foot.]]"
         },
         {
+          "id": "99434316-8afb-446c-972a-e173eb9bc766",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -1178,6 +1232,7 @@ window.registerPack({
           "explanation": "✅ Avec **be**, l'adverbe se met après : [[She is always tired.|Elle est toujours fatiguée.]]"
         },
         {
+          "id": "16274dbf-556a-442f-8ac4-5106b3f7c58b",
           "type": "mcq",
           "prompt": "Choisis la phrase correcte.",
           "options": [
@@ -1190,6 +1245,7 @@ window.registerPack({
           "explanation": "✅ Adverbe **avant** le verbe, et pas de -ing : [[I sometimes play video games.|Je joue parfois aux jeux vidéo.]]"
         },
         {
+          "id": "97644cd5-6f16-4a90-ba80-cdc6a8af98a6",
           "type": "mcq",
           "prompt": "Où placer **usually** ?",
           "options": [
@@ -1202,6 +1258,7 @@ window.registerPack({
           "explanation": "✅ **usually** avant le verbe **walk** : [[They usually walk to school.|D'habitude, ils vont à l'école à pied.]]"
         },
         {
+          "id": "fd4d5188-65b3-44a0-bfa2-2d608caf39f0",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -1217,6 +1274,7 @@ window.registerPack({
           "explanation": "✅ **My coach** = he/she → **knows** : [[My coach knows my name.|Mon entraîneur connaît mon nom.]]"
         },
         {
+          "id": "e7901c47-bda1-4d8d-8bda-d407a62cccd3",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -1233,6 +1291,7 @@ window.registerPack({
           "explanation": "✅ Après **to**, le verbe n'a jamais de -s : [[My sister wants to play tennis.|Ma sœur veut jouer au tennis.]]"
         },
         {
+          "id": "b1e46d64-749a-4546-885a-926983d5bfd6",
           "type": "fill",
           "prompt": "Complète la question avec un mot.",
           "sentence": "Why ___ you eat so much sugar?",
@@ -1242,6 +1301,7 @@ window.registerPack({
           "explanation": "✅ Après **Why**, il faut **do** : [[Why do you eat so much sugar?|Pourquoi est-ce que tu manges autant de sucre ?]]"
         },
         {
+          "id": "e1d5acd7-4fcc-4f9c-aeeb-b1251e935971",
           "type": "sort",
           "prompt": "Phrase correcte ou fausse ?",
           "categories": [
@@ -1314,6 +1374,7 @@ window.registerPack({
       "draw": 12,
       "exercises": [
         {
+          "id": "37defc20-3e29-4d51-b2e2-c6edaa32464b",
           "type": "question",
           "prompt": "Traduis : « Je mange souvent des fruits. »",
           "answers": [
@@ -1323,6 +1384,7 @@ window.registerPack({
           "explanation": "Adverbe avant le verbe : [[I often eat fruit.|Je mange souvent des fruits.]]"
         },
         {
+          "id": "cefdbb05-1a1b-4401-9dca-a4c798fa1a75",
           "type": "question",
           "prompt": "Traduis : « Elle va à la salle de sport deux fois par semaine. »",
           "answers": [
@@ -1332,6 +1394,7 @@ window.registerPack({
           "explanation": "**She goes** (go + es), **twice a week** à la fin : [[She goes to the gym twice a week.|Elle va à la salle de sport deux fois par semaine.]]"
         },
         {
+          "id": "39d69e09-f859-4975-a07d-9c91941cf303",
           "type": "question",
           "prompt": "Traduis : « Mon frère ne fume pas. »",
           "answers": [
@@ -1340,6 +1403,7 @@ window.registerPack({
           "explanation": "**doesn't** + verbe sans -s : [[My brother doesn't smoke.|Mon frère ne fume pas.]]"
         },
         {
+          "id": "6a13cc85-c1f3-4cb9-a9c6-d6b11aceeb6e",
           "type": "question",
           "prompt": "Traduis : « Est-ce que tu fais du sport ? »",
           "answers": [
@@ -1353,6 +1417,7 @@ window.registerPack({
           "explanation": "**Do** + you + verbe : [[Do you do sport?|Est-ce que tu fais du sport ?]]"
         },
         {
+          "id": "63af2b18-0b35-443b-91aa-ad6ff78a3199",
           "type": "question",
           "prompt": "Traduis : « Est-ce qu'elle dort assez ? Oui. »",
           "answers": [
@@ -1362,6 +1427,7 @@ window.registerPack({
           "explanation": "**Does** + she + verbe sans -s, réponse courte **Yes, she does** : [[Does she get enough sleep? Yes, she does.|Est-ce qu'elle dort assez ? Oui.]]"
         },
         {
+          "id": "55c7e4a9-b62c-4bd1-a23f-b617ed8df736",
           "type": "question",
           "prompt": "Traduis : « Je ne saute jamais de repas. »",
           "answers": [
@@ -1371,6 +1437,7 @@ window.registerPack({
           "explanation": "**never** avant le verbe, sans don't : [[I never skip meals.|Je ne saute jamais de repas.]]"
         },
         {
+          "id": "a0ef0817-e22f-415f-9153-ea5542295b47",
           "type": "question",
           "prompt": "Traduis : « Il regarde la télé tous les soirs. »",
           "answers": [
@@ -1383,6 +1450,7 @@ window.registerPack({
           "explanation": "watch + **es** : [[He watches TV every evening.|Il regarde la télé tous les soirs.]]"
         },
         {
+          "id": "891416bc-a825-4383-b875-221ba0962fb8",
           "type": "question",
           "prompt": "Traduis : « Nous ne mangeons pas de malbouffe. »",
           "answers": [
@@ -1391,6 +1459,7 @@ window.registerPack({
           "explanation": "**don't** + eat : [[We don't eat junk food.|Nous ne mangeons pas de malbouffe.]]"
         },
         {
+          "id": "a8fc9f4a-2968-4784-b05c-80889a391867",
           "type": "question",
           "prompt": "Traduis : « Ils sont en forme. »",
           "answers": [
@@ -1401,6 +1470,7 @@ window.registerPack({
           "explanation": "**they** → **are** : [[They are fit.|Ils sont en forme.]]"
         },
         {
+          "id": "c455b443-dcb2-4246-9e37-148274a7a354",
           "type": "question",
           "prompt": "Traduis : « Je ne suis pas fatigué. »",
           "answers": [
@@ -1409,6 +1479,7 @@ window.registerPack({
           "explanation": "**I am not** : [[I'm not tired.|Je ne suis pas fatigué.]]"
         },
         {
+          "id": "514e7a90-69f1-4e78-abc1-0e81cd273744",
           "type": "question",
           "prompt": "Traduis : « Est-ce que ton entraîneur est sévère ? »",
           "answers": [
@@ -1417,6 +1488,7 @@ window.registerPack({
           "explanation": "Avec **be**, on inverse : [[Is your coach strict?|Est-ce que ton entraîneur est sévère ?]]"
         },
         {
+          "id": "4ead2940-a367-4c64-9ce2-406cffff0ea4",
           "type": "question",
           "prompt": "Traduis : « Elle s'inquiète trop. »",
           "answers": [
@@ -1425,6 +1497,7 @@ window.registerPack({
           "explanation": "worry → **worries** : [[She worries too much.|Elle s'inquiète trop.]]"
         },
         {
+          "id": "d76240c4-dabc-4b47-9978-dcabedc39f9d",
           "type": "question",
           "prompt": "Traduis : « Le samedi, je me promène au grand air. »",
           "answers": [
@@ -1438,6 +1511,7 @@ window.registerPack({
           "explanation": "Jour **au pluriel** pour une habitude : [[On Saturdays, I take walks in fresh air.|Le samedi, je me promène au grand air.]]"
         },
         {
+          "id": "5a920ee6-94bf-4825-8afc-e99ca3928d76",
           "type": "question",
           "prompt": "Traduis : « Pourquoi est-ce que tu veilles tard ? »",
           "answers": [
@@ -1446,6 +1520,7 @@ window.registerPack({
           "explanation": "Why + **do** + you : [[Why do you stay up late?|Pourquoi est-ce que tu veilles tard ?]]"
         },
         {
+          "id": "96d1b2a4-e2d7-4414-b062-019bf9e40392",
           "type": "question",
           "prompt": "Traduis : « Mon père a une alimentation équilibrée. »",
           "answers": [
@@ -1455,6 +1530,7 @@ window.registerPack({
           "explanation": "have → **has** avec he : [[My father has a balanced diet.|Mon père a une alimentation équilibrée.]]"
         },
         {
+          "id": "edb1915e-61bb-406e-b939-e8b16d4b8353",
           "type": "question",
           "prompt": "Traduis : « Est-ce que tes parents boivent du soda ? Non. »",
           "answers": [
@@ -1463,6 +1539,7 @@ window.registerPack({
           "explanation": "**your parents** = they → **Do**, réponse **No, they don't** : [[Do your parents drink soda? No, they don't.|Est-ce que tes parents boivent du soda ? Non.]]"
         },
         {
+          "id": "beb4343d-ae31-40db-969d-7907ddfd07e5",
           "type": "question",
           "prompt": "Traduis : « Je suis toujours en retard. »",
           "answers": [
@@ -1471,6 +1548,7 @@ window.registerPack({
           "explanation": "Avec **be**, l'adverbe se place après : [[I'm always late.|Je suis toujours en retard.]]"
         },
         {
+          "id": "035cb39c-8c66-4cbc-b6c8-28fe4e284d5f",
           "type": "question",
           "prompt": "Traduis : « Il ne boit pas de thé. »",
           "answers": [
@@ -1479,6 +1557,7 @@ window.registerPack({
           "explanation": "**doesn't** + drink (sans -s) : [[He doesn't drink tea.|Il ne boit pas de thé.]]"
         },
         {
+          "id": "60c4b35e-fa62-4ab8-8acb-90c186eeaf70",
           "type": "question",
           "prompt": "Traduis : « Elle joue parfois au tennis. »",
           "answers": [
@@ -1487,6 +1566,7 @@ window.registerPack({
           "explanation": "**sometimes** avant le verbe, **plays** avec she : [[She sometimes plays tennis.|Elle joue parfois au tennis.]]"
         },
         {
+          "id": "ecf069fc-f9a7-46a1-b3a7-90450c48474f",
           "type": "question",
           "prompt": "Traduis : « Est-ce que Tom a un vélo ? »",
           "answers": [
@@ -1496,6 +1576,7 @@ window.registerPack({
           "explanation": "**Does** + Tom + **have** (sans -s) : [[Does Tom have a bike?|Est-ce que Tom a un vélo ?]]"
         },
         {
+          "id": "243dd076-e98e-4bc7-9391-d709bcf6df94",
           "type": "question",
           "prompt": "Traduis : « Nous allons à la piscine une fois par semaine. »",
           "answers": [
@@ -1508,6 +1589,7 @@ window.registerPack({
           "explanation": "**once a week** = une fois par semaine : [[We go to the swimming pool once a week.|Nous allons à la piscine une fois par semaine.]]"
         },
         {
+          "id": "806e8a0c-fbc2-4495-9a50-6433c3e658d9",
           "type": "question",
           "prompt": "Traduis : « D'habitude, mon frère se couche tôt. »",
           "answers": [
@@ -1517,6 +1599,7 @@ window.registerPack({
           "explanation": "**usually** avant le verbe, **goes** avec he : [[My brother usually goes to bed early.|D'habitude, mon frère se couche tôt.]]"
         },
         {
+          "id": "2110167f-dde7-40c4-a92f-a963bde729c3",
           "type": "question",
           "prompt": "Traduis : « Combien de fois est-ce que tu vas à la salle de sport ? »",
           "answers": [
@@ -1526,6 +1609,7 @@ window.registerPack({
           "explanation": "**How often** + do + you : [[How often do you go to the gym?|Combien de fois vas-tu à la salle de sport ?]]"
         },
         {
+          "id": "77756bc8-9e5c-4229-9709-761eb8560cc3",
           "type": "question",
           "prompt": "Traduis : « Elle n'est pas stressée. »",
           "answers": [
@@ -1534,6 +1618,7 @@ window.registerPack({
           "explanation": "**she** → **isn't** : [[She isn't stressed.|Elle n'est pas stressée.]]"
         },
         {
+          "id": "705ac23c-29da-4235-996f-77dda2032c27",
           "type": "question",
           "prompt": "Traduis : « Ma sœur ne mange jamais de bonbons. »",
           "answers": [
@@ -1544,6 +1629,7 @@ window.registerPack({
           "explanation": "**never** + **eats** (pas de doesn't avec never) : [[My sister never eats sweets.|Ma sœur ne mange jamais de bonbons.]]"
         },
         {
+          "id": "33c98da7-5897-4a5d-8d98-e1e6638c30eb",
           "type": "question",
           "prompt": "Traduis : « Est-ce que vous êtes en bonne santé ? »",
           "answers": [
@@ -1553,6 +1639,7 @@ window.registerPack({
           "explanation": "Avec **be**, on inverse, sans do : [[Are you in good health?|Est-ce que vous êtes en bonne santé ?]]"
         },
         {
+          "id": "04b58708-405d-4ff2-aaf3-aae897e7efe5",
           "type": "question",
           "prompt": "Traduis : « Je fais de l'exercice trois fois par semaine. »",
           "answers": [
@@ -1565,6 +1652,7 @@ window.registerPack({
           "explanation": "**three times a week** à la fin : [[I exercise three times a week.|Je fais de l'exercice trois fois par semaine.]]"
         },
         {
+          "id": "698ca52b-950b-42ee-8aed-eabd43985381",
           "type": "question",
           "prompt": "Traduis : « Il ne mange pas cinq fruits et légumes par jour. »",
           "answers": [

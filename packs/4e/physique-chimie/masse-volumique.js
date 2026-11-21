@@ -41,6 +41,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "f151cfe1-5fae-4f13-a311-3823ac9c99cd",
           "type": "mcq",
           "prompt": "Un glaçon fond dans un verre. Comment s'appelle ce changement d'état ?",
           "options": [
@@ -53,6 +54,7 @@ window.registerPack({
           "explanation": "Solide → liquide, c'est la **fusion**. La liquéfaction, c'est gaz → liquide."
         },
         {
+          "id": "636c45af-ac05-401e-bc99-54e56b4bb500",
           "type": "match",
           "prompt": "Relie chaque changement d'état à ce qui se passe.",
           "pairs": [
@@ -76,6 +78,7 @@ window.registerPack({
           "explanation": "Sont inverses :\n- **fusion** et **solidification**\n- **vaporisation** et **liquéfaction**"
         },
         {
+          "id": "6ee06a56-ae4b-4784-99a6-0afb001e97b8",
           "type": "sort",
           "prompt": "Vrai ou faux ? Range chaque phrase.",
           "categories": [
@@ -117,6 +120,7 @@ window.registerPack({
           "explanation": "La **masse ne change jamais** pendant un changement d'état ; seul le **volume** change."
         },
         {
+          "id": "3d91409a-7d8f-4f9c-9505-f4335a90f256",
           "type": "mcq",
           "prompt": "On met 500 g d'eau liquide au congélateur. Quelle est la masse de la glace obtenue ?",
           "options": [
@@ -130,6 +134,7 @@ window.registerPack({
           "hint": "Ce qui change quand l'eau gèle, c'est la place qu'elle prend."
         },
         {
+          "id": "059bf03e-4a73-4353-a0e2-9eb14421ee98",
           "type": "fill",
           "prompt": "Complète avec le bon mot.",
           "sentence": "Quand l'eau liquide devient de la glace, c'est une ___.",
@@ -139,6 +144,7 @@ window.registerPack({
           "explanation": "Liquide → solide : **solidification**."
         },
         {
+          "id": "4bd48078-cfc0-4cb3-bef5-a6f7d292a682",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -156,6 +162,7 @@ window.registerPack({
           "explanation": "L'eau qui gèle prend **plus de place** : son volume **augmente** (c'est pour ça qu'une bouteille pleine éclate au congélateur)."
         },
         {
+          "id": "c61f6136-31f4-4767-b5c4-72f9b2dfec90",
           "type": "mcq",
           "prompt": "De la buée apparaît sur le miroir de la salle de bain. Quel changement d'état a lieu ?",
           "options": [
@@ -168,6 +175,7 @@ window.registerPack({
           "explanation": "La vapeur d'eau (gaz) devient de petites gouttes (liquide) : c'est une **liquéfaction**."
         },
         {
+          "id": "ceeb053e-865d-42eb-a5cb-5f1faed4a6a5",
           "type": "order",
           "prompt": "Remets dans l'ordre ce qui se passe quand on chauffe longtemps un glaçon.",
           "words": [
@@ -285,6 +293,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "0a8d00fd-2ff9-4ca1-bf11-372e10514914",
           "type": "mcq",
           "prompt": "À quoi est égal 1 L ?",
           "options": [
@@ -297,6 +306,7 @@ window.registerPack({
           "explanation": "**1 L = 1 dm³** (et 1 mL = 1 cm³)."
         },
         {
+          "id": "20847f3e-c687-43f3-b3d3-b7d575f87b6f",
           "type": "match",
           "prompt": "Relie les quantités égales.",
           "pairs": [
@@ -324,6 +334,7 @@ window.registerPack({
           "explanation": "Retiens le pont :\n- **1 L = 1 dm³**\n- **1 mL = 1 cm³**"
         },
         {
+          "id": "265d6b1f-fa9b-4a21-8957-e5f8d1192a7a",
           "type": "fill",
           "prompt": "Convertis.",
           "sentence": "3 kg = ___ g",
@@ -366,6 +377,7 @@ window.registerPack({
           "hint": "Place le nombre dans le tableau : le chiffre des unités dans la colonne de l'unité de départ."
         },
         {
+          "id": "c9711354-7b48-4877-ae22-17391ded6299",
           "type": "fill",
           "prompt": "Convertis.",
           "sentence": "45 g = ___ kg",
@@ -408,6 +420,7 @@ window.registerPack({
           }
         },
         {
+          "id": "267a6860-47bd-47b2-8440-a02614893382",
           "type": "fill",
           "prompt": "Convertis.",
           "sentence": "1,8 L = ___ mL",
@@ -475,6 +488,7 @@ window.registerPack({
           "hint": "Place le nombre dans le tableau : le chiffre des unités dans la colonne de l'unité de départ."
         },
         {
+          "id": "61008681-aacc-4937-bc78-c8c806ebaec7",
           "type": "fill",
           "prompt": "Convertis.",
           "sentence": "0,4 cL = ___ cm³",
@@ -541,6 +555,7 @@ window.registerPack({
           }
         },
         {
+          "id": "bb2524d1-dcac-4e1f-911a-28c213b27841",
           "type": "fill",
           "prompt": "Convertis.",
           "sentence": "63 dm³ = ___ cm³",
@@ -612,6 +627,7 @@ window.registerPack({
           "hint": "Place le nombre dans le tableau : le chiffre des unités dans la colonne de l'unité de départ."
         },
         {
+          "id": "335df965-5728-416f-8cec-0652393f8ef4",
           "type": "fill",
           "prompt": "Convertis.",
           "sentence": "25 dL = ___ L",
@@ -679,6 +695,7 @@ window.registerPack({
           "hint": "Place le nombre dans le tableau : le chiffre des unités dans la colonne de l'unité de départ."
         },
         {
+          "id": "99007779-7646-455f-8fa8-e9889929e791",
           "type": "spot",
           "prompt": "Touche l'erreur.",
           "tokens": [
@@ -746,6 +763,7 @@ window.registerPack({
           "hint": "Place le nombre dans le tableau : le chiffre des unités dans la colonne de l'unité de départ."
         },
         {
+          "id": "519bc277-c2b3-4c84-962c-e86e0706daf9",
           "type": "mcq",
           "prompt": "À quoi est égal 350 cm³ ?",
           "options": [
@@ -1129,6 +1147,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "aba8ddbc-1b1b-419e-8928-f8203c9b66ca",
           "type": "fill",
           "prompt": "Lis le volume de liquide dans l'éprouvette.",
           "sentence": "V = ___ mL",
@@ -1435,6 +1454,7 @@ window.registerPack({
           }
         },
         {
+          "id": "0f533bd2-bf40-4b89-8354-d649b79768d1",
           "type": "mcq",
           "prompt": "Quel volume de liquide contient cette éprouvette ?",
           "options": [
@@ -1707,6 +1727,7 @@ window.registerPack({
           }
         },
         {
+          "id": "7f8d1086-862f-4052-b3ca-57e1be020da1",
           "type": "mcq",
           "prompt": "Entre les graduations 0 cL et 10 cL, il y a 5 intervalles. Combien vaut une petite graduation ?",
           "options": [
@@ -1719,6 +1740,7 @@ window.registerPack({
           "explanation": "10 cL ÷ 5 intervalles = **2 cL** par graduation."
         },
         {
+          "id": "616956a2-2312-44e7-9320-2e41459dd49e",
           "type": "fill",
           "prompt": "Lis le volume de liquide dans l'éprouvette.",
           "sentence": "V = ___ mL",
@@ -2025,6 +2047,7 @@ window.registerPack({
           }
         },
         {
+          "id": "2eebfb11-96e1-4757-af0d-a61122f65c4f",
           "type": "mcq",
           "prompt": "Où doit-on placer l'œil pour lire le volume ?",
           "options": [
@@ -2037,6 +2060,7 @@ window.registerPack({
           "explanation": "L'œil se place **à la hauteur du liquide** et on lit le **bas du ménisque**."
         },
         {
+          "id": "366c5898-5d73-4336-ac95-37fe7827b11f",
           "type": "fill",
           "prompt": "Une éprouvette contient 40 mL d'eau. On y plonge une bille : le niveau monte à 47 mL. Quel est le volume de la bille ?",
           "sentence": "V(bille) = ___ mL",
@@ -2052,6 +2076,7 @@ window.registerPack({
           "explanation": "V = 47 − 40 = **7 mL** (soit 7 cm³)."
         },
         {
+          "id": "bac713b9-370c-41f6-aed5-dca0709939d6",
           "type": "mcq",
           "prompt": "Une éprouvette contient 60 mL d'eau. On y plonge 5 billes identiques : le niveau monte à 70 mL. Quel est le volume d'une bille ?",
           "options": [
@@ -2065,6 +2090,7 @@ window.registerPack({
           "hint": "Calcule d'abord le volume des 5 billes ensemble."
         },
         {
+          "id": "95388d51-1b1a-4322-b612-eed6ae8745d2",
           "type": "order",
           "prompt": "Remets dans l'ordre les étapes pour mesurer le volume d'un caillou.",
           "words": [
@@ -2078,6 +2104,7 @@ window.registerPack({
           "explanation": "**V(caillou) = V(final) − V(initial)**."
         },
         {
+          "id": "98a82851-0818-4aa7-b111-a6dea8026e32",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -2123,6 +2150,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "5b6d436b-7d89-49c7-ad52-201d23775cb4",
           "type": "mcq",
           "prompt": "Quelle est la formule de la masse volumique ?",
           "options": [
@@ -2135,6 +2163,7 @@ window.registerPack({
           "explanation": "La masse volumique, c'est la **masse divisée par le volume** : ρ = m ÷ V."
         },
         {
+          "id": "8ecd6695-7b95-486e-92a6-030aa0ba6d27",
           "type": "mcq",
           "prompt": "Quelle est l'unité officielle de la masse volumique ?",
           "options": [
@@ -2147,6 +2176,7 @@ window.registerPack({
           "explanation": "Toutes sont des unités de masse volumique, mais l'unité **officielle** est le **kg/m³**."
         },
         {
+          "id": "248ce5eb-009f-44ce-a973-a33e27b69d67",
           "type": "sort",
           "prompt": "Range chaque unité.",
           "categories": [
@@ -2196,6 +2226,7 @@ window.registerPack({
           "explanation": "Une unité de masse volumique est une **unité de masse / unité de volume**."
         },
         {
+          "id": "4aa18cd4-77eb-458a-8258-dd2236e53f46",
           "type": "fill",
           "prompt": "Un bloc a une masse de 360 g et un volume de 120 cm³. Calcule sa masse volumique.",
           "sentence": "ρ = ___ g/cm³",
@@ -2209,6 +2240,7 @@ window.registerPack({
           "explanation": "ρ = m ÷ V = 360 ÷ 120 = **3 g/cm³**."
         },
         {
+          "id": "526c4c9f-fc7f-4fc4-93c5-d772bdcfc70f",
           "type": "fill",
           "prompt": "20 mL d'un liquide ont une masse de 56 g. Calcule sa masse volumique.",
           "sentence": "ρ = ___ g/mL",
@@ -2223,6 +2255,7 @@ window.registerPack({
           "explanation": "ρ = 56 ÷ 20 = **2,8 g/mL**."
         },
         {
+          "id": "4523ae68-1142-44c3-a814-e48d1eddcca9",
           "type": "mcq",
           "prompt": "Le lait a une masse volumique de 1 030 g/L. Que signifie cette donnée ?",
           "options": [
@@ -2235,6 +2268,7 @@ window.registerPack({
           "explanation": "1 030 g/L : **1 030 g pour 1 L**."
         },
         {
+          "id": "4bc3078a-6b0b-4175-aee7-5fce91f5f817",
           "type": "match",
           "prompt": "Relie les masses volumiques égales.",
           "pairs": [
@@ -2258,6 +2292,7 @@ window.registerPack({
           "explanation": "De g/cm³ à kg/m³ : **× 1 000**. Entre g/mL et kg/L, le nombre **ne change pas**."
         },
         {
+          "id": "c210b362-3659-4600-8edf-a5944e7b5ceb",
           "type": "fill",
           "prompt": "Une plaque a une masse de 3 kg et un volume de 375 mL. Calcule sa masse volumique en g/mL.",
           "sentence": "ρ = ___ g/mL",
@@ -2270,6 +2305,7 @@ window.registerPack({
           "hint": "Convertis d'abord la masse en grammes."
         },
         {
+          "id": "476fd195-24b8-4abf-91b2-bbac6749f974",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -2314,6 +2350,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "99338e2a-934a-4580-b8f8-763dfbaa4188",
           "type": "mcq",
           "prompt": "Quelle formule donne la masse ?",
           "options": [
@@ -2326,6 +2363,7 @@ window.registerPack({
           "explanation": "Dans le triangle, m est en haut : **m = ρ × V**."
         },
         {
+          "id": "c6140bed-1b1e-47e5-b2fb-3ec76717b1ce",
           "type": "mcq",
           "prompt": "Quelle formule donne le volume ?",
           "options": [
@@ -2338,6 +2376,7 @@ window.registerPack({
           "explanation": "On cache V dans le triangle : il reste m au-dessus de ρ, donc **V = m ÷ ρ**."
         },
         {
+          "id": "b3f59c32-9f78-4f5f-965f-35994af5f664",
           "type": "fill",
           "prompt": "Un liquide a une masse volumique de 0,8 g/cm³. Quelle est la masse de 300 cm³ de ce liquide ?",
           "sentence": "m = ___ g",
@@ -2349,6 +2388,7 @@ window.registerPack({
           "explanation": "m = ρ × V = 0,8 × 300 = **240 g**."
         },
         {
+          "id": "9b2d9455-ffca-4eb9-b951-e07f7f15a093",
           "type": "fill",
           "prompt": "Un morceau de métal a une masse de 560 g et une masse volumique de 7 g/cm³. Calcule son volume.",
           "sentence": "V = ___ cm³",
@@ -2362,6 +2402,7 @@ window.registerPack({
           "explanation": "V = m ÷ ρ = 560 ÷ 7 = **80 cm³**."
         },
         {
+          "id": "17f29392-8c81-4568-b1f1-1c9a045b4682",
           "type": "fill",
           "prompt": "Une bille de fer a un volume de 0,1 L. La masse volumique du fer est 7,87 kg/L. Quelle est sa masse ?",
           "sentence": "m = ___ kg",
@@ -2376,6 +2417,7 @@ window.registerPack({
           "explanation": "m = ρ × V = 7,87 × 0,1 = **0,787 kg** (soit 787 g)."
         },
         {
+          "id": "6a4bb6c9-6b64-4c69-a669-6330308e3721",
           "type": "fill",
           "prompt": "Un sac contient 30 kg de sable. La masse volumique du sable est 1 500 g/L. Quel est le volume du sable ?",
           "sentence": "V = ___ L",
@@ -2388,6 +2430,7 @@ window.registerPack({
           "hint": "Les kg et les g/L ne vont pas ensemble : convertis la masse volumique en kg/L."
         },
         {
+          "id": "0a755de9-9938-49fa-9558-45728531c034",
           "type": "mcq",
           "prompt": "L'alcool a une masse volumique de 0,79 g/mL. Une carafe contient 316 g d'alcool. Quel volume d'alcool contient-elle ?",
           "options": [
@@ -2400,6 +2443,7 @@ window.registerPack({
           "explanation": "On cherche V : V = m ÷ ρ = 316 ÷ 0,79 = **400 mL**. (249,64 vient d'une multiplication : mauvaise formule.)"
         },
         {
+          "id": "226d14cc-8ca6-4bda-a3b9-905925cb150e",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -2423,6 +2467,7 @@ window.registerPack({
           "explanation": "**m = ρ × V** : on **multiplie** la masse volumique par le volume."
         },
         {
+          "id": "8d819c9d-7059-4f21-9099-8ab9bffc6941",
           "type": "fill",
           "prompt": "Un bloc a une masse de 0,9 kg et une masse volumique de 3 000 kg/m³. Calcule son volume en m³.",
           "sentence": "V = ___ m³",
@@ -2441,6 +2486,7 @@ window.registerPack({
           "explanation": "V = m ÷ ρ = 0,9 ÷ 3 000 = **0,0003 m³** (soit 300 cm³). Attention : on ne divise pas 3 000 par 0,9 !"
         },
         {
+          "id": "f9420c97-615c-490b-a935-95fed6bdf012",
           "type": "fill",
           "prompt": "Un liquide a une masse volumique de 1,2 g/cm³. Quelle est la masse de 0,6 L de ce liquide, en kg ?",
           "sentence": "m = ___ kg",
@@ -2478,6 +2524,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "0c018f6e-12fe-4eb6-8a00-28e2abd1ee7c",
           "type": "mcq",
           "prompt": "Un objet a une masse de 81 g et un volume de 30 cm³. En quel métal est-il fait ? (aluminium 2,7 ; zinc 7,13 ; fer 7,87 ; cuivre 8,96 ; argent 10,5 ; en g/cm³)",
           "options": [
@@ -2490,6 +2537,7 @@ window.registerPack({
           "explanation": "ρ = 81 ÷ 30 = **2,7 g/cm³** : c'est l'**aluminium**."
         },
         {
+          "id": "72337313-9460-4cc2-a172-4dcb01a5c3ac",
           "type": "mcq",
           "prompt": "Une pépite a une masse de 24 g et un volume de 8 cm³. L'or a une masse volumique de 19,3 g/cm³. La pépite est-elle en or ?",
           "options": [
@@ -2502,6 +2550,7 @@ window.registerPack({
           "explanation": "ρ = 24 ÷ 8 = **3 g/cm³**, très loin de 19,3 g/cm³ : ce n'est **pas de l'or**."
         },
         {
+          "id": "8c80e504-027b-4291-8d6a-ef0d346f5d72",
           "type": "sort",
           "prompt": "Range chaque matériau : flotte-t-il ou coule-t-il dans l'eau (1 g/cm³) ?",
           "categories": [
@@ -2547,6 +2596,7 @@ window.registerPack({
           "explanation": "Plus petit que **1 g/cm³** : flotte. Plus grand : coule."
         },
         {
+          "id": "8e97667a-c45c-4d05-869a-aa62eafcaeb1",
           "type": "mcq",
           "prompt": "Un liquide qui ne se mélange pas à l'eau a une masse volumique de 0,8 g/mL. Où se place-t-il ?",
           "options": [
@@ -2559,6 +2609,7 @@ window.registerPack({
           "explanation": "0,8 g/mL est **plus petit** que 1 g/mL (eau) : le liquide **flotte** au-dessus."
         },
         {
+          "id": "68762b74-5d7e-490b-aebb-4c1330f7212f",
           "type": "fill",
           "prompt": "Sans appuyer sur Tare, on pèse une éprouvette vide : 40 g. Avec 110 mL de liquide dedans, la balance affiche 161 g. Quelle est la masse du liquide ?",
           "sentence": "m = ___ g",
@@ -2571,6 +2622,7 @@ window.registerPack({
           "hint": "La balance pèse aussi l'éprouvette."
         },
         {
+          "id": "57f9e899-790d-4f7e-b8a5-505a6f53ed3f",
           "type": "mcq",
           "prompt": "121 g de ce liquide occupent 110 mL. De quel liquide s'agit-il ? (eau 1 ; eau salée 1,10 ; essence 0,75 ; alcool 0,79 ; en g/mL)",
           "options": [
@@ -2583,6 +2635,7 @@ window.registerPack({
           "explanation": "ρ = 121 ÷ 110 = **1,10 g/mL** : c'est l'**eau salée**."
         },
         {
+          "id": "f48e4cb6-6475-4591-a76f-153678142fbb",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -2609,6 +2662,7 @@ window.registerPack({
           "explanation": "Le sapin (0,45 g/cm³) flotte car sa masse volumique est **plus petite** que celle de l'eau."
         },
         {
+          "id": "f11fb957-baeb-4be5-ab63-60c5e6b574a7",
           "type": "fill",
           "prompt": "Complète.",
           "sentence": "Un objet coule dans l'eau si sa masse volumique est plus ___ que 1 g/cm³.",
@@ -2622,6 +2676,7 @@ window.registerPack({
           "explanation": "Plus **grande** que celle de l'eau : il coule."
         },
         {
+          "id": "f6126d0d-bbca-4b0d-9abf-4e29492f68ed",
           "type": "mcq",
           "prompt": "Lors d'une marée noire, 1 tonne de pétrole occupe environ 1 210 L. Le pétrole flotte-t-il sur l'eau (1 kg/L) ?",
           "options": [
@@ -2653,6 +2708,7 @@ window.registerPack({
       "draw": 12,
       "exercises": [
         {
+          "id": "986c34aa-004c-47b9-8322-0786801db138",
           "type": "question",
           "prompt": "Comment s'appelle le passage de l'état solide à l'état liquide ?",
           "answers": [
@@ -2663,6 +2719,7 @@ window.registerPack({
           "explanation": "Solide → liquide : c'est la **fusion** (un glaçon qui fond)."
         },
         {
+          "id": "39230b50-2929-4009-90cd-b740af50731a",
           "type": "question",
           "prompt": "De la buée se forme sur un miroir : la vapeur d'eau devient liquide. Comment s'appelle ce changement d'état ?",
           "answers": [
@@ -2673,6 +2730,7 @@ window.registerPack({
           "explanation": "Gaz → liquide : c'est la **liquéfaction**."
         },
         {
+          "id": "ea8649e8-3991-45e3-b3b5-a99010457fa6",
           "type": "question",
           "prompt": "On met 500 g d'eau au congélateur. Quelle est la masse de la glace obtenue, en g ?",
           "answers": [
@@ -2684,6 +2742,7 @@ window.registerPack({
           "explanation": "Pendant un changement d'état, la **masse se conserve** : 500 g. Seul le volume change."
         },
         {
+          "id": "0a9940a0-1ee7-42ad-87b7-d940ddfc0335",
           "type": "question",
           "prompt": "Convertis **2,5 L** en mL.",
           "answers": [
@@ -2694,6 +2753,7 @@ window.registerPack({
           "explanation": "1 L = 1 000 mL, donc 2,5 L = **2 500 mL**."
         },
         {
+          "id": "086fd95e-e5e4-4efd-97bc-6d8d4070e538",
           "type": "question",
           "prompt": "Combien de cm³ y a-t-il dans **1 dm³** ?",
           "answers": [
@@ -2704,6 +2764,7 @@ window.registerPack({
           "explanation": "1 dm³ = **1 000 cm³** (et 1 L = 1 dm³)."
         },
         {
+          "id": "7586c78b-74f8-44e4-b7bc-b2d23811cf05",
           "type": "question",
           "prompt": "Une éprouvette contient 40 mL d'eau. On y plonge une bille : le niveau monte à 47 mL. Quel est le volume de la bille, en mL ?",
           "answers": [
@@ -2716,6 +2777,7 @@ window.registerPack({
           "explanation": "V(bille) = V(final) − V(initial) = 47 − 40 = **7 mL** (soit 7 cm³)."
         },
         {
+          "id": "a9536fbf-180a-4300-ad15-deba9f528a0c",
           "type": "question",
           "prompt": "La masse volumique, c'est la masse divisée par… ?",
           "answers": [
@@ -2728,6 +2790,7 @@ window.registerPack({
           "explanation": "**ρ = m ÷ V** : la masse divisée par le **volume**."
         },
         {
+          "id": "9b06c021-0878-4e1c-ac1a-61961e224386",
           "type": "question",
           "prompt": "Quelle est l'unité officielle de la masse volumique ?",
           "answers": [
@@ -2739,6 +2802,7 @@ window.registerPack({
           "explanation": "L'unité officielle est le **kg/m³**. On utilise aussi :\n- g/cm³\n- g/mL\n- kg/L"
         },
         {
+          "id": "72663705-cb9f-42a0-9a6f-ecbae31c4d7e",
           "type": "question",
           "prompt": "Quelle est la masse volumique de l'eau, en g/cm³ ?",
           "answers": [
@@ -2750,6 +2814,7 @@ window.registerPack({
           "explanation": "Pour l'eau : ρ = **1 g/cm³** = 1 kg/L = 1 000 kg/m³."
         },
         {
+          "id": "0ce9558c-ca3e-4346-9db4-95e87c1d14db",
           "type": "question",
           "prompt": "Un bloc a une masse de 360 g et un volume de 120 cm³. Calcule sa masse volumique, en g/cm³.",
           "answers": [
@@ -2760,6 +2825,7 @@ window.registerPack({
           "explanation": "ρ = m ÷ V = 360 ÷ 120 = **3 g/cm³**."
         },
         {
+          "id": "1711052f-2807-44ad-b00f-8e7de2974224",
           "type": "question",
           "prompt": "Une huile a une masse volumique de 0,9 g/mL. Quelle est la masse de 200 mL de cette huile, en g ?",
           "answers": [
@@ -2770,6 +2836,7 @@ window.registerPack({
           "explanation": "m = ρ × V = 0,9 × 200 = **180 g**."
         },
         {
+          "id": "bc83e571-1688-48f5-837a-a935fa3d14b6",
           "type": "question",
           "prompt": "Un morceau de métal de 560 g a une masse volumique de 7 g/cm³. Quel est son volume, en cm³ ?",
           "answers": [
@@ -2780,6 +2847,7 @@ window.registerPack({
           "explanation": "V = m ÷ ρ = 560 ÷ 7 = **80 cm³**."
         },
         {
+          "id": "7ba719c4-b281-4d92-a267-7a79a19e9e27",
           "type": "question",
           "prompt": "Un objet de 81 g occupe 30 cm³. En quel métal est-il ? (aluminium 2,7 ; fer 7,87 ; cuivre 8,96 ; en g/cm³)",
           "answers": [
@@ -2791,6 +2859,7 @@ window.registerPack({
           "explanation": "ρ = 81 ÷ 30 = **2,7 g/cm³** : c'est l'**aluminium**."
         },
         {
+          "id": "4ab7a0f7-31c8-4362-8d85-bdc850487e94",
           "type": "question",
           "prompt": "Lis les données. Quel bois ne peut pas être transporté par flottage ?",
           "answers": [
@@ -2803,6 +2872,7 @@ window.registerPack({
           "explanation": "L'**ébène** (1,2 g/cm³) est plus dense que l'eau (1 g/cm³) : il coule. Le sapin et l'acajou flottent."
         },
         {
+          "id": "33ecadd7-d1fc-44be-a559-ab56443f7002",
           "type": "question",
           "prompt": "Un liquide qui ne se mélange pas à l'eau a une masse volumique de 0,8 g/mL. Se place-t-il au-dessus ou en dessous de l'eau ?",
           "answers": [
@@ -2815,6 +2885,7 @@ window.registerPack({
           "explanation": "0,8 g/mL est **plus petit** que 1 g/mL : le liquide se place **au-dessus** de l'eau."
         },
         {
+          "id": "9fedb611-4eb8-4a56-b342-cb922a567780",
           "type": "question",
           "prompt": "Un réservoir contient 50 L d'essence. La masse volumique de l'essence est 750 g/L. Quelle est la masse d'essence, en kg ?",
           "answers": [
@@ -2825,6 +2896,7 @@ window.registerPack({
           "explanation": "m = ρ × V = 750 × 50 = 37 500 g = **37,5 kg**."
         },
         {
+          "id": "e4ee4619-78b7-48a4-b2fc-6eab67da1cc6",
           "type": "question",
           "prompt": "Comment s'appelle le passage de l'état liquide à l'état solide ?",
           "answers": [
@@ -2835,6 +2907,7 @@ window.registerPack({
           "explanation": "Liquide → solide : c'est la **solidification** (l'eau qui gèle)."
         },
         {
+          "id": "747a8f7c-7a92-4e77-8274-3812c735acde",
           "type": "question",
           "prompt": "Comment s'appelle le passage de l'état liquide à l'état gazeux ?",
           "answers": [
@@ -2845,6 +2918,7 @@ window.registerPack({
           "explanation": "Liquide → gaz : c'est la **vaporisation**."
         },
         {
+          "id": "e1957add-478f-441b-b16d-690872598b63",
           "type": "question",
           "prompt": "Convertis **0,75 L** en mL.",
           "answers": [
@@ -2855,6 +2929,7 @@ window.registerPack({
           "explanation": "1 L = 1 000 mL, donc 0,75 L = **750 mL**."
         },
         {
+          "id": "48f79fdf-4a28-4bfe-b0dc-5a58e107df54",
           "type": "question",
           "prompt": "Convertis **1 500 g** en kg.",
           "answers": [
@@ -2865,6 +2940,7 @@ window.registerPack({
           "explanation": "1 kg = 1 000 g, donc 1 500 g = **1,5 kg**."
         },
         {
+          "id": "c7efc037-b206-482c-b0a4-192130897084",
           "type": "question",
           "prompt": "Sur une éprouvette, il y a 5 intervalles entre 0 et 10 mL. Combien vaut une petite graduation, en mL ?",
           "answers": [
@@ -2875,6 +2951,7 @@ window.registerPack({
           "explanation": "Écart ÷ nombre d'intervalles = 10 ÷ 5 = **2 mL**."
         },
         {
+          "id": "362ab7fd-5546-4cb9-b64c-dec87f7bb8be",
           "type": "question",
           "prompt": "Convertis **0,8 g/cm³** en kg/m³.",
           "answers": [
@@ -2885,6 +2962,7 @@ window.registerPack({
           "explanation": "Des g/cm³ aux kg/m³, on multiplie par 1 000 : 0,8 g/cm³ = **800 kg/m³**."
         },
         {
+          "id": "9f770fb1-e776-47fa-be18-2675d6a8a05c",
           "type": "question",
           "prompt": "Une huile a une masse volumique de **0,9 g/mL**. Combien cela fait-il en kg/L ?",
           "answers": [
@@ -2895,6 +2973,7 @@ window.registerPack({
           "explanation": "Des g/mL aux kg/L, le nombre ne change pas : **0,9 kg/L**."
         },
         {
+          "id": "e393bac6-9afc-46e1-aa49-282d3fbce896",
           "type": "question",
           "prompt": "150 g d'un liquide occupent 125 mL. Calcule sa masse volumique, en g/mL.",
           "answers": [
@@ -2905,6 +2984,7 @@ window.registerPack({
           "explanation": "ρ = m ÷ V = 150 ÷ 125 = **1,2 g/mL**."
         },
         {
+          "id": "ae608f50-d371-4839-bedb-0ae701251d37",
           "type": "question",
           "prompt": "Le fer a une masse volumique de 7,87 g/cm³. Quelle est la masse de 10 cm³ de fer, en g ?",
           "answers": [
@@ -2915,6 +2995,7 @@ window.registerPack({
           "explanation": "m = ρ × V = 7,87 × 10 = **78,7 g**."
         },
         {
+          "id": "23638166-ae04-4a9f-95fe-a8b6acdb0054",
           "type": "question",
           "prompt": "Du sable a une masse volumique de 1,5 kg/L. Quel volume occupent 45 kg de sable, en L ?",
           "answers": [
@@ -2925,6 +3006,7 @@ window.registerPack({
           "explanation": "V = m ÷ ρ = 45 ÷ 1,5 = **30 L**."
         },
         {
+          "id": "96a60e40-1bb9-4884-8115-e3a97b211fbd",
           "type": "question",
           "prompt": "Un récipient vide pèse 50 g. Rempli de liquide, la balance affiche 250 g. Quelle est la masse du liquide, en g ?",
           "answers": [
@@ -2935,6 +3017,7 @@ window.registerPack({
           "explanation": "Masse du liquide = masse affichée − masse du récipient = 250 − 50 = **200 g**."
         },
         {
+          "id": "45eb946a-3c97-43fb-a001-3315bb5e773a",
           "type": "question",
           "prompt": "Lis les données. Quel bois a la plus petite masse volumique ?",
           "answers": [
@@ -2947,6 +3030,7 @@ window.registerPack({
           "explanation": "Le **sapin** (0,45 g/cm³) est le moins dense : il flotte très bien sur l'eau."
         },
         {
+          "id": "33687db9-6772-4222-9ac5-5a98193a1b4a",
           "type": "question",
           "prompt": "Lis le texte. Comment s'appelle le transport du bois en faisant descendre les troncs sur les fleuves ?",
           "answers": [

@@ -40,6 +40,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "928ac5e9-3878-45a3-9bc0-67ae7130c3e8",
           "type": "match",
           "prompt": "Match the words with their translation",
           "pairs": [
@@ -63,6 +64,7 @@ window.registerPack({
           "explanation": "Great! These words come from the letters."
         },
         {
+          "id": "a9b7770a-86f9-4a76-bb5a-20bc1343e80e",
           "type": "mcq",
           "prompt": "What does **to fit in** mean?",
           "options": [
@@ -76,6 +78,7 @@ window.registerPack({
           "hint": "Susan wants to be like the others."
         },
         {
+          "id": "ef749cf2-6f7c-490e-9f13-7042ee6ef3b6",
           "type": "sort",
           "prompt": "Advice or empathy?",
           "categories": [
@@ -129,6 +132,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "2481649d-310a-497d-8bac-977769c2677b",
           "type": "order",
           "prompt": "Build the sentence",
           "words": [
@@ -149,6 +153,7 @@ window.registerPack({
           "translation": "Pourquoi ne parles-tu pas à un prof ?"
         },
         {
+          "id": "9c4fa016-d0dc-4aa4-af2f-f5649a602ad2",
           "type": "fill",
           "prompt": "Complete with the right form of the verb (talk)",
           "sentence": "How about ___ to your parents?",
@@ -159,6 +164,7 @@ window.registerPack({
           "hint": "BVing"
         },
         {
+          "id": "ffed3084-1ac3-492d-9c0c-6f828c9b4aad",
           "type": "spot",
           "prompt": "Tap the wrong word",
           "tokens": [
@@ -175,6 +181,7 @@ window.registerPack({
           "explanation": "After **should** we use the base verb, without 'to'."
         },
         {
+          "id": "2efe501a-0a83-4edd-ab88-be4bc98697a7",
           "type": "mcq",
           "prompt": "If I were you, I ___ to a teacher.",
           "options": [
@@ -207,6 +214,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "6410bea9-6a3c-44df-b580-539b493100a8",
           "type": "question",
           "prompt": "Read Lily's letter. Translate: « Tu devrais en parler à tes parents. »",
           "docId": 1,
@@ -217,6 +225,7 @@ window.registerPack({
           "explanation": "✅ **You should** + verbe."
         },
         {
+          "id": "50668314-84d7-44f4-a579-d2d243e3f064",
           "type": "question",
           "prompt": "Read Abby's letter. Translate: « Si j'étais toi, je dirais non. Je comprends ce que tu ressens. »",
           "docId": 5,
@@ -228,6 +237,7 @@ window.registerPack({
           "explanation": "✅ **If I were you, I would…** et **I understand how you feel**."
         },
         {
+          "id": "bd231436-c709-4483-a72d-e4d029c7b847",
           "type": "question",
           "prompt": "Translate: « Je comprends ce que tu ressens. »",
           "answers": [
@@ -236,6 +246,7 @@ window.registerPack({
           "explanation": "✅ I understand how you feel."
         },
         {
+          "id": "dda6829c-6903-48f0-b195-0bd984233c40",
           "type": "question",
           "prompt": "Translate: « Tu ne devrais pas sortir seul. »",
           "answers": [
@@ -244,6 +255,7 @@ window.registerPack({
           "explanation": "✅ You shouldn't go out alone."
         },
         {
+          "id": "d9171d80-28fc-40de-b3b0-3e7bfaca1355",
           "type": "question",
           "prompt": "Translate: « Pourquoi tu ne parles pas à un professeur ? »",
           "answers": [
@@ -252,6 +264,7 @@ window.registerPack({
           "explanation": "✅ Why don't you talk to a teacher?"
         },
         {
+          "id": "f823053e-8df9-4a13-a27b-a256fcddaa45",
           "type": "question",
           "prompt": "Translate: « Ça a l'air difficile. »",
           "answers": [
@@ -260,6 +273,7 @@ window.registerPack({
           "explanation": "✅ That sounds difficult."
         },
         {
+          "id": "116f3019-f14d-4821-a666-6226860be668",
           "type": "question",
           "prompt": "Translate: « Tu devrais dormir plus. »",
           "answers": [
@@ -268,6 +282,7 @@ window.registerPack({
           "explanation": "✅ You should sleep more."
         },
         {
+          "id": "1e13ee9e-0d44-4bab-a3aa-e006d048bc74",
           "type": "question",
           "prompt": "Translate: « Si j'étais toi, je resterais à la maison. »",
           "answers": [
@@ -276,6 +291,7 @@ window.registerPack({
           "explanation": "✅ If I were you, I would stay at home."
         },
         {
+          "id": "141f4c18-c3df-4c62-8546-44c0733451d3",
           "type": "question",
           "prompt": "Translate: « Et si tu faisais du sport ? »",
           "answers": [
@@ -284,6 +300,7 @@ window.registerPack({
           "explanation": "✅ How about doing sport?"
         },
         {
+          "id": "633adc1c-3831-40b4-a002-d7e4c0965036",
           "type": "question",
           "prompt": "Translate: « Tu devrais demander de l'aide. »",
           "answers": [

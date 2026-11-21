@@ -31,6 +31,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "f69dbd7d-d9eb-4769-9c65-84cdcceda47b",
           "type": "sort",
           "prompt": "Range chaque sujet avec la bonne forme de **be**.",
           "categories": [
@@ -84,6 +85,7 @@ window.registerPack({
           "explanation": "✅ Le verbe **be** :\n- **I am**\n- **he / she / it is** (et un nom au singulier)\n- **you / we / they are** (et un nom au pluriel)"
         },
         {
+          "id": "0bd73e8d-6cbf-4816-80fa-ee3faaccd45c",
           "type": "mcq",
           "prompt": "Choisis la bonne forme : « The cats ___ on the roof. »",
           "options": [
@@ -97,6 +99,7 @@ window.registerPack({
           "hint": "« The cats » : un ou plusieurs ?"
         },
         {
+          "id": "9a466bd4-4191-4eb3-bc33-8aa897b5f15c",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "I ___ not very good at Physics.",
@@ -106,6 +109,7 @@ window.registerPack({
           "explanation": "✅ **I am**. [[I am not very good at Physics.|Je ne suis pas très bon(ne) en physique.]]"
         },
         {
+          "id": "9aba8822-00e7-4d6b-8415-5da901c521d9",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "My workbook ___ yellow.",
@@ -115,6 +119,7 @@ window.registerPack({
           "explanation": "✅ **My workbook** = it → **is**. [[My workbook is yellow.|Mon cahier est jaune.]]"
         },
         {
+          "id": "ee0a4d1c-5e78-47e2-8e6d-00bfb5b45d4e",
           "type": "mcq",
           "prompt": "Quelle est la forme courte de « they are » ?",
           "options": [
@@ -127,6 +132,7 @@ window.registerPack({
           "explanation": "✅ **they're** = they are. Attention : [[their|leur]] et [[there|là]] sont d'autres mots, qui se prononcent pareil."
         },
         {
+          "id": "570e55b1-0745-4e8c-a4e5-4cc1f31d8a5c",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -142,6 +148,7 @@ window.registerPack({
           "explanation": "✅ **My parents** = they (pluriel) → **are**. [[My parents are very nice.|Mes parents sont très gentils.]]"
         },
         {
+          "id": "f0474d39-2fe0-4d4e-9b90-451134999b3f",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "We ___ in the same class.",
@@ -151,6 +158,7 @@ window.registerPack({
           "explanation": "✅ **We are**. [[We are in the same class.|Nous sommes dans la même classe.]]"
         },
         {
+          "id": "eb16fedc-6a3f-4889-a844-641ce0e70027",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -166,6 +174,7 @@ window.registerPack({
           "explanation": "✅ Sujet + **are** + le reste. **Our English books** est au pluriel → **are**."
         },
         {
+          "id": "0cd3158f-bf1b-4037-946d-0d28c0f2e5b3",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "She ___ my best friend.",
@@ -199,6 +208,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "73f5c7c7-8d31-49f9-bb40-e601e33a65e8",
           "type": "sort",
           "prompt": "Range chaque sujet : **have** ou **has** ?",
           "categories": [
@@ -248,6 +258,7 @@ window.registerPack({
           "explanation": "✅ Deux formes :\n- **has** avec he, she, it et un nom au singulier (Tom, my sister)\n- **have** avec tous les autres"
         },
         {
+          "id": "a1eb52c4-2731-4c2f-ba7f-c06569839912",
           "type": "mcq",
           "prompt": "Choisis la bonne forme : « My sister ___ blonde hair. »",
           "options": [
@@ -260,6 +271,7 @@ window.registerPack({
           "explanation": "✅ **My sister** = she → **has**. [[My sister has blonde hair.|Ma sœur a les cheveux blonds.]]"
         },
         {
+          "id": "c226a21b-cf0b-49ce-a5c6-d72147c75736",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "I ___ a workbook to learn English.",
@@ -269,6 +281,7 @@ window.registerPack({
           "explanation": "✅ **I have**. [[I have a workbook to learn English.|J'ai un cahier pour apprendre l'anglais.]]"
         },
         {
+          "id": "82618814-bb79-4479-8964-1a999e273f31",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "My parents ___ brown hair.",
@@ -278,6 +291,7 @@ window.registerPack({
           "explanation": "✅ **My parents** = they → **have**. [[My parents have brown hair.|Mes parents ont les cheveux bruns.]]"
         },
         {
+          "id": "c4e32fec-c9e7-4c4e-8625-f368df995082",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "He ___ big green eyes.",
@@ -288,6 +302,7 @@ window.registerPack({
           "hint": "he → 3e personne du singulier"
         },
         {
+          "id": "ced1596a-278d-40a7-a50c-0ddbc0e4bac7",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -303,6 +318,7 @@ window.registerPack({
           "explanation": "✅ **Mary** = she → **has**. [[Mary has a red car.|Mary a une voiture rouge.]]"
         },
         {
+          "id": "67de6f84-2c21-4523-82f2-5459a3d2c980",
           "type": "match",
           "prompt": "Relie chaque phrase à sa traduction.",
           "pairs": [
@@ -326,6 +342,7 @@ window.registerPack({
           "explanation": "✅ Les mots :\n- [[pet|animal de compagnie]]\n- [[sister|sœur]]\n- [[dog|chien]]\n- [[car|voiture]]"
         },
         {
+          "id": "e6f4771a-040c-43a4-9af0-25b2e7df5bb9",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -344,6 +361,7 @@ window.registerPack({
           "explanation": "✅ **We have** + [[a lot of|beaucoup de]] + [[beautiful castles|beaux châteaux]]."
         },
         {
+          "id": "ac88b4ee-72b7-4d31-89d7-be5b5030efc6",
           "type": "mcq",
           "prompt": "Quelle phrase est juste ?",
           "options": [
@@ -356,6 +374,7 @@ window.registerPack({
           "explanation": "✅ **Cindy** = she → **has**. « haves » n'existe pas. [[Cindy has a sister.|Cindy a une sœur.]]"
         },
         {
+          "id": "47cd9784-6e27-43a8-b3ff-391163877979",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "My brother ___ got a new bike.",
@@ -366,6 +385,7 @@ window.registerPack({
           "hint": "my brother = he"
         },
         {
+          "id": "d2362f5d-c944-401f-9934-55fa96df7f68",
           "type": "mcq",
           "prompt": "Quelle phrase veut dire la même chose que « I have a pet » ?",
           "options": [
@@ -378,6 +398,7 @@ window.registerPack({
           "explanation": "✅ **I've got** = I have got = I have. [[pet|animal de compagnie]]"
         },
         {
+          "id": "9449c0ff-7440-4299-8711-89e9ad12ab0d",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -415,6 +436,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "ce1094dc-0312-4350-b795-48ad55e024b4",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "I ___ a cat who is grey.",
@@ -424,6 +446,7 @@ window.registerPack({
           "explanation": "✅ Le chat, je l'ai : **I have** a cat. [[I have a cat who is grey.|J'ai un chat qui est gris.]]"
         },
         {
+          "id": "04ea6928-22ff-44d3-af4e-d6affccd3af6",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "My cat ___ adorable.",
@@ -433,6 +456,7 @@ window.registerPack({
           "explanation": "✅ Comment il est : **is**. [[My cat is adorable.|Mon chat est adorable.]]"
         },
         {
+          "id": "d4e834f8-94c5-40ef-bba2-227f8a7c1c5b",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "He ___ big green eyes.",
@@ -442,6 +466,7 @@ window.registerPack({
           "explanation": "✅ Les yeux : **have** → **he has**. [[He has big green eyes.|Il a de grands yeux verts.]]"
         },
         {
+          "id": "0491a597-9d87-4dcc-854e-8c22c81daf98",
           "type": "mcq",
           "prompt": "Choisis la bonne forme : « Our English books ___ at home. »",
           "options": [
@@ -454,6 +479,7 @@ window.registerPack({
           "explanation": "✅ Où ils sont : **be** ; **books** au pluriel → **are**. [[Our English books are at home.|Nos livres d'anglais sont à la maison.]]"
         },
         {
+          "id": "03e284f7-4f34-43f6-8fcd-120e129c21b6",
           "type": "sort",
           "prompt": "Range : on complète avec **be** ou avec **have** ?",
           "categories": [
@@ -495,6 +521,7 @@ window.registerPack({
           "explanation": "✅ **have** :\n- les cheveux\n- les yeux\n- un animal\n**be** :\n- comment on est\n- où on est"
         },
         {
+          "id": "49e2193c-607f-483d-b3ef-24883d2e53c0",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "We ___ a lot of beautiful castles in France.",
@@ -504,6 +531,7 @@ window.registerPack({
           "explanation": "✅ **We have**. [[We have a lot of beautiful castles in France.|Nous avons beaucoup de beaux châteaux en France.]]"
         },
         {
+          "id": "0bd9a3c3-ae97-495f-a58e-d718a41f726c",
           "type": "mcq",
           "prompt": "Choisis la bonne forme : « She ___ very tall. »",
           "options": [
@@ -516,6 +544,7 @@ window.registerPack({
           "explanation": "✅ Sa taille, comment elle est : **she is**. [[She is very tall.|Elle est très grande.]]"
         },
         {
+          "id": "556e7d03-8f6a-49ef-a8a3-403b9c62f3df",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -531,6 +560,7 @@ window.registerPack({
           "explanation": "✅ Les cheveux : **have** → **my sister has**. [[My sister has blonde hair.|Ma sœur a les cheveux blonds.]]"
         },
         {
+          "id": "81b0f6c2-d327-40cb-9832-946e60b5f0e3",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -546,6 +576,7 @@ window.registerPack({
           "explanation": "✅ Les yeux : **have got** → [[She has got blue eyes.|Elle a les yeux bleus.]] (she's got = she **has** got)."
         },
         {
+          "id": "82248314-eb67-4a7f-a4b9-acf260421820",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "I think it ___ difficult.",
@@ -577,6 +608,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "aa71331a-706c-4830-a241-374dd8c9f759",
           "type": "mcq",
           "prompt": "Comment dit-on « J'ai 12 ans » ?",
           "options": [
@@ -589,6 +621,7 @@ window.registerPack({
           "explanation": "✅ L'âge se dit avec **be** : **I am 12** (ou I'm 12 years old)."
         },
         {
+          "id": "5494b7e1-c9ac-4345-82cd-6725379b14bc",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "How old ___ you?",
@@ -598,6 +631,7 @@ window.registerPack({
           "explanation": "✅ **How old are you?** [[How old are you?|Quel âge as-tu ?]]"
         },
         {
+          "id": "fc7adb73-e506-4697-a94e-a32ca2db8d7a",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "She ___ 15 years old.",
@@ -607,6 +641,7 @@ window.registerPack({
           "explanation": "✅ L'âge avec **be** : **she is**. [[She is 15 years old.|Elle a 15 ans.]]"
         },
         {
+          "id": "5ee188b8-3bbf-4201-aca6-facb9f75eac4",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -623,6 +658,7 @@ window.registerPack({
           "explanation": "✅ L'âge se dit avec **be** : **my cat is** 2 years old. [[My cat is 2 years old.|Mon chat a 2 ans.]]"
         },
         {
+          "id": "51080cdd-0d9d-470c-9d04-ce5a3ba0f46d",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -637,6 +673,7 @@ window.registerPack({
           "explanation": "✅ **How old** + **is** + sujet ? Pas de « has »."
         },
         {
+          "id": "0cdf7096-3e26-4657-a71e-cb72d1d78b66",
           "type": "mcq",
           "prompt": "« How old is Ken? » Choisis la bonne réponse.",
           "options": [
@@ -649,6 +686,7 @@ window.registerPack({
           "explanation": "✅ **He's** = he is. [[He's five years old.|Il a cinq ans.]] Attention : **his** veut dire « son »."
         },
         {
+          "id": "04c7f853-ca32-4d85-ad25-bff891016cca",
           "type": "match",
           "prompt": "Relie chaque phrase à sa traduction.",
           "pairs": [
@@ -672,6 +710,7 @@ window.registerPack({
           "explanation": "✅ En anglais, on **est** un âge : [[I'm 12.|J'ai 12 ans.]]"
         },
         {
+          "id": "8c96c637-6caf-4c8d-9db9-7f52878d9f71",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "My grandparents ___ 70 years old.",
@@ -704,6 +743,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "d4161af9-96c9-45e7-ab80-ac32e55e1937",
           "type": "sort",
           "prompt": "Range : **there is** ou **there are** ?",
           "categories": [
@@ -745,6 +785,7 @@ window.registerPack({
           "explanation": "✅ Deux formes :\n- **there is** + singulier (a problem, an apple)\n- **there are** + pluriel (two cats, a lot of trees)"
         },
         {
+          "id": "3ab48446-17ce-423e-bf56-a21582603121",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "There ___ two cats on the roof.",
@@ -754,6 +795,7 @@ window.registerPack({
           "explanation": "✅ **two cats** : pluriel → **there are**. [[There are two cats on the roof.|Il y a deux chats sur le toit.]]"
         },
         {
+          "id": "6e9867d8-4e15-4734-9ade-77b478faa04c",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "___ there a problem?",
@@ -764,6 +806,7 @@ window.registerPack({
           "hint": "a problem : singulier"
         },
         {
+          "id": "15f01dc9-1c79-4313-be60-fff2441c8cc8",
           "type": "mcq",
           "prompt": "Choisis la bonne forme : « There ___ a big Christmas tree in the middle of the picture. »",
           "options": [
@@ -776,6 +819,7 @@ window.registerPack({
           "explanation": "✅ **a big Christmas tree** : singulier → **there is**. [[in the middle of the picture|au milieu de l'image]]"
         },
         {
+          "id": "124578ac-6219-4970-9c43-3044015c3580",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "In England, there ___ beautiful castles too.",
@@ -785,6 +829,7 @@ window.registerPack({
           "explanation": "✅ **castles** : pluriel → **there are**. [[In England, there are beautiful castles too.|En Angleterre, il y a aussi de beaux châteaux.]]"
         },
         {
+          "id": "717ecf96-7285-4681-8bb9-353afa8524da",
           "type": "spot",
           "prompt": "Touche le mot faux.",
           "tokens": [
@@ -802,6 +847,7 @@ window.registerPack({
           "explanation": "✅ **three dogs** : pluriel → **there are**. [[There are three dogs in the garden.|Il y a trois chiens dans le jardin.]]"
         },
         {
+          "id": "1ee86f34-5e09-4d8b-a2e1-d2be40470cb2",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -818,6 +864,7 @@ window.registerPack({
           "explanation": "✅ Question : **Are there** + nom au pluriel ?"
         },
         {
+          "id": "62542e61-6b3a-4a7a-b7c6-9a2f7616af1b",
           "type": "mcq",
           "prompt": "Comment dit-on « Il y a un chat dans le jardin » ?",
           "options": [
@@ -830,6 +877,7 @@ window.registerPack({
           "explanation": "✅ **a cat** : singulier → **there is**. « It has » est une traduction mot à mot, fausse ici."
         },
         {
+          "id": "8b8da782-8d26-42de-bccd-65ee0d73fd97",
           "type": "fill",
           "prompt": "Complète la phrase.",
           "sentence": "There ___ a lot of old cars in the street.",
@@ -857,6 +905,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "f497867b-d7f6-405a-a84a-512bc762791d",
           "type": "question",
           "prompt": "Traduis : « J'ai un chat. »",
           "answers": [
@@ -866,6 +915,7 @@ window.registerPack({
           "explanation": "✅ [[I have a cat.|J'ai un chat.]] (ou I've got a cat)."
         },
         {
+          "id": "acea59a6-440b-405b-af96-b05091929fd6",
           "type": "question",
           "prompt": "Traduis : « Mon chat est gris. »",
           "answers": [
@@ -875,6 +925,7 @@ window.registerPack({
           "explanation": "✅ Comment il est : **is**. [[My cat is grey.|Mon chat est gris.]]"
         },
         {
+          "id": "967267fb-673c-47ed-aa75-2f95bcd32432",
           "type": "question",
           "prompt": "Traduis : « Elle a 12 ans. »",
           "answers": [
@@ -886,6 +937,7 @@ window.registerPack({
           "explanation": "✅ L'âge se dit avec **be** : [[She is 12.|Elle a 12 ans.]]"
         },
         {
+          "id": "24b340d3-2a4d-4143-968d-926c4927137c",
           "type": "question",
           "prompt": "Traduis : « Quel âge as-tu ? »",
           "answers": [
@@ -894,6 +946,7 @@ window.registerPack({
           "explanation": "✅ [[How old are you?|Quel âge as-tu ?]]"
         },
         {
+          "id": "7800ae28-c02a-4c47-bd38-4e60ddffb131",
           "type": "question",
           "prompt": "Traduis : « Il y a deux chats sur le toit. »",
           "answers": [
@@ -903,6 +956,7 @@ window.registerPack({
           "explanation": "✅ **two cats** : pluriel → **there are**."
         },
         {
+          "id": "adce6ba9-591d-4d9e-bccf-98c589af2af0",
           "type": "question",
           "prompt": "Traduis : « Ma sœur a les cheveux blonds. »",
           "answers": [
@@ -914,6 +968,7 @@ window.registerPack({
           "explanation": "✅ Les cheveux : **have** ; my sister → **has**."
         },
         {
+          "id": "78c8e1df-b4f6-4305-aa43-c555bc430425",
           "type": "question",
           "prompt": "Traduis : « Nous sommes dans la même classe. »",
           "answers": [
@@ -922,6 +977,7 @@ window.registerPack({
           "explanation": "✅ **We are**. [[the same class|la même classe]]"
         },
         {
+          "id": "80ce1a50-b1ae-4cd9-a579-6a96a87b64da",
           "type": "question",
           "prompt": "Traduis : « Mes parents ont les cheveux bruns. »",
           "answers": [
@@ -931,6 +987,7 @@ window.registerPack({
           "explanation": "✅ **My parents** = they → **have**."
         },
         {
+          "id": "84ddc2ea-f531-45f7-8ce7-1f820e2d9bd6",
           "type": "question",
           "prompt": "Traduis : « Y a-t-il un problème ? »",
           "answers": [
@@ -939,6 +996,7 @@ window.registerPack({
           "explanation": "✅ Question : **Is there** + singulier ?"
         },
         {
+          "id": "48492145-93c3-40b8-a176-c705d215a217",
           "type": "question",
           "prompt": "Traduis : « Il a de grands yeux verts. »",
           "answers": [
@@ -948,6 +1006,7 @@ window.registerPack({
           "explanation": "✅ Les yeux : **has**. L'adjectif se place avant le nom : big green eyes."
         },
         {
+          "id": "b875cb74-4f91-4eb9-a5cb-13a1c28e1dd8",
           "type": "question",
           "prompt": "Traduis : « Mes livres d'anglais sont à la maison. »",
           "answers": [
@@ -956,6 +1015,7 @@ window.registerPack({
           "explanation": "✅ **books** au pluriel → **are**."
         },
         {
+          "id": "633d72f7-aa9a-4850-adcd-9384050b0459",
           "type": "question",
           "prompt": "Traduis : « Il y a un grand sapin de Noël au milieu de l'image. »",
           "answers": [
@@ -964,6 +1024,7 @@ window.registerPack({
           "explanation": "✅ **a big Christmas tree** : singulier → **there is**."
         },
         {
+          "id": "164af416-7738-4168-9e9f-f403f7a4add4",
           "type": "question",
           "prompt": "Traduis : « J'ai une sœur. Elle a dix ans. »",
           "answers": [
@@ -980,6 +1041,7 @@ window.registerPack({
           "explanation": "✅ [[I have a sister. She is ten.|J'ai une sœur. Elle a dix ans.]]"
         },
         {
+          "id": "57715017-61d6-43ee-b008-7f51a8a5dbb2",
           "type": "question",
           "prompt": "Traduis : « Mon frère a 15 ans et il est très grand. »",
           "answers": [
@@ -992,6 +1054,7 @@ window.registerPack({
           "explanation": "✅ L'âge avec **be**, la taille avec **be** : [[My brother is 15 and he is very tall.|Mon frère a 15 ans et il est très grand.]]"
         },
         {
+          "id": "44f4bd4d-1dae-4a45-9094-870c4af7ce01",
           "type": "question",
           "prompt": "Traduis : « Tu es mon meilleur ami. »",
           "answers": [
@@ -1000,6 +1063,7 @@ window.registerPack({
           "explanation": "✅ **You are**. [[best friend|meilleur ami]]"
         },
         {
+          "id": "537200c9-b7e6-46f9-a6dc-9caae829af86",
           "type": "question",
           "prompt": "Traduis : « Ils ont un chien noir. »",
           "answers": [
@@ -1009,6 +1073,7 @@ window.registerPack({
           "explanation": "✅ **They have** ; l'adjectif avant le nom : a **black dog**."
         },
         {
+          "id": "113a117f-c173-44b4-9138-a506cb559add",
           "type": "question",
           "prompt": "Traduis : « Mon père a 40 ans. »",
           "answers": [
@@ -1020,6 +1085,7 @@ window.registerPack({
           "explanation": "✅ L'âge avec **be** : my father **is** 40."
         },
         {
+          "id": "b6fa6088-6f96-4571-bb86-157a0f7c4bd9",
           "type": "question",
           "prompt": "Traduis : « Il y a un problème. »",
           "answers": [
@@ -1028,6 +1094,7 @@ window.registerPack({
           "explanation": "✅ **a problem** : singulier → **there is**."
         },
         {
+          "id": "e3376d54-a4ef-48dc-af33-70f20083250f",
           "type": "question",
           "prompt": "Traduis : « Y a-t-il beaucoup d'élèves dans ta classe ? »",
           "answers": [
@@ -1040,6 +1107,7 @@ window.registerPack({
           "explanation": "✅ Question au pluriel : **Are there** … ?"
         },
         {
+          "id": "44a7c9b9-e88c-45f2-a343-095da5237209",
           "type": "question",
           "prompt": "Traduis : « Elle a les yeux bleus. »",
           "answers": [
@@ -1049,6 +1117,7 @@ window.registerPack({
           "explanation": "✅ Les yeux : **has**."
         },
         {
+          "id": "834cdee0-9e81-48d5-9240-39fd83ff767b",
           "type": "question",
           "prompt": "Traduis : « Je suis dans le jardin. »",
           "answers": [
@@ -1057,6 +1126,7 @@ window.registerPack({
           "explanation": "✅ Où on est : **be** → I am."
         },
         {
+          "id": "877ba888-14c8-4dc9-b106-4299052376b4",
           "type": "question",
           "prompt": "Traduis : « Nous avons un grand jardin. »",
           "answers": [
@@ -1068,6 +1138,7 @@ window.registerPack({
           "explanation": "✅ **We have** a big garden."
         },
         {
+          "id": "900b0e51-5558-4c7e-a1b4-67018c1e1f5e",
           "type": "question",
           "prompt": "Traduis : « Mon chat est adorable. »",
           "answers": [
@@ -1077,6 +1148,7 @@ window.registerPack({
           "explanation": "✅ Comment il est : **is**."
         },
         {
+          "id": "2f5b1eda-a13b-4e4e-be90-c399e9fce1ad",
           "type": "question",
           "prompt": "Traduis : « Il y a trois fenêtres. »",
           "answers": [
@@ -1086,6 +1158,7 @@ window.registerPack({
           "explanation": "✅ **three windows** : pluriel → **there are**."
         },
         {
+          "id": "291f6938-48cb-4674-9265-700a7abd8cb1",
           "type": "question",
           "prompt": "Traduis : « Quel âge a ton frère ? »",
           "answers": [
@@ -1094,6 +1167,7 @@ window.registerPack({
           "explanation": "✅ **How old is** your brother?"
         },
         {
+          "id": "66461368-63f6-464b-985e-e2b2d966cc96",
           "type": "question",
           "prompt": "Traduis : « Ma sœur est très gentille et elle a un chat. »",
           "answers": [

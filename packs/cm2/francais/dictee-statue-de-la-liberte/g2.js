@@ -35,6 +35,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "70ca8ea1-ec15-49e2-b4e4-afcbadde17a8",
           "type": "match",
           "prompt": "Relie chaque mot à son sens.",
           "pairs": [
@@ -58,6 +59,7 @@ window.registerPack({
           "explanation": "Le sens des mots :\n- le **socle** porte la statue\n- le **port** accueille les bateaux\n- **environ** = à peu près"
         },
         {
+          "id": "e0504839-395a-4045-98e5-0430a3561654",
           "type": "mcq",
           "prompt": "Que veut dire « peser » ?",
           "options": [
@@ -70,6 +72,7 @@ window.registerPack({
           "explanation": "**Peser**, c'est avoir un certain poids : la statue pèse 225 tonnes."
         },
         {
+          "id": "27f37348-6410-4f98-be94-bbf531d971b6",
           "type": "mcq",
           "prompt": "« Le centenaire de la Déclaration », c'est…",
           "options": [
@@ -83,6 +86,7 @@ window.registerPack({
           "hint": "Cherche le nombre caché dans le mot."
         },
         {
+          "id": "1022127d-b545-4b1a-a2a7-87ecb440b85c",
           "type": "sort",
           "prompt": "Range chaque mot : nom ou verbe ?",
           "categories": [
@@ -124,6 +128,7 @@ window.registerPack({
           "explanation": "À l'infinitif, un **verbe** se termine souvent par :\n- -er : mesurer\n- -ir : offrir\n- -oir : pouvoir"
         },
         {
+          "id": "f58db0ff-cc38-4449-ae4d-41dfa2465756",
           "type": "mcq",
           "prompt": "Quel mot est un adjectif ?",
           "options": [
@@ -136,6 +141,7 @@ window.registerPack({
           "explanation": "**Américain** décrit un nom : une déclaration américaine."
         },
         {
+          "id": "592c262b-6bc0-491d-80c6-febce6d68eda",
           "type": "match",
           "prompt": "Relie chaque mot à son sens.",
           "pairs": [
@@ -179,6 +185,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "71ee9e0e-4aad-4baa-8b4d-40f1b80439d3",
           "type": "fill",
           "prompt": "Écoute et écris le mot qui manque.",
           "listen": "La statue de la Liberté se trouve à New York.",
@@ -190,6 +197,7 @@ window.registerPack({
           "hint": "Le mot commence par L."
         },
         {
+          "id": "145c6605-2048-4751-867a-7624b4ab23c4",
           "type": "mcq",
           "prompt": "Quelle est la bonne orthographe ?",
           "options": [
@@ -202,6 +210,7 @@ window.registerPack({
           "explanation": "**Tête** prend un accent circonflexe sur le premier e."
         },
         {
+          "id": "35c5eff8-b6f8-406b-9f9c-398dc003eef0",
           "type": "fill",
           "prompt": "Écoute et écris le mot qui manque.",
           "listen": "Elle mesure environ 93 mètres.",
@@ -213,6 +222,7 @@ window.registerPack({
           "hint": "Un mot qui veut dire « à peu près »."
         },
         {
+          "id": "d53e984d-a04f-43c0-934d-f784f0fbdf06",
           "type": "spot",
           "prompt": "Touche le mot mal écrit.",
           "tokens": [
@@ -230,6 +240,7 @@ window.registerPack({
           "explanation": "**Français** prend une cédille : ç."
         },
         {
+          "id": "4f0f8035-34e4-4300-9244-2f7158e5a20c",
           "type": "mcq",
           "prompt": "Quelle est la bonne orthographe ?",
           "options": [
@@ -242,6 +253,7 @@ window.registerPack({
           "explanation": "**Déclaration** :\n- un accent sur le é\n- la fin **-tion**"
         },
         {
+          "id": "703dd48b-1976-4e83-9cde-9165de6652ec",
           "type": "fill",
           "prompt": "Écoute et écris le mot qui manque.",
           "listen": "Quarante personnes peuvent tenir à l'intérieur de sa tête.",
@@ -274,6 +286,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "d05a7f78-4b6f-40ad-8d72-8e54e4803dee",
           "type": "mcq",
           "prompt": "« Le peuple français ___ offert la statue. »",
           "options": [
@@ -284,6 +297,7 @@ window.registerPack({
           "explanation": "On peut dire « avait offert » : c'est **a** (avoir)."
         },
         {
+          "id": "3bd9f040-ce29-4859-bfef-c0b319ccd785",
           "type": "mcq",
           "prompt": "« Elle se trouve sur une petite ile ___ l'entrée du port. »",
           "options": [
@@ -294,6 +308,7 @@ window.registerPack({
           "explanation": "On ne peut pas dire « avait l'entrée » : c'est **à**."
         },
         {
+          "id": "215fc855-1e7d-40d8-8582-37a7c1877ebc",
           "type": "mcq",
           "prompt": "« Elle pèse 225 tonnes ___ mesure environ 93 mètres. »",
           "options": [
@@ -304,6 +319,7 @@ window.registerPack({
           "explanation": "On peut dire « et puis mesure » : c'est **et**."
         },
         {
+          "id": "9151f771-805c-44a6-86b6-cccd02fca749",
           "type": "mcq",
           "prompt": "« Elle mesure 93 mètres avec ___ socle. »",
           "options": [
@@ -314,6 +330,7 @@ window.registerPack({
           "explanation": "On peut dire « avec mon socle » : c'est **son**."
         },
         {
+          "id": "7d3fb913-c96c-45ec-b2be-ff48e71dad67",
           "type": "mcq",
           "prompt": "« La statue de la Liberté ___ visite. »",
           "options": [
@@ -324,6 +341,7 @@ window.registerPack({
           "explanation": "Devant le verbe visiter, on écrit **se**."
         },
         {
+          "id": "cde88c12-bf81-4613-b279-f4b4670a5b98",
           "type": "sort",
           "prompt": "Range chaque phrase : a ou à ?",
           "categories": [
@@ -357,6 +375,7 @@ window.registerPack({
           "explanation": "Si on peut dire « avait », c'est **a** ; sinon, c'est **à**."
         },
         {
+          "id": "80a98cd4-6e90-4519-ae81-94b1695d7a97",
           "type": "fill",
           "prompt": "Complète avec a ou à.",
           "sentence": "Quarante personnes peuvent tenir ___ l'intérieur de sa tête.",
@@ -387,6 +406,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "c09c8c4f-bc42-41b2-b41b-8b6a8c44c22f",
           "type": "mcq",
           "prompt": "« Quarante personnes ___ tenir dans sa tête. »",
           "options": [
@@ -399,6 +419,7 @@ window.registerPack({
           "explanation": "Le sujet « quarante personnes » est au pluriel : **peuvent**."
         },
         {
+          "id": "89c40927-f7e5-422b-ad23-15a47a62b8dd",
           "type": "mcq",
           "prompt": "« Elle ___ deux-cent-vingt-cinq tonnes. »",
           "options": [
@@ -411,6 +432,7 @@ window.registerPack({
           "explanation": "Le sujet « elle » est au singulier : **pèse** (accent grave)."
         },
         {
+          "id": "c91ce92b-4f88-4c83-b275-0a3846619fd8",
           "type": "fill",
           "prompt": "Complète avec le verbe offrir au passé composé.",
           "sentence": "Le peuple français a ___ la statue.",
@@ -420,6 +442,7 @@ window.registerPack({
           "explanation": "Offrir → a **offert**."
         },
         {
+          "id": "43bb588a-fbaf-4a23-b043-0934af7cab21",
           "type": "spot",
           "prompt": "Touche le mot mal accordé.",
           "tokens": [
@@ -436,6 +459,7 @@ window.registerPack({
           "explanation": "La Déclaration est féminin : **américaine**."
         },
         {
+          "id": "738c3af0-a204-4da8-9a04-fac67dc0c90b",
           "type": "spot",
           "prompt": "Touche le mot mal accordé.",
           "tokens": [
@@ -451,6 +475,7 @@ window.registerPack({
           "explanation": "Le sujet « elle » est au singulier : **mesure**."
         },
         {
+          "id": "206ccb44-acce-43c5-aa3f-2ce34cded49b",
           "type": "mcq",
           "prompt": "« Elle se trouve sur une ___ ile. »",
           "options": [
@@ -483,6 +508,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "799772e4-a508-47dd-8335-ac2875706486",
           "type": "fill",
           "prompt": "Écris le nombre en lettres.",
           "sentence": "40 s'écrit : ___.",
@@ -492,6 +518,7 @@ window.registerPack({
           "explanation": "40 = **quarante** (avec -ante à la fin)."
         },
         {
+          "id": "e110da96-9b85-49fc-8774-f8eb10ce3d9d",
           "type": "mcq",
           "prompt": "Comment écrit-on 93 ?",
           "options": [
@@ -504,6 +531,7 @@ window.registerPack({
           "explanation": "**Quatre-vingt-treize** : pas de s à vingt, car un autre nombre le suit."
         },
         {
+          "id": "f976329e-e097-4a43-a9aa-aec874ddee17",
           "type": "mcq",
           "prompt": "Comment écrit-on 225 ?",
           "options": [
@@ -516,6 +544,7 @@ window.registerPack({
           "explanation": "**Deux-cent-vingt-cinq** : cent et vingt sont suivis d'un autre nombre, donc pas de s."
         },
         {
+          "id": "cba8d5e4-f526-4c93-97e4-17da03144e26",
           "type": "fill",
           "prompt": "Écris 225 en lettres.",
           "sentence": "Elle pèse ___ tonnes.",
@@ -527,6 +556,7 @@ window.registerPack({
           "hint": "deux-cent-… puis vingt-cinq."
         },
         {
+          "id": "d5248e06-2e53-4797-9370-9b69a648fef5",
           "type": "mcq",
           "prompt": "Le poids dépasse 200 tonnes. Comment écrit-on 200 ?",
           "options": [
@@ -538,6 +568,7 @@ window.registerPack({
           "explanation": "**Deux-cents** : cent est multiplié (2 × 100) et rien ne le suit, donc il prend un s."
         },
         {
+          "id": "2c26e26a-3d00-413a-8933-3b804a37dc6a",
           "type": "match",
           "prompt": "Relie chaque nombre à son écriture en lettres.",
           "pairs": [
@@ -561,6 +592,7 @@ window.registerPack({
           "explanation": "Seul **deux-cents** prend un s : rien ne suit cent."
         },
         {
+          "id": "be121e42-a62f-47b8-8de2-44a25be694b5",
           "type": "fill",
           "prompt": "Écris 93 en lettres.",
           "sentence": "Elle mesure environ ___ mètres de haut.",
@@ -590,6 +622,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "8c530ef7-511e-45b3-bf51-8c542ddacdc8",
           "type": "mcq",
           "prompt": "Qui a fabriqué la charpente en acier de la statue ?",
           "options": [
@@ -602,6 +635,7 @@ window.registerPack({
           "explanation": "La charpente a été réalisée dans les ateliers de **Gustave Eiffel**."
         },
         {
+          "id": "36f3890a-d312-4776-8068-c644b90b86f2",
           "type": "mcq",
           "prompt": "Combien de piques a la couronne de la statue ?",
           "options": [
@@ -614,6 +648,7 @@ window.registerPack({
           "explanation": "La couronne a **sept piques**."
         },
         {
+          "id": "24c9077e-75ec-4e3e-8010-b8739c0a5e63",
           "type": "mcq",
           "prompt": "Que représentent les piques de la couronne ?",
           "options": [
@@ -626,6 +661,7 @@ window.registerPack({
           "explanation": "Les 7 piques = les **7 continents** et les **7 océans**."
         },
         {
+          "id": "4eebfe60-791a-46d5-a9ef-39ecc9dba601",
           "type": "sort",
           "prompt": "Range chaque nom : continent ou océan ?",
           "categories": [
@@ -667,6 +703,7 @@ window.registerPack({
           "explanation": "Des continents :\n- Europe\n- Asie\n- Afrique\n- …\nDes océans :\n- **Indien**\n- **Pacifique**\n- **Atlantique**\n- …"
         },
         {
+          "id": "4b1df115-1162-4a84-9d5e-2938687d87a8",
           "type": "mcq",
           "prompt": "Quand la tour Eiffel a-t-elle été construite ?",
           "options": [
@@ -679,6 +716,7 @@ window.registerPack({
           "explanation": "La tour Eiffel a été construite **de 1887 à 1889**, juste après la statue (1886)."
         },
         {
+          "id": "04c8c974-2b8c-4f64-a09b-6a80e753aec2",
           "type": "fill",
           "prompt": "Complète avec le bon mot.",
           "sentence": "La couronne de la statue a sept ___.",
@@ -688,6 +726,7 @@ window.registerPack({
           "explanation": "Sept **piques**, comme les 7 continents et les 7 océans."
         },
         {
+          "id": "de6c79cf-245e-4daf-8257-861bc33ff847",
           "type": "fill",
           "prompt": "Lis le texte, puis complète la phrase.",
           "docId": "a-lire",
@@ -716,6 +755,7 @@ window.registerPack({
       "draw": 12,
       "exercises": [
         {
+          "id": "0d6a7338-1807-4a53-bbc1-b1952591e9d7",
           "type": "question",
           "prompt": "Complète avec a ou à : « Le peuple français ___ offert la statue. »",
           "answers": [
@@ -724,6 +764,7 @@ window.registerPack({
           "explanation": "On peut dire « avait offert » : c'est le verbe avoir, **a** sans accent."
         },
         {
+          "id": "2cddd3e8-ac77-4b63-ba4a-2744e4d1a8d3",
           "type": "question",
           "prompt": "Complète avec a ou à : « Elle se trouve ___ l'entrée du port. »",
           "answers": [
@@ -732,6 +773,7 @@ window.registerPack({
           "explanation": "On ne peut pas dire « avait l'entrée » : c'est **à** avec un accent."
         },
         {
+          "id": "4b057ba9-18b3-442f-9a90-5e69ff7a31a3",
           "type": "question",
           "prompt": "Complète avec et ou est : « Elle pèse 225 tonnes ___ mesure environ 93 mètres. »",
           "answers": [
@@ -740,6 +782,7 @@ window.registerPack({
           "explanation": "On peut dire « et puis mesure » : c'est **et**."
         },
         {
+          "id": "1376f9ca-4435-4b8f-ae86-fbb44154ab57",
           "type": "question",
           "prompt": "Complète avec son ou sont : « Elle mesure 93 mètres avec ___ socle. »",
           "answers": [
@@ -748,6 +791,7 @@ window.registerPack({
           "explanation": "On peut dire « avec mon socle » : c'est **son**."
         },
         {
+          "id": "76beb14e-486d-4212-831f-50e47c1b14ec",
           "type": "question",
           "prompt": "Complète avec se ou ce : « La statue de la Liberté ___ visite. »",
           "answers": [
@@ -756,6 +800,7 @@ window.registerPack({
           "explanation": "Devant le verbe visiter, on écrit **se**."
         },
         {
+          "id": "0b4c9621-7b62-4e42-a608-828c0805fa91",
           "type": "question",
           "prompt": "Écris le nombre en lettres : 40",
           "answers": [
@@ -764,6 +809,7 @@ window.registerPack({
           "explanation": "40 = **quarante**, avec -ante à la fin."
         },
         {
+          "id": "351699f3-cb74-4339-9353-4f3db0d2965e",
           "type": "question",
           "prompt": "Écris le nombre en lettres : 93",
           "answers": [
@@ -772,6 +818,7 @@ window.registerPack({
           "explanation": "93 = 4 × 20 + 13 : **quatre-vingt-treize**, pas de s à vingt car treize le suit."
         },
         {
+          "id": "fc4dbb11-b5f9-4a29-9766-e3114a1e0316",
           "type": "question",
           "prompt": "Écris le nombre en lettres : 225",
           "answers": [
@@ -780,6 +827,7 @@ window.registerPack({
           "explanation": "225 = **deux-cent-vingt-cinq** : cent et vingt sont suivis d'un autre nombre, donc pas de s."
         },
         {
+          "id": "c8656905-8928-4be2-a53a-1cac48eb3b00",
           "type": "question",
           "prompt": "Écris le nombre en lettres : « Le poids dépasse 200 tonnes. »",
           "answers": [
@@ -788,6 +836,7 @@ window.registerPack({
           "explanation": "**Deux-cents** : cent est multiplié (2 × 100) et rien ne le suit, donc il prend un s."
         },
         {
+          "id": "ff372906-f52a-46cf-b08f-f882e1638aa7",
           "type": "question",
           "prompt": "Accorde le verbe pouvoir au présent : « Quarante personnes … tenir dans sa tête. »",
           "answers": [
@@ -796,6 +845,7 @@ window.registerPack({
           "explanation": "Le sujet « quarante personnes » est au pluriel : **peuvent**."
         },
         {
+          "id": "8259feba-3977-4ba5-be9d-5911673443e3",
           "type": "question",
           "prompt": "Accorde le verbe peser au présent : « Elle … deux-cent-vingt-cinq tonnes. »",
           "answers": [
@@ -804,6 +854,7 @@ window.registerPack({
           "explanation": "Le sujet « elle » est au singulier : elle **pèse**, avec un accent grave."
         },
         {
+          "id": "072f9e29-b661-4a7d-b2ee-d3659b2b0944",
           "type": "question",
           "prompt": "Accorde l'adjectif : « la Déclaration d'indépendance (américain) »",
           "answers": [
@@ -812,6 +863,7 @@ window.registerPack({
           "explanation": "La Déclaration est féminin : **américaine**, avec un e."
         },
         {
+          "id": "80e790cf-b7f2-4367-9fc0-1251f4e01c2e",
           "type": "question",
           "prompt": "Accorde l'adjectif : « Elle se trouve sur une (petit) ile. »",
           "answers": [
@@ -820,6 +872,7 @@ window.registerPack({
           "explanation": "Une ile est féminin singulier : **petite**."
         },
         {
+          "id": "c2b5b5f4-1852-4350-aa4a-2bbf02af5a14",
           "type": "question",
           "prompt": "Ce mot est mal écrit : « Elle mesure environs 93 mètres. » Écris-le correctement.",
           "answers": [
@@ -828,6 +881,7 @@ window.registerPack({
           "explanation": "**Environ** ne change jamais : jamais de s à la fin."
         },
         {
+          "id": "a8b9fd25-c48c-4e19-813b-b588f24b4e4d",
           "type": "question",
           "prompt": "Complète avec a ou à : « La statue ___ une couronne. »",
           "answers": [
@@ -836,6 +890,7 @@ window.registerPack({
           "explanation": "On peut dire « avait une couronne » : c'est **a**, le verbe avoir."
         },
         {
+          "id": "1827c150-cb08-4e86-a33a-1bdf9063889e",
           "type": "question",
           "prompt": "Complète avec et ou est : « La statue ___ à New York. »",
           "answers": [
@@ -844,6 +899,7 @@ window.registerPack({
           "explanation": "On peut dire « était à New York » : c'est **est**, le verbe être."
         },
         {
+          "id": "657e7ecf-1f47-414e-8c85-fd2608882ebc",
           "type": "question",
           "prompt": "Complète avec son ou sont : « Les touristes ___ dans la tête de la statue. »",
           "answers": [
@@ -852,6 +908,7 @@ window.registerPack({
           "explanation": "On peut dire « étaient dans la tête » : c'est **sont**, le verbe être."
         },
         {
+          "id": "ca97e037-bcfe-42a1-84c0-dc6657a30019",
           "type": "question",
           "prompt": "Complète avec se ou ce : « ___ port est très grand. »",
           "answers": [
@@ -860,6 +917,7 @@ window.registerPack({
           "explanation": "Devant un nom (port), on écrit **ce**."
         },
         {
+          "id": "15bfdf8e-b5a0-486c-8017-3a250ca77d05",
           "type": "question",
           "prompt": "Accorde le verbe pouvoir au présent : « Une seule personne … monter dans la couronne. »",
           "answers": [
@@ -868,6 +926,7 @@ window.registerPack({
           "explanation": "Sujet au singulier (une personne) : **peut**, avec un t."
         },
         {
+          "id": "f84b8ccd-158f-4596-a387-fbbd3416ce18",
           "type": "question",
           "prompt": "Accorde le verbe se trouver au présent : « Les bateaux se … dans le port. »",
           "answers": [
@@ -876,6 +935,7 @@ window.registerPack({
           "explanation": "Sujet au pluriel (les bateaux) : le verbe finit par **-ent** → trouvent."
         },
         {
+          "id": "a410a8ef-2464-42e0-b0b7-b034abb100ad",
           "type": "question",
           "prompt": "Accorde l'adjectif : « une famille (français) »",
           "answers": [
@@ -884,6 +944,7 @@ window.registerPack({
           "explanation": "Nom féminin : on ajoute un **e** → française (avec la cédille)."
         },
         {
+          "id": "835a24fa-ec11-40c1-8806-cbb3701a6659",
           "type": "question",
           "prompt": "Accorde l'adjectif : « deux (petit) iles »",
           "answers": [
@@ -892,6 +953,7 @@ window.registerPack({
           "explanation": "Nom féminin pluriel : on ajoute **e** et **s** → petites."
         },
         {
+          "id": "4becac93-d8a9-481f-be4a-30e6c54aa373",
           "type": "question",
           "prompt": "Écris le nombre en lettres : 300",
           "answers": [
@@ -900,6 +962,7 @@ window.registerPack({
           "explanation": "**cent** est multiplié (3 × 100) et à la fin du nombre : trois-cent**s**."
         },
         {
+          "id": "5846d36c-ca67-4ac0-91ee-583303683abb",
           "type": "question",
           "prompt": "Écris le nombre en lettres : 320",
           "answers": [
@@ -908,6 +971,7 @@ window.registerPack({
           "explanation": "**cent** n'est pas à la fin : pas de s. Des **traits d'union** entre tous les mots."
         },
         {
+          "id": "d22711bd-9c40-4530-856f-043117320ad2",
           "type": "question",
           "prompt": "Écris le nombre en lettres : 80",
           "answers": [
@@ -916,6 +980,7 @@ window.registerPack({
           "explanation": "**vingt** est multiplié (4 × 20) et à la fin du nombre : quatre-vingt**s**."
         },
         {
+          "id": "0cd8910f-0b37-4eba-a41d-5c91c3cce9e3",
           "type": "question",
           "prompt": "Recopie la phrase sans faute : « Elle se trouve sur une petite ile a l'entrée du port. »",
           "answers": [
@@ -926,6 +991,7 @@ window.registerPack({
           "multiline": true
         },
         {
+          "id": "7b17e5a4-0f10-4e8b-bf56-a08485053d8b",
           "type": "question",
           "prompt": "Recopie la phrase sans faute : « Quarante personnes peut tenir a l'intérieur de sa tète ! »",
           "answers": [
@@ -935,6 +1001,7 @@ window.registerPack({
           "multiline": true
         },
         {
+          "id": "3ae2f73d-83ca-4200-bfaa-d61601493d55",
           "type": "question",
           "prompt": "Recopie la phrase sans faute : « La statue de la Liberté ce visite et elle et très grande. »",
           "answers": [

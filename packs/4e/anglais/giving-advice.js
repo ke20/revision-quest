@@ -33,6 +33,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "3119a397-8e10-4454-b149-561d1af9b148",
           "type": "match",
           "prompt": "Lettre de Lily : relie chaque mot anglais à sa traduction.",
           "pairs": [
@@ -56,6 +57,7 @@ window.registerPack({
           "explanation": "✅ Les mots :\n- **online** = en ligne\n- **safe** = sans danger\n- **to meet up** = se retrouver\nLily veut voir son ami, mais elle a peur."
         },
         {
+          "id": "ad35ed0c-f84e-4648-88c5-15302808c413",
           "type": "mcq",
           "prompt": "Lettre de Sarah : \"My friend is being **bullied**.\" Que veut dire **bullied** ?",
           "options": [
@@ -69,6 +71,7 @@ window.registerPack({
           "hint": "C'est un gros problème à l'école... 😟"
         },
         {
+          "id": "ee1eee53-4b9a-455d-8815-424bc31208ea",
           "type": "match",
           "prompt": "Lettre de Sarah : relie chaque mot anglais à sa traduction.",
           "pairs": [
@@ -92,6 +95,7 @@ window.registerPack({
           "explanation": "✅ Les mots :\n- **calling her names** = l'insulter\n- **a joke** = une blague\n- **joined in** = a participé\n- **upset** = triste"
         },
         {
+          "id": "66ee5dc0-da8b-4953-b10a-7461fa9074e8",
           "type": "mcq",
           "prompt": "Lettre de Sam : \"Every time I think about the exam, **my stomach hurts**.\" Que veut dire **my stomach hurts** ?",
           "options": [
@@ -104,6 +108,7 @@ window.registerPack({
           "explanation": "✅ J'ai mal au ventre. Les mots :\n- **stomach** = le ventre\n- **it hurts** = ça fait mal"
         },
         {
+          "id": "d6ab0723-a91a-4b7d-9a1f-4444f9efd26e",
           "type": "match",
           "prompt": "Lettre de Sam : relie chaque mot anglais à sa traduction.",
           "pairs": [
@@ -131,6 +136,7 @@ window.registerPack({
           "explanation": "✅ Les mots :\n- **stressed** = stressé\n- **marks** = notes\n- **to disappoint** = décevoir\n- **pressure** = pression\n- **enough** = assez"
         },
         {
+          "id": "f2027a01-427c-4be1-ba0f-6e880a4e5e20",
           "type": "mcq",
           "prompt": "Lettre de Susan : \"My family **cannot afford** these things.\" Que veut dire cette phrase ?",
           "options": [
@@ -143,6 +149,7 @@ window.registerPack({
           "explanation": "✅ Ma famille n'a pas les moyens d'acheter ces choses. **cannot afford** = pas assez d'argent pour acheter."
         },
         {
+          "id": "40f540cf-3e16-4613-a25e-fc86f9e84a75",
           "type": "match",
           "prompt": "Lettre de Susan : relie chaque mot anglais à sa traduction.",
           "pairs": [
@@ -170,6 +177,7 @@ window.registerPack({
           "explanation": "✅ Les mots de Susan :\n- **expensive** = cher\n- **unbranded** = sans marque\n- **to make fun of** = se moquer de\n- **insecure** = complexé(e)\n- **to fit in** = s'intégrer"
         },
         {
+          "id": "15116d38-528f-44b8-bf14-173be7d096bc",
           "type": "match",
           "prompt": "Lettre d'Abby : relie chaque mot anglais à sa traduction.",
           "pairs": [
@@ -197,6 +205,7 @@ window.registerPack({
           "explanation": "✅ Les mots :\n- **addicted** = accro\n- **offline** = hors ligne\n- **anxious** = anxieux\nAbby est accro à son téléphone."
         },
         {
+          "id": "5f8854bd-16a4-4faf-a5a6-99fb7385b869",
           "type": "match",
           "prompt": "Lettre de Mark : relie chaque mot anglais à sa traduction.",
           "pairs": [
@@ -224,6 +233,7 @@ window.registerPack({
           "explanation": "✅ Les mots :\n- **to give up** = abandonner\n- **stuck** = bloqué\n- **hopeless** = désespéré\nMark a envie d'abandonner l'école."
         },
         {
+          "id": "c08221bf-5357-484c-b36a-6bd9c5cbafbf",
           "type": "mcq",
           "prompt": "Quel verbe veut dire **abandonner** ?",
           "options": [
@@ -237,6 +247,7 @@ window.registerPack({
           "hint": "Pense à Mark, qui veut tout arrêter."
         },
         {
+          "id": "e724006b-fe31-4fa4-a0c4-69cb507763d0",
           "type": "mcq",
           "prompt": "Lettre d'Abby : \"Last night, I **stayed up** until 3:00 AM.\" Que veut dire **stayed up** ?",
           "options": [
@@ -249,6 +260,7 @@ window.registerPack({
           "explanation": "✅ J'ai veillé : Abby ne s'est pas couchée avant 3 h du matin ! **to stay up** = veiller tard."
         },
         {
+          "id": "f723abb3-8292-4f6c-9d0a-3b0e7368146e",
           "type": "mcq",
           "prompt": "Quel mot est le **contraire** de \"online\" (en ligne) ?",
           "options": [
@@ -285,6 +297,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "8845031a-2514-48ff-89ac-626adb60b811",
           "type": "sort",
           "prompt": "Range chaque phrase : conseil 💡 ou empathie 💗 ?",
           "categories": [
@@ -318,6 +331,7 @@ window.registerPack({
           "explanation": "✅ 💗 Empathie : on montre qu'on comprend.\n- [[I understand…|je comprends…]]\n- [[That sounds like…|ça a l'air…]]\n💡 Conseil : on dit quoi faire.\n- [[You should…|tu devrais…]]\n- [[You shouldn't…|tu ne devrais pas…]]"
         },
         {
+          "id": "8857b2c4-77f7-4d46-b777-edd4aa299cbc",
           "type": "mcq",
           "prompt": "\"I understand how you feel.\" C'est un conseil ou de l'empathie ?",
           "options": [
@@ -328,6 +342,7 @@ window.registerPack({
           "explanation": "✅ **Empathie** 💗 : [[I understand how you feel.|Je comprends ce que tu ressens.]] On ne dit pas quoi faire : on montre qu'on comprend."
         },
         {
+          "id": "a680cad2-e523-4a6b-a368-f432efa0cc45",
           "type": "mcq",
           "prompt": "\"Why don't you ask your teacher for help?\" C'est un conseil ou de l'empathie ?",
           "options": [
@@ -339,6 +354,7 @@ window.registerPack({
           "hint": "Est-ce que la phrase dit quoi faire ?"
         },
         {
+          "id": "333a017f-7f1a-4287-af51-014bcc4149ec",
           "type": "sort",
           "prompt": "Range chaque phrase : conseil 💡 ou empathie 💗 ?",
           "categories": [
@@ -380,6 +396,7 @@ window.registerPack({
           "explanation": "✅ 💡 Conseil :\n- [[should|devrais]]\n- [[If I were you|si j'étais toi]]\n- [[Why don't you|pourquoi tu ne… pas]]\n- [[How about|et si tu…]]\n💗 Empathie :\n- [[I understand…|je comprends…]]\n- [[That sounds like…|ça a l'air…]]"
         },
         {
+          "id": "0487d031-9167-4c25-a93e-8b20dcd47144",
           "type": "mcq",
           "prompt": "Quelle phrase montre de l'**empathie** 💗 ?",
           "options": [
@@ -392,6 +409,7 @@ window.registerPack({
           "explanation": "✅ **That sounds like a really difficult situation** = Ça a l'air vraiment difficile. On montre qu'on comprend. Les autres phrases sont des conseils."
         },
         {
+          "id": "055d56f0-a7e1-4f4d-a655-bc89ee8c78bb",
           "type": "mcq",
           "prompt": "Quelle phrase donne un **conseil** 💡 ?",
           "options": [
@@ -404,6 +422,7 @@ window.registerPack({
           "explanation": "✅ **If I were you, I would talk to the girls** = Si j'étais toi, je parlerais aux filles. On dit quoi faire : c'est un conseil."
         },
         {
+          "id": "010877a1-0946-48fc-92fe-0cfa962e63d3",
           "type": "mcq",
           "prompt": "Que veut dire \"That sounds like a really difficult situation\" ?",
           "options": [
@@ -416,6 +435,7 @@ window.registerPack({
           "explanation": "✅ [[That sounds like a really difficult situation.|Ça a l'air d'être une situation vraiment difficile.]] Ici, **sounds like** = ça a l'air de (rien à voir avec la musique 🎵)."
         },
         {
+          "id": "c57fc979-8b79-4405-8913-37678d959c6b",
           "type": "sort",
           "prompt": "Range chaque phrase : problème 😟, conseil 💡 ou empathie 💗 ?",
           "categories": [
@@ -461,6 +481,7 @@ window.registerPack({
           "explanation": "✅ 😟 Le problème, c'est ce que dit la personne ([[I feel stressed|je suis stressé]]). Dans ta réponse, tu mets de l'empathie 💗 et des conseils 💡."
         },
         {
+          "id": "e7bac14e-4189-473f-a158-2efbb8009df6",
           "type": "mcq",
           "prompt": "Quelle phrase n'est **PAS** un conseil ?",
           "options": [
@@ -473,6 +494,7 @@ window.registerPack({
           "explanation": "✅ [[**I understand why you feel upset**|Je comprends pourquoi tu es contrarié(e)]] : c'est de l'empathie 💗. On comprend, mais on ne dit pas quoi faire."
         },
         {
+          "id": "07122687-f421-4fe8-b02d-7fce3720ec22",
           "type": "sort",
           "prompt": "Réponse à Mark : range chaque phrase, conseil 💡 ou empathie 💗 ?",
           "categories": [
@@ -514,6 +536,7 @@ window.registerPack({
           "explanation": "✅ 💡 Conseil :\n- [[You shouldn't…|tu ne devrais pas…]]\n- [[Why don't you…?|pourquoi tu ne… pas ?]]\n- [[How about…?|et si tu… ?]]\n💗 Empathie :\n- [[I understand…|je comprends…]]\n- [[That sounds like…|ça a l'air…]]"
         },
         {
+          "id": "0a1fd3fc-05df-4013-b99c-a2cac3d4f2ad",
           "type": "mcq",
           "prompt": "Dans une bonne réponse, qu'est-ce qu'on écrit **en premier** ?",
           "options": [
@@ -550,6 +573,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "94063a8e-cfa7-44ea-85c6-89e73a86afa7",
           "type": "mcq",
           "prompt": "Choisis la bonne forme : You should ___ to a teacher.",
           "options": [
@@ -562,6 +586,7 @@ window.registerPack({
           "hint": "Après should : le verbe tout simple."
         },
         {
+          "id": "7d2f75cb-417b-4953-b878-9a2d36859b88",
           "type": "mcq",
           "prompt": "Choisis la bonne forme : You shouldn't ___ this person alone.",
           "options": [
@@ -573,6 +598,7 @@ window.registerPack({
           "explanation": "✅ **You shouldn't meet**. Après **shouldn't**, le verbe tout simple, sans *to*."
         },
         {
+          "id": "0cc89428-17fa-439e-afe1-6d661626af75",
           "type": "mcq",
           "prompt": "Choisis la bonne forme : How about ___ a break?",
           "options": [
@@ -585,6 +611,7 @@ window.registerPack({
           "hint": "Après How about : verbe + ing"
         },
         {
+          "id": "518ccc28-e965-478f-bb4d-75822d9a8b2c",
           "type": "mcq",
           "prompt": "Choisis la bonne forme : If I were you, I would ___ sorry to your friend.",
           "options": [
@@ -597,6 +624,7 @@ window.registerPack({
           "explanation": "✅ **I would say**. Après **would**, le verbe tout simple."
         },
         {
+          "id": "228d9258-9bfe-4491-a9cf-54dfd00dda16",
           "type": "fill",
           "prompt": "Écris le verbe (ask = demander) à la bonne forme.",
           "sentence": "You should ___ for help.",
@@ -607,6 +635,7 @@ window.registerPack({
           "hint": "Pas de to, pas de -ing."
         },
         {
+          "id": "95e2a9a6-de76-40af-82ab-d0fb27d7d0d9",
           "type": "fill",
           "prompt": "Écris le verbe (go = aller) à la bonne forme.",
           "sentence": "How about ___ to bed earlier?",
@@ -617,6 +646,7 @@ window.registerPack({
           "hint": "Verbe + ing"
         },
         {
+          "id": "ce3858ce-7789-45d0-b27f-975f532e131f",
           "type": "mcq",
           "prompt": "Choisis le bon mot : If I ___ you, I would talk to her.",
           "options": [
@@ -630,6 +660,7 @@ window.registerPack({
           "hint": "C'est une expression toute faite."
         },
         {
+          "id": "3fa8a2fa-8b81-43e5-a592-b304c2ee778d",
           "type": "fill",
           "prompt": "Écris le verbe (turn) à la bonne forme.",
           "sentence": "Why don't you ___ off your phone at night?",
@@ -639,6 +670,7 @@ window.registerPack({
           "explanation": "✅ [[**Why don't you turn** off your phone?|Pourquoi tu n'éteins pas ton téléphone ?]] Après **Why don't you**, le verbe tout simple. **turn off** = éteindre."
         },
         {
+          "id": "03eac8a2-b123-45c1-bf38-8ea2e2289930",
           "type": "mcq",
           "prompt": "Choisis la bonne orthographe : How about ___ new friends?",
           "options": [
@@ -651,6 +683,7 @@ window.registerPack({
           "explanation": "✅ **making**. Après **How about**, le verbe + **ing**. make → making : on enlève le e."
         },
         {
+          "id": "0b2c8783-3876-4b97-ae0f-72d229c78a8d",
           "type": "mcq",
           "prompt": "Choisis le bon mot : If I were you, I ___ talk to a teacher.",
           "options": [
@@ -663,6 +696,7 @@ window.registerPack({
           "explanation": "✅ **I would** talk. Avec **If I were you**, on met **would** (pas *will*). On peut aussi dire **I'd**."
         },
         {
+          "id": "e38c545e-97be-4a4f-aae9-e179928073ab",
           "type": "fill",
           "prompt": "Écris le verbe (stop = arrêter) à la bonne forme.",
           "sentence": "If I were you, I'd ___ laughing at her.",
@@ -673,6 +707,7 @@ window.registerPack({
           "hint": "I'd = I would"
         },
         {
+          "id": "12c44bdb-b231-4c70-99a0-fae8b14b510f",
           "type": "fill",
           "prompt": "Écris le verbe (get = obtenir) à la bonne forme.",
           "sentence": "How about ___ help from a teacher?",
@@ -707,6 +742,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "83e44da4-f46b-4f06-adb0-cf0fe7852920",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -722,6 +758,7 @@ window.registerPack({
           "translation": "Tu devrais parler à un professeur."
         },
         {
+          "id": "43e0b69e-5dc6-490d-accd-ecd63456da95",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -736,6 +773,7 @@ window.registerPack({
           "translation": "Je comprends ce que tu ressens."
         },
         {
+          "id": "106d033c-15e2-461b-bf30-e0052085fb80",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -751,6 +789,7 @@ window.registerPack({
           "translation": "Pourquoi ne demandes-tu pas de l'aide ?"
         },
         {
+          "id": "66bd19ef-0ef7-484a-b243-11018050644a",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -765,6 +804,7 @@ window.registerPack({
           "translation": "Et si tu faisais une pause ?"
         },
         {
+          "id": "376c4473-10df-4398-a7cb-b098742f7dc0",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre (conseil pour Lily).",
           "words": [
@@ -780,6 +820,7 @@ window.registerPack({
           "translation": "Tu ne devrais pas rencontrer cette personne seule."
         },
         {
+          "id": "b9e3c8b1-4d8d-4c7f-8267-bc7c1863afd8",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
           "words": [
@@ -796,6 +837,7 @@ window.registerPack({
           "translation": "Ça a l'air d'être une situation vraiment difficile."
         },
         {
+          "id": "5fb8515b-6e20-4b6c-a6a8-79ace6b10ba2",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre (conseil pour Sarah).",
           "words": [
@@ -831,6 +873,7 @@ window.registerPack({
           "translation": "Si j'étais toi, je lui dirais pardon."
         },
         {
+          "id": "a8bf6f07-9f3d-462a-b26d-c80b6e39ff48",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre. Attention : 1 mot est un piège, ne l'utilise pas ! (conseil pour Abby)",
           "words": [
@@ -866,6 +909,7 @@ window.registerPack({
           "translation": "Pourquoi n'éteins-tu pas ton téléphone la nuit ?"
         },
         {
+          "id": "366d14c1-5ae7-466f-b61c-27a9919550f6",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre. Attention : 1 mot est un piège, ne l'utilise pas ! (conseil pour Susan)",
           "words": [
@@ -884,6 +928,7 @@ window.registerPack({
           "translation": "Et si tu portais des vêtements que tu aimes ?"
         },
         {
+          "id": "78e37b10-d855-458d-a158-e503b19ae83e",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre. Attention : 2 mots sont des pièges, ne les utilise pas !",
           "words": [
@@ -921,6 +966,7 @@ window.registerPack({
           "translation": "Si j'étais toi, je parlerais à un professeur."
         },
         {
+          "id": "2f1f826e-ed92-488a-bc20-e7f0f40025c7",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre. Attention : 1 mot est un piège, ne l'utilise pas ! (conseil pour Abby)",
           "words": [
@@ -940,6 +986,7 @@ window.registerPack({
           "translation": "Tu ne devrais pas veiller jusqu'à 3 h du matin."
         },
         {
+          "id": "0a0a8c4f-39a0-4eeb-8be2-d8d586995db7",
           "type": "order",
           "prompt": "Écris une réponse complète pour Mark : remets les mots dans l'ordre. Attention : 1 mot est un piège !",
           "words": [
@@ -988,6 +1035,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "422eac45-1cb9-4828-82ab-4671a635f855",
           "type": "fill",
           "prompt": "Écris le mot qui manque (= tu devrais).",
           "sentence": "You ___ talk to your parents.",
@@ -998,6 +1046,7 @@ window.registerPack({
           "hint": "s _ _ _ _ _"
         },
         {
+          "id": "165691cf-76c5-4f0b-929f-71d4453eecf2",
           "type": "fill",
           "prompt": "Écris le mot qui manque (= tu ne devrais pas).",
           "sentence": "You ___ meet this person alone.",
@@ -1009,6 +1058,7 @@ window.registerPack({
           "hint": "should + n't"
         },
         {
+          "id": "41eef0d5-d4d5-41d6-859a-40b60c4d747e",
           "type": "fill",
           "prompt": "Écris le mot qui manque.",
           "sentence": "How ___ taking a break?",
@@ -1018,6 +1068,7 @@ window.registerPack({
           "explanation": "✅ **How about** taking a break? = Et si tu faisais une pause ?"
         },
         {
+          "id": "44a8dfc2-35aa-47c0-8442-9ed36dd6c761",
           "type": "fill",
           "prompt": "Écris le mot qui manque.",
           "sentence": "Why ___ you ask your teacher for help?",
@@ -1028,6 +1079,7 @@ window.registerPack({
           "hint": "do + not, avec une apostrophe"
         },
         {
+          "id": "fcf3e23b-849e-48fd-a6b0-16aff5dca673",
           "type": "fill",
           "prompt": "Écris le mot qui manque (phrase d'empathie 💗).",
           "sentence": "I understand how you ___.",
@@ -1037,6 +1089,7 @@ window.registerPack({
           "explanation": "✅ **I understand how you feel.** = Je comprends ce que tu ressens."
         },
         {
+          "id": "6d945e82-6d5e-4502-b394-fa9db0192a93",
           "type": "fill",
           "prompt": "Écris le mot qui manque.",
           "sentence": "If I ___ you, I would tell a teacher.",
@@ -1047,6 +1100,7 @@ window.registerPack({
           "hint": "Pas « was » !"
         },
         {
+          "id": "d9b01306-2ab1-4d6c-9fad-14d0f480e45f",
           "type": "fill",
           "prompt": "Écris le mot qui manque (phrase d'empathie 💗).",
           "sentence": "That sounds ___ a really difficult situation.",
@@ -1056,6 +1110,7 @@ window.registerPack({
           "explanation": "✅ **That sounds like** a really difficult situation. = Ça a l'air vraiment difficile."
         },
         {
+          "id": "dcaf3834-71db-466e-bf3d-58115af11bed",
           "type": "fill",
           "prompt": "Écris le mot qui manque (phrase d'empathie 💗).",
           "sentence": "I understand ___ you feel upset.",
@@ -1066,6 +1121,7 @@ window.registerPack({
           "hint": "pourquoi = ?"
         },
         {
+          "id": "358400ff-b2c4-4644-acbd-b9de0421d205",
           "type": "fill",
           "prompt": "Écris ce qui manque (1 ou 2 mots).",
           "sentence": "If I were you, ___ apologise to her.",
@@ -1077,6 +1133,7 @@ window.registerPack({
           "hint": "I + would"
         },
         {
+          "id": "200dfd5f-8224-42ff-99df-6c73fc15259c",
           "type": "fill",
           "prompt": "Écris le verbe (switch) à la bonne forme.",
           "sentence": "How about ___ off your phone at 10 pm?",
@@ -1086,6 +1143,7 @@ window.registerPack({
           "explanation": "✅ [[**How about switching** off your phone?|Et si tu éteignais ton téléphone ?]] Après **How about**, le verbe + **ing**. **switch off** = éteindre."
         },
         {
+          "id": "0aa9e9ed-162a-4c68-b74c-f1e83f521aa5",
           "type": "fill",
           "prompt": "Écris le mot qui manque.",
           "sentence": "___ don't you join a club at school?",
@@ -1095,6 +1153,7 @@ window.registerPack({
           "explanation": "✅ **Why** don't you join a club? = Pourquoi tu ne t'inscris pas à un club ?"
         },
         {
+          "id": "051b6be6-9d83-4c09-a11d-a4b3c1f9a9e9",
           "type": "fill",
           "prompt": "Écris le verbe (give) à la bonne forme.",
           "sentence": "If I were you, I wouldn't ___ up.",
@@ -1129,6 +1188,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "fe41fde2-f374-43ff-b4a6-ab8405c47428",
           "type": "spot",
           "prompt": "Touche le mot qui est faux.",
           "tokens": [
@@ -1145,6 +1205,7 @@ window.registerPack({
           "explanation": "✅ [[**You should talk to her.**|Tu devrais lui parler.]] Après **should**, pas de *to* : le verbe tout seul."
         },
         {
+          "id": "28571c98-bd42-4b94-b11c-0a22688970d2",
           "type": "spot",
           "prompt": "Touche le mot qui est faux.",
           "tokens": [
@@ -1160,6 +1221,7 @@ window.registerPack({
           "explanation": "✅ [[**How about taking** a break?|Et si tu faisais une pause ?]] Après **How about**, le verbe + **ing**."
         },
         {
+          "id": "e65fab13-a40f-423a-b2cd-b90da900dc42",
           "type": "spot",
           "prompt": "Touche le mot qui est faux.",
           "tokens": [
@@ -1181,6 +1243,7 @@ window.registerPack({
           "explanation": "✅ [[**If I were you**|si j'étais toi]]. On dit toujours **were**, jamais *was*."
         },
         {
+          "id": "919bd905-2176-4ddd-a06a-c825b0f78c4b",
           "type": "spot",
           "prompt": "Touche le mot qui est faux.",
           "tokens": [
@@ -1198,6 +1261,7 @@ window.registerPack({
           "explanation": "✅ [[**Why don't you ask** for help?|Pourquoi tu ne demandes pas de l'aide ?]] Après **Why don't you**, pas de *to*."
         },
         {
+          "id": "851d5a04-c09e-4c67-81a4-7b7e06714977",
           "type": "spot",
           "prompt": "Touche le mot qui est faux.",
           "tokens": [
@@ -1213,6 +1277,7 @@ window.registerPack({
           "explanation": "✅ [[**I understand how you feel.**|Je comprends ce que tu ressens.]] Avec **you**, pas de -s au verbe."
         },
         {
+          "id": "09958154-3bb4-42a2-b14c-69b03aaaf74b",
           "type": "spot",
           "prompt": "Touche le mot qui est faux.",
           "tokens": [
@@ -1229,6 +1294,7 @@ window.registerPack({
           "explanation": "✅ [[**You shouldn't stay** up so late.|Tu ne devrais pas veiller si tard.]] Après **shouldn't**, le verbe tout simple, sans -s."
         },
         {
+          "id": "096bea79-38db-435c-8ff3-8c354da3cb9f",
           "type": "spot",
           "prompt": "Touche le mot qui est faux.",
           "tokens": [
@@ -1249,6 +1315,7 @@ window.registerPack({
           "explanation": "✅ [[**I would tell** your parents.|Je le dirais à tes parents.]] Avec **If I were you**, on dit **would**, pas *will*."
         },
         {
+          "id": "aac360c0-52a6-449f-9bbc-fede18d96c06",
           "type": "spot",
           "prompt": "Touche le mot qui est faux.",
           "tokens": [
@@ -1266,6 +1333,7 @@ window.registerPack({
           "explanation": "✅ [[**Why don't you talk** to your friend?|Pourquoi tu ne parles pas à ton ami(e) ?]] Après **Why don't you**, le verbe tout simple, sans -ing."
         },
         {
+          "id": "1c6c0a85-79c7-40d9-8656-3f55dfe2a024",
           "type": "spot",
           "prompt": "Touche le mot qui est faux.",
           "tokens": [
@@ -1283,6 +1351,7 @@ window.registerPack({
           "explanation": "✅ [[**That sounds** like…|Ça a l'air…]] Avec **that** (= ça), on ajoute un **-s** au verbe, comme avec he / she / it."
         },
         {
+          "id": "1eced7c0-9a49-4d52-a3ff-89581daa75fd",
           "type": "spot",
           "prompt": "Touche le mot qui est faux.",
           "tokens": [
@@ -1300,6 +1369,7 @@ window.registerPack({
           "explanation": "✅ [[**You should ask** your teacher for help.|Tu devrais demander de l'aide à ton professeur.]] Après **should**, le verbe tout simple, sans -ing."
         },
         {
+          "id": "6a4ce344-77db-4468-93a7-be3c72e69781",
           "type": "spot",
           "prompt": "Touche le mot qui est faux.",
           "tokens": [
@@ -1319,6 +1389,7 @@ window.registerPack({
           "explanation": "✅ [[**I'd talk** to her.|Je lui parlerais.]] **I'd** = I would, donc le verbe tout simple, sans -ed."
         },
         {
+          "id": "914b2e9f-3ae2-4f16-adc2-31d7a823d142",
           "type": "spot",
           "prompt": "Touche le mot qui est faux.",
           "tokens": [
@@ -1357,6 +1428,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "13a14f8e-d5f8-4573-b812-463b01585d6e",
           "type": "match",
           "prompt": "Relie chaque personne à son problème.",
           "pairs": [
@@ -1388,6 +1460,7 @@ window.registerPack({
           "explanation": "✅ Les problèmes :\n- Lily = ami en ligne\n- Sarah = harcèlement\n- Sam = stress des examens\n- Susan = vêtements\n- Abby = téléphone\n- Mark = difficultés à l'école"
         },
         {
+          "id": "a4427d4b-addb-449d-b597-ba9ba11b3773",
           "type": "mcq",
           "prompt": "Lettre de Lily : [[\"Someone I met online wants to meet up. I'm not sure if it's safe.\"|Quelqu'un que j'ai rencontré en ligne veut qu'on se voie. Je ne sais pas si c'est sans danger.]] Choisis le **meilleur conseil**.",
           "options": [
@@ -1401,6 +1474,7 @@ window.registerPack({
           "hint": "Est-ce sans danger ? Est-ce sans faute ?"
         },
         {
+          "id": "12eb1911-9393-4baf-b796-814786bceb5a",
           "type": "mcq",
           "prompt": "Lettre de Sarah : [[\"I laughed and joined in. Now my friend is upset.\"|J'ai ri et je m'y suis mise aussi. Maintenant, mon amie est bouleversée.]] Choisis le **meilleur conseil**.",
           "options": [
@@ -1413,6 +1487,7 @@ window.registerPack({
           "explanation": "✅ [[**If I were you, I would say sorry to your friend and tell a teacher.**|Si j'étais toi, je dirais pardon à ton amie et je préviendrais un professeur.]] C'est sans faute et ça aide son amie. Les autres ont une faute (*was*, *will*) ou sont méchantes."
         },
         {
+          "id": "7fcd8415-b95b-4170-9d2c-a29f5cb27818",
           "type": "mcq",
           "prompt": "Lettre de Sam : [[\"I study five hours every night. My stomach hurts and I can't sleep.\"|J'étudie cinq heures tous les soirs. J'ai mal au ventre et je n'arrive pas à dormir.]] Choisis le **meilleur conseil**.",
           "options": [
@@ -1425,6 +1500,7 @@ window.registerPack({
           "explanation": "✅ [[**How about taking short breaks and sleeping more?**|Et si tu faisais de courtes pauses et dormais plus ?]] C'est sans faute (How about + verbe + **ing**) et ça aide Sam à se détendre."
         },
         {
+          "id": "523da036-9e24-4e27-a264-3cafbd2ede31",
           "type": "mcq",
           "prompt": "Lettre de Susan : [[\"Kids make fun of my unbranded clothes. I feel insecure.\"|Des élèves se moquent de mes vêtements sans marque. Je suis complexée.]] Quelle phrase montre de l'**empathie** 💗 ?",
           "options": [
@@ -1437,6 +1513,7 @@ window.registerPack({
           "explanation": "✅ [[**I understand why you feel upset.**|Je comprends pourquoi tu es contrariée.]] Attention :\n- *you feels* est faux\n- *funny* (drôle) n'est pas gentil"
         },
         {
+          "id": "75e42378-16c4-4ca2-a4ad-95debac1df37",
           "type": "mcq",
           "prompt": "Lettre de Susan : [[\"How can I fit in without changing who I am?\"|Comment je peux m'intégrer sans changer qui je suis ?]] Choisis le **meilleur conseil**.",
           "options": [
@@ -1449,6 +1526,7 @@ window.registerPack({
           "explanation": "✅ [[**Why don't you join a club to make friends who like you as you are?**|Pourquoi tu ne t'inscris pas à un club pour te faire des amis qui t'aiment comme tu es ?]] C'est sans faute, et Susan reste elle-même. Voler (*steal*), c'est non !"
         },
         {
+          "id": "01c42886-6ac9-4e7f-89c6-a563f044f8dd",
           "type": "mcq",
           "prompt": "Lettre d'Abby : [[\"I stayed up until 3 AM gaming. I'm too tired in class.\"|J'ai veillé jusqu'à 3 h du matin à jouer. Je suis trop fatiguée en classe.]] Choisis le **meilleur conseil**.",
           "options": [
@@ -1461,6 +1539,7 @@ window.registerPack({
           "explanation": "✅ [[**Why don't you leave your phone in the kitchen at night?**|Pourquoi tu ne laisses pas ton téléphone dans la cuisine la nuit ?]] C'est sans faute, et sans téléphone la nuit, Abby dort plus."
         },
         {
+          "id": "cd8dcf05-a63c-4b96-bd92-123a9787af01",
           "type": "mcq",
           "prompt": "Lettre de Mark : [[\"I feel completely stuck and hopeless. I want to give up.\"|Je me sens complètement bloqué et désespéré. J'ai envie d'abandonner.]] Quelle phrase montre de l'**empathie** 💗 ?",
           "options": [
@@ -1473,6 +1552,7 @@ window.registerPack({
           "explanation": "✅ [[**That sounds like a really difficult situation.**|Ça a l'air d'être une situation vraiment difficile.]] Attention :\n- *That sound* oublie le -s\n- *How about asking...* est un conseil, pas de l'empathie"
         },
         {
+          "id": "e9824f51-7d8e-417d-a320-ca4b61530667",
           "type": "match",
           "prompt": "Relie chaque problème au meilleur conseil.",
           "pairs": [
@@ -1504,6 +1584,7 @@ window.registerPack({
           "explanation": "✅ Chaque conseil répond au problème de la personne, et il est sans faute."
         },
         {
+          "id": "86a6559e-7a0b-4203-bfe1-816ba57cb787",
           "type": "mcq",
           "prompt": "Lettre de Mark : choisis la **meilleure réponse complète** (empathie + conseil + sans faute).",
           "options": [
@@ -1516,6 +1597,7 @@ window.registerPack({
           "explanation": "✅ La 1re réponse : de l'empathie 💗 et 2 bons conseils, sans faute. Les autres donnent un mauvais conseil ou ont des fautes."
         },
         {
+          "id": "259b39c0-20f4-4fef-b8d6-0ee2ddb180c5",
           "type": "mcq",
           "prompt": "Lettre d'Abby : [[\"My parents want to confiscate my phone, but being offline makes me anxious.\"|Mes parents veulent confisquer mon téléphone, mais être déconnectée me rend anxieuse.]] Choisis la meilleure réponse.",
           "options": [
@@ -1550,6 +1632,7 @@ window.registerPack({
       "draw": 12,
       "exercises": [
         {
+          "id": "0bcc780b-3bc7-4b11-b86d-ce3fce3bf1cf",
           "type": "question",
           "prompt": "Traduis : « Tu devrais parler à un professeur. »",
           "answers": [
@@ -1559,6 +1642,7 @@ window.registerPack({
           "explanation": "Après **should**, le verbe tout simple, sans *to* : [[You should talk to a teacher.|Tu devrais parler à un professeur.]]"
         },
         {
+          "id": "8fe9a79b-cfaa-413a-8bf1-a7d6bdf3f65b",
           "type": "question",
           "prompt": "Traduis : « Je comprends ce que tu ressens. »",
           "answers": [
@@ -1567,6 +1651,7 @@ window.registerPack({
           "explanation": "C'est la phrase d'empathie 💗 du chapitre : « ce que tu ressens » se dit **how you feel** : [[I understand how you feel.|Je comprends ce que tu ressens.]]"
         },
         {
+          "id": "d74d5749-f66b-4846-bb6c-9b9632c81fe9",
           "type": "question",
           "prompt": "Traduis : « Pourquoi tu ne demandes pas de l'aide ? »",
           "answers": [
@@ -1575,6 +1660,7 @@ window.registerPack({
           "explanation": "**Why don't you** + le verbe tout simple, et un **?** à la fin : [[Why don't you ask for help?|Pourquoi tu ne demandes pas de l'aide ?]]"
         },
         {
+          "id": "997aa466-3a91-4d73-83fa-5f73a6076402",
           "type": "question",
           "prompt": "Traduis : « Et si tu faisais une pause ? »",
           "answers": [
@@ -1585,6 +1671,7 @@ window.registerPack({
           "explanation": "Après **How about**, le verbe + **ing** : [[How about taking a break?|Et si tu faisais une pause ?]]"
         },
         {
+          "id": "062c9b47-d839-416a-92b7-0fb54ffb73ee",
           "type": "question",
           "prompt": "Traduis : « Tu ne devrais pas rencontrer cette personne seule. »",
           "answers": [
@@ -1596,6 +1683,7 @@ window.registerPack({
           "explanation": "**You shouldn't** (= should not) + le verbe tout simple : [[You shouldn't meet this person alone.|Tu ne devrais pas rencontrer cette personne seule.]]"
         },
         {
+          "id": "bb4e4c96-31ca-4a0b-b50a-e6611274ce6e",
           "type": "question",
           "prompt": "Traduis : « Ça a l'air d'être une situation vraiment difficile. »",
           "answers": [
@@ -1605,6 +1693,7 @@ window.registerPack({
           "explanation": "Phrase d'empathie 💗 : **sounds** avec un **s**, puis **like** : [[That sounds like a really difficult situation.|Ça a l'air d'être une situation vraiment difficile.]]"
         },
         {
+          "id": "6b939e14-df1f-4b6c-a813-7c4bf1224263",
           "type": "question",
           "prompt": "Traduis : « Je comprends pourquoi tu es bouleversée. »",
           "answers": [
@@ -1614,6 +1703,7 @@ window.registerPack({
           "explanation": "Les mots :\n- « pourquoi » = **why**\n- « bouleversé(e) » = **upset**\n[[I understand why you feel upset.|Je comprends pourquoi tu es bouleversée.]]"
         },
         {
+          "id": "eb61bd5a-6ea8-4c90-9b45-94f79858d859",
           "type": "question",
           "prompt": "Traduis : « Tu ne devrais pas veiller si tard. »",
           "answers": [
@@ -1623,6 +1713,7 @@ window.registerPack({
           "explanation": "« veiller tard » = **stay up**, le verbe tout simple après **shouldn't** : [[You shouldn't stay up so late.|Tu ne devrais pas veiller si tard.]]"
         },
         {
+          "id": "c9eb2a3a-154a-4d85-a968-702cd394cf43",
           "type": "question",
           "prompt": "Traduis : « Pourquoi tu n'éteins pas ton téléphone la nuit ? »",
           "answers": [
@@ -1634,6 +1725,7 @@ window.registerPack({
           "explanation": "**Why don't you** + verbe tout simple (pas de *to*) : [[Why don't you turn off your phone at night?|Pourquoi tu n'éteins pas ton téléphone la nuit ?]]"
         },
         {
+          "id": "e68b5413-92ec-4fcb-aff3-40e9d0fe556f",
           "type": "question",
           "prompt": "Traduis : « Pourquoi tu ne t'inscris pas à un club au collège ? »",
           "answers": [
@@ -1642,6 +1734,7 @@ window.registerPack({
           "explanation": "« s'inscrire à un club » = **join a club**, après **Why don't you** : [[Why don't you join a club at school?|Pourquoi tu ne t'inscris pas à un club au collège ?]]"
         },
         {
+          "id": "19b1eb88-a38b-429c-9a3d-955f1463339f",
           "type": "question",
           "prompt": "Traduis : « Et si tu te faisais de nouveaux amis ? »",
           "answers": [
@@ -1651,6 +1744,7 @@ window.registerPack({
           "explanation": "**How about** + verbe + **ing** : make perd son **e** → **making** : [[How about making new friends?|Et si tu te faisais de nouveaux amis ?]]"
         },
         {
+          "id": "c5950488-8b39-49c2-bd30-156d88f5e9eb",
           "type": "question",
           "prompt": "Traduis : « Si j'étais toi, je parlerais à tes parents. »",
           "answers": [
@@ -1666,6 +1760,7 @@ window.registerPack({
           "explanation": "**If I were you** (jamais *was*), puis **I would** ou **I'd** + verbe tout simple : [[If I were you, I'd talk to your parents.|Si j'étais toi, je parlerais à tes parents.]]"
         },
         {
+          "id": "3663a97f-d3ba-4a76-9727-210b7242994c",
           "type": "question",
           "prompt": "Traduis : « Et si tu portais des vêtements que tu aimes ? »",
           "answers": [
@@ -1677,6 +1772,7 @@ window.registerPack({
           "explanation": "**How about** + **wearing** (verbe + ing) : [[How about wearing clothes you like?|Et si tu portais des vêtements que tu aimes ?]]"
         },
         {
+          "id": "8c8ec3f5-5d37-45cf-997a-7a07571f2d6f",
           "type": "question",
           "prompt": "Traduis : « Tu ne devrais pas abandonner. Pourquoi tu ne travailles pas avec un ami ? »",
           "answers": [
@@ -1686,6 +1782,7 @@ window.registerPack({
           "explanation": "« abandonner » = **give up** ; deux conseils, verbe tout simple à chaque fois : [[You shouldn't give up. Why don't you work with a friend?|Tu ne devrais pas abandonner. Pourquoi tu ne travailles pas avec un ami ?]]"
         },
         {
+          "id": "9d408558-42c5-416a-aee6-c34ef2315895",
           "type": "question",
           "prompt": "Traduis : « Je comprends ce que tu ressens. Si j'étais toi, je dirais pardon à ton amie. »",
           "answers": [
@@ -1702,6 +1799,7 @@ window.registerPack({
           "explanation": "D'abord l'empathie 💗, puis le conseil 💡 : [[I understand how you feel. If I were you, I'd say sorry to your friend.|Je comprends ce que tu ressens. Si j'étais toi, je dirais pardon à ton amie.]]"
         },
         {
+          "id": "3db0308e-736f-4dfe-aeea-288160923354",
           "type": "question",
           "prompt": "Traduis : « Ça a l'air d'être une situation vraiment difficile. Et si tu demandais de l'aide à un professeur ? »",
           "answers": [
@@ -1716,6 +1814,7 @@ window.registerPack({
           "explanation": "Empathie 💗 puis conseil 💡 avec **How about** + verbe en **ing** : [[That sounds like a really difficult situation. How about asking a teacher for help?|Ça a l'air difficile. Et si tu demandais de l'aide à un professeur ?]]"
         },
         {
+          "id": "667394a8-e560-4947-92a6-7a57ae2fa306",
           "type": "question",
           "prompt": "Traduis : « Tu devrais demander de l'aide à ton professeur. »",
           "answers": [
@@ -1726,6 +1825,7 @@ window.registerPack({
           "explanation": "**You should** + le verbe tout simple ; « demander de l'aide à quelqu'un » = **ask** someone **for help** : [[You should ask your teacher for help.|Tu devrais demander de l'aide à ton professeur.]]"
         },
         {
+          "id": "1578095e-2e56-4c0f-934f-3102cdb054ea",
           "type": "question",
           "prompt": "Traduis : « Tu ne devrais pas abandonner. »",
           "answers": [
@@ -1734,6 +1834,7 @@ window.registerPack({
           "explanation": "« abandonner » = **give up** ; après **shouldn't**, le verbe tout simple : [[You shouldn't give up.|Tu ne devrais pas abandonner.]]"
         },
         {
+          "id": "9af6b397-cf49-4d01-98fe-002f0fd5b4de",
           "type": "question",
           "prompt": "Traduis : « Si j'étais toi, je le dirais à un professeur. »",
           "answers": [
@@ -1745,6 +1846,7 @@ window.registerPack({
           "explanation": "**If I were you** (jamais *was*), puis **I would** + verbe tout simple : [[If I were you, I would tell a teacher.|Si j'étais toi, je le dirais à un professeur.]]"
         },
         {
+          "id": "885e027c-670f-41b0-b43e-8ddb8e23899f",
           "type": "question",
           "prompt": "Traduis : « Pourquoi tu ne laisses pas ton téléphone dans la cuisine la nuit ? »",
           "answers": [
@@ -1753,6 +1855,7 @@ window.registerPack({
           "explanation": "**Why don't you** + verbe tout simple ; « laisser » = **leave** : [[Why don't you leave your phone in the kitchen at night?|Pourquoi tu ne laisses pas ton téléphone dans la cuisine la nuit ?]]"
         },
         {
+          "id": "48003497-eec2-4f5a-88ac-1fde33d3137c",
           "type": "question",
           "prompt": "Traduis : « Et si tu éteignais ton téléphone ? »",
           "answers": [
@@ -1766,6 +1869,7 @@ window.registerPack({
           "explanation": "Après **How about**, le verbe + **ing** : [[How about switching off your phone?|Et si tu éteignais ton téléphone ?]]"
         },
         {
+          "id": "7ec410a4-8974-4402-a8ec-a6679590bd6a",
           "type": "question",
           "prompt": "Traduis : « Pourquoi tu ne parles pas à ton amie ? »",
           "answers": [
@@ -1775,6 +1879,7 @@ window.registerPack({
           "explanation": "**Why don't you** + **talk** (pas *talking*), et un **?** à la fin : [[Why don't you talk to your friend?|Pourquoi tu ne parles pas à ton amie ?]]"
         },
         {
+          "id": "8e3aef61-4706-476e-bafe-93c92161a1ba",
           "type": "question",
           "prompt": "Traduis : « Et si tu dormais plus ? »",
           "answers": [
@@ -1784,6 +1889,7 @@ window.registerPack({
           "explanation": "**How about** + verbe + **ing** : sleep → **sleeping** : [[How about sleeping more?|Et si tu dormais plus ?]]"
         },
         {
+          "id": "9bb24be5-c5ca-415b-a617-86ea9f67d1d6",
           "type": "question",
           "prompt": "Traduis : « Si j'étais toi, je ne veillerais pas tard. »",
           "answers": [
@@ -1793,6 +1899,7 @@ window.registerPack({
           "explanation": "**I wouldn't** (= I would not) + **stay up** (veiller tard) : [[If I were you, I wouldn't stay up late.|Si j'étais toi, je ne veillerais pas tard.]]"
         },
         {
+          "id": "a59b5e2c-f862-410f-b109-07fa2a651e9b",
           "type": "question",
           "prompt": "Traduis : « Tu ne devrais pas étudier cinq heures chaque soir. »",
           "answers": [
@@ -1804,6 +1911,7 @@ window.registerPack({
           "explanation": "**shouldn't** + verbe tout simple ; « chaque soir » = **every night** : [[You shouldn't study five hours every night.|Tu ne devrais pas étudier cinq heures chaque soir.]]"
         },
         {
+          "id": "b48e6939-6626-4953-b2d1-e2f3c74a5b5f",
           "type": "question",
           "prompt": "Traduis : « Je comprends pourquoi tu es contrarié. Tu devrais parler à tes parents. »",
           "answers": [
@@ -1816,6 +1924,7 @@ window.registerPack({
           "explanation": "D'abord l'empathie 💗 (**why you feel upset**), puis le conseil 💡 : [[I understand why you feel upset. You should talk to your parents.|Je comprends pourquoi tu es contrarié. Tu devrais parler à tes parents.]]"
         },
         {
+          "id": "72fec68b-c130-4763-8f95-48f0803c6968",
           "type": "question",
           "prompt": "Traduis : « Je comprends ce que tu ressens. Pourquoi tu ne t'inscris pas à un club pour te faire des amis ? »",
           "answers": [
@@ -1826,6 +1935,7 @@ window.registerPack({
           "explanation": "Empathie 💗 puis conseil 💡 : **Why don't you join** + « pour » = **to** : [[I understand how you feel. Why don't you join a club to make friends?|Je comprends ce que tu ressens. Pourquoi tu ne t'inscris pas à un club pour te faire des amis ?]]"
         },
         {
+          "id": "371d4151-ce11-474e-a485-e7dd0de85dc9",
           "type": "question",
           "prompt": "Traduis : « Ça a l'air d'être une situation vraiment difficile. Tu devrais dormir plus et faire des pauses. »",
           "answers": [

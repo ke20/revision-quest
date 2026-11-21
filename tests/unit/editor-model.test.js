@@ -150,7 +150,8 @@ test("export: optional empty fields removed, other keys kept in the usual order"
   const w = out.worlds[0];
   assert.ok(!("subtitle" in w));
   assert.deepStrictEqual(w.lesson, { points: ["p"] });
-  assert.deepStrictEqual(Object.keys(w.exercises[0]), ["type", "prompt", "words"]);
+  assert.deepStrictEqual(Object.keys(w.exercises[0]), ["id", "type", "prompt", "words"], "an exercise without id gets one, first");
+  assert.match(w.exercises[0].id, Rules.UUID_RE);
   assert.strictEqual(d.pack.worlds[0].subtitle, "", "the draft itself is not changed");
 });
 
@@ -244,4 +245,25 @@ test("drag and drop in the plan: a world or an exercise goes before the node it 
   assert.deepStrictEqual(moveExercise(pack, 1, 1, 0, 2), { w: 0, e: 2 });
   assert.deepStrictEqual(pack.worlds.map((w) => w.exercises), [["x2", "x1", "y1"], ["x3"]]);
   assert.deepStrictEqual(moveExercise(pack, 0, 0, 5, 0), { w: 0, e: 0 }, "unknown world: unchanged");
+});
+
+test("exercise ids: a new, duplicated or copied exercise gets its own UUID; an opened one keeps its id", async () => {
+  const D = await load("draft.js");
+  const T = await load("templates.js");
+  const ex = T.emptyExercise("mcq");
+  assert.match(ex.id, Rules.UUID_RE);
+  assert.strictEqual(Object.keys(ex)[0], "id");
+  const kept = "0b8c5a1e-3f2d-4c6b-9a7e-1d2c3b4a5f60";
+  const d = D.draftFromPack({ path: "cm2/histoire/x", lang: "fr", meta: {}, worlds: [{ id: 1, exercises: [{ id: kept, type: "question" }, { type: "mcq" }] }] });
+  const w = d.pack.worlds[0];
+  assert.strictEqual(w.exercises[0].id, kept, "an id is never changed");
+  assert.match(w.exercises[1].id, Rules.UUID_RE, "an exercise without id gets one");
+  const j = D.duplicateExercise(w, 0);
+  assert.notStrictEqual(w.exercises[j].id, kept);
+  assert.match(w.exercises[j].id, Rules.UUID_RE);
+  const wj = D.duplicateWorld(d.pack, 0);
+  const before = new Set(w.exercises.map((e) => e.id));
+  assert.ok(d.pack.worlds[wj].exercises.every((e) => Rules.UUID_RE.test(e.id) && !before.has(e.id)), "a copied world has new exercise ids");
+  const i = D.addExercise(w, "fill");
+  assert.match(w.exercises[i].id, Rules.UUID_RE);
 });

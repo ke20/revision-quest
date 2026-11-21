@@ -46,6 +46,10 @@ run = "npm run validate"
 description = "Check a chapter file and put it in packs/: mise run pack:add <fichier.js>"
 run = "node tools/pack-add.js"
 
+[tasks."pack:ids"]
+description = "Give an id (UUID v4) to every exercise without one, reusing the ids of the git version: mise run pack:ids [fichier.js…]"
+run = "node tools/pack-ids.js"
+
 [tasks.catalog]
 description = "Write packs/catalog.js (not in git) for a server other than mise run dev, which builds it on each request"
 run = "node tools/catalog.js"

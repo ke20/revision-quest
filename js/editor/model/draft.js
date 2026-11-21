@@ -1,7 +1,7 @@
 // @ts-check
 /* Révision Quest — course editor: the draft (pack being written + its id parts) and the operations of the plan
    (add, duplicate, delete, move worlds and exercises). Pure data: no DOM, no browser global (unit-tested in Node). */
-import { emptyExercise } from "./templates.js";
+import { emptyExercise, newExerciseId } from "./templates.js";
 import { slugify } from "./text.js";
 
 export var DEFAULT_COLOR = "#7C3AED";
@@ -70,8 +70,17 @@ export function setTitle(d, title) {
   if (d.autoSlug && !d.locked) { d.slug = slugify(title); syncPath(d); }
 }
 
+/** The exercise with a new id, first in the exercise (a copy, or an exercise that had none). @param {any} e @returns {any} */
+function withNewId(e) {
+  /** @type {Record<string, unknown>} */
+  var out = { id: newExerciseId() };
+  Object.keys(e).forEach(function (k) { if (k !== "id") out[k] = e[k]; });
+  return out;
+}
+
 /** Any data (an opened file, a stored draft) → a pack the forms can show. What is not understood is kept as it is
-    (the checks report it); only the containers the forms need are created. @param {any} raw @returns {EdPack} */
+    (the checks report it); only the containers the forms need are created. An exercise without id gets one (an id is
+    never changed once given: players' detailed mistakes point to it). @param {any} raw @returns {EdPack} */
 export function normalizePack(raw) {
   var p = isObj(raw) ? raw : {};
   if (!isObj(p.meta)) p.meta = {};
@@ -82,7 +91,10 @@ export function normalizePack(raw) {
   p.worlds = p.worlds.map(/** @param {any} w */ function (w) {
     var world = isObj(w) ? w : {};
     if (!Array.isArray(world.exercises)) world.exercises = [];
-    world.exercises = world.exercises.map(/** @param {any} e */ function (e) { return isObj(e) ? e : { type: "" }; });
+    world.exercises = world.exercises.map(/** @param {any} e */ function (e) {
+      if (!isObj(e)) return withNewId({ type: "" });
+      return e.id == null ? withNewId(e) : e;
+    });
     return world;
   });
   return /** @type {EdPack} */ (p);
@@ -161,6 +173,7 @@ export function addWorld(pack) {
 export function duplicateWorld(pack, i) {
   var copy = clone(pack.worlds[i]);
   copy.id = nextWorldId(pack.worlds);
+  copy.exercises = copy.exercises.map(withNewId); // a copy is another exercise: never the id of the original
   copy.title = String(copy.title || "") + " (copie)";
   pack.worlds.splice(i + 1, 0, copy);
   return i + 1;
@@ -180,7 +193,7 @@ export function addExercise(world, type) {
 
 /** @param {World} world @param {number} i */
 export function duplicateExercise(world, i) {
-  world.exercises.splice(i + 1, 0, clone(world.exercises[i]));
+  world.exercises.splice(i + 1, 0, withNewId(clone(world.exercises[i])));
   return i + 1;
 }
 

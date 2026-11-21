@@ -83,6 +83,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "b57e7b4a-e492-4001-83fc-a39143319bf3",
           "type": "mcq",
           "prompt": "Quelle est l'hypoténuse du triangle ABC ?",
           "figure": {
@@ -143,6 +144,7 @@ window.registerPack({
           "explanation": "L'angle droit est en **B**. L'hypoténuse est le côté opposé : **[AC]**, le seul côté sans la lettre B."
         },
         {
+          "id": "5cc9292c-c5a7-4767-9754-a9effe5a9f75",
           "type": "mcq",
           "prompt": "Quelle est l'hypoténuse du triangle DEF ?",
           "figure": {
@@ -204,6 +206,7 @@ window.registerPack({
           "hint": "Cherche le petit carré, puis le côté en face."
         },
         {
+          "id": "6a5e1543-3f3f-40cf-8232-d0da946fee2d",
           "type": "mcq",
           "prompt": "Dans un triangle rectangle, l'hypoténuse est…",
           "options": [
@@ -216,6 +219,7 @@ window.registerPack({
           "explanation": "L'hypoténuse est en face de l'angle droit : c'est **le plus long côté** du triangle."
         },
         {
+          "id": "2ff8937e-d9b4-492f-b0a9-5563f2447273",
           "type": "mcq",
           "prompt": "RST est rectangle en S. Quelle est son hypoténuse ?",
           "options": [
@@ -228,6 +232,7 @@ window.registerPack({
           "hint": "Le côté qui ne contient pas le sommet de l'angle droit."
         },
         {
+          "id": "0af9c1f5-ad9e-4ae7-9d90-46b61c0fc49c",
           "type": "sort",
           "prompt": "Le triangle ABC est rectangle en A. Range chaque côté.",
           "figure": {
@@ -318,6 +323,7 @@ window.registerPack({
           "explanation": "L'angle droit est en **A**. L'hypoténuse est **[BC]** (ou [CB], c'est le même côté). Les côtés de l'angle droit :\n- [AB]\n- [AC]"
         },
         {
+          "id": "301fc83e-5b77-4f1c-b75c-0ea1ed0a8014",
           "type": "match",
           "prompt": "Relie chaque triangle rectangle à son hypoténuse.",
           "pairs": [
@@ -341,6 +347,7 @@ window.registerPack({
           "explanation": "L'hypoténuse est toujours le côté **sans la lettre** de l'angle droit."
         },
         {
+          "id": "fed0d51b-94e3-4219-97e6-8e28d2dae65c",
           "type": "fill",
           "prompt": "Complète avec le bon mot.",
           "sentence": "Le côté opposé à l'angle droit s'appelle l'___.",
@@ -353,6 +360,7 @@ window.registerPack({
           "explanation": "C'est l'**hypoténuse** : le côté en face de l'angle droit, le plus long."
         },
         {
+          "id": "250597e3-9be6-45a1-8625-9ef6271d508b",
           "type": "spot",
           "prompt": "ABC est rectangle en B. Touche l'erreur sur son hypoténuse.",
           "tokens": [
@@ -366,6 +374,7 @@ window.registerPack({
           "explanation": "L'angle droit est en B : l'hypoténuse est le côté sans B, **[AC]**. [AB] est un côté de l'angle droit."
         },
         {
+          "id": "e1d477ae-f7a5-4bcb-8422-d43771902adb",
           "type": "mcq",
           "prompt": "Quelle est l'hypoténuse du triangle PQR ?",
           "figure": {
@@ -374,17 +383,17 @@ window.registerPack({
             "points": {
               "P": [
                 1.9,
-                5.0,
+                5,
                 "w"
               ],
               "R": [
                 4.15,
-                2.0,
+                2,
                 "n"
               ],
               "Q": [
                 8.15,
-                5.0,
+                5,
                 "e"
               ]
             },
@@ -427,6 +436,7 @@ window.registerPack({
           "hint": "Où est le petit carré ?"
         },
         {
+          "id": "5bccb7fd-2b55-41fe-b2a5-1368cc9a86da",
           "type": "mcq",
           "prompt": "Le triangle GHI est rectangle. Ses côtés mesurent 5 cm, 12 cm et 13 cm. Combien mesure son hypoténuse ?",
           "options": [
@@ -513,6 +523,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "88a4f262-298b-4bc0-96b8-f8e476537daa",
           "type": "mcq",
           "prompt": "ABC est rectangle en B. Quelle égalité est juste ?",
           "options": [
@@ -525,6 +536,7 @@ window.registerPack({
           "explanation": "L'hypoténuse est **[AC]** (en face de B) : son carré est seul d'un côté. **AC² = AB² + BC²**."
         },
         {
+          "id": "985b7f99-3286-4859-ada8-0f1be79eb0d4",
           "type": "mcq",
           "prompt": "Quelle égalité de Pythagore va avec le triangle EFG ?",
           "figure": {
@@ -586,6 +598,7 @@ window.registerPack({
           "explanation": "L'angle droit est en **F** : l'hypoténuse est [EG]. **EG² = EF² + FG²** : une somme, pas un produit."
         },
         {
+          "id": "4aa92732-2236-4389-96ad-46447cd97b5c",
           "type": "mcq",
           "prompt": "Que veut dire AB² ?",
           "options": [
@@ -597,6 +610,7 @@ window.registerPack({
           "explanation": "AB² est le **carré** de la longueur AB : **AB × AB**. Par exemple, si AB = 3 cm, AB² = 9."
         },
         {
+          "id": "7eb9dc14-9e5f-4a6a-b65d-6a5b3369214f",
           "type": "fill",
           "prompt": "MNP est rectangle en P. Complète l'égalité.",
           "sentence": "MN² = MP² + ___",
@@ -610,6 +624,7 @@ window.registerPack({
           "hint": "Le côté de l'angle droit qui manque."
         },
         {
+          "id": "450c52f1-d48c-4f7f-bbc4-50af4aaf4a02",
           "type": "fill",
           "prompt": "RST est rectangle en R. Complète l'égalité.",
           "sentence": "___ = RS² + RT²",
@@ -622,6 +637,7 @@ window.registerPack({
           "explanation": "L'angle droit est en R : l'hypoténuse est **[ST]**. **ST² = RS² + RT²**."
         },
         {
+          "id": "70c30d5c-8af4-4383-a88c-ca958df3b961",
           "type": "order",
           "prompt": "KLM est rectangle en L. Remets l'égalité de Pythagore dans l'ordre.",
           "words": [
@@ -661,6 +677,7 @@ window.registerPack({
           "explanation": "L'hypoténuse **[KM]** est en face de L : **KM² = KL² + LM²**."
         },
         {
+          "id": "49ab688a-619d-4bfb-97fd-6fbd84e7f929",
           "type": "spot",
           "prompt": "IJK est rectangle en J. Touche l'erreur.",
           "tokens": [
@@ -675,6 +692,7 @@ window.registerPack({
           "explanation": "L'hypoténuse [IK] est seule à gauche. À droite, les deux côtés de l'angle droit : **IK² = IJ² + JK²**."
         },
         {
+          "id": "f9e42697-c053-4d3f-88f9-c0bc4ffdbc26",
           "type": "spot",
           "prompt": "ABC est rectangle en B. Touche l'erreur.",
           "tokens": [
@@ -689,6 +707,7 @@ window.registerPack({
           "explanation": "Le carré de l'hypoténuse est égal à la **somme** des carrés : AC² = AB² **+** BC²."
         },
         {
+          "id": "9413e74a-71f4-4565-9a50-7fe91f5f720f",
           "type": "sort",
           "prompt": "Le triangle ABC est rectangle en A. Égalité juste ou fausse ?",
           "categories": [
@@ -730,6 +749,7 @@ window.registerPack({
           "explanation": "L'angle droit est en A : l'hypoténuse est **[BC]**. Juste : BC² = AB² + AC², dans n'importe quel ordre. On additionne les **carrés**, pas les longueurs."
         },
         {
+          "id": "0e44a063-159a-409a-947a-0c86d27a96e8",
           "type": "match",
           "prompt": "Relie chaque triangle rectangle à son égalité.",
           "pairs": [
@@ -771,6 +791,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "1813950e-7494-4e41-8102-73a81f53658f",
           "type": "mcq",
           "prompt": "Pour montrer qu'un triangle **est** rectangle, on utilise…",
           "options": [
@@ -782,6 +803,7 @@ window.registerPack({
           "explanation": "La **réciproque** prouve qu'un triangle est rectangle. Le théorème, lui, sert quand on **sait déjà** que le triangle est rectangle."
         },
         {
+          "id": "5be199d2-dd2d-442d-8799-5ef5a4a6b2df",
           "type": "mcq",
           "prompt": "Pour montrer qu'un triangle **n'est pas** rectangle, on utilise…",
           "options": [
@@ -793,6 +815,7 @@ window.registerPack({
           "explanation": "La **contraposée** prouve qu'un triangle n'est **pas** rectangle."
         },
         {
+          "id": "c0600288-37d1-4863-9a2c-64613eeaf9b5",
           "type": "mcq",
           "prompt": "KL = 20 cm, LM = 12 cm et KM = 16 cm. On veut savoir si KLM est rectangle. Quel côté met-on au carré, seul d'un côté de l'égalité ?",
           "options": [
@@ -804,6 +827,7 @@ window.registerPack({
           "explanation": "On prend toujours le **plus long côté** : **[KL]**, 20 cm. Ici KL² = 400 et KM² + LM² = 256 + 144 = 400."
         },
         {
+          "id": "83a46365-6463-432a-a16b-3603873d514f",
           "type": "mcq",
           "prompt": "RS = 5 cm, ST = 12 cm et RT = 13 cm. Le triangle RST est-il rectangle ?",
           "figure": {
@@ -862,6 +886,7 @@ window.registerPack({
           "hint": "L'angle droit est en face du plus long côté."
         },
         {
+          "id": "a6012538-3aa5-40e3-9d60-d0336f80044f",
           "type": "fill",
           "prompt": "AB = 8 cm, BC = 15 cm et AC = 17 cm. On calcule séparément.",
           "sentence": "AC² = ___",
@@ -872,6 +897,7 @@ window.registerPack({
           "hint": "17 × 17 = 17 × 10 + 17 × 7"
         },
         {
+          "id": "2341ad4e-c5bf-4467-ada5-ac3c4047b5ae",
           "type": "fill",
           "prompt": "AB = 8 cm, BC = 15 cm et AC = 17 cm. On calcule séparément.",
           "sentence": "AB² + BC² = ___",
@@ -881,6 +907,7 @@ window.registerPack({
           "explanation": "AB² + BC² = 64 + 225 = **289**. C'est égal à AC² : le triangle ABC est rectangle en B."
         },
         {
+          "id": "5b822694-42a8-4195-8b9a-f2c3f1d553cc",
           "type": "sort",
           "prompt": "Ces trois longueurs forment-elles un triangle rectangle ?",
           "categories": [
@@ -930,6 +957,7 @@ window.registerPack({
           "explanation": "On compare le carré du plus long côté à la somme des deux autres carrés. Rectangle :\n- 25 = 9 + 16\n- 100 = 36 + 64\n- 169 = 25 + 144\n- 225 = 81 + 144\nPas rectangle :\n- 36 ≠ 16 + 25\n- 64 ≠ 25 + 36\n- 144 ≠ 49 + 81\n- 16 ≠ 4 + 9"
         },
         {
+          "id": "67f721db-870a-4f04-9169-0eb951cffd5c",
           "type": "mcq",
           "prompt": "AB = 4 cm, BC = 5 cm et AC = 6 cm. On trouve AC² = 36 et AB² + BC² = 41. Que conclure ?",
           "options": [
@@ -942,6 +970,7 @@ window.registerPack({
           "explanation": "36 ≠ 41. D'après la **contraposée** du théorème de Pythagore, ABC **n'est pas rectangle**."
         },
         {
+          "id": "218a7271-48b5-4eee-bec0-0b7d34809585",
           "type": "order",
           "prompt": "Remets la rédaction dans l'ordre.",
           "words": [
@@ -955,6 +984,7 @@ window.registerPack({
           "explanation": "1. On repère le plus long côté.\n2. On calcule séparément.\n3. On compare.\n4. On cite la **réciproque** et on conclut."
         },
         {
+          "id": "dd03619e-21d3-4aaa-b651-f58f020007c3",
           "type": "spot",
           "prompt": "EF² = 49 et ED² + DF² = 41. Touche l'erreur.",
           "tokens": [
@@ -1008,17 +1038,17 @@ window.registerPack({
             "h": 7,
             "points": {
               "A": [
-                2.0,
+                2,
                 1.25,
                 "nw"
               ],
               "B": [
-                2.0,
+                2,
                 5.75,
                 "sw"
               ],
               "C": [
-                8.0,
+                8,
                 5.75,
                 "e"
               ]
@@ -1060,6 +1090,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "9ce5f6b0-e784-4688-bbdf-1971cc7aa87d",
           "type": "mcq",
           "prompt": "Le triangle ABC est rectangle en B. Combien mesure AC ?",
           "figure": {
@@ -1067,17 +1098,17 @@ window.registerPack({
             "h": 7,
             "points": {
               "A": [
-                2.0,
+                2,
                 1.25,
                 "nw"
               ],
               "B": [
-                2.0,
+                2,
                 5.75,
                 "sw"
               ],
               "C": [
-                8.0,
+                8,
                 5.75,
                 "e"
               ]
@@ -1124,6 +1155,7 @@ window.registerPack({
           "explanation": "AC² = 6² + 8² = 36 + 64 = 100, donc AC = √100 = **10 cm**. 14 = 6 + 8 : on n'additionne pas les longueurs."
         },
         {
+          "id": "7d46f3fa-9e45-4696-a9bc-6524be53bab4",
           "type": "fill",
           "prompt": "DEF est rectangle en E. Calcule le carré de l'hypoténuse.",
           "figure": {
@@ -1185,6 +1217,7 @@ window.registerPack({
           "explanation": "DF² = DE² + EF² = 3² + 4² = 9 + 16 = **25**."
         },
         {
+          "id": "d9a04d99-57da-480b-9ce2-441e1d8b38a1",
           "type": "fill",
           "prompt": "DEF est rectangle en E, DE = 3 cm, EF = 4 cm, et DF² = 25.",
           "sentence": "DF = ___ cm",
@@ -1197,6 +1230,7 @@ window.registerPack({
           "hint": "Quel nombre au carré donne 25 ?"
         },
         {
+          "id": "9bfe443d-ff11-45a6-b52e-ca0835679c21",
           "type": "fill",
           "prompt": "RST est rectangle en S, RS = 5 cm et ST = 12 cm. Calcule RT.",
           "sentence": "RT = ___ cm",
@@ -1209,6 +1243,7 @@ window.registerPack({
           "hint": "13² = 169"
         },
         {
+          "id": "48aa9142-1dce-4a85-aaa6-dc065dc5b0c7",
           "type": "order",
           "prompt": "ABC est rectangle en B, AB = 9 cm, BC = 12 cm. Remets le calcul dans l'ordre.",
           "words": [
@@ -1222,6 +1257,7 @@ window.registerPack({
           "explanation": "1. On écrit l'égalité.\n2. On remplace.\n3. On calcule les carrés et on additionne.\n4. AC = √225 = **15 cm**."
         },
         {
+          "id": "70591ee6-7c9b-4839-ac1d-9919412e9242",
           "type": "spot",
           "prompt": "MNP est rectangle en P, MP = 8 cm, NP = 15 cm. Touche l'erreur.",
           "tokens": [
@@ -1244,6 +1280,7 @@ window.registerPack({
           "explanation": "MN² = 289, mais MN = √289 = **17 cm** : il ne faut pas oublier la racine carrée."
         },
         {
+          "id": "de626551-4d0f-4bd9-9921-6ba0541c9b41",
           "type": "fill",
           "prompt": "GHI est rectangle en H, GH = 9 cm et HI = 12 cm. Calcule GI.",
           "sentence": "GI = ___ cm",
@@ -1255,6 +1292,7 @@ window.registerPack({
           "explanation": "GI² = 81 + 144 = 225, donc GI = √225 = **15 cm**."
         },
         {
+          "id": "10215578-2779-4636-9cc0-8375ce3811cc",
           "type": "mcq",
           "prompt": "Combien mesure la diagonale [AC] de ce rectangle ?",
           "figure": {
@@ -1262,22 +1300,22 @@ window.registerPack({
             "h": 7,
             "points": {
               "A": [
-                2.0,
+                2,
                 1.25,
                 "nw"
               ],
               "B": [
-                8.0,
+                8,
                 1.25,
                 "ne"
               ],
               "C": [
-                8.0,
+                8,
                 5.75,
                 "se"
               ],
               "D": [
-                2.0,
+                2,
                 5.75,
                 "sw"
               ]
@@ -1337,6 +1375,7 @@ window.registerPack({
           "hint": "ABC est rectangle en B."
         },
         {
+          "id": "076c6d6a-67ee-4fec-9b7f-bc04f0e08d43",
           "type": "fill",
           "prompt": "ABC est rectangle en B, AB = 1,5 m et BC = 2 m. Calcule AC.",
           "sentence": "AC = ___ m",
@@ -1352,6 +1391,7 @@ window.registerPack({
           "hint": "2,5² = 6,25"
         },
         {
+          "id": "6ada97c1-044b-4f99-9e75-edec14a5dcaf",
           "type": "match",
           "prompt": "Les côtés de l'angle droit sont donnés. Relie à l'hypoténuse.",
           "pairs": [
@@ -1450,6 +1490,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "7c4150e0-83db-4ad5-b46f-1ab601c7a3c2",
           "type": "mcq",
           "prompt": "Le triangle ABC est rectangle en B. Combien mesure BC ?",
           "figure": {
@@ -1457,17 +1498,17 @@ window.registerPack({
             "h": 7,
             "points": {
               "A": [
-                2.0,
+                2,
                 1.25,
                 "nw"
               ],
               "B": [
-                2.0,
+                2,
                 5.75,
                 "sw"
               ],
               "C": [
-                8.0,
+                8,
                 5.75,
                 "e"
               ]
@@ -1514,6 +1555,7 @@ window.registerPack({
           "explanation": "BC² = AC² − AB² = 100 − 36 = 64, donc BC = √64 = **8 cm**."
         },
         {
+          "id": "69b0d9fc-e47d-4519-ba71-6771fb38a5f2",
           "type": "mcq",
           "prompt": "ABC est rectangle en B, AC = 17 cm et BC = 15 cm. Quelle égalité donne AB² ?",
           "options": [
@@ -1525,6 +1567,7 @@ window.registerPack({
           "explanation": "On part du carré de l'hypoténuse AC : **AB² = 17² − 15²** = 289 − 225 = 64, donc AB = 8 cm."
         },
         {
+          "id": "c2549b98-1f68-4f05-8a8d-c5cca6ae3136",
           "type": "fill",
           "prompt": "EFG est rectangle en F, EG = 13 cm et EF = 12 cm.",
           "figure": {
@@ -1586,6 +1629,7 @@ window.registerPack({
           "explanation": "FG² = EG² − EF² = 169 − 144 = **25**."
         },
         {
+          "id": "041209fd-b8fe-4695-ac0a-d0f7e1629a6b",
           "type": "fill",
           "prompt": "EFG est rectangle en F et FG² = 25.",
           "sentence": "FG = ___ cm",
@@ -1597,6 +1641,7 @@ window.registerPack({
           "explanation": "√25 = 5, donc FG = **5 cm**."
         },
         {
+          "id": "b8205d25-223f-411a-99a7-6bbc32cfebdd",
           "type": "sort",
           "prompt": "On additionne ou on soustrait les carrés ?",
           "categories": [
@@ -1638,6 +1683,7 @@ window.registerPack({
           "explanation": "On cherche l'**hypoténuse** : addition. On cherche un **côté de l'angle droit** : soustraction."
         },
         {
+          "id": "8bb06f00-f5be-4d3b-bdcf-e10cbb8b6f11",
           "type": "order",
           "prompt": "RST est rectangle en S, RT = 15 cm, ST = 9 cm. Remets le calcul dans l'ordre.",
           "words": [
@@ -1651,6 +1697,7 @@ window.registerPack({
           "explanation": "1. On écrit l'égalité.\n2. On remplace.\n3. On soustrait.\n4. RS = √144 = **12 cm**."
         },
         {
+          "id": "fb1e0480-7051-461b-a7af-c95642677a95",
           "type": "spot",
           "prompt": "ABC est rectangle en B, AC = 10 cm, BC = 8 cm. On cherche AB. Touche l'erreur.",
           "tokens": [
@@ -1671,6 +1718,7 @@ window.registerPack({
           "explanation": "AB est un côté de l'angle droit : on **soustrait**. AB² = 10² − 8² = 36, donc AB = 6 cm."
         },
         {
+          "id": "bdc7fc8f-54e2-4997-a692-3c4ae7ddc0e1",
           "type": "fill",
           "prompt": "MNP est rectangle en N, MP = 15 cm et MN = 12 cm. Calcule NP.",
           "sentence": "NP = ___ cm",
@@ -1682,6 +1730,7 @@ window.registerPack({
           "explanation": "NP² = 225 − 144 = 81, donc NP = **9 cm**."
         },
         {
+          "id": "72ea266c-186d-424b-8d91-deff94d0a0ec",
           "type": "mcq",
           "prompt": "Une échelle de 5 m est posée contre un mur. Son pied est à 3 m du mur. À quelle hauteur arrive-t-elle ?",
           "figure": {
@@ -1748,6 +1797,7 @@ window.registerPack({
           "explanation": "MS² = 5² − 3² = 25 − 9 = 16, donc MS = **4 m**."
         },
         {
+          "id": "81ace7f0-7f9c-48a2-a203-d11cc9448682",
           "type": "fill",
           "prompt": "IJK est rectangle en J, IK = 2,5 cm et IJ = 1,5 cm. Calcule JK.",
           "sentence": "JK = ___ cm",
@@ -1783,17 +1833,17 @@ window.registerPack({
             "h": 7,
             "points": {
               "A": [
-                2.0,
+                2,
                 1.4,
                 "nw"
               ],
               "B": [
-                2.0,
+                2,
                 5.6,
                 "sw"
               ],
               "C": [
-                8.0,
+                8,
                 5.6,
                 "e"
               ]
@@ -1835,6 +1885,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "71f2e922-85f4-4f03-9f44-6aa653a2773a",
           "type": "mcq",
           "prompt": "ABC est rectangle en B, AB = 7 cm et BC = 10 cm. Quelle est la valeur exacte de AC ?",
           "figure": {
@@ -1842,17 +1893,17 @@ window.registerPack({
             "h": 7,
             "points": {
               "A": [
-                2.0,
+                2,
                 1.4,
                 "nw"
               ],
               "B": [
-                2.0,
+                2,
                 5.6,
                 "sw"
               ],
               "C": [
-                8.0,
+                8,
                 5.6,
                 "e"
               ]
@@ -1899,6 +1950,7 @@ window.registerPack({
           "explanation": "AC² = 49 + 100 = 149, donc AC = **√149 cm**. 12,2 cm est une valeur **arrondie**, pas exacte."
         },
         {
+          "id": "c0c70dd0-d3de-4ce2-aecd-607756934568",
           "type": "fill",
           "prompt": "Complète l'encadrement à l'unité.",
           "sentence": "144 < 149 < 169, donc ___ < √149 < 13",
@@ -1908,6 +1960,7 @@ window.registerPack({
           "explanation": "144 = 12² et 169 = 13², donc **12** < √149 < 13."
         },
         {
+          "id": "a7e293d5-051d-4d73-b32e-81b45c962760",
           "type": "fill",
           "prompt": "La calculatrice affiche √149 = 12,206555… Arrondis au dixième.",
           "sentence": "AC ≈ ___ cm",
@@ -1922,6 +1975,7 @@ window.registerPack({
           "explanation": "Le chiffre des centièmes est 0 : on garde 12,2. **AC ≈ 12,2 cm**."
         },
         {
+          "id": "7bb3700f-66f1-4877-8544-d148c8b8abd8",
           "type": "sort",
           "prompt": "Valeur exacte ou valeur arrondie ?",
           "categories": [
@@ -1963,6 +2017,7 @@ window.registerPack({
           "explanation": "√149 est la valeur **exacte**. 12,2 n'est qu'une valeur **arrondie** : 12,2² = 148,84, pas 149."
         },
         {
+          "id": "594b88ce-856c-4dda-8075-28575eca2c0b",
           "type": "mcq",
           "prompt": "Entre quels entiers consécutifs se trouve √50 ?",
           "options": [
@@ -1976,6 +2031,7 @@ window.registerPack({
           "hint": "Quels carrés parfaits entourent 50 ?"
         },
         {
+          "id": "7d373df3-9038-4717-a78e-4bf76751c2db",
           "type": "match",
           "prompt": "Relie chaque affichage de la calculatrice à son arrondi au dixième.",
           "pairs": [
@@ -1999,6 +2055,7 @@ window.registerPack({
           "explanation": "On regarde le chiffre des centièmes : 5 ou plus, on augmente le dixième ; moins de 5, on le garde."
         },
         {
+          "id": "dfc9a674-c6eb-49e0-85bc-1d334c5b50ac",
           "type": "fill",
           "prompt": "DEF est rectangle en E, DE = 4 cm et EF = 5 cm.",
           "sentence": "DF² = ___",
@@ -2008,6 +2065,7 @@ window.registerPack({
           "explanation": "DF² = 16 + 25 = **41**. 41 n'est pas un carré parfait : DF = √41."
         },
         {
+          "id": "96cfc35e-ecd5-42d3-99b6-d7c0ae592db1",
           "type": "mcq",
           "prompt": "DF = √41. Quel est l'encadrement à l'unité ?",
           "options": [
@@ -2020,6 +2078,7 @@ window.registerPack({
           "explanation": "36 < 41 < 49, c'est-à-dire 6² < 41 < 7², donc **6 < DF < 7**."
         },
         {
+          "id": "978fb569-cc1e-4e59-a222-b00d1541fef3",
           "type": "spot",
           "prompt": "Un encadrement à l'unité se fait entre deux entiers consécutifs. Touche l'erreur.",
           "tokens": [
@@ -2041,6 +2100,7 @@ window.registerPack({
           "explanation": "81 = 9², donc 8 < √80 < **9** : deux entiers **consécutifs**."
         },
         {
+          "id": "6a2c6294-d242-43af-bc1e-96b00fa3b32e",
           "type": "mcq",
           "prompt": "RST est rectangle en S, RT = 9 cm et RS = 5 cm. ST² = 81 − 25 = 56. La calculatrice affiche √56 = 7,483314… Arrondi au dixième ?",
           "options": [
@@ -2072,6 +2132,7 @@ window.registerPack({
       },
       "exercises": [
         {
+          "id": "1ea1fd4a-f248-4407-9638-91f813107dff",
           "type": "question",
           "prompt": "Le triangle ABC est rectangle en B. Quelle est son hypoténuse ? Écris-la avec ses deux lettres.",
           "answers": [
@@ -2081,6 +2142,7 @@ window.registerPack({
           "explanation": "L'hypoténuse est le côté opposé à l'angle droit : **[AC]**."
         },
         {
+          "id": "496e2329-d60f-4ff9-9ac3-f46d06a3ef9c",
           "type": "question",
           "prompt": "RST est rectangle en T. Quelle est son hypoténuse ? Écris-la avec ses deux lettres.",
           "answers": [
@@ -2090,6 +2152,7 @@ window.registerPack({
           "explanation": "Le côté sans la lettre T : **[RS]**."
         },
         {
+          "id": "ac8b4029-3945-4e31-8174-cffc9bb09265",
           "type": "question",
           "prompt": "Comment s'appelle le côté opposé à l'angle droit ?",
           "answers": [
@@ -2103,6 +2166,7 @@ window.registerPack({
           "explanation": "C'est l'**hypoténuse**."
         },
         {
+          "id": "e569b72d-2bc1-4dc8-a592-fd490963f473",
           "type": "question",
           "prompt": "Dans un triangle rectangle, quel côté est toujours le plus long ?",
           "answers": [
@@ -2116,6 +2180,7 @@ window.registerPack({
           "explanation": "L'**hypoténuse**, en face de l'angle droit."
         },
         {
+          "id": "273402df-f073-4fde-bde2-483489f08d47",
           "type": "question",
           "prompt": "Dans le cours, quel autre nom donne-t-on aux côtés de l'angle droit ?",
           "answers": [
@@ -2128,6 +2193,7 @@ window.registerPack({
           "explanation": "Les côtés de l'angle droit s'appellent aussi les **cathètes**."
         },
         {
+          "id": "42342fea-b6f2-42dd-b98b-fd53428c1efb",
           "type": "question",
           "prompt": "EFG est rectangle en F. Complète l'égalité : EG² = EF² + …",
           "answers": [
@@ -2137,6 +2203,7 @@ window.registerPack({
           "explanation": "L'hypoténuse est [EG] : **EG² = EF² + FG²**."
         },
         {
+          "id": "fe399333-6e3b-4112-a10d-56b1459141c5",
           "type": "question",
           "prompt": "Quelle propriété permet de montrer qu'un triangle est rectangle ? La … du théorème de Pythagore.",
           "answers": [
@@ -2148,6 +2215,7 @@ window.registerPack({
           "explanation": "La **réciproque** du théorème de Pythagore."
         },
         {
+          "id": "38606fac-19f9-4e3b-985e-0258a27fa196",
           "type": "question",
           "prompt": "Quelle propriété permet de montrer qu'un triangle n'est pas rectangle ? La … du théorème de Pythagore.",
           "answers": [
@@ -2161,6 +2229,7 @@ window.registerPack({
           "explanation": "La **contraposée** du théorème de Pythagore."
         },
         {
+          "id": "4048885a-d724-49e6-86a7-88701d937f53",
           "type": "question",
           "prompt": "AB = 6 cm, BC = 8 cm et AC = 10 cm. Le triangle ABC est rectangle : en quel point ?",
           "answers": [
@@ -2174,6 +2243,7 @@ window.registerPack({
           "explanation": "AC² = 100 = 36 + 64 : d'après la réciproque, ABC est rectangle en **B**, en face de [AC]."
         },
         {
+          "id": "481459d5-5611-48fa-8fa9-4dc34f204fd5",
           "type": "question",
           "prompt": "DE = 4 cm, EF = 5 cm et DF = 6 cm. Le triangle DEF est-il rectangle ? Réponds par oui ou non.",
           "answers": [
@@ -2182,6 +2252,7 @@ window.registerPack({
           "explanation": "DF² = 36 et DE² + EF² = 41. 36 ≠ 41 : d'après la contraposée, DEF **n'est pas** rectangle."
         },
         {
+          "id": "537cc2d4-57a9-4914-a562-7e568772136c",
           "type": "question",
           "prompt": "KL = 9 cm, LM = 12 cm et KM = 15 cm. Le triangle KLM est-il rectangle ? Réponds par oui ou non.",
           "answers": [
@@ -2190,6 +2261,7 @@ window.registerPack({
           "explanation": "KM² = 225 et KL² + LM² = 81 + 144 = 225 : d'après la réciproque, KLM est rectangle (en L)."
         },
         {
+          "id": "64a34e63-b6c5-422a-a0f3-f0ae53f70fad",
           "type": "question",
           "prompt": "PQ = 8 cm, QR = 15 cm et PR = 17 cm. Le triangle PQR est rectangle : en quel point ?",
           "answers": [
@@ -2203,6 +2275,7 @@ window.registerPack({
           "explanation": "PR² = 289 = 64 + 225 : PQR est rectangle en **Q**, en face de [PR]."
         },
         {
+          "id": "ceb60c45-55ac-44d5-b094-d2c123b0b426",
           "type": "question",
           "prompt": "GH = 5 cm, HI = 6 cm et GI = 8 cm. Calcule GH² + HI².",
           "answers": [
@@ -2211,6 +2284,7 @@ window.registerPack({
           "explanation": "GH² + HI² = 25 + 36 = **61**. Comme GI² = 64, GHI n'est pas rectangle."
         },
         {
+          "id": "bb726ab0-559d-405b-8e05-803d828054bb",
           "type": "question",
           "prompt": "ABC est rectangle en B, AB = 6 cm et BC = 8 cm. Calcule AC, en cm.",
           "figure": {
@@ -2218,17 +2292,17 @@ window.registerPack({
             "h": 7,
             "points": {
               "A": [
-                2.0,
+                2,
                 1.25,
                 "nw"
               ],
               "B": [
-                2.0,
+                2,
                 5.75,
                 "sw"
               ],
               "C": [
-                8.0,
+                8,
                 5.75,
                 "e"
               ]
@@ -2276,6 +2350,7 @@ window.registerPack({
           "explanation": "AC² = 36 + 64 = 100, donc AC = **10 cm**."
         },
         {
+          "id": "38445214-b0cc-4862-92bf-9d5fb558f235",
           "type": "question",
           "prompt": "EFG est rectangle en F, EF = 5 cm et FG = 12 cm. Calcule EG, en cm.",
           "answers": [
@@ -2289,6 +2364,7 @@ window.registerPack({
           "explanation": "EG² = 25 + 144 = 169, donc EG = **13 cm**."
         },
         {
+          "id": "fe3735fd-1a12-4095-9552-1bf8dc8ed6ba",
           "type": "question",
           "prompt": "MNP est rectangle en N, MP = 10 cm et MN = 6 cm. Calcule NP, en cm.",
           "answers": [
@@ -2302,6 +2378,7 @@ window.registerPack({
           "explanation": "NP² = 100 − 36 = 64, donc NP = **8 cm**."
         },
         {
+          "id": "7ad03721-4c7a-4770-8a03-58a93bc7bf3c",
           "type": "question",
           "prompt": "IJK est rectangle en J, IK = 17 cm et JK = 15 cm. Calcule IJ, en cm.",
           "answers": [
@@ -2315,6 +2392,7 @@ window.registerPack({
           "explanation": "IJ² = 289 − 225 = 64, donc IJ = **8 cm**."
         },
         {
+          "id": "f086072f-f20d-46dc-ad6a-61c36c5b7c9f",
           "type": "question",
           "prompt": "RST est rectangle en S, RT = 15 cm et RS = 9 cm. Calcule ST, en cm.",
           "figure": {
@@ -2322,17 +2400,17 @@ window.registerPack({
             "h": 7,
             "points": {
               "R": [
-                8.0,
+                8,
                 5.75,
                 "se"
               ],
               "S": [
-                8.0,
+                8,
                 1.25,
                 "ne"
               ],
               "T": [
-                2.0,
+                2,
                 1.25,
                 "w"
               ]
@@ -2380,6 +2458,7 @@ window.registerPack({
           "explanation": "ST² = 225 − 81 = 144, donc ST = **12 cm**."
         },
         {
+          "id": "48b745e5-54b9-4913-b05f-f6a2f47cbbd2",
           "type": "question",
           "prompt": "Une échelle de 5 m est posée contre un mur. Son pied est à 3 m du mur. À quelle hauteur arrive-t-elle, en m ?",
           "figure": {
@@ -2444,6 +2523,7 @@ window.registerPack({
           "explanation": "Hauteur² = 25 − 9 = 16, donc la hauteur est **4 m**."
         },
         {
+          "id": "7f9cd1d1-63f3-4f72-9de7-b468b33b950a",
           "type": "question",
           "prompt": "Un rectangle mesure 40 cm sur 30 cm. Combien mesure sa diagonale, en cm ?",
           "answers": [
@@ -2454,6 +2534,7 @@ window.registerPack({
           "explanation": "Diagonale² = 1 600 + 900 = 2 500, donc la diagonale mesure **50 cm**."
         },
         {
+          "id": "d9ea5468-4e9f-4ce9-ab26-d1bb6133e15c",
           "type": "question",
           "prompt": "ABC est rectangle en B, AB = 1,5 m et BC = 2 m. Calcule AC, en m.",
           "answers": [
@@ -2467,6 +2548,7 @@ window.registerPack({
           "explanation": "AC² = 2,25 + 4 = 6,25, donc AC = **2,5 m**."
         },
         {
+          "id": "51141604-c0bc-44ce-8001-b82fe362e8cf",
           "type": "question",
           "prompt": "ABC est rectangle en B, AB = 7 cm et BC = 10 cm. Calcule AC².",
           "figure": {
@@ -2474,17 +2556,17 @@ window.registerPack({
             "h": 7,
             "points": {
               "A": [
-                2.0,
+                2,
                 1.4,
                 "nw"
               ],
               "B": [
-                2.0,
+                2,
                 5.6,
                 "sw"
               ],
               "C": [
-                8.0,
+                8,
                 5.6,
                 "e"
               ]
@@ -2528,6 +2610,7 @@ window.registerPack({
           "explanation": "AC² = 7² + 10² = 49 + 100 = **149**."
         },
         {
+          "id": "2cba58e6-a2c5-4965-8a54-af4784aa7e90",
           "type": "question",
           "prompt": "AC = √149. Complète l'encadrement à l'unité : … < AC < 13.",
           "answers": [
@@ -2536,6 +2619,7 @@ window.registerPack({
           "explanation": "144 < 149 < 169, donc **12** < √149 < 13."
         },
         {
+          "id": "b422323a-ed28-42d3-abc1-3f2db4517cd6",
           "type": "question",
           "prompt": "La calculatrice affiche √149 = 12,206555… Donne AC arrondi au dixième, en cm.",
           "answers": [
@@ -2549,6 +2633,7 @@ window.registerPack({
           "explanation": "Le chiffre des centièmes est 0 : **AC ≈ 12,2 cm**."
         },
         {
+          "id": "24465173-a247-4a65-8a28-8b4b98173625",
           "type": "question",
           "prompt": "DEF est rectangle en E, DE = 4 cm et EF = 5 cm. Calcule DF².",
           "answers": [
@@ -2558,6 +2643,7 @@ window.registerPack({
           "explanation": "DF² = 16 + 25 = **41**."
         },
         {
+          "id": "d2da8da7-3ca4-475d-8434-ee63bdcc9831",
           "type": "question",
           "prompt": "DF = √41. Complète l'encadrement à l'unité : … < DF < 7.",
           "answers": [
@@ -2566,6 +2652,7 @@ window.registerPack({
           "explanation": "36 < 41 < 49, donc **6** < √41 < 7."
         },
         {
+          "id": "9f0c8dd2-9465-4182-b06d-1251e90e7a8f",
           "type": "question",
           "prompt": "La calculatrice affiche √41 = 6,403124… Donne DF arrondi au dixième, en cm.",
           "answers": [
@@ -2579,6 +2666,7 @@ window.registerPack({
           "explanation": "Le chiffre des centièmes est 0 : **DF ≈ 6,4 cm**."
         },
         {
+          "id": "e6e65eaf-d2de-431c-b014-08941268a70c",
           "type": "question",
           "prompt": "ABC est rectangle en A, AB = 3 cm et AC = 5 cm. Calcule BC².",
           "answers": [
@@ -2588,6 +2676,7 @@ window.registerPack({
           "explanation": "L'hypoténuse est [BC] : BC² = 9 + 25 = **34**."
         },
         {
+          "id": "0ca69d25-32d5-4b75-a00e-725b519c5f92",
           "type": "question",
           "prompt": "BC = √34 et la calculatrice affiche 5,830951… Donne BC arrondi au dixième, en cm.",
           "answers": [
@@ -2601,6 +2690,7 @@ window.registerPack({
           "explanation": "Le chiffre des centièmes est 3 : on garde 5,8. **BC ≈ 5,8 cm**."
         },
         {
+          "id": "ffe408c4-0179-4c44-baed-789ecba1ca39",
           "type": "question",
           "prompt": "KLM est rectangle en L, KM = 9 cm et KL = 6 cm. La calculatrice affiche √45 = 6,708203… Donne LM arrondi au dixième, en cm.",
           "answers": [
