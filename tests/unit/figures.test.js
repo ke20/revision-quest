@@ -92,6 +92,31 @@ test("validateFigure: reports bad sizes, points, items and options", () => {
   assert.match(errs({ ...BASE, svg: "<svg/>" }), /champ "svg" inconnu/);
 });
 
+/* ---------- circle and dashed strokes ---------- */
+
+test("layout: a circle of centre O through A, dashed strokes for segments, lines, rays and circles only", () => {
+  const L = j(F.layout({ w: 10, h: 8, points: { O: [5, 4], A: [8, 4], B: [5, 1, "hidden"] }, draw: [
+    { circle: ["O", "A"] }, { circle: ["O", "B"], dashed: true, hl: true }, { segment: ["O", "A"], dashed: true },
+    { ray: ["O", "B"], dashed: "yes" }, { rightAngle: ["A", "O", "B"], dashed: true }, { circle: ["O", "O"] }] }));
+  const circles = L.shapes.filter((s) => s.kind === "circle");
+  assert.deepStrictEqual(circles, [
+    { kind: "circle", cx: 5, cy: 4, r: 3, cls: "fig-stroke fig-circle" },
+    { kind: "circle", cx: 5, cy: 4, r: 3, cls: "fig-stroke fig-circle fig-hl fig-dashed" }], "a circle of radius 0 is skipped");
+  const lines = L.shapes.filter((s) => s.kind === "line" && s.cls.startsWith("fig-stroke"));
+  assert.deepStrictEqual(lines.map((s) => s.cls), ["fig-stroke fig-dashed", "fig-stroke"], "dashed must be true");
+  assert.ok(!JSON.stringify(L).includes("fig-mark fig-dashed"), "no dashed right angle");
+});
+
+test("validateFigure: circle inside the figure, dashed on segment / line / ray / circle, no label on a circle", () => {
+  const fig = (draw, points = { O: [5, 3], A: [7, 3] }) => ({ w: 10, h: 6, alt: "x", points, draw });
+  assert.deepStrictEqual(check(fig([{ circle: ["O", "A"], dashed: true }, { segment: ["O", "A"], dashed: false }])), { errors: [], warnings: [] });
+  assert.match(check(fig([{ circle: ["O", "A"] }], { O: [5, 3], A: [9, 3] })).errors.join(), /sort de la figure/);
+  assert.match(check(fig([{ circle: ["O"] }])).errors.join(), /circle attend 2/);
+  assert.match(check(fig([{ rightAngle: ["A", "O", "A"], dashed: true }])).errors.join(), /dashed .* seulement pour segment, line, ray et circle/);
+  assert.match(check(fig([{ segment: ["O", "A"], dashed: "yes" }])).errors.join(), /dashed/);
+  assert.match(check(fig([{ circle: ["O", "A"], label: "C" }])).warnings.join(), /label ignoré pour circle/);
+});
+
 /* ---------- number line (axis) ---------- */
 
 const AXIS = { w: 12, h: 3, alt: "Droite graduée", points: { A: [1, 1.5, "hidden"], B: [11, 1.5, "hidden"] },

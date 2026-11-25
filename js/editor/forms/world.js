@@ -4,7 +4,7 @@ import { el } from "../dom.js";
 import { DEFAULT_COLOR } from "../model/draft.js";
 import { edited, store } from "../state.js";
 import { colorField } from "./course.js";
-import { emojiPicks, keptNote, LIST_HELP, number, RICH_HELP, text, textList } from "./fields.js";
+import { emojiPicks, keptNote, LIST_HELP, number, RICH_HELP, select, text, textList } from "./fields.js";
 
 /** @param {HTMLElement} root @param {number} wi */
 export function worldForm(root, wi) {
@@ -27,6 +27,9 @@ export function worldForm(root, wi) {
     onInput: function (v) { w.icon = v; edited(); } });
   colorField(look, "Couleur", "w.color", w.color, DEFAULT_COLOR, "^color", function (v) { w.color = v; edited(); });
   emojiPicks(box, icon, function (ic) { w.icon = ic; edited(); });
+  select(box, { label: "Calculatrice (facultatif)", f: "w.calculator", value: w.calculator === true ? "yes" : w.calculator === false ? "no" : "",
+    options: [["", "Rien à signaler"], ["yes", "🧮 Autorisée"], ["no", "🚫 Interdite"]],
+    onChange: function (v) { if (v === "yes") w.calculator = true; else if (v === "no") w.calculator = false; else delete w.calculator; edited(); } });
   var worlds = store.draft.pack.worlds;
   if (worlds.length >= 2 && wi === worlds.length - 1) { // the boss
     root.appendChild(el("p", "ed-help", "👑 Ce monde est le boss : 10 à 20 exercices « Question ou traduction », sans indice, un essai chacun. " +

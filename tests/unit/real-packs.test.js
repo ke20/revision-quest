@@ -69,6 +69,30 @@ for (const unit of catalogUnits(loadCatalog())) {
   });
 }
 
+// The boss of an English or Spanish chapter asks only for words taught in its other worlds (a word never seen makes the
+// final test hard and discouraging). The validator shows it as advice; here it is required for the real packs.
+const Rules = require("../../js/core/pack-rules.js");
+for (const unit of catalogUnits(loadCatalog())) {
+  const pack = loadPack(path.join(ROOT, "packs", unit.path + ".js"));
+  if (pack.lang !== "en" && pack.lang !== "es") continue;
+  test(`real pack ${unit.path}: the boss uses only words taught in the chapter`, () => {
+    const boss = pack.worlds[pack.worlds.length - 1].exercises;
+    assert.deepStrictEqual(Rules.bossVocabulary(pack).map((u) => `boss ex ${u.index + 1} « ${boss[u.index].answers[0]} » : ${u.words.join(", ")}`), []);
+  });
+}
+
+test("bossVocabulary(): a word never taught is reported, a taught or basic word is not", () => {
+  const pack = { lang: "en", worlds: [
+    { id: 1, lesson: { points: ["**a cat** = un chat"] }, exercises: [{ type: "fill", sentence: "The cats ___ on the shelves.", answers: ["sleep"], explanation: "✅ **tea**" }] },
+    { id: 2, exercises: [
+      { type: "question", prompt: "Traduis", answers: ["The cat is sleeping."] },
+      { type: "question", prompt: "Traduis", answers: ["I drink tea."] },
+      { type: "question", prompt: "Traduis", answers: ["There is a shelf."] },
+      { type: "question", prompt: "Traduis", answers: ["A dog.", "A cat."] }] }] };
+  assert.deepStrictEqual(Rules.bossVocabulary(pack), [{ index: 1, words: ["drink", "tea"] }], "tea is only in an explanation: not taught");
+  assert.deepStrictEqual(Rules.bossVocabulary({ ...pack, lang: "fr" }), [], "only language packs");
+});
+
 test("problems(): a wrong expected answer is reported (the check is not a no-op)", () => {
   assert.deepStrictEqual(problems({ type: "fill", answers: ["?"] }), ["first answer is empty once normalised"]);
   assert.match(problems({ type: "question", answers: ["I am 12.", "I'm 12"] }, "en")[0], /is the same as "I am 12\." once compared/);

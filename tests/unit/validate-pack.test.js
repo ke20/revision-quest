@@ -347,3 +347,16 @@ test("pack:ids adds missing ids, keeps the existing ones and the header, reuses 
   addIds(moved, old);
   assert.notStrictEqual(moved.worlds[0].exercises[0].id, A);
 });
+
+test("calculator on a world: true (allowed) or false (not allowed), nothing else", () => {
+  const run = (calculator) => {
+    const errors = [];
+    Rules.validateContent({ worlds: [{ id: 1, title: "A", icon: "x", color: "#123456", lesson: { points: ["p"] }, calculator,
+      exercises: [{ type: "question", prompt: "p", explanation: "e", answers: ["a"] }] }] }, (m) => errors.push(m), () => {});
+    return errors;
+  };
+  assert.deepStrictEqual(run(true), []);
+  assert.deepStrictEqual(run(false), []);
+  assert.deepStrictEqual(run(undefined), []);
+  assert.ok(run("oui").some((m) => /calculator doit être true/.test(m)));
+});

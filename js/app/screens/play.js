@@ -8,7 +8,7 @@ import { showLesson, showMap } from "./map.js";
 import { clearRun, route, saveRun, setNav, worldPath } from "../nav.js";
 import { showProfiles } from "./profiles.js";
 import { Sound } from "../ui/sound.js";
-import { badgeToasts, bigStarsHtml, confirmBox, h, heartsHtml, levelUpPopup, on, qs, shieldsHtml, show, toast } from "../ui/ui.js";
+import { badgeToasts, bigStarsHtml, calcSvg, confirmBox, h, heartsHtml, levelUpPopup, on, qs, shieldsHtml, show, toast } from "../ui/ui.js";
 import { E, must, pick, R, safeColor, T } from "../ui/util.js";
 
 /* ================= Play ================= */
@@ -31,7 +31,9 @@ export function startWorld(w, resume) {
       '<div class="progress"><div class="progress-fill"></div></div>' +
       '<div class="hearts"></div>' +
     "</header>" +
-    '<div class="play-stats"><span class="combo"></span><span class="world-name">' + E(w.icon || "") + " " + E(w.title) + '</span><span class="xp-pill">⭐ <b class="xp-val">0</b> XP</span></div>' +
+    '<div class="play-stats"><span class="combo"></span><span class="world-name">' + E(w.icon || "") + " " + E(w.title) + "</span>" +
+      // outside the name: a long world name is cut with « … », the calculator rule must stay visible
+      (typeof w.calculator === "boolean" ? '<span class="calc-icon" role="img" aria-label="' + E(T(w.calculator ? "calcYes" : "calcNo").replace(/<[^>]*>/g, "")) + '">' + calcSvg(w.calculator) + "</span>" : "") + '<span class="xp-pill">⭐ <b class="xp-val">0</b> XP</span></div>' +
     '<main class="ex-container"></main>' +
     '<footer class="checkbar"><div class="checkbar-inner"><div class="feedback"></div><button class="btn btn-check" data-act="check" disabled>' + T("check") + "</button></div></footer>" +
     "</section>");

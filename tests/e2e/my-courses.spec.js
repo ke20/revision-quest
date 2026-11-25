@@ -19,14 +19,14 @@ test("Mes cours: added from the editor, shown in the catalogue, played without <
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto(H.BASE + "editeur.html");
   await H.edAct(page, "mine");
-  await expect(page.locator(".toast").last()).toContainText("Corrige d'abord");
+  await expect(page.locator(".toast", { hasText: "Corrige d'abord" }).first()).toBeVisible();
   const [chooser] = await Promise.all([page.waitForEvent("filechooser"), H.edAct(page, "open")]);
   await chooser.setFiles({ name: "mon-cours-maison.js", mimeType: "text/javascript", buffer: Buffer.from(Rules.formatStrict(course())) });
   await expect(page.locator(".ed-tree .badge.err")).toHaveCount(0);
   await H.edAct(page, "mine");
-  await expect(page.locator(".toast").last()).toContainText("Ajouté à « Mes cours »");
+  await expect(page.locator(".toast", { hasText: "Ajouté à « Mes cours »" }).first()).toBeVisible();
   await H.edAct(page, "mine");
-  await expect(page.locator(".toast").last()).toContainText("mis à jour");
+  await expect(page.locator(".toast", { hasText: "mis à jour" }).first()).toBeVisible();
 
   // the game: « Mes cours » above the official chapters
   await page.goto(H.BASE);
@@ -65,7 +65,7 @@ test("Mes cours: sent from the editor by link and by .cours file, received in th
   await page.goto(H.BASE + "editeur.html");
   // a course with errors is not sent
   await H.edAct(page, "send");
-  await expect(page.locator(".toast").last()).toContainText("Corrige d'abord");
+  await expect(page.locator(".toast", { hasText: "Corrige d'abord" }).first()).toBeVisible();
   const [chooser] = await Promise.all([page.waitForEvent("filechooser"), H.edAct(page, "open")]);
   await chooser.setFiles({ name: "mon-cours-maison.js", mimeType: "text/javascript", buffer: Buffer.from(Rules.formatStrict(course())) });
   await expect(page.locator(".ed-tree .badge.err")).toHaveCount(0);
@@ -81,7 +81,7 @@ test("Mes cours: sent from the editor by link and by .cours file, received in th
   await page.click(".ed-modal [data-act=close]");
   const [chooser2] = await Promise.all([page.waitForEvent("filechooser"), H.edAct(page, "open")]);
   await chooser2.setFiles({ name: "mon-cours-maison.cours", mimeType: "application/octet-stream", buffer: Buffer.from(file) });
-  await expect(page.locator(".toast").last()).toContainText("« mon-cours-maison.cours » ouvert");
+  await expect(page.locator(".toast", { hasText: "« mon-cours-maison.cours » ouvert" }).first()).toBeVisible();
 
   // another device (a new browser context): the link shows the course and asks first; the address is cleaned
   const other = await context.browser().newContext();
@@ -97,7 +97,7 @@ test("Mes cours: sent from the editor by link and by .cours file, received in th
   expect(await game.evaluate(() => window.MyCourses.list().length)).toBe(0);
   await game.goto(link);
   await H.tap(game, ".modal [data-act=yes]");
-  await expect(game.locator(".toast").last()).toContainText("est dans « ✏️ Mes cours »");
+  await expect(game.locator(".toast", { hasText: "est dans « ✏️ Mes cours »" }).first()).toBeVisible();
   await expect(game.locator('.mine-list .pack-card[data-pack="cm2/francais/mon-cours-maison"]')).toBeVisible();
 
   // the .cours file, from the catalogue: the same course again → « Remplacer »
@@ -124,7 +124,7 @@ test("Proposer à tous: refused for an error, a contact or a copy of an official
   const open = async (pack) => {
     const [chooser] = await Promise.all([page.waitForEvent("filechooser"), H.edAct(page, "open")]);
     await chooser.setFiles({ name: pack.path.split("/")[2] + ".js", mimeType: "text/javascript", buffer: Buffer.from(Rules.formatStrict(pack)) });
-    await expect(page.locator(".toast").last()).toContainText("ouvert");
+    await expect(page.locator(".toast", { hasText: "ouvert" }).first()).toBeVisible();
   };
   // a new course has errors
   await H.edAct(page, "propose");

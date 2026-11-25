@@ -9,7 +9,7 @@ import { route, setNav, worldPath } from "../nav.js";
 import { pauseGuard, startWorld } from "./play.js";
 import { typedConfirmBox } from "./settings.js";
 import { Sound } from "../ui/sound.js";
-import { each, h, heartsHtml, on, qs, shieldsHtml, show, starsHtml, toast } from "../ui/ui.js";
+import { calcSvg, each, h, heartsHtml, on, qs, shieldsHtml, show, starsHtml, toast } from "../ui/ui.js";
 import { E, R, T, must, safeColor } from "../ui/util.js";
 
 /* ================= World map (of the current pack) ================= */
@@ -149,6 +149,7 @@ export function showLesson(w) {
       ? '<div class="lesson-meta boss-rules">' + bossCount(w) + "<br>" + T("bossRules") + "</div>"
       : '<div class="lesson-meta">📝 ' + T("exercises", (w.exercises || []).length) + " · " + heartsHtml(Engine.MAX_HEARTS) +
         " " + shieldsHtml(Engine.settings().freeMistakes, Engine.settings().freeMistakes) + "</div>") +
+    (typeof w.calculator === "boolean" ? '<div class="calc-note' + (w.calculator ? "" : " calc-no") + '">' + calcSvg(w.calculator) + "<span>" + T(w.calculator ? "calcYes" : "calcNo") + "</span></div>" : "") +
     '<button class="btn btn-primary btn-big" data-act="go">' + T("go") + "</button>" +
     "</section>");
   var figBox = qs(node, ".lesson-figs"); // only used when there are figures or tables (then it is there)

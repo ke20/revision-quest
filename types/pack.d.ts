@@ -28,6 +28,7 @@ interface Figure {
   h: number;
   grid?: boolean;
   points?: Record<string, FigurePoint>;
+  /** segment / line / ray / circle (centre, point du cercle) / rightAngle / angle / ticks / axis; dashed on the first four. */
   draw?: Array<Record<string, unknown>>;
   alt?: string;
   caption?: string;
@@ -117,6 +118,8 @@ interface World {
   lesson?: Lesson;
   /** The boss only: questions drawn from its exercises at each run (10 to 20); all of them when missing. */
   draw?: number;
+  /** Calculator: true = allowed, false = not allowed (shown on the lesson card and while playing); missing = nothing said. */
+  calculator?: boolean;
   exercises: Exercise[];
 }
 

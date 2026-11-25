@@ -97,6 +97,7 @@ Règles :
   subtitleFr: "",                         // aide en français (utile surtout pour les packs "en" et "es")
   icon: "📅",                             // un emoji
   color: "#B45309",                       // couleur du monde (#RRGGBB)
+  calculator: false,                      // optionnel : true « Calculatrice autorisée », false « Sans calculatrice »
   lesson: {                               // carte leçon affichée avant les exercices
     title: "1789 : tout change",
     points: ["La Révolution commence en **1789**.", "Une [[constitution|texte qui fixe les règles du pays]] organise le pays."],
@@ -105,6 +106,13 @@ Règles :
   exercises: [ /* 6 à 12 exercices */ ]
 }
 ```
+
+**Calculatrice** (`calculator`) : dès qu'un monde fait calculer (maths, physique-chimie, SVT), dire si la
+calculatrice est autorisée (`true`) ou non (`false`). L'élève le voit sur la carte leçon et pendant le jeu (une calculatrice dessinée, barrée en rouge si elle est interdite).
+Sans calcul, ne rien mettre. Le boss suit la règle du contrôle de la classe.
+Calculatrice autorisée : ne pas écrire le calcul dans la phrase à compléter (« P ≈ 50 × 3,14 ≈ ___ » ne demande plus
+que de taper sur la calculatrice). L'exercice porte sur le **choix du calcul** : quelle formule, quel nombre (le diamètre,
+pas le rayon), puis le résultat.
 
 Le monde suivant se débloque quand le précédent a assez d'étoiles (sur 5) : 3 par défaut, 2, 4 ou 5 selon le
 réglage « difficulté » du joueur. Un monde déjà joué reste ouvert, sauf si le joueur a choisi « À rejouer » dans ses
@@ -117,6 +125,27 @@ Le **dernier** monde est le **boss** du chapitre (dès 2 mondes) : le contrôle 
   validateur), pour que rejouer le boss ne revienne pas à réciter les mêmes réponses. Chaque question doit se suffire
   à elle-même (jamais « la question précédente »).
   Langues : des phrases à traduire depuis le français ; autres matières : des questions à réponse courte.
+  **Le boss ne demande que ce que les mondes ont fait pratiquer** (règle du miroir), sinon le contrôle devient
+  décourageant :
+  1. le sens de chaque mot et de chaque tournure a été vu dans un monde (un mot seulement traduit dans une explication
+     ne compte pas) ;
+  2. chaque notion de la phrase (be en question, adverbe après be, réponse courte, négation…) a été pratiquée dans au
+     moins un exercice, même avec d'autres mots ;
+  3. chaque phrase reste proche d'une phrase rencontrée (exemple de leçon ou exercice), avec au plus un petit
+     changement enseigné (sujet, adverbe, négation, question) ;
+  4. **une subtilité de la langue se fait au moins une fois, la lire ne suffit pas** : une expression qui ne se traduit
+     pas mot à mot (en forme = *fit*, faire du sport = *exercise*, avoir faim = *be hungry*, tous les soirs = *every
+     evening*) ou un mot peu fréquent est produit ou traduit depuis le français dans un exercice avant le boss. S'il y en
+     a plusieurs, un monde « Words to remember » (espagnol : « Palabras para recordar »), `id: "words"`, juste avant le
+     boss : leçon avec le mot et le piège (« en forme = **fit** (pas *in form*) »), exercices `question` « Comment
+     dit-on « … » en anglais ? » et QCM dont une mauvaise réponse est la traduction mot à mot ;
+  5. un piège de structure (*Is* ou *Does*, ser ou estar…) a son exercice dans un monde, et sa leçon explique le choix ;
+  6. une variante acceptée dans un monde (*do sport* pour *exercise*) l'est aussi au boss, et n'est jamais une mauvaise
+     réponse d'un QCM ;
+  7. l'explication de chaque question cite le monde d'où vient la phrase (« (exemple du monde 3) »).
+  Pour une langue (`en`, `es`), le validateur signale en conseil chaque mot des réponses du boss jamais vu ailleurs
+  (hors petits mots : pronoms, articles, be / have / do…), et les tests l'exigent pour les packs du dépôt. Les autres
+  points demandent une relecture : se mettre à la place d'un élève qui vient de finir les mondes.
   Sa leçon commence par la consigne, par exemple « Avec ce que tu as appris, traduis correctement les phrases
   ci-dessous. » ou « Avec ce que tu as appris, réponds correctement aux questions ci-dessous. ».
 - Pendant le boss : aucun cœur perdu, un seul essai par question. Le boss se rejoue : la meilleure médaille est gardée.
@@ -324,6 +353,8 @@ figure: {
     { segment: ["A", "B"], label: "8 cm" },        // segment [AB] (label au-dessus, optionnel)
     { line: ["A", "p"], label: "(d)" },            // droite (AB) jusqu'aux bords ; labelAt: "start" | "end"
     { ray: ["A", "B"] },                           // demi-droite [AB) d'origine A
+    { circle: ["O", "A"] },                        // cercle de centre O passant par A (le rayon = OA)
+    { segment: ["E", "H"], dashed: true },         // pointillés (segment, line, ray, circle) : arête cachée, tracé de construction
     { rightAngle: ["A", "T", "C"] },               // petit carré de l'angle droit en T
     { angle: ["B", "A", "C"] },                    // arc de l'angle en A
     { ticks: ["A", "M"], n: 2 },                   // codage de longueurs égales (1 à 3 traits)
@@ -337,7 +368,9 @@ figure: {
 }
 ```
 
-Le validateur vérifie les noms, les coordonnées (dans la figure), les points cités et les champs inconnus.
+Le validateur vérifie les noms, les coordonnées (dans la figure, cercles compris), les points cités et les champs inconnus.
+**Solides en perspective cavalière** : la face avant en vraie grandeur, les arêtes fuyantes en oblique (même décalage
+pour toutes, par exemple +2 en x et −1,5 en y), les arêtes cachées en `dashed: true`.
 Pour des points alignés ou des droites perpendiculaires, calculer les coordonnées (les vérifier à l'œil ne suffit pas).
 Une figure haute pousse les réponses vers le bas : sur téléphone, garder `h` raisonnable (≤ 10).
 Dans le jeu, toucher une figure (ou son bouton 🔍) l'affiche en plein écran ; une figure large y est tournée d'un

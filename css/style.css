@@ -202,6 +202,8 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
 .fig-grid { stroke: #DCE8F5; stroke-width: .03; }
 .fig-stroke { stroke: var(--ink); stroke-width: .07; stroke-linecap: round; }
 .fig-hl { stroke: var(--c); stroke-width: .12; }
+.fig-circle { fill: none; }
+.fig-dashed { stroke-dasharray: .28 .2; stroke-linecap: butt; }
 .fig-point { stroke: var(--ink); stroke-width: .07; stroke-linecap: round; }
 .fig-mark { fill: color-mix(in srgb, var(--c) 30%, transparent); stroke: var(--ink); stroke-width: .05; }
 .fig-arc { fill: none; stroke: var(--c); stroke-width: .08; }
@@ -243,6 +245,11 @@ code { background: #F3E8FF; padding: 1px 6px; border-radius: 6px; }
 .lesson-tip { margin: 16px 0 0; font-size: .92rem; color: var(--ink-soft); }
 .tr-demo { border-bottom: 2px dotted var(--purple); color: var(--purple); }
 .lesson-meta { color: #fff; text-align: center; font-weight: 600; font-size: 1.05rem; }
+.calc-note { align-self: center; display: flex; align-items: center; gap: 8px; background: #fff; color: var(--ink); border-radius: 999px; padding: 6px 16px 6px 10px; font-weight: 700; font-size: .95rem; box-shadow: 0 2px 0 rgba(0,0,0,.12); }
+.calc-note .calc-svg { flex: none; width: 26px; height: 32px; }
+.calc-note.calc-no { color: #B91C1C; }
+.calc-icon { flex: none; display: inline-flex; background: #fff; border-radius: 999px; padding: 2px 8px; }
+.calc-icon .calc-svg { width: 18px; height: 22px; }
 
 /* ---------- play ---------- */
 .play { display: flex; flex-direction: column; min-height: calc(100dvh - 32px); padding-bottom: 210px; }

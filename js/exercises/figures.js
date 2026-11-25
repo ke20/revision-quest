@@ -1,6 +1,7 @@
 /* Révision Quest — geometry figures drawn from pack data (no SVG or HTML comes from a pack).
-   A figure is plain data: points + a list of things to draw (segment, line, ray, right angle, angle, equal-length ticks,
-   number line).
+   A figure is plain data: points + a list of things to draw (segment, line, ray, circle, right angle, angle,
+   equal-length ticks, number line). Segments, lines, rays and circles can be dashed (hidden edges of a solid,
+   construction lines).
    layout(fig) is pure (unit-tested) and turns the data into shapes; build(fig) turns the shapes into a <figure><svg>.
    Bad data never throws: unknown items, unknown points and non-finite numbers are skipped.
    Format: see packs/README.md § « Les figures ». Exposes window.Figures. */
@@ -11,6 +12,7 @@
  * @typedef {{ kind: "line", x1: number, y1: number, x2: number, y2: number, cls: string }
  *   | { kind: "poly", points: FigVec[], cls: string }
  *   | { kind: "path", d: string, cls: string }
+ *   | { kind: "circle", cx: number, cy: number, r: number, cls: string }
  *   | { kind: "text", x: number, y: number, text: string, anchor: string, cls: string }} FigShape A shape to draw.
  */
 /** @typedef {{ w: number, h: number, pad: number, grid: boolean, alt: string, caption: string, shapes: FigShape[] }} FigLayout */
@@ -23,7 +25,7 @@
   var MAX_SIZE = 24, MAX_POINTS = 40, MAX_ITEMS = 60;
   /** @type {Record<string, FigVec>} */
   var DIRS = { n: [0, -1], s: [0, 1], e: [1, 0], w: [-1, 0], ne: [0.75, -0.75], nw: [-0.75, -0.75], se: [0.75, 0.75], sw: [-0.75, 0.75] };
-  var KINDS = ["segment", "line", "ray", "rightAngle", "angle", "ticks", "axis"];
+  var KINDS = ["segment", "line", "ray", "circle", "rightAngle", "angle", "ticks", "axis"];
   var MAX_AXIS_TICKS = 40, MAX_AXIS_MARKS = 6;
 
   /** A number written the French way: thin groups of 3 digits, decimal comma ("1 250", "0,5"). @param {number} n */
@@ -113,13 +115,16 @@
       // it[kind] is an array (filter above); null refs are rejected on the next line.
       var refs = /** @type {FigVec[]} */ (/** @type {unknown[]} */ (it[kind]).map(P));
       if (refs.some(function (r) { return !r; })) return;
-      var cls = it.hl ? " fig-hl" : "";
+      var cls = (it.hl ? " fig-hl" : "") + (it.dashed === true && (kind === "segment" || kind === "line" || kind === "ray" || kind === "circle") ? " fig-dashed" : "");
       var A = refs[0], B = refs[1], C = refs[2];
       var lab = text(it.label, 16);
-      if ((kind === "segment" || kind === "line" || kind === "ray" || kind === "ticks" || kind === "axis") && (refs.length !== 2 || !unit(sub(B, A)))) return;
+      if ((kind === "segment" || kind === "line" || kind === "ray" || kind === "circle" || kind === "ticks" || kind === "axis") && (refs.length !== 2 || !unit(sub(B, A)))) return;
       if ((kind === "rightAngle" || kind === "angle") && (refs.length !== 3 || !unit(sub(A, B)) || !unit(sub(C, B)))) return;
 
-      if (kind === "segment") {
+      if (kind === "circle") { // circle of centre A through B
+        var dx = B[0] - A[0], dy = B[1] - A[1];
+        shapes.push({ kind: "circle", cx: round(A[0]), cy: round(A[1]), r: round(Math.sqrt(dx * dx + dy * dy)), cls: "fig-stroke fig-circle" + cls });
+      } else if (kind === "segment") {
         seg(A, B, "fig-stroke" + cls);
         // Normal of a non-zero A→B (checked above): never null.
         var n = /** @type {FigVec} */ (unit([B[1] - A[1], A[0] - B[0]]));
@@ -239,6 +244,7 @@
       if (s.kind === "line") node("line", { x1: s.x1, y1: s.y1, x2: s.x2, y2: s.y2, "class": s.cls });
       else if (s.kind === "poly") node("polyline", { points: s.points.map(function (p) { return p.join(","); }).join(" "), "class": s.cls });
       else if (s.kind === "path") node("path", { d: s.d, "class": s.cls });
+      else if (s.kind === "circle") node("circle", { cx: s.cx, cy: s.cy, r: s.r, "class": s.cls });
       else if (s.kind === "text") node("text", { x: s.x, y: s.y, "text-anchor": s.anchor, "class": s.cls }).textContent = s.text;
     });
     // A tap on the figure (or its 🔍 button) shows it full screen: small labels become easy to read.

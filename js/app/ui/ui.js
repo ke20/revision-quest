@@ -114,6 +114,22 @@ export function bigStarsHtml(n) {
   return s;
 }
 
+/** A calculator drawn by the game (flat style, no image file): crossed out in red when it is not allowed.
+    @param {boolean} allowed @returns {string} */
+export function calcSvg(allowed) {
+  return '<svg class="calc-svg" viewBox="0 0 24 30" width="20" height="25" aria-hidden="true">' +
+    '<rect x="1.5" y="1.5" width="21" height="27" rx="3.5" fill="#fff" stroke="#2B2E4A" stroke-width="2"/>' +
+    '<rect x="5" y="5" width="14" height="5" rx="1" fill="#5BC0EB" stroke="#2B2E4A" stroke-width="1.4"/>' +
+    '<rect x="5" y="13" width="6" height="6" rx="1.2" fill="#F6C453" stroke="#2B2E4A" stroke-width="1.2"/>' +
+    '<rect x="13" y="13" width="6" height="6" rx="1.2" fill="#B49FDC" stroke="#2B2E4A" stroke-width="1.2"/>' +
+    '<rect x="5" y="21" width="6" height="5" rx="1.2" fill="#8E9AC8" stroke="#2B2E4A" stroke-width="1.2"/>' +
+    '<rect x="13" y="21" width="6" height="5" rx="1.2" fill="#EF6F8A" stroke="#2B2E4A" stroke-width="1.2"/>' +
+    '<path d="M6.5 16h3M14.5 16h3M16 14.5v3M6.8 22.2l2.4 2.6M9.2 22.2l-2.4 2.6M14.5 23.5h3" stroke="#2B2E4A" stroke-width="1.1" stroke-linecap="round"/>' +
+    '<circle cx="16" cy="22.2" r=".45" fill="#2B2E4A"/><circle cx="16" cy="24.8" r=".45" fill="#2B2E4A"/>' +
+    (allowed ? "" : '<path d="M2 28L22 2" stroke="#DC2626" stroke-width="3" stroke-linecap="round"/>') +
+    "</svg>";
+}
+
 /** @param {number} n */
 export function heartsHtml(n) {
   var s = "";

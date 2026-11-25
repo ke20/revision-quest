@@ -63,11 +63,11 @@
   /* ---------- figures (js/exercises/figures.js draws them; same limits) ---------- */
 
   /** Kind of drawing → number of points. @type {Record<string, number>} */
-  const FIG_KINDS = { segment: 2, line: 2, ray: 2, ticks: 2, rightAngle: 3, angle: 3, axis: 2 };
+  const FIG_KINDS = { segment: 2, line: 2, ray: 2, circle: 2, ticks: 2, rightAngle: 3, angle: 3, axis: 2 };
   const FIG_KIND_NAMES = Object.keys(FIG_KINDS);
   const FIG_DIRS = ["n", "s", "e", "w", "ne", "nw", "se", "sw", "hidden"];
   const FIG_POINT_RE = /^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ0-9']{0,3}$/;
-  const FIG_ITEM_KEYS = FIG_KIND_NAMES.concat(["label", "labelAt", "n", "hl", "from", "to", "step", "every", "marks"]);
+  const FIG_ITEM_KEYS = FIG_KIND_NAMES.concat(["label", "labelAt", "n", "hl", "dashed", "from", "to", "step", "every", "marks"]);
   const AXIS_KEYS = ["from", "to", "step", "every", "marks"], AXIS_MARK_KEYS = ["at", "label", "hl"];
   const MAX_AXIS_TICKS = 40, MAX_AXIS_MARKS = 6;
   const FIG_KEYS = ["w", "h", "grid", "points", "draw", "alt", "caption"];
@@ -110,7 +110,13 @@
         if (same(a, b) || (c && same(b, c))) err(D + " : deux points au même endroit");
       }
       if (it.label != null && (typeof it.label !== "string" || it.label.length > 16)) err(D + " : label doit être un texte court (16 caractères max)");
-      if (it.label != null && (kind === "rightAngle" || kind === "angle" || kind === "ticks")) warn(D + ` : label ignoré pour ${kind}`);
+      if (it.label != null && (kind === "rightAngle" || kind === "angle" || kind === "ticks" || kind === "circle")) warn(D + ` : label ignoré pour ${kind}`);
+      if (it.dashed != null && (typeof it.dashed !== "boolean" || !["segment", "line", "ray", "circle"].includes(kind))) err(D + " : dashed (true ou false) seulement pour segment, line, ray et circle");
+      if (kind === "circle" && refs.every((r) => isArr(f.points[r]))) { // circle of centre refs[0] through refs[1]: inside the figure
+        const [o, p] = refs.map((r) => f.points[r]);
+        const r = Math.hypot(p[0] - o[0], p[1] - o[1]);
+        if (o[0] - r < -1e-9 || o[0] + r > f.w + 1e-9 || o[1] - r < -1e-9 || o[1] + r > f.h + 1e-9) err(D + ` : le cercle (centre ${refs[0]}, rayon ${Math.round(r * 100) / 100}) sort de la figure (0 à ${f.w}, 0 à ${f.h})`);
+      }
       if (it.labelAt != null && (it.labelAt !== "start" && it.labelAt !== "end" || (kind !== "line" && kind !== "ray"))) err(D + ' : labelAt ("start" ou "end") seulement pour line et ray');
       if (it.n != null && (kind !== "ticks" || !Number.isInteger(it.n) || it.n < 1 || it.n > 3)) err(D + " : n (1 à 3 traits) seulement pour ticks");
       if (it.hl != null && typeof it.hl !== "boolean") err(D + " : hl doit être true ou false");
@@ -325,6 +331,7 @@
       if (!isStr(w.icon)) warn(W + " : icon (emoji) manquant");
       if (w.color != null && !COLOR_RE.test(w.color)) err(W + ` : color "${w.color}" invalide (format #RRGGBB)`);
       if (w.color == null) warn(W + " : color manquante");
+      if (w.calculator != null && typeof w.calculator !== "boolean") err(W + " : calculator doit être true (calculatrice autorisée) ou false (interdite)");
       validateLesson(w.lesson, W, err, warn);
       if (!isArr(w.exercises) || !w.exercises.length) return err(W + " : exercises doit être un tableau non vide");
       w.exercises.forEach(/** @param {any} e @param {number} ei */ (e, ei) => {
@@ -360,8 +367,56 @@
         if (e.type !== "question") err(B + ` ex ${ei + 1} : le boss ne contient que des exercices question (reçu : ${json(e.type)})`);
         if (e.hint != null) err(B + ` ex ${ei + 1} : pas d'indice dans le boss`);
       });
+      bossVocabulary(pack).forEach((u) => warn(B + ` ex ${u.index + 1} : mot(s) jamais vu(s) dans les autres mondes du chapitre : ${u.words.join(", ")} (le boss ne demande que du vocabulaire vu dans le cours)`));
     }
     return stats;
+  }
+
+  /* ---------- the boss of a language pack asks only for words taught in the chapter ---------- */
+
+  // grammar words a pupil knows from the first lessons (pronouns, determiners, be / have / do, small words)
+  const BASIC_WORDS = new Set(("i you he she it we they me him her us them my your his its our their a an the this that these those " +
+    "is am are was were be been do does did not no yes and or but so to of in on at for with from by up as if when what where who " +
+    "whose why how which there here one two three four five six seven eight nine ten s re m ve ll d " +
+    "el la los las un una unos unas y o de del al en con por para que es son soy eres somos yo tú él ella nosotros vosotros " +
+    "ellos ellas mi tu su mis tus sus sí muy").split(" "));
+  /** Words of a text, lower case, English short forms opened (don't → do not). @param {string} text @returns {string[]} */
+  function words(text) {
+    return plain(text).toLowerCase().replace(/[’']/g, "'").replace(/n't\b/g, " not").replace(/'(s|re|m|ve|ll|d)\b/g, " $1")
+      .split(/[^a-zà-ÿñ']+/).map((w) => w.replace(/^'+|'+$/g, "")).filter((w) => w && !/^\d+$/.test(w));
+  }
+  /** A word and its probable base forms (cats → cat, flies → fly, wanted → want, shelves → shelf). @param {string} w */
+  function wordForms(w) {
+    const out = [w];
+    [["ies", "y"], ["es", ""], ["s", ""], ["ed", ""], ["ed", "e"], ["d", ""], ["ing", ""], ["ing", "e"], ["ves", "f"]].forEach(([end, base]) => {
+      if (w.length > end.length + 1 && w.endsWith(end)) out.push(w.slice(0, -end.length) + base);
+    });
+    return out;
+  }
+  /** Boss questions of an English or Spanish pack whose every accepted answer uses a word never seen in the other worlds
+      (lessons, documents, exercise fields; explanations, hints and translations do not count: a word only glossed
+      there is not taught). Returns [{ index, words }] (the words of the answer with the fewest unknown words).
+      @param {any} pack @returns {Array<{ index: number, words: string[] }>} */
+  function bossVocabulary(pack) {
+    if ((pack.lang !== "en" && pack.lang !== "es") || !isArr(pack.worlds) || pack.worlds.length < 2) return [];
+    const boss = pack.worlds[pack.worlds.length - 1];
+    if (!boss || !isArr(boss.exercises)) return [];
+    const taught = JSON.parse(JSON.stringify([pack.documents || [], pack.worlds.slice(0, -1)],
+      (k, v) => (k === "explanation" || k === "hint" || k === "translation" ? undefined : v)));
+    const seen = new Set();
+    strings(taught).forEach((t) => words(t).forEach((w) => wordForms(w).forEach((f) => seen.add(f))));
+    /** @param {string} w */
+    const known = (w) => BASIC_WORDS.has(w) || wordForms(w).some((f) => seen.has(f));
+    /** @type {Array<{ index: number, words: string[] }>} */
+    const out = [];
+    boss.exercises.forEach(/** @param {any} e @param {number} i */ (e, i) => {
+      if (!e || e.type !== "question" || !isArr(e.answers) || !e.answers.length) return;
+      /** @type {string[][]} */
+      const unknown = e.answers.filter(isStr).map(/** @param {string} a */ (a) => Array.from(new Set(words(a).filter((w) => !known(w)))));
+      const best = unknown.sort((a, b) => a.length - b.length)[0];
+      if (best && best.length) out.push({ index: i, words: best });
+    });
+    return out;
   }
 
   /** Does a text (probably) list short items in a sentence, after a colon: 3 items or more between commas, or 2 between
@@ -538,7 +593,7 @@
     parseStrict, formatStrict,
     isStr, plain, checkMarkup,
     checkPath, checkLang, validateMeta, catalogEntry, bossOf, LICENSES,
-    validateContent, validateLesson, validateExercise,
+    validateContent, validateLesson, validateExercise, bossVocabulary,
     validateFigure, validateTable, inlineList
   };
   if (typeof module === "object" && module.exports) module.exports = api;
