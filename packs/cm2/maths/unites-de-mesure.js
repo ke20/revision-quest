@@ -17,6 +17,7 @@ window.registerPack({
       "subtitle": "kilo, hecto, déca, déci, centi, milli",
       "icon": "🔤",
       "color": "#8B5CF6",
+      "calculator": false,
       "lesson": {
         "title": "Un préfixe dit combien de fois l'unité",
         "points": [
@@ -289,6 +290,7 @@ window.registerPack({
       "subtitle": "Le mètre et le tableau de conversion",
       "icon": "📏",
       "color": "#2563EB",
+      "calculator": false,
       "lesson": {
         "title": "Convertir une longueur",
         "points": [
@@ -675,6 +677,7 @@ window.registerPack({
       "subtitle": "Le gramme, la tonne et le quintal",
       "icon": "⚖️",
       "color": "#059669",
+      "calculator": false,
       "lesson": {
         "title": "Convertir une masse",
         "points": [
@@ -1183,6 +1186,7 @@ window.registerPack({
       "subtitle": "Le litre et ses petits frères",
       "icon": "🧃",
       "color": "#0891B2",
+      "calculator": false,
       "lesson": {
         "title": "Convertir une contenance",
         "points": [
@@ -1604,6 +1608,7 @@ window.registerPack({
       "subtitle": "Choisir l'unité qui convient",
       "icon": "🤔",
       "color": "#D97706",
+      "calculator": false,
       "lesson": {
         "title": "Imaginer avant d'écrire",
         "points": [
@@ -1805,6 +1810,7 @@ window.registerPack({
       "subtitle": "Ranger des mesures, petits problèmes",
       "icon": "🎢",
       "color": "#DC2626",
+      "calculator": false,
       "lesson": {
         "title": "Tout mettre dans la même unité",
         "points": [
@@ -2053,6 +2059,7 @@ window.registerPack({
       "subtitle": "Tout le chapitre !",
       "icon": "🏆",
       "color": "#7C3AED",
+      "calculator": false,
       "lesson": {
         "title": "Le grand contrôle",
         "points": [

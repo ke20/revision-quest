@@ -18,6 +18,7 @@ window.registerPack({
       "subtitle": "La longueur du contour",
       "icon": "🧵",
       "color": "#EC4899",
+      "calculator": false,
       "lesson": {
         "title": "Le tour d'une figure",
         "points": [
@@ -373,6 +374,7 @@ window.registerPack({
       "subtitle": "Le périmètre d'un polygone",
       "icon": "➕",
       "color": "#DB2777",
+      "calculator": false,
       "lesson": {
         "title": "On fait le tour en additionnant",
         "points": [
@@ -895,6 +897,7 @@ window.registerPack({
       "subtitle": "Convertir avant d'additionner",
       "icon": "📏",
       "color": "#BE185D",
+      "calculator": false,
       "lesson": {
         "title": "Convertir, puis additionner",
         "points": [
@@ -1244,6 +1247,7 @@ window.registerPack({
       "subtitle": "Carré, rectangle, polygones réguliers",
       "icon": "🟪",
       "color": "#A21CAF",
+      "calculator": false,
       "lesson": {
         "title": "Côtés égaux : on multiplie",
         "points": [
@@ -2250,6 +2254,7 @@ window.registerPack({
       "subtitle": "Du périmètre vers un côté",
       "icon": "🔍",
       "color": "#9333EA",
+      "calculator": false,
       "lesson": {
         "title": "Retrouver un côté",
         "points": [
@@ -2730,6 +2735,7 @@ window.registerPack({
       "subtitle": "Clôture, piste, ruban",
       "icon": "🏡",
       "color": "#7C3AED",
+      "calculator": false,
       "lesson": {
         "title": "Le périmètre dans la vie",
         "points": [
@@ -3172,6 +3178,7 @@ window.registerPack({
       "subtitle": "Le contrôle final",
       "icon": "🏆",
       "color": "#6D28D9",
+      "calculator": false,
       "draw": 12,
       "lesson": {
         "title": "Le contrôle",

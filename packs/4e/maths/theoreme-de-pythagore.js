@@ -15,6 +15,7 @@ window.registerPack({
       "subtitle": "Hypoténuse et côtés de l'angle droit",
       "icon": "📐",
       "color": "#0D9488",
+      "calculator": true,
       "lesson": {
         "title": "Les mots du triangle rectangle",
         "points": [
@@ -455,6 +456,7 @@ window.registerPack({
       "subtitle": "Le carré de l'hypoténuse",
       "icon": "🟰",
       "color": "#2563EB",
+      "calculator": true,
       "lesson": {
         "title": "Le théorème de Pythagore",
         "points": [
@@ -776,6 +778,7 @@ window.registerPack({
       "subtitle": "Réciproque et contraposée",
       "icon": "🔍",
       "color": "#7C3AED",
+      "calculator": true,
       "lesson": {
         "title": "Prouver qu'un triangle est rectangle (ou pas)",
         "points": [
@@ -1021,6 +1024,7 @@ window.registerPack({
       "subtitle": "On additionne les carrés",
       "icon": "➕",
       "color": "#EA580C",
+      "calculator": true,
       "lesson": {
         "title": "Trouver le plus long côté",
         "points": [
@@ -1422,6 +1426,7 @@ window.registerPack({
       "subtitle": "On soustrait les carrés",
       "icon": "➖",
       "color": "#DC2626",
+      "calculator": true,
       "lesson": {
         "title": "Quand on connaît l'hypoténuse",
         "points": [
@@ -1816,6 +1821,7 @@ window.registerPack({
       "subtitle": "√, encadrement, dixième",
       "icon": "🧮",
       "color": "#0891B2",
+      "calculator": true,
       "lesson": {
         "title": "Quand ça ne tombe pas juste",
         "points": [
@@ -2120,6 +2126,7 @@ window.registerPack({
       "subtitle": "Le contrôle final",
       "icon": "🏆",
       "color": "#B45309",
+      "calculator": true,
       "draw": 12,
       "lesson": {
         "title": "Le contrôle",

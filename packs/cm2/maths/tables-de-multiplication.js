@@ -17,6 +17,7 @@ window.registerPack({
       "subtitle": "Le double, la moitié et le zéro",
       "icon": "🖐️",
       "color": "#F59E0B",
+      "calculator": false,
       "lesson": {
         "title": "Trois tables faciles",
         "points": [
@@ -284,6 +285,7 @@ window.registerPack({
       "subtitle": "Compter de 3 en 3, doubler deux fois",
       "icon": "🍀",
       "color": "#EA580C",
+      "calculator": false,
       "lesson": {
         "title": "Les tables de 3 et de 4",
         "points": [
@@ -543,6 +545,7 @@ window.registerPack({
       "subtitle": "Les tables qui résistent",
       "icon": "🎲",
       "color": "#DC2626",
+      "calculator": false,
       "lesson": {
         "title": "Les tables de 6 et de 7",
         "points": [
@@ -795,6 +798,7 @@ window.registerPack({
       "subtitle": "Les astuces des grandes tables",
       "icon": "🕷️",
       "color": "#7C3AED",
+      "calculator": false,
       "lesson": {
         "title": "Les tables de 8 et de 9",
         "points": [
@@ -1054,6 +1058,7 @@ window.registerPack({
       "subtitle": "6 × … = 54",
       "icon": "🔍",
       "color": "#2563EB",
+      "calculator": false,
       "lesson": {
         "title": "Le nombre qui manque",
         "points": [
@@ -1320,6 +1325,7 @@ window.registerPack({
       "subtitle": "Toutes les tables en un seul tableau",
       "icon": "🧮",
       "color": "#0D9488",
+      "calculator": false,
       "lesson": {
         "title": "Lire la table de Pythagore",
         "points": [
@@ -1948,6 +1954,7 @@ window.registerPack({
       "subtitle": "Toutes les tables de 2 à 10",
       "icon": "👑",
       "color": "#B45309",
+      "calculator": false,
       "draw": 12,
       "lesson": {
         "title": "Le contrôle des tables",

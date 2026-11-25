@@ -27,6 +27,7 @@ window.registerPack({
       "subtitle": "Fusion, solidification… et la masse ?",
       "icon": "🧊",
       "color": "#0891B2",
+      "calculator": true,
       "lesson": {
         "title": "Solide, liquide, gaz",
         "points": [
@@ -196,6 +197,7 @@ window.registerPack({
       "subtitle": "L, mL, cm³, kg, g…",
       "icon": "📏",
       "color": "#2563EB",
+      "calculator": true,
       "lesson": {
         "title": "Changer d'unité",
         "points": [
@@ -836,6 +838,7 @@ window.registerPack({
       "subtitle": "L'éprouvette graduée",
       "icon": "🧪",
       "color": "#7C3AED",
+      "calculator": true,
       "lesson": {
         "title": "Lire une éprouvette",
         "points": [
@@ -2135,6 +2138,7 @@ window.registerPack({
       "subtitle": "ρ = m ÷ V",
       "icon": "⚖️",
       "color": "#0D9488",
+      "calculator": true,
       "lesson": {
         "title": "Définition et formule",
         "points": [
@@ -2336,6 +2340,7 @@ window.registerPack({
       "subtitle": "Le triangle m / ρ × V",
       "icon": "🔺",
       "color": "#EA580C",
+      "calculator": true,
       "lesson": {
         "title": "Retourner la formule",
         "points": [
@@ -2509,6 +2514,7 @@ window.registerPack({
       "subtitle": "À quoi sert la masse volumique",
       "icon": "🛟",
       "color": "#059669",
+      "calculator": true,
       "lesson": {
         "title": "Reconnaître un matériau",
         "points": [
@@ -2697,6 +2703,7 @@ window.registerPack({
       "subtitle": "Tout le chapitre, en questions",
       "icon": "🏆",
       "color": "#B45309",
+      "calculator": true,
       "lesson": {
         "title": "Méthode du contrôle",
         "points": [

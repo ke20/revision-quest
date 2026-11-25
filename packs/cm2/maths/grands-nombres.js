@@ -18,6 +18,7 @@ window.registerPack({
       "subtitle": "Lire la bonne colonne",
       "icon": "🔍",
       "color": "#0EA5E9",
+      "calculator": false,
       "lesson": {
         "title": "« Chiffre des » ou « nombre de » ?",
         "points": [
@@ -327,6 +328,7 @@ window.registerPack({
       "subtitle": "Unités, mille, millions",
       "icon": "📖",
       "color": "#0284C7",
+      "calculator": false,
       "lesson": {
         "title": "Lire un grand nombre",
         "points": [
@@ -563,6 +565,7 @@ window.registerPack({
       "subtitle": "Mille, million, vingt et cent",
       "icon": "✍️",
       "color": "#0891B2",
+      "calculator": false,
       "lesson": {
         "title": "Écrire un nombre en lettres",
         "points": [
@@ -752,6 +755,7 @@ window.registerPack({
       "subtitle": "Un nombre en morceaux",
       "icon": "🧩",
       "color": "#0D9488",
+      "calculator": false,
       "lesson": {
         "title": "Décomposer un nombre",
         "points": [
@@ -917,6 +921,7 @@ window.registerPack({
       "subtitle": "<, > et intercaler",
       "icon": "⚖️",
       "color": "#2563EB",
+      "calculator": false,
       "lesson": {
         "title": "Comparer des grands nombres",
         "points": [
@@ -1096,6 +1101,7 @@ window.registerPack({
       "subtitle": "Placer et encadrer",
       "icon": "📏",
       "color": "#4F46E5",
+      "calculator": false,
       "lesson": {
         "title": "Placer et encadrer",
         "points": [
@@ -1505,6 +1511,7 @@ window.registerPack({
       "subtitle": "Tout le chapitre !",
       "icon": "💰",
       "color": "#7C3AED",
+      "calculator": false,
       "lesson": {
         "title": "Le coffre aux millions",
         "points": [

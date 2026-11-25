@@ -15,6 +15,7 @@ window.registerPack({
       "subtitle": "Somme, différence, produit, facteur",
       "icon": "🔤",
       "color": "#0D9488",
+      "calculator": false,
       "lesson": {
         "title": "Somme, produit et signe × caché",
         "points": [
@@ -210,6 +211,7 @@ window.registerPack({
       "subtitle": "a × (x + y) = a × x + a × y",
       "icon": "🎯",
       "color": "#0891B2",
+      "calculator": false,
       "lesson": {
         "title": "Multiplier chaque élément",
         "points": [
@@ -404,6 +406,7 @@ window.registerPack({
       "subtitle": "Un produit devient une somme",
       "icon": "📤",
       "color": "#2563EB",
+      "calculator": false,
       "lesson": {
         "title": "Du produit à la somme",
         "points": [
@@ -569,6 +572,7 @@ window.registerPack({
       "subtitle": "Une somme devient un produit",
       "icon": "📥",
       "color": "#7C3AED",
+      "calculator": false,
       "lesson": {
         "title": "Trouver le facteur commun",
         "points": [
@@ -758,6 +762,7 @@ window.registerPack({
       "subtitle": "Choisir le bon sens",
       "icon": "🧠",
       "color": "#DB2777",
+      "calculator": false,
       "lesson": {
         "title": "Deux chemins inverses",
         "points": [
@@ -947,6 +952,7 @@ window.registerPack({
       "subtitle": "Développer et factoriser : le contrôle",
       "icon": "👑",
       "color": "#B45309",
+      "calculator": false,
       "draw": 12,
       "lesson": {
         "title": "Le contrôle final",

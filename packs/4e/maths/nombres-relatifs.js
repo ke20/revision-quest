@@ -20,6 +20,7 @@ window.registerPack({
       "subtitle": "Leur somme vaut 0",
       "icon": "🪞",
       "color": "#0891B2",
+      "calculator": false,
       "lesson": {
         "title": "Opposés et distance à zéro",
         "points": [
@@ -227,6 +228,7 @@ window.registerPack({
       "subtitle": "Même signe ou signes contraires",
       "icon": "➕",
       "color": "#059669",
+      "calculator": false,
       "lesson": {
         "title": "Rappel : la somme de deux relatifs",
         "points": [
@@ -418,6 +420,7 @@ window.registerPack({
       "subtitle": "Ajouter l'opposé",
       "icon": "➖",
       "color": "#7C3AED",
+      "calculator": false,
       "lesson": {
         "title": "Soustraire, c'est ajouter l'opposé",
         "points": [
@@ -638,6 +641,7 @@ window.registerPack({
       "subtitle": "La règle des signes",
       "icon": "✖️",
       "color": "#DC2626",
+      "calculator": false,
       "lesson": {
         "title": "Multiplier ou diviser deux relatifs",
         "points": [
@@ -827,6 +831,7 @@ window.registerPack({
       "subtitle": "Pair ou impair ?",
       "icon": "🔢",
       "color": "#D97706",
+      "calculator": false,
       "lesson": {
         "title": "Compter les nombres négatifs",
         "points": [
@@ -1019,6 +1024,7 @@ window.registerPack({
       "subtitle": "Tout le chapitre",
       "icon": "🏆",
       "color": "#1E40AF",
+      "calculator": false,
       "lesson": {
         "title": "Le contrôle final",
         "points": [

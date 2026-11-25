@@ -15,6 +15,7 @@ window.registerPack({
       "subtitle": "n² = n × n",
       "icon": "🟦",
       "color": "#2563EB",
+      "calculator": false,
       "lesson": {
         "title": "Multiplier un nombre par lui-même",
         "points": [
@@ -198,6 +199,7 @@ window.registerPack({
       "subtitle": "De 1 à 225, par cœur",
       "icon": "🧮",
       "color": "#7C3AED",
+      "calculator": false,
       "lesson": {
         "title": "Les 15 carrés à connaître",
         "points": [
@@ -496,6 +498,7 @@ window.registerPack({
       "subtitle": "Le chiffre des unités trahit",
       "icon": "🔍",
       "color": "#059669",
+      "calculator": false,
       "lesson": {
         "title": "Les indices d'un carré parfait",
         "points": [
@@ -708,6 +711,7 @@ window.registerPack({
       "subtitle": "Le carré est toujours positif",
       "icon": "➖",
       "color": "#DC2626",
+      "calculator": false,
       "lesson": {
         "title": "Des carrés pour tous les nombres",
         "points": [
@@ -860,6 +864,7 @@ window.registerPack({
       "subtitle": "Du côté à l'aire, et retour",
       "icon": "📐",
       "color": "#D97706",
+      "calculator": false,
       "lesson": {
         "title": "Pourquoi on dit « au carré »",
         "points": [
@@ -1372,6 +1377,7 @@ window.registerPack({
       "subtitle": "√ : le chemin inverse",
       "icon": "🌱",
       "color": "#0891B2",
+      "calculator": false,
       "lesson": {
         "title": "Défaire un carré",
         "points": [
@@ -1660,6 +1666,7 @@ window.registerPack({
       "subtitle": "Entre deux entiers",
       "icon": "📏",
       "color": "#4F46E5",
+      "calculator": false,
       "lesson": {
         "title": "Quand ce n'est pas un carré parfait",
         "points": [
@@ -1828,6 +1835,7 @@ window.registerPack({
       "subtitle": "Encadrer, puis lire la calculatrice",
       "icon": "🎯",
       "color": "#0D9488",
+      "calculator": false,
       "lesson": {
         "title": "Une valeur approchée de √x",
         "points": [
@@ -2033,6 +2041,7 @@ window.registerPack({
       "subtitle": "Tout le chapitre",
       "icon": "🏆",
       "color": "#B45309",
+      "calculator": false,
       "lesson": {
         "title": "Prêt pour le contrôle ?",
         "points": [

@@ -18,6 +18,7 @@ window.registerPack({
       "subtitle": "Somme, différence, produit, quotient",
       "icon": "🔤",
       "color": "#10B981",
+      "calculator": false,
       "lesson": {
         "title": "Les quatre opérations",
         "points": [
@@ -221,6 +222,7 @@ window.registerPack({
       "subtitle": "Un résultat proche de…",
       "icon": "🎯",
       "color": "#0EA5E9",
+      "calculator": false,
       "lesson": {
         "title": "Calculer « à peu près »",
         "points": [
@@ -417,6 +419,7 @@ window.registerPack({
       "subtitle": "Retenues et chiffres cachés",
       "icon": "✍️",
       "color": "#F59E0B",
+      "calculator": false,
       "lesson": {
         "title": "Poser une opération",
         "points": [
@@ -789,6 +792,7 @@ window.registerPack({
       "subtitle": "Quotient et reste",
       "icon": "🍬",
       "color": "#8B5CF6",
+      "calculator": false,
       "lesson": {
         "title": "Partager en parts égales",
         "points": [
@@ -1036,6 +1040,7 @@ window.registerPack({
       "subtitle": "Dans la table ou pas ?",
       "icon": "🔢",
       "color": "#EF4444",
+      "calculator": false,
       "lesson": {
         "title": "Multiples et diviseurs",
         "points": [
@@ -1233,6 +1238,7 @@ window.registerPack({
       "subtitle": "Regarde le chiffre des unités",
       "icon": "🔍",
       "color": "#14B8A6",
+      "calculator": false,
       "lesson": {
         "title": "Les critères de divisibilité",
         "points": [
@@ -1507,6 +1513,7 @@ window.registerPack({
       "subtitle": "Tout le chapitre !",
       "icon": "🧮",
       "color": "#047857",
+      "calculator": false,
       "draw": 12,
       "lesson": {
         "title": "Le défi des opérations",
