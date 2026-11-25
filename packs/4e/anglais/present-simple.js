@@ -197,6 +197,58 @@ window.registerPack({
           "explanation": "✅ Les habitudes :\n- **healthy** (bon pour la santé) : [[eating balanced meals|manger des repas équilibrés]], [[getting enough sleep|dormir assez]]…\n- **unhealthy** (mauvais pour la santé) : [[skipping meals|sauter des repas]], [[staying up late|veiller tard]]…"
         },
         {
+          "id": "f4e0f8a5-7f9c-490e-8eac-719805413e0b",
+          "type": "match",
+          "prompt": "Relie chaque bonne habitude à sa traduction.",
+          "pairs": [
+            {
+              "left": "eat balanced meals",
+              "right": "manger des repas équilibrés"
+            },
+            {
+              "left": "get enough sleep",
+              "right": "dormir assez"
+            },
+            {
+              "left": "take walks in fresh air",
+              "right": "se promener au grand air"
+            },
+            {
+              "left": "go to bed early",
+              "right": "se coucher tôt"
+            },
+            {
+              "left": "exercise",
+              "right": "faire du sport, de l'exercice"
+            }
+          ],
+          "explanation": "✅ Les bonnes habitudes :\n- [[eat balanced meals|manger des repas équilibrés]]\n- [[get enough sleep|dormir assez]]\n- [[take walks in fresh air|se promener au grand air]]\n- [[go to bed early|se coucher tôt]]\n- [[exercise|faire du sport]]"
+        },
+        {
+          "id": "fe511fa8-b422-4877-96ce-dc9c1b5f42ee",
+          "type": "match",
+          "prompt": "Relie chaque mauvaise habitude à sa traduction.",
+          "pairs": [
+            {
+              "left": "skip meals",
+              "right": "sauter des repas"
+            },
+            {
+              "left": "stay up late",
+              "right": "veiller tard"
+            },
+            {
+              "left": "eat junk food",
+              "right": "manger de la malbouffe"
+            },
+            {
+              "left": "drink a lot of soda",
+              "right": "boire beaucoup de soda"
+            }
+          ],
+          "explanation": "✅ Les mauvaises habitudes :\n- [[skip meals|sauter des repas]]\n- [[stay up late|veiller tard]]\n- [[eat junk food|manger de la malbouffe]]\n- [[drink a lot of soda|boire beaucoup de soda]]"
+        },
+        {
           "id": "1ffd4fb0-a4c2-473d-b29f-8ea2c1bc37b1",
           "type": "order",
           "prompt": "Remets les mots dans l'ordre.",
@@ -225,6 +277,19 @@ window.registerPack({
           ],
           "answer": 1,
           "explanation": "✅ **three times a month**. Seuls « une fois » et « deux fois » ont un mot à eux : **once**, **twice**."
+        },
+        {
+          "id": "e62071ec-d8a4-4b38-a3a7-1d568a8b6710",
+          "type": "mcq",
+          "prompt": "Traduis : « Je fais du sport trois fois par semaine. »",
+          "options": [
+            "I exercise three time a week.",
+            "I do exercise three times by week.",
+            "I exercise three times a week.",
+            "I exercising three times a week."
+          ],
+          "answer": 2,
+          "explanation": "✅ [[exercise|faire du sport]] ; **three times a week** = trois fois par semaine."
         }
       ]
     },
@@ -538,6 +603,34 @@ window.registerPack({
           ],
           "answer": 0,
           "explanation": "✅ **They** : pas de -s ! **They have**. Seuls he, she, it prennent **has**. [[They have lots of free time.|Ils ont beaucoup de temps libre.]]"
+        },
+        {
+          "id": "48610d2b-f95a-4410-9395-ef09a9f51984",
+          "type": "mcq",
+          "prompt": "Traduis : « Elle a une alimentation équilibrée. »",
+          "options": [
+            "She have a balanced diet.",
+            "She has a balanced diet.",
+            "She is a balanced diet.",
+            "She haves a balanced diet."
+          ],
+          "answer": 1,
+          "explanation": "✅ **have** est irrégulier : she **has**. [[a balanced diet|une alimentation équilibrée]]"
+        },
+        {
+          "id": "0efda598-8d6c-4364-8b42-1b86861fc849",
+          "type": "order",
+          "prompt": "Remets les mots dans l'ordre.",
+          "words": [
+            "He",
+            "goes",
+            "to",
+            "bed",
+            "early",
+            "."
+          ],
+          "translation": "Il se couche tôt.",
+          "explanation": "✅ [[go to bed early|se coucher tôt]] ; he → **goes**."
         },
         {
           "id": "e9a74b01-949c-452f-996d-4d67e7f6e6d9",
@@ -981,7 +1074,7 @@ window.registerPack({
     },
     {
       "id": 6,
-      "title": "Do or does?",
+      "title": "Is, do or does?",
       "subtitle": "Ask questions",
       "subtitleFr": "Pose des questions",
       "icon": "❓",
@@ -992,7 +1085,8 @@ window.registerPack({
           "Question : **Do / Does** + sujet + verbe **sans -s** ?\n- [[**Do** you exercise?|Est-ce que tu fais du sport ?]]\n- [[**Does** she exercise?|Est-ce qu'elle fait du sport ?]]",
           "Réponses courtes :\n- [[Yes, I **do**. / No, I **don't**.|Oui. / Non.]]\n- [[Yes, she **does**. / No, she **doesn't**.|Oui. / Non.]]",
           "Avec un mot interrogatif, il faut aussi do / does :\n- [[Why **do** you study English?|Pourquoi est-ce que tu étudies l'anglais ?]]\n- [[How often **does** he go to the gym?|Combien de fois va-t-il à la salle de sport ?]]",
-          "Le -s va sur **does**, pas sur le verbe : *Does John has…?* ❌ → **Does John have…?** ✅"
+          "Le -s va sur **does**, pas sur le verbe : *Does John has…?* ❌ → **Does John have…?** ✅",
+          "**Is** ou **Does** ?\n- être + adjectif ou lieu → **Is / Are** : [[**Is** your coach strict?|Est-ce que ton entraîneur est sévère ?]]\n- un autre verbe → **Do / Does** : [[**Does** your coach shout?|Est-ce que ton entraîneur crie ?]]"
         ],
         "examples": [
           "[[**Do** they eat balanced meals? Yes, they **do**.|Est-ce qu'ils mangent des repas équilibrés ? Oui.]]",
@@ -1163,6 +1257,61 @@ window.registerPack({
           ],
           "answer": 1,
           "explanation": "✅ Why + **do** + you + verbe sans -s : [[Why do you eat junk food?|Pourquoi est-ce que tu manges de la malbouffe ?]]"
+        },
+        {
+          "id": "bd7bf2fc-5806-439b-8c18-7050b16b266e",
+          "type": "sort",
+          "prompt": "Range chaque question : **Is** ou **Does** ?",
+          "categories": [
+            {
+              "id": "is",
+              "label": "Is"
+            },
+            {
+              "id": "does",
+              "label": "Does"
+            }
+          ],
+          "items": [
+            {
+              "text": "___ your coach strict?",
+              "cat": "is"
+            },
+            {
+              "text": "___ your coach shout?",
+              "cat": "does"
+            },
+            {
+              "text": "___ she tired?",
+              "cat": "is"
+            },
+            {
+              "text": "___ she get enough sleep?",
+              "cat": "does"
+            },
+            {
+              "text": "___ your brother fit?",
+              "cat": "is"
+            },
+            {
+              "text": "___ your brother stay up late?",
+              "cat": "does"
+            }
+          ],
+          "explanation": "✅ Deux cas :\n- être + adjectif (strict, tired, fit) → **Is**\n- un autre verbe (shout, get, stay) → **Does**"
+        },
+        {
+          "id": "6809cccd-3525-470b-aaa4-a2f6576baef1",
+          "type": "mcq",
+          "prompt": "Traduis : « Est-ce que ton entraîneur est sévère ? »",
+          "options": [
+            "Does your coach strict?",
+            "Does your coach is strict?",
+            "Is your coach stricts?",
+            "Is your coach strict?"
+          ],
+          "answer": 3,
+          "explanation": "✅ « être sévère » = **be** + adjectif : **Is** your coach strict? Jamais de does avec be."
         },
         {
           "id": "7415888d-6ce1-4cd0-a0e2-9327e309e4d6",
@@ -1353,6 +1502,193 @@ window.registerPack({
       ]
     },
     {
+      "id": "words",
+      "title": "Words to remember",
+      "subtitle": "Tricky words",
+      "subtitleFr": "Les mots pièges",
+      "icon": "🧠",
+      "color": "#14B8A6",
+      "lesson": {
+        "title": "[[Words to remember|Les mots à retenir]]",
+        "points": [
+          "Ces mots ne se traduisent pas mot à mot :\n- en forme = **fit** (pas *in form*)\n- en bonne santé = **in good health**\n- faire du sport = **exercise** (on dit aussi **do sport**)",
+          "Avec **be** en anglais, avec « avoir » en français :\n- avoir faim = **be hungry** (pas *have hunger*)\n- [[I'm hungry.|J'ai faim.]]",
+          "Les habitudes :\n- sauter des repas = **skip meals**\n- veiller tard = **stay up late**\n- se coucher tôt = **go to bed early**\n- la malbouffe = **junk food**\n- se promener = **take walks** (ou take a walk)\n- au grand air = **in fresh air** (pas *in big air*)",
+          "Le sport et le temps :\n- la salle de sport = **the gym**\n- un entraîneur = **a coach**\n- sévère = **strict**\n- tous les soirs = **every evening** (pas *all the evenings*)\n- à la maison = **at home**"
+        ],
+        "examples": [
+          "[[**Are** you **fit**?|Est-ce que tu es en forme ?]]",
+          "[[I **exercise** twice a week.|Je fais du sport deux fois par semaine.]]"
+        ]
+      },
+      "exercises": [
+        {
+          "id": "cb7b1b47-0965-421c-a7ea-1047010886a3",
+          "type": "mcq",
+          "prompt": "Traduis : « Est-ce que tu es en forme ? »",
+          "options": [
+            "Are you in form?",
+            "Do you fit?",
+            "Are you fit?",
+            "Are you in a form?"
+          ],
+          "answer": 2,
+          "explanation": "✅ « en forme » = **fit**, un seul mot. *In form* ne se dit pas."
+        },
+        {
+          "id": "b747b146-0a88-477c-b9d7-23bb50656742",
+          "type": "question",
+          "prompt": "Comment dit-on « en forme » en anglais ?",
+          "answers": [
+            "fit"
+          ],
+          "explanation": "✅ **fit** = en forme : [[Are you fit?|Est-ce que tu es en forme ?]]"
+        },
+        {
+          "id": "6ba7a033-5398-43d0-b0e9-22579bfcb468",
+          "type": "question",
+          "prompt": "Comment dit-on « faire du sport » en anglais ?",
+          "answers": [
+            "exercise",
+            "to exercise",
+            "do sport",
+            "to do sport"
+          ],
+          "explanation": "✅ **exercise** (on dit aussi do sport) : [[I exercise.|Je fais du sport.]]"
+        },
+        {
+          "id": "06f9aec4-4265-465b-a29d-7e296c38c17f",
+          "type": "mcq",
+          "prompt": "Traduis : « J'ai faim. »",
+          "options": [
+            "I'm hungry.",
+            "I have hungry.",
+            "I have hunger.",
+            "I'm hunger."
+          ],
+          "answer": 0,
+          "explanation": "✅ « avoir faim » = **be hungry** : I**'m** hungry."
+        },
+        {
+          "id": "38d0d2d5-80a2-4237-9d46-8745ac9e81ad",
+          "type": "mcq",
+          "prompt": "Traduis : « Est-ce que ton frère veille tard ? »",
+          "options": [
+            "Does your brother watch late?",
+            "Does your brother stay up late?",
+            "Does your brother stays up late?",
+            "Is your brother stay up late?"
+          ],
+          "answer": 1,
+          "explanation": "✅ « veiller tard » = **stay up late** ; does + verbe sans -s."
+        },
+        {
+          "id": "cab35810-f347-4671-9ba0-82e152d2c9b3",
+          "type": "question",
+          "prompt": "Comment dit-on « sauter des repas » en anglais ?",
+          "answers": [
+            "skip meals",
+            "to skip meals"
+          ],
+          "explanation": "✅ **skip meals** : [[We don't skip meals.|Nous ne sautons pas de repas.]]"
+        },
+        {
+          "id": "1719d8dd-449e-48ec-9b75-710ee15f878b",
+          "type": "question",
+          "prompt": "Comment dit-on « se promener » en anglais ?",
+          "answers": [
+            "take walks",
+            "to take walks",
+            "take a walk",
+            "to take a walk"
+          ],
+          "explanation": "✅ **take walks** (ou take a walk) = se promener."
+        },
+        {
+          "id": "83d3f531-d023-424a-bb83-e696ef8044a4",
+          "type": "question",
+          "prompt": "Comment dit-on « au grand air » en anglais ?",
+          "answers": [
+            "in fresh air",
+            "in the fresh air"
+          ],
+          "explanation": "✅ **in fresh air** = au grand air (pas *in big air*)."
+        },
+        {
+          "id": "f9aa4137-fcc3-4a26-8367-8e5da166d76d",
+          "type": "mcq",
+          "prompt": "Traduis : « Le samedi, nous nous promenons au grand air. »",
+          "options": [
+            "On Saturdays, we walk us in big air.",
+            "On Saturdays, we take walks in fresh air.",
+            "On Saturdays, we take walks in big air.",
+            "On Saturday, we promenade in fresh air."
+          ],
+          "answer": 1,
+          "explanation": "✅ [[take walks|se promener]] ; [[in fresh air|au grand air]] ; **On Saturdays** = le samedi (une habitude)."
+        },
+        {
+          "id": "55794012-7383-45fc-a5a1-233dc5ee1332",
+          "type": "question",
+          "prompt": "Comment dit-on « la malbouffe » en anglais ?",
+          "answers": [
+            "junk food"
+          ],
+          "explanation": "✅ **junk food** = la malbouffe."
+        },
+        {
+          "id": "f929ffa5-119d-427e-bc0f-6553a0a3baa5",
+          "type": "question",
+          "prompt": "Comment dit-on « la salle de sport » en anglais ?",
+          "answers": [
+            "the gym",
+            "gym",
+            "a gym"
+          ],
+          "explanation": "✅ **the gym** = la salle de sport."
+        },
+        {
+          "id": "a0f0c945-fe03-478f-908d-aae3c1a30a5f",
+          "type": "question",
+          "prompt": "Comment dit-on « un entraîneur » en anglais ?",
+          "answers": [
+            "a coach",
+            "coach",
+            "the coach"
+          ],
+          "explanation": "✅ **a coach** = un entraîneur."
+        },
+        {
+          "id": "dfd3a55f-06fb-4274-968c-49fe1d8a7158",
+          "type": "question",
+          "prompt": "Comment dit-on « sévère » en anglais ?",
+          "answers": [
+            "strict"
+          ],
+          "explanation": "✅ **strict** = sévère : [[My coach isn't strict.|Mon entraîneur n'est pas sévère.]]"
+        },
+        {
+          "id": "6b5b6edd-4fb6-4a2b-9571-b761bf003814",
+          "type": "question",
+          "prompt": "Comment dit-on « tous les soirs » en anglais ?",
+          "answers": [
+            "every evening",
+            "every night"
+          ],
+          "explanation": "✅ **every evening** (ou every night), pas *all the evenings*."
+        },
+        {
+          "id": "55894052-4dea-4665-8517-903e28eff71b",
+          "type": "question",
+          "prompt": "Comment dit-on « à la maison » en anglais ?",
+          "answers": [
+            "at home"
+          ],
+          "explanation": "✅ **at home** = à la maison : [[He works at home.|Il travaille à la maison.]]"
+        }
+      ]
+    },
+    {
       "id": 8,
       "title": "Boss: Translate!",
       "subtitle": "Present simple test",
@@ -1367,116 +1703,97 @@ window.registerPack({
           "Les adverbes de fréquence se placent **avant le verbe**, mais **après be**."
         ],
         "examples": [
-          "[[My brother **usually goes** to bed early.|D'habitude, mon frère se couche tôt.]]",
-          "[[**Does** she **get** enough sleep? Yes, she **does**.|Est-ce qu'elle dort assez ? Oui.]]"
+          "[[My sister **watches** TV every evening.|Ma sœur regarde la télé tous les soirs.]]",
+          "[[**Is** your coach strict?|Est-ce que ton entraîneur est sévère ?]]"
         ]
       },
       "draw": 12,
       "exercises": [
         {
-          "id": "37defc20-3e29-4d51-b2e2-c6edaa32464b",
+          "id": "72f8642c-5b38-4d6e-b29a-0db4e3a48eae",
           "type": "question",
-          "prompt": "Traduis : « Je mange souvent des fruits. »",
+          "prompt": "Traduis : « Je mange souvent des repas équilibrés. »",
           "answers": [
-            "I often eat fruit.",
-            "I often eat fruits."
+            "I often eat balanced meals."
           ],
-          "explanation": "Adverbe avant le verbe : [[I often eat fruit.|Je mange souvent des fruits.]]"
+          "explanation": "✅ **often** avant le verbe. (exemple du monde 1)"
         },
         {
-          "id": "cefdbb05-1a1b-4401-9dca-a4c798fa1a75",
+          "id": "59c9817d-a175-44a8-a853-0e886bdb7d57",
           "type": "question",
-          "prompt": "Traduis : « Elle va à la salle de sport deux fois par semaine. »",
+          "prompt": "Traduis : « Mon frère va à la salle de sport deux fois par semaine. »",
           "answers": [
-            "She goes to the gym twice a week.",
-            "Twice a week, she goes to the gym."
+            "My brother goes to the gym twice a week."
           ],
-          "explanation": "**She goes** (go + es), **twice a week** à la fin : [[She goes to the gym twice a week.|Elle va à la salle de sport deux fois par semaine.]]"
+          "explanation": "✅ my brother = he → **goes** ; **twice a week**. (monde 1 : She goes to the gym twice a week.)"
         },
         {
-          "id": "39d69e09-f859-4975-a07d-9c91941cf303",
+          "id": "a42d566d-f233-4c83-868f-31b51384a9ef",
           "type": "question",
-          "prompt": "Traduis : « Mon frère ne fume pas. »",
+          "prompt": "Traduis : « Le samedi, nous nous promenons au grand air. »",
           "answers": [
-            "My brother doesn't smoke."
+            "On Saturdays, we take walks in fresh air.",
+            "On Saturdays, we take walks in the fresh air.",
+            "On Saturdays, we take a walk in fresh air.",
+            "On Saturdays, we take a walk in the fresh air."
           ],
-          "explanation": "**doesn't** + verbe sans -s : [[My brother doesn't smoke.|Mon frère ne fume pas.]]"
+          "multiline": true,
+          "explanation": "✅ **On Saturdays** ; [[take walks in fresh air|se promener au grand air]]. (monde 1 et « Words to remember »)"
         },
         {
-          "id": "6a13cc85-c1f3-4cb9-a9c6-d6b11aceeb6e",
+          "id": "80a81f3c-0d0b-4af2-873e-fbb267fea89c",
           "type": "question",
-          "prompt": "Traduis : « Est-ce que tu fais du sport ? »",
+          "prompt": "Traduis : « Nous allons à la salle de sport toutes les semaines. »",
           "answers": [
-            "Do you do sport?",
-            "Do you do sports?",
-            "Do you exercise?",
-            "Do you work out?",
-            "Do you play sport?",
-            "Do you play sports?"
+            "We go to the gym every week."
           ],
-          "explanation": "**Do** + you + verbe : [[Do you do sport?|Est-ce que tu fais du sport ?]]"
+          "explanation": "✅ **every week** à la fin. (monde 1)"
         },
         {
-          "id": "63af2b18-0b35-443b-91aa-ad6ff78a3199",
+          "id": "d78dbaa0-819d-4ac8-9402-9836d8347000",
           "type": "question",
-          "prompt": "Traduis : « Est-ce qu'elle dort assez ? Oui. »",
+          "prompt": "Traduis : « Je fais du sport trois fois par semaine. »",
           "answers": [
-            "Does she get enough sleep? Yes, she does.",
-            "Does she sleep enough? Yes, she does."
+            "I exercise three times a week.",
+            "I do sport three times a week."
           ],
-          "explanation": "**Does** + she + verbe sans -s, réponse courte **Yes, she does** : [[Does she get enough sleep? Yes, she does.|Est-ce qu'elle dort assez ? Oui.]]"
+          "explanation": "✅ [[exercise|faire du sport]] (ou do sport) ; **three times a week**. (monde 1)"
         },
         {
-          "id": "55c7e4a9-b62c-4bd1-a23f-b617ed8df736",
+          "id": "f1641fe5-d2ac-433e-a39e-3a409ff8384d",
           "type": "question",
-          "prompt": "Traduis : « Je ne saute jamais de repas. »",
+          "prompt": "Traduis : « Je ne saute pas de repas. »",
           "answers": [
-            "I never skip meals.",
-            "I never skip a meal."
+            "I don't skip meals."
           ],
-          "explanation": "**never** avant le verbe, sans don't : [[I never skip meals.|Je ne saute jamais de repas.]]"
+          "explanation": "✅ **don't** + verbe : [[skip meals|sauter des repas]]. (monde 5 : We don't skip meals.)"
         },
         {
-          "id": "a0ef0817-e22f-415f-9153-ea5542295b47",
+          "id": "f778502b-b77c-4835-8ef5-a583ebda7237",
           "type": "question",
-          "prompt": "Traduis : « Il regarde la télé tous les soirs. »",
+          "prompt": "Traduis : « Je suis en bonne santé. »",
           "answers": [
-            "He watches TV every evening.",
-            "He watches TV every night.",
-            "He watches television every evening.",
-            "He watches television every night.",
-            "He watches the TV every evening."
+            "I am in good health."
           ],
-          "explanation": "watch + **es** : [[He watches TV every evening.|Il regarde la télé tous les soirs.]]"
+          "explanation": "✅ [[I'm in good health.|Je suis en bonne santé.]] (exemple du monde 2)"
         },
         {
-          "id": "891416bc-a825-4383-b875-221ba0962fb8",
+          "id": "6277e6b7-7609-4b67-a06d-7c3280082da3",
           "type": "question",
-          "prompt": "Traduis : « Nous ne mangeons pas de malbouffe. »",
+          "prompt": "Traduis : « Mon entraîneur n'est pas sévère. »",
           "answers": [
-            "We don't eat junk food."
+            "My coach isn't strict."
           ],
-          "explanation": "**don't** + eat : [[We don't eat junk food.|Nous ne mangeons pas de malbouffe.]]"
+          "explanation": "✅ **be** + not : isn't. (exemple du monde 2)"
         },
         {
-          "id": "a8fc9f4a-2968-4784-b05c-80889a391867",
+          "id": "b8f90895-d255-4c16-979b-72594b41ce80",
           "type": "question",
-          "prompt": "Traduis : « Ils sont en forme. »",
+          "prompt": "Traduis : « Est-ce que tu es en forme ? »",
           "answers": [
-            "They are fit.",
-            "They are in good shape.",
-            "They are in tip top shape."
+            "Are you fit?"
           ],
-          "explanation": "**they** → **are** : [[They are fit.|Ils sont en forme.]]"
-        },
-        {
-          "id": "c455b443-dcb2-4246-9e37-148274a7a354",
-          "type": "question",
-          "prompt": "Traduis : « Je ne suis pas fatigué. »",
-          "answers": [
-            "I am not tired."
-          ],
-          "explanation": "**I am not** : [[I'm not tired.|Je ne suis pas fatigué.]]"
+          "explanation": "✅ Avec **be**, pas de do : **Are** you fit? « en forme » = **fit**. (mondes 2 et « Words to remember »)"
         },
         {
           "id": "514e7a90-69f1-4e78-abc1-0e81cd273744",
@@ -1485,185 +1802,177 @@ window.registerPack({
           "answers": [
             "Is your coach strict?"
           ],
-          "explanation": "Avec **be**, on inverse : [[Is your coach strict?|Est-ce que ton entraîneur est sévère ?]]"
+          "explanation": "✅ « être sévère » = **be** + adjectif : **Is** your coach strict? (mondes 2 et 6)"
         },
         {
-          "id": "4ead2940-a367-4c64-9ce2-406cffff0ea4",
+          "id": "8dc27dbf-3e0e-4429-8758-25b371f8562a",
           "type": "question",
-          "prompt": "Traduis : « Elle s'inquiète trop. »",
+          "prompt": "Traduis : « Mon frère est en bonne santé. »",
           "answers": [
-            "She worries too much."
+            "My brother is in good health."
           ],
-          "explanation": "worry → **worries** : [[She worries too much.|Elle s'inquiète trop.]]"
+          "explanation": "✅ my brother → **is**. (monde 2)"
         },
         {
-          "id": "d76240c4-dabc-4b47-9978-dcabedc39f9d",
+          "id": "7ce74649-9dfa-4c7e-b397-2aef62442701",
           "type": "question",
-          "prompt": "Traduis : « Le samedi, je me promène au grand air. »",
+          "prompt": "Traduis : « Ma sœur regarde la télé tous les soirs. »",
           "answers": [
-            "On Saturdays, I take walks in fresh air.",
-            "I take walks in fresh air on Saturdays.",
-            "On Saturdays, I take a walk in fresh air.",
-            "I take a walk in fresh air on Saturdays.",
-            "On Saturdays, I take walks in the fresh air.",
-            "I take walks in the fresh air on Saturdays."
+            "My sister watches TV every evening.",
+            "My sister watches TV every night."
           ],
-          "explanation": "Jour **au pluriel** pour une habitude : [[On Saturdays, I take walks in fresh air.|Le samedi, je me promène au grand air.]]"
+          "explanation": "✅ watch → **watches** avec he / she. (exemple du monde 3)"
         },
         {
-          "id": "5a920ee6-94bf-4825-8afc-e99ca3928d76",
+          "id": "f07c59a6-4085-4fda-8450-b69b40c903fa",
           "type": "question",
-          "prompt": "Traduis : « Pourquoi est-ce que tu veilles tard ? »",
+          "prompt": "Traduis : « Il se couche tôt. »",
           "answers": [
-            "Why do you stay up late?"
+            "He goes to bed early."
           ],
-          "explanation": "Why + **do** + you : [[Why do you stay up late?|Pourquoi est-ce que tu veilles tard ?]]"
+          "explanation": "✅ go → **goes** ; [[go to bed early|se coucher tôt]]. (monde 3)"
         },
         {
-          "id": "96d1b2a4-e2d7-4414-b062-019bf9e40392",
+          "id": "983bff29-6e43-4e37-8cf5-7e106834b6ad",
           "type": "question",
-          "prompt": "Traduis : « Mon père a une alimentation équilibrée. »",
+          "prompt": "Traduis : « Elle a une alimentation équilibrée. »",
           "answers": [
-            "My father has a balanced diet.",
-            "My dad has a balanced diet."
+            "She has a balanced diet."
           ],
-          "explanation": "have → **has** avec he : [[My father has a balanced diet.|Mon père a une alimentation équilibrée.]]"
+          "explanation": "✅ have → **has**. (monde 3)"
         },
         {
-          "id": "edb1915e-61bb-406e-b939-e8b16d4b8353",
+          "id": "f222c920-c9b5-4713-b1c0-b282a1108788",
           "type": "question",
-          "prompt": "Traduis : « Est-ce que tes parents boivent du soda ? Non. »",
+          "prompt": "Traduis : « Tom joue au tennis le samedi. »",
           "answers": [
-            "Do your parents drink soda? No, they don't."
+            "Tom plays tennis on Saturdays."
           ],
-          "explanation": "**your parents** = they → **Do**, réponse **No, they don't** : [[Do your parents drink soda? No, they don't.|Est-ce que tes parents boivent du soda ? Non.]]"
+          "explanation": "✅ play → **plays** (voyelle + y : juste -s). (monde 3)"
         },
         {
-          "id": "beb4343d-ae31-40db-969d-7907ddfd07e5",
+          "id": "16b689bf-2959-4749-b1c7-40f0341fd7b6",
           "type": "question",
-          "prompt": "Traduis : « Je suis toujours en retard. »",
+          "prompt": "Traduis : « Il travaille à la maison. »",
           "answers": [
-            "I am always late."
+            "He works at home."
           ],
-          "explanation": "Avec **be**, l'adverbe se place après : [[I'm always late.|Je suis toujours en retard.]]"
+          "explanation": "✅ work → **works**. (exemple du monde 4)"
         },
         {
-          "id": "035cb39c-8c66-4cbc-b6c8-28fe4e284d5f",
+          "id": "0ca582d4-5c52-4165-9408-2fa23ae8fefe",
           "type": "question",
-          "prompt": "Traduis : « Il ne boit pas de thé. »",
+          "prompt": "Traduis : « Ma sœur ne mange pas de malbouffe. »",
           "answers": [
-            "He doesn't drink tea."
+            "My sister doesn't eat junk food."
           ],
-          "explanation": "**doesn't** + drink (sans -s) : [[He doesn't drink tea.|Il ne boit pas de thé.]]"
+          "explanation": "✅ **doesn't** + verbe sans -s. (exemple du monde 5)"
         },
         {
-          "id": "60c4b35e-fa62-4ab8-8acb-90c186eeaf70",
+          "id": "5fdd6a0c-4bea-4788-8795-e7dfbbae1c5c",
           "type": "question",
-          "prompt": "Traduis : « Elle joue parfois au tennis. »",
+          "prompt": "Traduis : « Mon père ne fume pas. »",
           "answers": [
-            "She sometimes plays tennis."
+            "My dad doesn't smoke.",
+            "My father doesn't smoke."
           ],
-          "explanation": "**sometimes** avant le verbe, **plays** avec she : [[She sometimes plays tennis.|Elle joue parfois au tennis.]]"
+          "explanation": "✅ my dad → **doesn't** smoke. (monde 5)"
         },
         {
-          "id": "ecf069fc-f9a7-46a1-b3a7-90450c48474f",
+          "id": "bdfaac16-7627-414d-825e-e11eb89dc876",
           "type": "question",
-          "prompt": "Traduis : « Est-ce que Tom a un vélo ? »",
+          "prompt": "Traduis : « Je ne vais pas à la salle de sport. »",
           "answers": [
-            "Does Tom have a bike?",
-            "Has Tom got a bike?"
+            "I don't go to the gym."
           ],
-          "explanation": "**Does** + Tom + **have** (sans -s) : [[Does Tom have a bike?|Est-ce que Tom a un vélo ?]]"
+          "explanation": "✅ I → **don't** go. (monde 5)"
         },
         {
-          "id": "243dd076-e98e-4bc7-9391-d709bcf6df94",
+          "id": "8615e60f-984c-4645-9bc7-617165707b94",
           "type": "question",
-          "prompt": "Traduis : « Nous allons à la piscine une fois par semaine. »",
+          "prompt": "Traduis : « Est-ce qu'ils mangent des repas équilibrés ? Oui. »",
           "answers": [
-            "We go to the swimming pool once a week.",
-            "We go to the pool once a week.",
-            "We go swimming once a week.",
-            "Once a week, we go to the swimming pool.",
-            "Once a week, we go to the pool."
+            "Do they eat balanced meals? Yes, they do."
           ],
-          "explanation": "**once a week** = une fois par semaine : [[We go to the swimming pool once a week.|Nous allons à la piscine une fois par semaine.]]"
+          "multiline": true,
+          "explanation": "✅ **Do** they… ? Yes, they **do**. (exemple du monde 6)"
         },
         {
-          "id": "806e8a0c-fbc2-4495-9a50-6433c3e658d9",
+          "id": "0e062803-9040-4a19-8c24-60592116c85d",
           "type": "question",
-          "prompt": "Traduis : « D'habitude, mon frère se couche tôt. »",
+          "prompt": "Traduis : « Est-ce que ton frère veille tard ? Non. »",
           "answers": [
-            "My brother usually goes to bed early.",
-            "Usually, my brother goes to bed early."
+            "Does your brother stay up late? No, he doesn't."
           ],
-          "explanation": "**usually** avant le verbe, **goes** avec he : [[My brother usually goes to bed early.|D'habitude, mon frère se couche tôt.]]"
+          "multiline": true,
+          "explanation": "✅ **Does** your brother **stay** (sans -s)… ? No, he **doesn't**. (exemple du monde 6)"
         },
         {
-          "id": "2110167f-dde7-40c4-a92f-a963bde729c3",
+          "id": "b508ecb4-1f5b-4713-880e-04767fa53e99",
           "type": "question",
-          "prompt": "Traduis : « Combien de fois est-ce que tu vas à la salle de sport ? »",
+          "prompt": "Traduis : « Combien de fois vas-tu à la salle de sport ? »",
           "answers": [
-            "How often do you go to the gym?",
-            "How many times do you go to the gym?"
+            "How often do you go to the gym?"
           ],
-          "explanation": "**How often** + do + you : [[How often do you go to the gym?|Combien de fois vas-tu à la salle de sport ?]]"
+          "explanation": "✅ **How often** + do + you + go ? (monde 6)"
         },
         {
-          "id": "77756bc8-9e5c-4229-9709-761eb8560cc3",
+          "id": "68bce652-857b-4624-860d-de40088d8269",
           "type": "question",
-          "prompt": "Traduis : « Elle n'est pas stressée. »",
+          "prompt": "Traduis : « Pourquoi est-ce que tu manges de la malbouffe ? »",
           "answers": [
-            "She isn't stressed."
+            "Why do you eat junk food?"
           ],
-          "explanation": "**she** → **isn't** : [[She isn't stressed.|Elle n'est pas stressée.]]"
+          "explanation": "✅ **Why** + do + you + eat ? (monde 6)"
         },
         {
-          "id": "705ac23c-29da-4235-996f-77dda2032c27",
+          "id": "857c1540-4fef-44dc-bbe9-d1255562ef39",
           "type": "question",
-          "prompt": "Traduis : « Ma sœur ne mange jamais de bonbons. »",
+          "prompt": "Traduis : « Est-ce que ta mère boit du café ? Non. »",
           "answers": [
-            "My sister never eats sweets.",
-            "My sister never eats candy.",
-            "My sister never eats candies."
+            "Does your mum drink coffee? No, she doesn't.",
+            "Does your mom drink coffee? No, she doesn't.",
+            "Does your mother drink coffee? No, she doesn't."
           ],
-          "explanation": "**never** + **eats** (pas de doesn't avec never) : [[My sister never eats sweets.|Ma sœur ne mange jamais de bonbons.]]"
+          "multiline": true,
+          "explanation": "✅ **Does** your mum **drink**… ? No, she **doesn't**. (monde 6)"
         },
         {
-          "id": "33c98da7-5897-4a5d-8d98-e1e6638c30eb",
+          "id": "7227dd11-900a-4c07-9808-596e1a344cc6",
           "type": "question",
-          "prompt": "Traduis : « Est-ce que vous êtes en bonne santé ? »",
+          "prompt": "Traduis : « Je joue souvent au foot. »",
           "answers": [
-            "Are you in good health?",
-            "Are you healthy?"
+            "I often play football.",
+            "I often play soccer."
           ],
-          "explanation": "Avec **be**, on inverse, sans do : [[Are you in good health?|Est-ce que vous êtes en bonne santé ?]]"
+          "explanation": "✅ **often** avant le verbe. (monde 7)"
         },
         {
-          "id": "04b58708-405d-4ff2-aaf3-aae897e7efe5",
+          "id": "cb134552-ac1e-48fe-aafc-d42053852517",
           "type": "question",
-          "prompt": "Traduis : « Je fais de l'exercice trois fois par semaine. »",
+          "prompt": "Traduis : « Elle est toujours fatiguée. »",
           "answers": [
-            "I exercise three times a week.",
-            "I work out three times a week.",
-            "I do sport three times a week.",
-            "I do sports three times a week.",
-            "I do exercise three times a week."
+            "She is always tired."
           ],
-          "explanation": "**three times a week** à la fin : [[I exercise three times a week.|Je fais de l'exercice trois fois par semaine.]]"
+          "explanation": "✅ **always** après be. (monde 7)"
         },
         {
-          "id": "698ca52b-950b-42ee-8aed-eabd43985381",
+          "id": "47f91aff-3c41-4af7-90ca-05b0f86802ef",
           "type": "question",
-          "prompt": "Traduis : « Il ne mange pas cinq fruits et légumes par jour. »",
+          "prompt": "Traduis : « Je joue parfois aux jeux vidéo. »",
           "answers": [
-            "He doesn't eat five portions of fruit and vegetables a day.",
-            "He doesn't eat five fruits and vegetables a day.",
-            "He doesn't eat five portions of fruits and vegetables a day.",
-            "He doesn't eat five fruit and vegetables a day.",
-            "He doesn't eat five portions of fruit and vegetables per day.",
-            "He doesn't eat five fruits and vegetables per day."
+            "I sometimes play video games."
           ],
-          "explanation": "**doesn't** + eat : [[He doesn't eat five portions of fruit and vegetables a day.|Il ne mange pas cinq fruits et légumes par jour.]]"
+          "explanation": "✅ **sometimes** avant le verbe. (exemple du monde 7)"
+        },
+        {
+          "id": "82b76bdb-2795-4210-b127-a0b49986ffe8",
+          "type": "question",
+          "prompt": "Traduis : « Nous ne sommes jamais en retard. »",
+          "answers": [
+            "We are never late."
+          ],
+          "explanation": "✅ **never** après be. (exemple du monde 7)"
         }
       ]
     }

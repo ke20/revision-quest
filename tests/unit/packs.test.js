@@ -26,7 +26,7 @@ test("the real catalogue: only real packs (no test pack), id = path, level / sub
   assert.strictEqual(p.subject, "anglais");
   assert.strictEqual(p.file, "packs/4e/anglais/giving-advice.js");
   assert.strictEqual(p.lang, "en");
-  assert.strictEqual(p.worldCount, 8);
+  assert.strictEqual(p.worldCount, 9); // 7 mondes + « Words to remember » + le boss
   assert.strictEqual(P.sampleMode, undefined, "no ?sample=1 mode any more");
   assert.deepStrictEqual(j(P.levels().map((l) => l.order)), j(P.levels().map((l) => l.order)).sort((a, b) => a - b), "levels sorted by order");
 });

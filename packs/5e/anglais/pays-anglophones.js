@@ -42,6 +42,16 @@ window.registerPack({
           "explanation": "✅ **the shamrock** (le trèfle) est le symbole de l'Irlande."
         },
         {
+          "id": "2a1c7113-b34b-4683-8a32-91b3091d9ad7",
+          "type": "fill",
+          "prompt": "Complète la phrase.",
+          "sentence": "The symbol of Ireland is the ___. ☘️",
+          "answers": [
+            "shamrock"
+          ],
+          "explanation": "✅ **the shamrock** = le trèfle, le symbole de l'Irlande."
+        },
+        {
           "id": "87a8b10e-2f41-4dee-bd08-36d0c474c117",
           "type": "mcq",
           "prompt": "What is the name of the Irish festival on March 17th?",
@@ -81,6 +91,16 @@ window.registerPack({
           "explanation": "✅ **Buckingham Palace**. [[The White House|La Maison-Blanche]] est aux États-Unis."
         },
         {
+          "id": "2a56a43f-10dc-450f-89bc-b4c5c57c412f",
+          "type": "fill",
+          "prompt": "Complète la phrase.",
+          "sentence": "The King's official palace in London is ___ Palace.",
+          "answers": [
+            "Buckingham"
+          ],
+          "explanation": "✅ **Buckingham Palace**, le palais officiel du roi à Londres."
+        },
+        {
           "id": "715fa109-dd9d-4178-baa4-53bee7440fa6",
           "type": "mcq",
           "prompt": "What colour are the buses and the phone boxes in London?",
@@ -116,6 +136,16 @@ window.registerPack({
             }
           ],
           "explanation": "✅ Le Royaume-Uni :\n- England\n- Scotland\n- Wales\n- Northern Ireland"
+        },
+        {
+          "id": "f3e5e947-6b0d-4bc6-a361-ceb061992c46",
+          "type": "fill",
+          "prompt": "Complète la phrase.",
+          "sentence": "The capital city of Scotland is ___.",
+          "answers": [
+            "Edinburgh"
+          ],
+          "explanation": "✅ **Edinburgh** (Édimbourg) est la capitale de l'Écosse : [[Scotland|l'Écosse]]."
         },
         {
           "id": "a6df28c7-e841-4682-adf1-1b05ad886bed",
@@ -245,6 +275,16 @@ window.registerPack({
           "explanation": "✅ **Sacramento**. Los Angeles et San Francisco sont plus grandes, mais ce ne sont pas les capitales."
         },
         {
+          "id": "bea37f4a-cd93-4562-b51b-4a26b8a22263",
+          "type": "fill",
+          "prompt": "Complète la phrase.",
+          "sentence": "The capital city of California is ___.",
+          "answers": [
+            "Sacramento"
+          ],
+          "explanation": "✅ **Sacramento** (pas Los Angeles)."
+        },
+        {
           "id": "869aaa92-c24b-49f6-b6ba-9f8e8a4c9464",
           "type": "mcq",
           "prompt": "What is the capital city of Canada?",
@@ -256,6 +296,16 @@ window.registerPack({
           ],
           "answer": 3,
           "explanation": "✅ **Ottawa**. Toronto est la plus grande ville du Canada."
+        },
+        {
+          "id": "4266d626-2751-4056-805e-92717c22c68c",
+          "type": "fill",
+          "prompt": "Complète la phrase.",
+          "sentence": "The capital city of Canada is ___.",
+          "answers": [
+            "Ottawa"
+          ],
+          "explanation": "✅ **Ottawa** (pas Toronto)."
         },
         {
           "id": "5fdda3df-0e51-4fd4-b344-988bcfdc2662",
@@ -394,6 +444,16 @@ window.registerPack({
           "explanation": "✅ **Canberra**. Sydney est la plus grande ville, mais ce n'est pas la capitale."
         },
         {
+          "id": "26bd4147-713b-4b27-bbd8-911bde8e75fa",
+          "type": "fill",
+          "prompt": "Complète la phrase.",
+          "sentence": "The capital city of Australia is ___.",
+          "answers": [
+            "Canberra"
+          ],
+          "explanation": "✅ **Canberra** (pas Sydney)."
+        },
+        {
           "id": "e8a0393c-1cc1-453d-affd-f2ffb5d6ee1d",
           "type": "mcq",
           "prompt": "What is the capital city of New Zealand?",
@@ -405,6 +465,16 @@ window.registerPack({
           ],
           "answer": 0,
           "explanation": "✅ **Wellington**. Auckland est la plus grande ville."
+        },
+        {
+          "id": "d67b9d05-2558-4489-8598-64b8ec864a0e",
+          "type": "fill",
+          "prompt": "Complète la phrase.",
+          "sentence": "The capital city of New Zealand is ___.",
+          "answers": [
+            "Wellington"
+          ],
+          "explanation": "✅ **Wellington** (pas Auckland)."
         },
         {
           "id": "0e556c32-e523-4b32-8be9-b06546f92101",
@@ -483,7 +553,7 @@ window.registerPack({
           "answers": [
             "Belfast"
           ],
-          "explanation": "✅ **Belfast** (Dublin est la capitale de l'Irlande)."
+          "explanation": "✅ **Belfast** ; Dublin est la capitale de l'Irlande, un autre pays. (monde 1)"
         },
         {
           "id": "12885b4f-5dba-4a2e-9f82-e7205e68f71b",
@@ -494,78 +564,19 @@ window.registerPack({
             "the shamrock",
             "shamrock"
           ],
-          "explanation": "✅ **the shamrock** ☘️ (le trèfle)."
+          "explanation": "✅ **the shamrock** ☘️ (le trèfle). (monde 1)"
         },
         {
-          "id": "db2bbcdd-51df-403f-ae29-a5a88dafd2ba",
+          "id": "4eedd96b-10b0-467f-8a9c-b91df8be9db6",
           "type": "question",
-          "prompt": "Where can you see the White House?",
+          "prompt": "What is the name of the Irish festival on March 17th?",
           "answers": [
-            "Washington",
-            "Washington, D.C.",
-            "Washington DC",
-            "in Washington",
-            "in Washington, D.C.",
-            "in Washington DC"
+            "St Patrick's Day",
+            "Saint Patrick's Day",
+            "St Patrick's",
+            "Saint Patrick's"
           ],
-          "explanation": "✅ **Washington, D.C.**, la capitale des États-Unis."
-        },
-        {
-          "id": "6dda75b7-292c-4bcc-a67d-e9515fed67d3",
-          "type": "question",
-          "prompt": "What colour are the New York cabs?",
-          "answers": [
-            "yellow",
-            "They are yellow."
-          ],
-          "explanation": "✅ **yellow** 🚕"
-        },
-        {
-          "id": "89a39d76-814e-4ece-96b2-f4df42fce42f",
-          "type": "question",
-          "prompt": "What is the capital city of California?",
-          "answers": [
-            "Sacramento"
-          ],
-          "explanation": "✅ **Sacramento** (pas Los Angeles)."
-        },
-        {
-          "id": "f5758d08-bca6-4d30-9b8a-816f9af98abb",
-          "type": "question",
-          "prompt": "What is the capital city of Australia?",
-          "answers": [
-            "Canberra"
-          ],
-          "explanation": "✅ **Canberra** (Sydney est la plus grande ville)."
-        },
-        {
-          "id": "eb540b1a-e440-4c8c-a673-555af6405a0c",
-          "type": "question",
-          "prompt": "What is the capital city of Canada?",
-          "answers": [
-            "Ottawa"
-          ],
-          "explanation": "✅ **Ottawa**."
-        },
-        {
-          "id": "97bb8c5f-5ca8-46aa-bfe0-2a21af572098",
-          "type": "question",
-          "prompt": "What do you call the big country north of the USA?",
-          "answers": [
-            "Canada"
-          ],
-          "explanation": "✅ **Canada** est au nord des États-Unis."
-        },
-        {
-          "id": "11a77259-2777-40da-9bb6-a9e6307c4ba1",
-          "type": "question",
-          "prompt": "Which bird lives only in New Zealand?",
-          "answers": [
-            "the kiwi",
-            "kiwi",
-            "a kiwi"
-          ],
-          "explanation": "✅ Le **kiwi**, un oiseau de Nouvelle-Zélande."
+          "explanation": "✅ **St Patrick's Day**, la fête de l'Irlande. (monde 1)"
         },
         {
           "id": "37f5b3c4-8c6e-450d-8c72-df23348505f6",
@@ -579,9 +590,21 @@ window.registerPack({
             "the 17th of March",
             "on March 17th",
             "on March 17",
+            "on 17th March",
+            "on 17 March",
             "on the 17th of March"
           ],
-          "explanation": "✅ **March 17th** ☘️"
+          "explanation": "✅ **March 17th** ☘️ (le 17 mars). (monde 1)"
+        },
+        {
+          "id": "4d063ee1-14a5-4bbb-b461-8dea7babae93",
+          "type": "question",
+          "prompt": "St Patrick's Day is a festival in which country?",
+          "answers": [
+            "Ireland",
+            "in Ireland"
+          ],
+          "explanation": "✅ **Ireland** : le trèfle ☘️ et St Patrick's Day. (monde 1)"
         },
         {
           "id": "bd2ce85c-2a37-4808-80b6-a06897b6557b",
@@ -591,7 +614,7 @@ window.registerPack({
             "Buckingham Palace",
             "Buckingham"
           ],
-          "explanation": "✅ **Buckingham Palace**."
+          "explanation": "✅ **Buckingham Palace**. (monde 1)"
         },
         {
           "id": "4e6e2eb2-aa78-45b9-98af-8e9dbed784db",
@@ -601,35 +624,17 @@ window.registerPack({
             "red",
             "They are red."
           ],
-          "explanation": "✅ **red** : les bus de Londres sont rouges."
+          "explanation": "✅ **red** : les bus de Londres sont rouges. (monde 1)"
         },
         {
-          "id": "4043f27a-6a7b-49d9-a315-2d5eb788f5d6",
+          "id": "ea3e3811-dfb1-4392-ba4a-7a81e5f1406b",
           "type": "question",
-          "prompt": "How many states are there in the USA?",
+          "prompt": "What colour are the phone boxes in London?",
           "answers": [
-            "50",
-            "fifty"
+            "red",
+            "They are red."
           ],
-          "explanation": "✅ **50** États."
-        },
-        {
-          "id": "60cc7774-9b51-45f9-a6c5-78d4dce870e9",
-          "type": "question",
-          "prompt": "What is the capital city of Scotland?",
-          "answers": [
-            "Edinburgh"
-          ],
-          "explanation": "✅ **Edinburgh** (Édimbourg)."
-        },
-        {
-          "id": "51d60cfe-be32-4e15-86cf-5706c427e6b1",
-          "type": "question",
-          "prompt": "What is the capital city of Wales?",
-          "answers": [
-            "Cardiff"
-          ],
-          "explanation": "✅ **Cardiff**."
+          "explanation": "✅ **red** : les cabines téléphoniques de Londres sont rouges. (monde 1)"
         },
         {
           "id": "cba9b5da-dd4b-4850-bcd9-c3d6267d9e77",
@@ -638,7 +643,40 @@ window.registerPack({
           "answers": [
             "London"
           ],
-          "explanation": "✅ **London**."
+          "explanation": "✅ **London** (Londres). (monde 1)"
+        },
+        {
+          "id": "60cc7774-9b51-45f9-a6c5-78d4dce870e9",
+          "type": "question",
+          "prompt": "What is the capital city of Scotland?",
+          "answers": [
+            "Edinburgh"
+          ],
+          "explanation": "✅ **Edinburgh** (Édimbourg). (monde 1)"
+        },
+        {
+          "id": "51d60cfe-be32-4e15-86cf-5706c427e6b1",
+          "type": "question",
+          "prompt": "What is the capital city of Wales?",
+          "answers": [
+            "Cardiff"
+          ],
+          "explanation": "✅ **Cardiff**, la capitale du pays de Galles. (monde 1)"
+        },
+        {
+          "id": "5af0ed0a-e5f2-4d3c-bd1b-007f5abdc0b4",
+          "type": "question",
+          "prompt": "In which country is Edinburgh?",
+          "answers": [
+            "Scotland",
+            "in Scotland",
+            "the UK",
+            "UK",
+            "the United Kingdom",
+            "in the UK",
+            "in the United Kingdom"
+          ],
+          "explanation": "✅ **Scotland** (l'Écosse), dans le Royaume-Uni. (monde 1)"
         },
         {
           "id": "4f518fd8-223a-4b4e-a8d0-24e002e142e7",
@@ -647,16 +685,40 @@ window.registerPack({
           "answers": [
             "Dublin"
           ],
-          "explanation": "✅ **Dublin**."
+          "explanation": "✅ **Dublin**. (mondes 1 et 3)"
         },
         {
-          "id": "936c79c9-d181-4023-945e-67c3a733f8cf",
+          "id": "349fc830-b246-4929-9495-4474b247fe90",
           "type": "question",
-          "prompt": "What is the capital city of New Zealand?",
+          "prompt": "How many nations are there in the UK?",
           "answers": [
-            "Wellington"
+            "4",
+            "four"
           ],
-          "explanation": "✅ **Wellington** (Auckland est la plus grande ville)."
+          "explanation": "✅ **4** :\n- England\n- Scotland\n- Wales\n- Northern Ireland\n(monde 1)"
+        },
+        {
+          "id": "97bb8c5f-5ca8-46aa-bfe0-2a21af572098",
+          "type": "question",
+          "prompt": "What do you call the big country north of the USA?",
+          "answers": [
+            "Canada"
+          ],
+          "explanation": "✅ **Canada** est au nord des États-Unis. (monde 2)"
+        },
+        {
+          "id": "db2bbcdd-51df-403f-ae29-a5a88dafd2ba",
+          "type": "question",
+          "prompt": "Where can you see the White House?",
+          "answers": [
+            "Washington",
+            "Washington, D.C.",
+            "Washington DC",
+            "in Washington",
+            "in Washington, D.C.",
+            "in Washington DC"
+          ],
+          "explanation": "✅ **Washington, D.C.**, la capitale des États-Unis. (monde 2)"
         },
         {
           "id": "3bd3f0f1-98cd-41ea-9d1a-9de67cb13a9d",
@@ -667,7 +729,108 @@ window.registerPack({
             "Washington DC",
             "Washington"
           ],
-          "explanation": "✅ **Washington, D.C.**"
+          "explanation": "✅ **Washington, D.C.** (monde 2)"
+        },
+        {
+          "id": "6dda75b7-292c-4bcc-a67d-e9515fed67d3",
+          "type": "question",
+          "prompt": "What colour are the New York cabs?",
+          "answers": [
+            "yellow",
+            "They are yellow."
+          ],
+          "explanation": "✅ **yellow** 🚕 (monde 2)"
+        },
+        {
+          "id": "89a39d76-814e-4ece-96b2-f4df42fce42f",
+          "type": "question",
+          "prompt": "What is the capital city of California?",
+          "answers": [
+            "Sacramento"
+          ],
+          "explanation": "✅ **Sacramento** (pas Los Angeles). (monde 2)"
+        },
+        {
+          "id": "89836c0d-b1a2-46c4-94e3-cb2a85d9b4d9",
+          "type": "question",
+          "prompt": "In which country is Sacramento?",
+          "answers": [
+            "the USA",
+            "USA",
+            "the United States",
+            "the US",
+            "America",
+            "in the USA",
+            "in the United States"
+          ],
+          "explanation": "✅ **Sacramento** est la capitale de la Californie, aux **USA**. (monde 2)"
+        },
+        {
+          "id": "eb540b1a-e440-4c8c-a673-555af6405a0c",
+          "type": "question",
+          "prompt": "What is the capital city of Canada?",
+          "answers": [
+            "Ottawa"
+          ],
+          "explanation": "✅ **Ottawa** (pas Toronto). (monde 2)"
+        },
+        {
+          "id": "17ab66dc-f4c4-4347-a21c-8f8e0da87920",
+          "type": "question",
+          "prompt": "In which country is Toronto?",
+          "answers": [
+            "Canada",
+            "in Canada"
+          ],
+          "explanation": "✅ **Toronto** est la plus grande ville du **Canada**. (monde 2)"
+        },
+        {
+          "id": "4043f27a-6a7b-49d9-a315-2d5eb788f5d6",
+          "type": "question",
+          "prompt": "How many states are there in the USA?",
+          "answers": [
+            "50",
+            "fifty"
+          ],
+          "explanation": "✅ **50** États. (monde 2)"
+        },
+        {
+          "id": "f5758d08-bca6-4d30-9b8a-816f9af98abb",
+          "type": "question",
+          "prompt": "What is the capital city of Australia?",
+          "answers": [
+            "Canberra"
+          ],
+          "explanation": "✅ **Canberra** (Sydney est la plus grande ville). (monde 3)"
+        },
+        {
+          "id": "31190fde-687b-4001-81c2-4f887a8fd15e",
+          "type": "question",
+          "prompt": "Canberra is the capital city of which country?",
+          "answers": [
+            "Australia"
+          ],
+          "explanation": "✅ **Australia** (l'Australie). (monde 3)"
+        },
+        {
+          "id": "936c79c9-d181-4023-945e-67c3a733f8cf",
+          "type": "question",
+          "prompt": "What is the capital city of New Zealand?",
+          "answers": [
+            "Wellington"
+          ],
+          "explanation": "✅ **Wellington** (Auckland est la plus grande ville). (monde 3)"
+        },
+        {
+          "id": "49f8655c-1b56-4090-a154-ccde2b1c8346",
+          "type": "question",
+          "prompt": "Which animal lives only in New Zealand?",
+          "answers": [
+            "the kiwi",
+            "kiwi",
+            "a kiwi"
+          ],
+          "explanation": "✅ Le **kiwi**, un oiseau qui ne vit qu'en Nouvelle-Zélande. (monde 3)"
         },
         {
           "id": "6c9c5f3a-d8ad-49a9-b145-a9e002cda62a",
@@ -678,78 +841,10 @@ window.registerPack({
             "Melbourne",
             "Brisbane",
             "Perth",
-            "Adelaide",
-            "Canberra"
+            "Canberra",
+            "Adelaide"
           ],
-          "explanation": "✅ Par exemple :\n- **Sydney**\n- **Melbourne**\n- **Canberra**"
-        },
-        {
-          "id": "39325c74-cb2f-47b6-bcce-c020ce3bcbd2",
-          "type": "question",
-          "prompt": "What do you call the country south of the USA?",
-          "answers": [
-            "Mexico"
-          ],
-          "explanation": "✅ **Mexico** (le Mexique) est au sud des États-Unis."
-        },
-        {
-          "id": "db425b1a-7196-4e78-bdb5-dd4a63874d6d",
-          "type": "question",
-          "prompt": "Where does the American President live?",
-          "answers": [
-            "the White House",
-            "White House"
-          ],
-          "explanation": "✅ **The White House** (la Maison-Blanche)."
-        },
-        {
-          "id": "cdb39427-f59f-4eed-b2c6-3ea195ba224d",
-          "type": "question",
-          "prompt": "Which country celebrates St Patrick's Day?",
-          "answers": [
-            "Ireland"
-          ],
-          "explanation": "✅ **Ireland** : le trèfle ☘️ et St Patrick's Day."
-        },
-        {
-          "id": "997ceff2-633d-437c-bf06-1dcd92ee0589",
-          "type": "question",
-          "prompt": "What is the symbol of Canada?",
-          "answers": [
-            "a maple leaf",
-            "the maple leaf",
-            "maple leaf"
-          ],
-          "explanation": "✅ **the maple leaf** 🍁 (la feuille d'érable)."
-        },
-        {
-          "id": "006b0c3a-834b-44bd-ad34-645a5e269e72",
-          "type": "question",
-          "prompt": "What two languages do people speak in Canada?",
-          "answers": [
-            "English and French",
-            "French and English"
-          ],
-          "explanation": "✅ Au Canada, on parle **English and French**."
-        },
-        {
-          "id": "349fc830-b246-4929-9495-4474b247fe90",
-          "type": "question",
-          "prompt": "How many nations are there in the UK?",
-          "answers": [
-            "4",
-            "four"
-          ],
-          "explanation": "✅ **4** :\n- England\n- Scotland\n- Wales\n- Northern Ireland"
-        },
-        {
-          "id": "31190fde-687b-4001-81c2-4f887a8fd15e",
-          "type": "question",
-          "prompt": "Canberra is the capital city of which country?",
-          "answers": [
-            "Australia"
-          ],
-          "explanation": "✅ **Australia** : la capitale est Canberra."
+          "explanation": "✅ Par exemple :\n- **Sydney**\n- **Melbourne**\n- **Canberra** (la capitale)\n(monde 3)"
         }
       ],
       "draw": 12

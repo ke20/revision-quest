@@ -190,7 +190,8 @@ window.registerPack({
         ],
         "examples": [
           "[[A witch has got a long hat and a broom.|Une sorcière a un grand chapeau et un balai.]]",
-          "[[Dracula is a vampire.|Dracula est un vampire.]]"
+          "[[Dracula is a vampire.|Dracula est un vampire.]]",
+          "[[A spider makes webs.|Une araignée fait des toiles.]]"
         ]
       },
       "exercises": [
@@ -585,6 +586,174 @@ window.registerPack({
       ]
     },
     {
+      "id": "words",
+      "title": "Words to remember",
+      "subtitle": "Tricky words",
+      "subtitleFr": "Les mots pièges",
+      "icon": "🧠",
+      "color": "#14B8A6",
+      "lesson": {
+        "title": "[[Words to remember|Les mots à retenir]]",
+        "points": [
+          "Ces mots ne se traduisent pas mot à mot :\n- la scène se passe = **the scene takes place** (pas *passes*)\n- devant = **in front of**\n- une pleine lune = **a full moon** (pas *a moon full*)\n- une maison hantée = **a haunted house**",
+          "« Faire peur » se dit avec **be** :\n- [[A haunted house is spooky.|Une maison hantée fait peur.]] (pas *makes fear*)\n- on dit aussi **creepy** ou **frightening**",
+          "Halloween :\n- se déguiser en = **dress up as** (pas *disguise in*)\n- frapper à la porte = **knock at the door** (ou knock on)\n- demander des bonbons = **ask for** candies (avec **for**)\n- le 31 octobre = **on October 31st**"
+        ],
+        "examples": [
+          "[[They **ask for** candies.|Ils demandent des bonbons.]]",
+          "[[Halloween is **on October 31st**.|Halloween, c'est le 31 octobre.]]"
+        ]
+      },
+      "exercises": [
+        {
+          "id": "12631d0f-ea7b-4294-916b-999766c77507",
+          "type": "question",
+          "prompt": "Comment dit-on « devant » en anglais ?",
+          "answers": [
+            "in front of"
+          ],
+          "explanation": "✅ **in front of** = devant : [[in front of the full moon|devant la pleine lune]]"
+        },
+        {
+          "id": "8244a498-ca47-46c8-9956-9ef52a33677c",
+          "type": "mcq",
+          "prompt": "Traduis : « Il y a une sorcière devant la pleine lune. »",
+          "options": [
+            "There is a witch in front of the moon full.",
+            "There is a witch in front the full moon.",
+            "There is a witch in front of the full moon.",
+            "There is a witch on front of the full moon."
+          ],
+          "answer": 2,
+          "explanation": "✅ devant = **in front of** ; l'adjectif **avant** le nom : **full moon**."
+        },
+        {
+          "id": "cde53b66-910d-405a-a8df-88b338facae4",
+          "type": "question",
+          "prompt": "Comment dit-on « une pleine lune » en anglais ?",
+          "answers": [
+            "a full moon",
+            "full moon",
+            "the full moon"
+          ],
+          "explanation": "✅ **a full moon** : l'adjectif (full) avant le nom."
+        },
+        {
+          "id": "455acf25-517d-4c47-8a3d-1f10cdc780b4",
+          "type": "question",
+          "prompt": "Comment dit-on « une maison hantée » en anglais ?",
+          "answers": [
+            "a haunted house",
+            "haunted house",
+            "the haunted house"
+          ],
+          "explanation": "✅ **a haunted house** = une maison hantée."
+        },
+        {
+          "id": "6c346b95-3504-44df-86d3-99ec70615d09",
+          "type": "mcq",
+          "prompt": "Traduis : « La scène se passe dans un cimetière. »",
+          "options": [
+            "The scene takes place in a graveyard.",
+            "The scene passes in a graveyard.",
+            "The scene take place in a graveyard.",
+            "The scene takes place in a haunted house."
+          ],
+          "answer": 0,
+          "explanation": "✅ se passer = **take place** ; the scene → **takes**."
+        },
+        {
+          "id": "b9c5ccfa-e3bf-4b30-9a06-a467209fa70f",
+          "type": "question",
+          "prompt": "Comment dit-on « la scène se passe » en anglais ?",
+          "answers": [
+            "the scene takes place",
+            "scene takes place"
+          ],
+          "explanation": "✅ **The scene takes place**… = La scène se passe…"
+        },
+        {
+          "id": "50cb48d5-2f0e-4a3a-86c4-4ea24ccf5be5",
+          "type": "mcq",
+          "prompt": "Traduis : « Une maison hantée fait peur. »",
+          "options": [
+            "A haunted house makes fear.",
+            "A haunted house is spooky.",
+            "A house haunted is spooky.",
+            "A haunted house makes spooky."
+          ],
+          "answer": 1,
+          "explanation": "✅ « faire peur » = **be spooky** (ou creepy, frightening)."
+        },
+        {
+          "id": "02575b2b-c2a9-4b45-a781-fb5c5ddd41de",
+          "type": "question",
+          "prompt": "Comment dit-on « se déguiser en » en anglais ?",
+          "answers": [
+            "dress up as",
+            "to dress up as"
+          ],
+          "explanation": "✅ **dress up as** : [[Children dress up as witches.|Les enfants se déguisent en sorcières.]]"
+        },
+        {
+          "id": "d9748004-a811-4bf5-91a5-9a1ac5968340",
+          "type": "mcq",
+          "prompt": "Traduis : « Les enfants se déguisent en fantômes. »",
+          "options": [
+            "Children disguise in ghosts.",
+            "Children dress up in ghosts.",
+            "Children dresses up as ghosts.",
+            "Children dress up as ghosts."
+          ],
+          "answer": 3,
+          "explanation": "✅ se déguiser en = **dress up as**."
+        },
+        {
+          "id": "dd354db9-5f71-4e8f-9562-40bf8475f7a9",
+          "type": "question",
+          "prompt": "Comment dit-on « frapper à la porte » en anglais ?",
+          "answers": [
+            "knock at the door",
+            "to knock at the door",
+            "knock on the door",
+            "to knock on the door"
+          ],
+          "explanation": "✅ **knock at the door** (ou knock on the door)."
+        },
+        {
+          "id": "8857e5c1-d05b-4f6a-ad5c-5c0d4419fb73",
+          "type": "mcq",
+          "prompt": "Traduis : « Ils demandent des bonbons. »",
+          "options": [
+            "They ask candies.",
+            "They demand candies.",
+            "They ask for candies.",
+            "They asks for candies."
+          ],
+          "answer": 2,
+          "explanation": "✅ demander quelque chose = **ask for** ; bonbons = **candies** (ou sweets)."
+        },
+        {
+          "id": "7030d9da-84bc-4db2-99b9-eec3d1fdd706",
+          "type": "question",
+          "prompt": "Comment dit-on « le 31 octobre » en anglais ?",
+          "answers": [
+            "October 31st",
+            "on October 31st",
+            "October 31",
+            "on October 31",
+            "31st October",
+            "on 31st October",
+            "31 October",
+            "on 31 October",
+            "the 31st of October",
+            "on the 31st of October"
+          ],
+          "explanation": "✅ **on October 31st** : [[Halloween is on October 31st.|Halloween, c'est le 31 octobre.]]"
+        }
+      ]
+    },
+    {
       "id": 5,
       "title": "Boss: Halloween night",
       "subtitle": "Translate",
@@ -601,72 +770,13 @@ window.registerPack({
       },
       "exercises": [
         {
-          "id": "24e0a457-9b34-4c01-8dde-6330703d202b",
+          "id": "73dd276f-4d21-412c-add4-3c53a21868a6",
           "type": "question",
-          "prompt": "Comment dit-on « citrouille » en anglais ?",
+          "prompt": "Traduis : « Il y a une sorcière devant la pleine lune. »",
           "answers": [
-            "pumpkin",
-            "a pumpkin"
+            "There is a witch in front of the full moon."
           ],
-          "explanation": "✅ **pumpkin** 🎃"
-        },
-        {
-          "id": "6906aaf0-2806-4379-b558-0dfe6d1d2fe0",
-          "type": "question",
-          "prompt": "Comment dit-on « crâne » en anglais ?",
-          "answers": [
-            "skull",
-            "a skull"
-          ],
-          "explanation": "✅ **skull** 💀 (squelette = skeleton)."
-        },
-        {
-          "id": "769ba83a-52e1-4dc6-8536-4340bd57728c",
-          "type": "question",
-          "prompt": "Comment dit-on « chauve-souris » en anglais ?",
-          "answers": [
-            "bat",
-            "a bat"
-          ],
-          "explanation": "✅ **bat** 🦇"
-        },
-        {
-          "id": "93ca5f8d-e2e3-41bc-9e70-48d0aee5ce08",
-          "type": "question",
-          "prompt": "Traduis : « Il y a un fantôme dans la maison. »",
-          "answers": [
-            "There is a ghost in the house."
-          ],
-          "explanation": "✅ **a ghost** : singulier → **there is**."
-        },
-        {
-          "id": "cb7b922d-d244-432a-9c19-1785ac24f072",
-          "type": "question",
-          "prompt": "Traduis : « La scène se passe dans un cimetière. »",
-          "answers": [
-            "The scene takes place in a graveyard.",
-            "The scene takes place in a cemetery."
-          ],
-          "explanation": "✅ Les mots :\n- **takes place** = se passe\n- **graveyard** ou **cemetery**"
-        },
-        {
-          "id": "4df6071c-b386-4f25-84ef-98fbdc005171",
-          "type": "question",
-          "prompt": "Traduis : « Il y a une pleine lune. »",
-          "answers": [
-            "There is a full moon."
-          ],
-          "explanation": "✅ **a full moon** = une pleine lune."
-        },
-        {
-          "id": "f6d2a06a-1db8-475e-9da9-d541e1f5dd6d",
-          "type": "question",
-          "prompt": "Traduis : « Une sorcière vole sur son balai. »",
-          "answers": [
-            "A witch is flying on her broom.",
-            "A witch flies on her broom."
-          ],
-          "explanation": "✅ Les mots :\n- **witch** (sorcière)\n- **broom** (balai)"
+          "explanation": "✅ devant = **in front of** ; **full moon**. (exemple du monde 1 et « Words to remember »)"
         },
         {
           "id": "a29073c5-b35a-4298-93eb-bdc87eccee56",
@@ -676,7 +786,108 @@ window.registerPack({
             "An owl is in the tree.",
             "There is an owl in the tree."
           ],
-          "explanation": "✅ **an owl** = un hibou."
+          "explanation": "✅ [[owl|hibou]] : **an** owl. (exemple du monde 1)"
+        },
+        {
+          "id": "4022705c-47aa-4ec3-9266-a961a12a5986",
+          "type": "question",
+          "prompt": "Traduis : « Il y a une chauve-souris dans l'arbre. »",
+          "answers": [
+            "There is a bat in the tree.",
+            "A bat is in the tree."
+          ],
+          "explanation": "✅ [[bat|chauve-souris]]. (monde 1 : An owl is in the tree.)"
+        },
+        {
+          "id": "cb7b922d-d244-432a-9c19-1785ac24f072",
+          "type": "question",
+          "prompt": "Traduis : « La scène se passe dans un cimetière. »",
+          "answers": [
+            "The scene takes place in a graveyard.",
+            "The scene takes place in a cemetery."
+          ],
+          "explanation": "✅ se passer = **take place**. (monde 1 et « Words to remember »)"
+        },
+        {
+          "id": "93ca5f8d-e2e3-41bc-9e70-48d0aee5ce08",
+          "type": "question",
+          "prompt": "Traduis : « Il y a un fantôme dans la maison. »",
+          "answers": [
+            "There is a ghost in the house."
+          ],
+          "explanation": "✅ [[ghost|fantôme]]. (monde 1 : There is a ghost in the old house!)"
+        },
+        {
+          "id": "4df6071c-b386-4f25-84ef-98fbdc005171",
+          "type": "question",
+          "prompt": "Traduis : « Il y a une pleine lune. »",
+          "answers": [
+            "There is a full moon."
+          ],
+          "explanation": "✅ **a full moon** = une pleine lune. (monde 1 et « Words to remember »)"
+        },
+        {
+          "id": "5e2a62fd-82ed-4a16-84a7-03bba51e78b0",
+          "type": "question",
+          "prompt": "Traduis : « Il y a un chat noir dans le cimetière. »",
+          "answers": [
+            "There is a black cat in the graveyard.",
+            "There is a black cat in the cemetery."
+          ],
+          "explanation": "✅ **a black cat** : la couleur avant le nom. (monde 1)"
+        },
+        {
+          "id": "6d0ca297-3555-45aa-85bf-996949c0bfdf",
+          "type": "question",
+          "prompt": "Traduis : « Il y a un hibou dans le cimetière. »",
+          "answers": [
+            "There is an owl in the graveyard.",
+            "There is an owl in the cemetery."
+          ],
+          "explanation": "✅ **an** owl ; [[graveyard|cimetière]]. (monde 1)"
+        },
+        {
+          "id": "b7e80c8a-4ab9-4b16-a1a0-9dc364ed584e",
+          "type": "question",
+          "prompt": "Traduis : « Il y a un squelette dans le cimetière. »",
+          "answers": [
+            "There is a skeleton in the graveyard.",
+            "There is a skeleton in the cemetery."
+          ],
+          "explanation": "✅ [[skeleton|squelette]]. (monde 4 : There is a skeleton in the graveyard.)"
+        },
+        {
+          "id": "8fae44c8-a480-480b-ad37-1a58e0112e1c",
+          "type": "question",
+          "prompt": "Traduis : « La sorcière a un chat noir et un balai. »",
+          "answers": [
+            "The witch has a black cat and a broom.",
+            "The witch has got a black cat and a broom."
+          ],
+          "explanation": "✅ [[broom|balai]]. (monde 1 : The witch has a black cat and a broom.)"
+        },
+        {
+          "id": "a048c5db-2a8c-4865-a7d9-5b04d355053f",
+          "type": "question",
+          "prompt": "Traduis : « Une sorcière a un grand chapeau et un balai. »",
+          "answers": [
+            "A witch has got a long hat and a broom.",
+            "A witch has a long hat and a broom.",
+            "A witch has got a big hat and a broom.",
+            "A witch has a big hat and a broom.",
+            "A witch has got a tall hat and a broom.",
+            "A witch has a tall hat and a broom."
+          ],
+          "explanation": "✅ [[a long hat|un grand chapeau]] ; [[a broom|un balai]]. (exemple du monde 2)"
+        },
+        {
+          "id": "0e394745-1dbe-4765-84c9-8c868b780095",
+          "type": "question",
+          "prompt": "Traduis : « Dracula est un vampire. »",
+          "answers": [
+            "Dracula is a vampire."
+          ],
+          "explanation": "✅ **a vampire**. (exemple du monde 2)"
         },
         {
           "id": "eea928ff-c782-4633-ae4f-efd880d06434",
@@ -686,16 +897,70 @@ window.registerPack({
             "A spider makes webs.",
             "Spiders make webs."
           ],
-          "explanation": "✅ Les mots :\n- **spider** (araignée)\n- **webs** (toiles)"
+          "explanation": "✅ [[spider|araignée]] ; a spider → **makes**. (exemple du monde 2)"
         },
         {
-          "id": "0e394745-1dbe-4765-84c9-8c868b780095",
+          "id": "67b07065-9e8a-4c3e-97c4-879c37b7793d",
           "type": "question",
-          "prompt": "Traduis : « Dracula est un vampire. »",
+          "prompt": "Traduis : « Il y a un fantôme dans la maison hantée. »",
           "answers": [
-            "Dracula is a vampire."
+            "There is a ghost in the haunted house."
           ],
-          "explanation": "✅ [[Dracula is a vampire.|Dracula est un vampire.]]"
+          "explanation": "✅ **a haunted house** = une maison hantée. (monde 2 et « Words to remember »)"
+        },
+        {
+          "id": "9997e3e5-1a2a-447a-855e-dcecaa9a8f48",
+          "type": "question",
+          "prompt": "Traduis : « Une maison hantée fait peur. »",
+          "answers": [
+            "A haunted house is spooky.",
+            "A haunted house is creepy.",
+            "A haunted house is frightening.",
+            "A haunted house is scary."
+          ],
+          "explanation": "✅ « faire peur » = **be spooky** (ou creepy, frightening). (monde 2 et « Words to remember »)"
+        },
+        {
+          "id": "bdeb0384-1e55-40e9-97a6-fbd6893bbc4b",
+          "type": "question",
+          "prompt": "Traduis : « Il y a une citrouille dans la maison hantée et une araignée dans le cimetière. »",
+          "answers": [
+            "There is a pumpkin in the haunted house and a spider in the graveyard.",
+            "There is a pumpkin in the haunted house and a spider in the cemetery.",
+            "There is a pumpkin in the haunted house and there is a spider in the graveyard.",
+            "There is a pumpkin in the haunted house and there is a spider in the cemetery."
+          ],
+          "explanation": "✅ [[pumpkin|citrouille]], [[spider|araignée]], [[haunted house|maison hantée]]. (mondes 1 et 2)"
+        },
+        {
+          "id": "6906aaf0-2806-4379-b558-0dfe6d1d2fe0",
+          "type": "question",
+          "prompt": "Comment dit-on « crâne » en anglais ?",
+          "answers": [
+            "skull",
+            "a skull"
+          ],
+          "explanation": "✅ **skull** (pas *scull*). (mondes 2 et 4)"
+        },
+        {
+          "id": "24e0a457-9b34-4c01-8dde-6330703d202b",
+          "type": "question",
+          "prompt": "Comment dit-on « citrouille » en anglais ?",
+          "answers": [
+            "pumpkin",
+            "a pumpkin"
+          ],
+          "explanation": "✅ **pumpkin** 🎃. (mondes 2 et 4)"
+        },
+        {
+          "id": "f4fcaa80-6ebd-4d09-96b6-695f97bb14e4",
+          "type": "question",
+          "prompt": "Comment dit-on « balai » en anglais ?",
+          "answers": [
+            "broom",
+            "a broom"
+          ],
+          "explanation": "✅ **broom** = balai. (monde 2)"
         },
         {
           "id": "3be99228-5bbd-41ab-9801-c2d651f88b62",
@@ -705,7 +970,27 @@ window.registerPack({
             "Children dress up as witches.",
             "The children dress up as witches."
           ],
-          "explanation": "✅ **dress up as** = se déguiser en."
+          "explanation": "✅ **dress up as** = se déguiser en. (exemple du monde 3)"
+        },
+        {
+          "id": "fbb904a9-75da-4d0d-ba2a-e8f3c24fe363",
+          "type": "question",
+          "prompt": "Traduis : « Les enfants se déguisent en fantômes. »",
+          "answers": [
+            "Children dress up as ghosts.",
+            "The children dress up as ghosts."
+          ],
+          "explanation": "✅ **dress up as** + **ghosts**. (monde 3 et « Words to remember »)"
+        },
+        {
+          "id": "fbcce255-d61b-4943-ab2c-bb86eff2c6c2",
+          "type": "question",
+          "prompt": "Traduis : « Les enfants se déguisent en vampires. »",
+          "answers": [
+            "Children dress up as vampires.",
+            "The children dress up as vampires."
+          ],
+          "explanation": "✅ **dress up as** + **vampires**. (monde 3)"
         },
         {
           "id": "9b9c4ce1-b2d4-4963-9ae2-9f7b89b0521d",
@@ -717,109 +1002,23 @@ window.registerPack({
             "They knock at doors.",
             "They knock on doors."
           ],
-          "explanation": "✅ **knock at the door** = frapper à la porte."
+          "explanation": "✅ **knock at the door** = frapper à la porte. (monde 3 : They knock at the doors.)"
         },
         {
-          "id": "4be38be1-a711-4a8a-9ed2-988ad39f089a",
+          "id": "4fe2d341-2daf-4892-bd20-8aa7432383ef",
           "type": "question",
-          "prompt": "Traduis : « Halloween, c'est le 31 octobre. »",
+          "prompt": "Traduis : « Les enfants frappent aux portes. »",
           "answers": [
-            "Halloween is on October 31st.",
-            "Halloween is on October 31.",
-            "Halloween is on 31st October.",
-            "Halloween is on 31 October.",
-            "Halloween is on the 31st of October."
+            "Children knock at the doors.",
+            "The children knock at the doors.",
+            "Children knock on the doors.",
+            "The children knock on the doors.",
+            "Children knock at doors.",
+            "The children knock at doors.",
+            "Children knock on doors.",
+            "The children knock on doors."
           ],
-          "explanation": "✅ **October 31st** (le 31 octobre)."
-        },
-        {
-          "id": "82267ee8-c012-49eb-ba2a-4c394e187a17",
-          "type": "question",
-          "prompt": "Traduis : « Ils disent : « Une farce ou une friandise ! » »",
-          "answers": [
-            "They say: Trick or treat!"
-          ],
-          "explanation": "✅ **Trick or treat!** (les guillemets ne comptent pas)."
-        },
-        {
-          "id": "3d754e03-c896-44ab-a5bd-a5f8985563dd",
-          "type": "question",
-          "prompt": "Comment dit-on « fantôme » en anglais ?",
-          "answers": [
-            "ghost",
-            "a ghost"
-          ],
-          "explanation": "✅ **ghost** 👻"
-        },
-        {
-          "id": "6bbd6fd0-3efd-49ab-a396-7b735a32c4b5",
-          "type": "question",
-          "prompt": "Comment dit-on « sorcière » en anglais ?",
-          "answers": [
-            "witch",
-            "a witch"
-          ],
-          "explanation": "✅ **witch** 🧙"
-        },
-        {
-          "id": "3eacebc5-54a3-4ae1-8eda-7253c341cbb6",
-          "type": "question",
-          "prompt": "Comment dit-on « hibou » en anglais ?",
-          "answers": [
-            "owl",
-            "an owl"
-          ],
-          "explanation": "✅ **owl** 🦉"
-        },
-        {
-          "id": "0cda920b-9ba2-45a2-85bd-0551bbaf4e2d",
-          "type": "question",
-          "prompt": "Comment dit-on « squelette » en anglais ?",
-          "answers": [
-            "skeleton",
-            "a skeleton"
-          ],
-          "explanation": "✅ **skeleton** 💀"
-        },
-        {
-          "id": "f4fcaa80-6ebd-4d09-96b6-695f97bb14e4",
-          "type": "question",
-          "prompt": "Comment dit-on « balai » en anglais ?",
-          "answers": [
-            "broom",
-            "a broom"
-          ],
-          "explanation": "✅ **broom** 🧹"
-        },
-        {
-          "id": "a7f9bf62-77b5-46c7-8f09-339305de7b69",
-          "type": "question",
-          "prompt": "Comment dit-on « araignée » en anglais ?",
-          "answers": [
-            "spider",
-            "a spider"
-          ],
-          "explanation": "✅ **spider** 🕷️"
-        },
-        {
-          "id": "5e2a62fd-82ed-4a16-84a7-03bba51e78b0",
-          "type": "question",
-          "prompt": "Traduis : « Il y a un chat noir dans le cimetière. »",
-          "answers": [
-            "There is a black cat in the graveyard.",
-            "There is a black cat in the cemetery."
-          ],
-          "explanation": "✅ L'adjectif avant le nom : a **black cat**."
-        },
-        {
-          "id": "a9c76ca5-2fdc-4b99-84bf-a03a190e01c5",
-          "type": "question",
-          "prompt": "Traduis : « Il y a deux squelettes. »",
-          "answers": [
-            "There are two skeletons.",
-            "There are 2 skeletons."
-          ],
-          "explanation": "✅ **two skeletons** : pluriel → there are."
+          "explanation": "✅ **knock at the doors**. (monde 3)"
         },
         {
           "id": "73d35187-3107-4173-b5a3-c19eeeca43ae",
@@ -830,40 +1029,42 @@ window.registerPack({
             "They ask for sweets.",
             "They ask for candy."
           ],
-          "explanation": "✅ Les mots :\n- **ask for** = demander\n- candies (US)\n- sweets (UK)"
+          "explanation": "✅ demander = **ask for** ; **candies** (ou sweets). (monde 3 et « Words to remember »)"
         },
         {
-          "id": "fbb904a9-75da-4d0d-ba2a-e8f3c24fe363",
+          "id": "82267ee8-c012-49eb-ba2a-4c394e187a17",
           "type": "question",
-          "prompt": "Traduis : « Les enfants se déguisent en fantômes. »",
+          "prompt": "Traduis : « Ils disent : « Une farce ou une friandise ! » »",
           "answers": [
-            "Children dress up as ghosts.",
-            "The children dress up as ghosts."
+            "They say: Trick or treat!"
           ],
-          "explanation": "✅ **dress up as** + déguisement."
+          "explanation": "✅ **Trick or treat!** (monde 3)"
         },
         {
-          "id": "9997e3e5-1a2a-447a-855e-dcecaa9a8f48",
+          "id": "4be38be1-a711-4a8a-9ed2-988ad39f089a",
           "type": "question",
-          "prompt": "Traduis : « Une maison hantée fait peur. »",
+          "prompt": "Traduis : « Halloween, c'est le 31 octobre. »",
           "answers": [
-            "A haunted house is scary.",
-            "A haunted house is spooky.",
-            "A haunted house is frightening.",
-            "A haunted house is creepy."
+            "Halloween is on October 31st.",
+            "Halloween is on October 31.",
+            "Halloween is on 31st October.",
+            "Halloween is on 31 October.",
+            "Halloween is on the 31st of October.",
+            "Halloween is October 31st."
           ],
-          "explanation": "✅ Les mots :\n- **haunted house**\n- **spooky / creepy / frightening / scary** = qui fait peur"
+          "explanation": "✅ **on October 31st**. (monde 3 et « Words to remember »)"
         },
         {
-          "id": "a990204e-aa7a-4165-a0d6-12ac964dff36",
+          "id": "1fccbc1a-8307-4d0a-98ce-b9f138c3b0d3",
           "type": "question",
-          "prompt": "Traduis : « Il y a une citrouille sur la table et une araignée sur le mur. »",
+          "prompt": "Comment dit-on « cimetière » en anglais ?",
           "answers": [
-            "There is a pumpkin on the table and a spider on the wall.",
-            "There is a pumpkin on the table and there is a spider on the wall."
+            "graveyard",
+            "a graveyard",
+            "cemetery",
+            "a cemetery"
           ],
-          "multiline": true,
-          "explanation": "✅ Les mots :\n- [[pumpkin|citrouille]]\n- [[spider|araignée]]\n- [[wall|mur]]"
+          "explanation": "✅ **graveyard** ou **cemetery** (deux synonymes). (mondes 1 et 4)"
         }
       ],
       "draw": 12

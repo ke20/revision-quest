@@ -367,6 +367,15 @@ window.registerPack({
           "explanation": "✅ **to meet up** = se retrouver, se voir en vrai. Lily ne sait pas si c'est sans danger."
         },
         {
+          "id": "dc0f619d-163c-4269-b15e-b8e195b6195b",
+          "type": "question",
+          "prompt": "Comment dit-on « sans danger » en anglais ?",
+          "answers": [
+            "safe"
+          ],
+          "explanation": "✅ **safe** (le contraire : **dangerous**) : [[I'm not sure if it's safe.|Je ne suis pas sûre que ce soit sans danger.]]"
+        },
+        {
           "id": "52a23764-8438-4801-aaed-97dcc77b5329",
           "type": "fill",
           "prompt": "Complète : le contraire de **online**.",
@@ -390,6 +399,18 @@ window.registerPack({
           ],
           "answer": 3,
           "explanation": "✅ **to focus** = se concentrer. Abby a veillé jusqu'à 3 heures du matin."
+        },
+        {
+          "id": "072db4e3-f647-4f1f-a48a-8aed0b6dfca5",
+          "type": "question",
+          "prompt": "Comment dit-on « se concentrer » en anglais ?",
+          "answers": [
+            "focus",
+            "to focus",
+            "concentrate",
+            "to concentrate"
+          ],
+          "explanation": "✅ **focus** (ou concentrate) : [[I am too tired to focus in class.|Je suis trop fatiguée pour me concentrer en classe.]]"
         },
         {
           "id": "246db017-3e2e-4d15-8bfb-182527d7a529",
@@ -486,6 +507,15 @@ window.registerPack({
           "explanation": "✅ Les mots :\n- [[**to call someone names**|insulter quelqu'un]]\n- [[**upset**|bouleversé·e, très triste]]"
         },
         {
+          "id": "ae73a85f-c582-42fb-aaba-7e0256381eed",
+          "type": "question",
+          "prompt": "Comment dit-on « bouleversé(e) » en anglais ?",
+          "answers": [
+            "upset"
+          ],
+          "explanation": "✅ **upset** : [[Now I think she's upset.|Maintenant, je pense qu'elle est bouleversée.]]"
+        },
+        {
           "id": "8ae3e2e2-6626-4f6b-9435-0cb04ffa48a4",
           "type": "mcq",
           "prompt": "\"A few girls keep **calling her names**.\" Que font ces filles ?",
@@ -522,6 +552,15 @@ window.registerPack({
             }
           ],
           "explanation": "✅ **un-** devant un mot = sans / pas : [[**unbranded**|sans marque]] ([[**brand**|marque]])."
+        },
+        {
+          "id": "dcec05b2-6743-4f82-a15e-c36b5a86ad57",
+          "type": "question",
+          "prompt": "Comment dit-on « sans marque » en anglais ?",
+          "answers": [
+            "unbranded"
+          ],
+          "explanation": "✅ **unbranded** : **un-** (sans) + [[**brand**|marque]]. [[I have to wear unbranded clothes.|Je dois porter des vêtements sans marque.]]"
         },
         {
           "id": "e9e37ab4-721d-4993-9d84-cbe5a3183ded",
@@ -687,6 +726,16 @@ window.registerPack({
           "hint": "Pense au mot français « désappointé »."
         },
         {
+          "id": "4ae1d60a-d4d3-4967-9da0-4c08ef9b9e42",
+          "type": "question",
+          "prompt": "Comment dit-on « décevoir » en anglais ?",
+          "answers": [
+            "disappoint",
+            "to disappoint"
+          ],
+          "explanation": "✅ **disappoint** : [[I don't want to disappoint my family.|Je ne veux pas décevoir ma famille.]]"
+        },
+        {
           "id": "1f0e1806-5bf0-4766-a471-1047f6da0c4b",
           "type": "mcq",
           "prompt": "\"Every time I think about the exam, **my stomach hurts**.\" Que ressent Sam ?",
@@ -811,6 +860,15 @@ window.registerPack({
             }
           ],
           "explanation": "✅ Ils ressemblent au français :\n- **anxious**\n- **furious**\nÀ apprendre par cœur :\n- [[**upset**|bouleversé·e]]\n- [[**hopeless**|désespéré·e]]"
+        },
+        {
+          "id": "767a0d68-4011-48e8-aba3-d65309c2eb9f",
+          "type": "question",
+          "prompt": "Comment dit-on « anxieux, anxieuse » en anglais ?",
+          "answers": [
+            "anxious"
+          ],
+          "explanation": "✅ **anxious** : un **x**, puis **-ious**. [[I feel anxious.|Je me sens anxieux.]]"
         },
         {
           "id": "06133d05-bef8-4fbc-a97c-0924674a68ae",
@@ -963,6 +1021,19 @@ window.registerPack({
             "stuck"
           ],
           "explanation": "✅ **stuck** = bloqué, coincé. Il vient du verbe [[**to stick**|coller]]."
+        },
+        {
+          "id": "199e660c-2b8d-4607-970e-ba4ecd813460",
+          "type": "mcq",
+          "prompt": "Traduis : « Être hors ligne me rend anxieuse. »",
+          "options": [
+            "Being offline does me anxious.",
+            "Being offline make me anxious.",
+            "Being offline makes me anxious.",
+            "Be offline makes me anxious."
+          ],
+          "answer": 2,
+          "explanation": "✅ « me rend » = **makes me** ; « être » en début de phrase = **Being**."
         }
       ]
     },
@@ -1311,6 +1382,209 @@ window.registerPack({
       ]
     },
     {
+      "id": "words",
+      "title": "Words to remember",
+      "subtitle": "Tricky words",
+      "subtitleFr": "Les mots pièges",
+      "icon": "🧠",
+      "color": "#84CC16",
+      "lesson": {
+        "title": "[[Words to remember|Les mots à retenir]]",
+        "points": [
+          "Faux amis à l'école :\n- une note = **a mark** ou **a grade** (pas *a note*)\n- une matière = **a subject** (pas *a matter*)\n- mes notes baissent = my grades **are dropping**",
+          "Pas mot à mot :\n- j'ai mal au ventre = **my stomach hurts**\n- insulter quelqu'un = **call** someone **names**\n- se moquer de = **make fun of** (avec **of**)",
+          "Le bon petit mot :\n- être accro à = **be addicted to** (pas *at*)\n- complexé(e) par = **insecure about** (pas *by*)\n- consulter les réseaux sociaux = **check** social media",
+          "L'argent :\n- cher = **expensive**, avant le nom : **expensive clothes** (pas *clothes expensive*)\n- ne pas avoir les moyens d'acheter = **cannot afford**",
+          "Les parents :\n- attendre de moi = **expect me to** + verbe\n- [[My parents **expect me to** get perfect marks.|Mes parents attendent de moi des notes parfaites.]]"
+        ],
+        "examples": [
+          "[[**My stomach hurts.**|J'ai mal au ventre.]]",
+          "[[Some kids **make fun of** me.|Des élèves se moquent de moi.]]"
+        ]
+      },
+      "exercises": [
+        {
+          "id": "5bec9c24-e023-4427-9da1-69474042b5e3",
+          "type": "mcq",
+          "prompt": "Traduis : « J'ai mal au ventre. »",
+          "options": [
+            "My stomach hurts.",
+            "I have bad at the stomach.",
+            "I hurt my stomach.",
+            "My stomach is hurt."
+          ],
+          "answer": 0,
+          "explanation": "✅ « j'ai mal au ventre » = **my stomach hurts** (mon ventre fait mal). *I have bad* est du mot à mot."
+        },
+        {
+          "id": "9d8f6198-a2f9-4665-995e-6e40d8da4970",
+          "type": "question",
+          "prompt": "Comment dit-on « une note (à l'école) » en anglais ?",
+          "answers": [
+            "a mark",
+            "a grade",
+            "mark",
+            "grade"
+          ],
+          "explanation": "✅ **a mark** ou **a grade**. Faux ami : *a note* n'est pas une note d'école."
+        },
+        {
+          "id": "2ca1baec-c26a-462b-b688-30c409cb82d0",
+          "type": "mcq",
+          "prompt": "Traduis : « Mes notes baissent. »",
+          "options": [
+            "My notes are dropping.",
+            "My grades are dropping.",
+            "My grades is dropping.",
+            "My grades are lowering themselves."
+          ],
+          "answer": 1,
+          "explanation": "✅ **My grades** (ou my marks) **are dropping**. *Notes* est un faux ami."
+        },
+        {
+          "id": "7cfe9584-8066-476d-9a21-715be583d6de",
+          "type": "mcq",
+          "prompt": "Traduis : « Les maths sont une matière difficile. »",
+          "options": [
+            "Maths is a difficult matter.",
+            "Maths is a subject difficult.",
+            "Maths are a difficult subjects.",
+            "Maths is a difficult subject."
+          ],
+          "answer": 3,
+          "explanation": "✅ « une matière » = **a subject** (pas *matter*) ; l'adjectif se place **avant** le nom ; **maths** prend un verbe au singulier."
+        },
+        {
+          "id": "bddbee12-c8f5-4cb2-9ce8-fc3038d14a12",
+          "type": "mcq",
+          "prompt": "Traduis : « Ils m'insultent. »",
+          "options": [
+            "They call me of names.",
+            "They call my names.",
+            "They call me names.",
+            "They calls me names."
+          ],
+          "answer": 2,
+          "explanation": "✅ **call** + la personne + **names** : They **call me names**. (On dit aussi They insult me.)"
+        },
+        {
+          "id": "2ea976a3-fcd5-48d1-ab7e-90a086426a00",
+          "type": "question",
+          "prompt": "Comment dit-on « insulter quelqu'un » en anglais ?",
+          "answers": [
+            "call someone names",
+            "to call someone names",
+            "insult someone",
+            "to insult someone"
+          ],
+          "explanation": "✅ **call someone names** : [[A few girls keep calling her names.|Quelques filles n'arrêtent pas de l'insulter.]]"
+        },
+        {
+          "id": "fc101e48-f29d-4770-a4a2-3432ee5ac170",
+          "type": "mcq",
+          "prompt": "Traduis : « Des élèves se moquent de moi. »",
+          "options": [
+            "Some kids mock themselves of me.",
+            "Some kids make fun of me.",
+            "Some kids make fun at me.",
+            "Some kids makes fun of me."
+          ],
+          "answer": 1,
+          "explanation": "✅ **make fun of** + la personne. *Mock themselves of* est du mot à mot."
+        },
+        {
+          "id": "4ab030b8-d62e-4059-80c7-a440935fbe57",
+          "type": "question",
+          "prompt": "Comment dit-on « se moquer de » en anglais ?",
+          "answers": [
+            "make fun of",
+            "to make fun of",
+            "mock",
+            "to mock"
+          ],
+          "explanation": "✅ **make fun of**, toujours avec **of**."
+        },
+        {
+          "id": "65f0e847-821f-4241-bb3d-c506a8a014b2",
+          "type": "question",
+          "prompt": "Comment dit-on « être accro à » en anglais ?",
+          "answers": [
+            "be addicted to",
+            "to be addicted to",
+            "addicted to"
+          ],
+          "explanation": "✅ **be addicted to**, avec **to** (pas *at*) : [[I am addicted to my smartphone.|Je suis accro à mon smartphone.]]"
+        },
+        {
+          "id": "6dbb2ea6-e46e-4809-a08a-b3e604714e21",
+          "type": "mcq",
+          "prompt": "Traduis : « Je suis complexée par mon apparence. »",
+          "options": [
+            "I am complexed by my appearance.",
+            "I feel insecure by my appearance.",
+            "I feel insecure about my appearance.",
+            "I feel insecure about my apparence."
+          ],
+          "answer": 2,
+          "explanation": "✅ « complexé(e) par » = **insecure about**. *Complexed by* est du mot à mot."
+        },
+        {
+          "id": "82b4b4f2-d40e-4208-bdd2-7e5562983dc1",
+          "type": "question",
+          "prompt": "Comment dit-on « consulter les réseaux sociaux » en anglais ?",
+          "answers": [
+            "check social media",
+            "to check social media"
+          ],
+          "explanation": "✅ **check social media** : [[As soon as I wake up, I check social media.|Dès que je me réveille, je consulte les réseaux sociaux.]]"
+        },
+        {
+          "id": "81249bdf-37c7-437d-a3c4-7233609429d1",
+          "type": "question",
+          "prompt": "Comment dit-on « cher (le prix) » en anglais ?",
+          "answers": [
+            "expensive"
+          ],
+          "explanation": "✅ **expensive** (le contraire : **cheap**)."
+        },
+        {
+          "id": "e71756d7-807d-4eef-ad32-be1cf06fc14b",
+          "type": "question",
+          "prompt": "Comment dit-on « ne pas avoir les moyens d'acheter » en anglais ?",
+          "answers": [
+            "cannot afford"
+          ],
+          "explanation": "✅ **cannot afford** (ou can't afford) : [[My family cannot afford these things.|Ma famille n'a pas les moyens d'acheter ces choses.]]"
+        },
+        {
+          "id": "6effb764-be57-4cdf-8db1-0e5359551d09",
+          "type": "mcq",
+          "prompt": "Traduis : « Ma famille n'a pas les moyens d'acheter des vêtements chers. »",
+          "options": [
+            "My family cannot afford expensive clothes.",
+            "My family cannot afford clothes expensive.",
+            "My family cannot afford expensives clothes.",
+            "My family don't afford expensive clothes."
+          ],
+          "answer": 0,
+          "explanation": "✅ **cannot afford** ; l'adjectif reste **avant** le nom, sans -s : **expensive clothes**."
+        },
+        {
+          "id": "359323a2-2dc1-48c5-b60b-e1f1b161b116",
+          "type": "mcq",
+          "prompt": "Traduis : « Mes parents attendent de moi des notes parfaites. »",
+          "options": [
+            "My parents wait from me perfect marks.",
+            "My parents expect me get perfect marks.",
+            "My parents expects me to get perfect marks.",
+            "My parents expect me to get perfect marks."
+          ],
+          "answer": 3,
+          "explanation": "✅ **expect me to** + verbe. *Wait from me* est du mot à mot."
+        }
+      ]
+    },
+    {
       "id": 8,
       "title": "Boss: Translate!",
       "subtitle": "All the words of the six letters",
@@ -1337,7 +1611,7 @@ window.registerPack({
           "answers": [
             "I feel stressed."
           ],
-          "explanation": "« je me sens » = **I feel**, puis l'adjectif : [[I feel stressed.|Je me sens stressé.]]"
+          "explanation": "✅ « je me sens » = **I feel** + adjectif. (monde 5)"
         },
         {
           "id": "154e396b-c17f-40a8-97d7-5ba6dbb6365e",
@@ -1346,7 +1620,7 @@ window.registerPack({
           "answers": [
             "My parents are furious."
           ],
-          "explanation": "**furious** ressemble au français, mais attention : **u** et pas *eu* : [[My parents are furious.|Mes parents sont furieux.]]"
+          "explanation": "✅ **furious** : **u**, pas *eu*. (lettre d'Abby, monde 5)"
         },
         {
           "id": "9d5d2665-6b22-4484-861b-036ac7d1bd74",
@@ -1356,7 +1630,7 @@ window.registerPack({
             "I am addicted to my smartphone.",
             "I am addicted to my smart phone."
           ],
-          "explanation": "« être accro à » = **to be addicted to** : [[I am addicted to my smartphone.|Je suis accro à mon smartphone.]]"
+          "explanation": "✅ **be addicted to**, avec **to**. (exemple du monde 2, « Words to remember »)"
         },
         {
           "id": "54546d75-49d0-4d9d-92a4-c4127c17d6ae",
@@ -1370,7 +1644,7 @@ window.registerPack({
             "My marks are going down.",
             "My grades are going down."
           ],
-          "explanation": "« une note » = **a mark** ou **a grade** (faux ami : pas *a brand*) : [[My grades are dropping.|Mes notes baissent.]]"
+          "explanation": "✅ « une note » = **a mark** ou **a grade** ; **are dropping**. (monde 4 et « Words to remember »)"
         },
         {
           "id": "3bf8ccd8-b610-4c6d-8b14-c8f72899aec6",
@@ -1382,9 +1656,12 @@ window.registerPack({
             "Some pupils make fun of me.",
             "Kids make fun of me.",
             "Students make fun of me.",
-            "Pupils make fun of me."
+            "Pupils make fun of me.",
+            "Some kids mock me.",
+            "Some students mock me.",
+            "Some pupils mock me."
           ],
-          "explanation": "« se moquer de » = **make fun of** (avec **of**) : [[Some kids make fun of me.|Des élèves se moquent de moi.]]"
+          "explanation": "✅ **make fun of** + la personne. (exemple du monde 3, « Words to remember »)"
         },
         {
           "id": "3c958885-7ac8-41d4-a8c8-2ecfed7afba9",
@@ -1393,16 +1670,17 @@ window.registerPack({
           "answers": [
             "My family cannot afford expensive clothes."
           ],
-          "explanation": "Les mots :\n- « ne pas avoir les moyens d'acheter » = **cannot afford**\n- « cher » = **expensive**\n[[My family cannot afford expensive clothes.|Ma famille n'a pas les moyens d'acheter des vêtements chers.]]"
+          "explanation": "✅ **cannot afford** ; **expensive** avant le nom. (exemple du monde 3, « Words to remember »)"
         },
         {
           "id": "27ff3d3d-a358-4b77-8282-9a86a6942241",
           "type": "question",
           "prompt": "Traduis : « Je veux arrêter et abandonner. »",
           "answers": [
-            "I want to quit and give up."
+            "I want to quit and give up.",
+            "I want to stop and give up."
           ],
-          "explanation": "Les mots :\n- « arrêter » = **quit**\n- « abandonner » = **give up**\n[[I want to quit and give up.|Je veux arrêter et abandonner.]]"
+          "explanation": "✅ « arrêter » = **quit** ; « abandonner » = **give up**. (exemple du monde 4)"
         },
         {
           "id": "67faca58-23e0-4380-bde3-e2e612b160c8",
@@ -1411,7 +1689,7 @@ window.registerPack({
           "answers": [
             "I feel stuck and hopeless."
           ],
-          "explanation": "Les mots :\n- « bloqué » = **stuck**\n- « désespéré » = **hopeless**\n[[I feel stuck and hopeless.|Je me sens bloqué et désespéré.]]"
+          "explanation": "✅ **I feel** + **stuck** and **hopeless**. (exemple du monde 5)"
         },
         {
           "id": "8b2e1082-7fb2-4977-8c64-663c5915f4fb",
@@ -1422,7 +1700,7 @@ window.registerPack({
             "I have to ask for help.",
             "I need to ask for help."
           ],
-          "explanation": "« demander de l'aide » = **ask for help** (avec **for**) : [[I must ask for help.|Je dois demander de l'aide.]]"
+          "explanation": "✅ **ask for help**, avec **for**. (monde 6 : My teachers say I must ask for help.)"
         },
         {
           "id": "3906d7e4-33f9-4865-8a89-2eac27d22645",
@@ -1431,7 +1709,7 @@ window.registerPack({
           "answers": [
             "I don't want to disappoint my family."
           ],
-          "explanation": "« décevoir » = **to disappoint** : [[I don't want to disappoint my family.|Je ne veux pas décevoir ma famille.]]"
+          "explanation": "✅ « décevoir » = **disappoint**. (monde 4)"
         },
         {
           "id": "4938d908-a91e-4c2f-abbe-9fd98d3549aa",
@@ -1440,21 +1718,23 @@ window.registerPack({
           "answers": [
             "How can I fit in?"
           ],
-          "explanation": "« s'intégrer » = **fit in** (verbe + petit mot) : [[How can I fit in?|Comment est-ce que je peux m'intégrer ?]]"
+          "explanation": "✅ « s'intégrer » = **fit in**. (exemple du monde 6)"
         },
         {
-          "id": "f96b7e5a-267b-4e1d-9cd7-7589c77f731a",
+          "id": "24c566af-8d44-4766-8886-b4915810792e",
           "type": "question",
-          "prompt": "Traduis : « J'ai de mauvaises notes en maths. »",
+          "prompt": "Traduis : « J'ai une mauvaise note. »",
           "answers": [
-            "I get bad marks in maths.",
-            "I get bad grades in maths.",
-            "I have bad marks in maths.",
-            "I have bad grades in maths.",
-            "I've got bad marks in maths.",
-            "I've got bad grades in maths."
+            "I get a bad mark.",
+            "I get a bad grade.",
+            "I have a bad mark.",
+            "I have a bad grade.",
+            "I have got a bad mark.",
+            "I have got a bad grade.",
+            "I got a bad mark.",
+            "I got a bad grade."
           ],
-          "explanation": "Faux ami : « une note » = **a mark** ou **a grade** : [[I get bad marks in maths.|J'ai de mauvaises notes en maths.]]"
+          "explanation": "✅ « une mauvaise note » = **a bad mark** (ou a bad grade). (lettre de Mark, monde 4 et « Words to remember »)"
         },
         {
           "id": "89bda736-10d0-4010-82b6-287937e62888",
@@ -1464,18 +1744,18 @@ window.registerPack({
             "I feel insecure about my appearance.",
             "I am insecure about my appearance."
           ],
-          "explanation": "« complexé(e) par » = **insecure about** : [[I feel insecure about my appearance.|Je suis complexée par mon apparence.]]"
+          "explanation": "✅ « complexé(e) par » = **insecure about**. (lettre de Susan, monde 3 et « Words to remember »)"
         },
         {
           "id": "170fe3bc-da85-4027-9969-aecd8615f680",
           "type": "question",
           "prompt": "Traduis : « Je ne suis pas sûre que ce soit sans danger. »",
           "answers": [
-            "I am not sure if it is safe.",
-            "I am not sure it is safe.",
-            "I am not sure that it is safe."
+            "I'm not sure if it's safe.",
+            "I'm not sure it's safe.",
+            "I'm not sure that it's safe."
           ],
-          "explanation": "« sans danger » = **safe** (son contraire : **dangerous**) : [[I'm not sure if it's safe.|Je ne suis pas sûre que ce soit sans danger.]]"
+          "explanation": "✅ « sans danger » = **safe**. (exemple du monde 2)"
         },
         {
           "id": "de6b5258-eb5d-4719-99eb-0124e2d48cf4",
@@ -1486,7 +1766,7 @@ window.registerPack({
             "I am too tired to concentrate in class."
           ],
           "multiline": true,
-          "explanation": "Les mots :\n- « fatigué(e) » = **tired**\n- « se concentrer » = **focus**\n[[I am too tired to focus in class.|Je suis trop fatiguée pour me concentrer en classe.]]"
+          "explanation": "✅ **too tired to focus**. (monde 2)"
         },
         {
           "id": "40d8475a-3817-4ff0-b0d4-442857b9e980",
@@ -1497,20 +1777,20 @@ window.registerPack({
             "I check social media as soon as I wake up."
           ],
           "multiline": true,
-          "explanation": "Les mots :\n- « dès que » = **as soon as**\n- « se réveiller » = **wake up**\n[[As soon as I wake up, I check social media.|Dès que je me réveille, je consulte les réseaux sociaux.]]"
+          "explanation": "✅ **As soon as** ; **wake up** ; « consulter » = **check**. (monde 2 et « Words to remember »)"
         },
         {
           "id": "02036a91-0f7e-4168-8aed-837d7b017ef4",
           "type": "question",
           "prompt": "Traduis : « Mon amie est harcelée. Elle est bouleversée. »",
           "answers": [
-            "My friend is bullied. She is upset.",
-            "My friend is being bullied. She is upset.",
-            "My friend is bullied. She feels upset.",
-            "My friend is being bullied. She feels upset."
+            "My friend is being bullied. She's upset.",
+            "My friend is bullied. She's upset.",
+            "My friend is being bullied. She feels upset.",
+            "My friend is bullied. She feels upset."
           ],
           "multiline": true,
-          "explanation": "Les mots :\n- « être harcelé(e) » = **to be bullied**\n- « bouleversé(e) » = **upset**\n[[My friend is being bullied. She is upset.|Mon amie est harcelée. Elle est bouleversée.]]"
+          "explanation": "✅ **is being bullied** ; « bouleversé(e) » = **upset**. (lettre de Sarah, monde 3)"
         },
         {
           "id": "2ae1c504-3e79-4291-9dbb-77ddf435b0b8",
@@ -1521,7 +1801,7 @@ window.registerPack({
             "I have a stomach ache.",
             "I have a stomachache."
           ],
-          "explanation": "« j'ai mal au ventre » = **my stomach hurts** (mot à mot : mon ventre fait mal) : [[My stomach hurts.|J'ai mal au ventre.]]"
+          "explanation": "✅ « j'ai mal au ventre » = **my stomach hurts**. (monde 4 et « Words to remember »)"
         },
         {
           "id": "dd0c3a69-7c27-4533-949f-a15f37fac4f1",
@@ -1530,34 +1810,43 @@ window.registerPack({
           "answers": [
             "I feel sad and anxious."
           ],
-          "explanation": "**I feel** + adjectifs :\n- « triste » = **sad**\n- « anxieuse » = **anxious**\n[[I feel sad and anxious.|Je me sens triste et anxieuse.]]"
+          "explanation": "✅ **I feel** + **sad** and **anxious**. (monde 5 : I feel stuck and hopeless.)"
         },
         {
           "id": "05c9e0b7-5679-4180-a4cb-d6e9bdc65be6",
           "type": "question",
           "prompt": "Traduis : « Ils m'insultent. »",
           "answers": [
-            "They call me names."
+            "They call me names.",
+            "They insult me."
           ],
-          "explanation": "« insulter quelqu'un » = **call someone names** : [[They call me names.|Ils m'insultent.]]"
+          "explanation": "✅ « insulter quelqu'un » = **call** someone **names**. (monde 3 et « Words to remember »)"
         },
         {
-          "id": "0a290d33-6527-4707-b46f-2ada84df057d",
+          "id": "3798d07a-ed78-42d8-b1fd-92733a4600bf",
           "type": "question",
-          "prompt": "Traduis : « Mes vêtements sont sans marque. »",
+          "prompt": "Traduis : « Je dois porter des vêtements sans marque. »",
           "answers": [
-            "My clothes are unbranded."
+            "I have to wear unbranded clothes.",
+            "I must wear unbranded clothes."
           ],
-          "explanation": "« sans marque » = **unbranded** ; **clothes** est toujours au pluriel : [[My clothes are unbranded.|Mes vêtements sont sans marque.]]"
+          "explanation": "✅ « sans marque » = **unbranded**, avant le nom. (lettre de Susan, monde 3)"
         },
         {
-          "id": "42e95e7a-2fd8-4b01-8a56-b4cefad45b46",
+          "id": "6e102b24-d214-4b05-97c8-ec57fb9f7e47",
           "type": "question",
-          "prompt": "Traduis : « Les vêtements à la mode sont chers. »",
+          "prompt": "Traduis : « Si j'étais toi, je parlerais à un professeur. »",
           "answers": [
-            "Trendy clothes are expensive."
+            "If I were you, I would talk to a teacher.",
+            "If I were you, I'd talk to a teacher.",
+            "If I were you, I would speak to a teacher.",
+            "If I were you, I'd speak to a teacher.",
+            "I would talk to a teacher if I were you.",
+            "I'd talk to a teacher if I were you.",
+            "I would speak to a teacher if I were you.",
+            "I'd speak to a teacher if I were you."
           ],
-          "explanation": "Les mots :\n- « à la mode » = **trendy**, placé **avant** le nom\n- « cher » = **expensive**\n[[Trendy clothes are expensive.|Les vêtements à la mode sont chers.]]"
+          "explanation": "✅ **If I were you** (jamais *was*), puis **I would** + le verbe tout simple. (exemple du monde 1)"
         },
         {
           "id": "2404aa3a-db30-4403-bffd-3fe25fc44513",
@@ -1568,7 +1857,7 @@ window.registerPack({
             "My parents want to confiscate my smartphone.",
             "My parents want to confiscate my smart phone."
           ],
-          "explanation": "« confisquer » = **to confiscate** : [[My parents want to confiscate my phone.|Mes parents veulent confisquer mon téléphone.]]"
+          "explanation": "✅ « confisquer » = **confiscate**. (monde 2)"
         },
         {
           "id": "3695db9f-2a2e-45cb-8c6a-966885adce22",
@@ -1580,7 +1869,7 @@ window.registerPack({
             "Maths is a hard subject.",
             "Math is a hard subject."
           ],
-          "explanation": "Faux ami : « une matière » = **a subject** (pas un sujet). **Maths** prend un verbe au singulier : [[Maths is a difficult subject.|Les maths sont une matière difficile.]]"
+          "explanation": "✅ « une matière » = **a subject** ; **maths is**. (monde 4 et « Words to remember »)"
         },
         {
           "id": "363911c0-ee69-48d6-8ecd-c9e0e819d005",
@@ -1592,44 +1881,39 @@ window.registerPack({
             "My parents expect me to have perfect marks.",
             "My parents expect me to have perfect grades."
           ],
-          "explanation": "« attendre de quelqu'un » = **expect someone to** + verbe : [[My parents expect me to get perfect marks.|Mes parents attendent de moi des notes parfaites.]]"
+          "explanation": "✅ **expect me to** + verbe. (exemple du monde 4, « Words to remember »)"
         },
         {
           "id": "bc8b8dbf-45bc-478a-9ef4-cadb9d3a6c4e",
           "type": "question",
           "prompt": "Traduis : « Être hors ligne me rend anxieuse. »",
           "answers": [
-            "Being offline makes me anxious."
+            "Being offline makes me anxious.",
+            "To be offline makes me anxious."
           ],
-          "explanation": "Les mots :\n- « hors ligne » = **offline**\n- « me rend » = **makes me**\n[[Being offline makes me anxious.|Être hors ligne me rend anxieuse.]]"
+          "explanation": "✅ « me rend » = **makes me**. (mondes 2 et 5)"
         },
         {
-          "id": "43c76f9a-e1a5-4023-80bb-dadf84a0db9c",
+          "id": "90130773-6c2c-4a68-a04b-9d18ca839677",
           "type": "question",
-          "prompt": "Traduis : « Je travaille régulièrement. Cependant, mes notes ne sont pas assez bonnes. »",
+          "prompt": "Traduis : « Mes professeurs disent que je dois travailler régulièrement. »",
           "answers": [
-            "I work regularly. However, my marks are not good enough.",
-            "I work regularly. However, my grades are not good enough.",
-            "I study regularly. However, my marks are not good enough.",
-            "I study regularly. However, my grades are not good enough."
+            "My teachers say I must work regularly.",
+            "My teachers say that I must work regularly.",
+            "My teachers say I have to work regularly.",
+            "My teachers say that I have to work regularly."
           ],
-          "multiline": true,
-          "explanation": "Les mots :\n- « régulièrement » = **regularly**\n- « cependant » = **However**\n**enough** se place **après** l'adjectif : [[However, my marks are not good enough.|Cependant, mes notes ne sont pas assez bonnes.]]"
+          "explanation": "✅ **must** + le verbe ; « régulièrement » = **regularly**. (monde 6 : My teachers say I must ask for help.)"
         },
         {
-          "id": "85c95634-562c-4329-980b-9af1ee1dd87c",
+          "id": "5a3751c2-3366-4514-97d7-463f3398e173",
           "type": "question",
-          "prompt": "Traduis : « Je ne m'intègre pas. Des élèves m'insultent. »",
+          "prompt": "Traduis : « Tu devrais parler à tes parents. »",
           "answers": [
-            "I don't fit in. Some kids call me names.",
-            "I don't fit in. Some students call me names.",
-            "I don't fit in. Some pupils call me names.",
-            "I don't fit in. Kids call me names.",
-            "I don't fit in. Students call me names.",
-            "I don't fit in. Pupils call me names."
+            "You should talk to your parents.",
+            "You should speak to your parents."
           ],
-          "multiline": true,
-          "explanation": "Les mots :\n- « s'intégrer » = **fit in**\n- « insulter » = **call someone names**\n[[I don't fit in. Some kids call me names.|Je ne m'intègre pas. Des élèves m'insultent.]]"
+          "explanation": "✅ **should** + le verbe tout simple. (exemple du monde 1)"
         }
       ]
     }

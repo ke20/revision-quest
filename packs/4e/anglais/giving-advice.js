@@ -1612,6 +1612,196 @@ window.registerPack({
       ]
     },
     {
+      "id": "words",
+      "title": "Words to remember",
+      "subtitle": "Tricky words",
+      "subtitleFr": "Les mots pièges",
+      "icon": "🧠",
+      "color": "#14B8A6",
+      "lesson": {
+        "title": "[[Words to remember|Les mots à retenir]]",
+        "points": [
+          "Pour montrer qu'on comprend :\n- ce que tu ressens = **how you feel** (comme « comment tu te sens »)\n- ça a l'air d'être = **that sounds like** (pas *it has the air*)\n- contrarié(e), bouleversé(e) = **upset**",
+          "Pas mot à mot :\n- Et si tu… ? = **How about** + -ing ? (pas *And if you*)\n- faire une pause = **take a break** (pas *make a pause*)\n- se faire des amis = **make friends**\n- s'inscrire à un club = **join a club**",
+          "Demander, dire, abandonner :\n- demander de l'aide à ton prof = **ask your teacher for help** (pas *ask help to*)\n- le dire à un prof = **tell a teacher** (sans *it*)\n- abandonner = **give up**",
+          "Le téléphone et le sommeil :\n- éteindre = **turn off** ou **switch off**\n- la nuit = **at night** (pas *the night*)\n- tous les soirs = **every night** (pas *all the evenings*)\n- veiller tard = **stay up late**"
+        ],
+        "examples": [
+          "[[**How about taking** a break?|Et si tu faisais une pause ?]]",
+          "[[You should **ask your teacher for help**.|Tu devrais demander de l'aide à ton professeur.]]"
+        ]
+      },
+      "exercises": [
+        {
+          "id": "01920481-c957-47e8-a030-97c21b4c4198",
+          "type": "question",
+          "prompt": "Comment dit-on « ce que tu ressens » en anglais ?",
+          "answers": [
+            "how you feel"
+          ],
+          "explanation": "✅ **how you feel** : [[I understand how you feel.|Je comprends ce que tu ressens.]]"
+        },
+        {
+          "id": "7bc993aa-38e6-4755-903f-9fa078e1d15e",
+          "type": "mcq",
+          "prompt": "Traduis : « Ça a l'air d'être une situation vraiment difficile. »",
+          "options": [
+            "It has the air of a really difficult situation.",
+            "That sounds like a really difficult situation.",
+            "That sound like a really difficult situation.",
+            "That sounds a really difficult situation."
+          ],
+          "answer": 1,
+          "explanation": "✅ « ça a l'air d'être » = **sounds like**, avec le **s** de that sound**s**. *It has the air* est du mot à mot."
+        },
+        {
+          "id": "4ce21305-18e8-40c2-97f8-7f5cb1d9b6b3",
+          "type": "question",
+          "prompt": "Comment dit-on « bouleversé(e), contrarié(e) » en anglais ?",
+          "answers": [
+            "upset"
+          ],
+          "explanation": "✅ **upset** : [[I understand why you feel upset.|Je comprends pourquoi tu es contrarié(e).]]"
+        },
+        {
+          "id": "58394cdc-c71a-4066-b9df-0602167c06f3",
+          "type": "mcq",
+          "prompt": "Traduis : « Et si tu faisais une pause ? »",
+          "options": [
+            "And if you made a pause?",
+            "How about take a break?",
+            "How about taking a break?",
+            "How about making a break?"
+          ],
+          "answer": 2,
+          "explanation": "✅ **How about** + -ing ; « faire une pause » = **take a break**. *And if you made a pause* est du mot à mot."
+        },
+        {
+          "id": "d8c765f2-e2b7-4fb6-8530-2447040e2d61",
+          "type": "question",
+          "prompt": "Comment dit-on « se faire des amis » en anglais ?",
+          "answers": [
+            "make friends",
+            "to make friends"
+          ],
+          "explanation": "✅ **make friends** : [[How about making new friends?|Et si tu te faisais de nouveaux amis ?]]"
+        },
+        {
+          "id": "6e2a0f94-e524-4ab4-b64f-0781f663398a",
+          "type": "question",
+          "prompt": "Comment dit-on « s'inscrire à un club » en anglais ?",
+          "answers": [
+            "join a club",
+            "to join a club"
+          ],
+          "explanation": "✅ **join a club** : [[Why don't you join a club?|Pourquoi tu ne t'inscris pas à un club ?]]"
+        },
+        {
+          "id": "4ee0a7b2-a46c-4862-9b11-bbbdef5eb6e8",
+          "type": "mcq",
+          "prompt": "Traduis : « Pourquoi tu ne t'inscris pas à un club ? »",
+          "options": [
+            "Why don't you join a club?",
+            "Why don't you inscribe to a club?",
+            "Why don't you joining a club?",
+            "Why doesn't you join a club?"
+          ],
+          "answer": 0,
+          "explanation": "✅ **Why don't you** + **join** (le verbe tout simple). *Inscribe* est du mot à mot."
+        },
+        {
+          "id": "6d862601-38ab-4733-b747-7a18e989b3d7",
+          "type": "question",
+          "prompt": "Comment dit-on « demander de l'aide » en anglais ?",
+          "answers": [
+            "ask for help",
+            "to ask for help"
+          ],
+          "explanation": "✅ **ask for help** : [[Why don't you ask for help?|Pourquoi tu ne demandes pas de l'aide ?]]"
+        },
+        {
+          "id": "21a46fbf-10a8-4353-bd7e-d777876c4029",
+          "type": "mcq",
+          "prompt": "Traduis : « Tu devrais demander de l'aide à ton professeur. »",
+          "options": [
+            "You should ask help to your teacher.",
+            "You should to ask your teacher for help.",
+            "You should asking your teacher for help.",
+            "You should ask your teacher for help."
+          ],
+          "answer": 3,
+          "explanation": "✅ **ask** + la personne + **for help**. *Ask help to* est du mot à mot."
+        },
+        {
+          "id": "8a7dc449-7b83-424a-926b-c90bd9b5422d",
+          "type": "question",
+          "prompt": "Comment dit-on « le dire à un professeur » en anglais ?",
+          "answers": [
+            "tell a teacher",
+            "to tell a teacher"
+          ],
+          "explanation": "✅ **tell a teacher**, sans *it* : [[If I were you, I would tell a teacher.|Si j'étais toi, je le dirais à un professeur.]]"
+        },
+        {
+          "id": "cc246d7f-a18e-4675-a10e-5c65d951adf6",
+          "type": "question",
+          "prompt": "Comment dit-on « abandonner » en anglais ?",
+          "answers": [
+            "give up",
+            "to give up",
+            "quit",
+            "to quit"
+          ],
+          "explanation": "✅ **give up** : [[You shouldn't give up.|Tu ne devrais pas abandonner.]]"
+        },
+        {
+          "id": "855cf7ad-b75c-4e62-8c30-31c36256b709",
+          "type": "question",
+          "prompt": "Comment dit-on « veiller tard » en anglais ?",
+          "answers": [
+            "stay up late",
+            "to stay up late"
+          ],
+          "explanation": "✅ **stay up late** : [[You shouldn't stay up so late.|Tu ne devrais pas veiller si tard.]]"
+        },
+        {
+          "id": "c20d5cee-cbe6-49a2-aa51-516b3e3ac136",
+          "type": "question",
+          "prompt": "Comment dit-on « éteindre (un téléphone) » en anglais ?",
+          "answers": [
+            "turn off",
+            "switch off",
+            "to turn off",
+            "to switch off"
+          ],
+          "explanation": "✅ **turn off** ou **switch off** : [[Why don't you turn off your phone?|Pourquoi tu n'éteins pas ton téléphone ?]]"
+        },
+        {
+          "id": "2a4aaf89-3028-4d52-b95b-042fbb622ea0",
+          "type": "mcq",
+          "prompt": "Traduis : « Pourquoi tu n'éteins pas ton téléphone la nuit ? »",
+          "options": [
+            "Why don't you turn off your phone the night?",
+            "Why don't you turn off your phone at night?",
+            "Why don't you turn your phone at night?",
+            "Why you don't turn off your phone at night?"
+          ],
+          "answer": 1,
+          "explanation": "✅ « la nuit » (chaque nuit) = **at night**. *The night* est du mot à mot."
+        },
+        {
+          "id": "d93ee423-8081-479f-bad2-8a9ba4a515b5",
+          "type": "question",
+          "prompt": "Comment dit-on « tous les soirs » en anglais ?",
+          "answers": [
+            "every night",
+            "every evening"
+          ],
+          "explanation": "✅ **every night** (ou every evening), pas *all the evenings* : [[I study five hours every night.|J'étudie cinq heures tous les soirs.]]"
+        }
+      ]
+    },
+    {
       "id": 8,
       "title": "Boss: Translate!",
       "subtitle": "Give advice in English",
@@ -1639,7 +1829,7 @@ window.registerPack({
             "You should talk to a teacher.",
             "You should speak to a teacher."
           ],
-          "explanation": "Après **should**, le verbe tout simple, sans *to* : [[You should talk to a teacher.|Tu devrais parler à un professeur.]]"
+          "explanation": "✅ **should** + le verbe tout simple, sans *to*. (exemple du monde 2, monde 4)"
         },
         {
           "id": "8fe9a79b-cfaa-413a-8bf1-a7d6bdf3f65b",
@@ -1648,7 +1838,7 @@ window.registerPack({
           "answers": [
             "I understand how you feel."
           ],
-          "explanation": "C'est la phrase d'empathie 💗 du chapitre : « ce que tu ressens » se dit **how you feel** : [[I understand how you feel.|Je comprends ce que tu ressens.]]"
+          "explanation": "✅ « ce que tu ressens » = **how you feel**. (mondes 2, 4 et « Words to remember »)"
         },
         {
           "id": "d74d5749-f66b-4846-bb6c-9b9632c81fe9",
@@ -1657,7 +1847,7 @@ window.registerPack({
           "answers": [
             "Why don't you ask for help?"
           ],
-          "explanation": "**Why don't you** + le verbe tout simple, et un **?** à la fin : [[Why don't you ask for help?|Pourquoi tu ne demandes pas de l'aide ?]]"
+          "explanation": "✅ **Why don't you** + le verbe tout simple ; [[ask for help|demander de l'aide]]. (exemple du monde 3, monde 4)"
         },
         {
           "id": "997aa466-3a91-4d73-83fa-5f73a6076402",
@@ -1666,9 +1856,10 @@ window.registerPack({
           "answers": [
             "How about taking a break?",
             "How about having a break?",
-            "What about taking a break?"
+            "What about taking a break?",
+            "What about having a break?"
           ],
-          "explanation": "Après **How about**, le verbe + **ing** : [[How about taking a break?|Et si tu faisais une pause ?]]"
+          "explanation": "✅ **How about** + -ing ; « faire une pause » = **take a break**. (exemple du monde 3, monde 4 et « Words to remember »)"
         },
         {
           "id": "062c9b47-d839-416a-92b7-0fb54ffb73ee",
@@ -1680,7 +1871,7 @@ window.registerPack({
             "You shouldn't meet up with this person alone.",
             "You shouldn't meet up with that person alone."
           ],
-          "explanation": "**You shouldn't** (= should not) + le verbe tout simple : [[You shouldn't meet this person alone.|Tu ne devrais pas rencontrer cette personne seule.]]"
+          "explanation": "✅ **shouldn't** + le verbe tout simple. (mondes 4 et 5)"
         },
         {
           "id": "bb4e4c96-31ca-4a0b-b50a-e6611274ce6e",
@@ -1688,9 +1879,11 @@ window.registerPack({
           "prompt": "Traduis : « Ça a l'air d'être une situation vraiment difficile. »",
           "answers": [
             "That sounds like a really difficult situation.",
-            "It sounds like a really difficult situation."
+            "It sounds like a really difficult situation.",
+            "That seems like a really difficult situation.",
+            "It seems like a really difficult situation."
           ],
-          "explanation": "Phrase d'empathie 💗 : **sounds** avec un **s**, puis **like** : [[That sounds like a really difficult situation.|Ça a l'air d'être une situation vraiment difficile.]]"
+          "explanation": "✅ « ça a l'air d'être » = **that sounds like** (sounds avec un **s**). (mondes 2, 4, 5 et « Words to remember »)"
         },
         {
           "id": "6b939e14-df1f-4b6c-a813-7c4bf1224263",
@@ -1700,7 +1893,7 @@ window.registerPack({
             "I understand why you feel upset.",
             "I understand why you are upset."
           ],
-          "explanation": "Les mots :\n- « pourquoi » = **why**\n- « bouleversé(e) » = **upset**\n[[I understand why you feel upset.|Je comprends pourquoi tu es bouleversée.]]"
+          "explanation": "✅ « pourquoi » = **why** ; « bouleversé(e) » = **upset**. (monde 5 et « Words to remember »)"
         },
         {
           "id": "eb61bd5a-6ea8-4c90-9b45-94f79858d859",
@@ -1710,7 +1903,7 @@ window.registerPack({
             "You shouldn't stay up so late.",
             "You shouldn't stay up that late."
           ],
-          "explanation": "« veiller tard » = **stay up**, le verbe tout simple après **shouldn't** : [[You shouldn't stay up so late.|Tu ne devrais pas veiller si tard.]]"
+          "explanation": "✅ **shouldn't** + **stay up** (veiller). (mondes 2 et 6, « Words to remember »)"
         },
         {
           "id": "c9eb2a3a-154a-4d85-a968-702cd394cf43",
@@ -1722,7 +1915,7 @@ window.registerPack({
             "Why don't you turn your phone off at night?",
             "Why don't you switch your phone off at night?"
           ],
-          "explanation": "**Why don't you** + verbe tout simple (pas de *to*) : [[Why don't you turn off your phone at night?|Pourquoi tu n'éteins pas ton téléphone la nuit ?]]"
+          "explanation": "✅ **Why don't you** + **turn off** ; « la nuit » = **at night**. (mondes 3, 4 et « Words to remember »)"
         },
         {
           "id": "e68b5413-92ec-4fcb-aff3-40e9d0fe556f",
@@ -1731,7 +1924,7 @@ window.registerPack({
           "answers": [
             "Why don't you join a club at school?"
           ],
-          "explanation": "« s'inscrire à un club » = **join a club**, après **Why don't you** : [[Why don't you join a club at school?|Pourquoi tu ne t'inscris pas à un club au collège ?]]"
+          "explanation": "✅ « s'inscrire à un club » = **join a club**. (monde 5 et « Words to remember »)"
         },
         {
           "id": "19b1eb88-a38b-429c-9a3d-955f1463339f",
@@ -1741,7 +1934,7 @@ window.registerPack({
             "How about making new friends?",
             "What about making new friends?"
           ],
-          "explanation": "**How about** + verbe + **ing** : make perd son **e** → **making** : [[How about making new friends?|Et si tu te faisais de nouveaux amis ?]]"
+          "explanation": "✅ **How about** + **making** (make perd son e) ; « se faire des amis » = **make friends**. (monde 3 et « Words to remember »)"
         },
         {
           "id": "c5950488-8b39-49c2-bd30-156d88f5e9eb",
@@ -1757,7 +1950,7 @@ window.registerPack({
             "I would speak to your parents if I were you.",
             "I'd speak to your parents if I were you."
           ],
-          "explanation": "**If I were you** (jamais *was*), puis **I would** ou **I'd** + verbe tout simple : [[If I were you, I'd talk to your parents.|Si j'étais toi, je parlerais à tes parents.]]"
+          "explanation": "✅ **If I were you** (jamais *was*), puis **I would** / **I'd** + le verbe tout simple. (exemple du monde 4)"
         },
         {
           "id": "3663a97f-d3ba-4a76-9727-210b7242994c",
@@ -1769,17 +1962,20 @@ window.registerPack({
             "What about wearing clothes you like?",
             "What about wearing clothes that you like?"
           ],
-          "explanation": "**How about** + **wearing** (verbe + ing) : [[How about wearing clothes you like?|Et si tu portais des vêtements que tu aimes ?]]"
+          "explanation": "✅ **How about** + **wearing** (-ing). (monde 4)"
         },
         {
           "id": "8c8ec3f5-5d37-45cf-997a-7a07571f2d6f",
           "type": "question",
           "prompt": "Traduis : « Tu ne devrais pas abandonner. Pourquoi tu ne travailles pas avec un ami ? »",
           "answers": [
-            "You shouldn't give up. Why don't you work with a friend?"
+            "You shouldn't give up. Why don't you work with a friend?",
+            "You shouldn't give up. Why don't you study with a friend?",
+            "You shouldn't quit. Why don't you work with a friend?",
+            "You shouldn't quit. Why don't you study with a friend?"
           ],
           "multiline": true,
-          "explanation": "« abandonner » = **give up** ; deux conseils, verbe tout simple à chaque fois : [[You shouldn't give up. Why don't you work with a friend?|Tu ne devrais pas abandonner. Pourquoi tu ne travailles pas avec un ami ?]]"
+          "explanation": "✅ « abandonner » = **give up** ; **Why don't you** + le verbe tout simple. (monde 2)"
         },
         {
           "id": "9d408558-42c5-416a-aee6-c34ef2315895",
@@ -1796,22 +1992,7 @@ window.registerPack({
             "I understand how you feel. I'd say sorry to your friend if I were you."
           ],
           "multiline": true,
-          "explanation": "D'abord l'empathie 💗, puis le conseil 💡 : [[I understand how you feel. If I were you, I'd say sorry to your friend.|Je comprends ce que tu ressens. Si j'étais toi, je dirais pardon à ton amie.]]"
-        },
-        {
-          "id": "3db0308e-736f-4dfe-aeea-288160923354",
-          "type": "question",
-          "prompt": "Traduis : « Ça a l'air d'être une situation vraiment difficile. Et si tu demandais de l'aide à un professeur ? »",
-          "answers": [
-            "That sounds like a really difficult situation. How about asking a teacher for help?",
-            "It sounds like a really difficult situation. How about asking a teacher for help?",
-            "That sounds like a really difficult situation. How about getting help from a teacher?",
-            "It sounds like a really difficult situation. How about getting help from a teacher?",
-            "That sounds like a really difficult situation. What about asking a teacher for help?",
-            "It sounds like a really difficult situation. What about asking a teacher for help?"
-          ],
-          "multiline": true,
-          "explanation": "Empathie 💗 puis conseil 💡 avec **How about** + verbe en **ing** : [[That sounds like a really difficult situation. How about asking a teacher for help?|Ça a l'air difficile. Et si tu demandais de l'aide à un professeur ?]]"
+          "explanation": "✅ L'empathie, puis **If I were you, I would** + **say sorry**. (mondes 3 et 7)"
         },
         {
           "id": "667394a8-e560-4947-92a6-7a57ae2fa306",
@@ -1822,16 +2003,17 @@ window.registerPack({
             "You should ask for help from your teacher.",
             "You should get help from your teacher."
           ],
-          "explanation": "**You should** + le verbe tout simple ; « demander de l'aide à quelqu'un » = **ask** someone **for help** : [[You should ask your teacher for help.|Tu devrais demander de l'aide à ton professeur.]]"
+          "explanation": "✅ « demander de l'aide à ton professeur » = **ask your teacher for help**. (monde 6 et « Words to remember »)"
         },
         {
           "id": "1578095e-2e56-4c0f-934f-3102cdb054ea",
           "type": "question",
           "prompt": "Traduis : « Tu ne devrais pas abandonner. »",
           "answers": [
-            "You shouldn't give up."
+            "You shouldn't give up.",
+            "You shouldn't quit."
           ],
-          "explanation": "« abandonner » = **give up** ; après **shouldn't**, le verbe tout simple : [[You shouldn't give up.|Tu ne devrais pas abandonner.]]"
+          "explanation": "✅ **shouldn't** + **give up**. (mondes 2 et 4, « Words to remember »)"
         },
         {
           "id": "9af6b397-cf49-4d01-98fe-002f0fd5b4de",
@@ -1843,7 +2025,7 @@ window.registerPack({
             "I would tell a teacher if I were you.",
             "I'd tell a teacher if I were you."
           ],
-          "explanation": "**If I were you** (jamais *was*), puis **I would** + verbe tout simple : [[If I were you, I would tell a teacher.|Si j'étais toi, je le dirais à un professeur.]]"
+          "explanation": "✅ « le dire à un professeur » = **tell a teacher**, après **I would**. (monde 5 et « Words to remember »)"
         },
         {
           "id": "885e027c-670f-41b0-b43e-8ddb8e23899f",
@@ -1852,7 +2034,7 @@ window.registerPack({
           "answers": [
             "Why don't you leave your phone in the kitchen at night?"
           ],
-          "explanation": "**Why don't you** + verbe tout simple ; « laisser » = **leave** : [[Why don't you leave your phone in the kitchen at night?|Pourquoi tu ne laisses pas ton téléphone dans la cuisine la nuit ?]]"
+          "explanation": "✅ **Why don't you** + **leave** (laisser) ; **at night**. (monde 7)"
         },
         {
           "id": "48003497-eec2-4f5a-88ac-1fde33d3137c",
@@ -1866,7 +2048,7 @@ window.registerPack({
             "What about switching off your phone?",
             "What about turning off your phone?"
           ],
-          "explanation": "Après **How about**, le verbe + **ing** : [[How about switching off your phone?|Et si tu éteignais ton téléphone ?]]"
+          "explanation": "✅ **How about** + **switching off** (ou turning off). (monde 5 et « Words to remember »)"
         },
         {
           "id": "7ec410a4-8974-4402-a8ec-a6679590bd6a",
@@ -1876,7 +2058,7 @@ window.registerPack({
             "Why don't you talk to your friend?",
             "Why don't you speak to your friend?"
           ],
-          "explanation": "**Why don't you** + **talk** (pas *talking*), et un **?** à la fin : [[Why don't you talk to your friend?|Pourquoi tu ne parles pas à ton amie ?]]"
+          "explanation": "✅ **Why don't you** + **talk** (pas *talking*). (monde 6)"
         },
         {
           "id": "8e3aef61-4706-476e-bafe-93c92161a1ba",
@@ -1886,7 +2068,7 @@ window.registerPack({
             "How about sleeping more?",
             "What about sleeping more?"
           ],
-          "explanation": "**How about** + verbe + **ing** : sleep → **sleeping** : [[How about sleeping more?|Et si tu dormais plus ?]]"
+          "explanation": "✅ **How about** + **sleeping**. (monde 7 : How about taking short breaks and sleeping more?)"
         },
         {
           "id": "9bb24be5-c5ca-415b-a617-86ea9f67d1d6",
@@ -1896,19 +2078,23 @@ window.registerPack({
             "If I were you, I wouldn't stay up late.",
             "I wouldn't stay up late if I were you."
           ],
-          "explanation": "**I wouldn't** (= I would not) + **stay up** (veiller tard) : [[If I were you, I wouldn't stay up late.|Si j'étais toi, je ne veillerais pas tard.]]"
+          "explanation": "✅ **I wouldn't** + **stay up late**. (mondes 5 et 6)"
         },
         {
           "id": "a59b5e2c-f862-410f-b109-07fa2a651e9b",
           "type": "question",
-          "prompt": "Traduis : « Tu ne devrais pas étudier cinq heures chaque soir. »",
+          "prompt": "Traduis : « Tu ne devrais pas étudier cinq heures tous les soirs. »",
           "answers": [
             "You shouldn't study five hours every night.",
             "You shouldn't study for five hours every night.",
+            "You shouldn't study five hours every evening.",
+            "You shouldn't study for five hours every evening.",
             "You shouldn't work five hours every night.",
-            "You shouldn't work for five hours every night."
+            "You shouldn't work for five hours every night.",
+            "You shouldn't work five hours every evening.",
+            "You shouldn't work for five hours every evening."
           ],
-          "explanation": "**shouldn't** + verbe tout simple ; « chaque soir » = **every night** : [[You shouldn't study five hours every night.|Tu ne devrais pas étudier cinq heures chaque soir.]]"
+          "explanation": "✅ **shouldn't** + le verbe tout simple ; « tous les soirs » = **every night**. (lettre de Sam au monde 7, « Words to remember »)"
         },
         {
           "id": "b48e6939-6626-4953-b2d1-e2f3c74a5b5f",
@@ -1921,7 +2107,7 @@ window.registerPack({
             "I understand why you are upset. You should speak to your parents."
           ],
           "multiline": true,
-          "explanation": "D'abord l'empathie 💗 (**why you feel upset**), puis le conseil 💡 : [[I understand why you feel upset. You should talk to your parents.|Je comprends pourquoi tu es contrarié. Tu devrais parler à tes parents.]]"
+          "explanation": "✅ L'empathie (**why you feel upset**), puis **You should** + le verbe. (mondes 2 et 5)"
         },
         {
           "id": "72fec68b-c130-4763-8f95-48f0803c6968",
@@ -1932,20 +2118,43 @@ window.registerPack({
             "I understand how you feel. Why don't you join a club to make new friends?"
           ],
           "multiline": true,
-          "explanation": "Empathie 💗 puis conseil 💡 : **Why don't you join** + « pour » = **to** : [[I understand how you feel. Why don't you join a club to make friends?|Je comprends ce que tu ressens. Pourquoi tu ne t'inscris pas à un club pour te faire des amis ?]]"
+          "explanation": "✅ **Why don't you join a club** ; « pour » = **to** : to make friends. (monde 7 et « Words to remember »)"
         },
         {
-          "id": "371d4151-ce11-474e-a485-e7dd0de85dc9",
+          "id": "3db0308e-736f-4dfe-aeea-288160923354",
           "type": "question",
-          "prompt": "Traduis : « Ça a l'air d'être une situation vraiment difficile. Tu devrais dormir plus et faire des pauses. »",
+          "prompt": "Traduis : « Ça a l'air d'être une situation vraiment difficile. Et si tu demandais de l'aide à un professeur ? »",
           "answers": [
-            "That sounds like a really difficult situation. You should sleep more and take breaks.",
-            "It sounds like a really difficult situation. You should sleep more and take breaks.",
-            "That sounds like a really difficult situation. You should sleep more and have breaks.",
-            "It sounds like a really difficult situation. You should sleep more and have breaks."
+            "That sounds like a really difficult situation. How about asking a teacher for help?",
+            "It sounds like a really difficult situation. How about asking a teacher for help?",
+            "That sounds like a really difficult situation. How about getting help from a teacher?",
+            "It sounds like a really difficult situation. How about getting help from a teacher?",
+            "That sounds like a really difficult situation. What about asking a teacher for help?",
+            "It sounds like a really difficult situation. What about asking a teacher for help?",
+            "That seems like a really difficult situation. How about asking a teacher for help?",
+            "It seems like a really difficult situation. How about asking a teacher for help?"
           ],
           "multiline": true,
-          "explanation": "Après **should**, deux verbes tout simples reliés par **and** : [[You should sleep more and take breaks.|Tu devrais dormir plus et faire des pauses.]]"
+          "explanation": "✅ L'empathie, puis **How about** + **asking** ; ask a teacher **for help**. (mondes 2, 3 et « Words to remember »)"
+        },
+        {
+          "id": "073b25b3-de2f-4925-a937-45470ad66b15",
+          "type": "question",
+          "prompt": "Traduis : « Si j'étais toi, je dirais pardon à ton amie et je le dirais à un professeur. »",
+          "answers": [
+            "If I were you, I would say sorry to your friend and tell a teacher.",
+            "If I were you, I'd say sorry to your friend and tell a teacher.",
+            "If I were you, I would say sorry to your friend and I would tell a teacher.",
+            "If I were you, I'd say sorry to your friend and I'd tell a teacher.",
+            "If I were you, I would apologise to your friend and tell a teacher.",
+            "If I were you, I'd apologise to your friend and tell a teacher.",
+            "If I were you, I would apologize to your friend and tell a teacher.",
+            "If I were you, I'd apologize to your friend and tell a teacher.",
+            "I would say sorry to your friend and tell a teacher if I were you.",
+            "I'd say sorry to your friend and tell a teacher if I were you."
+          ],
+          "multiline": true,
+          "explanation": "✅ **If I were you, I would** + **say sorry** … **and tell a teacher**. (monde 7 et « Words to remember »)"
         }
       ]
     }

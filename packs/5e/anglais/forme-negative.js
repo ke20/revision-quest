@@ -183,6 +183,34 @@ window.registerPack({
             }
           ],
           "explanation": "✅ Deux formes :\n- **isn't** avec he, she, it et un nom au singulier\n- **aren't** avec you, we, they et un nom au pluriel"
+        },
+        {
+          "id": "f49b27f7-5099-481e-996f-93e3a1a43ccb",
+          "type": "match",
+          "prompt": "Relie chaque phrase à sa traduction.",
+          "pairs": [
+            {
+              "left": "My cat isn't grey.",
+              "right": "Mon chat n'est pas gris."
+            },
+            {
+              "left": "We aren't late.",
+              "right": "Nous ne sommes pas en retard."
+            },
+            {
+              "left": "Tom isn't happy.",
+              "right": "Tom n'est pas content."
+            },
+            {
+              "left": "They aren't very old.",
+              "right": "Ils ne sont pas très vieux."
+            },
+            {
+              "left": "She isn't my cousin.",
+              "right": "Elle n'est pas ma cousine."
+            }
+          ],
+          "explanation": "✅ Les phrases :\n- [[My cat isn't grey.|Mon chat n'est pas gris.]]\n- [[We aren't late.|Nous ne sommes pas en retard.]]\n- [[Tom isn't happy.|Tom n'est pas content.]]\n- [[They aren't very old.|Ils ne sont pas très vieux.]]\n- [[She isn't my cousin.|Elle n'est pas ma cousine.]]"
         }
       ]
     },
@@ -198,7 +226,8 @@ window.registerPack({
         "points": [
           "Avec les autres verbes (like, speak, buy, understand…), on ajoute **do not** devant le verbe.",
           "Forme courte : do not → **don't**.\n- [[I **don't** speak Japanese.|Je ne parle pas japonais.]]\n- [[They **don't** like mushrooms.|Ils n'aiment pas les champignons.]]",
-          "Avec **I, you, we, they** (et un nom au pluriel) : **don't** + verbe."
+          "Avec **I, you, we, they** (et un nom au pluriel) : **don't** + verbe.",
+          "Ce qu'on aime **en général** : pas de **the** devant le nom.\n- [[They don't like **mushrooms**.|Ils n'aiment pas **les** champignons.]]\n- [[I don't like **football**.|Je n'aime pas **le** football.]]"
         ],
         "examples": [
           "[[I don't buy a lot of clothes.|Je n'achète pas beaucoup de vêtements.]]",
@@ -240,6 +269,19 @@ window.registerPack({
           ],
           "answer": 2,
           "explanation": "✅ Avec un verbe comme **speak**, il faut **don't** devant le verbe."
+        },
+        {
+          "id": "f169277c-cae4-4b64-ac2a-466c210fac10",
+          "type": "mcq",
+          "prompt": "Traduis : « Ils n'aiment pas les champignons. »",
+          "options": [
+            "They don't like the mushrooms.",
+            "They don't like mushrooms.",
+            "They doesn't like mushrooms.",
+            "They not like mushrooms."
+          ],
+          "answer": 1,
+          "explanation": "✅ they → **don't** like ; en général, pas de **the** : like **mushrooms**."
         },
         {
           "id": "3e1dd892-5089-4c89-9028-4a06dc3e3fa5",
@@ -405,6 +447,19 @@ window.registerPack({
           ],
           "answer": 3,
           "explanation": "✅ **doesn't** + verbe **sans -s** : She doesn't **speak**."
+        },
+        {
+          "id": "abe9fa77-fd7b-41b0-ab48-e44d80f65a0c",
+          "type": "mcq",
+          "prompt": "Traduis : « Elle n'aime pas les épinards. »",
+          "options": [
+            "She doesn't likes spinach.",
+            "She don't like spinach.",
+            "She doesn't like the spinach.",
+            "She doesn't like spinach."
+          ],
+          "answer": 3,
+          "explanation": "✅ she → **doesn't** + **like** (sans -s) ; en général, pas de **the**."
         },
         {
           "id": "f08abe66-3a9a-46f9-90bd-51f21b9599ee",
@@ -606,6 +661,19 @@ window.registerPack({
           "explanation": "✅ Deux négations :\n- **can't** = ne pas pouvoir, ne pas savoir\n- **mustn't** = ne pas devoir (c'est interdit)"
         },
         {
+          "id": "3f95f565-4fd4-40a6-8249-71a7ada45939",
+          "type": "mcq",
+          "prompt": "Traduis : « Tu ne dois pas courir. »",
+          "options": [
+            "You don't must run.",
+            "You mustn't to run.",
+            "You mustn't run.",
+            "You don't have to run."
+          ],
+          "answer": 2,
+          "explanation": "✅ C'est interdit → **mustn't** + verbe, sans do et sans to. *Don't have to* veut dire « pas obligé »."
+        },
+        {
           "id": "cbcf2145-7fb2-495e-92a6-53a49d770a9c",
           "type": "fill",
           "prompt": "Mets la phrase à la forme négative : complète.",
@@ -789,6 +857,165 @@ window.registerPack({
       ]
     },
     {
+      "id": "words",
+      "title": "Words to remember",
+      "subtitle": "Tricky words",
+      "subtitleFr": "Les mots pièges",
+      "icon": "🧠",
+      "color": "#14B8A6",
+      "lesson": {
+        "title": "[[Words to remember|Les mots à retenir]]",
+        "points": [
+          "Pas de mot à mot :\n- être en retard = **be late** (pas *in late*)\n- grand (une personne) = **tall**\n- content(e) = **happy**",
+          "savoir (nager, jouer…) = **can** : [[I can't swim.|Je ne sais pas nager.]] (pas *I don't know swim*)",
+          "« ce » devant être = **it** : [[It isn't difficult.|Ce n'est pas difficile.]]",
+          "Les petits mots qui changent :\n- habiter **à** Londres = live **in** London\n- connaître = **know**\n- je n'ai pas **de** frère = I haven't got **a** brother",
+          "ne pas devoir = **mustn't** (c'est interdit) : [[You mustn't run.|Tu ne dois pas courir.]]"
+        ],
+        "examples": [
+          "[[We **aren't late**.|Nous ne sommes pas en retard.]]",
+          "[[She **can't** swim.|Elle ne sait pas nager.]]"
+        ]
+      },
+      "exercises": [
+        {
+          "id": "30de0c28-7e7d-4f1a-8779-506f78e91227",
+          "type": "mcq",
+          "prompt": "Traduis : « Nous ne sommes pas en retard. »",
+          "options": [
+            "We aren't late.",
+            "We aren't in late.",
+            "We don't late.",
+            "We aren't in delay."
+          ],
+          "answer": 0,
+          "explanation": "✅ « en retard » = **late**, un seul mot ; avec be → **aren't**."
+        },
+        {
+          "id": "72499953-9a14-427d-b6d0-2d92ceb77324",
+          "type": "question",
+          "prompt": "Comment dit-on « être en retard » en anglais ?",
+          "answers": [
+            "be late",
+            "to be late"
+          ],
+          "explanation": "✅ **be late** : [[You aren't late.|Tu n'es pas en retard.]]"
+        },
+        {
+          "id": "2566126a-10e4-4634-91e6-e92dd6272274",
+          "type": "question",
+          "prompt": "Comment dit-on « grand (pour une personne) » en anglais ?",
+          "answers": [
+            "tall"
+          ],
+          "explanation": "✅ **tall** : [[I'm not tall.|Je ne suis pas grand.]]"
+        },
+        {
+          "id": "8709eb61-e165-4ea5-a529-926423f96428",
+          "type": "question",
+          "prompt": "Comment dit-on « content » en anglais ?",
+          "answers": [
+            "happy"
+          ],
+          "explanation": "✅ **happy** : [[Tom isn't happy.|Tom n'est pas content.]]"
+        },
+        {
+          "id": "9ca847f0-ae29-4a9c-8293-8dd4e22192d5",
+          "type": "mcq",
+          "prompt": "Traduis : « Elle ne sait pas nager. »",
+          "options": [
+            "She doesn't know swim.",
+            "She doesn't know to swim.",
+            "She can't swim.",
+            "She can't swims."
+          ],
+          "answer": 2,
+          "explanation": "✅ « savoir nager » = **can swim** ; négation : **can't** + verbe sans -s."
+        },
+        {
+          "id": "35a488f8-6316-4a6a-8c93-ba2cac2fcdf5",
+          "type": "mcq",
+          "prompt": "Traduis : « Ce n'est pas difficile. »",
+          "options": [
+            "Is not difficult.",
+            "It isn't difficult.",
+            "It doesn't difficult.",
+            "It isn't difficulty."
+          ],
+          "answer": 1,
+          "explanation": "✅ « ce » = **it** ; avec be → **isn't**."
+        },
+        {
+          "id": "8b5e3ada-f2ed-4be9-9fe9-46a61ba6dbaa",
+          "type": "question",
+          "prompt": "Comment dit-on « habiter à Londres » en anglais ?",
+          "answers": [
+            "live in London",
+            "to live in London"
+          ],
+          "explanation": "✅ **live in London** (pas *at London*)."
+        },
+        {
+          "id": "d4cc6284-2293-4aa0-9505-07014769a87e",
+          "type": "mcq",
+          "prompt": "Traduis : « Mon frère n'habite pas à Londres. »",
+          "options": [
+            "My brother doesn't live at London.",
+            "My brother doesn't lives in London.",
+            "My brother isn't live in London.",
+            "My brother doesn't live in London."
+          ],
+          "answer": 3,
+          "explanation": "✅ he → **doesn't live** ; « à Londres » = **in London**."
+        },
+        {
+          "id": "b642548d-c5a6-4ced-9e20-da6f19cf2a55",
+          "type": "question",
+          "prompt": "Comment dit-on « connaître » en anglais ?",
+          "answers": [
+            "know",
+            "to know"
+          ],
+          "explanation": "✅ **know** : [[He doesn't know my cousin.|Il ne connaît pas mon cousin.]]"
+        },
+        {
+          "id": "17b37c7f-cc7c-4e7b-9f09-67c27e2f6411",
+          "type": "mcq",
+          "prompt": "Traduis : « Il ne connaît pas mon cousin. »",
+          "options": [
+            "He doesn't know my cousin.",
+            "He doesn't knows my cousin.",
+            "He don't know my cousin.",
+            "He isn't know my cousin."
+          ],
+          "answer": 0,
+          "explanation": "✅ « connaître » = **know** ; he → **doesn't know** (sans -s)."
+        },
+        {
+          "id": "7c8a9261-1a4b-4729-813b-218a4b738aa9",
+          "type": "mcq",
+          "prompt": "Traduis : « Nous n'avons pas de jardin. »",
+          "options": [
+            "We haven't got of garden.",
+            "We hasn't got a garden.",
+            "We haven't got a garden.",
+            "We aren't got a garden."
+          ],
+          "answer": 2,
+          "explanation": "✅ « pas **de** jardin » = **a** garden ; we → **haven't got**."
+        },
+        {
+          "id": "7d0faee5-9856-4070-8cb7-003a1669db14",
+          "type": "question",
+          "prompt": "Comment dit-on « ne pas devoir (c'est interdit) » en anglais ?",
+          "answers": [
+            "mustn't"
+          ],
+          "explanation": "✅ **mustn't** : [[You mustn't run.|Tu ne dois pas courir.]]"
+        }
+      ]
+    },
+    {
       "id": 6,
       "title": "Boss: say no!",
       "subtitle": "Translate",
@@ -811,16 +1038,16 @@ window.registerPack({
           "answers": [
             "I am not tall."
           ],
-          "explanation": "✅ [[I'm not tall.|Je ne suis pas grand.]]"
+          "explanation": "✅ **not** après am ; « grand » = **tall**. (monde 1 : He is not tall. et « Words to remember »)"
         },
         {
-          "id": "24706a57-bfa6-4fd3-a29f-f72cffe622b7",
+          "id": "9e2643ed-d493-488b-80bf-61ed6c02685b",
           "type": "question",
-          "prompt": "Traduis : « Elle n'aime pas les épinards. »",
+          "prompt": "Traduis : « Tu n'es pas en retard. »",
           "answers": [
-            "She doesn't like spinach."
+            "You aren't late."
           ],
-          "explanation": "✅ **doesn't** + verbe sans -s : she doesn't **like**."
+          "explanation": "✅ you → **aren't** ; « en retard » = **late**. (monde 1 : We aren't late.)"
         },
         {
           "id": "dd5ad3ca-9d33-4eae-b141-02c4889a385c",
@@ -829,16 +1056,101 @@ window.registerPack({
           "answers": [
             "They aren't very old."
           ],
-          "explanation": "✅ Avec **be** : **aren't**."
+          "explanation": "✅ they → **aren't**. (monde 1)"
         },
         {
-          "id": "d4af8169-d9a0-4b42-aae2-b7ba084aa157",
+          "id": "95ed3c1d-b96f-4595-9d99-e1fd0e887297",
           "type": "question",
-          "prompt": "Traduis : « Je ne parle pas japonais. »",
+          "prompt": "Traduis : « Ce n'est pas difficile. »",
           "answers": [
-            "I don't speak Japanese."
+            "It isn't difficult.",
+            "This isn't difficult.",
+            "That isn't difficult."
           ],
-          "explanation": "✅ **I don't** + verbe."
+          "explanation": "✅ « ce » = **it** → **isn't**. (exemple du monde 1)"
+        },
+        {
+          "id": "cfa4b707-92ae-4c23-8a58-c3bd07a5f8d5",
+          "type": "question",
+          "prompt": "Traduis : « Mon chat n'est pas gris. »",
+          "answers": [
+            "My cat isn't grey.",
+            "My cat isn't gray."
+          ],
+          "explanation": "✅ my cat = it → **isn't**. (monde 1)"
+        },
+        {
+          "id": "0f53ecce-7532-485d-9c31-22635b88fbdb",
+          "type": "question",
+          "prompt": "Traduis : « Tom n'est pas content. »",
+          "answers": [
+            "Tom isn't happy."
+          ],
+          "explanation": "✅ Tom = he → **isn't** ; « content » = **happy**. (monde 1)"
+        },
+        {
+          "id": "34ef4649-8ca9-42d6-9fca-410a4c588ed9",
+          "type": "question",
+          "prompt": "Traduis : « Nous ne parlons pas japonais. »",
+          "answers": [
+            "We don't speak Japanese."
+          ],
+          "explanation": "✅ we → **don't** + verbe. (monde 2 : I don't speak Japanese.)"
+        },
+        {
+          "id": "2cc02444-274d-4abf-ac8c-584fbf4dc50b",
+          "type": "question",
+          "prompt": "Traduis : « Je n'aime pas les champignons. »",
+          "answers": [
+            "I don't like mushrooms."
+          ],
+          "explanation": "✅ I → **don't** like ; pas de the. (monde 2 : They don't like mushrooms.)"
+        },
+        {
+          "id": "7a1d3213-d464-4c65-8f82-44c0ed20e738",
+          "type": "question",
+          "prompt": "Traduis : « Mes parents n'aiment pas les épinards. »",
+          "answers": [
+            "My parents don't like spinach."
+          ],
+          "explanation": "✅ my parents = they → **don't** ; pas de the. (monde 2)"
+        },
+        {
+          "id": "c88275aa-5771-44d2-a658-55d0c8eba5b5",
+          "type": "question",
+          "prompt": "Traduis : « Ils ne comprennent pas notre langue. »",
+          "answers": [
+            "They don't understand our language."
+          ],
+          "explanation": "✅ they → **don't** understand. (monde 2)"
+        },
+        {
+          "id": "24706a57-bfa6-4fd3-a29f-f72cffe622b7",
+          "type": "question",
+          "prompt": "Traduis : « Elle n'aime pas les épinards. »",
+          "answers": [
+            "She doesn't like spinach."
+          ],
+          "explanation": "✅ she → **doesn't** + like (sans -s). (monde 3 : He doesn't like spinach.)"
+        },
+        {
+          "id": "3bae340f-64df-4765-b602-30b4f5c66a05",
+          "type": "question",
+          "prompt": "Traduis : « Il n'aime pas le football. »",
+          "answers": [
+            "He doesn't like football.",
+            "He doesn't like soccer."
+          ],
+          "explanation": "✅ he → **doesn't** like ; pas de the. (monde 3 : Tom doesn't like football.)"
+        },
+        {
+          "id": "5201afb7-695f-4d79-8eda-bea607d4c81a",
+          "type": "question",
+          "prompt": "Traduis : « Elle ne parle pas grec. »",
+          "answers": [
+            "She doesn't speak Greek."
+          ],
+          "explanation": "✅ **doesn't speak** : le -s disparaît. (exemple du monde 3)"
         },
         {
           "id": "5ddd4530-aea3-40f5-896c-341363477f03",
@@ -847,44 +1159,7 @@ window.registerPack({
           "answers": [
             "He doesn't know my cousin."
           ],
-          "explanation": "✅ **doesn't know** (sans -s)."
-        },
-        {
-          "id": "cfb83fec-e62e-4017-a2bb-5d3ded807be0",
-          "type": "question",
-          "prompt": "Traduis : « Je ne sais pas très bien nager. »",
-          "answers": [
-            "I can't swim very well."
-          ],
-          "explanation": "✅ **can't** + verbe, sans do."
-        },
-        {
-          "id": "6bd4350a-1e07-4f7b-bb1f-0e2b142765d0",
-          "type": "question",
-          "prompt": "Traduis : « Tu ne dois pas courir. »",
-          "answers": [
-            "You mustn't run."
-          ],
-          "explanation": "✅ **mustn't** = c'est interdit."
-        },
-        {
-          "id": "deacdb80-4ab4-436c-af13-2ab98fe4d070",
-          "type": "question",
-          "prompt": "Traduis : « Nous n'avons pas de voiture. »",
-          "answers": [
-            "We don't have a car.",
-            "We haven't got a car."
-          ],
-          "explanation": "✅ **We don't have a car** ou **We haven't got a car**."
-        },
-        {
-          "id": "95ed3c1d-b96f-4595-9d99-e1fd0e887297",
-          "type": "question",
-          "prompt": "Traduis : « Ce n'est pas difficile. »",
-          "answers": [
-            "It isn't difficult."
-          ],
-          "explanation": "✅ **It isn't difficult** (ou it's not)."
+          "explanation": "✅ he → **doesn't know**. (monde 3 et « Words to remember »)"
         },
         {
           "id": "20e42237-9236-4403-b2f4-d833579a608f",
@@ -895,84 +1170,25 @@ window.registerPack({
             "My sister doesn't buy lots of clothes.",
             "My sister doesn't buy many clothes."
           ],
-          "explanation": "✅ **doesn't buy** : pas de -s après doesn't."
+          "explanation": "✅ my sister = she → **doesn't buy**. (exemple du monde 3)"
         },
         {
-          "id": "248055c1-0f29-4ee2-b14b-06c4a492f15e",
+          "id": "6b17a9ec-9346-4e34-a907-f6e0b853589f",
           "type": "question",
-          "prompt": "Traduis : « Cindy n'a pas de sœur. »",
+          "prompt": "Traduis : « Mon frère n'habite pas à Londres. »",
           "answers": [
-            "Cindy doesn't have a sister.",
-            "Cindy hasn't got a sister."
+            "My brother doesn't live in London."
           ],
-          "explanation": "✅ **doesn't have** ou **hasn't got**."
+          "explanation": "✅ **doesn't live** ; « à Londres » = **in London**. (monde 3 et « Words to remember »)"
         },
         {
-          "id": "414ef02d-5957-43b1-a5eb-909e0f74096d",
+          "id": "cfb83fec-e62e-4017-a2bb-5d3ded807be0",
           "type": "question",
-          "prompt": "Traduis : « Mes vêtements ne sont pas trop grands. »",
+          "prompt": "Traduis : « Je ne sais pas très bien nager. »",
           "answers": [
-            "My clothes aren't too large.",
-            "My clothes aren't too big."
+            "I can't swim very well."
           ],
-          "explanation": "✅ **clothes** est pluriel → **aren't**."
-        },
-        {
-          "id": "7ee77555-3281-4d0d-ba59-9ce443b978ce",
-          "type": "question",
-          "prompt": "Traduis : « Il ne peut pas venir. »",
-          "answers": [
-            "He can't come."
-          ],
-          "explanation": "✅ **can't** + verbe sans -s."
-        },
-        {
-          "id": "3cee5b70-1120-4bed-8826-4c376d8c136f",
-          "type": "question",
-          "prompt": "Traduis : « Je n'aime pas les champignons et je ne suis pas grand. »",
-          "answers": [
-            "I don't like mushrooms and I am not tall."
-          ],
-          "multiline": true,
-          "explanation": "✅ Deux négations :\n- **don't** devant like\n- **not** après am"
-        },
-        {
-          "id": "9e2643ed-d493-488b-80bf-61ed6c02685b",
-          "type": "question",
-          "prompt": "Traduis : « Tu n'es pas en retard. »",
-          "answers": [
-            "You aren't late."
-          ],
-          "explanation": "✅ **aren't** avec you."
-        },
-        {
-          "id": "3bae340f-64df-4765-b602-30b4f5c66a05",
-          "type": "question",
-          "prompt": "Traduis : « Il n'aime pas le football. »",
-          "answers": [
-            "He doesn't like football.",
-            "He doesn't like soccer."
-          ],
-          "explanation": "✅ **doesn't like** (sans -s)."
-        },
-        {
-          "id": "a595e320-717a-4d44-b84d-ed6634615b67",
-          "type": "question",
-          "prompt": "Traduis : « Nous ne parlons pas espagnol. »",
-          "answers": [
-            "We don't speak Spanish."
-          ],
-          "explanation": "✅ **We don't** + verbe."
-        },
-        {
-          "id": "cfa4b707-92ae-4c23-8a58-c3bd07a5f8d5",
-          "type": "question",
-          "prompt": "Traduis : « Mon chat n'est pas gris. »",
-          "answers": [
-            "My cat isn't grey.",
-            "My cat isn't gray."
-          ],
-          "explanation": "✅ Avec **be** : **isn't**."
+          "explanation": "✅ « savoir nager » = **can swim** → **can't**. (exemple du monde 4)"
         },
         {
           "id": "232b9b19-2ab2-44a7-a144-afbd206a12cb",
@@ -981,16 +1197,45 @@ window.registerPack({
           "answers": [
             "She can't swim."
           ],
-          "explanation": "✅ **can't** + verbe sans -s."
+          "explanation": "✅ **can't** + verbe sans -s. (monde 4 et « Words to remember »)"
         },
         {
-          "id": "c88275aa-5771-44d2-a658-55d0c8eba5b5",
+          "id": "7ee77555-3281-4d0d-ba59-9ce443b978ce",
           "type": "question",
-          "prompt": "Traduis : « Ils ne comprennent pas notre langue. »",
+          "prompt": "Traduis : « Il ne peut pas venir. »",
           "answers": [
-            "They don't understand our language."
+            "He can't come."
           ],
-          "explanation": "✅ **don't understand**."
+          "explanation": "✅ **can't** tout seul, sans do. (monde 4 : She can't come.)"
+        },
+        {
+          "id": "6bd4350a-1e07-4f7b-bb1f-0e2b142765d0",
+          "type": "question",
+          "prompt": "Traduis : « Tu ne dois pas courir. »",
+          "answers": [
+            "You mustn't run."
+          ],
+          "explanation": "✅ c'est interdit → **mustn't**. (exemple du monde 4)"
+        },
+        {
+          "id": "8f83f48e-47f1-4ebb-89aa-4fcec9cd6cec",
+          "type": "question",
+          "prompt": "Traduis : « Vous ne devez pas crier. »",
+          "answers": [
+            "You mustn't shout.",
+            "You mustn't scream.",
+            "You mustn't yell."
+          ],
+          "explanation": "✅ **mustn't** + verbe. (monde 4 : We mustn't shout.)"
+        },
+        {
+          "id": "bb40d37d-5192-4f51-ba0b-667255de1464",
+          "type": "question",
+          "prompt": "Traduis : « Elle ne doit pas aller au supermarché. »",
+          "answers": [
+            "She mustn't go to the supermarket."
+          ],
+          "explanation": "✅ **mustn't** ne prend jamais de -s. (exemple du monde 4)"
         },
         {
           "id": "eabe91ae-1590-4820-9229-cfe9a120ef1a",
@@ -1002,60 +1247,66 @@ window.registerPack({
             "I don't have an animal.",
             "I haven't got an animal."
           ],
-          "explanation": "✅ **don't have** ou **haven't got**."
+          "explanation": "✅ **don't have** ou **haven't got** ; « pas de » = **a**. (exemple du monde 5)"
         },
         {
-          "id": "8f83f48e-47f1-4ebb-89aa-4fcec9cd6cec",
+          "id": "deacdb80-4ab4-436c-af13-2ab98fe4d070",
           "type": "question",
-          "prompt": "Traduis : « Vous ne devez pas crier. »",
+          "prompt": "Traduis : « Nous n'avons pas de voiture. »",
           "answers": [
-            "You mustn't shout.",
-            "You mustn't scream.",
-            "You mustn't yell."
+            "We don't have a car.",
+            "We haven't got a car."
           ],
-          "explanation": "✅ **mustn't** = c'est interdit."
+          "explanation": "✅ we → **don't have** ou **haven't got**. (exemple du monde 5)"
         },
         {
-          "id": "6b17a9ec-9346-4e34-a907-f6e0b853589f",
+          "id": "248055c1-0f29-4ee2-b14b-06c4a492f15e",
           "type": "question",
-          "prompt": "Traduis : « Mon frère n'habite pas à Londres. »",
+          "prompt": "Traduis : « Cindy n'a pas de sœur. »",
           "answers": [
-            "My brother doesn't live in London."
+            "Cindy doesn't have a sister.",
+            "Cindy hasn't got a sister."
           ],
-          "explanation": "✅ **doesn't live** (sans -s)."
+          "explanation": "✅ Cindy = she → **doesn't have** ou **hasn't got**. (exemple du monde 5)"
         },
         {
-          "id": "2a94eea1-7da3-470d-8157-61787e6b5f6c",
+          "id": "8bd214ef-3de0-46ec-9415-fb14de0bed87",
           "type": "question",
-          "prompt": "Traduis : « Ce n'est pas mon livre. »",
+          "prompt": "Traduis : « Mary n'a pas de voiture rouge. »",
           "answers": [
-            "It isn't my book.",
-            "This isn't my book.",
-            "That isn't my book."
+            "Mary doesn't have a red car.",
+            "Mary hasn't got a red car."
           ],
-          "explanation": "✅ **isn't** + my book."
+          "explanation": "✅ après doesn't → **have** (pas has). (exemple du monde 5)"
         },
         {
-          "id": "33080441-19f4-4509-9b94-9b46c7182025",
+          "id": "58a5750b-5adf-4c69-a040-3f8a54e2d68c",
           "type": "question",
-          "prompt": "Traduis : « Tom n'a pas de vélo. »",
+          "prompt": "Traduis : « Ils n'ont pas de jardin. »",
           "answers": [
-            "Tom doesn't have a bike.",
-            "Tom hasn't got a bike.",
-            "Tom doesn't have a bicycle.",
-            "Tom hasn't got a bicycle."
+            "They don't have a garden.",
+            "They haven't got a garden."
           ],
-          "explanation": "✅ **doesn't have** ou **hasn't got**."
+          "explanation": "✅ they → **haven't got** ou **don't have**. (monde 5)"
         },
         {
-          "id": "80dd57ac-86c7-4a27-a8d0-6dabaf1ea793",
+          "id": "859abc72-d450-4741-b98b-b4e98061582a",
           "type": "question",
-          "prompt": "Traduis : « Je ne suis pas fatigué et je ne veux pas dormir. »",
+          "prompt": "Traduis : « Mon frère n'a pas de téléphone. »",
           "answers": [
-            "I am not tired and I don't want to sleep."
+            "My brother doesn't have a phone.",
+            "My brother hasn't got a phone."
           ],
-          "multiline": true,
-          "explanation": "✅ Deux négations :\n- **not** après am\n- **don't** devant want"
+          "explanation": "✅ my brother = he → **doesn't have** ou **hasn't got**. (monde 5)"
+        },
+        {
+          "id": "d91d3afc-1686-4e78-889c-576e348f4631",
+          "type": "question",
+          "prompt": "Traduis : « Je ne suis pas en retard et je ne sais pas nager. »",
+          "answers": [
+            "I am not late and I can't swim."
+          ],
+          "explanation": "✅ **not** après am ; **can't** devant swim. (mondes 1 et 4)"
         }
       ],
       "draw": 12

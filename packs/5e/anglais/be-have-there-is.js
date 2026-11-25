@@ -174,6 +174,47 @@ window.registerPack({
           "explanation": "✅ Sujet + **are** + le reste. **Our English books** est au pluriel → **are**."
         },
         {
+          "id": "a7cca79f-d427-40e8-987d-400ed64c004a",
+          "type": "match",
+          "prompt": "Relie chaque phrase à sa traduction.",
+          "pairs": [
+            {
+              "left": "We are in the same class.",
+              "right": "Nous sommes dans la même classe."
+            },
+            {
+              "left": "She is my best friend.",
+              "right": "C'est ma meilleure amie."
+            },
+            {
+              "left": "My parents are very nice.",
+              "right": "Mes parents sont très gentils."
+            },
+            {
+              "left": "The cats are on the roof.",
+              "right": "Les chats sont sur le toit."
+            },
+            {
+              "left": "My workbook is yellow.",
+              "right": "Mon cahier est jaune."
+            }
+          ],
+          "explanation": "✅ Les phrases :\n- [[We are in the same class.|Nous sommes dans la même classe.]]\n- [[She is my best friend.|C'est ma meilleure amie.]]\n- [[My parents are very nice.|Mes parents sont très gentils.]]\n- [[The cats are on the roof.|Les chats sont sur le toit.]]\n- [[My workbook is yellow.|Mon cahier est jaune.]]"
+        },
+        {
+          "id": "b597bef9-49e3-42b7-9514-1a3be635b671",
+          "type": "mcq",
+          "prompt": "Traduis : « Nos livres d'anglais sont à la maison. »",
+          "options": [
+            "Our books English are at home.",
+            "Our English books are at the house.",
+            "Our English books are at home.",
+            "Our English books is at home."
+          ],
+          "answer": 2,
+          "explanation": "✅ « à la maison » = **at home** ; **English** se met avant **books** ; books (pluriel) → **are**."
+        },
+        {
           "id": "0cd3158f-bf1b-4037-946d-0d28c0f2e5b3",
           "type": "fill",
           "prompt": "Complète la phrase.",
@@ -427,7 +468,8 @@ window.registerPack({
         "points": [
           "**be** (am, is, are) dit **comment est** quelqu'un ou quelque chose :\n- sa couleur\n- sa taille\n- son caractère\n- où il est",
           "**have** (have, has, ou **have got**, **has got**) dit **ce qu'on a** :\n- un animal\n- un objet\n- et aussi les **yeux** et les **cheveux**",
-          "⚠️ Comme en français : [[She has blonde hair.|Elle a les cheveux blonds.]] Mais : [[She is very tall.|Elle est très grande.]]"
+          "⚠️ Comme en français : [[She has blonde hair.|Elle a les cheveux blonds.]] Mais : [[She is very tall.|Elle est très grande.]]",
+          "Les yeux et les cheveux :\n- pas de **the** : [[She has **blue eyes**.|Elle a **les** yeux bleus.]]\n- **hair** reste au singulier : [[My parents have brown **hair**.|Mes parents ont les cheveux bruns.]]\n- la taille et la couleur se mettent **avant** le nom : [[He has **big green eyes**.|Il a de grands yeux verts.]]"
         ],
         "examples": [
           "[[I have a cat who is grey.|J'ai un chat qui est gris.]]",
@@ -576,6 +618,32 @@ window.registerPack({
           "explanation": "✅ Les yeux : **have got** → [[She has got blue eyes.|Elle a les yeux bleus.]] (she's got = she **has** got)."
         },
         {
+          "id": "4d6ca740-6af3-464a-867d-e8c69a36d82e",
+          "type": "mcq",
+          "prompt": "Traduis : « Mes parents ont les cheveux bruns. »",
+          "options": [
+            "My parents have the brown hair.",
+            "My parents have brown hair.",
+            "My parents have brown hairs.",
+            "My parents are brown hair."
+          ],
+          "answer": 1,
+          "explanation": "✅ **have** pour les cheveux ; pas de **the** ; **hair** sans -s : [[My parents have brown hair.|Mes parents ont les cheveux bruns.]]"
+        },
+        {
+          "id": "bdc16815-586a-46c9-bb97-a8d413ec7dbc",
+          "type": "mcq",
+          "prompt": "Traduis : « Il a de grands yeux verts. »",
+          "options": [
+            "He has eyes big green.",
+            "He is big green eyes.",
+            "He has the big green eyes.",
+            "He has big green eyes."
+          ],
+          "answer": 3,
+          "explanation": "✅ he → **has** ; **big green** avant **eyes** ; pas de the ni de « de »."
+        },
+        {
           "id": "82248314-eb67-4a7f-a4b9-acf260421820",
           "type": "fill",
           "prompt": "Complète la phrase.",
@@ -619,6 +687,19 @@ window.registerPack({
           ],
           "answer": 0,
           "explanation": "✅ L'âge se dit avec **be** : **I am 12** (ou I'm 12 years old)."
+        },
+        {
+          "id": "b6b86d98-d7d3-4280-a9ee-d290e0e18d24",
+          "type": "mcq",
+          "prompt": "Traduis : « Quel âge as-tu ? »",
+          "options": [
+            "How old are you?",
+            "What age have you?",
+            "How old have you?",
+            "How old you are?"
+          ],
+          "answer": 0,
+          "explanation": "✅ « Quel âge… ? » = **How old** + **be** + sujet : How old **are** you?"
         },
         {
           "id": "5494b7e1-c9ac-4345-82cd-6725379b14bc",
@@ -806,6 +887,19 @@ window.registerPack({
           "hint": "a problem : singulier"
         },
         {
+          "id": "6fa56d66-0c33-46cc-a3ec-15e49a4cdbe0",
+          "type": "mcq",
+          "prompt": "Traduis : « Y a-t-il un problème ? »",
+          "options": [
+            "Has it a problem?",
+            "Is it there a problem?",
+            "Is there a problem?",
+            "Are there a problem?"
+          ],
+          "answer": 2,
+          "explanation": "✅ Question : on inverse → **Is there** + un nom au singulier. Jamais « has it »."
+        },
+        {
           "id": "15f01dc9-1c79-4313-be60-fff2441c8cc8",
           "type": "mcq",
           "prompt": "Choisis la bonne forme : « There ___ a big Christmas tree in the middle of the picture. »",
@@ -889,6 +983,171 @@ window.registerPack({
       ]
     },
     {
+      "id": "words",
+      "title": "Words to remember",
+      "subtitle": "Tricky words",
+      "subtitleFr": "Les mots pièges",
+      "icon": "🧠",
+      "color": "#14B8A6",
+      "lesson": {
+        "title": "[[Words to remember|Les mots à retenir]]",
+        "points": [
+          "« grand » ne se dit pas toujours pareil :\n- une personne → **tall** : [[He is very tall.|Il est très grand.]]\n- une chose → **big** : [[a big garden|un grand jardin]]\n- « gros » → **big** aussi : [[They are very big.|Ils sont très gros.]]",
+          "gentil(le) = **nice** (pas *gentle*) : [[My parents are very nice.|Mes parents sont très gentils.]]",
+          "à la maison = **at home** (pas *at the house*) : [[Our English books are at home.|Nos livres d'anglais sont à la maison.]]",
+          "À l'école :\n- un(e) élève = **a student** (ou a pupil)\n- meilleur(e) ami(e) = **best friend**\n- la même classe = **the same class**",
+          "Jamais mot à mot :\n- il y a = **there is / there are** (pas *it has*)\n- avoir 12 ans = **be 12** (pas *have 12 years*)"
+        ],
+        "examples": [
+          "[[My brother **is** very **tall**.|Mon frère est très grand.]]",
+          "[[My sister is very **nice**.|Ma sœur est très gentille.]]"
+        ]
+      },
+      "exercises": [
+        {
+          "id": "d1871b8b-3f40-4217-9f2c-e7871b409eb2",
+          "type": "mcq",
+          "prompt": "Traduis : « Il est très grand. »",
+          "options": [
+            "He is very big.",
+            "He is very tall.",
+            "He has very tall.",
+            "He is very great."
+          ],
+          "answer": 1,
+          "explanation": "✅ Pour une personne, « grand » = **tall**. *Big* = gros."
+        },
+        {
+          "id": "336ee175-dbbd-4336-9dee-e63451a9c009",
+          "type": "question",
+          "prompt": "Comment dit-on « grand (pour une personne) » en anglais ?",
+          "answers": [
+            "tall"
+          ],
+          "explanation": "✅ **tall** : [[She is very tall.|Elle est très grande.]]"
+        },
+        {
+          "id": "72698127-19a0-4bf4-ad66-19cfc3f444d6",
+          "type": "mcq",
+          "prompt": "Traduis : « Nous avons un grand jardin. »",
+          "options": [
+            "We have a tall garden.",
+            "We have a garden big.",
+            "We have a big garden.",
+            "We are a big garden."
+          ],
+          "answer": 2,
+          "explanation": "✅ Pour une chose, « grand » = **big**, avant le nom : a **big** garden."
+        },
+        {
+          "id": "5f7a5cf1-acf7-4ffe-b185-7c9afcdfb898",
+          "type": "question",
+          "prompt": "Comment dit-on « gentil » en anglais ?",
+          "answers": [
+            "nice",
+            "kind"
+          ],
+          "explanation": "✅ **nice** (pas *gentle*) : [[My parents are very nice.|Mes parents sont très gentils.]]"
+        },
+        {
+          "id": "4c6e4a07-c9cd-417e-9513-a98450527b12",
+          "type": "mcq",
+          "prompt": "Traduis : « Mes parents sont très gentils. »",
+          "options": [
+            "My parents are very nice.",
+            "My parents are very gentle.",
+            "My parents is very nice.",
+            "My parents have very nice."
+          ],
+          "answer": 0,
+          "explanation": "✅ « gentil » = **nice** ; my parents → **are**."
+        },
+        {
+          "id": "ea10c8a1-09ec-4263-a14e-4823545769cf",
+          "type": "question",
+          "prompt": "Comment dit-on « à la maison » en anglais ?",
+          "answers": [
+            "at home"
+          ],
+          "explanation": "✅ **at home** (pas *at the house*) : [[I'm at home.|Je suis à la maison.]]"
+        },
+        {
+          "id": "62858b04-7c78-47af-abc9-1022174938fb",
+          "type": "mcq",
+          "prompt": "Traduis : « Je suis à la maison. »",
+          "options": [
+            "I am at the house.",
+            "I have at home.",
+            "I am in the home.",
+            "I am at home."
+          ],
+          "answer": 3,
+          "explanation": "✅ « à la maison » = **at home**, sans the."
+        },
+        {
+          "id": "8352242b-6f78-4a3a-be3a-05f14945f644",
+          "type": "question",
+          "prompt": "Comment dit-on « un élève » en anglais ?",
+          "answers": [
+            "a student",
+            "student",
+            "a pupil",
+            "pupil"
+          ],
+          "explanation": "✅ **a student** (ou a pupil) : [[Are there many students in your class?|Y a-t-il beaucoup d'élèves dans ta classe ?]]"
+        },
+        {
+          "id": "4c2e3c50-f99f-49fe-ad63-5143bd5fa303",
+          "type": "question",
+          "prompt": "Comment dit-on « meilleur ami » en anglais ?",
+          "answers": [
+            "best friend",
+            "a best friend"
+          ],
+          "explanation": "✅ **best friend** : [[You are my best friend.|Tu es mon meilleur ami.]]"
+        },
+        {
+          "id": "6c489d24-e71c-46c0-81bd-b108c06638bd",
+          "type": "mcq",
+          "prompt": "Traduis : « Nous sommes dans la même classe. »",
+          "options": [
+            "We are in the class same.",
+            "We are in the same class.",
+            "Us are in the same class.",
+            "We is in the same class."
+          ],
+          "answer": 1,
+          "explanation": "✅ « la même classe » = **the same class** ; we → **are**."
+        },
+        {
+          "id": "a6a5b988-e784-4843-9370-44d6dbf371ee",
+          "type": "mcq",
+          "prompt": "Traduis : « Il y a un problème. »",
+          "options": [
+            "It has a problem.",
+            "There is a problem.",
+            "There are a problem.",
+            "It is a problem."
+          ],
+          "answer": 1,
+          "explanation": "✅ « il y a » = **there is** (un nom au singulier), jamais *it has*."
+        },
+        {
+          "id": "7761048d-2896-4d6a-bdf7-f912fec48151",
+          "type": "mcq",
+          "prompt": "Traduis : « Elle a 15 ans. »",
+          "options": [
+            "She has 15 years.",
+            "She has 15.",
+            "She is 15.",
+            "She have 15 years."
+          ],
+          "answer": 2,
+          "explanation": "✅ L'âge avec **be** : she **is** 15 (years old)."
+        }
+      ]
+    },
+    {
       "id": 6,
       "title": "Boss: translate!",
       "subtitle": "Be, have, there is",
@@ -905,16 +1164,6 @@ window.registerPack({
       },
       "exercises": [
         {
-          "id": "f497867b-d7f6-405a-a84a-512bc762791d",
-          "type": "question",
-          "prompt": "Traduis : « J'ai un chat. »",
-          "answers": [
-            "I have a cat.",
-            "I have got a cat."
-          ],
-          "explanation": "✅ [[I have a cat.|J'ai un chat.]] (ou I've got a cat)."
-        },
-        {
           "id": "acea59a6-440b-405b-af96-b05091929fd6",
           "type": "question",
           "prompt": "Traduis : « Mon chat est gris. »",
@@ -922,38 +1171,90 @@ window.registerPack({
             "My cat is grey.",
             "My cat is gray."
           ],
-          "explanation": "✅ Comment il est : **is**. [[My cat is grey.|Mon chat est gris.]]"
+          "explanation": "✅ my cat = it → **is**. (exemple du monde 1)"
         },
         {
-          "id": "967267fb-673c-47ed-aa75-2f95bcd32432",
+          "id": "9d75ac73-688f-4994-a64d-154edb5e2047",
           "type": "question",
-          "prompt": "Traduis : « Elle a 12 ans. »",
+          "prompt": "Traduis : « Ils sont très gros. »",
           "answers": [
-            "She is 12.",
-            "She is 12 years old.",
-            "She is twelve.",
-            "She is twelve years old."
+            "They are very big.",
+            "They are very fat."
           ],
-          "explanation": "✅ L'âge se dit avec **be** : [[She is 12.|Elle a 12 ans.]]"
+          "explanation": "✅ they → **are** ; « gros » = **big**. (exemple du monde 1)"
         },
         {
-          "id": "24b340d3-2a4d-4143-968d-926c4927137c",
+          "id": "78c8e1df-b4f6-4305-aa43-c555bc430425",
           "type": "question",
-          "prompt": "Traduis : « Quel âge as-tu ? »",
+          "prompt": "Traduis : « Nous sommes dans la même classe. »",
           "answers": [
-            "How old are you?"
+            "We are in the same class."
           ],
-          "explanation": "✅ [[How old are you?|Quel âge as-tu ?]]"
+          "explanation": "✅ we → **are** ; [[the same class|la même classe]]. (monde 1 et « Words to remember »)"
         },
         {
-          "id": "7800ae28-c02a-4c47-bd38-4e60ddffb131",
+          "id": "44f4bd4d-1dae-4a45-9094-870c4af7ce01",
           "type": "question",
-          "prompt": "Traduis : « Il y a deux chats sur le toit. »",
+          "prompt": "Traduis : « Tu es mon meilleur ami. »",
           "answers": [
-            "There are two cats on the roof.",
-            "There are 2 cats on the roof."
+            "You are my best friend."
           ],
-          "explanation": "✅ **two cats** : pluriel → **there are**."
+          "explanation": "✅ you → **are** ; [[best friend|meilleur ami]]. (monde 1 : She is my best friend.)"
+        },
+        {
+          "id": "b875cb74-4f91-4eb9-a5cb-13a1c28e1dd8",
+          "type": "question",
+          "prompt": "Traduis : « Mes livres d'anglais sont à la maison. »",
+          "answers": [
+            "My English books are at home."
+          ],
+          "explanation": "✅ books (pluriel) → **are** ; « à la maison » = **at home**. (monde 1 : Our English books are at home.)"
+        },
+        {
+          "id": "f497867b-d7f6-405a-a84a-512bc762791d",
+          "type": "question",
+          "prompt": "Traduis : « J'ai un chat. »",
+          "answers": [
+            "I have a cat.",
+            "I have got a cat."
+          ],
+          "explanation": "✅ **have** = avoir : I have (ou I've got) a cat. (exemple du monde 2)"
+        },
+        {
+          "id": "25877591-ec3b-4da7-9873-1e9be2cb6af2",
+          "type": "question",
+          "prompt": "Traduis : « Ils ont deux chats. »",
+          "answers": [
+            "They have two cats.",
+            "They have 2 cats.",
+            "They have got two cats.",
+            "They have got 2 cats."
+          ],
+          "explanation": "✅ they → **have** (ou have got). (monde 2 : They have a car.)"
+        },
+        {
+          "id": "9d050e46-52b7-488f-bf2b-8135ed600063",
+          "type": "question",
+          "prompt": "Traduis : « Mon frère a une voiture rouge. »",
+          "answers": [
+            "My brother has a red car.",
+            "My brother has got a red car."
+          ],
+          "explanation": "✅ my brother = he → **has** ; **red** avant car. (monde 2 : They have got a red car.)"
+        },
+        {
+          "id": "9395d0a7-6a30-499e-9746-6a760eb8dfc1",
+          "type": "question",
+          "prompt": "Traduis : « Nous avons beaucoup de beaux châteaux en France. »",
+          "answers": [
+            "We have a lot of beautiful castles in France.",
+            "We have lots of beautiful castles in France.",
+            "We have many beautiful castles in France.",
+            "We have got a lot of beautiful castles in France.",
+            "We have got lots of beautiful castles in France.",
+            "We have got many beautiful castles in France."
+          ],
+          "explanation": "✅ we → **have** ; [[a lot of|beaucoup de]]. (monde 2)"
         },
         {
           "id": "adce6ba9-591d-4d9e-bccf-98c589af2af0",
@@ -965,146 +1266,7 @@ window.registerPack({
             "My sister has got blonde hair.",
             "My sister has got blond hair."
           ],
-          "explanation": "✅ Les cheveux : **have** ; my sister → **has**."
-        },
-        {
-          "id": "78c8e1df-b4f6-4305-aa43-c555bc430425",
-          "type": "question",
-          "prompt": "Traduis : « Nous sommes dans la même classe. »",
-          "answers": [
-            "We are in the same class."
-          ],
-          "explanation": "✅ **We are**. [[the same class|la même classe]]"
-        },
-        {
-          "id": "80ce1a50-b1ae-4cd9-a579-6a96a87b64da",
-          "type": "question",
-          "prompt": "Traduis : « Mes parents ont les cheveux bruns. »",
-          "answers": [
-            "My parents have brown hair.",
-            "My parents have got brown hair."
-          ],
-          "explanation": "✅ **My parents** = they → **have**."
-        },
-        {
-          "id": "84ddc2ea-f531-45f7-8ce7-1f820e2d9bd6",
-          "type": "question",
-          "prompt": "Traduis : « Y a-t-il un problème ? »",
-          "answers": [
-            "Is there a problem?"
-          ],
-          "explanation": "✅ Question : **Is there** + singulier ?"
-        },
-        {
-          "id": "48492145-93c3-40b8-a176-c705d215a217",
-          "type": "question",
-          "prompt": "Traduis : « Il a de grands yeux verts. »",
-          "answers": [
-            "He has big green eyes.",
-            "He has got big green eyes."
-          ],
-          "explanation": "✅ Les yeux : **has**. L'adjectif se place avant le nom : big green eyes."
-        },
-        {
-          "id": "b875cb74-4f91-4eb9-a5cb-13a1c28e1dd8",
-          "type": "question",
-          "prompt": "Traduis : « Mes livres d'anglais sont à la maison. »",
-          "answers": [
-            "My English books are at home."
-          ],
-          "explanation": "✅ **books** au pluriel → **are**."
-        },
-        {
-          "id": "633d72f7-aa9a-4850-adcd-9384050b0459",
-          "type": "question",
-          "prompt": "Traduis : « Il y a un grand sapin de Noël au milieu de l'image. »",
-          "answers": [
-            "There is a big Christmas tree in the middle of the picture."
-          ],
-          "explanation": "✅ **a big Christmas tree** : singulier → **there is**."
-        },
-        {
-          "id": "164af416-7738-4168-9e9f-f403f7a4add4",
-          "type": "question",
-          "prompt": "Traduis : « J'ai une sœur. Elle a dix ans. »",
-          "answers": [
-            "I have a sister. She is ten.",
-            "I have a sister. She is ten years old.",
-            "I have a sister. She is 10.",
-            "I have a sister. She is 10 years old.",
-            "I have got a sister. She is ten.",
-            "I have got a sister. She is ten years old.",
-            "I have got a sister. She is 10.",
-            "I have got a sister. She is 10 years old."
-          ],
-          "multiline": true,
-          "explanation": "✅ [[I have a sister. She is ten.|J'ai une sœur. Elle a dix ans.]]"
-        },
-        {
-          "id": "57715017-61d6-43ee-b008-7f51a8a5dbb2",
-          "type": "question",
-          "prompt": "Traduis : « Mon frère a 15 ans et il est très grand. »",
-          "answers": [
-            "My brother is 15 and he is very tall.",
-            "My brother is 15 years old and he is very tall.",
-            "My brother is fifteen and he is very tall.",
-            "My brother is fifteen years old and he is very tall."
-          ],
-          "multiline": true,
-          "explanation": "✅ L'âge avec **be**, la taille avec **be** : [[My brother is 15 and he is very tall.|Mon frère a 15 ans et il est très grand.]]"
-        },
-        {
-          "id": "44f4bd4d-1dae-4a45-9094-870c4af7ce01",
-          "type": "question",
-          "prompt": "Traduis : « Tu es mon meilleur ami. »",
-          "answers": [
-            "You are my best friend."
-          ],
-          "explanation": "✅ **You are**. [[best friend|meilleur ami]]"
-        },
-        {
-          "id": "537200c9-b7e6-46f9-a6dc-9caae829af86",
-          "type": "question",
-          "prompt": "Traduis : « Ils ont un chien noir. »",
-          "answers": [
-            "They have a black dog.",
-            "They have got a black dog."
-          ],
-          "explanation": "✅ **They have** ; l'adjectif avant le nom : a **black dog**."
-        },
-        {
-          "id": "113a117f-c173-44b4-9138-a506cb559add",
-          "type": "question",
-          "prompt": "Traduis : « Mon père a 40 ans. »",
-          "answers": [
-            "My father is 40.",
-            "My father is 40 years old.",
-            "My father is forty.",
-            "My father is forty years old."
-          ],
-          "explanation": "✅ L'âge avec **be** : my father **is** 40."
-        },
-        {
-          "id": "b6fa6088-6f96-4571-bb86-157a0f7c4bd9",
-          "type": "question",
-          "prompt": "Traduis : « Il y a un problème. »",
-          "answers": [
-            "There is a problem."
-          ],
-          "explanation": "✅ **a problem** : singulier → **there is**."
-        },
-        {
-          "id": "e3376d54-a4ef-48dc-af33-70f20083250f",
-          "type": "question",
-          "prompt": "Traduis : « Y a-t-il beaucoup d'élèves dans ta classe ? »",
-          "answers": [
-            "Are there many students in your class?",
-            "Are there a lot of students in your class?",
-            "Are there lots of students in your class?",
-            "Are there many pupils in your class?",
-            "Are there a lot of pupils in your class?"
-          ],
-          "explanation": "✅ Question au pluriel : **Are there** … ?"
+          "explanation": "✅ **has** pour les cheveux ; pas de the. (exemple du monde 2)"
         },
         {
           "id": "44a7c9b9-e88c-45f2-a343-095da5237209",
@@ -1114,7 +1276,37 @@ window.registerPack({
             "She has blue eyes.",
             "She has got blue eyes."
           ],
-          "explanation": "✅ Les yeux : **has**."
+          "explanation": "✅ she → **has** ; pas de the. (exemple du monde 2)"
+        },
+        {
+          "id": "80ce1a50-b1ae-4cd9-a579-6a96a87b64da",
+          "type": "question",
+          "prompt": "Traduis : « Mes parents ont les cheveux bruns. »",
+          "answers": [
+            "My parents have brown hair.",
+            "My parents have got brown hair."
+          ],
+          "explanation": "✅ **have** ; pas de the ; **hair** sans -s. (monde 3)"
+        },
+        {
+          "id": "48492145-93c3-40b8-a176-c705d215a217",
+          "type": "question",
+          "prompt": "Traduis : « Il a de grands yeux verts. »",
+          "answers": [
+            "He has big green eyes.",
+            "He has got big green eyes."
+          ],
+          "explanation": "✅ he → **has** ; **big green** avant eyes. (exemple du monde 3)"
+        },
+        {
+          "id": "900b0e51-5558-4c7e-a1b4-67018c1e1f5e",
+          "type": "question",
+          "prompt": "Traduis : « Mon chat est adorable. »",
+          "answers": [
+            "My cat is adorable.",
+            "My cat is cute."
+          ],
+          "explanation": "✅ comment il est → **be** : my cat **is** adorable. (monde 3)"
         },
         {
           "id": "834cdee0-9e81-48d5-9240-39fd83ff767b",
@@ -1123,7 +1315,31 @@ window.registerPack({
           "answers": [
             "I am in the garden."
           ],
-          "explanation": "✅ Où on est : **be** → I am."
+          "explanation": "✅ où on est → **be** : I **am** in the garden. (mondes 3 et 5)"
+        },
+        {
+          "id": "57715017-61d6-43ee-b008-7f51a8a5dbb2",
+          "type": "question",
+          "prompt": "Traduis : « Mon frère a 15 ans et il est très grand. »",
+          "answers": [
+            "My brother is 15 and he is very tall.",
+            "My brother is fifteen and he is very tall.",
+            "My brother is 15 years old and he is very tall.",
+            "My brother is fifteen years old and he is very tall."
+          ],
+          "explanation": "✅ l'âge avec **be** ; « grand » (une personne) = **tall**. (mondes 3, 4 et « Words to remember »)"
+        },
+        {
+          "id": "66461368-63f6-464b-985e-e2b2d966cc96",
+          "type": "question",
+          "prompt": "Traduis : « Ma sœur est très gentille et elle a un chat. »",
+          "answers": [
+            "My sister is very nice and she has a cat.",
+            "My sister is very nice and she has got a cat.",
+            "My sister is very kind and she has a cat.",
+            "My sister is very kind and she has got a cat."
+          ],
+          "explanation": "✅ comment elle est → **is** ; ce qu'elle a → **has**. (monde 3 et « Words to remember »)"
         },
         {
           "id": "877ba888-14c8-4dc9-b106-4299052376b4",
@@ -1135,27 +1351,16 @@ window.registerPack({
             "We have got a big garden.",
             "We have got a large garden."
           ],
-          "explanation": "✅ **We have** a big garden."
+          "explanation": "✅ une chose → « grand » = **big**. (« Words to remember »)"
         },
         {
-          "id": "900b0e51-5558-4c7e-a1b4-67018c1e1f5e",
+          "id": "24b340d3-2a4d-4143-968d-926c4927137c",
           "type": "question",
-          "prompt": "Traduis : « Mon chat est adorable. »",
+          "prompt": "Traduis : « Quel âge as-tu ? »",
           "answers": [
-            "My cat is adorable.",
-            "My cat is cute."
+            "How old are you?"
           ],
-          "explanation": "✅ Comment il est : **is**."
-        },
-        {
-          "id": "2f5b1eda-a13b-4e4e-be90-c399e9fce1ad",
-          "type": "question",
-          "prompt": "Traduis : « Il y a trois fenêtres. »",
-          "answers": [
-            "There are three windows.",
-            "There are 3 windows."
-          ],
-          "explanation": "✅ **three windows** : pluriel → **there are**."
+          "explanation": "✅ **How old** + **are** + you ? (exemple du monde 4)"
         },
         {
           "id": "291f6938-48cb-4674-9265-700a7abd8cb1",
@@ -1164,18 +1369,122 @@ window.registerPack({
           "answers": [
             "How old is your brother?"
           ],
-          "explanation": "✅ **How old is** your brother?"
+          "explanation": "✅ your brother → **is**. (monde 4)"
         },
         {
-          "id": "66461368-63f6-464b-985e-e2b2d966cc96",
+          "id": "0add7233-e0ef-4b6c-80a0-e84aa4aa9ec3",
           "type": "question",
-          "prompt": "Traduis : « Ma sœur est très gentille et elle a un chat. »",
+          "prompt": "Traduis : « Ma sœur a 11 ans. »",
           "answers": [
-            "My sister is very nice and she has a cat.",
-            "My sister is very nice and she has got a cat."
+            "My sister is 11.",
+            "My sister is eleven.",
+            "My sister is 11 years old.",
+            "My sister is eleven years old."
+          ],
+          "explanation": "✅ L'âge avec **be** : my sister **is** 11. (monde 4 : She is 15.)"
+        },
+        {
+          "id": "e3ba0e6f-215c-43b9-960d-256d29c8694a",
+          "type": "question",
+          "prompt": "Traduis : « Mon chat a deux ans. »",
+          "answers": [
+            "My cat is 2.",
+            "My cat is two.",
+            "My cat is 2 years old.",
+            "My cat is two years old."
+          ],
+          "explanation": "✅ L'âge avec **be**, jamais has. (exemple du monde 4)"
+        },
+        {
+          "id": "164af416-7738-4168-9e9f-f403f7a4add4",
+          "type": "question",
+          "prompt": "Traduis : « J'ai une sœur. Elle a dix ans. »",
+          "answers": [
+            "I have a sister. She is ten.",
+            "I have a sister. She is 10.",
+            "I have a sister. She is ten years old.",
+            "I have a sister. She is 10 years old.",
+            "I have got a sister. She is ten.",
+            "I have got a sister. She is 10.",
+            "I have got a sister. She is ten years old.",
+            "I have got a sister. She is 10 years old."
           ],
           "multiline": true,
-          "explanation": "✅ Deux verbes :\n- **is** pour le caractère\n- **has** pour ce qu'on a"
+          "explanation": "✅ ce qu'on a → **have** ; l'âge → **is**. (mondes 2 et 4)"
+        },
+        {
+          "id": "7800ae28-c02a-4c47-bd38-4e60ddffb131",
+          "type": "question",
+          "prompt": "Traduis : « Il y a deux chats sur le toit. »",
+          "answers": [
+            "There are two cats on the roof.",
+            "There are 2 cats on the roof."
+          ],
+          "explanation": "✅ un nom au pluriel → **there are**. (exemple du monde 5)"
+        },
+        {
+          "id": "7985f357-fc40-4f0d-9e0c-416fcd8975e0",
+          "type": "question",
+          "prompt": "Traduis : « Il y a trois chiens dans le jardin. »",
+          "answers": [
+            "There are three dogs in the garden.",
+            "There are 3 dogs in the garden."
+          ],
+          "explanation": "✅ un nom au pluriel → **there are**. (monde 5 : la phrase à corriger « There is three dogs in the garden »)"
+        },
+        {
+          "id": "7b21f55c-5ff9-4187-b883-290fda038188",
+          "type": "question",
+          "prompt": "Traduis : « Il y a un énorme sapin de Noël. »",
+          "answers": [
+            "There is an enormous Christmas tree.",
+            "There is a huge Christmas tree.",
+            "There is a giant Christmas tree."
+          ],
+          "explanation": "✅ un nom au singulier → **there is**. (exemple du monde 5)"
+        },
+        {
+          "id": "b6fa6088-6f96-4571-bb86-157a0f7c4bd9",
+          "type": "question",
+          "prompt": "Traduis : « Il y a un problème. »",
+          "answers": [
+            "There is a problem."
+          ],
+          "explanation": "✅ **there is**, jamais it has. (monde 5 et « Words to remember »)"
+        },
+        {
+          "id": "84ddc2ea-f531-45f7-8ce7-1f820e2d9bd6",
+          "type": "question",
+          "prompt": "Traduis : « Y a-t-il un problème ? »",
+          "answers": [
+            "Is there a problem?"
+          ],
+          "explanation": "✅ Question : **Is there** + singulier ? (exemple du monde 5)"
+        },
+        {
+          "id": "4f59a6f3-ef0a-426d-b056-d3481cfc1fa8",
+          "type": "question",
+          "prompt": "Traduis : « Y a-t-il beaucoup d'arbres ? »",
+          "answers": [
+            "Are there many trees?",
+            "Are there a lot of trees?",
+            "Are there lots of trees?"
+          ],
+          "explanation": "✅ Question : **Are there** + pluriel ? (exemple du monde 5)"
+        },
+        {
+          "id": "e3376d54-a4ef-48dc-af33-70f20083250f",
+          "type": "question",
+          "prompt": "Traduis : « Y a-t-il beaucoup d'élèves dans ta classe ? »",
+          "answers": [
+            "Are there many students in your class?",
+            "Are there many pupils in your class?",
+            "Are there a lot of students in your class?",
+            "Are there a lot of pupils in your class?",
+            "Are there lots of students in your class?",
+            "Are there lots of pupils in your class?"
+          ],
+          "explanation": "✅ **Are there** + pluriel ? [[student|élève]]. (monde 5)"
         }
       ],
       "draw": 12

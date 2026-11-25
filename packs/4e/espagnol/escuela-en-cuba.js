@@ -448,6 +448,16 @@ window.registerPack({
           "explanation": "✅ **llevan** : -AR avec ellos. [[Los alumnos llevan un uniforme.|Les élèves portent un uniforme.]]"
         },
         {
+          "id": "749365e9-5332-47c0-877e-defa31a60774",
+          "type": "fill",
+          "prompt": "Conjugue **cantar** avec **yo**.",
+          "sentence": "Cada mañana, yo ___ el himno.",
+          "answers": [
+            "canto"
+          ],
+          "explanation": "✅ **yo canto** : -AR, yo → **-o**. [[Cada mañana, yo canto el himno.|Chaque matin, je chante l'hymne.]]"
+        },
+        {
           "id": "8de92055-3a94-4d1b-bb85-daf8eab453bc",
           "type": "fill",
           "prompt": "Conjugue **hacer** avec **yo**.",
@@ -466,6 +476,16 @@ window.registerPack({
             "defienden"
           ],
           "explanation": "✅ **defienden** : e → ie. [[Ellos defienden el comunismo.|Ils défendent le communisme.]]"
+        },
+        {
+          "id": "3e5a5a17-5660-4f64-8fdf-e2ee876cc0a6",
+          "type": "fill",
+          "prompt": "Conjugue **defender** avec **yo**.",
+          "sentence": "Yo ___ la libertad.",
+          "answers": [
+            "defiendo"
+          ],
+          "explanation": "✅ **yo defiendo** : e → ie. [[Yo defiendo la libertad.|Je défends la liberté.]]"
         },
         {
           "id": "3f12ec55-1bac-43d5-bd8f-7f8db461a90a",
@@ -575,7 +595,8 @@ window.registerPack({
         "points": [
           "[[**tener que**|devoir, être obligé de]] + infinitif.",
           "On conjugue **tener**, qui est irrégulier. Le 2e verbe reste à l'**infinitif** : [[**tengo que cantar**|je dois chanter]].",
-          "Les formes :\n- [[tengo que|je dois]]\n- [[tienes que|tu dois]]\n- [[tiene que|il / elle doit]]\n- [[tenemos que|nous devons]]\n- [[tenéis que|vous devez]]\n- [[**tienen que**|ils / elles doivent]]"
+          "Les formes :\n- [[tengo que|je dois]]\n- [[tienes que|tu dois]]\n- [[tiene que|il / elle doit]]\n- [[tenemos que|nous devons]]\n- [[tenéis que|vous devez]]\n- [[**tienen que**|ils / elles doivent]]",
+          "Avec **no** devant **tener** : ne pas être obligé de → [[Los alumnos **no tienen que** llevar un uniforme.|Les élèves ne sont pas obligés de porter un uniforme.]]"
         ],
         "examples": [
           "[[Los alumnos **tienen que llevar** un uniforme.|Les élèves doivent porter un uniforme.]]",
@@ -625,6 +646,16 @@ window.registerPack({
             "tenemos"
           ],
           "explanation": "✅ **tenemos que** : pas de **ie** avec nosotros. [[Nosotros tenemos que aprender la historia.|Nous devons apprendre l'histoire.]]"
+        },
+        {
+          "id": "8a2572d7-6e50-4422-8756-72191a4b9d08",
+          "type": "fill",
+          "prompt": "Complète avec **tener** : « Elle doit chanter l'hymne. »",
+          "sentence": "Ella ___ que cantar el himno.",
+          "answers": [
+            "tiene"
+          ],
+          "explanation": "✅ **tiene que** : tener avec ella (e → ie). [[Ella tiene que cantar el himno.|Elle doit chanter l'hymne.]]"
         },
         {
           "id": "4b6d38b4-a4da-4253-841b-59fb5e2bde1a",
@@ -705,6 +736,19 @@ window.registerPack({
           "distractors": [
             "de"
           ]
+        },
+        {
+          "id": "0267c041-6f36-4d00-8bb7-7c6381361a70",
+          "type": "mcq",
+          "prompt": "Traduis : « En France, les élèves ne sont pas obligés de porter un uniforme. »",
+          "options": [
+            "En Francia, los alumnos no tienen que llevar un uniforme.",
+            "En Francia, los alumnos tienen que no llevar un uniforme.",
+            "En Francia, los alumnos no tienen llevar un uniforme.",
+            "En Francia, los alumnos no tienen que llevan un uniforme."
+          ],
+          "answer": 0,
+          "explanation": "✅ **no** juste avant **tienen que**, puis l'infinitif : no tienen que **llevar**."
         }
       ],
       "id": 4
@@ -816,7 +860,7 @@ window.registerPack({
         {
           "id": "df204f2e-24ad-40d8-8253-9b3f07699552",
           "type": "fill",
-          "prompt": "Complète avec la bonne forme de **tanto**.",
+          "prompt": "Complète avec la bonne forme de **tanto** : « Dans ma classe, il n'y a pas autant d'élèves qu'à Cuba. »",
           "sentence": "En mi clase no hay ___ alumnos como en Cuba.",
           "answers": [
             "tantos"
@@ -1247,6 +1291,163 @@ window.registerPack({
       "id": 7
     },
     {
+      "id": "words",
+      "title": "Palabras para recordar",
+      "subtitle": "Palabras trampa",
+      "subtitleFr": "Les mots pièges",
+      "icon": "🧠",
+      "color": "#14B8A6",
+      "lesson": {
+        "title": "[[Palabras para recordar|Les mots à retenir]]",
+        "points": [
+          "Des mots qui ne ressemblent pas au français :\n- les élèves = **los alumnos**\n- porter (un vêtement) = **llevar** (pas *portar*)\n- l'argent = **el dinero**\n- il y a = **hay**",
+          "Attention à l'orthographe :\n- l'hymne = **el himno** (avec un **i**, pas de **y**)\n- la leçon = **la lección** (deux **c** et un accent)\n- une dictature = **una dictadura**",
+          "« à » ou « dans » devant un lieu se dit **en** :\n- à Cuba = **en Cuba** (pas *a Cuba*)\n- qu'en France = **como en Francia**\n- dans d'autres pays = **en otros países** (sans *de*)",
+          "autant de = **tanto** + nom, sans *de* : [[No tienen **tanto dinero**.|Ils n'ont pas autant d'argent.]]"
+        ],
+        "examples": [
+          "[[**En** Cuba, los **alumnos llevan** un uniforme.|À Cuba, les élèves portent un uniforme.]]",
+          "[[En mi clase no **hay** tantos alumnos.|Dans ma classe, il n'y a pas autant d'élèves.]]"
+        ]
+      },
+      "exercises": [
+        {
+          "id": "d86e8254-6dbc-4296-900a-bd5a8fbe18ef",
+          "type": "mcq",
+          "prompt": "Traduis : « Les élèves portent un uniforme. »",
+          "options": [
+            "Los alumnos portan un uniforme.",
+            "Los alumnos lavan un uniforme.",
+            "Los alumnos llevan un uniforme.",
+            "Los alumnos llevar un uniforme."
+          ],
+          "answer": 2,
+          "explanation": "✅ porter (un vêtement) = **llevar** (pas *portar*). Lavar = laver."
+        },
+        {
+          "id": "d17a2c09-6c7c-4bf4-b988-5327ff965f76",
+          "type": "question",
+          "prompt": "Comment dit-on « porter » (un vêtement) en espagnol ?",
+          "answers": [
+            "llevar"
+          ],
+          "explanation": "✅ **llevar** : [[llevar un uniforme|porter un uniforme]]."
+        },
+        {
+          "id": "961af1e5-6115-4a1e-b7f2-d1b5bbc4cf18",
+          "type": "question",
+          "prompt": "Comment dit-on « les élèves » en espagnol ?",
+          "answers": [
+            "los alumnos",
+            "alumnos",
+            "los estudiantes",
+            "estudiantes"
+          ],
+          "explanation": "✅ **los alumnos** : [[el alumno, la alumna|l'élève]]."
+        },
+        {
+          "id": "7956d750-20ca-4e11-b8b5-8490b4e67ca1",
+          "type": "question",
+          "prompt": "Comment dit-on « l'hymne » en espagnol ?",
+          "answers": [
+            "el himno",
+            "himno"
+          ],
+          "explanation": "✅ **el himno** : avec un **i**, et le **h** ne se prononce pas."
+        },
+        {
+          "id": "dbf53b15-e721-4ca7-8185-bb82233051c2",
+          "type": "question",
+          "prompt": "Comment dit-on « la leçon » en espagnol ?",
+          "answers": [
+            "la lección",
+            "lección"
+          ],
+          "explanation": "✅ **la lección** : deux **c** et un accent sur le **ó**."
+        },
+        {
+          "id": "0bfec99e-4104-44f2-8d89-b463df4ea97b",
+          "type": "mcq",
+          "prompt": "Traduis : « Je dois apprendre la leçon. »",
+          "options": [
+            "Tengo que aprender la leçon.",
+            "Tengo que aprender la lección.",
+            "Tengo aprender la lección.",
+            "Tengo que aprendo la lección."
+          ],
+          "answer": 1,
+          "explanation": "✅ **tengo que** + infinitif. La leçon = **la lección**."
+        },
+        {
+          "id": "c20b5dc2-58cf-47de-b512-4d1027e10114",
+          "type": "question",
+          "prompt": "Comment dit-on « l'argent » (pour payer) en espagnol ?",
+          "answers": [
+            "el dinero",
+            "dinero"
+          ],
+          "explanation": "✅ **el dinero** : [[tanto dinero|autant d'argent]]."
+        },
+        {
+          "id": "4684d0c0-9b01-4a97-b487-12dc5e322504",
+          "type": "mcq",
+          "prompt": "Traduis : « Ils n'ont pas autant d'argent. »",
+          "options": [
+            "No tienen tanto de dinero.",
+            "No tienen tanta dinero.",
+            "No tienen tanto argento.",
+            "No tienen tanto dinero."
+          ],
+          "answer": 3,
+          "explanation": "✅ autant de = **tanto** + nom, sans *de*. **El dinero** est masculin → tanto."
+        },
+        {
+          "id": "4ab6143e-9ccd-49c1-9b05-3c4f6863d8d8",
+          "type": "question",
+          "prompt": "Comment dit-on « il y a » en espagnol ?",
+          "answers": [
+            "hay"
+          ],
+          "explanation": "✅ **hay** : [[En mi clase no hay tantos alumnos.|Dans ma classe, il n'y a pas autant d'élèves.]]"
+        },
+        {
+          "id": "11169561-8ea7-4836-a3c1-b660a10bb387",
+          "type": "mcq",
+          "prompt": "Traduis : « dans d'autres pays »",
+          "options": [
+            "en otros países",
+            "en de otros países",
+            "en otros paises",
+            "en otras países"
+          ],
+          "answer": 0,
+          "explanation": "✅ **en otros países** : sans *de*, et avec l'accent sur le **í**."
+        },
+        {
+          "id": "ec77a6e9-8dc3-48e3-b33c-3f426aa35b19",
+          "type": "mcq",
+          "prompt": "Traduis : « À Cuba, les élèves portent un uniforme. »",
+          "options": [
+            "A Cuba, los alumnos llevan un uniforme.",
+            "En Cuba, los alumnos llevan un uniforme.",
+            "En Cuba, los alumnos portan un uniforme.",
+            "En Cuba, los alumnos llevas un uniforme."
+          ],
+          "answer": 1,
+          "explanation": "✅ « à » + un lieu = **en** : en Cuba. Porter = **llevar**."
+        },
+        {
+          "id": "82a3bd2b-91e1-43f0-8b7e-65b4278c92e3",
+          "type": "question",
+          "prompt": "Comment dit-on « chaque matin » en espagnol ?",
+          "answers": [
+            "cada mañana"
+          ],
+          "explanation": "✅ **cada mañana**, avec un **ñ**."
+        }
+      ]
+    },
+    {
       "title": "Jefe final: ¡traduce!",
       "subtitle": "Translate into Spanish",
       "subtitleFr": "Le défi final : traduis en espagnol",
@@ -1260,7 +1461,8 @@ window.registerPack({
           "[[**tanto** + nom + **como**|autant de… que]] s'accorde :\n- tanta libertad\n- tantos alumnos\nAvec un adjectif : [[**tan** grande **como**|aussi grand que]]."
         ],
         "examples": [
-          "[[Los alumnos **tienen que llevar** un uniforme.|Les élèves doivent porter un uniforme.]]"
+          "[[Los alumnos **tienen que llevar** un uniforme.|Les élèves doivent porter un uniforme.]]",
+          "[[No tienen **tanta** libertad **como** en Francia.|Ils n'ont pas autant de liberté qu'en France.]]"
         ]
       },
       "draw": 12,
@@ -1272,7 +1474,7 @@ window.registerPack({
           "answers": [
             "Cuba es una dictadura."
           ],
-          "explanation": "« une dictature » = **una dictadura** : [[Cuba es una dictadura.|Cuba est une dictature.]]"
+          "explanation": "✅ une dictature = **una dictadura**. (exemple du monde 1)"
         },
         {
           "id": "9c8f4b13-98f8-4599-9755-9e285afd0c8a",
@@ -1282,7 +1484,27 @@ window.registerPack({
             "Los alumnos llevan un uniforme.",
             "Los estudiantes llevan un uniforme."
           ],
-          "explanation": "« porter » (un vêtement) = **llevar** ; avec los alumnos : **llevan** : [[Los alumnos llevan un uniforme.|Les élèves portent un uniforme.]]"
+          "explanation": "✅ porter = **llevar**. Los alumnos → llevan. (exemple du monde 1)"
+        },
+        {
+          "id": "cb662900-bbac-4720-82d7-20aa6218c340",
+          "type": "question",
+          "prompt": "Traduis : « Je porte un uniforme. »",
+          "answers": [
+            "Llevo un uniforme.",
+            "Yo llevo un uniforme."
+          ],
+          "explanation": "✅ **llevar** avec yo : llevo. (exemple du monde 3)"
+        },
+        {
+          "id": "35c0a4d2-2a9b-44d4-801f-f00a175c1af7",
+          "type": "question",
+          "prompt": "Traduis : « Tu portes un uniforme. »",
+          "answers": [
+            "Llevas un uniforme.",
+            "Tú llevas un uniforme."
+          ],
+          "explanation": "✅ **llevar** avec tú : llevas. (monde 3 : Tú llevas un uniforme.)"
         },
         {
           "id": "c67a3ad9-fc64-4b2b-a70f-5f78a22768cc",
@@ -1292,7 +1514,27 @@ window.registerPack({
             "Hago el saludo revolucionario.",
             "Yo hago el saludo revolucionario."
           ],
-          "explanation": "**hacer** est irrégulier avec yo : **hago** : [[Hago el saludo revolucionario.|Je fais le salut révolutionnaire.]]"
+          "explanation": "✅ **hacer** avec yo : **hago**. (monde 3)"
+        },
+        {
+          "id": "9fa1004c-2142-4472-87c0-7d698de81655",
+          "type": "question",
+          "prompt": "Traduis : « Elle fait le salut révolutionnaire. »",
+          "answers": [
+            "Hace el saludo revolucionario.",
+            "Ella hace el saludo revolucionario."
+          ],
+          "explanation": "✅ **hacer** avec ella : hace (seul yo est irrégulier). (monde 3 : Ella hace el saludo.)"
+        },
+        {
+          "id": "8a83d135-6492-405e-a1ca-45afd769bcef",
+          "type": "question",
+          "prompt": "Traduis : « Les élèves font le salut révolutionnaire. »",
+          "answers": [
+            "Los alumnos hacen el saludo revolucionario.",
+            "Los estudiantes hacen el saludo revolucionario."
+          ],
+          "explanation": "✅ **hacer** avec los alumnos : hacen. (exemple du monde 3)"
         },
         {
           "id": "3580ae37-c73b-454e-9cd8-e0e2d90b3518",
@@ -1302,7 +1544,28 @@ window.registerPack({
             "Defienden el comunismo.",
             "Ellos defienden el comunismo."
           ],
-          "explanation": "**defender** : le **e** devient **ie** → **defienden** : [[Defienden el comunismo.|Ils défendent le communisme.]]"
+          "explanation": "✅ **defender** : e → ie avec ellos → defienden. (monde 3)"
+        },
+        {
+          "id": "bd6f7baa-4000-46d6-b2d2-e550a6975ce3",
+          "type": "question",
+          "prompt": "Traduis : « Nous défendons le communisme. »",
+          "answers": [
+            "Defendemos el comunismo.",
+            "Nosotros defendemos el comunismo.",
+            "Nosotras defendemos el comunismo."
+          ],
+          "explanation": "✅ Avec nosotros, pas de ie : **defendemos**. (monde 3)"
+        },
+        {
+          "id": "de9371ea-e836-40d0-87bb-24154f0db6a2",
+          "type": "question",
+          "prompt": "Traduis : « Je défends la liberté. »",
+          "answers": [
+            "Defiendo la libertad.",
+            "Yo defiendo la libertad."
+          ],
+          "explanation": "✅ **defender** avec yo : defiendo (e → ie). (monde 3 : Yo defiendo la libertad.)"
         },
         {
           "id": "fe6621f3-996a-4922-866c-525e3f56ac58",
@@ -1313,7 +1576,7 @@ window.registerPack({
             "Nosotros aprendemos la historia de la revolución.",
             "Nosotras aprendemos la historia de la revolución."
           ],
-          "explanation": "À retenir :\n- **aprender** avec nosotros : **aprendemos**\n- l'accent de **revolución**\n[[Aprendemos la historia de la revolución.|Nous apprenons l'histoire de la révolution.]]"
+          "explanation": "✅ **aprender** avec nosotros : aprendemos. L'accent de **revolución**. (mondes 1 et 3)"
         },
         {
           "id": "81c5eb80-9488-4ad8-9d03-4ed248b20f88",
@@ -1325,7 +1588,17 @@ window.registerPack({
             "Canto el himno cada mañana.",
             "Yo canto el himno cada mañana."
           ],
-          "explanation": "« chaque matin » = **cada mañana** (avec **ñ**) ; **cantar** avec yo : **canto** : [[Cada mañana canto el himno.|Chaque matin, je chante l'hymne.]]"
+          "explanation": "✅ **cada mañana**. **Cantar** avec yo : canto. (exemple du monde 2 et monde 3)"
+        },
+        {
+          "id": "7e2f9da9-6340-43d9-a38d-6fff90aed848",
+          "type": "question",
+          "prompt": "Traduis : « Les élèves chantent l'hymne révolutionnaire. »",
+          "answers": [
+            "Los alumnos cantan el himno revolucionario.",
+            "Los estudiantes cantan el himno revolucionario."
+          ],
+          "explanation": "✅ **cantar** avec los alumnos : cantan. (mondes 2 et 6)"
         },
         {
           "id": "f8b1ee85-c1d5-4542-8edc-d46e9b598940",
@@ -1335,7 +1608,7 @@ window.registerPack({
             "Los alumnos tienen que llevar un uniforme.",
             "Los estudiantes tienen que llevar un uniforme."
           ],
-          "explanation": "**tener que** + infinitif : on conjugue **tener**, le 2e verbe reste à l'infinitif : [[Los alumnos tienen que llevar un uniforme.|Les élèves doivent porter un uniforme.]]"
+          "explanation": "✅ **tienen que** + infinitif. (exemple du monde 4)"
         },
         {
           "id": "c6c5413d-b3b8-4f65-bf48-33c478a8619b",
@@ -1345,7 +1618,17 @@ window.registerPack({
             "Tengo que aprender la lección.",
             "Yo tengo que aprender la lección."
           ],
-          "explanation": "**tener** avec yo : **tengo** ; puis **que** + infinitif : [[Tengo que aprender la lección.|Je dois apprendre la leçon.]]"
+          "explanation": "✅ **tengo que** + infinitif. La leçon = **la lección**. (exemple du monde 4 et « Palabras para recordar »)"
+        },
+        {
+          "id": "e782057c-3e28-4772-8b22-a17d186b18c3",
+          "type": "question",
+          "prompt": "Traduis : « Elle doit apprendre la leçon. »",
+          "answers": [
+            "Tiene que aprender la lección.",
+            "Ella tiene que aprender la lección."
+          ],
+          "explanation": "✅ **tener** avec ella : tiene que + infinitif. (monde 4)"
         },
         {
           "id": "f01f7f1a-2ced-4945-82b3-b1875c0877b4",
@@ -1355,7 +1638,7 @@ window.registerPack({
             "Tienes que hacer el saludo revolucionario.",
             "Tú tienes que hacer el saludo revolucionario."
           ],
-          "explanation": "**tener** avec tú : **tienes que** + infinitif **hacer** : [[Tienes que hacer el saludo revolucionario.|Tu dois faire le salut révolutionnaire.]]"
+          "explanation": "✅ **tener** avec tú : tienes que + hacer. (monde 4 : Yo tengo que hacer el saludo.)"
         },
         {
           "id": "7fe4d992-f4f8-401e-90d4-f1f26f139963",
@@ -1366,16 +1649,33 @@ window.registerPack({
             "Nosotros tenemos que defender el comunismo.",
             "Nosotras tenemos que defender el comunismo."
           ],
-          "explanation": "Avec nosotros, pas de **ie** : **tenemos que** + **defender** (infinitif) : [[Tenemos que defender el comunismo.|Nous devons défendre le communisme.]]"
+          "explanation": "✅ **tenemos que** (pas de ie) + defender. (monde 4 : Nosotros tenemos que aprender la historia.)"
         },
         {
-          "id": "7698c16f-6485-4c9e-b24f-df5e5bf30e02",
+          "id": "53b00fa0-0499-4754-9a9b-91d9479d8fec",
           "type": "question",
-          "prompt": "Traduis : « Cuba n'est pas aussi grande que la France. »",
+          "prompt": "Traduis : « En France, les élèves ne sont pas obligés de porter un uniforme. »",
           "answers": [
-            "Cuba no es tan grande como Francia."
+            "En Francia, los alumnos no tienen que llevar un uniforme.",
+            "En Francia, los estudiantes no tienen que llevar un uniforme.",
+            "Los alumnos no tienen que llevar un uniforme en Francia.",
+            "Los estudiantes no tienen que llevar un uniforme en Francia."
           ],
-          "explanation": "À retenir :\n- avec un adjectif : **tan** + adjectif + **como**\n- pas d'article devant **Francia**\n[[Cuba no es tan grande como Francia.|Cuba n'est pas aussi grande que la France.]]"
+          "multiline": true,
+          "explanation": "✅ ne pas être obligé de = **no tener que** + infinitif. (monde 4)"
+        },
+        {
+          "id": "b314439b-8d32-4b27-a4f8-d97689f3080c",
+          "type": "question",
+          "prompt": "Traduis : « À Cuba, chaque matin, les élèves doivent chanter l'hymne révolutionnaire. »",
+          "answers": [
+            "En Cuba, cada mañana, los alumnos tienen que cantar el himno revolucionario.",
+            "En Cuba, cada mañana, los estudiantes tienen que cantar el himno revolucionario.",
+            "Cada mañana, en Cuba, los alumnos tienen que cantar el himno revolucionario.",
+            "Cada mañana, en Cuba, los estudiantes tienen que cantar el himno revolucionario."
+          ],
+          "multiline": true,
+          "explanation": "✅ La 1re phrase du commentaire : à Cuba = **en Cuba**. (mondes 6 et 7)"
         },
         {
           "id": "943a84f1-1ce0-4891-939a-511de21d35af",
@@ -1385,7 +1685,17 @@ window.registerPack({
             "No tienen tanta libertad como en Francia.",
             "Ellos no tienen tanta libertad como en Francia."
           ],
-          "explanation": "**libertad** est féminin singulier → **tanta** ; « que » = **como** : [[No tienen tanta libertad como en Francia.|Ils n'ont pas autant de liberté qu'en France.]]"
+          "explanation": "✅ **la libertad** est féminin → **tanta**. « que » = **como**. (exemple du monde 2 et monde 5)"
+        },
+        {
+          "id": "035b6a17-16e4-4f7e-9a5c-656a0561296e",
+          "type": "question",
+          "prompt": "Traduis : « Ils n'ont pas autant d'argent qu'en France. »",
+          "answers": [
+            "No tienen tanto dinero como en Francia.",
+            "Ellos no tienen tanto dinero como en Francia."
+          ],
+          "explanation": "✅ **el dinero** est masculin → **tanto**, sans de. (monde 5 et « Palabras para recordar »)"
         },
         {
           "id": "ee915740-3b7d-4a22-b390-7ff7b8795c40",
@@ -1393,99 +1703,21 @@ window.registerPack({
           "prompt": "Traduis : « Dans ma classe, il n'y a pas autant d'élèves qu'à Cuba. »",
           "answers": [
             "En mi clase no hay tantos alumnos como en Cuba.",
+            "En mi clase no hay tantos estudiantes como en Cuba.",
             "No hay tantos alumnos en mi clase como en Cuba.",
-            "En mi clase no hay tantos estudiantes como en Cuba."
+            "No hay tantos estudiantes en mi clase como en Cuba."
           ],
           "multiline": true,
-          "explanation": "**alumnos** est masculin pluriel → **tantos** : [[En mi clase no hay tantos alumnos como en Cuba.|Dans ma classe, il n'y a pas autant d'élèves qu'à Cuba.]]"
+          "explanation": "✅ **alumnos** est masculin pluriel → **tantos**. Il y a = **hay**. (monde 5)"
         },
         {
-          "id": "53b00fa0-0499-4754-9a9b-91d9479d8fec",
+          "id": "7698c16f-6485-4c9e-b24f-df5e5bf30e02",
           "type": "question",
-          "prompt": "Traduis : « En France, les élèves ne sont pas obligés de porter un uniforme. »",
+          "prompt": "Traduis : « Cuba n'est pas aussi grande que la France. »",
           "answers": [
-            "En Francia, los alumnos no tienen que llevar un uniforme.",
-            "Los alumnos no tienen que llevar un uniforme en Francia.",
-            "En Francia, los estudiantes no tienen que llevar un uniforme."
+            "Cuba no es tan grande como Francia."
           ],
-          "multiline": true,
-          "explanation": "« ne pas être obligé de » = **no tener que** + infinitif : [[En Francia, los alumnos no tienen que llevar un uniforme.|En France, les élèves ne sont pas obligés de porter un uniforme.]]"
-        },
-        {
-          "id": "b314439b-8d32-4b27-a4f8-d97689f3080c",
-          "type": "question",
-          "prompt": "Traduis : « À Cuba, chaque matin, les élèves doivent chanter l'hymne révolutionnaire. »",
-          "answers": [
-            "En Cuba, cada mañana, los alumnos tienen que cantar el himno revolucionario.",
-            "Cada mañana, en Cuba, los alumnos tienen que cantar el himno revolucionario.",
-            "En Cuba, cada mañana, los estudiantes tienen que cantar el himno revolucionario."
-          ],
-          "multiline": true,
-          "explanation": "C'est la 1re phrase du commentaire : « à Cuba » = **en Cuba** : [[En Cuba, cada mañana, los alumnos tienen que cantar el himno revolucionario.|À Cuba, chaque matin, les élèves doivent chanter l'hymne révolutionnaire.]]"
-        },
-        {
-          "id": "8bd64d8f-53fa-4d45-a1ac-049da40d8ecd",
-          "type": "question",
-          "prompt": "Traduis : « Je pense que c'est une dictature. Ils n'ont pas autant de liberté que dans d'autres pays. »",
-          "answers": [
-            "Pienso que es una dictadura. No tienen tanta libertad como en otros países.",
-            "Pienso que es una dictadura. Ellos no tienen tanta libertad como en otros países.",
-            "Creo que es una dictadura. No tienen tanta libertad como en otros países.",
-            "Creo que es una dictadura. Ellos no tienen tanta libertad como en otros países."
-          ],
-          "multiline": true,
-          "explanation": "Ton avis avec **Pienso que**, puis la 2e phrase du commentaire (accent de **países**) : [[Pienso que es una dictadura. No tienen tanta libertad como en otros países.|Je pense que c'est une dictature. Ils n'ont pas autant de liberté que dans d'autres pays.]]"
-        },
-        {
-          "id": "7e2f9da9-6340-43d9-a38d-6fff90aed848",
-          "type": "question",
-          "prompt": "Traduis : « Les élèves chantent l'hymne révolutionnaire. »",
-          "answers": [
-            "Los alumnos cantan el himno revolucionario.",
-            "Los estudiantes cantan el himno revolucionario."
-          ],
-          "explanation": "À retenir :\n- **cantar** avec los alumnos : **cantan**\n- l'adjectif se place après le nom\n[[Los alumnos cantan el himno revolucionario.|Les élèves chantent l'hymne révolutionnaire.]]"
-        },
-        {
-          "id": "35c0a4d2-2a9b-44d4-801f-f00a175c1af7",
-          "type": "question",
-          "prompt": "Traduis : « Tu portes un uniforme. »",
-          "answers": [
-            "Llevas un uniforme.",
-            "Tú llevas un uniforme."
-          ],
-          "explanation": "**llevar** avec tú : **llevas** : [[Llevas un uniforme.|Tu portes un uniforme.]]"
-        },
-        {
-          "id": "de9371ea-e836-40d0-87bb-24154f0db6a2",
-          "type": "question",
-          "prompt": "Traduis : « Je défends la liberté. »",
-          "answers": [
-            "Defiendo la libertad.",
-            "Yo defiendo la libertad."
-          ],
-          "explanation": "**defender** avec yo : le **e** devient **ie** → **defiendo** : [[Defiendo la libertad.|Je défends la liberté.]]"
-        },
-        {
-          "id": "0405e3a4-8122-4090-a391-e4832a1e2973",
-          "type": "question",
-          "prompt": "Traduis : « Vous apprenez la leçon. » (vous = vosotros)",
-          "answers": [
-            "Aprendéis la lección.",
-            "Vosotros aprendéis la lección.",
-            "Vosotras aprendéis la lección."
-          ],
-          "explanation": "**aprender** avec vosotros : **aprendéis**, avec l'accent : [[Aprendéis la lección.|Vous apprenez la leçon.]]"
-        },
-        {
-          "id": "3738a633-f086-4726-942f-e10e7bb5453e",
-          "type": "question",
-          "prompt": "Traduis : « Elle doit chanter l'hymne. »",
-          "answers": [
-            "Tiene que cantar el himno.",
-            "Ella tiene que cantar el himno."
-          ],
-          "explanation": "**tener** avec ella : **tiene que** + infinitif **cantar** : [[Tiene que cantar el himno.|Elle doit chanter l'hymne.]]"
+          "explanation": "✅ Avec un adjectif : **tan** + adjectif + **como**. (exemple du monde 5)"
         },
         {
           "id": "973a95fa-0f1f-479a-a836-c8b44cc2770c",
@@ -1494,30 +1726,7 @@ window.registerPack({
           "answers": [
             "Cuba no es tan libre como Francia."
           ],
-          "explanation": "Avec un adjectif : **tan** + adjectif + **como** : [[Cuba no es tan libre como Francia.|Cuba n'est pas aussi libre que la France.]]"
-        },
-        {
-          "id": "cd470bb9-8c39-40b3-9e1a-0c42b785492d",
-          "type": "question",
-          "prompt": "Traduis : « Ils n'ont pas autant d'argent que nous. »",
-          "answers": [
-            "No tienen tanto dinero como nosotros.",
-            "Ellos no tienen tanto dinero como nosotros.",
-            "No tienen tanto dinero como nosotras.",
-            "Ellos no tienen tanto dinero como nosotras."
-          ],
-          "explanation": "**dinero** est masculin singulier → **tanto** ; « que » = **como** : [[No tienen tanto dinero como nosotros.|Ils n'ont pas autant d'argent que nous.]]"
-        },
-        {
-          "id": "490493d1-2dad-4f1c-a05c-dc5bae372cf2",
-          "type": "question",
-          "prompt": "Traduis : « Nous avons autant d'heures de classe qu'à Cuba. »",
-          "answers": [
-            "Tenemos tantas horas de clase como en Cuba.",
-            "Nosotros tenemos tantas horas de clase como en Cuba.",
-            "Nosotras tenemos tantas horas de clase como en Cuba."
-          ],
-          "explanation": "**horas** est féminin pluriel → **tantas** : [[Tenemos tantas horas de clase como en Cuba.|Nous avons autant d'heures de classe qu'à Cuba.]]"
+          "explanation": "✅ **tan libre como** = aussi libre que. (monde 5)"
         },
         {
           "id": "0596ad53-442b-44cc-98f8-9cfa576e7f55",
@@ -1525,23 +1734,34 @@ window.registerPack({
           "prompt": "Traduis : « Chaque matin, nous faisons le salut révolutionnaire. Nous devons porter un uniforme. »",
           "answers": [
             "Cada mañana hacemos el saludo revolucionario. Tenemos que llevar un uniforme.",
+            "Cada mañana hacemos el saludo revolucionario. Nosotros tenemos que llevar un uniforme.",
+            "Cada mañana hacemos el saludo revolucionario. Nosotras tenemos que llevar un uniforme.",
+            "Cada mañana nosotros hacemos el saludo revolucionario. Tenemos que llevar un uniforme.",
+            "Cada mañana nosotros hacemos el saludo revolucionario. Nosotros tenemos que llevar un uniforme.",
+            "Cada mañana nosotros hacemos el saludo revolucionario. Nosotras tenemos que llevar un uniforme.",
             "Hacemos el saludo revolucionario cada mañana. Tenemos que llevar un uniforme.",
-            "Cada mañana, nosotros hacemos el saludo revolucionario. Tenemos que llevar un uniforme."
+            "Hacemos el saludo revolucionario cada mañana. Nosotros tenemos que llevar un uniforme.",
+            "Hacemos el saludo revolucionario cada mañana. Nosotras tenemos que llevar un uniforme.",
+            "Nosotros hacemos el saludo revolucionario cada mañana. Tenemos que llevar un uniforme.",
+            "Nosotros hacemos el saludo revolucionario cada mañana. Nosotros tenemos que llevar un uniforme.",
+            "Nosotros hacemos el saludo revolucionario cada mañana. Nosotras tenemos que llevar un uniforme.",
+            "Nosotras hacemos el saludo revolucionario cada mañana. Tenemos que llevar un uniforme.",
+            "Nosotras hacemos el saludo revolucionario cada mañana. Nosotros tenemos que llevar un uniforme.",
+            "Nosotras hacemos el saludo revolucionario cada mañana. Nosotras tenemos que llevar un uniforme."
           ],
           "multiline": true,
-          "explanation": "**hacer** avec nosotros : **hacemos** (régulier) ; puis **tenemos que** + infinitif : [[Cada mañana hacemos el saludo revolucionario. Tenemos que llevar un uniforme.|Chaque matin, nous faisons le salut révolutionnaire. Nous devons porter un uniforme.]]"
+          "explanation": "✅ **hacer** avec nosotros : hacemos (régulier). **Tenemos que** + llevar. (mondes 3 et 4)"
         },
         {
-          "id": "7555b1c9-2b82-46ff-bbf7-486177ae93fa",
+          "id": "58039a4f-9a5b-4966-907e-f94d11424778",
           "type": "question",
-          "prompt": "Traduis : « Dans d'autres pays, les élèves n'apprennent pas l'histoire de la révolution. »",
+          "prompt": "Traduis : « Cuba est une dictature. Ils n'ont pas autant de liberté que dans d'autres pays. »",
           "answers": [
-            "En otros países, los alumnos no aprenden la historia de la revolución.",
-            "Los alumnos no aprenden la historia de la revolución en otros países.",
-            "En otros países, los estudiantes no aprenden la historia de la revolución."
+            "Cuba es una dictadura. No tienen tanta libertad como en otros países.",
+            "Cuba es una dictadura. Ellos no tienen tanta libertad como en otros países."
           ],
           "multiline": true,
-          "explanation": "« d'autres pays » = **otros países** (sans article, avec l'accent) ; **aprenden** avec los alumnos : [[En otros países, los alumnos no aprenden la historia de la revolución.|Dans d'autres pays, les élèves n'apprennent pas l'histoire de la révolution.]]"
+          "explanation": "✅ **una dictadura**, puis la 2e phrase du commentaire : **en otros países**, avec l'accent. (mondes 1 et 7)"
         },
         {
           "id": "9560f9ee-6a27-4cee-86d0-23536deac22e",
@@ -1554,7 +1774,7 @@ window.registerPack({
             "Los estudiantes defienden el comunismo. Ellos tienen que aprender la historia de la revolución."
           ],
           "multiline": true,
-          "explanation": "**defienden** (e → ie), puis **tienen que** + infinitif : [[Los alumnos defienden el comunismo. Tienen que aprender la historia de la revolución.|Les élèves défendent le communisme. Ils doivent apprendre l'histoire de la révolution.]]"
+          "explanation": "✅ **defienden** (e → ie), puis **tienen que** + infinitif. (mondes 3 et 4)"
         }
       ],
       "id": 8

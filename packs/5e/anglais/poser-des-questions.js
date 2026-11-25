@@ -181,6 +181,38 @@ window.registerPack({
           ],
           "answer": 2,
           "explanation": "✅ **What colour** = de quelle couleur. [[What colour is his umbrella?|De quelle couleur est son parapluie ?]]"
+        },
+        {
+          "id": "c94db781-6e0f-416d-831c-1490b4496d03",
+          "type": "match",
+          "prompt": "Relie chaque question à sa traduction.",
+          "pairs": [
+            {
+              "left": "When is he coming?",
+              "right": "Quand vient-il ?"
+            },
+            {
+              "left": "How are you?",
+              "right": "Comment vas-tu ?"
+            },
+            {
+              "left": "Who is it?",
+              "right": "Qui est-ce ?"
+            },
+            {
+              "left": "What is your brother doing?",
+              "right": "Que fait ton frère ?"
+            },
+            {
+              "left": "Where are they going?",
+              "right": "Où vont-ils ?"
+            },
+            {
+              "left": "What colour is his umbrella?",
+              "right": "De quelle couleur est son parapluie ?"
+            }
+          ],
+          "explanation": "✅ Les questions :\n- [[When is he coming?|Quand vient-il ?]]\n- [[How are you?|Comment vas-tu ?]]\n- [[Who is it?|Qui est-ce ?]]\n- [[What is your brother doing?|Que fait ton frère ?]]\n- [[Where are they going?|Où vont-ils ?]]\n- [[What colour is his umbrella?|De quelle couleur est son parapluie ?]]"
         }
       ]
     },
@@ -232,6 +264,19 @@ window.registerPack({
             "much"
           ],
           "explanation": "✅ Un prix → **How much**. [[pounds|livres sterling]]"
+        },
+        {
+          "id": "c9951061-85b2-48a1-8117-0ea0c151a467",
+          "type": "mcq",
+          "prompt": "Traduis : « Combien coûte ce pull ? »",
+          "options": [
+            "How much costs this pullover?",
+            "How many is this pullover?",
+            "How much is this pullover?",
+            "How much this pullover is?"
+          ],
+          "answer": 2,
+          "explanation": "✅ Un prix → **How much** + **is** + la chose ? (on dit aussi How much does it cost?)"
         },
         {
           "id": "251972e4-14dd-490a-b371-5407e3edfacf",
@@ -362,6 +407,19 @@ window.registerPack({
           "explanation": "✅ **'s** (Daniel's) = l'appartenance → **Whose**."
         },
         {
+          "id": "7a169037-3b1d-4b70-8d96-bda60442c07e",
+          "type": "mcq",
+          "prompt": "Traduis : « À qui est ce livre ? »",
+          "options": [
+            "Who is this book?",
+            "Whose book is it?",
+            "Who's book is it?",
+            "Whose is it book?"
+          ],
+          "answer": 1,
+          "explanation": "✅ « à qui » = **Whose** + le nom + is it ? *Who's* = who is."
+        },
+        {
           "id": "cb727aed-2f20-4802-a511-e6578e8e1ffc",
           "type": "mcq",
           "prompt": "Comment dit-on « À qui sont ces chaussures rouges ? » ?",
@@ -478,7 +536,7 @@ window.registerPack({
           "Structure : **(mot interrogatif) + auxiliaire + sujet + verbe + (complément)**.",
           "L'auxiliaire :\n- **be** (is, are)\n- **can**\n- **must**…\n- ou **do / does** pour les autres verbes\nExemples :\n- [[Where **does** your sister live?|Où habite ta sœur ?]]\n- [[What **can** you buy with 2 pounds?|Que peux-tu acheter avec 2 livres ?]]",
           "Sans mot interrogatif, on répond **yes** ou **no** : [[**Does** she play the piano? Yes, she does.|Est-ce qu'elle joue du piano ? Oui.]]",
-          "⚠️ Avec **does**, le verbe perd son -s : Does she **play**…?",
+          "⚠️ Avec **does**, le verbe perd son -s : Does she **play**…?\nEn français, on dit « Où habite ta sœur ? » sans auxiliaire. En anglais, il faut **does** + sujet + verbe : [[Where **does** your sister **live**?|Où habite ta sœur ?]] (jamais *Where lives your sister?*)",
           "Avec **have got**, pas de do : on inverse **have / has** et le sujet.\n- [[**Have** you **got** a pet?|As-tu un animal ?]]\n- [[How many brothers **has** he **got**?|Combien de frères a-t-il ?]]"
         ],
         "examples": [
@@ -538,6 +596,19 @@ window.registerPack({
             "does"
           ],
           "explanation": "✅ **your sister** = she → **does**. Puis **live** sans -s."
+        },
+        {
+          "id": "d7125b67-c4dd-42f7-961f-fc31ad08c6b3",
+          "type": "mcq",
+          "prompt": "Traduis : « Où travaille ta sœur ? »",
+          "options": [
+            "Where works your sister?",
+            "Where does your sister work?",
+            "Where does your sister works?",
+            "Where your sister works?"
+          ],
+          "answer": 1,
+          "explanation": "✅ **Where** + **does** + your sister + **work** (sans -s) ?"
         },
         {
           "id": "efe82c94-534d-4a0e-bdea-b806c660dfbe",
@@ -711,6 +782,19 @@ window.registerPack({
           ],
           "translation": "Est-ce qu'elle joue du piano ?",
           "explanation": "✅ Pas de mot interrogatif : **Does** + sujet + verbe ?"
+        },
+        {
+          "id": "54bae76a-0a37-40d8-aed9-66b02ddc3d19",
+          "type": "mcq",
+          "prompt": "Traduis : « Est-ce qu'il parle anglais ? »",
+          "options": [
+            "Does he speak English?",
+            "Is it that he speaks English?",
+            "Does he speaks English?",
+            "Do he speak English?"
+          ],
+          "answer": 0,
+          "explanation": "✅ « Est-ce que » ne se traduit pas : **Does** + he + **speak** (sans -s) ?"
         },
         {
           "id": "e416dee5-5906-4bff-9859-902674db6808",
@@ -956,6 +1040,169 @@ window.registerPack({
       ]
     },
     {
+      "id": "words",
+      "title": "Words to remember",
+      "subtitle": "Tricky words",
+      "subtitleFr": "Les mots pièges",
+      "icon": "🧠",
+      "color": "#14B8A6",
+      "lesson": {
+        "title": "[[Words to remember|Les mots à retenir]]",
+        "points": [
+          "Des questions toutes faites :\n- Comment vas-tu ? = **How are you?** (pas *How go you?*)\n- Qui est-ce ? = **Who is it?**\n- Quel âge as-tu ? = **How old are you?** (pas *What age have you?*)",
+          "Pas de mot à mot :\n- De quelle couleur… ? = **What colour…?** (pas *Of which colour*)\n- Quel genre de… ? = **What kind of…?**\n- Combien coûte… ? = **How much is…?**",
+          "« Est-ce que » ne se traduit pas : on met **do** ou **does** devant le sujet. [[**Does** your sister live in London?|Est-ce que ta sœur habite à Londres ?]]",
+          "Les petits mots :\n- être en retard = **be late**\n- habiter **à** Londres = live **in** London\n- un pull = **a pullover** (ou a jumper)",
+          "à qui = **whose** (pas *who* ni *who's*) : [[Whose dog is it?|À qui est ce chien ?]]"
+        ],
+        "examples": [
+          "[[**How are you?**|Comment vas-tu ?]]",
+          "[[**What colour** is his umbrella?|De quelle couleur est son parapluie ?]]"
+        ]
+      },
+      "exercises": [
+        {
+          "id": "d7fa41a8-1ded-48d2-a063-7db1cfb5ed13",
+          "type": "mcq",
+          "prompt": "Traduis : « Comment vas-tu ? »",
+          "options": [
+            "How go you?",
+            "How are you?",
+            "How do you go?",
+            "What are you?"
+          ],
+          "answer": 1,
+          "explanation": "✅ « Comment vas-tu ? » = **How are you?** avec be, pas avec go."
+        },
+        {
+          "id": "01e03edb-03c2-4784-a394-3ee8b579d717",
+          "type": "question",
+          "prompt": "Comment dit-on « Qui est-ce ? » en anglais ?",
+          "answers": [
+            "Who is it?",
+            "Who is this?",
+            "Who is that?"
+          ],
+          "explanation": "✅ **Who is it?** [[Who is it? It's Patrick.|Qui est-ce ? C'est Patrick.]]"
+        },
+        {
+          "id": "6bc1805e-5e3a-44ce-b811-f62a6a25b811",
+          "type": "mcq",
+          "prompt": "Traduis : « Quel âge as-tu ? »",
+          "options": [
+            "How old are you?",
+            "What age have you?",
+            "How old have you?",
+            "How old you are?"
+          ],
+          "answer": 0,
+          "explanation": "✅ « Quel âge… ? » = **How old** + **are** + you ?"
+        },
+        {
+          "id": "e2d601a7-abd7-4009-b5bf-d8717b1d69f1",
+          "type": "mcq",
+          "prompt": "Traduis : « De quelle couleur est le téléphone ? »",
+          "options": [
+            "Of which colour is the phone?",
+            "What colour the phone is?",
+            "How colour is the phone?",
+            "What colour is the phone?"
+          ],
+          "answer": 3,
+          "explanation": "✅ « De quelle couleur » = **What colour** ; puis is + le sujet."
+        },
+        {
+          "id": "6fb6a93a-4174-4b7e-9735-4663fa77b85a",
+          "type": "question",
+          "prompt": "Comment dit-on « de quelle couleur » en anglais ?",
+          "answers": [
+            "what colour",
+            "what color"
+          ],
+          "explanation": "✅ **what colour** : [[What colour is his umbrella?|De quelle couleur est son parapluie ?]]"
+        },
+        {
+          "id": "35e2fb0c-3d52-4a32-bb54-9b6769222945",
+          "type": "question",
+          "prompt": "Comment dit-on « quel genre de musique » en anglais ?",
+          "answers": [
+            "what kind of music",
+            "what type of music"
+          ],
+          "explanation": "✅ **what kind of music** : [[What kind of music do you like?|Quel genre de musique aimes-tu ?]]"
+        },
+        {
+          "id": "77025862-f0cb-46b8-977f-b3eeb38cdadf",
+          "type": "question",
+          "prompt": "Comment dit-on « être en retard » en anglais ?",
+          "answers": [
+            "be late",
+            "to be late"
+          ],
+          "explanation": "✅ **be late** : [[Why is he late?|Pourquoi est-il en retard ?]]"
+        },
+        {
+          "id": "775663ab-1281-429d-9e72-a0a78a41a326",
+          "type": "mcq",
+          "prompt": "Traduis : « Pourquoi es-tu en retard ? »",
+          "options": [
+            "Why are you in late?",
+            "Why do you late?",
+            "Why are you late?",
+            "Why you are late?"
+          ],
+          "answer": 2,
+          "explanation": "✅ « en retard » = **late** ; avec be : **Why** + **are** + you + late ?"
+        },
+        {
+          "id": "6dac40b8-f852-4ea7-b34c-36d5b1a9eeb3",
+          "type": "question",
+          "prompt": "Comment dit-on « habiter à Londres » en anglais ?",
+          "answers": [
+            "live in London",
+            "to live in London"
+          ],
+          "explanation": "✅ **live in London** (pas *at London*)."
+        },
+        {
+          "id": "ef7f881c-b38c-49d9-8ed5-12a4e0fb61ef",
+          "type": "mcq",
+          "prompt": "Traduis : « Est-ce que ta sœur habite à Londres ? »",
+          "options": [
+            "Does your sister live in London?",
+            "Is it that your sister lives in London?",
+            "Does your sister live at London?",
+            "Does your sister lives in London?"
+          ],
+          "answer": 0,
+          "explanation": "✅ « Est-ce que » = **Does** ; **live in** London (sans -s après does)."
+        },
+        {
+          "id": "fa9f0a6c-e76b-4f57-aa52-8b224304c043",
+          "type": "question",
+          "prompt": "Comment dit-on « un pull » en anglais ?",
+          "answers": [
+            "a pullover",
+            "pullover",
+            "a jumper",
+            "jumper",
+            "a sweater",
+            "sweater"
+          ],
+          "explanation": "✅ **a pullover** (ou a jumper) : [[How much is this pullover?|Combien coûte ce pull ?]]"
+        },
+        {
+          "id": "57a5f3e2-0e3d-4030-8928-2614752a84c1",
+          "type": "question",
+          "prompt": "Comment dit-on « à qui » en anglais ?",
+          "answers": [
+            "whose"
+          ],
+          "explanation": "✅ **whose** (pas *who's*, qui veut dire who is) : [[Whose book is it?|À qui est ce livre ?]]"
+        }
+      ]
+    },
+    {
       "id": 7,
       "title": "Boss: ask me!",
       "subtitle": "Translate the questions",
@@ -972,13 +1219,69 @@ window.registerPack({
       },
       "exercises": [
         {
-          "id": "f5e322a7-b4e7-48f8-aaa7-3665e6368892",
+          "id": "344b5ba4-5d66-4d78-b859-c315f889af30",
           "type": "question",
-          "prompt": "Traduis : « Où habite ta sœur ? »",
+          "prompt": "Traduis : « Comment vas-tu ? »",
           "answers": [
-            "Where does your sister live?"
+            "How are you?"
           ],
-          "explanation": "✅ **Where** + **does** + your sister + **live** ?"
+          "explanation": "✅ **How are you?** (monde 1 et « Words to remember »)"
+        },
+        {
+          "id": "34e69960-f065-4ec9-88af-1665cddd77ca",
+          "type": "question",
+          "prompt": "Traduis : « Qui est-ce ? »",
+          "answers": [
+            "Who is it?",
+            "Who is this?",
+            "Who is that?"
+          ],
+          "explanation": "✅ une personne → **Who** + is it ? (monde 1 et « Words to remember »)"
+        },
+        {
+          "id": "0099a827-dd8b-4826-8f89-a804ff687cd6",
+          "type": "question",
+          "prompt": "Traduis : « Quand vient-il ? Demain ? »",
+          "answers": [
+            "When is he coming? Tomorrow?",
+            "When does he come? Tomorrow?"
+          ],
+          "multiline": true,
+          "explanation": "✅ un moment → **When**. (monde 1)"
+        },
+        {
+          "id": "26d3ae67-5955-4f60-9349-11bdb349103a",
+          "type": "question",
+          "prompt": "Traduis : « Que fait ton frère ? »",
+          "answers": [
+            "What is your brother doing?",
+            "What does your brother do?"
+          ],
+          "explanation": "✅ une chose → **What** + is + your brother + doing ? (monde 1)"
+        },
+        {
+          "id": "a9889d98-f684-4b10-b810-eebebc793c3b",
+          "type": "question",
+          "prompt": "Traduis : « Pourquoi lave-t-il son pull ? »",
+          "answers": [
+            "Why is he washing his pullover?",
+            "Why is he washing his jumper?",
+            "Why is he washing his sweater?",
+            "Why does he wash his pullover?",
+            "Why does he wash his jumper?",
+            "Why does he wash his sweater?"
+          ],
+          "explanation": "✅ une raison → **Why** ; « son » (à lui) = **his**. (exemple du monde 1)"
+        },
+        {
+          "id": "8b927600-9c52-485c-8c89-922c6f62291e",
+          "type": "question",
+          "prompt": "Traduis : « De quelle couleur est son parapluie ? (à lui) »",
+          "answers": [
+            "What colour is his umbrella?",
+            "What color is his umbrella?"
+          ],
+          "explanation": "✅ **What colour** + is + his umbrella ? (mondes 1, 6 et « Words to remember »)"
         },
         {
           "id": "fa90833e-7a78-4ec1-8ad8-37882bf2cd78",
@@ -987,7 +1290,7 @@ window.registerPack({
           "answers": [
             "How old are you?"
           ],
-          "explanation": "✅ L'âge : **How old are you?**"
+          "explanation": "✅ l'âge → **How old** + **are** + you ? (monde 2 et « Words to remember »)"
         },
         {
           "id": "b0713cba-f57f-46eb-9e79-01535afd4b54",
@@ -997,56 +1300,7 @@ window.registerPack({
             "How many brothers do you have?",
             "How many brothers have you got?"
           ],
-          "explanation": "✅ **brothers** au pluriel → **How many**."
-        },
-        {
-          "id": "46765665-b565-4920-937a-a4b341491191",
-          "type": "question",
-          "prompt": "Traduis : « À qui est ce livre ? »",
-          "answers": [
-            "Whose book is it?",
-            "Whose book is this?",
-            "Whose is this book?"
-          ],
-          "explanation": "✅ À qui → **Whose**."
-        },
-        {
-          "id": "084b584c-2537-4142-9480-003ab91bb782",
-          "type": "question",
-          "prompt": "Traduis : « Qu'est-ce que ton frère est en train de faire ? »",
-          "answers": [
-            "What is your brother doing?"
-          ],
-          "explanation": "✅ **What is** your brother **doing**?"
-        },
-        {
-          "id": "0de8dd2e-a936-47cb-b4c8-c53807a25b0b",
-          "type": "question",
-          "prompt": "Traduis : « Est-ce qu'elle joue du piano ? »",
-          "answers": [
-            "Does she play the piano?",
-            "Does she play piano?"
-          ],
-          "explanation": "✅ Pas de mot interrogatif : **Does** + she + play ?"
-        },
-        {
-          "id": "f7c55c00-a49b-464d-a919-8233feb20b5b",
-          "type": "question",
-          "prompt": "Traduis : « Peux-tu m'aider, s'il te plaît ? »",
-          "answers": [
-            "Can you help me, please?",
-            "Please, can you help me?"
-          ],
-          "explanation": "✅ **Can** + you + help me ?"
-        },
-        {
-          "id": "129ba49d-93fd-4d5c-bd92-bbcf2216c0e7",
-          "type": "question",
-          "prompt": "Traduis : « Pourquoi est-il en retard ? »",
-          "answers": [
-            "Why is he late?"
-          ],
-          "explanation": "✅ **Why** + **is** + he + late ?"
+          "explanation": "✅ on peut compter → **How many** + do you have ? (monde 2 : How many brothers do they have?)"
         },
         {
           "id": "454409fe-a464-4748-8063-62fbc36088b5",
@@ -1060,17 +1314,37 @@ window.registerPack({
             "How much does this jumper cost?",
             "How much does this sweater cost?"
           ],
-          "explanation": "✅ Un prix → **How much**."
+          "explanation": "✅ un prix → **How much is** + la chose ? (exemple du monde 2)"
         },
         {
-          "id": "67a11aed-d0df-4b6f-8f6a-6a1370fa84b5",
+          "id": "7459e2b4-3e5a-4e16-b5e4-65e9f3bc1113",
           "type": "question",
-          "prompt": "Traduis : « Quel genre de musique aimes-tu ? »",
+          "prompt": "Traduis : « Combien d'argent a-t-il ? »",
           "answers": [
-            "What kind of music do you like?",
-            "What type of music do you like?"
+            "How much money does he have?",
+            "How much money has he got?"
           ],
-          "explanation": "✅ **What kind of music** + **do** + you + like ?"
+          "explanation": "✅ l'argent ne se compte pas → **How much** money. (monde 2)"
+        },
+        {
+          "id": "f3ec8e9d-d943-40fd-8783-da17f4242111",
+          "type": "question",
+          "prompt": "Traduis : « De combien d'ordinateurs ont-ils besoin ? »",
+          "answers": [
+            "How many computers do they need?"
+          ],
+          "explanation": "✅ on peut compter → **How many** computers + do they need ? (monde 2)"
+        },
+        {
+          "id": "46765665-b565-4920-937a-a4b341491191",
+          "type": "question",
+          "prompt": "Traduis : « À qui est ce livre ? »",
+          "answers": [
+            "Whose book is it?",
+            "Whose book is this?",
+            "Whose is this book?"
+          ],
+          "explanation": "✅ **Whose** + book + is it ? (exemple du monde 3)"
         },
         {
           "id": "bf4dcef6-b78d-4e71-90a6-a3b2b0a17178",
@@ -1080,93 +1354,136 @@ window.registerPack({
             "Whose socks are these?",
             "Whose are these socks?"
           ],
-          "explanation": "✅ **Whose** + **are these** (pluriel)."
+          "explanation": "✅ pluriel → **Whose** socks **are these**? (exemple du monde 3)"
         },
         {
-          "id": "8b927600-9c52-485c-8c89-922c6f62291e",
+          "id": "632452cf-1419-4463-b4d7-2738a2dc8b62",
           "type": "question",
-          "prompt": "Traduis : « De quelle couleur est son parapluie ? (à lui) »",
+          "prompt": "Traduis : « À qui est ce chien ? »",
           "answers": [
-            "What colour is his umbrella?",
-            "What color is his umbrella?"
+            "Whose dog is it?",
+            "Whose dog is this?",
+            "Whose is this dog?"
           ],
-          "explanation": "✅ À retenir :\n- **What colour**\n- à lui → **his**"
+          "explanation": "✅ **Whose** dog is it ? (exemple du monde 3)"
         },
         {
-          "id": "6475d0b0-b40f-4c9c-9317-22d351d570d4",
+          "id": "59e827fb-25c3-4a9d-8d9f-ccb60c599221",
           "type": "question",
-          "prompt": "Traduis : « Où achète-t-elle ses vêtements ? »",
+          "prompt": "Traduis : « À qui est cette raquette ? »",
           "answers": [
-            "Where does she buy her clothes?"
+            "Whose racket is it?",
+            "Whose racket is this?",
+            "Whose is this racket?"
           ],
-          "explanation": "✅ **does** + she + **buy** (sans -s)."
+          "explanation": "✅ **Whose** racket is it ? (exemple du monde 3)"
         },
         {
-          "id": "f3ec8e9d-d943-40fd-8783-da17f4242111",
+          "id": "f5e322a7-b4e7-48f8-aaa7-3665e6368892",
           "type": "question",
-          "prompt": "Traduis : « De combien d'ordinateurs ont-ils besoin ? »",
+          "prompt": "Traduis : « Où habite ta sœur ? »",
           "answers": [
-            "How many computers do they need?"
+            "Where does your sister live?"
           ],
-          "explanation": "✅ **How many** + computers + **do** + they + need ?"
+          "explanation": "✅ **Where** + **does** + your sister + **live** ? (exemple du monde 4)"
         },
         {
-          "id": "0099a827-dd8b-4826-8f89-a804ff687cd6",
+          "id": "51faa721-88c6-4ef4-bdf2-da9e138bf754",
           "type": "question",
-          "prompt": "Traduis : « Quand vient-il ? Demain ? »",
+          "prompt": "Traduis : « Où travaille ta sœur ? »",
           "answers": [
-            "When is he coming? Tomorrow?",
-            "When does he come? Tomorrow?"
+            "Where does your sister work?"
           ],
-          "multiline": true,
-          "explanation": "✅ Un moment → **When**. [[Tomorrow|demain]]"
+          "explanation": "✅ **does** + your sister + **work** (sans -s) ? (monde 4)"
         },
         {
-          "id": "344b5ba4-5d66-4d78-b859-c315f889af30",
+          "id": "b89208ed-098f-493d-943b-59692ebae5fe",
           "type": "question",
-          "prompt": "Traduis : « Comment vas-tu ? »",
+          "prompt": "Traduis : « Quand travaille ton frère ? »",
           "answers": [
-            "How are you?"
+            "When does your brother work?"
           ],
-          "explanation": "✅ **How are you?**"
+          "explanation": "✅ un moment → **When** + **does** + your brother + **work** ? (monde 4 : Where does your sister work?)"
         },
         {
-          "id": "34e69960-f065-4ec9-88af-1665cddd77ca",
+          "id": "776446d7-fd06-4c15-98b0-4507df740af2",
           "type": "question",
-          "prompt": "Traduis : « Qui est-ce ? »",
+          "prompt": "Traduis : « Pourquoi habite-t-il à Londres ? »",
           "answers": [
-            "Who is it?",
-            "Who is this?",
-            "Who is that?"
+            "Why does he live in London?"
           ],
-          "explanation": "✅ Une personne → **Who**."
+          "explanation": "✅ **Why** + **does** + he + **live** ? « à Londres » = **in London**. (monde 4 et « Words to remember »)"
         },
         {
-          "id": "96eed014-aa90-49c5-9b7e-8826cdaa1f0e",
+          "id": "0de8dd2e-a936-47cb-b4c8-c53807a25b0b",
           "type": "question",
-          "prompt": "Traduis : « Où sont-ils ? »",
+          "prompt": "Traduis : « Est-ce qu'elle joue du piano ? »",
           "answers": [
-            "Where are they?"
+            "Does she play the piano?",
+            "Does she play piano?"
           ],
-          "explanation": "✅ **Where** + **are** + they ?"
+          "explanation": "✅ **Does** + she + **play** (sans -s) ? (exemple du monde 4)"
         },
         {
-          "id": "0382ff6a-6158-4387-a687-d7d4621251d7",
+          "id": "84fb97cc-4d27-435a-b870-bd2a28c8a30a",
           "type": "question",
-          "prompt": "Traduis : « Est-ce que tu aimes les chats ? »",
+          "prompt": "Traduis : « As-tu un animal ? »",
           "answers": [
-            "Do you like cats?"
+            "Have you got a pet?",
+            "Do you have a pet?",
+            "Have you got an animal?",
+            "Do you have an animal?"
           ],
-          "explanation": "✅ Pas de mot interrogatif : **Do** + you + like ?"
+          "explanation": "✅ avec have got : **Have** you **got**… ? (exemple du monde 4)"
         },
         {
-          "id": "84894df8-36da-4c94-9085-bb7f5884a821",
+          "id": "b75f9768-cdc9-458f-a75e-275434c924fd",
           "type": "question",
-          "prompt": "Traduis : « Est-ce qu'il parle anglais ? »",
+          "prompt": "Traduis : « Combien de sœurs a-t-elle ? »",
           "answers": [
-            "Does he speak English?"
+            "How many sisters has she got?",
+            "How many sisters does she have?"
           ],
-          "explanation": "✅ **Does** + he + **speak** (sans -s) ?"
+          "explanation": "✅ **How many** sisters **has** she **got** ? (monde 4)"
+        },
+        {
+          "id": "f7c55c00-a49b-464d-a919-8233feb20b5b",
+          "type": "question",
+          "prompt": "Traduis : « Peux-tu m'aider, s'il te plaît ? »",
+          "answers": [
+            "Can you help me, please?",
+            "Please, can you help me?"
+          ],
+          "explanation": "✅ **Can** + you + help ? (exemple du monde 4)"
+        },
+        {
+          "id": "388aead5-e408-4bbf-abdd-07e9c9c808e2",
+          "type": "question",
+          "prompt": "Traduis : « Que peux-tu acheter avec 2 livres ? »",
+          "answers": [
+            "What can you buy with 2 pounds?",
+            "What can you buy with two pounds?"
+          ],
+          "explanation": "✅ **What** + **can** + you + buy ? (exemple du monde 4)"
+        },
+        {
+          "id": "129ba49d-93fd-4d5c-bd92-bbcf2216c0e7",
+          "type": "question",
+          "prompt": "Traduis : « Pourquoi est-il en retard ? »",
+          "answers": [
+            "Why is he late?"
+          ],
+          "explanation": "✅ **Why** + **is** + he + late ? (monde 4 et « Words to remember »)"
+        },
+        {
+          "id": "67a11aed-d0df-4b6f-8f6a-6a1370fa84b5",
+          "type": "question",
+          "prompt": "Traduis : « Quel genre de musique aimes-tu ? »",
+          "answers": [
+            "What kind of music do you like?",
+            "What type of music do you like?"
+          ],
+          "explanation": "✅ **What kind of** music + do + you + like ? (mondes 4 et 5)"
         },
         {
           "id": "6aad0519-9c14-4911-bbdb-c10fdc730a11",
@@ -1178,38 +1495,25 @@ window.registerPack({
             "What is your favourite color?",
             "What is your favorite colour?"
           ],
-          "explanation": "✅ **What is** your favourite colour?"
+          "explanation": "✅ **What is** + your favourite colour ? (monde 5 : What is your favourite pet?)"
         },
         {
-          "id": "7459e2b4-3e5a-4e16-b5e4-65e9f3bc1113",
+          "id": "84894df8-36da-4c94-9085-bb7f5884a821",
           "type": "question",
-          "prompt": "Traduis : « Combien d'argent a-t-il ? »",
+          "prompt": "Traduis : « Est-ce qu'il parle anglais ? »",
           "answers": [
-            "How much money does he have?",
-            "How much money has he got?"
+            "Does he speak English?"
           ],
-          "explanation": "✅ **money** ne se compte pas → **How much**."
+          "explanation": "✅ « Est-ce que » → **Does** + he + **speak** ? (monde 5)"
         },
         {
-          "id": "c10e0a18-086f-4580-8bb2-c8af4bd3def1",
+          "id": "96eed014-aa90-49c5-9b7e-8826cdaa1f0e",
           "type": "question",
-          "prompt": "Traduis : « Pourquoi lave-t-il sa voiture ? »",
+          "prompt": "Traduis : « Où sont-ils ? »",
           "answers": [
-            "Why is he washing his car?",
-            "Why does he wash his car?"
+            "Where are they?"
           ],
-          "explanation": "✅ Une raison → **Why**."
-        },
-        {
-          "id": "632452cf-1419-4463-b4d7-2738a2dc8b62",
-          "type": "question",
-          "prompt": "Traduis : « À qui est ce chien ? »",
-          "answers": [
-            "Whose dog is it?",
-            "Whose dog is this?",
-            "Whose is this dog?"
-          ],
-          "explanation": "✅ À qui → **Whose**."
+          "explanation": "✅ un lieu → **Where** + are + they ? (exemple du monde 6)"
         },
         {
           "id": "84ec5a6e-4f1b-455c-bf83-e3a29a3b85d7",
@@ -1219,27 +1523,7 @@ window.registerPack({
             "What are you eating?",
             "What do you eat?"
           ],
-          "explanation": "✅ Une chose → **What**."
-        },
-        {
-          "id": "5bc2ee77-92fd-4a25-86af-cd84dcd5cca9",
-          "type": "question",
-          "prompt": "Traduis : « Quand est ton anniversaire ? »",
-          "answers": [
-            "When is your birthday?"
-          ],
-          "explanation": "✅ Un moment → **When**."
-        },
-        {
-          "id": "eb99d1d2-605b-48bf-aa64-ff9c01b32af5",
-          "type": "question",
-          "prompt": "Traduis : « Où travaille ta mère ? »",
-          "answers": [
-            "Where does your mother work?",
-            "Where does your mum work?",
-            "Where does your mom work?"
-          ],
-          "explanation": "✅ **does** + your mother + **work** (sans -s) ?"
+          "explanation": "✅ une chose → **What** + are + you + eating ? (monde 6 : What is he eating?)"
         }
       ],
       "draw": 12

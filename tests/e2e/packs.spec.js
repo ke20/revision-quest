@@ -30,7 +30,7 @@ test("fresh start, lazy pack loading, per-pack progress, test pack, explorer, ch
     ok(realPacks.includes(EN) && !realPacks.some(p => /sample|test-/.test(p)), 'the production catalogue lists the real packs only (no test pack): ' + realPacks.join());
     ok(!(await page.evaluate(() => [...document.scripts].some(s => /packs\/(?!catalog\.js)/.test(s.src)))), 'no pack script loaded before choosing one (lazy)');
     const card = await textOf(page, `.pack-card[data-pack="${EN}"]`);
-    ok(/Anglais/.test(card) && /4e/.test(card) && /Dear Agony Aunt/.test(card) && /0\/40/.test(card), 'pack card: subject, level, title, stars 0/40');
+    ok(/Anglais/.test(card) && /4e/.test(card) && /Dear Agony Aunt/.test(card) && /0\/45/.test(card), 'pack card: subject, level, title, stars 0/45 (9 worlds)');
     await tap(page, `.pack-card[data-pack="${EN}"]`); await page.waitForSelector('.screen.map');
     ok(await page.evaluate(() => [...document.scripts].filter(s => /packs\/4e\/anglais\/giving-advice\.js$/.test(s.src)).length === 1), 'pack loaded with a single <script src="packs/...">');
     ok((await textOf(page, '.screen-head h2')).includes('World map'), 'English pack: bilingual chrome on map');

@@ -1,4 +1,4 @@
-// English pack fully renderable (all 8 worlds, every exercise) and broken / unknown exercises skipped neutrally.
+// English pack fully renderable (all 9 worlds, every exercise) and broken / unknown exercises skipped neutrally.
 "use strict";
 const { test, expect } = require("@playwright/test");
 const H = require("./helpers");
@@ -12,14 +12,14 @@ for (const [w, h, tag] of [[390, 844, "rm"], [1280, 800, "rd"]]) {
     page.on('pageerror', e => R.errors.push(tag + ' pageerror ' + e.message));
     await page.goto(H.BASE);
     await page.evaluate((EN) => { // a v3 player with every world unlocked
-      const worlds = {}; for (let i = 1; i <= 8; i++) worlds[i] = { stars: 1, accuracy: .5, completed: true };
+      const worlds = {}; [1, 2, 3, 4, 5, 6, 7, "words", 8].forEach((id) => { worlds[id] = { stars: 1, accuracy: .5, completed: true }; });
       localStorage.setItem('revisionQuest.v3', JSON.stringify({ version: 3, currentId: 'pabcdef1', profiles: [{ id: 'pabcdef1', name: 'Smoke', avatar: '🦊', createdAt: 1, state: { xp: 0, packs: { [EN]: { worlds, lastPlayed: 1 } }, badges: [], translations: [], days: [], sound: false, bestCombo: 0, lastPack: EN } }] }));
     }, EN);
     await page.reload();
     await tap(page, '[data-act=continue]');
     await expect(page.locator('.screen.map')).toBeVisible();
     const ids = await page.evaluate(() => Engine.packData().worlds.map(w => w.id + ':' + w.exercises.map(e => e.type).join(',')));
-    R.ok(ids.length === 8, tag + ' English pack has 8 worlds');
+    R.ok(ids.length === 9, tag + ' English pack has 9 worlds (7, « Words to remember », boss)');
     let rendered = 0;
     for (let i = 0; i < ids.length; i++) {
       await H.startWorld(page, i);

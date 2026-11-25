@@ -44,7 +44,8 @@ window.registerPack({
         "points": [
           "- **at the top** = en haut\n- **at the bottom** = en bas\n- **on the left** = à gauche\n- **on the right** = à droite\n- **in the middle** = au milieu",
           "- **in the background** = à l'arrière-plan\n- **in the top right-hand corner** = dans le coin en haut à droite",
-          "Pour commencer : [[In the middle of the picture, there is…|Au milieu de l'image, il y a…]]"
+          "Pour commencer : [[In the middle of the picture, there is…|Au milieu de l'image, il y a…]]",
+          "**There is** + un seul, **there are** + plusieurs :\n- [[There is a house.|Il y a une maison.]]\n- [[There are flowers.|Il y a des fleurs.]]"
         ],
         "examples": [
           "[[On the left, there is a tall character.|À gauche, il y a un grand personnage.]]",
@@ -206,6 +207,36 @@ window.registerPack({
           "explanation": "✅ Le lieu, puis **there is** + singulier."
         },
         {
+          "id": "a5ed2753-7b25-4db0-8bc4-859d9e2cdc83",
+          "type": "order",
+          "prompt": "Remets les mots dans l'ordre.",
+          "words": [
+            "At",
+            "the",
+            "bottom",
+            ",",
+            "there",
+            "are",
+            "flowers",
+            "."
+          ],
+          "translation": "En bas, il y a des fleurs.",
+          "explanation": "✅ **flowers** est au pluriel → **there are**."
+        },
+        {
+          "id": "ff65e7a5-9608-4a09-bc04-9670799d32c8",
+          "type": "mcq",
+          "prompt": "Traduis : « En bas, il y a des fleurs. »",
+          "options": [
+            "At the bottom, there is flowers.",
+            "At the bottom, there are flowers.",
+            "In the bottom, there are flowers.",
+            "At the bottom, it has flowers."
+          ],
+          "answer": 1,
+          "explanation": "✅ Deux pièges :\n- en bas = **at the bottom**\n- plusieurs fleurs → **there are** (il y a ne se dit pas *it has*)"
+        },
+        {
           "id": "fc98a408-e6e6-4974-ad04-ce37767f7740",
           "type": "mcq",
           "prompt": "Le chat est en bas à gauche de l'image. Quelle phrase va ?",
@@ -236,7 +267,8 @@ window.registerPack({
         ],
         "examples": [
           "[[He is blue and rectangular.|Il est bleu et rectangulaire.]]",
-          "[[She has a red hat and green shoes.|Elle a un chapeau rouge et des chaussures vertes.]]"
+          "[[She has a red hat and green shoes.|Elle a un chapeau rouge et des chaussures vertes.]]",
+          "[[The window is square.|La fenêtre est carrée.]]"
         ]
       },
       "exercises": [
@@ -1018,6 +1050,157 @@ window.registerPack({
       ]
     },
     {
+      "id": "words",
+      "title": "Words to remember",
+      "subtitle": "Tricky words",
+      "subtitleFr": "Les mots pièges",
+      "icon": "🧠",
+      "color": "#0EA5E9",
+      "lesson": {
+        "title": "[[Words to remember|Les mots à retenir]]",
+        "points": [
+          "Où dans l'image :\n- en haut = **at the top** (pas *in the top*)\n- en bas = **at the bottom**\n- à l'arrière-plan = **in the background**\n- dans le coin en haut à droite = **in the top right-hand corner**",
+          "L'humeur se dit avec **in** :\n- de bonne humeur = **in a good mood** (pas *of good mood*)\n- de mauvaise humeur = **in a bad mood**",
+          "Deux verbes avec **look** :\n- avoir l'air = **look** + adjectif (pas *have the air*)\n- ressembler à = **look like** + nom (pas *look at*)",
+          "Et aussi :\n- fatigué = **tired**\n- en retard = **late**\n- j'aimerais = **I would like to**"
+        ],
+        "examples": [
+          "[[She **looks tired**.|Elle a l'air fatiguée.]]",
+          "[[He's always **in a bad mood**.|Il est toujours de mauvaise humeur.]]"
+        ]
+      },
+      "exercises": [
+        {
+          "id": "6d49d75c-a184-4697-95cd-8eaf729f6568",
+          "type": "mcq",
+          "prompt": "Traduis : « En haut, il y a une chauve-souris. »",
+          "options": [
+            "In the top, there is a bat.",
+            "On the top, there is a bat.",
+            "At the top, there is a bat.",
+            "At the top, there are a bat."
+          ],
+          "answer": 2,
+          "explanation": "✅ en haut = **at the top** ; une seule chauve-souris → **there is**."
+        },
+        {
+          "id": "b05b8d65-75d4-4eff-8d3b-85f17e524f95",
+          "type": "question",
+          "prompt": "Comment dit-on « en haut » en anglais ?",
+          "answers": [
+            "at the top"
+          ],
+          "explanation": "✅ **at the top** = en haut (avec **at**)."
+        },
+        {
+          "id": "f72e9368-8f75-445f-987c-1cf15342bb86",
+          "type": "question",
+          "prompt": "Comment dit-on « en bas » en anglais ?",
+          "answers": [
+            "at the bottom"
+          ],
+          "explanation": "✅ **at the bottom** = en bas (avec **at**)."
+        },
+        {
+          "id": "d6841e1d-23b3-4934-976e-44789dc4bf2f",
+          "type": "question",
+          "prompt": "Comment dit-on « à l'arrière-plan » en anglais ?",
+          "answers": [
+            "in the background"
+          ],
+          "explanation": "✅ **in the background** = à l'arrière-plan."
+        },
+        {
+          "id": "22a4bd2c-1ed3-4dd0-a403-bf7d22a12a2b",
+          "type": "question",
+          "prompt": "Comment dit-on « dans le coin en haut à droite » en anglais ?",
+          "answers": [
+            "in the top right-hand corner",
+            "in the top right corner"
+          ],
+          "explanation": "✅ **in the top right-hand corner** : [[corner|coin]]."
+        },
+        {
+          "id": "7d0f299f-8f1a-4ef8-a8c6-7a7b03184c56",
+          "type": "mcq",
+          "prompt": "Traduis : « Il est de bonne humeur. »",
+          "options": [
+            "He is of good mood.",
+            "He has a good mood.",
+            "He is in a good moods.",
+            "He is in a good mood."
+          ],
+          "answer": 3,
+          "explanation": "✅ « de bonne humeur » = **in a good mood**, avec **in**."
+        },
+        {
+          "id": "e6efbf92-9297-4d70-a8c2-495c2bd95131",
+          "type": "question",
+          "prompt": "Comment dit-on « de mauvaise humeur » en anglais ?",
+          "answers": [
+            "in a bad mood"
+          ],
+          "explanation": "✅ **in a bad mood** = de mauvaise humeur."
+        },
+        {
+          "id": "830042d2-9e24-47f3-b43a-f82586e651f0",
+          "type": "mcq",
+          "prompt": "Traduis : « Elle a l'air fatiguée. »",
+          "options": [
+            "She looks tired.",
+            "She has the air tired.",
+            "She looks like tired.",
+            "She look tired."
+          ],
+          "answer": 0,
+          "explanation": "✅ avoir l'air = **look** + adjectif ; she → **looks** ; fatiguée = **tired**."
+        },
+        {
+          "id": "574b5a33-8a95-4e0e-bdaf-59be1ccf96d0",
+          "type": "question",
+          "prompt": "Comment dit-on « fatigué » en anglais ?",
+          "answers": [
+            "tired"
+          ],
+          "explanation": "✅ **tired** = fatigué : [[She looks tired.|Elle a l'air fatiguée.]]"
+        },
+        {
+          "id": "56ec7ee0-22d5-4216-a383-cd9b564abcf2",
+          "type": "mcq",
+          "prompt": "Traduis : « Il ressemble à un ours. »",
+          "options": [
+            "He looks at a bear.",
+            "He looks like a bear.",
+            "He looks a bear.",
+            "He like a bear."
+          ],
+          "answer": 1,
+          "explanation": "✅ ressembler à = **look like** + nom. *Look at* veut dire « regarder »."
+        },
+        {
+          "id": "c2356b08-030e-47f3-841f-b9efdea93676",
+          "type": "question",
+          "prompt": "Comment dit-on « en retard » en anglais ?",
+          "answers": [
+            "late"
+          ],
+          "explanation": "✅ **late** = en retard : [[He's never late.|Il n'est jamais en retard.]]"
+        },
+        {
+          "id": "86d5950f-e368-4d7b-a799-de5aa262453f",
+          "type": "question",
+          "prompt": "Comment dit-on « j'aimerais » en anglais ?",
+          "answers": [
+            "I would like",
+            "I would like to",
+            "I'd like",
+            "I'd like to"
+          ],
+          "explanation": "✅ **I would like to** + verbe : [[I would like to read number 1.|J'aimerais lire le numéro 1.]]"
+        }
+      ]
+    },
+    {
       "id": 7,
       "icon": "👑",
       "color": "#EF4444",
@@ -1035,14 +1218,14 @@ window.registerPack({
       "draw": 12,
       "exercises": [
         {
-          "id": "8d595607-399b-413b-9953-e79d0539dc30",
+          "id": "9edbab95-cdfc-4089-8d4e-e66b67960a0b",
           "type": "question",
-          "prompt": "Traduis : « À gauche, il y a une maison. »",
+          "prompt": "Traduis : « À l'arrière-plan, il y a une maison. »",
           "answers": [
-            "On the left, there is a house.",
-            "There is a house on the left."
+            "In the background, there is a house.",
+            "There is a house in the background."
           ],
-          "explanation": "✅ **on the left** = à gauche."
+          "explanation": "✅ **in the background** = à l'arrière-plan. (exemple du monde 1)"
         },
         {
           "id": "dd7dc79d-d99c-41d0-8a49-7eb90c96ab46",
@@ -1054,137 +1237,17 @@ window.registerPack({
             "There is a big character in the middle of the picture.",
             "There is a tall character in the middle of the picture."
           ],
-          "explanation": "✅ **in the middle of the picture** = au milieu de l'image."
+          "explanation": "✅ **in the middle of the picture** = au milieu de l'image. (monde 1)"
         },
         {
-          "id": "e61835a6-8e39-41fa-a461-d47ea671f97a",
+          "id": "79751bdd-affd-4193-bf42-8eba68c6467d",
           "type": "question",
-          "prompt": "Traduis : « Il est jaune et rond. »",
+          "prompt": "Traduis : « À droite, il y a une fenêtre. »",
           "answers": [
-            "He is yellow and round.",
-            "It is yellow and round."
+            "On the right, there is a window.",
+            "There is a window on the right."
           ],
-          "explanation": "✅ Les mots :\n- **yellow** (jaune)\n- **round** (rond)"
-        },
-        {
-          "id": "d0dab7f4-2031-4baf-ab65-05b600947e6f",
-          "type": "question",
-          "prompt": "Traduis : « Elle est timide. »",
-          "answers": [
-            "She is shy."
-          ],
-          "explanation": "✅ **shy** = timide."
-        },
-        {
-          "id": "a978c2b4-eb75-4e80-94ee-a68d694d0abb",
-          "type": "question",
-          "prompt": "Traduis : « Il est toujours de mauvaise humeur. »",
-          "answers": [
-            "He is always in a bad mood."
-          ],
-          "explanation": "✅ À retenir :\n- **always** après be\n- **in a bad mood**"
-        },
-        {
-          "id": "5224d8ea-0ef4-452b-b86b-8025ed0b0ffa",
-          "type": "question",
-          "prompt": "Traduis : « Il a l'air content. »",
-          "answers": [
-            "He looks happy."
-          ],
-          "explanation": "✅ **look** + adjectif = avoir l'air."
-        },
-        {
-          "id": "eed71c05-eeaf-4b43-bf09-18b37354dc4d",
-          "type": "question",
-          "prompt": "Traduis : « Il ressemble à une banane. »",
-          "answers": [
-            "He looks like a banana.",
-            "It looks like a banana."
-          ],
-          "explanation": "✅ **look like** + nom = ressembler à."
-        },
-        {
-          "id": "3f34b2eb-cbde-415e-9f9e-8b6fa53e41da",
-          "type": "question",
-          "prompt": "Traduis : « À l'arrière-plan, il y a une petite maison. »",
-          "answers": [
-            "In the background, there is a little house.",
-            "In the background, there is a small house.",
-            "There is a little house in the background.",
-            "There is a small house in the background."
-          ],
-          "explanation": "✅ **in the background** = à l'arrière-plan."
-        },
-        {
-          "id": "333a5dec-945a-492d-a02a-9536573d96a5",
-          "type": "question",
-          "prompt": "Traduis : « Elle a des chaussures vertes. »",
-          "answers": [
-            "She has green shoes.",
-            "She has got green shoes."
-          ],
-          "explanation": "✅ L'adjectif, sans -s, avant le nom : **green shoes**."
-        },
-        {
-          "id": "683cd789-3842-41c0-b3d9-3a8263f416bc",
-          "type": "question",
-          "prompt": "Traduis : « Il n'est jamais en retard. »",
-          "answers": [
-            "He is never late."
-          ],
-          "explanation": "✅ **never** après be."
-        },
-        {
-          "id": "67c1ca4b-b4eb-456a-b1ce-b49818618aa7",
-          "type": "question",
-          "prompt": "Traduis : « Il est très paresseux. »",
-          "answers": [
-            "He is very lazy.",
-            "He is really lazy."
-          ],
-          "explanation": "✅ **lazy** = paresseux."
-        },
-        {
-          "id": "5c6b9b86-45a6-42b7-9e6e-a1a2e2ebc09e",
-          "type": "question",
-          "prompt": "Traduis : « Elle est grande et mince. »",
-          "answers": [
-            "She is tall and thin."
-          ],
-          "explanation": "✅ Les mots :\n- **tall** (grande)\n- **thin** (mince)"
-        },
-        {
-          "id": "43a697d4-c27f-4f77-8c43-59ae6785ba6c",
-          "type": "question",
-          "prompt": "Traduis : « J'aimerais lire le numéro 1. »",
-          "answers": [
-            "I would like to read number 1.",
-            "I would like to read number one.",
-            "I'd like to read number 1.",
-            "I'd like to read number one."
-          ],
-          "explanation": "✅ **I would like to** + verbe = j'aimerais."
-        },
-        {
-          "id": "59b654e0-63ea-46b1-a1ff-a1baeb716da6",
-          "type": "question",
-          "prompt": "Traduis : « Il est souvent de bonne humeur. Il est vraiment drôle. »",
-          "answers": [
-            "He is often in a good mood. He is really funny.",
-            "He is often in a good mood. He is very funny."
-          ],
-          "multiline": true,
-          "explanation": "✅ À retenir :\n- **often** après be\n- **in a good mood**\n- **funny** = drôle"
-        },
-        {
-          "id": "7ba6a8a3-f678-4a2e-ba42-55ab210f2503",
-          "type": "question",
-          "prompt": "Traduis : « À droite, il y a un arbre. »",
-          "answers": [
-            "On the right, there is a tree.",
-            "There is a tree on the right."
-          ],
-          "explanation": "✅ **on the right** = à droite."
+          "explanation": "✅ **on the right** = à droite ; [[window|fenêtre]]. (mondes 1 et 2)"
         },
         {
           "id": "78f7ff14-c316-49b6-a156-36274647c96e",
@@ -1196,93 +1259,17 @@ window.registerPack({
             "At the bottom, there are some flowers.",
             "There are some flowers at the bottom."
           ],
-          "explanation": "✅ À retenir :\n- **at the bottom** = en bas\n- **flowers** : pluriel → there are"
+          "explanation": "✅ **at the bottom** ; plusieurs fleurs → **there are**. (monde 1)"
         },
         {
-          "id": "9fee03ec-3799-41be-af39-4a8dee240b3a",
+          "id": "d11d7bc7-a4ef-445c-b45d-75b738cfed4e",
           "type": "question",
-          "prompt": "Traduis : « En haut, il y a une lune. »",
+          "prompt": "Traduis : « En haut, il y a une chauve-souris. »",
           "answers": [
-            "At the top, there is a moon.",
-            "There is a moon at the top."
+            "At the top, there is a bat.",
+            "There is a bat at the top."
           ],
-          "explanation": "✅ **at the top** = en haut."
-        },
-        {
-          "id": "c6e38f64-4498-45b9-b0ec-953353a585db",
-          "type": "question",
-          "prompt": "Traduis : « La fenêtre est carrée. »",
-          "answers": [
-            "The window is square."
-          ],
-          "explanation": "✅ **square** = carré."
-        },
-        {
-          "id": "ad7ad898-6aa4-40e6-91de-28ca7d6574db",
-          "type": "question",
-          "prompt": "Traduis : « Il est grincheux. »",
-          "answers": [
-            "He is grumpy."
-          ],
-          "explanation": "✅ **grumpy** = grincheux."
-        },
-        {
-          "id": "ace7243e-b97b-4096-99a5-b9ff13b33b4f",
-          "type": "question",
-          "prompt": "Traduis : « Elle est très intelligente. »",
-          "answers": [
-            "She is very clever.",
-            "She is very intelligent.",
-            "She is really clever.",
-            "She is really intelligent."
-          ],
-          "explanation": "✅ **clever** ou **intelligent**."
-        },
-        {
-          "id": "b87db326-505b-4cca-a349-1ecf9c7360cd",
-          "type": "question",
-          "prompt": "Traduis : « Il a un chapeau rouge. »",
-          "answers": [
-            "He has a red hat.",
-            "He has got a red hat."
-          ],
-          "explanation": "✅ L'adjectif avant le nom : a **red hat**."
-        },
-        {
-          "id": "c2357d21-0ae4-45e0-8e78-ad8151735cd1",
-          "type": "question",
-          "prompt": "Traduis : « Elle a l'air fatiguée. »",
-          "answers": [
-            "She looks tired."
-          ],
-          "explanation": "✅ **look** + adjectif = avoir l'air."
-        },
-        {
-          "id": "f13b8f3c-f451-483d-a557-584912469fb4",
-          "type": "question",
-          "prompt": "Traduis : « Il est drôle et serviable. »",
-          "answers": [
-            "He is funny and helpful."
-          ],
-          "explanation": "✅ Les mots :\n- **funny** (drôle)\n- **helpful** (serviable)"
-        },
-        {
-          "id": "bf00495b-0fb6-4ad0-9f3f-bb6d4b003ed6",
-          "type": "question",
-          "prompt": "Traduis : « Elle n'est jamais de mauvaise humeur. »",
-          "answers": [
-            "She is never in a bad mood."
-          ],
-          "explanation": "✅ À retenir :\n- **never** après be\n- **in a bad mood**"
-        },
-        {
-          "id": "89934275-0f12-40a1-8a82-e79288b0f87c",
-          "type": "question",
-          "prompt": "Traduis : « Le tardigrade ressemble à un ours. »",
-          "answers": [
-            "The tardigrade looks like a bear."
-          ],
-          "explanation": "✅ **looks like** + nom = ressemble à."
+          "explanation": "✅ **at the top** = en haut. (monde 1 et « Words to remember »)"
         },
         {
           "id": "eb05ce7b-cbb8-4765-ac45-f41e9170959f",
@@ -1294,8 +1281,247 @@ window.registerPack({
             "There is a bat in the top right-hand corner.",
             "There is a bat in the top right corner."
           ],
+          "explanation": "✅ **in the top right-hand corner** = dans le coin en haut à droite. (monde 1 et « Words to remember »)"
+        },
+        {
+          "id": "2f83abe8-f826-4c16-956a-8b38f91d1852",
+          "type": "question",
+          "prompt": "Traduis : « Le chat est en bas à gauche. »",
+          "answers": [
+            "The cat is at the bottom, on the left.",
+            "The cat is on the left, at the bottom."
+          ],
+          "explanation": "✅ en bas = **at the bottom**, à gauche = **on the left**. (monde 1)"
+        },
+        {
+          "id": "472f9130-350d-483f-ae6f-92e0cba96a46",
+          "type": "question",
+          "prompt": "Traduis : « Il est bleu et rectangulaire. »",
+          "answers": [
+            "He is blue and rectangular.",
+            "It is blue and rectangular."
+          ],
+          "explanation": "✅ [[rectangular|rectangulaire]]. (exemple du monde 2)"
+        },
+        {
+          "id": "e61835a6-8e39-41fa-a461-d47ea671f97a",
+          "type": "question",
+          "prompt": "Traduis : « Il est jaune et rond. »",
+          "answers": [
+            "He is yellow and round.",
+            "It is yellow and round."
+          ],
+          "explanation": "✅ **yellow** (jaune), **round** (rond). (monde 2)"
+        },
+        {
+          "id": "094073c9-31b7-4ca3-8431-7cd3fa9e514b",
+          "type": "question",
+          "prompt": "Traduis : « Elle a un chapeau rouge et des chaussures vertes. »",
+          "answers": [
+            "She has a red hat and green shoes.",
+            "She has got a red hat and green shoes."
+          ],
+          "explanation": "✅ L'adjectif, sans -s, **avant** le nom : a **red hat**, **green shoes**. (exemple du monde 2)"
+        },
+        {
+          "id": "f7e040f1-f183-4c51-8fa8-206575332525",
+          "type": "question",
+          "prompt": "Traduis : « Il a un gros nez bleu. »",
+          "answers": [
+            "He has a big blue nose.",
+            "He has got a big blue nose."
+          ],
+          "explanation": "✅ Les adjectifs (big, blue) **avant** le nom. (monde 2)"
+        },
+        {
+          "id": "5c6b9b86-45a6-42b7-9e6e-a1a2e2ebc09e",
+          "type": "question",
+          "prompt": "Traduis : « Elle est grande et mince. »",
+          "answers": [
+            "She is tall and thin."
+          ],
+          "explanation": "✅ **tall** (grande), **thin** (mince). (monde 2 : He is tall and thin.)"
+        },
+        {
+          "id": "c6e38f64-4498-45b9-b0ec-953353a585db",
+          "type": "question",
+          "prompt": "Traduis : « La fenêtre est carrée. »",
+          "answers": [
+            "The window is square."
+          ],
+          "explanation": "✅ **square** = carré. (exemple du monde 2)"
+        },
+        {
+          "id": "fc85dbd6-bdac-434b-9ee1-f6e484a6dddf",
+          "type": "question",
+          "prompt": "Traduis : « Elle est minuscule. »",
+          "answers": [
+            "She is tiny."
+          ],
+          "explanation": "✅ **tiny** = minuscule. (monde 2 : she's tiny.)"
+        },
+        {
+          "id": "4216a671-154d-412e-9f9a-3798485ee29c",
+          "type": "question",
+          "prompt": "Traduis : « Elle est très gentille mais elle est timide. »",
+          "answers": [
+            "She is very nice but she is shy.",
+            "She is really nice but she is shy."
+          ],
+          "explanation": "✅ **nice** (gentille), **shy** (timide). (exemple du monde 3)"
+        },
+        {
+          "id": "b22d3a26-2381-4ed1-af53-2210b9c8daab",
+          "type": "question",
+          "prompt": "Traduis : « Il est vraiment drôle. »",
+          "answers": [
+            "He is really funny.",
+            "He is very funny."
+          ],
+          "explanation": "✅ **really** = vraiment ; **funny** = drôle. (monde 3)"
+        },
+        {
+          "id": "67c1ca4b-b4eb-456a-b1ce-b49818618aa7",
+          "type": "question",
+          "prompt": "Traduis : « Il est très paresseux. »",
+          "answers": [
+            "He is very lazy.",
+            "He is really lazy."
+          ],
+          "explanation": "✅ **lazy** = paresseux. (exemple du monde 3)"
+        },
+        {
+          "id": "ace7243e-b97b-4096-99a5-b9ff13b33b4f",
+          "type": "question",
+          "prompt": "Traduis : « Elle est très intelligente. »",
+          "answers": [
+            "She is very clever.",
+            "She is very intelligent.",
+            "She is really clever.",
+            "She is really intelligent."
+          ],
+          "explanation": "✅ **clever** = intelligent. (monde 3)"
+        },
+        {
+          "id": "54dd7d7c-f0ab-4f8d-a9f2-805c664f2cef",
+          "type": "question",
+          "prompt": "Traduis : « Il est vraiment serviable. »",
+          "answers": [
+            "He is really helpful.",
+            "He is very helpful."
+          ],
+          "explanation": "✅ **helpful** = serviable. (monde 3 : he's really helpful.)"
+        },
+        {
+          "id": "a978c2b4-eb75-4e80-94ee-a68d694d0abb",
+          "type": "question",
+          "prompt": "Traduis : « Il est toujours de mauvaise humeur. »",
+          "answers": [
+            "He is always in a bad mood."
+          ],
+          "explanation": "✅ **always** après be ; **in a bad mood**. (exemple du monde 4)"
+        },
+        {
+          "id": "2522c570-80a7-4e60-bb21-8e2ba652df93",
+          "type": "question",
+          "prompt": "Traduis : « Il est souvent de bonne humeur. »",
+          "answers": [
+            "He is often in a good mood."
+          ],
+          "explanation": "✅ **often** après be ; **in a good mood**. (monde 4 : She's often in a good mood.)"
+        },
+        {
+          "id": "bf00495b-0fb6-4ad0-9f3f-bb6d4b003ed6",
+          "type": "question",
+          "prompt": "Traduis : « Elle n'est jamais de mauvaise humeur. »",
+          "answers": [
+            "She is never in a bad mood."
+          ],
+          "explanation": "✅ **never** après be. (monde 4 : Zig is never in a bad mood.)"
+        },
+        {
+          "id": "683cd789-3842-41c0-b3d9-3a8263f416bc",
+          "type": "question",
+          "prompt": "Traduis : « Il n'est jamais en retard. »",
+          "answers": [
+            "He is never late."
+          ],
+          "explanation": "✅ **never** après be ; en retard = **late**. (monde 4 et « Words to remember »)"
+        },
+        {
+          "id": "cdaff797-7ed1-4fc6-89fa-d239ee846a64",
+          "type": "question",
+          "prompt": "Traduis : « Il n'arrive jamais en retard. »",
+          "answers": [
+            "He never comes late.",
+            "He never arrives late."
+          ],
+          "explanation": "✅ **never** avant les autres verbes. (exemple du monde 4)"
+        },
+        {
+          "id": "0f555f95-c43b-4b2d-be2f-5b2031674a08",
+          "type": "question",
+          "prompt": "Traduis : « Elle a l'air contente. »",
+          "answers": [
+            "She looks happy."
+          ],
+          "explanation": "✅ **look** + adjectif ; she → **looks**. (monde 5)"
+        },
+        {
+          "id": "4d2cbc5e-2f82-4f77-b7c9-66c6e77764e8",
+          "type": "question",
+          "prompt": "Traduis : « Il a l'air grincheux. »",
+          "answers": [
+            "He looks grumpy."
+          ],
+          "explanation": "✅ **looks** + adjectif (grumpy). (monde 5)"
+        },
+        {
+          "id": "c2357d21-0ae4-45e0-8e78-ad8151735cd1",
+          "type": "question",
+          "prompt": "Traduis : « Elle a l'air fatiguée. »",
+          "answers": [
+            "She looks tired."
+          ],
+          "explanation": "✅ **looks** + adjectif ; fatiguée = **tired**. (monde 5 et « Words to remember »)"
+        },
+        {
+          "id": "89934275-0f12-40a1-8a82-e79288b0f87c",
+          "type": "question",
+          "prompt": "Traduis : « Le tardigrade ressemble à un ours. »",
+          "answers": [
+            "The tardigrade looks like a bear."
+          ],
+          "explanation": "✅ **looks like** + nom = ressemble à. (exemple du monde 5)"
+        },
+        {
+          "id": "43a697d4-c27f-4f77-8c43-59ae6785ba6c",
+          "type": "question",
+          "prompt": "Traduis : « J'aimerais lire le numéro 1. »",
+          "answers": [
+            "I would like to read number 1.",
+            "I would like to read number one.",
+            "I'd like to read number 1.",
+            "I'd like to read number one."
+          ],
+          "explanation": "✅ **I would like to** + verbe = j'aimerais. (monde 5)"
+        },
+        {
+          "id": "49aa611d-ad28-40af-a874-d5a9c9b2464a",
+          "type": "question",
+          "prompt": "Traduis : « À gauche, il y a un grand personnage. Il ressemble à une banane ! »",
+          "answers": [
+            "On the left, there is a tall character. He looks like a banana!",
+            "On the left, there is a big character. He looks like a banana!",
+            "There is a tall character on the left. He looks like a banana!",
+            "There is a big character on the left. He looks like a banana!",
+            "On the left, there is a tall character. It looks like a banana!",
+            "On the left, there is a big character. It looks like a banana!",
+            "There is a tall character on the left. It looks like a banana!",
+            "There is a big character on the left. It looks like a banana!"
+          ],
           "multiline": true,
-          "explanation": "✅ **in the top right-hand corner** = dans le coin en haut à droite."
+          "explanation": "✅ **on the left** ; **looks like** + nom. (exemple du monde 6)"
         }
       ]
     }
