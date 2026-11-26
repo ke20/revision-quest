@@ -1,0 +1,56 @@
+create:
+  parameters:
+    - $ref: parameters.yaml#/childId
+  post:
+    tags: [invitations]
+    operationId: inviteGuardian
+    summary: Inviter un autre parent
+    description: Envoie un e-mail avec un lien valable 7 jours. L'invité devient parent avec les mêmes droits.
+    security:
+      - adultSession: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ../schemas/progress.yaml#/InvitationCreate
+    responses:
+      '201':
+        description: Invitation envoyée.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/progress.yaml#/Invitation
+      '400':
+        $ref: ../responses/problems.yaml#/BadRequest
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound
+      '429':
+        $ref: ../responses/problems.yaml#/TooManyRequests
+accept:
+  parameters:
+    - name: token
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '^[A-Za-z0-9_-]{32,64}$'
+  post:
+    tags: [invitations]
+    operationId: acceptInvitation
+    summary: Accepter une invitation (l'adulte connecté devient parent de l'enfant)
+    security:
+      - adultSession: []
+    responses:
+      '200':
+        description: L'enfant, maintenant suivi.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/child.yaml#/Child
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound

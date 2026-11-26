@@ -1,0 +1,44 @@
+Classroom:
+  description: Une classe d'un enseignant (seulement son nom et le code pour la rejoindre).
+  type: object
+  required: [id, name, joinCode, createdAt, childCount]
+  properties:
+    id:
+      $ref: common.yaml#/Uuid
+    name:
+      type: string
+      minLength: 1
+      maxLength: 60
+      examples: [5e B — anglais]
+    joinCode:
+      type: string
+      description: Code donné aux parents pour rattacher leur enfant.
+      pattern: '^[A-HJ-NP-Z2-9]{6}$'
+    createdAt:
+      $ref: common.yaml#/DateTime
+    childCount:
+      type: integer
+      minimum: 0
+ClassroomCreate:
+  type: object
+  additionalProperties: false
+  required: [name]
+  properties:
+    name:
+      type: string
+      minLength: 1
+      maxLength: 60
+ClassroomJoin:
+  description: Un parent rattache son enfant à une classe avec le code de l'enseignant et le nom que verra l'enseignant.
+  type: object
+  additionalProperties: false
+  required: [joinCode, displayName]
+  properties:
+    joinCode:
+      type: string
+      pattern: '^[A-HJ-NP-Z2-9]{6}$'
+    displayName:
+      type: string
+      minLength: 1
+      maxLength: 30
+      examples: [Léo B.]

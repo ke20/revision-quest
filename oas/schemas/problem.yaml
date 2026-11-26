@@ -1,0 +1,37 @@
+Problem:
+  description: Une erreur, au format Problem Details (RFC 9457). `title` et `detail` sont en français, lisibles par un adulte.
+  type: object
+  required: [type, title, status]
+  properties:
+    type:
+      type: string
+      format: uri-reference
+      description: Identifiant du type d'erreur, par exemple `/problems/save-conflict` ; `about:blank` pour une erreur HTTP simple.
+      examples: [/problems/save-conflict]
+    title:
+      type: string
+      examples: [La sauvegarde a changé sur un autre appareil.]
+    status:
+      type: integer
+      minimum: 400
+      maximum: 599
+    detail:
+      type: string
+ValidationProblem:
+  description: Erreur de validation (400) avec la liste des champs refusés.
+  allOf:
+    - $ref: '#/Problem'
+    - type: object
+      required: [violations]
+      properties:
+        violations:
+          type: array
+          items:
+            type: object
+            required: [field, message]
+            properties:
+              field:
+                type: string
+                description: Chemin du champ, par exemple `pseudo` ou `events[3].exercise`.
+              message:
+                type: string

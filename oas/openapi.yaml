@@ -1,0 +1,102 @@
+openapi: 3.1.0
+info:
+  title: Révision Quest API
+  version: 0.1.0
+  summary: Synchronisation de la progression des enfants et suivi par les parents et les enseignants.
+  description: |
+    Contrat de l'API du serveur Révision Quest (Symfony, dossier `api/`), écrit avant le code.
+    Le jeu reste « local d'abord » : il garde sa sauvegarde et synchronise quand le réseau est là.
+
+    Conventions (voir `oas/README.md`) :
+    - champs JSON en camelCase, identifiants en UUID, dates en ISO 8601 (UTC) ;
+    - erreurs au format Problem Details (RFC 9457, `application/problem+json`) ;
+    - deux façons de s'identifier, par cookie HttpOnly : la session d'un adulte, la clé d'un appareil ;
+    - données d'un enfant réduites au minimum : pseudo, niveau scolaire, avatar de la liste du jeu, progression.
+  license:
+    name: MIT
+    identifier: MIT
+servers:
+  - url: /api/v1
+    description: Même domaine que le jeu (le jeu et l'API sont servis par le même serveur).
+tags:
+  - name: auth
+    description: Connexion des adultes par lien e-mail (pas de mot de passe).
+  - name: me
+    description: Le compte de l'adulte connecté (export, suppression).
+  - name: children
+    description: Les profils des enfants, gérés par leurs parents (tous égaux).
+  - name: invitations
+    description: Inviter un autre parent à suivre un enfant.
+  - name: classrooms
+    description: Les classes des enseignants ; un parent y rattache son enfant.
+  - name: devices
+    description: Relier un appareil à un enfant (code d'un parent ou carte de connexion de l'enfant).
+  - name: sync
+    description: Sauvegarde versionnée d'un profil ; la fusion se fait dans le jeu.
+  - name: events
+    description: Journal des erreurs détaillées et des sessions de jeu (hors de la sauvegarde).
+
+paths:
+  /auth/link:
+    $ref: paths/auth.yaml#/link
+  /auth/check:
+    $ref: paths/auth.yaml#/check
+  /auth/logout:
+    $ref: paths/auth.yaml#/logout
+  /me:
+    $ref: paths/me.yaml#/me
+  /me/export:
+    $ref: paths/me.yaml#/export
+  /children:
+    $ref: paths/children.yaml#/children
+  /children/{childId}:
+    $ref: paths/children.yaml#/child
+  /children/{childId}/deletion/cancel:
+    $ref: paths/children.yaml#/deletionCancel
+  /children/{childId}/guardians/me:
+    $ref: paths/children.yaml#/leave
+  /children/{childId}/pairing-codes:
+    $ref: paths/children.yaml#/pairingCodes
+  /children/{childId}/login-card:
+    $ref: paths/children.yaml#/loginCard
+  /children/{childId}/devices:
+    $ref: paths/children.yaml#/devices
+  /children/{childId}/progress:
+    $ref: paths/children.yaml#/progress
+  /children/{childId}/invitations:
+    $ref: paths/invitations.yaml#/create
+  /invitations/{token}/accept:
+    $ref: paths/invitations.yaml#/accept
+  /children/{childId}/classrooms:
+    $ref: paths/classrooms.yaml#/childJoin
+  /children/{childId}/classrooms/{classroomId}:
+    $ref: paths/classrooms.yaml#/childLeave
+  /classrooms:
+    $ref: paths/classrooms.yaml#/classrooms
+  /classrooms/{classroomId}:
+    $ref: paths/classrooms.yaml#/classroom
+  /classrooms/{classroomId}/progress:
+    $ref: paths/classrooms.yaml#/progress
+  /devices/pairings:
+    $ref: paths/devices.yaml#/pairings
+  /devices/me/children:
+    $ref: paths/devices.yaml#/myChildren
+  /devices/{deviceId}:
+    $ref: paths/devices.yaml#/device
+  /sync/{childId}:
+    $ref: paths/sync.yaml#/sync
+  /children/{childId}/events:
+    $ref: paths/events.yaml#/events
+
+components:
+  securitySchemes:
+    adultSession:
+      type: apiKey
+      in: cookie
+      name: rq_session
+      description: Session d'un adulte, ouverte par le lien de connexion (cookie HttpOnly, Secure, SameSite=Lax).
+    deviceKey:
+      type: apiKey
+      in: cookie
+      name: rq_device
+      description: Clé d'un appareil relié à un ou plusieurs enfants (cookie HttpOnly, Secure, SameSite=Strict, longue durée, révocable).

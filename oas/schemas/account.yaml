@@ -1,0 +1,67 @@
+Adult:
+  description: 'Le compte d''un adulte (parent ou enseignant). Seule donnée personnelle : l''e-mail.'
+  type: object
+  required: [id, email, createdAt, privacyAcceptedAt]
+  properties:
+    id:
+      $ref: common.yaml#/Uuid
+    email:
+      $ref: common.yaml#/Email
+    createdAt:
+      $ref: common.yaml#/DateTime
+    privacyAcceptedAt:
+      description: Date d'acceptation de la politique de confidentialité ; null tant qu'elle n'est pas acceptée (première connexion).
+      oneOf:
+        - $ref: common.yaml#/DateTime
+        - type: 'null'
+LinkRequest:
+  type: object
+  additionalProperties: false
+  required: [email]
+  properties:
+    email:
+      $ref: common.yaml#/Email
+AccountDeletion:
+  description: Résultat de la suppression d'un compte.
+  type: object
+  required: [deletedChildren, keptChildren]
+  properties:
+    deletedChildren:
+      description: Enfants supprimés car cet adulte était leur seul parent.
+      type: array
+      items:
+        $ref: common.yaml#/Uuid
+    keptChildren:
+      description: Enfants gardés car un autre parent est rattaché.
+      type: array
+      items:
+        $ref: common.yaml#/Uuid
+Export:
+  description: Toutes les données liées au compte (droit d'accès et de portabilité), en un seul document JSON.
+  type: object
+  required: [adult, children, classrooms, exportedAt]
+  properties:
+    exportedAt:
+      $ref: common.yaml#/DateTime
+    adult:
+      $ref: '#/Adult'
+    children:
+      type: array
+      items:
+        type: object
+        required: [child, save, events]
+        properties:
+          child:
+            $ref: child.yaml#/Child
+          save:
+            oneOf:
+              - $ref: sync.yaml#/SaveEnvelope
+              - type: 'null'
+          events:
+            type: array
+            items:
+              $ref: event.yaml#/Event
+    classrooms:
+      type: array
+      items:
+        $ref: classroom.yaml#/Classroom

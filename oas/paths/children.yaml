@@ -1,0 +1,257 @@
+children:
+  get:
+    tags: [children]
+    operationId: listChildren
+    summary: Les enfants dont on est parent
+    security:
+      - adultSession: []
+    responses:
+      '200':
+        description: La liste (peut être vide).
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: ../schemas/child.yaml#/Child
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+  post:
+    tags: [children]
+    operationId: createChild
+    summary: Créer le profil d'un enfant
+    description: Le parent qui le crée est rattaché comme premier parent (droits égaux avec les parents invités ensuite).
+    security:
+      - adultSession: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ../schemas/child.yaml#/ChildCreate
+    responses:
+      '201':
+        description: Profil créé.
+        headers:
+          Location:
+            schema:
+              type: string
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/child.yaml#/Child
+      '400':
+        $ref: ../responses/problems.yaml#/BadRequest
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+child:
+  parameters:
+    - $ref: parameters.yaml#/childId
+  get:
+    tags: [children]
+    operationId: getChild
+    summary: Un enfant
+    security:
+      - adultSession: []
+    responses:
+      '200':
+        description: L'enfant.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/child.yaml#/Child
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound
+  patch:
+    tags: [children]
+    operationId: updateChild
+    summary: Changer le pseudo, le niveau ou l'avatar
+    security:
+      - adultSession: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ../schemas/child.yaml#/ChildUpdate
+    responses:
+      '200':
+        description: L'enfant à jour.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/child.yaml#/Child
+      '400':
+        $ref: ../responses/problems.yaml#/BadRequest
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound
+  delete:
+    tags: [children]
+    operationId: deleteChild
+    summary: Demander la suppression du profil
+    description: |
+      Seul parent rattaché : suppression immédiate (204). Sinon, les autres parents sont prévenus par e-mail et peuvent
+      s'y opposer pendant 14 jours (202) ; sans opposition, tout est supprimé (profil, sauvegarde, événements, liens).
+    security:
+      - adultSession: []
+    responses:
+      '202':
+        description: Suppression en attente.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/child.yaml#/PendingDeletion
+      '204':
+        description: Supprimé tout de suite (seul parent).
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound
+deletionCancel:
+  parameters:
+    - $ref: parameters.yaml#/childId
+  post:
+    tags: [children]
+    operationId: cancelChildDeletion
+    summary: S'opposer à la suppression demandée par un autre parent
+    security:
+      - adultSession: []
+    responses:
+      '204':
+        description: Suppression annulée.
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound
+leave:
+  parameters:
+    - $ref: parameters.yaml#/childId
+  delete:
+    tags: [children]
+    operationId: leaveChild
+    summary: Ne plus suivre cet enfant (se retirer soi-même)
+    description: Un parent ne peut retirer que lui-même, jamais un autre parent. Le dernier parent ne peut pas se retirer (il supprime le profil).
+    security:
+      - adultSession: []
+    responses:
+      '204':
+        description: Retiré.
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound
+      '409':
+        description: Seul parent rattaché.
+        content:
+          application/problem+json:
+            schema:
+              $ref: ../schemas/problem.yaml#/Problem
+pairingCodes:
+  parameters:
+    - $ref: parameters.yaml#/childId
+  post:
+    tags: [devices]
+    operationId: createPairingCode
+    summary: Créer un code pour relier un appareil
+    security:
+      - adultSession: []
+    responses:
+      '201':
+        description: Code créé (valable 10 minutes, une seule fois).
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/device.yaml#/PairingCode
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound
+      '429':
+        $ref: ../responses/problems.yaml#/TooManyRequests
+loginCard:
+  parameters:
+    - $ref: parameters.yaml#/childId
+  post:
+    tags: [devices]
+    operationId: createLoginCard
+    summary: Créer (ou régénérer) la carte de connexion de l'enfant
+    description: L'ancienne carte cesse de marcher ; les appareils déjà reliés le restent (on les retire un par un).
+    security:
+      - adultSession: []
+    responses:
+      '201':
+        description: Nouvelle carte (le secret n'est montré qu'ici).
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/device.yaml#/LoginCard
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound
+  delete:
+    tags: [devices]
+    operationId: revokeLoginCard
+    summary: Désactiver la carte (perdue)
+    security:
+      - adultSession: []
+    responses:
+      '204':
+        description: Carte désactivée.
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound
+devices:
+  parameters:
+    - $ref: parameters.yaml#/childId
+  get:
+    tags: [devices]
+    operationId: listChildDevices
+    summary: Les appareils reliés à cet enfant
+    security:
+      - adultSession: []
+    responses:
+      '200':
+        description: La liste.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: ../schemas/device.yaml#/Device
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound
+progress:
+  parameters:
+    - $ref: parameters.yaml#/childId
+  get:
+    tags: [children]
+    operationId: getChildProgress
+    summary: Le suivi d'un enfant (parents)
+    security:
+      - adultSession: []
+    parameters:
+      - name: before
+        in: query
+        required: false
+        description: Pour la suite des erreurs détaillées, celles d'avant cette date.
+        schema:
+          $ref: ../schemas/common.yaml#/DateTime
+    responses:
+      '200':
+        description: Le suivi.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/progress.yaml#/ChildProgress
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound

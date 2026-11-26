@@ -1,0 +1,37 @@
+# Réponses d'erreur communes, au format Problem Details (RFC 9457).
+BadRequest:
+  description: Requête invalide (champ manquant, format faux). `violations` liste chaque champ refusé.
+  content:
+    application/problem+json:
+      schema:
+        $ref: ../schemas/problem.yaml#/ValidationProblem
+Unauthorized:
+  description: Pas de session d'adulte (ou pas de clé d'appareil) valide.
+  content:
+    application/problem+json:
+      schema:
+        $ref: ../schemas/problem.yaml#/Problem
+Forbidden:
+  description: Identifié, mais sans droit sur cette ressource (pas parent de cet enfant, appareil non relié…).
+  content:
+    application/problem+json:
+      schema:
+        $ref: ../schemas/problem.yaml#/Problem
+NotFound:
+  description: Ressource inconnue. Aussi renvoyé quand elle existe mais n'est pas visible (ne pas révéler son existence).
+  content:
+    application/problem+json:
+      schema:
+        $ref: ../schemas/problem.yaml#/Problem
+TooManyRequests:
+  description: Trop de tentatives (limite de débit) ; réessayer après `Retry-After` secondes.
+  headers:
+    Retry-After:
+      description: Secondes à attendre.
+      schema:
+        type: integer
+        minimum: 1
+  content:
+    application/problem+json:
+      schema:
+        $ref: ../schemas/problem.yaml#/Problem

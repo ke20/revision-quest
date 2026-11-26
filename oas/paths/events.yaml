@@ -1,0 +1,33 @@
+events:
+  parameters:
+    - $ref: parameters.yaml#/childId
+  post:
+    tags: [events]
+    operationId: postEvents
+    summary: Envoyer un lot d'événements (erreurs, sessions)
+    description: |
+      Idempotent : un événement déjà reçu (même UUID) est ignoré et compté dans `duplicates`. Le jeu retire de sa file
+      tous les événements du lot dès la réponse 202.
+    security:
+      - deviceKey: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ../schemas/event.yaml#/EventBatch
+    responses:
+      '202':
+        description: Lot reçu.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/event.yaml#/EventBatchResult
+      '400':
+        $ref: ../responses/problems.yaml#/BadRequest
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '403':
+        $ref: ../responses/problems.yaml#/Forbidden
+      '429':
+        $ref: ../responses/problems.yaml#/TooManyRequests

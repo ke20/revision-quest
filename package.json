@@ -10,6 +10,7 @@
   "scripts": {
     "start": "node tests/server.js",
     "lint": "eslint .",
+    "oas:lint": "npx --yes @redocly/cli@2.77.0 lint oas/openapi.yaml --config oas/redocly.yaml",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.tools.json",
     "audit": "npm audit --audit-level=moderate",
@@ -20,7 +21,7 @@
     "test:unit": "node --test tests/unit/*.test.js",
     "test:e2e": "playwright test",
     "test": "npm run validate && npm run test:unit && npm run test:e2e",
-    "qa": "npm run lint && npm run typecheck && npm test"
+    "qa": "npm run lint && npm run oas:lint && npm run typecheck && npm test"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

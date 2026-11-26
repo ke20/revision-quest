@@ -1,0 +1,133 @@
+childJoin:
+  parameters:
+    - $ref: parameters.yaml#/childId
+  post:
+    tags: [classrooms]
+    operationId: joinClassroom
+    summary: Rattacher son enfant à une classe (parent)
+    description: Avec le code donné par l'enseignant. L'enseignant voit la progression à partir de ce moment.
+    security:
+      - adultSession: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ../schemas/classroom.yaml#/ClassroomJoin
+    responses:
+      '201':
+        description: Rattaché.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/child.yaml#/ChildClassroom
+      '400':
+        $ref: ../responses/problems.yaml#/BadRequest
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound
+      '409':
+        description: Ce nom est déjà pris dans la classe.
+        content:
+          application/problem+json:
+            schema:
+              $ref: ../schemas/problem.yaml#/Problem
+      '429':
+        $ref: ../responses/problems.yaml#/TooManyRequests
+childLeave:
+  parameters:
+    - $ref: parameters.yaml#/childId
+    - $ref: parameters.yaml#/classroomId
+  delete:
+    tags: [classrooms]
+    operationId: leaveClassroom
+    summary: Retirer son enfant d'une classe (parent)
+    description: L'enseignant perd tout accès à la progression de l'enfant.
+    security:
+      - adultSession: []
+    responses:
+      '204':
+        description: Retiré.
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound
+classrooms:
+  get:
+    tags: [classrooms]
+    operationId: listClassrooms
+    summary: Ses classes (enseignant)
+    security:
+      - adultSession: []
+    responses:
+      '200':
+        description: La liste.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: ../schemas/classroom.yaml#/Classroom
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+  post:
+    tags: [classrooms]
+    operationId: createClassroom
+    summary: Créer une classe (enseignant)
+    security:
+      - adultSession: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ../schemas/classroom.yaml#/ClassroomCreate
+    responses:
+      '201':
+        description: Classe créée, avec son code pour les parents.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/classroom.yaml#/Classroom
+      '400':
+        $ref: ../responses/problems.yaml#/BadRequest
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+classroom:
+  parameters:
+    - $ref: parameters.yaml#/classroomId
+  delete:
+    tags: [classrooms]
+    operationId: deleteClassroom
+    summary: Supprimer une classe (fin d'année)
+    description: Les enfants restent, seuls leurs rattachements à cette classe disparaissent.
+    security:
+      - adultSession: []
+    responses:
+      '204':
+        description: Supprimée.
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound
+progress:
+  parameters:
+    - $ref: parameters.yaml#/classroomId
+  get:
+    tags: [classrooms]
+    operationId: getClassroomProgress
+    summary: Le suivi de la classe (enseignant, lecture seule)
+    security:
+      - adultSession: []
+    responses:
+      '200':
+        description: Le suivi.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/progress.yaml#/ClassroomProgress
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound

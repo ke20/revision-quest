@@ -1,0 +1,170 @@
+# Sauvegarde d'un profil d'enfant, telle que le jeu la synchronise (schéma partagé : jeu et serveur).
+# Reprend js/core/engine/normalize.js (normalizeProfile sans l'identité locale) : mêmes formats, mêmes limites.
+# L'identité (pseudo, niveau, avatar) est sur la ressource Child, pas dans la sauvegarde.
+# Les erreurs détaillées et le temps de jeu n'y sont jamais : ils passent par les événements (event.yaml).
+ProfileSave:
+  description: |
+    La progression d'un enfant. Le serveur la valide et la stocke telle quelle (il ne fusionne jamais) ;
+    le jeu la fusionne avec sa copie locale (`js/core/engine/merge.js`, mergeProfile).
+  type: object
+  additionalProperties: false
+  required: [createdAt, epoch, settings, settingsAt, state]
+  properties:
+    createdAt:
+      $ref: '#/Timestamp'
+    epoch:
+      allOf:
+        - $ref: '#/Timestamp'
+      description: Change quand la progression est remise à zéro ou remplacée par un import (la copie la plus récente gagne, sans fusion).
+    settings:
+      $ref: '#/Settings'
+    settingsAt:
+      allOf:
+        - $ref: '#/Timestamp'
+      description: Dernier changement des réglages (le plus récent gagne).
+    state:
+      $ref: '#/State'
+Timestamp:
+  description: Millisecondes depuis le 1er janvier 1970 (comme Date.now() dans le jeu), avant l'an 2100.
+  type: integer
+  minimum: 0
+  maximum: 4102444800000
+Settings:
+  description: Réglages de confort du joueur (comfort settings du jeu).
+  type: object
+  additionalProperties: false
+  required: [pauseEvery, freeMistakes, animations, difficulty, playedWorlds, seasonal, grade]
+  properties:
+    pauseEvery:
+      enum: [0, 2, 3, 4]
+    freeMistakes:
+      enum: [0, 1, 2, 3]
+    animations:
+      enum: [none, normal, boost]
+    difficulty:
+      enum: [easy, normal, medium, hard]
+    playedWorlds:
+      enum: [open, replay]
+    seasonal:
+      enum: [auto, 'off']
+    grade:
+      type: string
+      description: Niveau scolaire choisi dans le jeu ("" = pas choisi) ; le jeu le recopie depuis le niveau de l'enfant.
+      pattern: '^([a-z0-9-]{1,20})?$'
+State:
+  type: object
+  additionalProperties: false
+  required: [xp, packs, badges, translations, days, sound, bestCombo, lastPack, correct, daily, dailyDone]
+  properties:
+    xp:
+      type: integer
+      minimum: 0
+      maximum: 1000000
+    packs:
+      description: Progression par chapitre, la clé est le chemin du chapitre.
+      type: object
+      maxProperties: 100
+      propertyNames:
+        $ref: common.yaml#/PackPath
+      additionalProperties:
+        $ref: '#/PackProgress'
+    badges:
+      type: array
+      uniqueItems: true
+      maxItems: 200
+      items:
+        type: string
+        pattern: '^[a-z0-9_]{1,30}$'
+    translations:
+      description: Empreintes courtes des traductions déjà consultées (badge « Curieux »).
+      type: array
+      maxItems: 500
+      uniqueItems: true
+      items:
+        type: string
+        pattern: '^[a-z0-9]{1,8}$'
+    days:
+      description: Jours joués (les 60 derniers).
+      type: array
+      maxItems: 60
+      items:
+        type: string
+        pattern: '^\d{4}-\d{2}-\d{2}$'
+    sound:
+      type: boolean
+    bestCombo:
+      type: integer
+      minimum: 0
+      maximum: 10000
+    lastPack:
+      oneOf:
+        - $ref: common.yaml#/PackPath
+        - type: 'null'
+    correct:
+      type: integer
+      minimum: 0
+      maximum: 10000000
+    daily:
+      oneOf:
+        - $ref: '#/Daily'
+        - type: 'null'
+    dailyDone:
+      type: integer
+      minimum: 0
+      maximum: 10000000
+PackProgress:
+  type: object
+  additionalProperties: false
+  required: [worlds, lastPlayed]
+  properties:
+    worlds:
+      type: object
+      maxProperties: 100
+      propertyNames:
+        $ref: common.yaml#/WorldId
+      additionalProperties:
+        $ref: '#/WorldProgress'
+    lastPlayed:
+      $ref: '#/Timestamp'
+WorldProgress:
+  description: Meilleur résultat sur un monde. Les étoiles sont recalculées depuis la précision à la lecture.
+  type: object
+  additionalProperties: false
+  required: [stars, accuracy, completed]
+  properties:
+    stars:
+      type: integer
+      minimum: 0
+      maximum: 5
+    accuracy:
+      type: number
+      minimum: 0
+      maximum: 1
+    completed:
+      type: boolean
+Daily:
+  description: Le défi du jour.
+  type: object
+  additionalProperties: false
+  required: [day, goals, progress, done]
+  properties:
+    day:
+      type: string
+      pattern: '^\d{4}-\d{2}-\d{2}$'
+    goals:
+      type: array
+      minItems: 3
+      maxItems: 3
+      uniqueItems: true
+      items:
+        type: string
+        pattern: '^[a-z0-9_]{1,30}$'
+    progress:
+      type: array
+      minItems: 3
+      maxItems: 3
+      items:
+        type: integer
+        minimum: 0
+    done:
+      type: boolean

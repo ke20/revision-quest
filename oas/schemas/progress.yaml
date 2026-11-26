@@ -1,0 +1,101 @@
+ChildProgress:
+  description: |
+    Le suivi d'un enfant pour ses parents : tout l'historique. La page de suivi charge elle-même les packs pour
+    afficher les titres des chapitres et le texte des questions ratées (grâce à l'id de l'exercice).
+  type: object
+  required: [child, save, mistakes, playTime]
+  properties:
+    child:
+      $ref: child.yaml#/Child
+    save:
+      oneOf:
+        - $ref: sync.yaml#/SaveEnvelope
+        - type: 'null'
+    mistakes:
+      description: Les erreurs détaillées, de la plus récente à la plus ancienne (200 au plus ; paramètre `before` pour la suite).
+      type: array
+      maxItems: 200
+      items:
+        $ref: event.yaml#/MistakeEvent
+    playTime:
+      description: Temps de jeu par jour, en secondes (les 60 derniers jours joués).
+      type: array
+      maxItems: 60
+      items:
+        type: object
+        required: [day, seconds]
+        properties:
+          day:
+            type: string
+            pattern: '^\d{4}-\d{2}-\d{2}$'
+          seconds:
+            type: integer
+            minimum: 0
+ClassroomProgress:
+  description: |
+    Le suivi d'une classe pour son enseignant, en lecture seule : seulement les enfants rattachés par leurs parents,
+    sous le nom choisi par le parent, et seulement depuis leur rattachement (étoiles déjà obtenues comprises, sans le
+    détail des erreurs d'avant).
+  type: object
+  required: [classroom, children]
+  properties:
+    classroom:
+      $ref: classroom.yaml#/Classroom
+    children:
+      type: array
+      items:
+        type: object
+        required: [childId, displayName, level, joinedAt, packs, mistakes, playTime]
+        properties:
+          childId:
+            $ref: common.yaml#/Uuid
+          displayName:
+            type: string
+          level:
+            $ref: common.yaml#/Level
+          joinedAt:
+            $ref: common.yaml#/DateTime
+          packs:
+            description: Progression par chapitre (copie de la sauvegarde, partie `state.packs`).
+            type: object
+            propertyNames:
+              $ref: common.yaml#/PackPath
+            additionalProperties:
+              $ref: profile-save.yaml#/PackProgress
+          mistakes:
+            description: Erreurs depuis le rattachement à la classe.
+            type: array
+            maxItems: 200
+            items:
+              $ref: event.yaml#/MistakeEvent
+          playTime:
+            type: array
+            maxItems: 60
+            items:
+              type: object
+              required: [day, seconds]
+              properties:
+                day:
+                  type: string
+                  pattern: '^\d{4}-\d{2}-\d{2}$'
+                seconds:
+                  type: integer
+                  minimum: 0
+Invitation:
+  description: Invitation d'un autre parent, envoyée par e-mail (lien valable 7 jours).
+  type: object
+  required: [id, email, expiresAt]
+  properties:
+    id:
+      $ref: common.yaml#/Uuid
+    email:
+      $ref: common.yaml#/Email
+    expiresAt:
+      $ref: common.yaml#/DateTime
+InvitationCreate:
+  type: object
+  additionalProperties: false
+  required: [email]
+  properties:
+    email:
+      $ref: common.yaml#/Email

@@ -1,0 +1,38 @@
+# Types simples réutilisés partout.
+Uuid:
+  type: string
+  format: uuid
+  pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$'
+  examples: [0b8c5a1e-3f2d-4c6b-9a7e-1d2c3b4a5f60]
+DateTime:
+  type: string
+  format: date-time
+  description: Date et heure en ISO 8601, en UTC.
+  examples: ['2026-11-26T18:30:00Z']
+Email:
+  type: string
+  format: email
+  maxLength: 254
+PackPath:
+  type: string
+  description: Identifiant d'un chapitre (son chemin) `<niveau>/<matiere>/<cours>[/<groupe>]`, comme dans le jeu.
+  pattern: '^[a-z0-9-]{1,30}/[a-z0-9-]{1,30}/[a-z0-9-]{1,60}(/[a-z0-9-]{1,30})?$'
+  examples: [4e/anglais/present-simple]
+WorldId:
+  type: string
+  pattern: '^[a-z0-9-]{1,40}$'
+Level:
+  type: string
+  description: Niveau scolaire, un id de niveau du catalogue du jeu (`cm2`, `6e`, `5e`, `4e`…). Jamais le nom de l'école.
+  pattern: '^[a-z0-9-]{1,20}$'
+  examples: [5e]
+Avatar:
+  type: string
+  description: Un avatar de la liste du jeu (un emoji). Pas de photo.
+  enum: ['🦊', '🐼', '🐯', '🦄', '🐸', '🐙', '🦖', '🐨', '🐱', '🐶', '🚀', '⚽', '🙂']
+Pseudo:
+  type: string
+  description: Pseudo de l'enfant (le formulaire conseille un pseudo plutôt que le prénom, jamais le nom de famille).
+  minLength: 1
+  maxLength: 20
+  examples: [Léo]

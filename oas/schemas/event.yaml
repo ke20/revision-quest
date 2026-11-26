@@ -1,0 +1,80 @@
+# Journal des erreurs détaillées et des sessions de jeu. Jamais dans la sauvegarde : une file locale, envoyée par lots,
+# vidée quand le serveur a confirmé. Rien n'est enregistré tant que le profil n'est pas relié à un compte parent.
+Event:
+  description: Un événement, identifié par un UUID créé par le jeu (un envoi rejoué ne crée pas de doublon).
+  oneOf:
+    - $ref: '#/MistakeEvent'
+    - $ref: '#/SessionEvent'
+  discriminator:
+    propertyName: type
+    mapping:
+      mistake: '#/MistakeEvent'
+      session: '#/SessionEvent'
+MistakeEvent:
+  description: Une mauvaise réponse.
+  type: object
+  additionalProperties: false
+  required: [id, type, at, pack, exercise, given]
+  properties:
+    id:
+      $ref: common.yaml#/Uuid
+    type:
+      const: mistake
+    at:
+      $ref: common.yaml#/DateTime
+    pack:
+      $ref: common.yaml#/PackPath
+    exercise:
+      allOf:
+        - $ref: common.yaml#/Uuid
+      description: L'id (UUID) de l'exercice dans le pack.
+    given:
+      description: La réponse donnée par l'enfant (texte tapé, ou texte de l'option choisie).
+      type: string
+      maxLength: 300
+SessionEvent:
+  description: Une session de jeu (de l'ouverture d'un monde à sa fin ou à l'abandon).
+  type: object
+  additionalProperties: false
+  required: [id, type, at, pack, world, seconds]
+  properties:
+    id:
+      $ref: common.yaml#/Uuid
+    type:
+      const: session
+    at:
+      allOf:
+        - $ref: common.yaml#/DateTime
+      description: Début de la session.
+    pack:
+      $ref: common.yaml#/PackPath
+    world:
+      $ref: common.yaml#/WorldId
+    seconds:
+      description: Durée en secondes (au plus 4 heures ; au-delà, l'onglet était sans doute oublié ouvert).
+      type: integer
+      minimum: 1
+      maximum: 14400
+EventBatch:
+  type: object
+  additionalProperties: false
+  required: [events]
+  properties:
+    events:
+      type: array
+      minItems: 1
+      maxItems: 100
+      items:
+        $ref: '#/Event'
+EventBatchResult:
+  type: object
+  required: [accepted, duplicates]
+  properties:
+    accepted:
+      description: Nombre d'événements nouveaux enregistrés.
+      type: integer
+      minimum: 0
+    duplicates:
+      description: Nombre d'événements déjà reçus (même UUID), ignorés. Le jeu peut les retirer de sa file.
+      type: integer
+      minimum: 0

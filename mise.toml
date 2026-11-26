@@ -2,7 +2,7 @@
 #   mise install        installs the pinned Node.js
 #   mise tasks          lists the tasks below
 #   mise run dev        serves the game on http://127.0.0.1:4173/
-#   mise run qa         lint + type check + validate + unit tests + end-to-end tests
+#   mise run qa         lint + contrat API (oas) + type check + validate + unit tests + end-to-end tests
 # npm scripts (package.json) stay usable without mise.
 
 [tools]
@@ -70,10 +70,15 @@ run = [
   { task = "test:e2e" },
 ]
 
+[tasks."oas:lint"]
+description = "Lint the API contract oas/ (OpenAPI 3.1, Redocly CLI pinned, downloaded by npx)"
+run = "npm run oas:lint"
+
 [tasks.qa]
-description = "Everything, fail fast: lint, type check, then validate + unit tests + end-to-end tests"
+description = "Everything, fail fast: lint, API contract lint, type check, then validate + unit tests + end-to-end tests"
 run = [
   { task = "lint" },
+  { task = "oas:lint" },
   { task = "typecheck" },
   { task = "test" },
 ]

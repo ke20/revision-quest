@@ -1,0 +1,85 @@
+me:
+  get:
+    tags: [me]
+    operationId: getMe
+    summary: Le compte connecté
+    security:
+      - adultSession: []
+    responses:
+      '200':
+        description: Le compte.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/account.yaml#/Adult
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+  patch:
+    tags: [me]
+    operationId: acceptPrivacy
+    summary: Accepter la politique de confidentialité
+    description: Obligatoire à la première connexion, avant toute autre action sur les enfants.
+    security:
+      - adultSession: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: false
+            required: [privacyAccepted]
+            properties:
+              privacyAccepted:
+                const: true
+    responses:
+      '200':
+        description: Le compte à jour.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/account.yaml#/Adult
+      '400':
+        $ref: ../responses/problems.yaml#/BadRequest
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+  delete:
+    tags: [me]
+    operationId: deleteMe
+    summary: Supprimer son compte
+    description: |
+      Supprime le compte et la session. Les enfants qui ont un autre parent rattaché restent ; ceux dont cet adulte
+      était le seul parent sont supprimés avec leur sauvegarde, leurs événements et leurs appareils. Les classes de cet
+      adulte (enseignant) sont supprimées.
+    security:
+      - adultSession: []
+    responses:
+      '200':
+        description: Compte supprimé.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/account.yaml#/AccountDeletion
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+export:
+  get:
+    tags: [me]
+    operationId: exportMe
+    summary: Exporter toutes ses données
+    security:
+      - adultSession: []
+    responses:
+      '200':
+        description: Toutes les données du compte et des enfants suivis.
+        headers:
+          Content-Disposition:
+            schema:
+              type: string
+              examples: ['attachment; filename="revision-quest-export.json"']
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/account.yaml#/Export
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized

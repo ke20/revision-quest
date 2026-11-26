@@ -1,0 +1,44 @@
+SaveEnvelope:
+  description: La copie du serveur et son numéro de version (1 à la première écriture, +1 à chaque écriture).
+  type: object
+  required: [version, data, updatedAt]
+  properties:
+    version:
+      type: integer
+      minimum: 1
+    data:
+      $ref: profile-save.yaml#/ProfileSave
+    updatedAt:
+      $ref: common.yaml#/DateTime
+SaveUpdate:
+  description: |
+    Nouvelle copie, déjà fusionnée par le jeu. `baseVersion` = la version lue avant de fusionner (0 si le serveur
+    n'avait rien). Si la copie du serveur a changé entre-temps, réponse 409 avec la copie actuelle : le jeu refusionne
+    et renvoie.
+  type: object
+  additionalProperties: false
+  required: [baseVersion, data]
+  properties:
+    baseVersion:
+      type: integer
+      minimum: 0
+    data:
+      $ref: profile-save.yaml#/ProfileSave
+SaveWritten:
+  type: object
+  required: [version, updatedAt]
+  properties:
+    version:
+      type: integer
+      minimum: 1
+    updatedAt:
+      $ref: common.yaml#/DateTime
+SaveConflict:
+  description: La copie a changé sur un autre appareil (409) ; voici la copie actuelle à fusionner.
+  allOf:
+    - $ref: problem.yaml#/Problem
+    - type: object
+      required: [current]
+      properties:
+        current:
+          $ref: '#/SaveEnvelope'

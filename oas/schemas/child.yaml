@@ -1,0 +1,90 @@
+Child:
+  description: Le profil d'un enfant. La progression lui appartient, quel que soit l'appareil, le parent ou la classe.
+  type: object
+  required: [id, pseudo, level, avatar, createdAt, guardians, classrooms, pendingDeletion]
+  properties:
+    id:
+      $ref: common.yaml#/Uuid
+    pseudo:
+      $ref: common.yaml#/Pseudo
+    level:
+      $ref: common.yaml#/Level
+    avatar:
+      $ref: common.yaml#/Avatar
+    createdAt:
+      $ref: common.yaml#/DateTime
+    guardians:
+      description: Les parents rattachés, tous avec les mêmes droits.
+      type: array
+      minItems: 1
+      items:
+        $ref: '#/Guardian'
+    classrooms:
+      description: Les classes où l'enfant est rattaché en ce moment.
+      type: array
+      items:
+        $ref: '#/ChildClassroom'
+    pendingDeletion:
+      description: Suppression demandée par un parent, en attente (les autres parents peuvent s'y opposer pendant 14 jours).
+      oneOf:
+        - $ref: '#/PendingDeletion'
+        - type: 'null'
+Guardian:
+  type: object
+  required: [adultId, email, since]
+  properties:
+    adultId:
+      $ref: common.yaml#/Uuid
+    email:
+      $ref: common.yaml#/Email
+    since:
+      $ref: common.yaml#/DateTime
+ChildClassroom:
+  type: object
+  required: [classroomId, name, displayName, joinedAt]
+  properties:
+    classroomId:
+      $ref: common.yaml#/Uuid
+    name:
+      type: string
+      maxLength: 60
+    displayName:
+      description: Nom que voit l'enseignant, choisi par le parent, unique dans la classe.
+      type: string
+      minLength: 1
+      maxLength: 30
+    joinedAt:
+      $ref: common.yaml#/DateTime
+PendingDeletion:
+  type: object
+  required: [requestedBy, requestedAt, deleteAt]
+  properties:
+    requestedBy:
+      $ref: common.yaml#/Uuid
+    requestedAt:
+      $ref: common.yaml#/DateTime
+    deleteAt:
+      $ref: common.yaml#/DateTime
+ChildCreate:
+  type: object
+  additionalProperties: false
+  required: [pseudo, level, avatar]
+  properties:
+    pseudo:
+      $ref: common.yaml#/Pseudo
+    level:
+      $ref: common.yaml#/Level
+    avatar:
+      $ref: common.yaml#/Avatar
+ChildUpdate:
+  description: Champs à changer (au moins un).
+  type: object
+  additionalProperties: false
+  minProperties: 1
+  properties:
+    pseudo:
+      $ref: common.yaml#/Pseudo
+    level:
+      $ref: common.yaml#/Level
+    avatar:
+      $ref: common.yaml#/Avatar

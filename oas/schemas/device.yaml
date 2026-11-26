@@ -1,0 +1,99 @@
+Device:
+  description: Un appareil relié à un ou plusieurs enfants (tablette chez un parent, téléphone…).
+  type: object
+  required: [id, label, createdAt, lastSyncAt]
+  properties:
+    id:
+      $ref: common.yaml#/Uuid
+    label:
+      description: Nom donné par un parent (« Tablette chez papa »), modifiable.
+      type: string
+      maxLength: 40
+    createdAt:
+      $ref: common.yaml#/DateTime
+    lastSyncAt:
+      oneOf:
+        - $ref: common.yaml#/DateTime
+        - type: 'null'
+PairingCode:
+  description: Code créé par un parent pour relier un appareil. Valable 10 minutes, une seule fois.
+  type: object
+  required: [code, expiresAt]
+  properties:
+    code:
+      type: string
+      description: 8 caractères faciles à lire (sans 0 / O, 1 / I / l).
+      pattern: '^[A-HJ-NP-Z2-9]{8}$'
+      examples: [K7MP4QXR]
+    expiresAt:
+      $ref: common.yaml#/DateTime
+LoginCard:
+  description: |
+    Carte de connexion de l'enfant, à imprimer ou afficher : flashée (QR) ou tapée (code court), elle relie
+    n'importe quel appareil sans parent à côté. Une seule carte active ; en créer une nouvelle désactive l'ancienne.
+    Le secret n'est renvoyé qu'à la création.
+  type: object
+  required: [secret, code, createdAt]
+  properties:
+    secret:
+      type: string
+      description: Secret long contenu dans le QR code (lien `…/#carte=<secret>`).
+      pattern: '^[A-Za-z0-9_-]{32,64}$'
+    code:
+      type: string
+      description: Version courte à taper à la main (12 caractères).
+      pattern: '^[A-HJ-NP-Z2-9]{12}$'
+    createdAt:
+      $ref: common.yaml#/DateTime
+PairingRequest:
+  description: Relier cet appareil, avec le code d'un parent OU la carte de l'enfant (secret du QR ou code court).
+  type: object
+  additionalProperties: false
+  oneOf:
+    - required: [pairingCode]
+    - required: [card]
+  properties:
+    pairingCode:
+      type: string
+      pattern: '^[A-HJ-NP-Z2-9]{8}$'
+    card:
+      type: string
+      description: Secret du QR code, ou code court de la carte.
+      pattern: '^([A-Za-z0-9_-]{32,64}|[A-HJ-NP-Z2-9]{12})$'
+    label:
+      type: string
+      maxLength: 40
+PairingResult:
+  type: object
+  required: [deviceId, child, save]
+  properties:
+    deviceId:
+      $ref: common.yaml#/Uuid
+    child:
+      $ref: '#/DeviceChild'
+    save:
+      oneOf:
+        - $ref: sync.yaml#/SaveEnvelope
+        - type: 'null'
+      description: La copie du serveur (null si l'enfant n'a encore rien synchronisé) ; le jeu la fusionne avec la sienne.
+DeviceChild:
+  description: Ce qu'un appareil sait d'un enfant relié (pas les parents, pas les classes).
+  type: object
+  required: [id, pseudo, level, avatar]
+  properties:
+    id:
+      $ref: common.yaml#/Uuid
+    pseudo:
+      $ref: common.yaml#/Pseudo
+    level:
+      $ref: common.yaml#/Level
+    avatar:
+      $ref: common.yaml#/Avatar
+DeviceUpdate:
+  type: object
+  additionalProperties: false
+  required: [label]
+  properties:
+    label:
+      type: string
+      maxLength: 40

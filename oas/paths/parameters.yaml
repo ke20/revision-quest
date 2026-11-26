@@ -1,0 +1,18 @@
+childId:
+  name: childId
+  in: path
+  required: true
+  schema:
+    $ref: ../schemas/common.yaml#/Uuid
+classroomId:
+  name: classroomId
+  in: path
+  required: true
+  schema:
+    $ref: ../schemas/common.yaml#/Uuid
+deviceId:
+  name: deviceId
+  in: path
+  required: true
+  schema:
+    $ref: ../schemas/common.yaml#/Uuid

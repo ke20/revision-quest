@@ -1,0 +1,64 @@
+sync:
+  parameters:
+    - $ref: parameters.yaml#/childId
+  get:
+    tags: [sync]
+    operationId: getSave
+    summary: Lire la copie du serveur
+    security:
+      - deviceKey: []
+    responses:
+      '200':
+        description: La copie et sa version.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/sync.yaml#/SaveEnvelope
+      '204':
+        description: Rien encore sur le serveur (version 0).
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '403':
+        $ref: ../responses/problems.yaml#/Forbidden
+  put:
+    tags: [sync]
+    operationId: putSave
+    summary: Écrire la copie fusionnée par le jeu
+    description: |
+      Écrit seulement si `baseVersion` est la version actuelle. Sinon 409 avec la copie actuelle : le jeu la fusionne
+      avec la sienne (mergeProfile) et renvoie avec la nouvelle `baseVersion`. Taille maximale : 256 Ko.
+    security:
+      - deviceKey: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ../schemas/sync.yaml#/SaveUpdate
+    responses:
+      '200':
+        description: Écrit.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/sync.yaml#/SaveWritten
+      '400':
+        $ref: ../responses/problems.yaml#/BadRequest
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '403':
+        $ref: ../responses/problems.yaml#/Forbidden
+      '409':
+        description: La copie a changé sur un autre appareil.
+        content:
+          application/problem+json:
+            schema:
+              $ref: ../schemas/sync.yaml#/SaveConflict
+      '413':
+        description: Sauvegarde trop grosse.
+        content:
+          application/problem+json:
+            schema:
+              $ref: ../schemas/problem.yaml#/Problem
+      '429':
+        $ref: ../responses/problems.yaml#/TooManyRequests

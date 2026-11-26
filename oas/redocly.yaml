@@ -1,0 +1,7 @@
+# Lint du contrat : mise run oas:lint (ou npx --yes @redocly/cli@2.77.0 lint oas/openapi.yaml --config oas/redocly.yaml)
+extends:
+  - recommended
+rules:
+  info-license-strict: error
+  operation-4xx-response: error
+  no-unused-components: warn

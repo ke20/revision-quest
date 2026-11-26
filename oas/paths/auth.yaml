@@ -1,0 +1,69 @@
+link:
+  post:
+    tags: [auth]
+    operationId: requestLoginLink
+    summary: Demander un lien de connexion par e-mail
+    description: |
+      Envoie un lien valable 10 minutes, à usage unique. Répond toujours 202, même pour un e-mail inconnu (ne pas révéler
+      quels comptes existent). Le compte est créé à la première connexion.
+    security: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ../schemas/account.yaml#/LinkRequest
+    responses:
+      '202':
+        description: Demande prise en compte (un e-mail part si l'adresse est valable).
+      '400':
+        $ref: ../responses/problems.yaml#/BadRequest
+      '429':
+        $ref: ../responses/problems.yaml#/TooManyRequests
+check:
+  get:
+    tags: [auth]
+    operationId: checkLoginLink
+    summary: Ouvrir la session depuis le lien reçu
+    description: Vérifie le lien (login_link de Symfony), pose le cookie de session et redirige vers la page de suivi.
+    security: []
+    parameters:
+      - name: user
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: expires
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: hash
+        in: query
+        required: true
+        schema:
+          type: string
+    responses:
+      '302':
+        description: Session ouverte (cookie `rq_session`), redirection vers `/suivi`.
+        headers:
+          Set-Cookie:
+            schema:
+              type: string
+          Location:
+            schema:
+              type: string
+      '400':
+        $ref: ../responses/problems.yaml#/BadRequest
+logout:
+  post:
+    tags: [auth]
+    operationId: logout
+    summary: Fermer la session
+    security:
+      - adultSession: []
+    responses:
+      '204':
+        description: Session fermée, cookie effacé.
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized

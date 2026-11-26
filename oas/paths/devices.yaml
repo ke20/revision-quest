@@ -1,0 +1,96 @@
+pairings:
+  post:
+    tags: [devices]
+    operationId: pairDevice
+    summary: Relier cet appareil à un enfant
+    description: |
+      Avec le code d'un parent ou la carte de connexion de l'enfant. Pose (ou complète) le cookie d'appareil : un même
+      appareil peut porter plusieurs enfants (fratrie). Limite de débit forte sur les essais.
+    security: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ../schemas/device.yaml#/PairingRequest
+    responses:
+      '201':
+        description: Appareil relié ; la copie du serveur est à fusionner avec la sauvegarde locale.
+        headers:
+          Set-Cookie:
+            schema:
+              type: string
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/device.yaml#/PairingResult
+      '400':
+        $ref: ../responses/problems.yaml#/BadRequest
+      '404':
+        description: Code ou carte inconnu, expiré ou déjà utilisé (même réponse dans tous les cas).
+        content:
+          application/problem+json:
+            schema:
+              $ref: ../schemas/problem.yaml#/Problem
+      '429':
+        $ref: ../responses/problems.yaml#/TooManyRequests
+myChildren:
+  get:
+    tags: [devices]
+    operationId: listDeviceChildren
+    summary: Les enfants reliés à cet appareil
+    security:
+      - deviceKey: []
+    responses:
+      '200':
+        description: La liste (vide si l'appareil a été retiré par un parent).
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: ../schemas/device.yaml#/DeviceChild
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+device:
+  parameters:
+    - $ref: parameters.yaml#/deviceId
+  patch:
+    tags: [devices]
+    operationId: renameDevice
+    summary: Renommer un appareil (parent)
+    security:
+      - adultSession: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ../schemas/device.yaml#/DeviceUpdate
+    responses:
+      '200':
+        description: L'appareil à jour.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/device.yaml#/Device
+      '400':
+        $ref: ../responses/problems.yaml#/BadRequest
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound
+  delete:
+    tags: [devices]
+    operationId: revokeDevice
+    summary: Retirer un appareil (parent)
+    description: L'appareil ne peut plus lire ni écrire la progression de cet enfant ; le jeu y reste jouable hors synchro.
+    security:
+      - adultSession: []
+    responses:
+      '204':
+        description: Retiré.
+      '401':
+        $ref: ../responses/problems.yaml#/Unauthorized
+      '404':
+        $ref: ../responses/problems.yaml#/NotFound
