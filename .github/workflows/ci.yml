@@ -94,6 +94,7 @@ jobs:
           node tools/catalog.js
           mkdir -p _site
           cp -R index.html voix.html editeur.html js css fonts packs _site/
+          find _site -name '*.md' -delete   # guides (packs/README.md, AGENTS.md…) are not published
           touch _site/.nojekyll
 
       # every local file gets "?v=<commit>": a phone never mixes a new page with an old cached script (Pages caches

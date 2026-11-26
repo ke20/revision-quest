@@ -1,6 +1,6 @@
 # Contribuer à Révision Quest
 
-Ce guide rassemble les détails techniques : structure du code, sauvegarde, tests, CI et mises à jour.
+Ce guide rassemble la structure du code, les tests, la CI et les mises à jour.
 Présentation du jeu et installation : voir le [README](README.md). Pour écrire un chapitre, voir
 [`packs/README.md`](packs/README.md).
 
@@ -11,50 +11,8 @@ Présentation du jeu et installation : voir le [README](README.md). Pour écrire
   + `);`, vérifié sans exécution par le validateur) et il est **relu avant d'être fusionné**.
 - Une faille de sécurité se signale en privé, pas dans un ticket : voir [SECURITY.md](SECURITY.md).
 
-Le code du jeu (`js/`) est écrit en **JavaScript ES2017**, sans étape de build. Le moteur, les exercices, le
-catalogue et les règles des packs sont des scripts `<script>` classiques, chacun dans une fonction auto-appelée (ils
-sont aussi chargés par Node pour les tests). Les écrans (`js/app/`) sont des **modules ES** natifs du navigateur
-(`import` / `export`, point d'entrée `js/app/main.js`), un fichier par écran ; ce qu'ils partagent et modifient vit
-dans `js/app/state.js`. Navigateurs : Safari 11 (iOS 11), Chrome 61, Firefox 60 ; un navigateur trop ancien pour les
-modules affiche un message (`js/nomodule.js`). Le lint refuse la syntaxe plus récente qu'ES2017 (`...` dans un
-objet, `?.`, `??`, `import()` dynamique). Les anciens fichiers écrits en ES5 restent valides.
-
-**Types** : TypeScript vérifie le JavaScript sans rien compiler (`mise run typecheck`, `tsconfig.json`). Les types
-s'écrivent en commentaires JSDoc (`/** @param {Pack} pack */`) ; les types partagés sont dans `types/*.d.ts`
-(format d'un pack : `types/pack.d.ts`, données du moteur : `types/engine.d.ts`). Un fichier vérifié commence par
-`// @ts-check` et figure dans `tsconfig.json` (`files` ou `include`) : `js/core/engine/*.js`, `js/exercises/exercises.js`,
-`js/core/pack-rules.js`, `js/exercises/figures.js`, `js/core/packs.js`, `js/core/i18n.js`, `js/pages/voix.js`, tous les écrans `js/app/*.js` et l'éditeur `js/editor/**/*.js`. Les objets publics des scripts classiques sont décrits dans
-`types/engine.d.ts` (`EngineApi`) et `types/scripts.d.ts` (`Exercises`, `Packs`, `I18N`, `Figures`) ; `engine.js` et
-`exercises.js` sont vérifiés contre leur interface (`@type {EngineApi}`, `@type {ExercisesApi}`) : changer une
-fonction publique sans mettre son type à jour fait échouer `mise run typecheck`.
-Les outils Node (`tools/*.js`, `tests/server.js`) sont vérifiés à part avec `tsconfig.tools.json` (CommonJS, types de Node), lancé par la même commande.
-Mode `strict` complet : chaque paramètre a un type JSDoc (`/** @param {string} key */`), une valeur possiblement
-`null` se vérifie avant usage, un objet servant de dictionnaire se déclare `Record<string, …>`. Une valeur que le code sait présente mais que TypeScript ne peut pas suivre se marque
-avec `must(…)` (`js/app/ui/util.js`) ou `qs(node, sélecteur)` (`js/app/ui/ui.js`) : aucun contrôle à l'exécution.
-
-**Éditeur de cours** (`editeur.html`, lien « ✏️ Créer un cours » en bas de l'accueil, masqué sous 768 px) : un parent
-ou un enseignant écrit un chapitre sans code. Plan à gauche, formulaire du nœud choisi, aperçu avec le vrai rendu des
-exercices (`Exercises.render`) ; le pack entier passe par `PackRules` à chaque modification, chaque message va sous son
-champ et compte sur son nœud du plan. Plusieurs brouillons (30 au plus), listés dans « 🗂️ Mes brouillons » et
-enregistrés dans `localStorage` : un index (`revisionQuest.editor.drafts`) et une entrée par brouillon
-(`revisionQuest.editor.draft.<id>`), écrite seulement quand le brouillon a changé. Le
-fichier est téléchargé au format strict (`PackRules.formatStrict`) ; un fichier ouvert est lu comme du texte
-(`PackRules.parseStrict`), jamais exécuté. Les textes à lire (`documents`) ont leur place dans le plan ; les figures et
-tableaux d'un pack ouvert sont gardés tels quels. Annuler / rétablir (↶ ↷, Ctrl+Z / ⌘Z) garde en mémoire 100 étapes du
-brouillon ouvert (`history.js`). « ▶ Essayer » joue un monde du brouillon par-dessus l'éditeur (`trial.js`) :
-leçon, écran de lecture, chaque exercice avec sa correction ; rien n'est enregistré (ni joueur, ni XP, ni progression).
-« 📲 Envoyer » donne un code `c.<deflate-raw, base64url>.<empreinte>` (`MyCourses.encode`) dans un lien `#cours=…` ou un
-fichier `.cours` ; le jeu le lit avec `MyCourses.decode` (taille et décompression limitées, empreinte, mêmes contrôles
-qu'un cours enregistré) et demande avant de l'ajouter (`js/app/screens/receive.js`). « 🌍 Proposer à tous »
-(`propose.js`) refuse un cours avec des erreurs, une copie d'un chapitre officiel (`meta.basedOn`) ou un texte avec une
-adresse e-mail, un numéro de téléphone ou un lien web (`model/privacy.js`) ; après les 4 cases, il écrit
-`meta.license` (`CC-BY-SA-4.0`) et `meta.author`, télécharge le fichier, garde le cours dans « Mes cours » avec son
-empreinte (`sent` : la copie se cache quand le même cours devient officiel) et ouvre la page « Upload files » de
-`packs/<niveau>/<matiere>/` sur GitHub (`APP_CONFIG.sourceUrl`). Aucun appel réseau depuis le site.
-Les modules purs de `js/editor/model/` n'utilisent ni le DOM ni les globales du navigateur : les tests unitaires les
-importent (`js/editor/package.json` : `"type": "module"` pour Node).
-
-Le nom de l'app est défini à un seul endroit : `APP_CONFIG.name` dans `js/core/i18n.js` (+ `<title>` dans `index.html`).
+Règles de code du jeu (scripts et modules, types, sauvegarde, éditeur) : [`js/AGENTS.md`](js/AGENTS.md) et
+[`js/editor/AGENTS.md`](js/editor/AGENTS.md). Ces fichiers servent aux agents de code comme aux humains.
 
 ## Structure du code
 
@@ -128,32 +86,6 @@ Types d'exercices :
 - `question` : question ou phrase à traduire, réponse tapée (juste ou faux) ; le boss en est fait
 
 Tous peuvent afficher une figure de géométrie (`figure`).
-
-## Sauvegarde (détails techniques)
-
-- `localStorage` (une clé par version du format) + petite copie de secours dans des cookies (6 Ko au maximum).
-- Chaque joueur garde ses réglages de confort (`settings` : `pauseEvery`, `freeMistakes`, `animations`) et la date
-  de leur dernier changement (`settingsAt`) ; dans le cookie, ils tiennent en 3 caractères (ex. `41o`). Toute valeur
-  inconnue redevient la valeur par défaut. Le compteur de mondes d'affilée reste en mémoire (jamais enregistré).
-  Une sauvegarde abîmée est mise de côté et le jeu repart de la copie de secours ; un ancien format est ignoré.
-- Plusieurs onglets ouverts : chaque onglet relit la sauvegarde avant d'écrire et fusionne joueur par joueur ;
-  un joueur supprimé reste supprimé partout ; pour les réglages, la copie modifiée le plus récemment gagne.
-
-## Récompenses (détails techniques)
-
-- **Calculé, pas stocké** : le trophée d'un chapitre (`Engine.trophy(id)`) et l'étiquette « à réviser »
-  (`Engine.needsReview(id)`) se calculent à partir de `packs[id].worlds` et `packs[id].lastPlayed`. Pour un chapitre
-  qui n'est pas chargé, le catalogue donne l'id de son boss (`boss`, écrit par `tools/catalog.js`, un par groupe).
-  Les bonus d'XP (trophée, révision, défi) sont donnés au moment où on les gagne.
-- **Stocké** : un badge gagné reste dans `badges`. `BADGES` (`js/core/engine/constants.js`) ne se réordonne jamais,
-  car le cookie garde des index : on ajoute à la fin. Un badge avec `family` et `goal` est un palier, gagné quand le
-  compteur de sa famille (`Engine.badgeValues()`) atteint `goal`.
-- **Nouveaux champs de l'état** : `correct` (bonnes réponses), `dailyDone` (défis réussis) et `daily`
-  (`{ day, goals, progress, done }`, le défi du jour). Tous passent par `normalize` ; une ancienne sauvegarde sans eux
-  se charge (0, 0, null). La fusion garde le plus grand compteur et, pour `daily`, le jour le plus récent puis le plus
-  avancé. `correct` et `dailyDone` sont en fin de profil dans le cookie ; `daily` n'y est pas (il ne vit qu'un jour).
-- Les objectifs du défi sont tirés à partir de la date (`drawDaily`) puis gardés dans `daily.goals` : l'objectif
-  « révise un chapitre à réviser » n'est tiré que si un chapitre est à réviser ce jour-là.
 
 ## Tests et CI
 

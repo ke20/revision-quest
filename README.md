@@ -53,8 +53,13 @@ Chaque chapitre rapporte quelque chose, même quand on a déjà beaucoup joué :
   rejouer un boss…). Les réussir tous donne +30 XP, une fois par jour.
 
 La partie est **sauvegardée automatiquement** sur le poste, dans le navigateur. Pour jouer sur un autre poste ou un
-autre navigateur, on peut **exporter** sa sauvegarde puis l'**importer** de l'autre côté. Aucun serveur ne collecte
-ni ne stocke les informations.
+autre navigateur, on peut **exporter** sa sauvegarde puis l'**importer** de l'autre côté. Le jeu publié n'envoie la
+progression à aucun serveur.
+
+Un serveur est **en préparation** (dossier `api/`) : il permettra de synchroniser la progression entre plusieurs
+appareils et à un parent ou un enseignant de la suivre. Le jeu actuel ne s'en sert pas encore. Une fois branchée, la
+synchronisation restera facultative : sans elle, le jeu marche comme aujourd'hui, export compris. Ce que le serveur
+garde sera décrit ici avant sa mise en ligne.
 
 ## Joueurs et réglages
 
@@ -76,8 +81,9 @@ ni ne stocke les informations.
 
 ## Sécurité et vie privée
 
-- **Aucune donnée ne quitte l'appareil** : pas de serveur, pas de compte, pas de suivi, aucun appel vers un autre site
-  (même la police d'écriture est hébergée avec le jeu).
+- **Aucune donnée ne quitte l'appareil** dans le jeu publié : pas de compte, pas de suivi, aucun appel vers un autre
+  site (même la police d'écriture est hébergée avec le jeu). Le serveur en préparation (voir plus haut) ne changera
+  rien pour qui ne l'active pas.
 - La progression (prénom choisi, avatar, réglages, XP, étoiles, badges) reste dans le navigateur. Le fichier `.save` sert
   seulement à la déplacer ou à la garder de côté ; il protège contre les fichiers abîmés, pas contre la triche.
 - **Partager ma partie** (dans « Ma sauvegarde ») affiche un QR code et propose d'envoyer un lien. La progression est
