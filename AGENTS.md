@@ -16,4 +16,9 @@ la progression. Présentation : `README.md`. Commandes, tests et CI : `CONTRIBUT
 - Commits : une ligne, Conventional Commits en français (`feat: …`, `fix: …`), sans ligne `Co-Authored-By`.
   Committer seulement quand on le demande.
 - Les fichiers `.env*` (`.env` compris) ne se lisent pas. `.env.local` et les secrets ne se commitent pas.
-- Une tâche est finie quand la QA passe : `mise run qa` (jeu, contrat) et `mise run api:qa` (API). Le style, les types et les couches sont vérifiés par ces outils : les corriger plutôt que les contourner.
+- Une tâche est finie quand la QA de ce qui a changé passe : `mise run qa:front` (jeu, packs), `mise run qa:back`
+  (API, contrat) ou `mise run qa` (les deux). Le style, les types et les couches sont vérifiés par ces outils : les
+  corriger plutôt que les contourner.
+- Tests de bout en bout (Playwright) : la CI les lance, et rien n'est publié sans une CI verte. En local, seulement
+  sur demande (échec en CI, changement qui risque de les casser), en ciblant les fichiers concernés :
+  `mise run test:e2e -- tests/e2e/<fichier>.spec.js`.

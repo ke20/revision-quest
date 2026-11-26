@@ -2,7 +2,9 @@
 #   mise install        installs the pinned Node.js
 #   mise tasks          lists the tasks below
 #   mise run dev        serves the game on http://127.0.0.1:4173/
-#   mise run qa         lint + contrat API (oas) + type check + validate + unit tests + end-to-end tests
+#   mise run qa:front   game: lint + type check + validate + unit tests (no end-to-end tests)
+#   mise run qa:back    API: contract lint + api:qa (Docker running)
+#   mise run qa         both, light (no end-to-end tests: the CI runs them, locally only on request)
 # npm scripts (package.json) stay usable without mise.
 
 [tools]
@@ -59,28 +61,40 @@ description = "Unit tests (node:test): engine, exercises, catalogue, pack valida
 run = "npm run test:unit"
 
 [tasks."test:e2e"]
-description = "End-to-end tests (Playwright, Chromium desktop + 390 px)"
-run = "npm run test:e2e"
+description = "End-to-end tests (Playwright, Chromium desktop + 390 px). Heavy: the CI runs them; locally only on request, targeted: mise run test:e2e -- tests/e2e/<file>.spec.js"
+run = "npm run test:e2e --"
 
 [tasks.test]
-description = "validate + unit tests + end-to-end tests"
+description = "validate + unit tests (no end-to-end tests)"
 run = [
   { task = "validate" },
   { task = "test:unit" },
-  { task = "test:e2e" },
 ]
 
 [tasks."oas:lint"]
 description = "Lint the API contract oas/ (OpenAPI 3.1, Redocly CLI pinned, downloaded by npx)"
 run = "npm run oas:lint"
 
-[tasks.qa]
-description = "Everything, fail fast: lint, API contract lint, type check, then validate + unit tests + end-to-end tests"
+[tasks."qa:front"]
+description = "Game QA, fail fast: lint, type check, validate, unit tests (no end-to-end tests)"
 run = [
   { task = "lint" },
-  { task = "oas:lint" },
   { task = "typecheck" },
   { task = "test" },
+]
+
+[tasks."qa:back"]
+description = "API QA, fail fast: contract lint (oas/), then api:qa (Docker running)"
+run = [
+  { task = "oas:lint" },
+  { task = "api:qa" },
+]
+
+[tasks.qa]
+description = "Light QA of both sides: qa:front then qa:back (no end-to-end tests)"
+run = [
+  { task = "qa:front" },
+  { task = "qa:back" },
 ]
 
 [tasks.report]
@@ -92,11 +106,13 @@ description = "Known vulnerabilities in npm dependencies (needs internet; fails 
 run = "npm run audit"
 
 [tasks.ci]
-description = "Exactly what GitHub Actions runs: install, audit, then qa"
+description = "What the GitHub Actions game job runs: install, audit, qa:front, contract lint, end-to-end tests (the API job runs composer qa)"
 run = [
   { task = "install" },
   { task = "audit" },
-  { task = "qa" },
+  { task = "qa:front" },
+  { task = "oas:lint" },
+  { task = "test:e2e" },
 ]
 
 # ---------- serveur local (Docker : FrankenPHP + PostgreSQL + Mailpit, voir api/README.md) ----------
@@ -125,7 +141,7 @@ run = [
 ]
 
 [tasks."api:qa"]
-description = "API quality: style, Rector, PHPStan, deptrac, PHPUnit (in the php container)"
+description = "API quality: style, Rector, config lint, PHPStan, deptrac, dependency audit, schema vs migrations, PHPUnit (in the php container)"
 run = "docker compose exec php composer qa"
 
 [tasks."api:console"]

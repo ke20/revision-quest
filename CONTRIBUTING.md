@@ -6,7 +6,8 @@ Présentation du jeu et installation : voir le [README](README.md). Pour écrire
 
 ## Avant d'ouvrir une pull request
 
-- Lancer `mise run qa` (lint, types, validation des packs, tests unitaires et e2e) : la CI refait les mêmes contrôles.
+- Lancer la QA de ce qui a changé : `mise run qa:front` (jeu, packs), `mise run qa:back` (API, contrat), `mise run qa`
+  pour les deux. La CI refait ces contrôles et ajoute les tests de bout en bout.
 - Un chapitre est chargé par le jeu comme du JavaScript : il suit le **format strict** (`window.registerPack(` + JSON pur
   + `);`, vérifié sans exécution par le validateur) et il est **relu avant d'être fusionné**.
 - Une faille de sécurité se signale en privé, pas dans un ticket : voir [SECURITY.md](SECURITY.md).
@@ -89,12 +90,14 @@ Tous peuvent afficher une figure de géométrie (`figure`).
 
 ## Tests et CI
 
-Avec mise (recommandé) : installation une fois, puis tous les contrôles :
+Avec mise (recommandé) : installation une fois, puis les contrôles de ce qui a changé :
 
 ```bash
 mise install          # Node.js épinglé dans mise.toml
 mise run install      # npm ci + navigateur Chromium de Playwright
-mise run qa           # lint, types, puis validate + tests unitaires + tests de bout en bout (s'arrête au premier échec)
+mise run qa:front     # jeu : lint, types, validate, tests unitaires (s'arrête au premier échec)
+mise run qa:back      # API : lint du contrat, puis api:qa (conteneurs Docker démarrés)
+mise run qa           # les deux, sans les tests de bout en bout
 ```
 
 Sans mise (Node.js ≥ 20) :
@@ -102,7 +105,7 @@ Sans mise (Node.js ≥ 20) :
 ```bash
 npm ci
 npx playwright install chromium
-npm run qa            # = npm run lint && npm run typecheck && npm test
+npm run qa:front      # = npm run lint && npm run typecheck && npm test
 ```
 
 | Tâche mise | Équivalent npm | Rôle |
@@ -114,11 +117,13 @@ npm run qa            # = npm run lint && npm run typecheck && npm test
 | `mise run pack:add <fichier>` | `npm run pack:add -- <fichier>` | vérifie un chapitre et le met à sa place dans `packs/` (`tools/pack-add.js`) |
 | `mise run catalog` | `npm run catalog` | écrit `packs/catalog.js` pour un autre serveur que `mise run dev`, qui le construit à chaque demande (`tools/catalog.js`) |
 | `mise run test:unit` | `npm run test:unit` | tests unitaires `node:test` : moteur, exercices (texte enrichi, correction), catalogue, validateur (packs cassés dans `tests/fixtures/unit/`), éditeur (`js/editor/model/`), doc |
-| `mise run test:e2e` | `npm run test:e2e` | tests Playwright (`tests/e2e/*.spec.js`), Chromium 1280 px + un projet 390 px |
-| `mise run test` | `npm test` | validate, unitaires, e2e, dans cet ordre |
-| `mise run qa` | `npm run qa` | lint, types, puis `test` : à lancer avant de pousser |
+| `mise run test:e2e` | `npm run test:e2e` | tests Playwright (`tests/e2e/*.spec.js`), Chromium 1280 px + un projet 390 px. Lourds : la CI les lance ; en local, seulement au besoin et ciblés (`mise run test:e2e -- tests/e2e/<fichier>.spec.js`) |
+| `mise run test` | `npm test` | validate, puis tests unitaires |
+| `mise run qa:front` | `npm run qa:front` | jeu : lint, types, puis `test` |
+| `mise run qa:back` | — | API : `oas:lint`, puis `api:qa` (Docker) |
+| `mise run qa` | — | `qa:front` puis `qa:back`, sans tests de bout en bout |
 | `mise run report` | `npx playwright show-report` | ouvre le rapport HTML du dernier passage (`playwright-report/`) |
-| `mise run ci` | — | exactement ce que fait la CI : `install` puis `qa` |
+| `mise run ci` | — | ce que fait le job du jeu dans la CI : `install`, `audit`, `qa:front`, `oas:lint`, `test:e2e` |
 
 - Les tests lancent eux-mêmes `tests/server.js` (petit serveur statique Node, sans dépendance) sur le port `PORT`
   (4173 par défaut) ; un serveur déjà lancé sur ce port est réutilisé en local.
@@ -129,8 +134,9 @@ npm run qa            # = npm run lint && npm run typecheck && npm test
   (`npx playwright show-trace <trace.zip>` pour rejouer pas à pas).
 - **CI** (`.github/workflows/ci.yml`) : à chaque push, pull request ou lancement manuel, sur ubuntu-latest,
   `jdx/mise-action` installe Node.js depuis `mise.toml`, puis `mise run ci` (npm ci, Chromium avec ses dépendances
-  système, puis `qa` : lint, validation des packs, tests unitaires, tests e2e avec 2 essais en cas d'échec). Le rapport Playwright est
-  publié comme artefact (7 jours) si quelque chose échoue. Permissions en lecture seule.
+  système, audit, `qa:front`, lint du contrat, tests e2e avec 2 essais en cas d'échec). Le job `api` lance `composer qa`
+  avec PostgreSQL. Le rapport Playwright est publié comme artefact (7 jours) si quelque chose échoue. Permissions en
+  lecture seule.
 - **Cours proposé depuis un fork** : la pull request d'un contributeur extérieur ajoute seulement son fichier dans
   `packs/`. Avant `mise run ci`, `tools/ci-proposed-packs.sh` passe chaque fichier de
   chapitre ajouté ou modifié dans `tools/pack-add.js` : format strict (le fichier n'est jamais exécuté), contrôle

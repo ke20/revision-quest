@@ -29,4 +29,4 @@ règle utile aussi à un humain va dans ce guide ; ce fichier garde la démarche
 1. `mise run pack:ids` : donne un id aux nouveaux exercices et reprend ceux de la version git.
 2. `mise run validate` : aucune `ERREUR`.
 3. Un pack avec figures : capture à 390 px de chaque figure, relue (étiquettes qui se chevauchent, point mal placé).
-4. `mise run qa` : vert, y compris le contrôle du vocabulaire des bosses de langue.
+4. `mise run qa:front` : vert, y compris le contrôle du vocabulaire des bosses de langue.

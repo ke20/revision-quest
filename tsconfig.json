@@ -1,6 +1,6 @@
 {
   // Type checking of the game's JavaScript (no build: nothing is emitted, the browser runs the same files).
-  //   npm run typecheck   (mise run typecheck), also part of npm run qa
+  //   npm run typecheck   (mise run typecheck), also part of npm run qa:front
   // Types are written as JSDoc comments in the files; shared types live in types/*.d.ts.
   "compilerOptions": {
     "allowJs": true,

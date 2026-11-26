@@ -80,18 +80,27 @@
         "rector:check": "rector process --dry-run",
         "phpstan": "phpstan analyse --memory-limit=512M",
         "deptrac": "deptrac analyse --no-progress",
+        "lint": [
+            "bin/console lint:yaml config --parse-tags",
+            "bin/console lint:container"
+        ],
+        "deps:audit": "@composer audit --no-interaction",
         "test:db": [
             "bin/console doctrine:database:create --env=test --if-not-exists",
             "bin/console doctrine:migrations:migrate --env=test --no-interaction --allow-no-migration"
         ],
+        "schema:check": "bin/console doctrine:schema:validate --env=test",
         "test": "phpunit",
         "qa": [
             "@cs:check",
             "@rector:check",
+            "@lint",
             "@phpstan:container",
             "@phpstan",
             "@deptrac",
+            "@deps:audit",
             "@test:db",
+            "@schema:check",
             "@test"
         ],
         "phpstan:container": "bin/console cache:warmup --env=dev"

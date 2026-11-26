@@ -17,7 +17,7 @@ oas/
 ## Commandes
 
 ```bash
-mise run oas:lint      # (ou npm run oas:lint) lint du contrat, compris dans mise run qa et la CI
+mise run oas:lint      # (ou npm run oas:lint) lint du contrat, compris dans mise run qa:back, mise run qa et la CI
 npx --yes @redocly/cli@2.77.0 bundle oas/openapi.yaml -o /tmp/openapi.json   # un seul fichier (pour un outil)
 npx --yes @redocly/cli@2.77.0 preview-docs oas/openapi.yaml                 # la doc lisible dans le navigateur
 ```

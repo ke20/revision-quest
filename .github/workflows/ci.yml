@@ -48,7 +48,8 @@ jobs:
           path: ~/.npm
           key: npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
-      # npm ci + Playwright Chromium (--with-deps on CI), npm audit, then qa: lint, validate, unit, e2e (stops at the first failure)
+      # npm ci + Playwright Chromium (--with-deps on CI), npm audit, qa:front (lint, types, packs, unit tests),
+      # contract lint (oas/), then end-to-end tests (stops at the first failure)
       - name: Install and test (mise run ci)
         run: mise run ci
 
@@ -62,7 +63,7 @@ jobs:
 
   # API (api/, Symfony): the same `composer qa` as `mise run api:qa`, in the development Docker image, with PostgreSQL.
   api:
-    name: API quality (style, Rector, PHPStan, deptrac, PHPUnit)
+    name: API quality (style, Rector, lint, PHPStan, deptrac, audit, schema, PHPUnit)
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -80,7 +81,7 @@ jobs:
   # One-time setup: Settings → Pages → Source: « GitHub Actions ».
   pages-build:
     name: Build the Pages site (game files only)
-    needs: test
+    needs: [test, api]   # publish only when the game and the API are green
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 5

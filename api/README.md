@@ -48,7 +48,7 @@ Les erreurs sortent en Problem Details (RFC 9457).
 ## Contribuer
 
 ```bash
-mise run api:qa        # style, Rector, PHPStan, deptrac et PHPUnit : la CI lance la même chose
+mise run api:qa        # style, Rector, lint, PHPStan, deptrac, audit, schéma et PHPUnit : la CI lance la même chose
 mise run api:composer -- cs        # corrige le style ;  -- rector  applique Rector
 mise run api:console -- debug:router
 ```

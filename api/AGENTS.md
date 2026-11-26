@@ -7,7 +7,8 @@ le modifier d'abord, puis écrire le code qui le respecte.
 
 Tout tourne dans Docker, par mise (depuis la racine du dépôt) :
 
-- `mise run up` démarre ; `mise run api:qa` lance style, Rector, PHPStan, deptrac et PHPUnit (comme la CI).
+- `mise run up` démarre ; `mise run api:qa` lance style, Rector, lint de la configuration, PHPStan, deptrac,
+  audit des dépendances, migrations sur une base neuve comparées aux entités, puis PHPUnit (comme la CI).
 - `mise run api:console -- <commande>` ; `mise run api:composer -- <commande>` (`cs` corrige le style, `rector`
   applique Rector, `test:db` prépare la base de test).
 - Schéma de base : modifier les entités, puis `mise run api:console -- doctrine:migrations:diff`, relire la migration
