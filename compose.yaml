@@ -17,6 +17,7 @@ services:
       FRANKENPHP_CONFIG: ""
     volumes:
       - ./api:/app
+      - ./oas:/oas:ro                      # le contrat OpenAPI : les tests de l'API vérifient leurs réponses contre lui
       # le jeu, exactement les fichiers publiés sur GitHub Pages (jamais specs/, resources/, api/ ni .env)
       - ./index.html:/srv/game/index.html:ro
       - ./editeur.html:/srv/game/editeur.html:ro

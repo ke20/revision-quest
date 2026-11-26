@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Routing\Attribute\Route;
 
 /**
- * GET /api/v1/health : le serveur et la base répondent-ils ? (sonde de disponibilité, sans donnée).
+ * GET /api/health : le serveur et la base répondent-ils ? (sonde de disponibilité, sans donnée).
  */
 #[AsController]
 final readonly class HealthAction

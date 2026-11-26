@@ -43,6 +43,8 @@ me:
         $ref: ../responses/problems.yaml#/BadRequest
       '401':
         $ref: ../responses/problems.yaml#/Unauthorized
+      '415':
+        $ref: ../responses/problems.yaml#/UnsupportedMediaType
   delete:
     tags: [me]
     operationId: deleteMe

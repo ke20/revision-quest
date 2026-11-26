@@ -1,0 +1,14 @@
+# Limites de débit (RateLimiter). La demande de lien envoie un e-mail : limitée par adresse IP et par adresse e-mail
+# (clé = empreinte de l'e-mail, jamais l'e-mail en clair).
+framework:
+    rate_limiter:
+        login_link_ip:
+            policy: sliding_window
+            limit: 10
+            interval: '15 minutes'
+            cache_pool: rate_limiter.cache
+        login_link_email:
+            policy: sliding_window
+            limit: 3
+            interval: '15 minutes'
+            cache_pool: rate_limiter.cache

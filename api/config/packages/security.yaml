@@ -1,39 +1,35 @@
+# Adultes seulement (parent, enseignant), sans mot de passe : connexion par un lien e-mail à usage unique (login_link),
+# puis session dans le cookie rq_session. L'enfant n'a pas de compte : ses appareils seront reliés à l'étape 4.
 security:
-    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
-    password_hashers:
-        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
-
-    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory: { memory: null }
+        adults:
+            id: App\Infrastructure\Security\AdultUserProvider
 
     firewalls:
         dev:
-            # Ensure dev tools and static assets are always allowed
             pattern: ^/(_profiler(/|$)|(_wdt|assets|build)/)
             security: false
         main:
             lazy: true
-            provider: users_in_memory
+            provider: adults
+            # pas de session : 401 en Problem Details (jamais de redirection vers une page de connexion)
+            entry_point: App\Infrastructure\Security\ProblemEntryPoint
+            login_link:
+                check_route: auth_check
+                lifetime: 600
+                # usage unique : le lien est signé avec le nombre de connexions (une connexion invalide tous les liens
+                # envoyés avant) et, une fois utilisé, gardé en cache jusqu'à son expiration (même si le compte est
+                # supprimé puis recréé entre-temps)
+                signature_properties: [loginStamp]
+                max_uses: 1
+                used_link_cache: login_link.used_cache
+                default_target_path: /suivi
+                always_use_default_target_path: true
+                failure_handler: App\Infrastructure\Security\LoginLinkFailureHandler
+            logout:
+                path: auth_logout
+                delete_cookies:
+                    rq_session: { path: /, secure: true, samesite: lax }
 
-            # Activate different ways to authenticate:
-            # https://symfony.com/doc/current/security.html#the-firewall
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
-
-    # Note: Only the *first* matching rule is applied
-    access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
-
-when@test:
-    security:
-        password_hashers:
-            # Password hashers are resource-intensive by design to ensure security.
-            # In tests, it's safe to reduce their cost to improve performance.
-            Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
-                algorithm: auto
-                cost: 4 # Lowest possible value for bcrypt
-                time_cost: 3 # Lowest possible value for argon
-                memory_cost: 10 # Lowest possible value for argon
+    # les droits sont posés sur chaque Action (#[IsGranted]) ; rien ici
+    access_control: []

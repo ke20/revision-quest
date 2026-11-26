@@ -16,7 +16,6 @@ services:
         resource: '../src/'
         exclude:
             - '../src/Kernel.php'
-            - '../src/Domain/**/*Input.php'
             - '../src/Application/**/*Input.php'
             - '../src/Application/**/*Output.php'
 

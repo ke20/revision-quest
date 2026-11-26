@@ -1,3 +1,11 @@
 framework:
     mailer:
         dsn: '%env(MAILER_DSN)%'
+        # envoi direct, pas par le bus de commandes (rien d'asynchrone pour l'instant)
+        message_bus: false
+        headers:
+            From: 'Révision Quest <%env(default:mailer_from_default:MAILER_FROM)%>'
+
+parameters:
+    # adresse d'expédition en développement (Mailpit) ; la production a la sienne (MAILER_FROM, étape 10)
+    mailer_from_default: ne-pas-repondre@revision-quest.local

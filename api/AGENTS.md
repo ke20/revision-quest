@@ -1,106 +1,91 @@
-# AGENTS.md
+# AGENTS.md (api/)
 
-This is a Symfony project. Check `composer.json` for the exact Symfony/PHP version
-in use, and read `symfony.lock` to see which recipes ran. Don't assume Doctrine,
-Twig, API Platform, Messenger, or Lock are installed unless one of those says so.
+API Symfony 8.1, PHP 8.5, FrankenPHP, PostgreSQL. Lancer et présenter : `README.md`. Le contrat est dans `../oas/` :
+le modifier d'abord, puis écrire le code qui le respecte.
 
-## Ask before generating
+## Commandes
 
-If the task doesn't specify, ask rather than guess:
+Tout tourne dans Docker, par mise (depuis la racine du dépôt) :
 
-- Persistence: Doctrine ORM, Doctrine ODM, or none?
-- Interface: server-rendered (Twig), API (Serializer, maybe API Platform), or both?
-- Auth: SecurityBundle, and which authenticator?
+- `mise run up` démarre ; `mise run api:qa` lance style, Rector, PHPStan, deptrac et PHPUnit (comme la CI).
+- `mise run api:console -- <commande>` ; `mise run api:composer -- <commande>` (`cs` corrige le style, `rector`
+  applique Rector, `test:db` prépare la base de test).
+- Schéma de base : modifier les entités, puis `mise run api:console -- doctrine:migrations:diff`, relire la migration
+  et lui écrire une description. Elle suit les règles de déploiement ci-dessous.
+- Nouvelle capacité : `mise run api:composer -- require <paquet>` et laisser la recette Flex écrire la configuration.
 
-If you can't ask (no interactive channel), state the assumption you're making and
-pick the smallest option (e.g. no persistence layer) rather than scaffolding a
-full stack nobody asked for.
+## Déploiement sans interruption
 
-## Adding features: Flex, not hand-wiring
+Pendant un déploiement, l'ancienne et la nouvelle version tournent ensemble : serveurs, workers, onglets du jeu
+restés ouverts plusieurs jours. Les migrations passent avant le nouveau code, et un retour arrière remet l'ancien
+code sur le nouveau schéma. Chaque changement reste donc compatible avec la version précédente, dans les deux sens.
+Un changement qui casse cette compatibilité se découpe en plusieurs déploiements : ajouter le nouveau, basculer,
+puis retirer l'ancien une fois plus utilisé.
 
-Install new capabilities with `composer require <package>` (e.g. `symfony/lock`,
-`symfony/messenger`, `orm-pack`) and let the Flex recipe register the bundle and
-generate its config. Don't hand-edit `config/bundles.php` or hand-write a bundle's
-base config; that's what the recipe is for. Don't skip a good-fit component just
-because it isn't installed yet; installing it is one command.
+Ordre d'un déploiement : migrations, puis serveur, puis jeu ; chaque étape seulement si la précédente a réussi. Le
+serveur est donc à jour avant le client qui utilise un changement (il refuse les champs inconnus : 400).
 
-## Conventions
+**Endpoints** (le contrat `../oas/` change dans la même Pull Request) :
 
-Follow https://symfony.com/doc/current/best_practices.html to write idiomatic
-Symfony:
+- Ajouter : un endpoint, un champ de réponse, un champ de requête facultatif (avec une valeur par défaut).
+- Renommer ou retirer un champ ou un endpoint : ajouter le nouveau, faire passer le jeu dessus, retirer l'ancien
+  plus tard.
+- Un champ de requête devient obligatoire, ou un format change : même découpage.
+- Une valeur ajoutée à une énumération de réponse : le client précédent doit déjà savoir l'ignorer.
 
-- Use PHP attributes for framework metadata, and not only on controllers:
-  `#[Route]`, `#[MapRequestPayload]`, `#[IsGranted]` on actions, `#[Assert\...]`
-  on properties, `#[AsCommand]`, `#[AsEventListener]`, `#[AsMessageHandler]`, and
-  `#[AsAlias]` / `#[AsTaggedItem]` / `#[Autoconfigure]` on services. No YAML or
-  XML routing.
-- Rely on autowiring and autoconfiguration. Type-hint constructor arguments and
-  let the container resolve them. Where a type-hint can't express it, stay in the
-  class with `#[Autowire]` (parameters, env vars, expressions) or `#[Target]` (one
-  of several implementations of an interface). A YAML service definition is the
-  last resort, not the first.
-- Controllers extend `AbstractController`, stay thin, and delegate to services.
-- Use the framework for what it already does: Form for server-rendered forms,
-  Validator for validation, Serializer for JSON, Messenger for async work,
-  Security (voters, authenticators) for access control, Twig `path()`/`url()`
-  instead of hardcoded URLs.
-- Before hand-writing infrastructure (locks, queues, caches, HTTP clients,
-  mailers, schedulers) or reaching for a third-party library, check whether a
-  Symfony component covers it. It usually does.
+**Messages des workers** (Messenger) : un message envoyé par une version peut être lu par l'autre.
 
-Three specifics worth spelling out, because they are easy to get wrong:
+- La classe du message est un contrat : nom et espace de noms fixes (ils sont dans le message sérialisé).
+- Ajouter une propriété seulement avec une valeur par défaut ; ni renommer ni retirer. La valeur par défaut part
+  dans un déploiement suivant, quand chaque envoi remplit la propriété et que la file ne contient plus d'ancien
+  message.
+- Un autre changement crée un nouveau message. Le handler de l'ancien reste jusqu'à ce que la file soit vide.
 
-- Bind request data with `#[MapRequestPayload]` / `#[MapQueryString]` on action
-  arguments, which wires up Serializer and Validator for you, instead of calling
-  `json_decode()` or `SerializerInterface` by hand. If neither package is
-  installed yet, `composer require` them rather than falling back to manual
-  parsing.
-- Use constructor property promotion, and `readonly` for DTOs and value objects.
-- Use `symfony/lock` (`LockFactory`) for mutual exclusion. A hand-built flag or
-  lock file looks fine in review and is usually wrong under concurrency.
+**Migrations** :
 
-## Everyday workflow
+- Colonne ajoutée : `NULL` permis ou valeur par défaut. `NOT NULL` vient plus tard, une fois toutes les lignes
+  remplies.
+- Colonne ou table renommée, type changé : ajouter la nouvelle, écrire dans les deux, recopier l'existant, lire la
+  nouvelle, puis supprimer l'ancienne dans un déploiement suivant.
+- Colonne ou table supprimée : d'abord le code qui ne s'en sert plus (mapping Doctrine retiré), puis la migration
+  dans un déploiement suivant.
+- Index : toujours `CREATE INDEX CONCURRENTLY` et `DROP INDEX CONCURRENTLY`, pour ne pas bloquer les écritures sur
+  la table. `diff` ne les génère pas : les ajouter à la main. PostgreSQL les refuse dans une transaction : la
+  migration déclare `isTransactional(): bool { return false; }`. Si la migration échoue, PostgreSQL garde l'index
+  marqué `INVALID` : le supprimer avant de relancer.
+- Clé étrangère ou contrainte `CHECK` sur une table existante : `NOT VALID`, puis `VALIDATE CONSTRAINT` dans une
+  autre requête.
 
-- Run the app with `symfony serve -d`, and commands with `symfony console ...`
-  (or `bin/console` when the Symfony CLI isn't available).
-- When something fails, read `var/log/dev.log` and the web profiler
-  (`/_profiler`) before changing code.
-- If `maker-bundle` is installed, prefer `bin/console make:*` with every argument
-  passed up front and `--no-interaction` where supported: makers prompt on a
-  terminal by default, which hangs a non-interactive shell. If a maker still
-  needs interactive input, hand-write the code instead.
-- If Doctrine ORM is installed, schema changes go through migrations
-  (`bin/console make:migration`, then `doctrine:migrations:migrate`), never
-  `doctrine:schema:update` or hand-written SQL.
-- `.env` is committed and holds defaults only. Real secrets belong in `.env.local`
-  (git-ignored) or the secrets vault (`bin/console secrets:set`), read via
-  `%env(...)%`.
+## Architecture
 
-## Testing
+`Domain/` (entités, objets valeur, repositories), `Application/` (cas d'usage, bus, ports), `Infrastructure/`
+(HTTP, Doctrine, sécurité). deptrac garde les dépendances entre couches ; seules `symfony/uid` et `symfony/clock`
+sont permises dans le domaine et l'application.
 
-Install `symfony/test-pack` if it isn't already. Functional/HTTP tests extend
-`WebTestCase`; service-level tests extend `KernelTestCase`. Run
-`php bin/phpunit` (falls back to `vendor/bin/phpunit`). A feature isn't done
-until it has a test that exercises it the way a caller would, an HTTP request for
-a controller or a service call for a service, not just "it didn't throw."
+- **Un dossier par cas d'usage** : `Application/Command/<Thème>/<CasDUsage>/{…Input, …Handler, …Output}.php`, de même
+  sous `Query/`. L'Input déclare son Output en générique PHPStan (`@implements CommandInput<RecordLoginOutput>`).
+  Le handler implémente `CommandHandler` ou `QueryHandler`.
+- **Signatures typées** : des interfaces (au besoin marqueurs) et des génériques à la place de `object`. `mixed`
+  reste pour des données externes sans type (YAML lu dans `tests/Contract/OpenApiContract.php`).
+- **Objets valeur** : une classe d'id par entité (`AdultId`), `Email` ; les Inputs les portent, les Outputs restent
+  en types simples. Doctrine les convertit par un type (`Infrastructure/Doctrine/Type`), nommé dans l'attribut
+  (`type: 'adult_id'`). Les objets valeur restent à côté de leur entité.
+- **L'entité crée son id et ses dates** : `AdultId::generate()` (UUID v7) et `Clock::get()->now()` dans le
+  constructeur, qui ne les reçoit jamais en paramètre.
+- **Exceptions du domaine** : dans `Domain/<Contexte>/Exception/`, suffixe `Exception`, constructeur nommé
+  (`AdultNotFoundException::withId()`).
+- **Action** : une classe invocable par endpoint dans `Infrastructure/Http/<Thème>/`, `#[Route]` sous `/api`. Le
+  corps JSON passe par `#[JsonPayload]` dans un Payload validé ; l'Action envoie un Input sur le bus et met l'Output
+  en JSON. Les erreurs sortent en Problem Details (`Infrastructure/Http/Problem`).
+- Rector (`deadCode`) supprime un paramètre d'Action qui sert seulement à valider le corps : il est exclu pour
+  `src/Infrastructure/Http`, garder cette exclusion.
 
-## Code style
+## Tests
 
-Symfony's coding standard, the `@Symfony` php-cs-fixer ruleset (a PSR-12-derived
-superset). Run `vendor/bin/php-cs-fixer fix` if `friendsofphp/php-cs-fixer` is
-installed; it isn't part of the skeleton by default.
-
-## Discover, don't guess
-
-Framework APIs change between versions and your training data may be stale. Look
-things up in the project instead of relying on memory:
-
-- `bin/console about`: versions, environment, paths.
-- `bin/console debug:router`, `debug:container`, `debug:autowiring <name>`,
-  `debug:config <bundle>`, `config:dump-reference <bundle>`: what exists and how
-  it is configured.
-- `bin/console lint:container`, plus `lint:twig templates/` and
-  `lint:yaml config/` where those packages are installed: validate before running.
-- Read the installed source and docblocks under `vendor/`.
-- Docs: https://symfony.com/doc/current/ (switch to the version matching
-  `composer.json` if it differs).
+- Domaine (entités, objets valeur) : tests unitaires, `tests/Unit/Domain/`. Dates figées par
+  `ClockSensitiveTrait::mockTime()`.
+- Cas d'usage : tests d'intégration, `tests/Integration/<Thème>/`, `KernelTestCase`. Passer par le vrai bus, avec
+  Doctrine et PostgreSQL, puis relire en base après `$entityManager->clear()`.
+- Action : tests fonctionnels HTTP, `tests/Functional/<Thème>/`, par `ApiTestCase::call()`, qui vérifie la réponse
+  contre `oas/` (statut, Content-Type, schéma). Chaque statut prévu par le contrat a son test.
+- Chaque test tourne dans une transaction annulée (dama/doctrine-test-bundle).

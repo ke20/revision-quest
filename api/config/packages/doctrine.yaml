@@ -2,6 +2,10 @@ doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
         profiling_collect_backtrace: '%kernel.debug%'
+        # objets valeur du domaine (le domaine nomme le type, l'infrastructure le convertit)
+        types:
+            adult_id: App\Infrastructure\Doctrine\Type\AdultIdType
+            email: App\Infrastructure\Doctrine\Type\EmailType
     orm:
         validate_xml_mapping: true
         naming_strategy: doctrine.orm.naming_strategy.underscore

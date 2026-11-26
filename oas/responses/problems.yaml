@@ -23,6 +23,12 @@ NotFound:
     application/problem+json:
       schema:
         $ref: ../schemas/problem.yaml#/Problem
+UnsupportedMediaType:
+  description: Le corps de la requête n'est pas du JSON (`Content-Type` doit être `application/json`).
+  content:
+    application/problem+json:
+      schema:
+        $ref: ../schemas/problem.yaml#/Problem
 TooManyRequests:
   description: Trop de tentatives (limite de débit) ; réessayer après `Retry-After` secondes.
   headers:

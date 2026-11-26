@@ -11,7 +11,7 @@ final class HealthActionTest extends WebTestCase
     public function testTheServerAndTheDatabaseAnswer(): void
     {
         $client = self::createClient();
-        $client->request('GET', '/api/v1/health');
+        $client->request('GET', '/api/health');
 
         self::assertResponseIsSuccessful();
         self::assertResponseHeaderSame('Content-Type', 'application/json');

@@ -18,6 +18,8 @@ link:
         description: Demande prise en compte (un e-mail part si l'adresse est valable).
       '400':
         $ref: ../responses/problems.yaml#/BadRequest
+      '415':
+        $ref: ../responses/problems.yaml#/UnsupportedMediaType
       '429':
         $ref: ../responses/problems.yaml#/TooManyRequests
 check:

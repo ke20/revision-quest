@@ -2,14 +2,23 @@
 framework:
     secret: '%env(APP_SECRET)%'
 
-    # Note that the session will be started ONLY if you read or write from it.
-    session: true
+    # Le lien de connexion est construit avec le nom d'hôte de la requête : un en-tête Host piégé enverrait sinon un lien
+    # vers un autre domaine. Seuls ces noms sont acceptés (la production a le sien, étape 10).
+    trusted_hosts: ['^localhost$', '^revision-quest\.local$']
 
-    #esi: true
-    #fragments: true
+    # Session d'un adulte (démarrée seulement à la connexion) : cookie HttpOnly, Secure en HTTPS, SameSite=Lax.
+    session:
+        name: rq_session
+        cookie_httponly: true
+        cookie_secure: auto
+        cookie_samesite: lax
 
 when@test:
     framework:
         test: true
         session:
             storage_factory_id: session.storage.factory.mock_file
+
+when@prod:
+    framework:
+        trusted_hosts: '%env(TRUSTED_HOSTS)%'

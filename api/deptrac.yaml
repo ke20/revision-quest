@@ -1,4 +1,4 @@
-# Hexagonal simple : le domaine ne dépend que de lui-même (et des attributs Doctrine), l'application du domaine,
+# Hexagonal simple : le domaine ne dépend que de lui-même (et des attributs Doctrine, de symfony/uid et symfony/clock), l'application du domaine,
 # l'infrastructure de tout le reste. Symfony et Doctrine (hors attributs) seulement dans l'infrastructure.
 deptrac:
   paths:
@@ -16,10 +16,15 @@ deptrac:
     - name: DoctrineMapping
       collectors:
         - { type: classNameRegex, value: '#^Doctrine\\ORM\\Mapping\\#' }
+    # petites bibliothèques permises dans le domaine et l'application : UUID (symfony/uid), heure (symfony/clock,
+    # Clock::get()->now(), figée en test par une MockClock)
+    - name: Toolkit
+      collectors:
+        - { type: classNameRegex, value: '#^Symfony\\Component\\(Uid|Clock)\\#' }
     - name: Framework
       collectors:
-        - { type: classNameRegex, value: '#^(Symfony\\|Doctrine\\(?!ORM\\Mapping\\))#' }
+        - { type: classNameRegex, value: '#^(Symfony\\(?!Component\\(Uid|Clock)\\)|Doctrine\\(?!ORM\\Mapping\\))#' }
   ruleset:
-    Domain: [DoctrineMapping]
-    Application: [Domain]
-    Infrastructure: [Domain, Application, DoctrineMapping, Framework]
+    Domain: [DoctrineMapping, Toolkit]
+    Application: [Domain, Toolkit]
+    Infrastructure: [Domain, Application, DoctrineMapping, Toolkit, Framework]

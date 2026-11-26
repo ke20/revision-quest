@@ -1,0 +1,6 @@
+# Messages de validation en français (les violations renvoyées par l'API sont lues par un adulte).
+framework:
+    default_locale: fr
+    enabled_locales: [fr]
+    translator:
+        default_path: '%kernel.project_dir%/translations'

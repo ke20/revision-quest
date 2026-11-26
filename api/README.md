@@ -31,30 +31,26 @@ mise run logs          # journaux ; mise run down pour arrêter (la base est gar
 
 ## Architecture
 
-```
-src/
-  Domain/          entités (attributs Doctrine), objets valeur, interfaces des repositories
-  Application/     cas d'usage : Command/ et Query/ (Input, Handler, Output), Port/ (interfaces), Bus/
-  Infrastructure/  Http/ (une Action par endpoint, Payload), Doctrine/, Messenger/ (bus), Mailer/…
-```
+Hexagonale simple : `src/Domain/` (le métier), `src/Application/` (un dossier par cas d'usage, appelé par un bus de
+commandes ou de requêtes), `src/Infrastructure/` (HTTP, Doctrine, sécurité). Une Action par endpoint, sous `/api`.
+Les erreurs sortent en Problem Details (RFC 9457).
 
-- **Action** : contrôleur invocable par endpoint. Il lit le corps dans un Payload (`#[MapRequestPayload]`), envoie un
-  **Input** sur le bus et reçoit un **Output**, puis construit la réponse JSON.
-- **CQRS léger** : `CommandBus::dispatch(CommandInput): Output` (écritures, dans une transaction Doctrine) et
-  `QueryBus::ask(QueryInput): Output` (lectures), synchrones. Un Input déclare le type de son Output en générique
-  PHPStan (`@implements QueryInput<HealthOutput>`) : `ask(new HealthInput())` est connu comme un `HealthOutput`, sans
-  `assert`. Un handler implémente `CommandHandler` ou `QueryHandler` (marqueurs dans `Application/Bus`) : l'application
-  ne dépend pas de Symfony.
-- **deptrac** vérifie les couches : `Domain` → attributs Doctrine seulement ; `Application` → `Domain` ;
-  Symfony et Doctrine seulement dans `Infrastructure`.
-- Routes : attributs dans `src/Infrastructure/Http/`, toutes sous `/api/v1`.
+## Connexion des adultes
 
-## Qualité
+- `POST /api/auth/link` envoie un lien (`login_link` de Symfony, 10 min) ; toujours `202`, compte ou pas. Limites
+  de débit par IP (10 / 15 min) et par e-mail (3 / 15 min, clé = empreinte de l'e-mail).
+- Le lien ouvre la session (`rq_session`) et crée le compte à la première connexion. Usage unique : signé avec le
+  nombre de connexions, et gardé en cache une fois utilisé (`max_uses: 1`).
+- Le lien est construit sur le nom d'hôte de la requête : `framework.trusted_hosts` limite les noms acceptés.
+- Une requête qui modifie (POST, PUT, PATCH, DELETE) doit porter l'en-tête `Origin` du site (contre le CSRF).
+- En local, les e-mails arrivent dans Mailpit : https://mail.revision-quest.local
+
+## Contribuer
 
 ```bash
-mise run api:qa        # style (PHP-CS-Fixer), Rector (vérification), PHPStan niveau 8, deptrac, PHPUnit
+mise run api:qa        # style, Rector, PHPStan, deptrac et PHPUnit : la CI lance la même chose
 mise run api:composer -- cs        # corrige le style ;  -- rector  applique Rector
 mise run api:console -- debug:router
 ```
 
-La CI lance la même chose (`composer qa`) dans l'image Docker de développement, avec PostgreSQL.
+Chaque réponse testée est vérifiée contre le contrat `oas/`. Règles de code et de tests : [`AGENTS.md`](AGENTS.md).
