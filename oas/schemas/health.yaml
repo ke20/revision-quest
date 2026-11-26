@@ -1,0 +1,9 @@
+Health:
+  type: object
+  additionalProperties: false
+  required: [status, database]
+  properties:
+    status:
+      enum: [ok, degraded]
+    database:
+      enum: [ok, down]

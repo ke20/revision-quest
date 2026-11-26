@@ -98,3 +98,40 @@ run = [
   { task = "audit" },
   { task = "qa" },
 ]
+
+# ---------- serveur local (Docker : FrankenPHP + PostgreSQL + Mailpit, voir api/README.md) ----------
+[tasks.up]
+description = "Start the local server in Docker (game + API on https://revision-quest.local, Mailpit on https://mail.revision-quest.local)"
+run = ["node tools/catalog.js", "docker compose up -d --build"]
+
+[tasks.down]
+description = "Stop the local Docker containers (the database volume is kept)"
+run = "docker compose down"
+
+[tasks.logs]
+description = "Follow the logs of the local containers"
+run = "docker compose logs -f"
+
+[tasks."dev:hosts"]
+description = "Once: add revision-quest.local and mail.revision-quest.local to /etc/hosts (asks for your password)"
+run = "grep -q 'revision-quest.local' /etc/hosts && echo 'Déjà dans /etc/hosts' || echo '127.0.0.1 revision-quest.local mail.revision-quest.local' | sudo tee -a /etc/hosts"
+
+[tasks."dev:trust"]
+description = "Once (macOS): trust the local HTTPS authority of Caddy, so the browser accepts https://revision-quest.local (asks for your password)"
+run = [
+  "docker compose cp php:/data/caddy/pki/authorities/local/root.crt ./var-caddy-root.crt",
+  "sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ./var-caddy-root.crt",
+  "rm ./var-caddy-root.crt",
+]
+
+[tasks."api:qa"]
+description = "API quality: style, Rector, PHPStan, deptrac, PHPUnit (in the php container)"
+run = "docker compose exec php composer qa"
+
+[tasks."api:console"]
+description = "Symfony console in the php container: mise run api:console -- debug:router"
+run = "docker compose exec php bin/console"
+
+[tasks."api:composer"]
+description = "Composer in the php container: mise run api:composer -- require some/package"
+run = "docker compose exec php composer"

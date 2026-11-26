@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=../vendor/symfony/dependency-injection/Loader/schema/services.schema.json
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    _instanceof:
+        App\Application\Bus\CommandHandler:
+            tags: [{ name: messenger.message_handler, bus: command.bus }]
+        App\Application\Bus\QueryHandler:
+            tags: [{ name: messenger.message_handler, bus: query.bus }]
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/Kernel.php'
+            - '../src/Domain/**/*Input.php'
+            - '../src/Application/**/*Input.php'
+            - '../src/Application/**/*Output.php'
+
+    App\Infrastructure\Messenger\MessengerCommandBus:
+        arguments: ['@command.bus']
+    App\Infrastructure\Messenger\MessengerQueryBus:
+        arguments: ['@query.bus']

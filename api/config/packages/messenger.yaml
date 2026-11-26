@@ -1,0 +1,13 @@
+# CQRS léger : un bus de commandes (écritures, dans une transaction) et un bus de requêtes (lectures), synchrones.
+# Les handlers implémentent App\Application\Bus\CommandHandler ou QueryHandler (voir services.yaml) : l'Application ne
+# dépend pas de Symfony.
+framework:
+    messenger:
+        default_bus: command.bus
+        buses:
+            command.bus:
+                middleware:
+                    - doctrine_transaction
+            query.bus: ~
+        transports:
+            sync: 'sync://'

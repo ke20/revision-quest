@@ -1,0 +1,20 @@
+health:
+  get:
+    tags: [health]
+    operationId: getHealth
+    summary: Le serveur et la base répondent-ils ?
+    description: Sonde de disponibilité (surveillance externe), sans aucune donnée.
+    security: []
+    responses:
+      '200':
+        description: Tout répond.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/health.yaml#/Health
+      '503':
+        description: La base ne répond pas.
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/health.yaml#/Health

@@ -19,6 +19,8 @@ servers:
   - url: /api/v1
     description: Même domaine que le jeu (le jeu et l'API sont servis par le même serveur).
 tags:
+  - name: health
+    description: Disponibilité du serveur.
   - name: auth
     description: Connexion des adultes par lien e-mail (pas de mot de passe).
   - name: me
@@ -37,6 +39,8 @@ tags:
     description: Journal des erreurs détaillées et des sessions de jeu (hors de la sauvegarde).
 
 paths:
+  /health:
+    $ref: paths/health.yaml#/health
   /auth/link:
     $ref: paths/auth.yaml#/link
   /auth/check:

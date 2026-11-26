@@ -7,6 +7,8 @@ blob-report/
 .env*
 # .env holds the shared defaults (no secrets); .env.local, for this computer only, stays out of git
 !.env
+# api/.env.test : valeurs publiques de la recette Symfony (KERNEL_CLASS, secret de test connu), nécessaires à la CI
+!api/.env.test
 
 # Local notes and plans (specs/TODO.md, specs/PLAN.md, specs/<projet>/*.md)
 specs/

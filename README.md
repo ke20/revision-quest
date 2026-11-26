@@ -145,6 +145,7 @@ mise run dev                       # sert le jeu sur http://127.0.0.1:4173/
 DEV_MODE=true mise run dev         # idem, avec le bouton 👻 (mode fantôme) sur la carte d'un chapitre
                                    # (ou DEV_MODE=true dans .env.local, hors git : réglages par défaut dans .env)
 mise run qa                        # lint, types, validation des packs, tests unitaires et e2e : à lancer avant de pousser
+mise run up                        # (en cours) serveur local en Docker : jeu + API sur https://revision-quest.local, voir api/README.md
 ```
 
 La CI GitHub Actions lance les mêmes contrôles à chaque push et publie le jeu sur GitHub Pages depuis `main`.

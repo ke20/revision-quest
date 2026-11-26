@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../vendor/symfony/routing/Loader/schema/routing.schema.json
+# Les Actions (un contrôleur invocable par endpoint) déclarent leur route en attribut ; tout est sous /api/v1.
+api_v1:
+    resource: ../src/Infrastructure/Http/
+    type: attribute
+    prefix: /api/v1

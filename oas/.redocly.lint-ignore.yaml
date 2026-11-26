@@ -3,3 +3,6 @@
 paths/auth.yaml:
   operation-2xx-response:
     - '#/check/get/responses'
+paths/health.yaml:
+  operation-4xx-response:
+    - '#/health/get/responses'

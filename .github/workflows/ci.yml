@@ -60,6 +60,22 @@ jobs:
           path: playwright-report/
           retention-days: 7
 
+  # API (api/, Symfony): the same `composer qa` as `mise run api:qa`, in the development Docker image, with PostgreSQL.
+  api:
+    name: API quality (style, Rector, PHPStan, deptrac, PHPUnit)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+
+      - name: Build the development image
+        run: docker compose build php
+
+      - name: Install the dependencies and run composer qa
+        run: docker compose run --rm -e APP_ENV=test php sh -c "composer install --no-interaction --no-progress && composer qa"
+
   # GitHub Pages: only from main, only once every test passed, only the game files.
   # One-time setup: Settings → Pages → Source: « GitHub Actions ».
   pages-build:

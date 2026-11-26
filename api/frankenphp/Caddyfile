@@ -1,0 +1,34 @@
+# FrankenPHP (Caddy) : le jeu en fichiers statiques à la racine, l'API Symfony sous /api.
+{
+	{$CADDY_GLOBAL_OPTIONS}
+	frankenphp {
+		{$FRANKENPHP_CONFIG}
+	}
+}
+
+{$SERVER_NAME:revision-quest.local} {
+	# local : autorité de certification de Caddy (« tls internal ») ; production : CADDY_TLS = l'e-mail pour Let's Encrypt
+	tls {$CADDY_TLS:internal}
+	encode zstd gzip
+
+	header {
+		X-Content-Type-Options nosniff
+		Referrer-Policy no-referrer
+		-Server
+	}
+
+	# L'API : Symfony
+	handle /api/* {
+		root * /app/public
+		php_server
+	}
+
+	# Le jeu : fichiers statiques (le dépôt monté en lecture seule)
+	handle {
+		root * /srv/game
+		file_server
+	}
+}
+
+# Sites de développement seulement (Mailpit…) : fichiers montés par compose.yaml en local, absents en production
+import /etc/caddy/dev/*.caddy

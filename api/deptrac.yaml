@@ -1,0 +1,25 @@
+# Hexagonal simple : le domaine ne dépend que de lui-même (et des attributs Doctrine), l'application du domaine,
+# l'infrastructure de tout le reste. Symfony et Doctrine (hors attributs) seulement dans l'infrastructure.
+deptrac:
+  paths:
+    - ./src
+  layers:
+    - name: Domain
+      collectors:
+        - { type: classNameRegex, value: '#^App\\Domain\\#' }
+    - name: Application
+      collectors:
+        - { type: classNameRegex, value: '#^App\\Application\\#' }
+    - name: Infrastructure
+      collectors:
+        - { type: classNameRegex, value: '#^App\\Infrastructure\\#' }
+    - name: DoctrineMapping
+      collectors:
+        - { type: classNameRegex, value: '#^Doctrine\\ORM\\Mapping\\#' }
+    - name: Framework
+      collectors:
+        - { type: classNameRegex, value: '#^(Symfony\\|Doctrine\\(?!ORM\\Mapping\\))#' }
+  ruleset:
+    Domain: [DoctrineMapping]
+    Application: [Domain]
+    Infrastructure: [Domain, Application, DoctrineMapping, Framework]

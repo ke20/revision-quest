@@ -1,0 +1,5 @@
+# Développement : l'interface de Mailpit (les e-mails envoyés par l'API en local, aucun e-mail réel ne part)
+{$MAIL_SERVER_NAME:mail.revision-quest.local} {
+	tls internal
+	reverse_proxy mailer:8025
+}
