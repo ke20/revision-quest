@@ -8,6 +8,11 @@ export let E = function (t) {
 /** Rich text (see Exercises.rich), or escaped text before it loads. @param {string} t @returns {string} */
 export let R = function (t) { return window.Exercises ? window.Exercises.rich(t) : E(t); };
 export let T = function () { return window.I18N ? window.I18N.t.apply(null, /** @type {any} */ (arguments)) : String(arguments[0]); };
+/** Text of an interface string that holds HTML (« … <small>…</small> »), for an attribute. Parsed in an inert
+ * document (no script, no loading), never by a regular expression. @param {string} html @returns {string} */
+export let plainText = function (html) {
+  return new DOMParser().parseFromString(html, "text/html").body.textContent || "";
+};
 export let COLOR_RE = /^#[0-9a-fA-F]{3,8}$/;
 /** The same value, declared present: for a value the code already knows is set, which TypeScript cannot follow
     (an element of the page, the world just finished…). No check at run time.

@@ -14,15 +14,19 @@ import { spotForm } from "./types/spot.js";
 import { questionForm } from "./types/question.js";
 
 /** @type {Record<string, (root: HTMLElement, ex: any) => void>} */
-var TYPE_FORMS = { mcq: mcqForm, sort: sortForm, match: matchForm, order: orderForm, fill: fillForm, spot: spotForm, question: questionForm };
+/** One form per exercise type. A Map: a type read from a file can only reach these functions (never Object.prototype). */
+var TYPE_FORMS = new Map([
+  ["mcq", mcqForm], ["sort", sortForm], ["match", matchForm], ["order", orderForm], ["fill", fillForm], ["spot", spotForm],
+  ["question", questionForm],
+]);
 
 /** @param {HTMLElement} root @param {number} wi @param {number} ei */
 export function exerciseForm(root, wi, ei) {
   var pack = store.draft.pack;
   var ex = /** @type {any} */ (pack.worlds[wi].exercises[ei]);
-  var known = Object.prototype.hasOwnProperty.call(TYPE_FORMS, ex.type);
+  var typeForm = TYPE_FORMS.get(ex.type);
   root.appendChild(el("h2", "ed-form-title", typeLabel(ex.type) + " · exercice " + (ei + 1) + " du monde " + (wi + 1)));
-  if (!known) {
+  if (!typeForm) {
     keptNote(root, "Exercice de type « " + String(ex.type) + " » (inconnu)");
     return;
   }
@@ -52,7 +56,7 @@ export function exerciseForm(root, wi, ei) {
 
   var typeBox = el("div", "ed-grid ed-type");
   box.appendChild(typeBox);
-  TYPE_FORMS[ex.type](typeBox, ex);
+  typeForm(typeBox, ex);
 
   text(box, { label: "Explication (affichée après la réponse)", f: "explanation", value: ex.explanation, multiline: true,
     check: "^explanation|explication", help: "1 ou 2 phrases qui disent pourquoi. " + RICH_HELP,
