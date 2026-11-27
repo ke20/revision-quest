@@ -9,3 +9,10 @@ framework:
 parameters:
     # adresse d'expédition en développement (Mailpit) ; la production a la sienne (MAILER_FROM, étape 10)
     mailer_from_default: ne-pas-repondre@revision-quest.local
+
+# Tests : aucun envoi réel (Mailpit peut être absent, comme en CI). Les tests lisent les e-mails envoyés par
+# les assertions du Mailer de Symfony, qui marchent avec n'importe quel transport.
+when@test:
+    framework:
+        mailer:
+            dsn: 'null://null'

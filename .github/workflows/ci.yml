@@ -15,10 +15,12 @@ concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+# Runners pinned to Ubuntu 24.04: on ubuntu-latest (26.04), `playwright install --with-deps` fails on apt update
+# (packages.microsoft.com answers 403 for 26.04). Move up once that repository works again.
 jobs:
   test:
     name: Lint, validate packs, unit and end-to-end tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
       CI: "true"
@@ -64,7 +66,7 @@ jobs:
   # API (api/, Symfony): the same `composer qa` as `mise run api:qa`, in the development Docker image, with PostgreSQL.
   api:
     name: API quality (style, Rector, lint, PHPStan, deptrac, audit, schema, PHPUnit)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
@@ -83,7 +85,7 @@ jobs:
     name: Build the Pages site (game files only)
     needs: [test, api]   # publish only when the game and the API are green
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
@@ -112,7 +114,7 @@ jobs:
   pages-deploy:
     name: Deploy to GitHub Pages
     needs: pages-build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     # the only job allowed to publish: the rest of the workflow keeps read-only rights
     permissions:

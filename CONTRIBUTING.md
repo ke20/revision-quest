@@ -132,7 +132,7 @@ npm run qa:front      # = npm run lint && npm run typecheck && npm test
   (`tests/fixtures/catalog-*.json`) : ils n'apparaissent jamais dans `packs/` ni dans `packs/catalog.js`.
 - En cas d'échec : capture d'écran et trace Playwright dans `test-results/`, rapport dans `playwright-report/`
   (`npx playwright show-trace <trace.zip>` pour rejouer pas à pas).
-- **CI** (`.github/workflows/ci.yml`) : à chaque push, pull request ou lancement manuel, sur ubuntu-latest,
+- **CI** (`.github/workflows/ci.yml`) : à chaque push, pull request ou lancement manuel, sur Ubuntu 24.04,
   `jdx/mise-action` installe Node.js depuis `mise.toml`, puis `mise run ci` (npm ci, Chromium avec ses dépendances
   système, audit, `qa:front`, lint du contrat, tests e2e avec 2 essais en cas d'échec). Le job `api` lance `composer qa`
   avec PostgreSQL. Le rapport Playwright est publié comme artefact (7 jours) si quelque chose échoue. Permissions en
